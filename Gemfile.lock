@@ -1,0 +1,13 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    transifex-interface-ruby (0.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  transifex-interface-ruby
+
+BUNDLED WITH
+   1.10.4
