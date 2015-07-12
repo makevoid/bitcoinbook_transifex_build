@@ -1,7 +1,7 @@
 # Transifex > Asciidoc build system
 # for aantonop/Bitcoinbook
 
-Renders PDF files of the latest version present on github
+Renders PDF files of the latest version present on transifex
 
 ### Building
 
