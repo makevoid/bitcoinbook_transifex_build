@@ -1,13 +1,27 @@
+GIT
+  remote: git@github.com:tmaesaka/transifex-ruby.git
+  revision: a5994ab559c90f4e419eeff287a5beac0e5fa81f
+  specs:
+    transifex-ruby (0.0.4)
+      faraday (~> 0.8.0)
+      faraday_middleware (~> 0.9.0)
+      hashie (~> 1.2.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    transifex-interface-ruby (0.0.1)
+    faraday (0.8.9)
+      multipart-post (~> 1.2.0)
+    faraday_middleware (0.9.2)
+      faraday (>= 0.7.4, < 0.10)
+    hashie (1.2.0)
+    multipart-post (1.2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  transifex-interface-ruby
+  transifex-ruby!
 
 BUNDLED WITH
    1.10.4

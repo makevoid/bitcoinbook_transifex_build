@@ -5,5 +5,5 @@ task :build do
 end
 
 task :run do
-  ruby "btcfex"
+  ruby "btcfex.rb"
 end
