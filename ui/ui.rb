@@ -74,16 +74,7 @@ module AsciiFex
     end
 
     get "/" do
-      "
-      langs: #{LANGUAGES}
-      <br>
-      <br>
-      translations
-      <br>
-      #{sections_html}
-      <br>
-      <br>
-      "
+      haml :index
     end
   end
 end

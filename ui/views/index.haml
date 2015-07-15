@@ -1,0 +1,21 @@
+!!! 5
+%html
+  %head
+    %meta{ charset: "utf-8" }
+    %title aantonop/bitcoinbook translation builds
+    %meta{ content: "IE=edge", "http-equiv" => "X-UA-Compatible" }
+    %meta{ content: "width=device-width, initial-scale=1", name: "viewport" }
+    %link{ href: "/css/main.css", rel: "stylesheet" }
+  %body
+    %h1 aantonop/bitcoinbook
+    %h3 Mastering Bitcoin
+    %h3 Translation Builds
+
+    %p Gets the translations from transifex
+
+    %p Languages:
+    %p= LANGUAGES.join(", ")
+
+
+    %p source code:
+    %a{ href: "https://github.com/makevoid/bitcoinbook_transifex_build"} makevoid/bitcoinbook_transifex_build @ github

@@ -6,7 +6,7 @@ def write(file, contents)
 end
 
 def public_path(lang)
-  "#{PATH}/public/#{lang}"
+  "#{PATH}/public/translations/#{lang}"
 end
 
 def convert(resource:, lang:, content:)
@@ -33,7 +33,7 @@ def asciifex
   languages = LANGUAGES
 
   languages.each do |lang|
-    puts `mkdir -p #{public_path(lang)}`
+    `mkdir -p #{public_path(lang)}`
   end
 
   project.resources.each do |resource|
