@@ -16,7 +16,7 @@ def convert(resource:, lang:, content:)
 
   docker_path = "/home/makevoid/apps/asciidoc"
   cmd = "asciidoc #{docker_path}/#{filename}"
-  puts `docker run -ti -v #{public_path lang}:#{docker_path} --rm  asciidoc #{cmd}`
+  puts `docker run -ti -v #{public_path lang}:#{docker_path} --rm  makevoid/asciidoc #{cmd}`
 end
 
 def project

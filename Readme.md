@@ -5,17 +5,27 @@ Simple web UI + Render Tool
 
 Renders HTML/PDF files of the latest version present on transifex
 
+
+the files are converted
+
+to see some translations right check the 'with_translations' branch
+
+### Setup
+
+    docker pull makevoid/asciidoc
+
+
 ### Building
 
-   rake
+    rake
 
 ### Run
 
-   rake run
+    rake run
 
 or
 
-   bin/asciifex
+    bin/asciifex
 
 
 ### Console
