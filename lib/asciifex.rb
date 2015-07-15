@@ -40,14 +40,17 @@ def asciifex
     puts "Translation: #{resource.slug}"
 
     languages.each do |lang|
+
+      ## TODO: ######
+      # wrap in a celluloid object/method - call async on it - run 10 in parallel
       content = resource.translation lang
       content = content.content
-
       puts "Content: - lang: #{lang}"
-      puts content
-
+      # puts content
       slug  = resource.slug
       convert resource: slug, lang: lang, content: content
+      ###############
+
     end
 
     # exit

@@ -12,7 +12,12 @@ to see some translations right check the 'with_translations' branch
 
 ### Setup
 
+Install docker (http://docs.docker.com/mac/started) then:
+
     docker pull makevoid/asciidoc
+
+
+https://hub.docker.com/u/makevoid/asciidoc
 
 
 ### Building

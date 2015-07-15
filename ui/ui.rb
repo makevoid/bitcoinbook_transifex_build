@@ -8,6 +8,8 @@ require_relative '../lib/languages'
 module AsciiFex
   class UI < Sinatra::Base
 
+    set public: "#{PATH}/public"
+
     helpers do
       include Haml::Helpers
 
@@ -29,7 +31,31 @@ module AsciiFex
 
       def sections_html
         languages.map do |lang|
-          haml_concat lang
+          "
+          <h1>Language: #{lang}</h1>
+
+          <ul>
+            " +
+            sections.map do |section|
+              url = "/#{lang}/#{section}"
+              "
+              <li>
+                <section>
+                  <h1>
+                    <a href='#{url}.html'>#{section}</a>
+                    -
+                    <a href='#{url}.asciidoc'>(source)</a>
+                  </h1>
+                </section>
+              </li>
+              "
+            end.join("\n") + "
+          </ul>
+
+          "
+
+          # haml_concat lang
+
           # t(:h1){ c "Language: #{it}" }
           # t :ul do
           #   sections.map do |section|
@@ -40,7 +66,7 @@ module AsciiFex
           # end
 
           # lang
-        end
+        end.join("\n")
       end
     end
 
