@@ -37,12 +37,15 @@ module AsciiFex
           <ul>
             " +
             sections.map do |section|
-              url = "/#{lang}/#{section}"
+              url    = "/#{lang}/#{section}"
+              gh_url = "https://github.com/makevoid/bitcoinbook_transifex_build/blob/with_translation/public/#{lang}/#{section}.asciidoc"
               "
               <li>
                 <section>
                   <h1>
                     <a href='#{url}.html'>#{section}</a>
+                    -
+                    <a href='#{gh_url}'>GH</a>
                     -
                     <a href='#{url}.asciidoc'>(source)</a>
                   </h1>
