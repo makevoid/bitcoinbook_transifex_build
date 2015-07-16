@@ -75,7 +75,9 @@
         - LANGUAGES.each do |lang|
           %li
             %h1
-              %span.mini #{lang} -
+              %span.mini
+                %a{ name: lang, href: "/##{lang}" }= lang
+                \-
               #{lang_full(lang).capitalize}
 
             %ul
