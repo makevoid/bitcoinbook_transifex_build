@@ -7,6 +7,7 @@ class App
   extend RakeUtils
 
   def self.run(rake)
+    puts `mdkir -p ./public/translations`
     rake.send :ruby, "bin/asciifex"
   end
 
