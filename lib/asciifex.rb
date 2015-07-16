@@ -57,9 +57,9 @@ def asciifex
   end
 
   puts
-  puts "publishing to S3"
 end
 
+puts "build finished"
 
 
 # -------
