@@ -23,13 +23,17 @@
             %li
               %a{ href: "#{lang}" }= lang
 
-    .container
-      .margin230
-      .fize2 De
-      %p Gets the translations from transifex, creates the builds, for
+    %section.container
+      .head_margin
+      %h1 makevoid/bitcoinbook_transifex_build (system)
 
-      %p Languages:
-      %p= LANGUAGES.join(", ")
+      %ul
+        %li.fize_big1 Gets the translations from Transifex translation platform
+        %li.fize_big1 Creates the HTML/PDF ( tnx to docker and asciifex: container dockerhub:makevoid/asciidoc )
+        %li.fize_big1 No step 3 (like it was antani!)
 
+      .margin30
       %p source code:
       %a{ href: "https://github.com/makevoid/bitcoinbook_transifex_build"} makevoid/bitcoinbook_transifex_build @ github
+
+      .margin100

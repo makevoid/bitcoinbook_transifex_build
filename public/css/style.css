@@ -5662,11 +5662,23 @@ button.close {
 .fsize3 {
   font-size: 50%; }
 
+.fize_big1 {
+  font-size: 130%; }
+
+.margin30 {
+  height: 30px; }
+
+.margin50 {
+  height: 50px; }
+
+.margin100 {
+  height: 100px; }
+
 .margin180 {
   height: 180px; }
 
 .margin230, .head_margin {
-  height: 230px; }
+  height: 210px; }
 
 .color_white {
   color: #EEE; }
