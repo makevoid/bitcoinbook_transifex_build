@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:tmaesaka/transifex-ruby.git
+  remote: https://github.com/tmaesaka/transifex-ruby
   revision: a5994ab559c90f4e419eeff287a5beac0e5fa81f
   specs:
     transifex-ruby (0.0.4)
