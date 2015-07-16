@@ -3,6 +3,7 @@ LANGUAGES = %i(
 )
 
 LANGUAGES_FULL = %i[
-  english(source-text) hungarian japanese spanish french portugese(BR) italian taiwanense tr canadian rumenian sv chinese(mandarin) vietnam dutch german russian da polish
-  argentinian belgian cs finnish french(canada) el korean ta th
+  english(source-text) hungarian japanese spanish french portugese(brazil) italian chinese(taiwan) turkish catalan
+  romanian swedish chinese(mandarin) vietnamese dutch german russian danish polish arabic bulgarian czech finnish
+  french(canada) greek korean tamil thai
 ]
