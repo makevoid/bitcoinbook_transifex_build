@@ -1,0 +1,1030 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch02_bitcoin_overview">Como Funciona o Bitcoin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_transações_blocos_mineração_e_a_blockchain">Transações, Blocos, Mineração e a Blockchain</h3>
+<div class="paragraph"><p>O sistema bitcoin, diferente dos tradicionais sistemas bancários e de pagamentos, é baseado em uma confiança descentralizada. Ao invés de uma autoridade central confiável, no Bitcoin a confiança é alcançada como uma propriedade emergente das interações dos diferentes participantes no sistema bitcoin. Nesse capítulo, iremos examinar o bitcoin através do rastreamento de uma transação através do sistema bitcoin e observar como ela se torna "confiável" e aceita pelo mecanismo de consenso distribuído da rede bitcoin para ser finalmente gravada na blockchain - o livro-razão distribuído que contém todas as transações.</p></div>
+<div class="paragraph"><p>Cada exemplo é baseado em uma transação real ocorrida na rede bitcoin, simulando as interações entre os usuários (Joe, Alice e Bob) ao enviarem fundos de uma carteira para outra. Iremos usar um site <em>blockchain explorer</em> para visualizar cada etapa. Um site block explorer (ou explorador de blockchain) é um aplicativo web que opera como um motor de busca de operações de bitcoin, que permite ao usuário verificar transações, endereços e blocos, além de ver as relações e fluxos entre eles.</p></div>
+<div class="paragraph"><p>Alguns dos exploradores de blockchain mais populares: </p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://blockchain.info">Blockchain info</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://blockexplorer.com">Bitcoin Block Explorer</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://insight.bitpay.com">insight</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://blockr.io">blockr Block Reader</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Cada um destes sites possui um sistema de busca que pode verificar um endereço, hash de transação ou número do bloco e encontrar o dado equivalente na rede bitcoin e na blockchain. Com cada exemplo, iremos fornecer uma URL que o levará diretamente para a entrada relevante, de forma que você possa estudar o assunto detalhadamente.</p></div>
+<div class="sect3">
+<h4 id="_visão_geral_do_bitcoin">Visão Geral do Bitcoin</h4>
+<div class="paragraph"><p>No diagrama de visão geral mostrado em <a href="#bitcoin-overview">[bitcoin-overview]</a>, vemos que o sistema bitcoin consiste de usuários com carteiras contendo chaves, transações que são propagadas pela rede e mineradores que produzem (através de computação competitiva) o consenso da blockchain - que é o registro oficial de todas as transações. Nesse capítulo, rastrearemos uma transação enquanto ela viaja através da rede e examinaremos as interações entre cada parte do sistema bitcoin. Os capítulos subsequentes investigarão a tecnologia por trás das carteiras, da mineração e do sistema de transações.</p></div>
+<div class="imageblock" id="bitcoin-overview">
+<div class="content">
+<img src="images/msbt_0201.png" alt="Visão Geral do Bitcoin" />
+</div>
+<div class="title">Figure 1. Visão Geral do Bitcoin</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cup_of_coffee">Comprando uma Xícara de Café</h4>
+<div class="paragraph"><p>Alice, apresentada no capítulo anterior, é uma nova usuária que acabou de obter seu primeiro bitcoin. Em <a href="#getting_first_bitcoin">[getting_first_bitcoin]</a>, Alice encontrou com seu amigo, Joe, para trocar algum dinheiro por bitcoin. A transação criada por Joe alocou 0,10 BTC na carteira de Alice. Agora, ela irá fazer sua primeira compra, um transação de varejo, comprando uma xícara de café na cafeteria do Bob, em Palo Alto, Califórnia. A cafeteria do Bob recém começou a aceitar pagamentos em bitcoin, ao adicionar a opção de pagamentos por bitcoin no sistema do seu ponto de vendas. Os preços na cafeteria são listados na moeda local (dólares americanos), mas no caixa, os clientes agora contam com a opção de pagar tanto em dólares quanto em bitcoin. Alice faz seu pedido - uma xícara de café - e Bob entra a transação em seu sistema de vendas. O sistema do ponto de vendas fará a conversão do preço total em dólares para bitcoins, tendo como referência a cotação do momento, e apresenta o valor final nas duas moedas, bem como um código QR contendo uma <em>requisição de pagamento</em> para essa transação (ver <a href="#payment-request-QR">[payment-request-QR]</a>):</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>Total:
+$1.50 USD
+0,015 BTC</tt></pre>
+</div></div>
+<div class="imageblock" id="payment-request-QR">
+<div class="content">
+<img src="images/msbt_0202.png" alt="payment-request" />
+</div>
+<div class="title">Figure 2. Código QR de solicitação de pagamento (Dica: Tente escanear esse código!)</div>
+</div>
+<div class="listingblock" id="payment-request-URL">
+<div class="title">O código QR de solicitação de pagamento codifica a seguinte URL, definida em BIP0021:</div>
+<div class="content">
+<pre><tt>bitcoin:1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA?
+amount=0.015&amp;
+label=Bob%27s%20Cafe&amp;
+message=Compra%20no%20Bob%27s%20Cafe
+
+Componentes da URL
+
+Um endereço bitcoin: "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
+Valor do pagamento (amount): "0.015"
+Um rótulo para o endereço do destinatário (label): "Bob's Cafe"
+Uma descrição para o pagamento (message): "Compra no Bob's Cafe"</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Ao contrário de um código QR que simplesmente contém um endereço de bitcoin como destinatário, um QR code com uma requisição de pagamento contém uma URL codificada a qual contém múltiplos parâmetros: um endereço de pagamento, um valor de pagamento e uma descrição genérica como "Bob&#8217;s Cafe". Isso permite que um aplicativo de carteira bitcoin preencha as informações usadas para enviar o pagamento enquanto mostra uma descrição intuitiva para o usuário. Você pode escanear o código QR acima com um aplicativo de carteira bitcoin para ver o que a Alice veria.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Bob diz: "A conta deu 1,50 dólares, ou 15 millibits."</p></div>
+<div class="paragraph"><p>A Alice então usa o smartphone dela para escanear o código de barras mostrado na tela do Bob. O smartphone dela mostra um pagamento de <tt>0,0150 BTC</tt> para o <tt>Bob’s Cafe</tt> e ao clicar em <tt>Enviar</tt> ela autoriza o pagamento. Dentro de alguns segundos (aproximadamente o mesmo tempo que leva uma autorização de cartão de crédito), o Bob visualiza a transação em seu caixa, completando a transação.</p></div>
+<div class="paragraph"><p>Nas próximas seções, examinaremos essa transação em maiores detalhes, veremos como a carteira da Alice a construiu, como ela foi propagada através da rede, como ela foi verificada e, finalmente, como o Bob pode gastar a quantia recebida em novas transações futuras.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A rede bitcoin pode fazer transações em valores fracionários, por exemplo, desde milli-bitcoins (1/1.000 de um bitcoin) até um satoshi (1/100.000.000 de um bitcoin). Ao longo deste livro nós iremos usar o termo bitcoin para se referir a qualquer quantidade na moeda bitcoin, desde a menor unidade possível (1 satoshi) até o número máximo (21.000.000) de bitcoins que podem ser minerados.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transações_bitcoin">Transações Bitcoin</h3>
+<div class="paragraph"><p>Em termos simples, uma transação informa para a rede que o dono de uma quantidade de bitcoins autorizou a transferência de alguns destes bitcoins para outro dono. O novo dono agora pode gastar esses bitcoins ao criar uma nova transação que autoriza a transferência para um outro dono, e assim por diante, em uma cadeia de posse de bitcoins.</p></div>
+<div class="paragraph"><p>As transações são como linhas em um "registro contábil" (ledger) de dupla entrada. Em termos simples, cada transação contém um ou mais "inputs" (entradas), que são débitos em uma conta bitcoin. No outro lado da transação, existem um ou mais "outputs" (saídas) que são créditos adicionados em uma conta bitcoin. Os inputs e outputs (entradas e saídas ou débitos e créditos) somados não necessariamente resultam na mesma quantia. Ao invés disso, os outputs são um pouco maiores do que os inputs, e essa diferença se dá devido à "taxa de transação", que é um pequeno pagamento coletado pelo minerador que inclui a transação no blockchain (ledger). Uma transação bitcoin é mostrada como uma entrada no registro contábil em Transação como um registro contábil de partidas dobradas.</p></div>
+<div class="paragraph"><p>A transação também contém uma prova de posse para cada quantia de bitcoins (inputs) que é transferida, na forma de uma assinatura digital assinada pelo dono, que pode ser validada por qualquer pessoa, de maneira independente. Usando a terminologia do bitcoin, "gastar" é assinar uma transação que transfere um valor (de uma transação prévia) para um novo dono, o qual é identificado através de um endereço bitcoin.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><em>Transações</em> movimentam valores a partir de <em>inputs de transação</em> para <em>outputs de transação</em>. Um input é o lugar de onde vem o valor da moeda, geralmente um output de transação prévio. Um output de transação designa um novo dono para o valor ao associá-lo com uma nova chave. A chave de destino é chamada de <em>alienação</em>. Ela exige uma assinatura para a retirada dos fundos em transações futuras. Outputs de uma transação podem ser usados como inputs em uma nova transação, dessa maneira criando uma cadeia de posses à medida que o valor é movido de um endereço para outro (ver <a href="#blockchain-mnemonic">[blockchain-mnemonic]</a>).</p></div>
+</td>
+</tr></table>
+</div>
+<div class="imageblock" id="transaction-double-entry">
+<div class="content">
+<img src="images/msbt_0203.png" alt="Transaction Double-Entry" />
+</div>
+<div class="title">Figure 3. Transação como um registro contábil de entrada-dupla</div>
+</div>
+<div class="imageblock" id="blockchain-mnemonic">
+<div class="content">
+<img src="images/msbt_0204.png" alt="Transaction chain" />
+</div>
+<div class="title">Figure 4. Uma cadeia de transações, onde o output de uma transação é o input da próxima transação</div>
+</div>
+<div class="paragraph"><p>O pagamento da Alice para o Bob&#8217;s Cafe usa uma transação prévia como seu input. No capítulo anterior, a Alice recebeu bitcoins do amigo dela em troca de dinheiro. Aquela transação continha um número de bitcoins "trancados" (alienados) com a chave da Alice. Sua nova transação para o Bob&#8217;s Cafe utiliza a transação prévia como um input e cria novos outputs para pagar pela xícara de café e receber o troco. As transações formam uma cadeia, onde os inputs da última transação correspondem aos outputs das transações anteriores. A chave da Alice fornece a assinatura que desbloqueia estes outputs de transações prévios, desta maneira provando à rede bitcoin que ela é a dona dos fundos. Ela vincula seu pagamento pelo café ao endereço do Bob, desta maneira "alienando" este output com o requisito de que Bob produza uma assinatura, liberando essa quantidade de bitcoins para ser gasta. Isso representa a transferência de valor entre Alice e Bob. Essa cadeia de transações, do Joe para a Alice, e dela para o Bob, é ilustrada em <a href="#blockchain-mnemonic">[blockchain-mnemonic]</a>.</p></div>
+<div class="sect3">
+<h4 id="_formas_comuns_de_transação">Formas Comuns de Transação</h4>
+<div class="paragraph"><p>A forma mais comum de transação é um pagamento simples de um endereço para outro, que frequentemente inclui algum "troco" que é devolvido para o dono original. Esse tipo de transação possui um input e dois outputs, e é mostrada em  <a href="#transaction-common">[transaction-common]</a>..</p></div>
+<div class="imageblock" id="transaction-common">
+<div class="content">
+<img src="images/msbt_0205.png" alt="Common Transaction" />
+</div>
+<div class="title">Figure 5. A forma mais comum de transação</div>
+</div>
+<div class="paragraph"><p>Outra forma comum de transação é uma que agrega múltiplos inputs em um único output (ver <a href="#transaction-aggregating">[transaction-aggregating]</a>). Isso representa o equivalente no mundo real a uma troca de uma pilha de moedas e notas por uma nota de valor maior. As transações deste tipo são às vezes geradas pelos aplicativos de carteira para limpar vários valores pequenos que foram recebidos como troco pelos pagamentos efetuados.</p></div>
+<div class="imageblock" id="transaction-aggregating">
+<div class="content">
+<img src="images/msbt_0206.png" alt="Aggregating Transaction" />
+</div>
+<div class="title">Figure 6. Transação agregadora de fundos</div>
+</div>
+<div class="paragraph"><p>Finalmente, outra forma de transação frequentemente vista no registro contábil do bitcoin é uma transação que distribui um input para múltiplos outputs, que representam múltiplos destinatários (ver <a href="#transaction-distributing">[transaction-distributing]</a>). Este tipo de transação às vezes é usada por entidades comerciais para distribuir fundos, como, por exemplo, ao processar folhas de pagamento para múltiplos colaboradores.</p></div>
+<div class="imageblock" id="transaction-distributing">
+<div class="content">
+<img src="images/msbt_0207.png" alt="Distributing Transaction" />
+</div>
+<div class="title">Figure 7. Transação de distribuição de fundos</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_construindo_uma_transação">Construindo uma Transação</h3>
+<div class="paragraph"><p>O aplicativo de carteira contém toda a lógica para selecionar os inputs e outputs apropriados para construir uma transação com os dados especificados pela Alice. Ela só precisa fornecer os dados de destino e uma quantia: o seu aplicativo de carteira faz todo o resto, sem que ela sequer veja os detalhes. Outro aspecto importante, é que o aplicativo de carteira também pode construir transações mesmo estando completamente offline. Da mesma maneira que você pode preencher um cheque em casa para depois depositá-lo em um envelope no banco, uma conexão com a rede bitcoin não é necessária para que uma transação seja construída e assinada. A transação só precisa ser enviada para a rede quando a pessoa quiser efetuá-la.</p></div>
+<div class="sect3">
+<h4 id="_recebendo_os_inputs_certos">Recebendo os Inputs Certos</h4>
+<div class="paragraph"><p>O aplicativo de carteira da Alice terá primeiro que achar os inputs que podem pagar pela quantia que ela quer enviar para o Bob. A maioria dos aplicativos de carteira mantém um pequeno banco de dados de "outputs de transações não gastos" que são trancados (alienados) com as próprias chaves da carteira. Logo, a carteira de Alice iria conter uma cópia do output da transação do Joe, que foi criada na troca pelo dinheiro (ver <a href="#getting_first_bitcoin">[getting_first_bitcoin]</a>). Um aplicativo de carteira de bitcoin que roda como um cliente de índice completo na verdade contém uma cópia de cada output não gasto de todas as transações presentes na blockchain. Isso permite que a carteira construa inputs de transação, além de verificar rapidamente se as transações que chegam tem inputs corretos. No entanto, como um cliente de índice completo ocupa muito espaço de armazenamento em disco, a maioria das carteiras roda clientes "leves" que mantém somente o registro dos outputs não gastos do usuário.</p></div>
+<div class="paragraph"><p>Se a wallet não mantiver uma cópia dos outputs de transação não-gastos, ela pode fazer uma requisição à rede bitcoin para solicitar essa informação, usando as APIs (ou Interfaces de Programação de Aplicações) que os diferentes fornecedores colocam à disposição, ou fazendo uma requisição a um nó de índice completo usando um API de bitcoin JSON RPC. <a href="#example_2-1">[example_2-1]</a> mostra que todos os outputs não-gastos para o endereço de bitcoin de Alice mostram uma requisição API RESTful, construído como um comando HTTP GET para uma URL específica. Essa URL irá retornar todos os outputs de transação não gastos para um endereço, fornecendo para qualquer aplicativo a informação necessária para construir inputs de transação de tal forma que os bitcoins sejam gastos. Nós usamos um simples cliente HTTP de linha de comando  <em>cURL</em>  para solicitarmos a resposta.</p></div>
+<div class="exampleblock" id="example_2-1">
+<div class="title">Example 1. Consultando todos os outputs não gastos do endereço de bitcoin da Alice</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="exampleblock" id="example_2-2">
+<div class="title">Example 2. Resposta à consulta</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>A resposta no <a href="#example_2-2">[example_2-2]</a> mostra um output não-gasto (um que ainda não foi resgatado) sob a posse do endereço de Alice <tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>. A resposta inclui uma referência à transação na qual esse valor não-gasto está contido (o pagamento do Joe) e seu valor em satoshis, 10 milhões, equivalente a 0,10 bitcoin. Com essa informação, o aplicativo carteira de Alice pode construir uma transação para transferir o valor para o endereço do novo dono.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Veja a <a href="http://bit.ly/1tAeeGr">transação de Joe para Alice</a>.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Como você pode ver, a carteira de Alice contém bitcoins suficientes em um output não-gasto isolado para pagar pela xícara de café. Caso não contivesse, o aplicativo carteira de Alice teria que "vasculhar" uma pilha de pequenos outputs não-gastos, como se estivesse pegando as moedas em uma bolsa, até encontrar o suficiente para poder pagar o café. Em ambos os casos, pode haver uma necessidade de receber algum troco de volta, que é o assunto que iremos ver na próxima seção, quando o aplicativo carteira cria os outputs da transação (pagamentos).</p></div>
+</div>
+<div class="sect3">
+<h4 id="_criando_os_outputs">Criando os Outputs</h4>
+<div class="paragraph"><p>Um output de transação é criado na forma de um script que cria uma alienação no valor a ser transferido, de maneira que o valor só pode ser regastado se uma solução for apresentada ao script. De maneira simplificada, o output da transação de Alice irá conter um script que diz algo como "Esse output é pagável para aquela pessoa que conseguir apresentar uma assinatura para a chave correspondente ao endereço público de Bob". Como somente o Bob possui a carteira com as chaves correspondentes àquele endereço, somente a carteira de bob pode apresentar a assinatura para resgatar esse output. A Alice ao fazer uma exigência de assinatura do Bob, ela está fazendo uma "alienação" ao valor de output.</p></div>
+<div class="paragraph"><p>Essa transação também incluirá um segundo output, porque os fundos de Alice estão na forma de um output de 0,10 BTC, que é dinheiro demais para a transação de 0,015 BTC pela xícara de café. A Alice precisará de 0,085 BTC de troco. O pagamento do troco da Alice é criado pela carteira de Alice na mesma transação que o pagamento do Bob. Essencialmente, a carteira de Alice divide seus fundos em dois pagamentos: um para o Bob, e outro de volta para si mesma. Ela pode então usar o output do troco em uma transação no futuro, gastando-o mais tarde.</p></div>
+<div class="paragraph"><p>Finalmente, para que a transação seja processada pela rede em tempo hábil, o aplicativo de carteira da Alice irá adicionar uma pequena taxa. Isso não está explícito na transação: isso está implícito na diferença entre os inputs e os outputs. Se ao invés de receber 0,085 de troco, Alice cria somente 0,0845 como um segundo output, haverá 0,0005 (metade de um milibitcoin) restantes. O input de 0,10 BTC não é totalmente gasto com os dois outputs, porque ele irá se somar até menos do que 0,10. A diferença resultante é a <em>taxa de transação</em> que é coletada pelo minerador como um pagamento por ter incluído a transação em um bloco e adicionar esse bloco no ledger da blockchain.</p></div>
+<div class="paragraph"><p>A transação resultante pode ser vista usando um aplicativo web explorador de blockchain, como visto em <a href="#transaction-alice">[transaction-alice]</a>.</p></div>
+<div class="imageblock" id="transaction-alice">
+<div class="content">
+<img src="images/msbt_0208.png" alt="Alice Coffee Transaction" />
+</div>
+<div class="title">Figure 8. Transação de Alice para o Bob’s Cafe</div>
+</div>
+<div class="admonitionblock" id="transaction-alice-url">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Veja a <a href="http://bit.ly/1u0FIGs">transação de Alice para o Bob’s Cafe</a>.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_adicionando_uma_transação_ao_registro_ledger">Adicionando uma Transação ao Registro (Ledger)</h4>
+<div class="paragraph"><p>A transação criada pelo aplicativo de carteira da Alice tem 258 bytes de comprimento e contém todas as informações necessárias para confirmar a sua posse dos fundos e para designar novos donos. Agora, a transação deve ser transmitida para rede bitcoin, onde ela se tornará parte do ledger distribuído (da blockchain). Na próxima seção, iremos ver como a transação torna-se parte de um novo bloco e como o bloco é "minerado". Por fim, iremos ver como o novo bloco, após ser adicionado à blockchain, torna-se cada vez mais confiável conforme novos blocos são adicionados posteriormente à ele.</p></div>
+<div class="sect4">
+<h5 id="_transmitindo_a_transação">Transmitindo a transação</h5>
+<div class="paragraph"><p>Como a transação contém toda a informação necessária para que seja processada, não importa como ou onde ela é transmitida para a rede bitcoin. A rede bitcoin é uma rede ponto-a-ponto (P2P), com cada cliente bitcoin participando ao se conectar a múltiplos outros clientes bitcoins. A proposta da rede bitcoin é propagar as transações e os blocos para todos os participantes.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_como_ela_se_propaga">Como ela se propaga</h5>
+<div class="paragraph"><p>A carteira da Alice pode enviar a nova transação para qualquer um dos outros clientes bitcoins se ela estiver conectada através de uma conexão de Internet: por cabo, WiFi ou móvel. A sua carteira não tem que obrigatoriamente estar conectada diretamente à carteira do Bob ou usar a conexão de internet oferecida pela cafeteria, embora essas opções também sejam possíveis. Qualquer nó (outro cliente) na rede bitcoin que receber uma transação válida que não tenha sido vista anteriormente, irá propagá-la imediatamente para outros nós com os quais está ligado. Logo, a transação rapidamente é propagada através da rede ponto-a-ponto (P2P), atingindo uma grande percentagem dos nós dentro de poucos segundos.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_a_visão_do_bob">A visão do Bob</h5>
+<div class="paragraph"><p>Se a wallet do Bob estiver diretamente conectada à wallet da Alice, o aplicativo pode ser o primeiro nó a receber a transação. Entretanto, mesmo que a carteira de Alice envie a transação através de outros nós, a transação chegará à carteira do Bob dentro de pouco segundos. A carteira de Bob irá identificar imediatamente a transação de Alice como um pagamento porque ela contém outputs que são resgatáveis pelas chaves do Bob. A carteira de Bob também pode verificar independentemente que a transação é bem formada, utiliza inputs previamente não-gastos e contém taxas de transação suficientes para ser incluída no próximo bloco. Neste momento Bob pode esperar, com um alto grau de probabilidade, que a transação será em breve incluída em um bloco e será confirmada.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Uma ideia erroneamente difundida é a de que as transações bitcoin, para serem "confirmadas", exigem uma espera de 10 minutos por um novo bloco, ou de até 60 minutos por seis confirmações. Embora essas confirmações sejam uma garantia de que a transação foi aceita por toda a rede, a espera por elas é desnecessária para itens de pequeno valor, como uma xícara de café. Ao aceitar uma transação de pequeno valor como comprovadamente válida, o comerciante estará correndo um risco menor do que quando recebe um pagamento de cartão de crédito feito sem assinatura ou carteira de identidade, algo que é rotineiramente feito hoje em dia.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mineração_de_bitcoin">Mineração de Bitcoin</h3>
+<div class="paragraph"><p>A transação foi propagada na rede bitcoin. Ela só vai tornar-se parte de ledger compartilhado (a <em>blockchain</em>) quando for verificada e incluída em um bloco, através de um processo chamado <em>mineração</em>. Veja <a href="#ch8">[ch8]</a> para uma explicação mais detalhada.</p></div>
+<div class="paragraph"><p>O sistema de confiança do bitcoin é baseado em computação. As transações são agrupadas em <em>blocos</em>, o que requer uma enorme quantidade de processamento para prová-las, mas apenas uma pequena quantidade de processamento para verificá-las como previamente provadas. O processo de mineração do bitcoin possui dois propósitos:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+A mineração cria novos bitcoins em cada bloco, quase como um banco central imprimindo novas moedas e notas. A quantidade de bitcoin criada por bloco é fixa e diminui com o tempo.
+</p>
+</li>
+<li>
+<p>
+A mineração cria confiança ao garantir que as transações sejam confirmadas somente se poder de processamento suficiente for dedicado ao bloco que as contém. Mais blocos requerem mais processamento, o que significa maior confiança.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Uma boa maneira de descrever a mineração é como um jogo de sudoku, gigantesco e competitivo, que reinicia cada vez que alguém encontra uma solução e cuja dificuldade se ajusta automaticamente, de maneira que leve cerca de 10 minutos para que uma solução seja encontrada. Imagine um sudoku gigantesco, com milhares de colunas e linhas de tamanho. Se eu mostrar para você um sudoku completo, você pode verificar rapidamente que ele está corretamente preenchido. No entando, se o sudoku tiver apenas alguns quadrados preenchidos e o resto estiver vazio, levará muito trabalho para resolvê-lo! A dificuldade do sudoku pode ser ajustada ao mudar o seu tamanho (mais ou menos linhas ou colunas), mas o sudoku ainda pode ser verificado de maneira rápida, mesmo que ele seja muito grande. O "quebra-cabeças" usado no bitcoin é baseado em um hash criptográfico, que exibe características semelhantes: ele é assimetricamente difícil de resolver, mas fácil de verificar, e sua dificuldade pode ser ajustada.</p></div>
+<div class="paragraph"><p>Em <a href="#user-stories">[user-stories]</a>, nós apresentamos o Jing, um estudante de engenharia da computação de Shanghai. Ele está participando da rede bitcoin como um minerador. À cada 10 minutos em média, Jing se une a milhares de outros mineradores para uma corrida global para achar uma solução para um bloco de transações. Encontrar a tal solução, também chamada de prova de trabalho, requer quadrilhões de operações de hashing por segundo ao longo de toda a rede bitcoin. O algoritmo para a prova de trabalho envolve fazer hashing com o cabeçalho do bloco e um número aleatório com um algoritmo criptográfico SHA256 até que a solução correspondente a um determinado padrão surja. O primeiro minerador a encontrar uma solução ganha a rodada da competição e publica o bloco na blockchain.</p></div>
+<div class="paragraph"><p>Jing começou a minerar em 2010 usando um computador destktop muito rápido para achar provas de trabalho adequadas para novos blocos. Conforme mais mineradores começaram a se juntar à rede bitcoin, a dificuldade do problema cresceu rapidamente. Logo em seguida, Jing e outros mineradores fizeram upgrade para um hardware mais especializado, como placas com unidades de processamento gráfico (GPUs) dedicadas de alta performance, como as placas de vídeo utilizadas para jogos de desktop ou videogames. Nesse momento, a dificuldade está tão alta que só é rentável minerar com circuitos integrados específicos para a aplicação (ASIC), que é essencialmente centenas de algoritmos de mineração impressos em hardware, rodando em paralelo em um único chip de silício. Jing também se uniu ao "mining pool", que é como uma mina coletiva que permite que vários participantes compartilhem seus esforços e recompensas. Jing agora roda duas máquinas ASIC ligadas a USB para minerar bitcoins 24 horas por dia. Ele paga seus custos de eletricidade com a venda dos seus bitcoins minerados, obtendo algum lucro dos seus bitcoins. Seu computador roda uma cópia do bitcoind, um cliente bitcoin de referência, como um backend para seu software de mineração especializado.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_minerando_transações_em_blocos">Minerando Transações em Blocos</h3>
+<div class="paragraph"><p>Uma transação transmitida pela rede não é verificada até que ela se torna parte do ledger distribuído global, a blockchain. A cada 10 minutos em média, os mineradores geram um novo bloco que contém todas as transações que ocorreram desde o último bloco. As novas transações estão constantemente sendo adicionadas à rede pelas carteiras e outros aplicativos dos usuários. Quando elas são vistas pelos nós da rede bitcoin, elas são adicionadas a um pool temporário de transações não-verificadas que é mantida por cada nó. Ao construir um novo bloco, os mineradores adicionam as transações não-verificadas deste pool para um novo bloco, e tentam resolver um problema (prova de trabalho) muito difícil (também conhecido como prova-de-trabalho) para provar a validade deste novo bloco. O processo de mineração é explicado em maiores detalhes em <a href="#mining">[mining]</a>.</p></div>
+<div class="paragraph"><p>As transações são adicionadas ao novo bloco, recebendo prioridade as transações que possuem as maiores taxas de transação, além de alguns outros critérios. Cada minerador inicia o processo de mineração de um bloco de transação tão logo ele recebe o bloco anterior da rede, sabendo que ele perdeu a rodada anterior da competição. Ele imediatamente cria um novo bloco, preenche-o com transações e impressões digitais do bloco anterior, e começa a calcular a prova-de-trabalho para o novo bloco. Cada minerador inclui uma transação especial em seu novo bloco, que paga uma recompensa de novos bitcoins recém criados (atualmente 25 BTC por bloco), que serão enviados para o endereço bitcoin do minerador. Se ele encontra uma solução que torna o bloco válido, ele "ganha" essa recompensa porque seu bloco é adicionado à blockchain e a transação especial de recompensa que ele incluiu se torna gastável. Jing, que participa de um pool de mineração, programou seu software para criar novos blocos que designam uma recompensa para um endereço de pool. Desta maneira, uma parte da recompensa recebida é distribuída entre Jing e outros mineradores, de acordo com a quantidade de trabalho que cada um contribuiu na última rodada.</p></div>
+<div class="paragraph"><p>A transação de Alice foi incluída na rede e adicionada no pool de transações não-verificadas. Como ela tinha taxas de transação suficientes, ela foi incluída em novo bloco gerado pela pool de mineração do Jing. Aproximadamente cinco minutos após a transação ter sido inicialmente transmitida pela carteira de Alice, o equipamento de mineração ASIC do Jing encontrou uma solução para o bloco e publicou-o como bloco #277316, contendo outras 419 transações. O equipamento de mineração ASIC do Jing publicou o novo bloco na rede bitcoin, onde outros mineradores o validaram e iniciaram uma nova rodada da corrida para gerar o próximo bloco.</p></div>
+<div class="paragraph"><p>Você pode ver o bloco que inclui a <a href="https://blockchain.info/block-height/277316">transação de Alice</a>.</p></div>
+<div class="paragraph"><p>Alguns minutos mais tarde, um novo bloco, #277317, é minerado por outro minerador. Como esse novo bloco é baseado no bloco anterior (#277316) que continha a transação de Alice, ele adicionou ainda mais processamento computacional neste bloco anterior, desta maneira fortalecendo a confiança nas transações contidas no bloco. Logo, após esse processamento adicional do bloco contendo a transação de Alice, considera-se que a transação da Alice contida no bloco recebeu uma "confirmação". Cada que é bloco minerado após um bloco anterior contendo transações, gera uma confirmação adicional para cada uma destas transações. Conforme os blocos se empilham um sobre os outros, torna-se exponencialmente mais difícil de se reverter a transação, dessa maneira tornando-a cada vez mais confiável pela rede.</p></div>
+<div class="paragraph"><p>No diagrama em <a href="#block-alice1">[block-alice1]</a> podemos ver o bloco #277316, que contém a transação de Alice. Abaixo dele há 277316 blocos (incluindo o bloco #0), ligados uns aos outros, formando uma corrente de blocos (blockchain) que se estende até o seu bloco inicial (#0), também conhecido como <em>bloco gênese</em>. Ao longo do tempo, a "altura" da pilha de blocos aumenta, aumentando a dificuldade de processamento computacional necessário para cada bloco e para toda a corrente. Os bloco minerados após o bloco que contém a transação de Alice são considerados uma garantia adicional, já que eles receberam mais processamento computacional em uma corrente cada vez maior. Por convenção, considera-se irrevogável o bloco que já recebeu seis ou mais confirmações, porque seria necessária uma imensa capacidade de poder computacional para invalidar ou recalcular seis blocos. Nós iremos examinar em mais detalhes o processo de mineração e a maneira como ele constrói a confiança no <a href="#ch8">[ch8]</a>.</p></div>
+<div class="imageblock" id="block-alice1">
+<div class="content">
+<img src="images/msbt_0209.png" alt="Alice's transaction included in a block" />
+</div>
+<div class="title">Figure 9. Transação de Alice incluída no bloco #277316</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gastando_a_transação">Gastando a transação</h3>
+<div class="paragraph"><p>Agora que a transação da Alice foi incorporada à blockchain como parte de um bloco, ela faz parte do ledger distribuído do bitcoin e está visível para todos as aplicações bitcoin. Cada cliente bitcoin pode verificar independentemente que a transação é válida e que seus fundos podem ser gastos. Clientes de índice completo (full-index) podem rastrear a origem dos fundos desde o início, ou seja, o momento em que os bitcoins foram gerados em um bloco, e, progredindo de transação a transação, até chegarem ao endereço do Bob. Clientes leves (lightweight) podem fazer uma verificação simplificada de pagamento (ver <a href="#spv_nodes">[spv_nodes]</a>) ao confirmar que a transação está presente na blockchain e que vários blocos foram minerados após ela, garantindo que ela foi aceita pela rede como válida.</p></div>
+<div class="paragraph"><p>O Bob agora pode gastar o output desta e de outras transações, ao criar suas próprias transações que usam esses outputs como inputs e os designam para um novo dono. Por exemplo, Bob pode pagar um fornecedor ao transferir, para este novo dono, o valor do pagamento da xícara de café da Alice. Mais provavelmente, o software de bitcoin do Bob irá agregar vários pequenos pagamentos em um pagamento maior, talvez concentrando em uma única transação todo o lucro em bitcoins obtidos na loja em um dia. Isso moveria todos os pagamentos para um endereço único, usado como uma conta de "checking" geral da loja. Para ver um diagrama de uma transação agregadora, leia <a href="#transaction-aggregating">[transaction-aggregating]</a>.</p></div>
+<div class="paragraph"><p>À medida que o Bob gasta os pagamentos que recebeu de Alice e outros clientes, ele estende a cadeia de transações, que por sua vez são adicionadas ao ledger global do blockchain para que todos possam ver e confiar. Vamos assumir que o Bob paga seu webdesigner Gopesh em Bangalore para desenvolver um novo site. Agora a cadeia de transações irá ficar parecida como na figura <a href="#block-alice2">[block-alice2]</a>.</p></div>
+<div class="imageblock" id="block-alice2">
+<div class="content">
+<img src="images/msbt_0210.png" alt="Transação da Alice fazendo parte de uma cadeia de transação do Joe para o Gopesh" />
+</div>
+<div class="title">Figure 10. Transação da Alice fazendo parte de uma cadeia de transação do Joe para o Gopesh</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:55:48 UTC
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1823 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch03_bitcoin_client">The Bitcoin Client</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bitcoin_core_the_reference_implementation">Bitcoin Core: The Reference Implementation</h3>
+<div class="paragraph"><p>You can download the reference client <em>Bitcoin Core</em>, also known as the "Satoshi client," from bitcoin.org. The reference client implements all aspects of the bitcoin system, including wallets, a transaction verification engine with a full copy of the entire transaction ledger (blockchain), and a full network node in the peer-to-peer bitcoin network.</p></div>
+<div class="paragraph"><p>On <a href="http://bitcoin.org/en/choose-your-wallet">Bitcoin&#8217;s Choose Your Wallet page</a>, select Bitcoin Core to download the reference client. Depending on your operating system, you will download an executable installer. For Windows, this is either a ZIP archive or an .exe executable. For Mac OS it is a .dmg disk image. Linux versions include a PPA package for Ubuntu or a tar.gz archive. The bitcoin.org page that lists recommended bitcoin clients is shown in <a href="#bitcoin-choose-client">[bitcoin-choose-client]</a>.</p></div>
+<div class="imageblock" id="bitcoin-choose-client">
+<div class="content">
+<img src="images/msbt_0301.png" alt="bitcoin choose client" />
+</div>
+<div class="title">Figure 1. Choosing a bitcoin client at bitcoin.org</div>
+</div>
+<div class="sect3">
+<h4 id="_running_bitcoin_core_for_the_first_time">Running Bitcoin Core for the First Time</h4>
+<div class="paragraph"><p>If you download an installable package, such as an .exe, .dmg, or PPA, you can install it the same way as any application on your operating system. For Windows, run the .exe and follow the step-by-step instructions. For Mac OS, launch the .dmg and drag the Bitcoin-QT icon into your <em>Applications</em> folder. For Ubuntu, double-click the PPA in your File Explorer and it will open the package manager to install the package. Once you have completed installation you should have a new application  called Bitcoin-Qt in your application list. Double-click the icon to start the bitcoin client.</p></div>
+<div class="paragraph"><p>The first time you run Bitcoin Core it will start downloading the blockchain, a process that might take several days (see <a href="#bitcoin-qt-firstload">[bitcoin-qt-firstload]</a>). Leave it running in the background until it displays "Synchronized" and no longer shows "out of sync" next to the balance.</p></div>
+<div class="imageblock" id="bitcoin-qt-firstload">
+<div class="content">
+<img src="images/msbt_0302.png" alt="bitcoin-qt first run" />
+</div>
+<div class="title">Figure 2. Bitcoin Core screen during the blockchain initialization</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoin Core keeps a full copy of the transaction ledger (blockchain), with every transaction that has ever occurred on the bitcoin network since its inception in 2009. This dataset is several gigabytes in size (approximately 16 GB in late 2013) and is downloaded incrementally over several days. The client will not be able to process transactions or update account balances until the full blockchain dataset is downloaded. During that time, the client will display "out of sync" next to the account balances and show "Synchronizing" in the footer. Make sure you have enough disk space, bandwidth, and time to complete the initial synchronization.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_compiling_bitcoin_core_from_the_source_code">Compiling Bitcoin Core from the Source Code</h4>
+<div class="paragraph"><p>For developers, there is also the option to download the full source code as a ZIP archive or by cloning the authoritative source repository from GitHub.  On the <a href="https://github.com/bitcoin/bitcoin">GitHub bitcoin page</a>, select Download ZIP from the sidebar. Alternatively, use the git command line to create a local copy of the source code on your system. In the following example, we are cloning the source code from a Unix-like command line, in Linux or Mac OS:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ git clone https://github.com/bitcoin/bitcoin.git
+Cloning into 'bitcoin'...
+remote: Counting objects: 31864, done.
+remote: Compressing objects: 100% (12007/12007), done.
+remote: Total 31864 (delta 24480), reused 26530 (delta 19621)
+Receiving objects: 100% (31864/31864), 18.47 MiB | 119 KiB/s, done.
+Resolving deltas: 100% (24480/24480), done.
+$</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>The instructions and resulting output might vary from version to version. Follow the documentation that comes with the code even if it differs from the instructions you see here, and don&#8217;t be surprised if the output displayed on your screen is slightly different from the examples here.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>When the git cloning operation has completed, you will have a complete local copy of the source code repository in the directory <em>bitcoin</em>. Change to this directory by typing <tt>cd bitcoin</tt> at the prompt:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ cd bitcoin</tt></pre>
+</div></div>
+<div class="paragraph"><p>By default, the local copy will be synchronized with the most recent code, which might be an unstable or beta version of bitcoin. Before compiling the code, select a specific version by checking out a release <em>tag</em>. This will synchronize the local copy with a specific snapshot of the code repository identified by a keyword tag. Tags are used by the developers to mark specific releases of the code by version number. First, to find the available tags, we use the <tt>git tag</tt> command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ git tag
+v0.1.5
+v0.1.6test1
+v0.2.0
+v0.2.10
+v0.2.11
+v0.2.12
+
+[... many more tags ...]
+
+v0.8.4rc2
+v0.8.5
+v0.8.6
+v0.8.6rc1
+v0.9.0rc1</tt></pre>
+</div></div>
+<div class="paragraph"><p>The list of tags shows all the released versions of bitcoin. By convention, <em>release candidates</em>, which are intended for testing, have the suffix "rc". Stable releases that can be run on production systems have no suffix. From the preceding list, select the highest version release, which at this writing was v0.9.0rc1. To synchronize the local code with this version, use the <tt>git checkout</tt> command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ git checkout v0.9.0rc1
+Note: checking out 'v0.9.0rc1'.
+
+HEAD is now at 15ec451... Merge pull request #3605
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>The source code includes documentation, which can be found in a number of files. Review the main documentation located in <em>README.md</em> in the bitcoin directory by typing <tt>more README.md</tt> at the prompt and using the space bar to progress to the next page. In this chapter, we will build the command-line bitcoin client, also known as <tt>bitcoind</tt> on Linux. Review the instructions for compiling the bitcoind command-line client on your platform by typing <tt>more doc/build-unix.md</tt>. Alternative instructions for Mac OS X and Windows can be found in the <em>doc</em> directory, as <em>build-osx.md</em> or <em>build-msw.md</em>, respectively.</p></div>
+<div class="paragraph"><p>Carefully review the build prerequisites, which are in the first part of the build documentation. These are libraries that must be present on your system before you can begin to compile bitcoin. If these prerequisites are missing, the build process will fail with an error. If this happens because you missed a prerequisite, you can install it and then resume the build process from where you left off. Assuming the prerequisites are installed, you start the build process by generating a set of build scripts using the <em>autogen.sh</em> script.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>The Bitcoin Core build process was changed to use the autogen/configure/make system starting with version 0.9. Older versions use a simple Makefile and work slightly differently from the following example. Follow the instructions for the version you want to compile. The autogen/configure/make introduced in 0.9 is likely to be the build system used for all future versions of the code and is the system demonstrated in the following examples.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ ./autogen.sh
+configure.ac:12: installing `src/build-aux/config.guess'
+configure.ac:12: installing `src/build-aux/config.sub'
+configure.ac:37: installing `src/build-aux/install-sh'
+configure.ac:37: installing `src/build-aux/missing'
+src/Makefile.am: installing `src/build-aux/depcomp'
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>The <em>autogen.sh</em> script creates a set of automatic configuration scripts that will interrogate your system to discover the correct settings and ensure you have all the necessary libraries to compile the code. The most important of these is the <tt>configure</tt> script that offers a number of different options to customize the build process. Type <tt>./configure --help</tt> to see the various options:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ ./configure --help
+
+`configure' configures Bitcoin Core 0.9.0 to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+
+[... many more options and variables are displayed below ...]
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+
+[... more options ...]
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to &lt;info@bitcoin.org&gt;.
+
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>The <tt>configure</tt> script allows you to enable or disable certain features of bitcoind through the use of the <tt>--enable-FEATURE</tt> and <tt>--disable-FEATURE</tt> flags, where <tt>FEATURE</tt> is replaced by the feature name, as listed in the help output. In this chapter, we will build the bitcoind client with all the default features. We won&#8217;t be using the configuration flags, but you should review them to understand what optional features are part of the client. Next, run the <tt>configure</tt> script to automatically discover all the necessary libraries and create a customized build script for your system:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ ./configure
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+
+[... many more system features are tested ...]
+
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/test/Makefile
+config.status: creating src/qt/Makefile
+config.status: creating src/qt/test/Makefile
+config.status: creating share/setup.nsi
+config.status: creating share/qt/Info.plist
+config.status: creating qa/pull-tester/run-bitcoind-for-test.sh
+config.status: creating qa/pull-tester/build-tests.sh
+config.status: creating src/bitcoin-config.h
+config.status: executing depfiles commands
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>If all goes well, the <tt>configure</tt> command will end by creating the customized build scripts that will allow us to compile bitcoind. If there are any missing libraries or errors, the <tt>configure</tt> command will terminate with an error instead of creating the build scripts. If an error occurs, it is most likely because of a missing or incompatible library. Review the build documentation again and make sure you install the missing prerequisites. Then run <tt>configure</tt> again and see if that fixes the error. Next, you will compile the source code, a process that can take up to an hour to complete. During the compilation process you should see output every few seconds or every few minutes, or an error if something goes wrong. The compilation process can be resumed at any time if interrupted. Type <tt>make</tt> to start compiling:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ make
+Making all in src
+make[1]: Entering directory `/home/ubuntu/bitcoin/src'
+make  all-recursive
+make[2]: Entering directory `/home/ubuntu/bitcoin/src'
+Making all in .
+make[3]: Entering directory `/home/ubuntu/bitcoin/src'
+  CXX    addrman.o
+  CXX    alert.o
+  CXX    rpcserver.o
+  CXX    bloom.o
+  CXX    chainparams.o
+
+[... many more compilation messages follow ...]
+
+  CXX    test_bitcoin-wallet_tests.o
+  CXX    test_bitcoin-rpc_wallet_tests.o
+  CXXLD  test_bitcoin
+make[4]: Leaving directory `/home/ubuntu/bitcoin/src/test'
+make[3]: Leaving directory `/home/ubuntu/bitcoin/src/test'
+make[2]: Leaving directory `/home/ubuntu/bitcoin/src'
+make[1]: Leaving directory `/home/ubuntu/bitcoin/src'
+make[1]: Entering directory `/home/ubuntu/bitcoin'
+make[1]: Nothing to be done for `all-am'.
+make[1]: Leaving directory `/home/ubuntu/bitcoin'
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>If all goes well, bitcoind is now compiled. The final step is to install the bitcoind executable into the system path using the <tt>make</tt> command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ sudo make install
+Making install in src
+Making install in .
+ /bin/mkdir -p '/usr/local/bin'
+  /usr/bin/install -c bitcoind bitcoin-cli '/usr/local/bin'
+Making install in test
+make  install-am
+ /bin/mkdir -p '/usr/local/bin'
+  /usr/bin/install -c test_bitcoin '/usr/local/bin'
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>You can confirm that bitcoin is correctly installed by asking the system for the path of the two executables, as follows:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>The default installation of bitcoind puts it in <em>/usr/local/bin</em>. When you first run bitcoind, it will remind you to create a configuration file with a strong password for the JSON-RPC interface. Run bitcoind by typing <tt>bitcoind</tt> into the terminal:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind
+Error: To use the "-server" option, you must set a rpcpassword in the configuration file:
+/home/ubuntu/.bitcoin/bitcoin.conf
+It is recommended you use the following random password:
+rpcuser=bitcoinrpc
+rpcpassword=2XA4DuKNCbtZXsBQRRNDEwEY2nM6M4H9Tx5dFjoAVVbK
+(you do not need to remember this password)
+The username and password MUST NOT be the same.
+If the file does not exist, create it with owner-readable-only file permissions.
+It is also recommended to set alertnotify so you are notified of problems;
+for example: alertnotify=echo %s | mail -s "Bitcoin Alert" admin@foo.com</tt></pre>
+</div></div>
+<div class="paragraph"><p>Edit the configuration file in your preferred editor and set the parameters, replacing the password with a strong password as recommended by bitcoind. Do <em>not</em> use the password shown here. Create a file inside the <em>.bitcoin</em> directory so that it is named <em>.bitcoin/bitcoin.conf</em> and enter a username and password:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>While you&#8217;re editing this configuration file, you might want to set a few other options, such as <tt>txindex</tt> (see <a href="#txindex">[txindex]</a>). For a full listing of the available options, type <tt>bitcoind --help</tt>.</p></div>
+<div class="paragraph"><p>Now, run the Bitcoin Core client. The first time you run it, it will rebuild the bitcoin blockchain by downloading all the blocks. This is a multigigabyte file and will take an average of two days to download in full. You can shorten the blockchain initialization time by downloading a partial copy of the blockchain using a BitTorrent client from <a href="http://bit.ly/1qkLNyh">SourceForge</a>.</p></div>
+<div class="paragraph"><p>Run bitcoind in the background with the option <tt>-daemon</tt>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind -daemon
+
+Bitcoin version v0.9.0rc1-beta (2014-01-31 09:30:15 +0100)
+Using OpenSSL version OpenSSL 1.0.1c 10 May 2012
+Default data directory /home/bitcoin/.bitcoin
+Using data directory /bitcoin/
+Using at most 4 connections (1024 file descriptors available)
+init message: Verifying wallet...
+dbenv.open LogDir=/bitcoin/database ErrorFile=/bitcoin/db.log
+Bound to [::]:8333
+Bound to 0.0.0.0:8333
+init message: Loading block index...
+Opening LevelDB in /bitcoin/blocks/index
+Opened LevelDB successfully
+Opening LevelDB in /bitcoin/chainstate
+Opened LevelDB successfully
+
+[... more startup messages ...]</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_bitcoin_core_8217_s_json_rpc_api_from_the_command_line">Using Bitcoin Core&#8217;s JSON-RPC API from the Command Line</h3>
+<div class="paragraph"><p>The Bitcoin Core client implements a JSON-RPC interface that can also be accessed using the command-line helper <tt>bitcoin-cli</tt>. The command line allows us to experiment interactively with the capabilities that are also available programmatically via the API. To start, invoke the <tt>help</tt> command to see a list of the available bitcoin RPC commands:</p></div>
+<div class="listingblock" id="bitcoind_commands">
+<div class="content">
+<pre><tt>$ bitcoin-cli help
+addmultisigaddress nrequired ["key",...] ( "account" )
+addnode "node" "add|remove|onetry"
+backupwallet "destination"
+createmultisig nrequired ["key",...]
+createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,...}
+decoderawtransaction "hexstring"
+decodescript "hex"
+dumpprivkey "bitcoinaddress"
+dumpwallet "filename"
+getaccount "bitcoinaddress"
+getaccountaddress "account"
+getaddednodeinfo dns ( "node" )
+getaddressesbyaccount "account"
+getbalance ( "account" minconf )
+getbestblockhash
+getblock "hash" ( verbose )
+getblockchaininfo
+getblockcount
+getblockhash index
+getblocktemplate ( "jsonrequestobject" )
+getconnectioncount
+getdifficulty
+getgenerate
+gethashespersec
+getinfo
+getmininginfo
+getnettotals
+getnetworkhashps ( blocks height )
+getnetworkinfo
+getnewaddress ( "account" )
+getpeerinfo
+getrawchangeaddress
+getrawmempool ( verbose )
+getrawtransaction "txid" ( verbose )
+getreceivedbyaccount "account" ( minconf )
+getreceivedbyaddress "bitcoinaddress" ( minconf )
+gettransaction "txid"
+gettxout "txid" n ( includemempool )
+gettxoutsetinfo
+getunconfirmedbalance
+getwalletinfo
+getwork ( "data" )
+help ( "command" )
+importprivkey "bitcoinprivkey" ( "label" rescan )
+importwallet "filename"
+keypoolrefill ( newsize )
+listaccounts ( minconf )
+listaddressgroupings
+listlockunspent
+listreceivedbyaccount ( minconf includeempty )
+listreceivedbyaddress ( minconf includeempty )
+listsinceblock ( "blockhash" target-confirmations )
+listtransactions ( "account" count from )
+listunspent ( minconf maxconf  ["address",...] )
+lockunspent unlock [{"txid":"txid","vout":n},...]
+move "fromaccount" "toaccount" amount ( minconf "comment" )
+ping
+sendfrom "fromaccount" "tobitcoinaddress" amount ( minconf "comment" "comment-to" )
+sendmany "fromaccount" {"address":amount,...} ( minconf "comment" )
+sendrawtransaction "hexstring" ( allowhighfees )
+sendtoaddress "bitcoinaddress" amount ( "comment" "comment-to" )
+setaccount "bitcoinaddress" "account"
+setgenerate generate ( genproclimit )
+settxfee amount
+signmessage "bitcoinaddress" "message"
+signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )
+stop
+submitblock "hexdata" ( "jsonparametersobject" )
+validateaddress "bitcoinaddress"
+verifychain ( checklevel numblocks )
+verifymessage "bitcoinaddress" "signature" "message"
+walletlock
+walletpassphrase "passphrase" timeout
+walletpassphrasechange "oldpassphrase" "newpassphrase"</tt></pre>
+</div></div>
+<div class="sect3">
+<h4 id="_getting_information_on_the_bitcoin_core_client_status">Getting Information on the Bitcoin Core Client Status</h4>
+<div class="paragraph"><p>Commands: <tt>getinfo</tt></p></div>
+<div class="paragraph"><p>Bitcoin&#8217;s <tt>getinfo</tt> RPC command displays basic information about the status of the bitcoin network node, the wallet, and the blockchain database. Use <tt>bitcoin-cli</tt> to run it:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>The data is returned in JavaScript Object Notation (JSON), a format that can easily be "consumed" by all programming languages but is also quite human-readable. Among this data we see the version numbers for the bitcoin software client (90000), protocol (70002), and wallet (60000). We see the current balance contained in the wallet, which is zero. We see the current block height, showing us how many blocks are known to this client (286216). We also see various statistics about the bitcoin network and the settings related to this client. We will explore these settings in more detail in the rest of this chapter.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>It will take some time, perhaps more than a day, for the bitcoind client to "catch up" to the current blockchain height as it downloads blocks from other bitcoin clients. You can check its progress using <tt>getinfo</tt> to see the number of known blocks.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_wallet_setup_and_encryption">Wallet Setup and Encryption</h4>
+<div class="paragraph"><p>Commands: <tt>encryptwallet</tt>, <tt>walletpassphrase</tt></p></div>
+<div class="paragraph"><p>Before you proceed with creating keys and other commands, you should first encrypt the wallet with a password. For this example, you will use the <tt>encryptwallet</tt> command with the password "foo". Obviously, replace "foo" with a strong and complex password!</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli encryptwallet foo
+wallet encrypted; Bitcoin server stopping, restart to run with encrypted wallet. The keypool has been flushed, you need to make a new backup.
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>You can verify the wallet has been encrypted by running <tt>getinfo</tt> again. This time you will notice a new entry called <tt>unlocked_until</tt>. This is a counter showing how long the wallet decryption password will be stored in memory, keeping the wallet unlocked. At first this will be set to zero, meaning the wallet is locked:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>To unlock the wallet, issue the <tt>walletpassphrase</tt> command, which takes two parameters—the password and a number of seconds until the wallet is locked again automatically (a time counter):</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli walletpassphrase foo 360
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>You can confirm the wallet is unlocked and see the timeout by running <tt>getinfo</tt> again:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+</div>
+<div class="sect3">
+<h4 id="_wallet_backup_plain_text_dump_and_restore">Wallet Backup, Plain-text Dump, and Restore</h4>
+<div class="paragraph"><p>Commands: <tt>backupwallet</tt>, <tt>importwallet</tt>, <tt>dumpwallet</tt></p></div>
+<div class="paragraph"><p>Next, we will practice creating a wallet backup file and then restoring the wallet from the backup file. Use the <tt>backupwallet</tt> command to back up, providing the filename as the parameter. Here we back up the wallet to the file <em>wallet.backup</em>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli backupwallet wallet.backup
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>Now, to restore the backup file, use the <tt>importwallet</tt> command. If your wallet is locked, you will need to unlock it first (see <tt>walletpassphrase</tt> in the preceding section) in order to import the backup file:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli importwallet wallet.backup
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>The <tt>dumpwallet</tt> command can be used to dump the wallet into a text file that is human-readable:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli dumpwallet wallet.txt
+$ more wallet.txt
+# Wallet dump created by Bitcoin v0.9.0rc1-beta (2014-01-31 09:30:15 +0100)
+# * Created on 2014-02- 8dT20:34:55Z
+# * Best block at time of backup was 286234 (0000000000000000f74f0bc9d3c186267bc45c7b91c49a0386538ac24c0d3a44),
+#   mined on 2014-02- 8dT20:24:01Z
+
+KzTg2wn6Z8s7ai5NA9MVX4vstHRsqP26QKJCzLg4JvFrp6mMaGB9 2013-07- 4dT04:30:27Z change=1 # addr=16pJ6XkwSQv5ma5FSXMRPaXEYrENCEg47F
+Kz3dVz7R6mUpXzdZy4gJEVZxXJwA15f198eVui4CUivXotzLBDKY 2013-07- 4dT04:30:27Z change=1 # addr=17oJds8kaN8LP8kuAkWTco6ZM7BGXFC3gk
+[... many more keys ...]
+
+$</tt></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_wallet_addresses_and_receiving_transactions">Wallet Addresses and Receiving Transactions</h4>
+<div class="paragraph"><p>Commands: getnewaddress, getreceivedbyaddress, listtransactions, getaddressesbyaccount, getbalance</p></div>
+<div class="paragraph"><p>The bitcoin reference client maintains a pool of addresses, the size of which is displayed by <tt>keypoolsize</tt> when you use the command <tt>getinfo</tt>. These addresses are generated automatically and can then be used as public receiving addresses or change addresses. To get one of these addresses, use the <tt>getnewaddress</tt> command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getnewaddress
+1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL</tt></pre>
+</div></div>
+<div class="paragraph"><p>Now, we can use this address to send a small amount of bitcoin to our bitcoind wallet from an external wallet (assuming you have some bitcoin in an exchange, web wallet, or other bitcoind wallet held elsewhere). For this example, we will send 50 millibits (0.050 bitcoin) to the preceding address.</p></div>
+<div class="paragraph"><p>We can now query the bitcoind client for the amount received by this address, and specify how many confirmations are required before an amount is counted in that balance. For this example, we will specify zero confirmations. A few seconds after sending the bitcoin from another wallet, we will see it reflected in the wallet. We use <tt>getreceivedbyaddress</tt> with the address and the number of confirmations set to zero (0):</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getreceivedbyaddress 1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL 0
+0.05000000</tt></pre>
+</div></div>
+<div class="paragraph"><p>If we omit the zero from the end of this command, we will only see the amounts that have at least <tt>minconf</tt> confirmations, where <tt>minconf</tt> is the setting for the minimum number of confirmations before a transaction is listed in the balance. The <tt>minconf</tt> setting is specified in the bitcoind configuration file. Because the transaction sending this bitcoin was only sent in the last few seconds, it has still not confirmed and therefore we will see it list a zero balance:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getreceivedbyaddress 1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL
+0.00000000</tt></pre>
+</div></div>
+<div class="paragraph"><p>The transactions received by the entire wallet can also be displayed using the <tt>listtransactions</tt> command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli listtransactions</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>We can list all addresses in the entire wallet using the <tt>getaddressesbyaccount</tt> command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getaddressesbyaccount ""</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Finally, the command <tt>getbalance</tt> will show the total balance of the wallet, adding up all transactions confirmed with at least <tt>minconf</tt> confirmations:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getbalance
+0.05000000</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>If the transaction has not yet confirmed, the balance returned by <tt>getbalance</tt> will be zero. The configuration option "minconf" determines the minimum number of confirmations that are required before a transaction shows in the balance.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exploring_and_decoding_transactions">Exploring and Decoding Transactions</h4>
+<div class="paragraph"><p>Commands: <tt>gettransaction</tt>, <tt>getrawtransaction</tt>, <tt>decoderawtransaction</tt></p></div>
+<div class="paragraph"><p>We&#8217;ll now explore the incoming transaction that was listed previously using the <tt>gettransaction</tt> command. We can retrieve a transaction by its transaction hash, shown at <tt>txid</tt> earlier, with the <tt>gettransaction</tt> command:</p></div>
+<programlisting>
+$ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66<?pdf-cr?>c309acbae2c14ae3
+
+</programlisting>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Transaction IDs are not authoritative until a transaction has been confirmed. Absence of a transaction hash in the blockchain does not mean the transaction was not processed. This is known as "transaction malleability," because transaction hashes can be modified prior to confirmation in a block. After confirmation, the txid is immutable and authoritative.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>The transaction form shown with the command <tt>gettransaction</tt> is the simplified form. To retrieve the full transaction code and decode it, we will use two commands: <tt>getrawtransaction</tt> and <tt>decoderawtransaction</tt>. First, <tt>getrawtransaction</tt> takes the <em>transaction hash (txid)</em> as a parameter and returns the full transaction as a "raw" hex string, exactly as it exists on the bitcoin network:</p></div>
+<programlisting>
+$ bitcoin-cli getrawtransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1f<?pdf-cr?>c66c309acbae2c14ae3
+
+0100000001d717279515f88e2f56ce4e8a31e2ae3e9f00ba1d0add648e80c480ea22e0c7d3000<?pdf-cr?>000008b483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e61a2df0dd0758e22<?pdf-cr?>7383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2ac1bd193dfba2014<?pdf-cr?>104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b884ac5b5b6dede<?pdf-cr?>05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5ceaffffffff02404b4c0000000<?pdf-cr?>0001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac1f312906000000001976a9<?pdf-cr?>14107b7086b31518935c8d28703d66d09b3623134388ac00000000
+</programlisting>
+<div class="paragraph"><p>To decode this hex string, use the <tt>decoderawtransaction</tt> command. Copy and paste the hex as the first parameter of <tt>decoderawtransaction</tt> to get the full contents interpreted as a JSON data structure (for formatting reasons the hex string is shortened in the following example):</p></div>
+<programlisting>
+$ bitcoin-cli decoderawtransaction 0100000001d717279515f88e2f56ce4e8a31e2ae3e<?pdf-cr?>9f00ba1d0add648e80c480ea22e0c7d3000000008b483045022100a4ebbeec83225dedead659b<?pdf-cr?>bde7da3d026c8b8e12e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1<?pdf-cr?>f2c975b192d34c5b9b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44<?pdf-cr?>fa59248be58ede65e4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc7<?pdf-cr?>9e05dbfe5ceaffffffff02404b4c00000000001976a91407bdb518fa2e6089fd810235cf1100c<?pdf-cr?>9c13d1fd288ac1f312906000000001976a914107b7086b31518935c8d28703d66d09b36231343<?pdf-cr?>88ac00000000
+</programlisting>
+<screen>
+{
+    "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "d3c7e022ea80c4808e64dd0a1dba009f3eaee2318a4ece562f8ef815<?pdf-cr?>952717d7",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "3045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e<?pdf-cr?>61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2<?pdf-cr?>ac1bd193dfba20104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b<?pdf-cr?>884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5cea",
+                "hex": "483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e1<?pdf-cr?>2e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9<?pdf-cr?>b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e<?pdf-cr?>4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5cea"
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.05000000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c<?pdf-cr?>13d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        },
+        {
+            "value" : 1.03362847,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 107b7086b31518935c8d28703d66d09b36<?pdf-cr?>231343 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914107b7086b31518935c8d28703d66d09b3623134388ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "12W9goQ3P7Waw5JH8fRVs1e2rVAKoGnvoy"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+<div class="paragraph"><p>The transaction decode shows all the components of this transaction, including the transaction inputs and outputs. In this case we see that the transaction that credited our new address with 50 millibits used one input and generated two outputs. The input to this transaction was the output from a previously confirmed transaction (shown as the vin txid starting with <tt>d3c7</tt>). The two outputs correspond to the 50 millibit credit and an output with change back to the sender.</p></div>
+<div class="paragraph"><p>We can further explore the blockchain by examining the previous transaction referenced by its txid in this transaction using the same commands (e.g., <tt>gettransaction</tt>). Jumping from transaction to transaction we can follow a chain of transactions back as the coins are transmitted from owner address to owner address.</p></div>
+<div class="paragraph"><p>Once the transaction we received has been confirmed by inclusion in a block, the <tt>gettransaction</tt> command will return additional information, showing the <em>block hash (identifier)</em> in which the transaction was included:</p></div>
+<screen>
+$ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66<?pdf-cr?>c309acbae2c14ae3
+</screen>
+<screen>
+{
+    "amount" : 0.05000000,
+    "confirmations" : 1,
+    "blockhash" : "000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31c<?pdf-cr?>2a717b",
+    "blockindex" : 18,
+    "blocktime" : 1392660808,
+    "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+    "time" : 1392660908,
+    "timereceived" : 1392660908,
+    "details" : [
+        {
+            "account" : "",
+            "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+            "category" : "receive",
+            "amount" : 0.05000000
+        }
+    ]
+}
+</screen>
+<div class="paragraph"><p>Here, we see the new information in the entries <tt>blockhash</tt> (the hash of the block in which the transaction was included), and <tt>blockindex</tt> with value 18 (indicating that our transaction was the 18th transaction in that block).</p></div>
+<div class="sidebarblock" id="txindex">
+<div class="content">
+<div class="title">Transaction Database Index and txindex Option</div>
+<div class="paragraph"><p>By default, Bitcoin Core builds a database containing <em>only</em> the transactions related to the user&#8217;s wallet. If you want to be able to access <em>any</em> transaction with commands like <tt>gettransaction</tt>, you need to configure Bitcoin Core to build a complete transaction index, which can be achieved with the <tt>txindex</tt> option. Set <tt>txindex=1</tt> in the Bitcoin Core configuration file (usually found in your home directory under <em>.bitcoin/bitcoin.conf</em>). Once you change this parameter, you need to restart bitcoind and wait for it to rebuild the index.</p></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_exploring_blocks">Exploring Blocks</h4>
+<div class="paragraph"><p>Commands: <tt>getblock</tt>, <tt>getblockhash</tt></p></div>
+<div class="paragraph"><p>Now that we know which block our transaction was included in, we can query that block. We use the <tt>getblock</tt> command with the block hash as the parameter:</p></div>
+<screen>
+$ bitcoin-cli getblock 000000000000000051d2e759c63a26e247f185ecb7926ed7a6624b<?pdf-cr?>c31c2a717b true
+</screen>
+<screen>
+{
+    "hash" : "000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31c2a717<?pdf-cr?>b",
+    "confirmations" : 2,
+    "size" : 248758,
+    "height" : 286384,
+    "version" : 2,
+    "merkleroot" : "9891747e37903016c3b77c7a0ef10acf467c530de52d84735bd555387<?pdf-cr?>19f9916",
+    "tx" : [
+        "46e130ab3c67d31d2b2c7f8fbc1ca71604a72e6bc504c8a35f777286c6d89bf0",
+        "2d5625725b66d6c1da88b80b41e8c07dc5179ae2553361c96b14bcf1ce2c3868",
+        "923392fc41904894f32d7c127059bed27dbb3cfd550d87b9a2dc03824f249c80",
+        "f983739510a0f75837a82bfd9c96cd72090b15fa3928efb9cce95f6884203214",
+        "190e1b010d5a53161aa0733b953eb29ef1074070658aaa656f933ded1a177952",
+        "ee791ec8161440262f6e9144d5702f0057cef7e5767bc043879b7c2ff3ff5277",
+        "4c45449ff56582664abfadeb1907756d9bc90601d32387d9cfd4f1ef813b46be",
+        "3b031ed886c6d5220b3e3a28e3261727f3b4f0b29de5f93bc2de3e97938a8a53",
+        "14b533283751e34a8065952fd1cd2c954e3d37aaa69d4b183ac6483481e5497d",
+        "57b28365adaff61aaf60462e917a7cc9931904258127685c18f136eeaebd5d35",
+        "8c0cc19fff6b66980f90af39bee20294bc745baf32cd83199aa83a1f0cd6ca51",
+        "1b408640d54a1409d66ddaf3915a9dc2e8a6227439e8d91d2f74e704ba1cdae2",
+        "0568f4fad1fdeff4dc70b106b0f0ec7827642c05fe5d2295b9deba4f5c5f5168",
+        "9194bfe5756c7ec04743341a3605da285752685b9c7eebb594c6ed9ec9145f86",
+        "765038fc1d444c5d5db9163ba1cc74bba2b4f87dd87985342813bd24021b6faf",
+        "bff1caa9c20fa4eef33877765ee0a7d599fd1962417871ca63a2486476637136",
+        "d76aa89083f56fcce4d5bf7fcf20c0406abdac0375a2d3c62007f64aa80bed74",
+        "e57a4c70f91c8d9ba0ff0a55987ea578affb92daaa59c76820125f31a9584dfc",
+        "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+
+#[... many more transactions ...]
+
+    ],
+    "time" : 1392660808,
+    "nonce" : 3888130470,
+    "bits" : "19015f53",
+    "difficulty" : 3129573174.52228737,
+    "chainwork" : "000000000000000000000000000000000000000000001931d1658fc048<?pdf-cr?>79e466",
+    "previousblockhash" : "0000000000000000177e61d5f6ba6b9450e0dade9f39c257b4<?pdf-cr?>d48b4941ac77e7",
+    "nextblockhash" : "0000000000000001239d2c3bf7f4c68a4ca673e434702a57da8fe0<?pdf-cr?>d829a92eb6"
+
+</screen>
+<div class="paragraph"><p>The block contains 367 transactions and as you can see, the 18th transaction listed (<tt>9ca8f9&#8230;</tt>) is the txid of the one crediting 50 millibits to our address. The <tt>height</tt> entry tells us this is the 286384th block in the blockchain.</p></div>
+<div class="paragraph"><p>We can also retrieve a block by its block height using the <tt>getblockhash</tt> command, which takes the block height as the parameter and returns the block hash for that block:</p></div>
+<screen>
+$ bitcoin-cli getblockhash 0
+
+000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+</screen>
+<div class="paragraph"><p>Here, we retrieve the block hash of the "genesis block," the first block mined by Satoshi Nakamoto, at height zero. Retrieving this block shows:</p></div>
+<screen>
+$ bitcoin-cli getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1<?pdf-cr?>b60a8ce26f
+</screen>
+<screen>
+{
+    "hash" : "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26<?pdf-cr?>f",
+    "confirmations" : 286388,
+    "size" : 285,
+    "height" : 0,
+    "version" : 1,
+    "merkleroot" : "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7af<?pdf-cr?>deda33b",
+    "tx" : [
+        "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+    ],
+    "time" : 1231006505,
+    "nonce" : 2083236893,
+    "bits" : "1d00ffff",
+    "difficulty" : 1.00000000,
+    "chainwork" : "0000000000000000000000000000000000000000000000000000000100<?pdf-cr?>010001",
+    "nextblockhash" : "00000000839a8e6886ab5951d76f411475428afc90947ee320161b<?pdf-cr?>bf18eb6048"
+}
+</screen>
+<div class="paragraph"><p>The <tt>getblock</tt>, <tt>getblockhash</tt>, and <tt>gettransaction</tt> commands can be used to explore the blockchain database, programmatically.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_creating_signing_and_submitting_transactions_based_on_phrase_role_keep_together_unspent_outputs_phrase">Creating, Signing, and Submitting Transactions Based on <phrase role="keep-together">Unspent Outputs</phrase></h4>
+<div class="paragraph"><p>Commands: <tt>listunspent</tt>, <tt>gettxout</tt>, <tt>createrawtransaction</tt>, <tt>decoderawtransaction</tt>, <tt>signrawtransaction</tt>, <tt>sendrawtransaction</tt></p></div>
+<div class="paragraph"><p>Bitcoin&#8217;s transactions are based on the concept of spending "outputs," which are the result of previous transactions, to create a transaction chain that transfers ownership from address to address. Our wallet has now received a transaction that assigned one such output to our address. Once this is confirmed, we can spend that output.</p></div>
+<div class="paragraph"><p>First, we use the <tt>listunspent</tt> command to show all the unspent <em>confirmed</em> outputs in our wallet:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli listunspent</tt></pre>
+</div></div>
+<screen>
+[
+    {
+        "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c<?pdf-cr?>14ae3",
+        "vout" : 0,
+        "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+        "account" : "",
+        "scriptPubKey" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+        "amount" : 0.05000000,
+        "confirmations" : 7
+    }
+]
+</screen>
+<div class="paragraph"><p>We see that the transaction <tt>9ca8f9&#8230;</tt> created an output (with vout index 0) assigned to the address <tt>1hvzSo&#8230;</tt> for the amount of 50 millibits, which at this point has received seven confirmations. Transactions use previously created outputs as their inputs by referring to them by the previous txid and vout index. We will now create a transaction that will spend the 0th vout of the txid <tt>9ca8f9&#8230;</tt> as its input and assign it to a new output that sends value to a new address.</p></div>
+<div class="paragraph"><p>First, let&#8217;s look at the specific output in more detail. We use <tt>gettxout</tt> to get the details of this unspent output. Transaction outputs are always referenced by txid and vout, and these are the parameters we pass to <tt>gettxout</tt>:</p></div>
+<screen>
+$ bitcoin-cli gettxout 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309ac<?pdf-cr?>bae2c14ae3 0
+</screen>
+<screen>
+{
+    "bestblock" : "0000000000000001405ce69bd4ceebcdfdb537749cebe89d371eb37e13<?pdf-cr?>899fd9",
+    "confirmations" : 7,
+    "value" : 0.05000000,
+    "scriptPubKey" : {
+        "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c13d1fd2
+         OP_EQUALVERIFY OP_CHECKSIG",
+        "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+        "reqSigs" : 1,
+        "type" : "pubkeyhash",
+        "addresses" : [
+            "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+        ]
+    },
+    "version" : 1,
+    "coinbase" : false
+}
+</screen>
+<div class="paragraph"><p>What we see here is the output that assigned 50 millibits to our address <tt>1hvz&#8230;</tt>. To spend this output we will create a new transaction. First, let&#8217;s make an address to which we will send the money:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getnewaddress
+1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb</tt></pre>
+</div></div>
+<div class="paragraph"><p>We will send 25 millibits to the new address <tt>1LnfTn&#8230;</tt> we just created in our wallet. In our new transaction, we will spend the 50 millibit output and send 25 millibits to this new address. Because we have to spend the <em>whole</em> output from the previous transaction, we must also generate some change. We will generate change back to the <tt>1hvz&#8230;</tt> address, sending the change back to the address from which the value originated. Finally, we will also have to pay a fee for this transaction. To pay the fee, we will reduce the change output by 0.5 millibits, and return 24.5 millibits in change. The difference between the sum of the new outputs (25 mBTC + 24.5 mBTC = 49.5 mBTC) and the input (50 mBTC) will be collected as a transaction fee by the miners.</p></div>
+<div class="paragraph"><p>We use <tt>createrawtransaction</tt> to create this transaction. As parameters to <tt>createrawtransaction</tt> we provide the transaction input (the 50 millibit unspent output from our confirmed transaction) and the two transaction outputs (money sent to the new address and change sent back to the previous address):</p></div>
+<screen>
+$ bitcoin-cli createrawtransaction '[{"txid" : "9ca8f969bd3ef5ec2a8685660fdbf<?pdf-cr?>7a8bd365524c2e1fc66c309acbae2c14ae3", "vout" : 0}]' '{"1LnfTndy3qzXGN19Jwscj1<?pdf-cr?>T8LR3MVe3JDb": 0.025, "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL": 0.0245}'
+
+0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000<?pdf-cr?>0000000ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a<?pdf-cr?>9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac0<?pdf-cr?>0000000
+</screen>
+<div class="paragraph"><p>The <tt>createrawtransaction</tt> command produces a raw hex string that encodes the transaction details we supplied. Let&#8217;s confirm everything is correct by decoding this raw string using the <tt>decoderawtransaction</tt> command:</p></div>
+<screen>
+$ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bd<?pdf-cr?>a8f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d<?pdf-cr?>90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa<?pdf-cr?>2e6089fd810235cf1100c9c13d1fd288ac00000000
+</screen>
+<screen>
+{
+    "txid" : "0793299cb26246a8d24e468ec285a9520a1c30fcb5b6125a102e3fc05d4f3cb<?pdf-cr?>a",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acb<?pdf-cr?>ae2c14ae3",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "",
+                "hex" : ""
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.02500000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 d90d36e98f62968d2bc9bbd68107564a15<?pdf-cr?>6a9bcf OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb"
+                ]
+            }
+        },
+        {
+            "value" : 0.02450000,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c1<?pdf-cr?>3d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+<div class="paragraph"><p>That looks correct! Our new transaction "consumes" the unspent output from our confirmed transaction and then spends it in two outputs, one for 25 millibits to our new address and one for 24.5 millibits as change back to the original address. The difference of 0.5 millibits represents the transaction fee and will be credited to the miner who finds the block that includes our transaction.</p></div>
+<div class="paragraph"><p>As you might notice, the transaction contains an empty <tt>scriptSig</tt> because we haven&#8217;t signed it yet. Without a signature, this transaction is meaningless; we haven&#8217;t yet proven that we <em>own</em> the address from which the unspent output is sourced. By signing, we remove the lock on the output and prove that we own this output and can spend it. We use the <tt>signrawtransaction</tt> command to sign the transaction. It takes the raw transaction hex string as the parameter:</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>An encrypted wallet must be unlocked before a transaction is signed because signing requires access to the secret keys in the wallet.</p></div>
+</td>
+</tr></table>
+</div>
+<screen>
+$ bitcoin-cli walletpassphrase foo 360
+$ bitcoin-cli signrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8<?pdf-cr?>f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d90<?pdf-cr?>d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e<?pdf-cr?>6089fd810235cf1100c9c13d1fd288ac00000000
+</screen>
+<screen>
+{
+    "hex" : "0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53e<?pdf-cr?>bd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54<?pdf-cr?>e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af<?pdf-cr?>52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc512<?pdf-cr?>7ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88<?pdf-cr?>ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000",
+    "complete" : true
+}
+</screen>
+<div class="paragraph"><p>The <tt>signrawtransaction</tt> command returns another hex-encoded raw transaction. We decode it to see what changed, with <tt>decoderawtransaction</tt>:</p></div>
+<screen>
+$ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda<?pdf-cr?>8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c<?pdf-cr?>800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87<?pdf-cr?>e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac<?pdf-cr?>1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9b<?pdf-cr?>bd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100<?pdf-cr?>c9c13d1fd288ac00000000
+</screen>
+<screen>
+{
+    "txid" : "ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b34<?pdf-cr?>6",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acb<?pdf-cr?>ae2c14ae3",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86<?pdf-cr?>a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e<?pdf-cr?>4af52051a0601 03c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5<?pdf-cr?>127",
+                "hex" : "47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d<?pdf-cr?>86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b27<?pdf-cr?>7e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71<?pdf-cr?>dc5127"
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.02500000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 d90d36e98f62968d2bc9bbd68107564a15<?pdf-cr?>6a9bcf OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb"
+                ]
+            }
+        },
+        {
+            "value" : 0.02450000,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c1<?pdf-cr?>3d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+<div class="paragraph"><p>Now, the inputs used in the transaction contain a <tt>scriptSig</tt>, which is a digital signature proving ownership of address <tt>1hvz&#8230;</tt> and removing the lock on the output so that it can be spent. The signature makes this transaction verifiable by any node in the bitcoin network.</p></div>
+<div class="paragraph"><p>Now it&#8217;s time to submit the newly created transaction to the network. We do that with the command <tt>sendrawtransaction</tt>, which takes the raw hex string produced by <tt>signrawtransaction</tt>. This is the same string we just decoded:</p></div>
+<screen>
+$ bitcoin-cli sendrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8<?pdf-cr?>f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c8<?pdf-cr?>00c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e<?pdf-cr?>3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1<?pdf-cr?>d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bb<?pdf-cr?>d68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c<?pdf-cr?>9c13d1fd288ac00000000ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584<?pdf-cr?>ac17b346
+</screen>
+<div class="paragraph"><p>The command <tt>sendrawtransaction</tt> returns a <em>transaction hash (txid)</em> as it submits the transaction on the network. We can now query that transaction ID with <tt>gettransaction</tt>:</p></div>
+<screen>
+$ bitcoin-cli gettransaction ae74538baa914f3799081ba78429d5d84f36a0127438e9f7<?pdf-cr?>21dff584ac17b346
+</screen>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>As before, we can also examine this in more detail using the <tt>getrawtransaction</tt> and <tt>decodetransaction</tt> commands. These commands will return the exact same hex string that we produced and decoded previously just before we sent it on the network.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="alt_libraries">Alternative Clients, Libraries, and Toolkits</h3>
+<div class="paragraph"><p>Beyond the reference client (bitcoind), other clients and libraries can be used to interact with the bitcoin network and data structures. These are implemented in a variety of programming languages, offering programmers native interfaces in their own language.</p></div>
+<div class="paragraph"><p>Alternative implementations include:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="https://github.com/libbitcoin/libbitcoin">libbitcoin</a>
+</dt>
+<dd>
+<p>
+Bitcoin Cross-Platform C++ Development Toolkit
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/libbitcoin/libbitcoin-explorer">bitcoin explorer</a>
+</dt>
+<dd>
+<p>
+Bitcoin Command Line Tool
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/libbitcoin/libbitcoin-server">bitcoin server</a>
+</dt>
+<dd>
+<p>
+Bitcoin Full Node and Query Server
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://code.google.com/p/bitcoinj/">bitcoinj</a>
+</dt>
+<dd>
+<p>
+A Java full-node client library
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://opensource.conformal.com/wiki/btcd">btcd</a>
+</dt>
+<dd>
+<p>
+A Go language full-node bitcoin client
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://bitsofproof.com">Bits of Proof (BOP)</a>
+</dt>
+<dd>
+<p>
+A Java enterprise-class implementation of bitcoin
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/jgarzik/picocoin">picocoin</a>
+</dt>
+<dd>
+<p>
+A C implementation of a lightweight client library for bitcoin
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/vbuterin/pybitcointools">pybitcointools</a>
+</dt>
+<dd>
+<p>
+A Python bitcoin library
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/richardkiss/pycoin">pycoin</a>
+</dt>
+<dd>
+<p>
+Another Python bitcoin library
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Many more libraries exist in a variety of other programming languages and more are created all the time.</p></div>
+<div class="sect3">
+<h4 id="libbitcoin">Libbitcoin and Bitcoin Explorer</h4>
+<div class="paragraph"><p>The libbitcoin library is a cross-platform C++ development toolkit that supports the libbitcoin-server full node and the Bitcoin Explorer (bx) command line tool.</p></div>
+<div class="paragraph"><p>The bx commands offer many of the same capabilities as the bitcoind client commands we illustrated in this chapter. The bx commands also offer some key management and manipulation tools that are not offered by bitcoind, including type-2 deterministic keys and mnemonic key encoding, as well as stealth address, payment, and query support.</p></div>
+<div class="sect4">
+<h5 id="_installing_bitcoin_explorer">Installing Bitcoin Explorer</h5>
+<div class="paragraph"><p>To use Bitcoin Explorer, simply <a href="https://github.com/libbitcoin/libbitcoin-explorer/wiki/Download">download the signed executable for your operating system</a>. Builds are available for mainnet and testnet for Linux, OS X, and Windows.</p></div>
+<div class="paragraph"><p>Type <tt>bx</tt> with no parameters to display the list of all available commands (see <a href="#appdx_bx">[appdx_bx]</a>).</p></div>
+<div class="paragraph"><p>Bitcoin Explorer also provides an installer for <a href="https://github.com/libbitcoin/libbitcoin-explorer/wiki/Build">building from sources on Linux and OS X, as well as Visual Studio projects for Windows</a>. Sources can also be built manually using Autotools. These also install the libbitcoin library dependency.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoin Explorer offers many useful commands for encoding and decoding addresses, and converting to and from different formats and representations. Use them to explore the various formats such as Base16 (hex), Base58, Base58Check, Base64, etc.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_installing_libbitcoin">Installing Libbitcoin</h5>
+<div class="paragraph"><p>The libbitcoin library provides an installer for <a href="https://github.com/libbitcoin/libbitcoin/wiki/Build">building from sources on Linux and OS X, as well as Visual Studio projects for Windows</a>. Sources can also be built manually using Autotools.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>The Bitcoin Explorer installer installs both bx and the libbitcoin library, so if you have built bx from sources, you can skip this step.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pycoin">pycoin</h4>
+<div class="paragraph"><p>The Python library <a href="http://github.com/richardkiss/pycoin"><em>pycoin</em></a>, originally written and maintained by Richard Kiss, is a Python-based library that supports manipulation of bitcoin keys and transactions, even supporting the scripting language enough to properly deal with nonstandard transactions.</p></div>
+<div class="paragraph"><p>The pycoin library supports both Python 2 (2.7.x) and Python 3 (after 3.3), and comes with some handy command-line utilities, ku and tx. To install pycoin 0.42 under Python 3 in a virtual environment (venv), use the following:</p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ python3 -m venv /tmp/pycoin
+$ . /tmp/pycoin/bin/activate
+$ pip install pycoin==0.42
+Downloading/unpacking pycoin==0.42
+  Downloading pycoin-0.42.tar.gz (66kB): 66kB downloaded
+  Running setup.py (path:/tmp/pycoin/build/pycoin/setup.py) egg_info for package pycoin
+
+Installing collected packages: pycoin
+  Running setup.py install for pycoin
+
+    Installing tx script to /tmp/pycoin/bin
+    Installing cache_tx script to /tmp/pycoin/bin
+    Installing bu script to /tmp/pycoin/bin
+    Installing fetch_unspent script to /tmp/pycoin/bin
+    Installing block script to /tmp/pycoin/bin
+    Installing spend script to /tmp/pycoin/bin
+    Installing ku script to /tmp/pycoin/bin
+    Installing genwallet script to /tmp/pycoin/bin
+Successfully installed pycoin
+Cleaning up...
+$</tt></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Here&#8217;s a sample Python script to fetch and spend some bitcoin using the pycoin library:</p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>For examples using the command-line utilities ku and tx, see <a href="#appdxbitcoinimpproposals">[appdxbitcoinimpproposals]</a>.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_btcd">btcd</h4>
+<div class="paragraph"><p>btcd is a full-node bitcoin implementation written in Go. It currently downloads, validates, and serves the blockchain using the exact rules (including bugs) for block acceptance as the reference implementation, bitcoind. It also properly relays newly mined blocks, maintains a transaction pool, and relays individual transactions that have not yet made it into a block. It ensures that all individual transactions admitted to the pool follow the rules required and also includes the vast majority of the more strict checks that filter transactions based on miner requirements ("standard" transactions).</p></div>
+<div class="paragraph"><p>One key difference between btcd and bitcoind is that btcd does not include wallet functionality, and this was a very intentional design decision. This means you can&#8217;t actually make or receive payments directly with btcd. That functionality is provided by the btcwallet and btcgui projects, which are both under active development. Other notable differences between btcd and bitcoind include btcd support for both HTTP POST requests (such as bitcoind) and the preferred Websockets, and the fact that btcd&#8217;s RPC connections are TLS-enabled by default.</p></div>
+<div class="sect4">
+<h5 id="_installing_btcd">Installing btcd</h5>
+<div class="paragraph"><p>To install btcd for Windows, download and run the msi available at <a href="https://github.com/conformal/btcd/releases">GitHub</a>, or run the following command on Linux, assuming you already have installed the Go language:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ go get github.com/conformal/btcd/...</tt></pre>
+</div></div>
+<div class="paragraph"><p>To update btcd to the latest version, just run:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ go get -u -v github.com/conformal/btcd/...</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="_controlling_btcd">Controlling btcd</h5>
+<div class="paragraph"><p>btcd has a number of configuration options, which you can view by running:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>btcd comes prepackaged with some goodies such as btcctl, which is a command-line utility that can be used to both control and query btcd via RPC. btcd does not enable its RPC server by default; you must configure at minimum both an RPC username and password in the following configuration files:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>btcd.conf</em>:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>btcctl.conf</em>:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Or if you want to override the configuration files from the command line:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>For a list of available options, run the following: </p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ btcctl --help</tt></pre>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:56:33 UTC
+</div>
+</div>
+</body>
+</html>

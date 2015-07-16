@@ -1,0 +1,61 @@
+[preface]
+== Hurtig ordliste
+
+Denne hurtige ordliste indeholder mange af de termer, der bruges i relation til bitcoin. Disse termer bruges gennemgående i bogen, så sæt et bogmærke her for en hurtig oversigt.
+
+adresse::
+    En bitcoin-adresse ser ud som fx +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. Den indeholder en streng af bogstaver og tal, som starter med "1" (et ettal). Ligesom du beder andre om at sende en email til din email-adresse, ville du bede andre om at sende bitcoin til din bitcoin-adresse.((("bitcoin address")))((("address", see="bitcoin address")))((("public key", see="bitcoin address")))
+
+bip::
+    Bitcoin Improvement Proposals. En mængde forslag, som medlemmer af bitcoin-fællesskabet har indsendt for at forbedre bitcoin. For eksempel er BIP0021 et forslag om at forbedre bitcoins URI-mønster (uniform resource identifier).((("bip"))) 
+
+bitcoin::
+    Navnet på møntenheden (the coin), netværket og softwaren.((("bitcoin"))) 
+
+blok::
+    En gruppering af transaktioner, der er markeret med et tidsstempel, og et fingeraftryk af den tidligere blok. Blokhovedet bliver hashet for at producere proof of work, hvorved transaktionerne valideres. Gyldige blokke føjes til hovedblokkæden ved hjælp af netværkskonsensus.((("block")))
+
+blokkæde::
+	En liste over validerede blokke, hvor hver især peger på den foregående blok hele vejen tilbage til skabelsesblokken.((("blockchain")))
+	
+bekræftelser::
+	Når en transaktion inkluderes i en blok, har den én bekræftelse. Så snart _endnu_ en blok bliver minet på den samme blokkæde, vil transaktionen have to bekræftelser, og så videre. Seks eller flere bekræftelser opfattes som tilstrækkelig bevis for, at en transaktion ikke kan annulleres.((("confirmations")))
+
+sværhedsgrad::
+	En indstilling på tværs af netværket, som styrer hvor megen beregning, der skal til for at producere et proof of work.((("difficulty")))
+
+mål for sværhedsgrad::
+ 	En sværhedsgrad, hvorved al den samlede beregning i netværket vil finde blokke omtrentlig hvert 10. minut.((("target difficulty")))
+
+genberegning af mål for sværhedsgrad::
+	En genberegning på netværksniveau af sværhedsgraden, som sker én gang for hver 2.106 blokke og tager hashingkraften for de foregående 2.106 blokke i betragtning.((("difficulty retargeting")))
+	
+gebyrer::
+	Afsenderen af en transaktion inkluderer ofte et gebyr til netværket for at bearbejde den forespurgte transaktion. De fleste transaktioner kræver et minimumgebyr på 0,5 mBTC.((("fees")))
+
+hash::
+	Et digitalt fingeraftryk af en mængde binært input.((("hash")))
+
+skabelsesblok::
+	Den første blok i blokkæden; bruges til at initialisere kryptovalutaen.((("genesis block")))
+	
+miner::
+En netværksknude, som finder gyldige proof of work for nye blokke ved gentagen hashing.((("miner")))
+
+netværk::
+Et peer-to-peer-netværk, som propergerer transaktioner og blokke til alle bitcoin-knuder på netværket.((("network")))
+	
+Proof-Of-Work::
+	Et stykke data, som kræver betydelig beregning at finde. Indenfor bitcoin skal minere finde en numerisk løsning på SHA256-algoritmen, som lever op til et mål på netværkniveau, nemlig målet for sværhedsgraden.((("proof-of-work")))
+
+belønning::
+Et beløb, der inkluderes i hver ny blok som en belønning fra netværket til den miner, som fandt proof-of-work-løsningen. I skrivende stund er den 25 BTC pr. blok.((("reward")))
+
+hemmelig nøgle (a.k.a. privat nøgle)::
+	Det hemmelige tal, som låser op for de bitcoin, der er sendt til den tilsvarende adresse. En hemmelig nøgle ser ud som fx +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("secret key")))((("private key", see="secret key")))
+	
+transaktion::
+Sagt på en simpel måde, en overførsel af bitcoin fra én adresse til en anden. Mere præcist er en transaktion en signeret datastruktur, som udtrykker en overførsel af værdi. Transaktioner transmitteres over bitcoin-netværket, opsamles af miners og inkluderes i blokke, og gøres permanente i blokkæden.((("transaction")))
+
+tegnebog::
+Software, som opbevarer alle dine bitcoin-adresser og hemmelige nøgler. Brug den til at sende, modtage og opbevare dine bitcoin.((("wallet"))) 

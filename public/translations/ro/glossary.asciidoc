@@ -1,0 +1,61 @@
+[preface]
+== Definiții rapide
+
+Aceasta secțiune conține mulți dintre termenii utilizați în raport cu Bitcoin. Acești termeni sunt utilizați în întreaga carte, deci puneți un semn aici pentru o referință rapidă.
+
+adresă::
+    O adresă Bitcoin arata astfel +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. Acesta constă dintr-un șir de litere și numere care încep cu un "1" (numărul unu). La fel ca atunci cand cereți altora să trimita un e-mail la adresa voastră de e-mail, ați putea ruga pe altcineva să vă trimită Bitcoin la adresa bitcoin.((("adresă bitcoin")))((("adresă", see="bitcoin address" )))((("cheie publică", see="bitcoin address")))
+
+bip::
+    Propuneri de îmbunătățire Bitcoin. Un set de propuneri pe care membrii comunității Bitcoin le-au prezentat pentru a imbunatati Bitcoin. De exemplu, BIP0021 este o propunere de îmbunătățire a schemei identificatorului uniform de resurse (URI) Bitcoin.((("bip"))) 
+
+bitcoin::
+    Numele unității monetare (moneda), rețeaua, și software-ul.((("bitcoin"))) 
+
+block::
+    Un grup de tranzacții, marcat cu o amprentă de timp, și o amprentă a blocului precedent. Din antetul blocului se calculeaza un hash pentru a produce o dovadă de lucru, validând astfel tranzacțiile. Blocurile valide sunt adăugate la blockchain-ul principal prin consens obținut în rețea. ((("block")))
+
+blockchain::
+	O listă de blocuri validate, fiecare legat la predecesorul său până la blocul geneza.((("blockchain")))
+	
+confirmări::
+	Odată ce o tranzacție este inclusă într-un bloc valid, are un confirmare. De îndată ce _înca un_ bloc este minerit in aceeași blockchain, tranzacția are două confirmări, și așa mai departe. Șase sau mai multe confirmari sunt considerte o dovadă suficientă că o tranzacție nu poate fi inversata.((("confirmări")))
+
+dificultate::
+	O setare la nivelul rețelei care controlează cât de mult calcul este necesar pentru a produce o dovadă de lucru.((("dificultate")))
+
+dificultate țintă::
+ 	O dificultate la care toate calculele din rețea vor rezolva blocuri aproximativ la fiecare 10 minute.((("dificultate țintă")))
+
+recalculare dificultate::
+	O recalculare la nivel de rețea a dificultății care se întâmplă o dată la 2106 de blocuri și ia în calcul puterea calcul hash-uri aferenta celor 2106 blocuri anterioare.((("recalculare dificultate")))
+	
+comision::
+	Expeditorul a unei tranzacții include de multe ori un comision pentru procesarea tranzacției solicitate. Cele mai multe tranzacții au nevoie de un comision minim de 0,5 mBTC.((("comision")))
+
+hash::
+	O amprentă digitală a unor date binare.((("hash")))
+
+block geneză::
+	Primul block din blockchain, folosit pentru a inițializa moneda digitală.((("block geneză")))
+	
+miner::
+Un nod de rețea care gasește proof-of-work valabile, pentru blocuri noi, prin calcule hash repetate.((("miner")))
+
+rețea::
+O rețea peer-to-peer care propagă tranzacțiile și blocurile în fiecare nod Bitcoin din rețea.((("rețea")))
+	
+Proof-of-Work::
+	Un rezultat sub forma de date care necesită calcul semnificativ pentru a fi găsit. În bitcoin, minerii trebuie să găsească o soluție numerică pentru algoritmul SHA256 care îndeplinește un obiectiv stabilit la nivel de rețea, dificultate ținta. ((("proof-of-work")))
+
+recompensă::
+O numar de BTC inclus în fiecare bloc nou ca o recompensă din patea rețelei pentru minerul care a gasit primul solutia Proof-of-Work. Acesta este în prezent 25BTC pe bloc.((("recompensă")))
+
+cheie secretă ( sau cheie privată)::
+	Numărul secret care deblochează bitcoinii trimiși la adresa corespunzătoare cheii private. O cheie secretă arată astfel +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("cheie secretă")))((("cheie privată", see="cheie secretă")))
+	
+tranzacție::
+În termeni simpli, un transfer de bitcoini de la o adresă la alta. Mai precis, o tranzacție este o structura de date semnată care exprimă un transfer de valoare. Tranzacțiile sunt transmise prin rețeaua bitcoin, colectate de mineri, incluse în blocuri și făcute permanente în blockchain.((("tranzacție")))
+
+portofel::
+Software-ul care detine toate adresele de Bitcoin și cheile secrete. Folositi-l pentru a trimite, primi, și păstra bitcoinii dumneavoastră.((("portofel"))) 

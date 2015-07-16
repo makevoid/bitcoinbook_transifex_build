@@ -1,0 +1,1375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch9">Alternatív blokkláncok, fizetőeszközök, alkalmazások</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>A bitcoin létrejöttét közel 20 év kutatómunka előzte meg az elosztott rendszerek és fizetőeszközök világában. A bitcoinnal egy forradalmian új technológia jött létre: a munkabizonyítékon (Proof-of-Work) alapuló elosztott közmegegyezés. A bitcoinnak ez a központi jeletőségű vívmánya egy sereg egyéb újításnak is teret nyitott a fizetőeszközök, a pénzügyi szolgáltatások, a közgazdaság, az elosztott rendszerek, a választási rendszerek, a kormányzás, és a különféle szerződések terén.</p></div>
+<div class="paragraph"><p>Ebben a fejezetben azokkal az innovatív eljárásokkal (pl. alternatív láncok, fizetőeszközök, alkalmazások) foglalkozunk, amelyek a bitcoin, illetve a blokklánc 2009-es bevezetése óta születtek. Meg fogjuk vizsgálni az alternatív érméket, azaz az <em>altcoin</em>-okat, melyek ugyanolyan alapokon nyugvó digitális pénzek, mint a bitcoin, de teljesen különböző blokkláncot és p2p hálózatot használnak.</p></div>
+<div class="paragraph"><p>A fejezetben megemlített alt-coinoknál legalább 50-szer több marad majd említés nélkül (kiváltva ezek fejlesztőinek és felhasználóinak haragját). Célunk nem az alt-coinok értékelése vagy minősítése, sőt még csak nem is a „legjelentősebb” fejlesztések a valamilyen szubjektív értékítéleten alapuló kiemelése, hanem az, hogy szemléltessük az ökoszisztéma változatosságát és gazdagságát, kiemelve azon fejlesztéseket, amelyek valamilyen újdonságot, vagy jelentős eltérést hoztak az addigiakhoz képest. Az alt-coinok néhány igazán érdekes példája pénzügyi szemszögből tulajdonképpen abszolút bukásnak minősíthető. Sokszor mégis pont ettől válnak igazán érdekessé, tanulmányozásra méltóvá. Ugyanakkor hangsúlyozni kell, hogy az itt leírtak semmiféleképpen sem tekinthetők befektetői kisokosnak.</p></div>
+<div class="paragraph"><p>Szinte naponta jelennek meg új fejlesztések, így szinte biztos, hogy néhány fontos alt-coin kimarad a felsorolásunkból, és az sincs kizárva, hogy pont az, amelyik megváltoztatja majd a történelmet. Az innovációk gyorsasága teszi vibrálóvá és izgalmassá ezt a szférát, és egyben garantálja, hogy ez a fejezet már a nyomtatásba kerülésekor idejétmúlt lesz.</p></div>
+<div class="sect2">
+<h3 id="_az_alternatív_fizetőeszközök_és_blokkláncok_osztályozása">Az alternatív fizetőeszközök és blokkláncok osztályozása</h3>
+<div class="paragraph"><p>A bitcoin egy nyílt forráskódú projekt, amelynek kódja számos egyéb szoftver alapjául szolgált. A bitcoin forráskódjából származó leggyakoribb szoftverek az alternatív, decentralizált fizetőeszközök, vagyis az ú.n. <em>alt-coinok</em>, melyek a bitcoinnal megegyező építőelemeket használnak a különböző digitális fizetőeszközök megvalósítához.</p></div>
+<div class="paragraph"><p>A bitcoin blokkláncára egy egész sereg protokollt épül. Ezek a  <em>meta-coinok</em>, <em>meta-chainek</em>, vagy <em>blokklánc alkalmazások</em>, melyek a blokkláncot egyfajta alkalmazási platformként használják, vagy a bitcoin protokollt további protokoll rétegekkel bővítik. Ilyen például a Colored Coins, a Mastercoin,az NXT és a Counterparty.</p></div>
+<div class="paragraph"><p>Az alábbiakban néhány jelentősebb alt-coint fogunk megvizsgálni, többek között a Litecoin-t, a Dogecoin-t, a Freicoin-t, a Primecoin-t, a Peercoin-t, a Darkcoin-t, és a Zerocoin-t. Felhozott példáinkat történelmi okokból, vagy egy-egy specifikus újítás miatt tartjuk jelentősnek, semmiképp sem azért, mert ezek az általunk „legjobbnak”, vagy legértékesebbnek vélt alt-coinok.</p></div>
+<div class="paragraph"><p>Az alt-coinokon kívül számos olyan alternatív blokklánc implementáció is van, amelyek nem igazán felelnek meg a „coin” kategóriának, így ezeket a fejlesztéseket <em>alt-chain</em>-eknek hívom a továbbiakban. Ezek az alt-chainek szerződéseket, név regisztrációkat, és egyéb alkalmazásokat valósítanak meg valamilyen közegyezést teremtő algoritmussal és egy osztott blokklánccal. Az alt-chainek ugyanazokat az építő elemeket használják, mint a bitcoin, és néha az is előfordul, hogy fizetőeszközként, vagy egyfajta fizetési rendszerként használják őket, de az elsődleges céljuk nem az, hogy fizetőeszközként funkcionáljanak. Az alt-chainek közül a Namecoin-t, az Ethereum-ot, és az NXT-t fogjuk részletesebben megvizsgálni.</p></div>
+<div class="paragraph"><p>Végül meg kell említeni azokat a bitcoin versenytársakat is, amelyek felkínálják ugyan a digitális fizetőeszköz, vagy digitális fizetési hálózat lehetőségét, de nem használnak semmilyen decentralizált főkönyvet vagy munkabizonyítékon (Proof-of-Work) alapuló közmegyezési mechanizmust. Ide tartozik például a Ripple, illetve társai. Ezek a nem-blokklánc alapú technológiák kívül esnek e könyv keretein, így jelen fejezetben sem foglalkozunk velük.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_meta_coin_platformok">Meta-coin platformok</h3>
+<div class="paragraph"><p>A meta-coinok és meta-chainek olyan szoftver rétegek, amelyek a bitcoinra lettek ráépítve, azaz esetükben vagy egyfajta „fizetőeszköz a fizetőeszközben” implementációról, vagy a bitcoin rendszerén belüli platformról/protokollról van szó. Ezek a funkcionális rétegek további tulajdonságokkal és képességekkel bővítik a bitcoin protokollt, oly módon, hogy a bitcoin tranzakciókba és címekbe egyéb kiegészítő adatokat kódolnak. Az első ilyen típusú meta-coin implementációk különféle „hack”-eket használtak a bitcoin blokklánc meta-adatokkal történő bővítésére, így például bitcoin címekbe kódoltak adatokat, vagy felhasználatlan tranzakciós mezőket (például a tranzakció szekvencia mezőjét) hasznosítottak a járulékos protokollal kapcsolatos meta-adatok kódolására. Mióta bevezetésre került az OP_RETURN műveleti kód, a meta-coinok közvetlenebb módon tudnak a blokkláncba meta-adatokat kódolni, és a legtöbb meta-coin ennek a használatára állt át.</p></div>
+<div class="sect3">
+<h4 id="_szinezett_érmék_colored_coins">Szinezett érmék (Colored Coins)</h4>
+<div class="paragraph"><p>Az úgynevezett <em>Színezett Érmék</em> (Colored Coins) egy olyan meta-protokoll, amely a bitcoin egy kis mennyiségéhez rendel hozzá további információkat. Ezeknek a színezett érméknek az a célja, hogy a megjelölt bitcoint egyéb értékkel is felruházzák. Például képzeljünk el egy 1 dolláros bankjegyet, amelyre rápecsételjük azt a feliratot, hogy „Ez az Hiper-Szuper Kft. 1 egységnyi részvényesi elismervénye”. Ekképp az 1 dolláros bankjegy két funkciót is betölt: bankjegy és egyben részvényesi elismervény. Mivel elismervényi aspektusa értékesebb fizetőeszközi minőségénél, így valószínűsíthető, hogy nem fogunk cukorkát vásárolni vele. Fizetőeszközi minősége tehát már nem tűnik hasznosnak. A Szinezett Érmék hasonló elven működnek, azaz a bitcoin egy adott és parányi részét egy másik minőséggel is felruházzák. A terminusban a „color” (szín) kifejezés arra utal, hogy egy adott egységet egy speciális jelentéssel, attribútummal látunk el. Az attribútum jelzi a specifikus minőség jelenlétét az így megjelölt egységben. A „színmegjelölést”, mint attribútumot természetesen metaforikusan értjük, azaz a Colored Coinok nem tartalmaznak színeket.</p></div>
+<div class="paragraph"><p>A Colored Coin-ok kezelésére speciális „pénztárca” programok szolgálnak, amelyek lajstromba veszik és értelmezik azokat a meta-adatokat, amelyeket a „colored” bitcoinokhoz csatoltak. Egy ilyen a pénztárca használatával a felhasználó egy adott mennyiségű „színtelen” (attribútum nélküli) bitcoint egy speciális jelentésű cimke hozzáadásával szinezett érmévé konvertálhat. Ez a cimke jelenthet részvényesi elismervényt, kuponokat, ingatlan tulajdont, árucikket, beváltható pénzt, és még sok minden mást. Csak a szinezett érme felhasználóin múlik, hogy milyen specifikus minőséggel ruházzák fel az adott „színnel” (attribútummal) ellátott coinokat. Ahhoz, hogy egy sima érme szinezett érmévé váljon, arra van szükség, hogy a felhasználó meghatározza a hozzá társított meta-adatokat, például kibocsájtás típusát, osztható, vagy osztathatatlan voltát, szimbólumát, leírását és egyéb adatokat. Miután egy sima coin szinezett érmévé vált, értékesíthetővé, oszthatóvá, illetve egyesíthetővé válik, és akár jutalékok kifizetésére is alkalmas. A szinezett érmék visszaállíthatóak sima coinokká is, úgy, hogy megfosztjuk őket speciális minőségüktől, és visszaállítjuk „sima” bitcoin névértéküket.</p></div>
+<div class="paragraph"><p>Mindennek szemléltetéseképpen létrehoztunk 20 db „MasterBTC” attribútummal ellátott szinezett érmét, kupont, amelyek a jelen könyv egy-egy ingyenes példányának felelnek meg, amint azt a <a href="#example_9-1">[example_9-1]</a> mutatja. Ezt követően a MasterBTC jelzéssel ellátott összes egység (vagyis az ilyen attribútummal ellátott colored coin-ok) értékesíthetőek vagy továbbadhatóak minden olyan bitcoin felhasználónak, aki rendelkezik a kezeléséhez szükséges pénztárca programmal. Egy adott felhasználó a megszerzett colored coin-t más felhasználónak továbbutalhatja, vagy a kibocsájtónál beválthatja a könyv egy ingyenes példányára. Az ismertetett példa <a href="https://cpr.sm/FoykwrH6UY">itt</a> érhető el.</p></div>
+<div class="exampleblock" id="example_9-1">
+<div class="title">Example 1. A jelen könyv egy ingyenes példányához kupont biztosító colored coin meta-adat profilja</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_mastercoin">Mastercoin</h4>
+<div class="paragraph"><p>A Mastercoin egy olyan bitcoinra illesztett protokoll, amely a bitcoin rendszerét kiterjesztve, különféle alkalmazásokhoz biztosít platformot. A Mastercoin elsősorban nem fizetési eszköz, jóllehet a Mastercoin tranzakciókhoz az MST megjelölésű fizetőeszközt használja. A Mastercoint legjobban talán úgy lehetne meghatározni, mint fizetőeszközök, vagyontárgyak, decentralizált eszközök cseréjét, vagy például szerződések és persze még számos más dolog létrehozását támogató platformot. A Mastercoin egy olyasféle alkalmazási protokoll, amely a bitcoin pénzügyi tranzakciós transzport-rétegéhez van hozzáillesztve, hasonlóképpen a TCP-n futó HTTP-hez.</p></div>
+<div class="paragraph"><p>A Mastercoin elsősorban azokon a tranzakciókon keresztül operál, amelyek egy speciális bitcoin címről, vagy címre érkeznek (ezt  „exodus” címnek hívjuk, <tt>1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P</tt>), hasonlóképpen ahhoz, ahogy a HTTP is egy speciális portot (80 port) használ arra, hogy megkülönböztesse az általa szállított forgalmat a TCP egyéb forgalmától. A Mastercoin protokoll a tranzakciók meta-adatait a speciális exodus címmel és többszörös aláírások használatával kódolja. A Mastercoin a jövőben fokozatosan az OP_RETURN bitcoin operátor használatára tér át.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_counterparty">Counterparty</h4>
+<div class="paragraph"><p>A Counterparty szintén egy bitcoinra illesztett protokoll, amely fizetőeszközök, átruházható zsetonok, pénzügyi eszközök, és decentralizált vagyontárgyak cseréinek, illetve egyéb speciális alkalmazásoknak a gyűjtőtára. A Counterparty implementációja elsősorban a bitcoin script nyelv <tt>OP_RETURN</tt> operátorát használja a meta-adatok rögzítésére. Ezek járulékos jelentéssel bővítik ki a bitcoin tranzakciókat. A Counterparty az XCP jelzést használja a Counterparty tranzakciók során.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_alt_coin_ok">Alt-coin-ok</h3>
+<div class="paragraph"><p>Az alt-coin-ok túlnyomó többségének az alapját a bitcoin forráskódja jelentette. Ezek az ú.n. „elágazások” („forks”). Némelyikük a „semmiből” lett implementálva, azaz a blokklánc modellre támaszkodik, de anélkül, hogy bármit is felhasználna a bitcoin forráskódjából. Az alt-coinok és az alt-chainek (melyekre a következő részben térünk ki részletesebben) a blokklánc technológia teljesen különálló implementációi, tehát mindegyik változat a saját blokkláncát használja. A terminusok (alt-coin, alt-chain) közötti különbség arra utal, hogy míg az alt-coinok elsősorban fizetőeszközként funkcionálnak, addig az alt-chain-eket általában más céllal használják.</p></div>
+<div class="paragraph"><p>Szigorúan véve, a bitcoin kód első jelentős alt-coinja igazából nem is alt-coin volt, hanem egy <em>Namecoin</em> nevű alt-chain, de erről a következő részben fogunk részletesebben írni.</p></div>
+<div class="paragraph"><p>A bejelentés időpontja alapján az első alt-coinnak az <em>IXCoin</em> minősíthető, amelyet 2011 augusztusában indítottak útjára. Az IXCoin-ban csak néhány bitcoin paramétert változtattak meg, például felgyorsították a fizetőeszköz „előállítását”, 96 érmére növelve a blokkokért járó jutalmat.</p></div>
+<div class="paragraph"><p>A <em>Tenebrix</em> 2011 szeptemberében indult útjára. A Tenebrix volt az első olyan digitális pénz, amely egy alternatív munkabizonyíték (Proof-of-Work) rendszeren alapuló algoritmust, az úgynevezett <em>scrypt</em>-et implementálta. A scrypt algoritmus eredetileg jelszavak megerősítésére szolgált (hogy ellenáljanak a nyers erővel (brute-force) történő töréseknek). A hivatalos közlemény szerint a Tenebrix kifejlesztésénél az volt a vezérelv, hogy egy olyan coint hozzanak létre, amely ellenálló mind a GPU, mind az ASIC tipusú bányászattal szemben, mert memória-igényes algoritmust használ. A Tenebrix, mint fizetőeszköz ugyan nem könyvelt el különösebb sikereket, de megalapozta a Litecoin-t, amely óriási népszerűségre tett szert, egyben klónok százai előtt nyitotta meg az utat.</p></div>
+<div class="paragraph"><p>A <em>Litecoin</em> azon kívül, hogy a scrypt-et használja munkabizonyíték (Proof-of-Work) algoritmusnak, egy gyorsabb blokk-generálási időt valósított meg, és 2,5 percre csökkentette a bitcoin 10 perces intervallumát. A Litecoin-t úgy is szokták emlegetni, hogy ez az „ezüst, ha a a bitcoin az arany”, és nem vitás, hogy alternatív fizetőeszközként a bitcoin egy könnyűsúlyú versenytársa. A gyorsabb megerősítési időnek, illetve a maximum 84 millió érme összmennyiségnek köszönhetően, számos Litecoin hívő gondolja úgy, hogy az „ezüst érme” a kereskedelmi tranzakciók területén a bitcoinnál jobb megoldást jelent.</p></div>
+<div class="paragraph"><p>A bitcoinra vagy Litecoin-ra támaszkodó különféle alt-coin sarjak száma 2011 és 2012 folyamán tovább nőtt, és 2013 elején már közel 20 alt-coin versenyzett a piaci pozíciószerzésért. 2013 végére a különféle alt-coinok száma megtízszereződött, elérve a 200-as határt, így 2013 vitathatatlanul az „alt-coinok éve” volt. Természetesen a növekedés folytatódott, 2014-ben már közel 500 alt-coin létezéséről tudunk. Napjainkban az alt-coinok több mint fele Litecoin klón.</p></div>
+<div class="paragraph"><p>Egy alt-coin létrehozása viszonylag egyszerű feladat, ezért is van már belőlük 500-nál is több. Legtöbbjük csak nagyon kis eltérést mutat a bitcoinhoz képest, és igazából semmi említésre méltót sem tartalmaz. Sok csak arra a célra szolgál, hogy a fejlesztőjét gazdagabbá tegye. A „pump-and-dump” sémák (manipulatív módon felvinni az altcoin árát, majd hirtelen elárasztani vele a piacot) és az utánzók között azért természetesen van néhány figyelemre méltó kivétel, és igazán fontos innováció is. Ezek az alt-coinok vagy egy egészen eltérő megközelítést alkalmaznak, vagy a bitcoin tervezési mintáját jelentős újítással bővítik. Alapvetően három olyan területet tudunk elkülöníteni, amelyekben az említett alt-coinok változást hoztak a bitcoinhoz képest:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Eltérő pénzügyi irányelvek
+</p>
+</li>
+<li>
+<p>
+Eltérő munkabizonyíték (Proof-of-Work) rendszer, vagy eltérő konszenzus mechanizmus
+</p>
+</li>
+<li>
+<p>
+Különleges jellemzők, például fokozottabb anonimitás
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Az alt-coinok és alt-chain-ek grafikus idővonala az alábbi linken tekinthető meg: <a href="http://mapofcoins.com">http://mapofcoins.com</a>. </p></div>
+<div class="sect3">
+<h4 id="_egy_alt_coin_kiértékelése">Egy alt-coin kiértékelése</h4>
+<div class="paragraph"><p>Hogyan lehet eldönteni, hogy a rengeteg alt-coin közül melyek a valójában figyelemre méltó fejlesztések? Vannak alt-coinok, amelyek arra tesznek kísérletet, hogy széles körben, fizetőeszközként kerüljenek felhasználásra. Mások inkább laboratóriumi próbálkozások, melyek különböző jellegzetességekkel, vagy pénzügyi modellekkel kísérleteznek, számos fejlesztés pedig kizárólag a fejlesztőik gyors meggazdagodásának a céljából született. Az alt-coinok kiértékeléséhez azok sajátos jellegzetességeit és piaci paramétereit vettem figyelembe.</p></div>
+<div class="paragraph"><p>Íme pár kérdés, amit érdemes feltenni egy alt-coinnal kapcsolatban, amikor azt a bitcoinnal összevetve vizsgáljuk:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Hozott-e valamilyen jelentős innovációt az adott alt-coin?
+</p>
+</li>
+<li>
+<p>
+Eléggé különbözik-e az adott alt-coin a bitcointól ahhoz. hogy átcsábítsa a bitcoin felhasználókat?
+</p>
+</li>
+<li>
+<p>
+Az adott alt-coin kapcsolódik-e egy érdekes piaci szektorhoz vagy alkalmazáshoz?
+</p>
+</li>
+<li>
+<p>
+Képes-e elegendő bányász figyelmét felkelteni ahhoz, hogy védve legyen a támadásokkal szemben?
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Néhány megvizsgálandó piaci és pénzügyi tényező:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Mekkora az adott alt-coin teljes piaci kapitalizációja?
+</p>
+</li>
+<li>
+<p>
+Mennyi alt-coin becsült felhasználóinak/pénztárcáinak a száma?
+</p>
+</li>
+<li>
+<p>
+Mennyi az alt-coint elfogadó kereskedők száma?
+</p>
+</li>
+<li>
+<p>
+Naponta hány darab alt-coin tranzakció megy végbe?
+</p>
+</li>
+<li>
+<p>
+Mekkora a napi tranzakciók értéke?
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Könyvünk jelen fejezetében elsősorban az alt-coinok technikai jellegzetességeire és potenciális innovációira koncentrálunk, tehát az imént felsorolt kérdések első felére.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_pénzügyi_paraméterű_alternatívák_litecoin_dogecoin_freicoin">Pénzügyi paraméterű alternatívák: Litecoin, Dogecoin, Freicoin</h4>
+<div class="paragraph"><p>Pénzügyi paraméterei alapján a bitcoin egy deflációs, fix kibocsátású pénz. Mennyisége 21 millió egységre (vagy 2100 billió kisebb egységre) korlátozódik, kibocsátásának sebessége szabályosan (mértani sorozat szerint) csökkenő, és „szívverésének” üteme - a tranzakciók visszaigazolásának és a blokkok legenerálásának az ideje - 10 perc. Számos alt-coin változtatta meg ezt a három paramétert abból a célból, hogy egy eltérő monetáris keretrendszert hozzon létre. A több száz ilyen típusú alt-coin közül a leginkább figyelemre méltó fejlesztések a következőek:</p></div>
+<div class="sect4">
+<h5 id="_litecoin">Litecoin</h5>
+<div class="paragraph"><p>A Litecoin, amely az egyik legelső alt-coin volt 2011-ben, a bitcoin utáni a második legsikeresebb digitális fizetőeszköz. Elsődleges innovációi a scrypt, mint Proof-of-Work algoritmus alkalmazása (Tenebrix-től örökölt újítás), illetve a gyorsabb/könnyebb fizetőeszköz paraméterek.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 2,5 perc
+</p>
+</li>
+<li>
+<p>
+Maximális érme mennyiség: 84 millió egység, 2140-ig.
+</p>
+</li>
+<li>
+<p>
+Az egyezményes algoritmus: scrypt Proof-of-Work
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 160 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_dogecoin">Dogecoin</h5>
+<div class="paragraph"><p>A Dogecoin 2013 decemberében indult útjára, mint a Litecoin egyik „elágazása”. A Dogecoin azért érdekes, mert monetáris politikája gyors kibocsátást ír elő, továbbá a fizetőeszköz maximális érmemennyiségge elég magas ahhoz, hogy felhasználóit fizetésre, illetve költésre motiválja. Abból a szempontból is figyelemre méltó, hogy eredetileg csak viccnek szánták, azonban viszonylag gyorsan nagy népszerűségre tett szert, és egy relatív nagy és aktív felhasználói közösséggel is rendelkezett, 2014-es gyors hanyatlását megelőzően.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 60 másodperc
+</p>
+</li>
+<li>
+<p>
+Maximális érme mennyiség: 100&#8217;000&#8217;000&#8217;000 (100 milliárd) Doge, 2015-ig.
+</p>
+</li>
+<li>
+<p>
+Az egyezményes algoritmus: scrypt Proof-of-Work
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 12 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_freicoin">Freicoin</h5>
+<div class="paragraph"><p>A Freicoin 2012 júliusában kezdte meg pályafutását. Ez egy <em>inflálódó fizetőeszköz</em>, ami azt jelenti, hogy az érték tárolásához negatív kamatláb tartozik. A Freicoin-ban tárolt érték után évente 4,5 % díj kerül felszámításra, ami serkenti a fogyasztást, és visszatartja a pénz felhalmozását. A Freicoin azért érdekes, mert egy olyan monetáris politikát implementál, amely pontosan a bitcoin deflációs politikájának az ellentéte. A Freicoin mint fizetőeszköz nem igazán lett sikeres, jelentősége inkább abban van, hogy jól szemlélteti az alt-coinok képviselte monetáris politikák változatosságát.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Maximális érme mennyiség: 100 millió érme, 2140-ig.
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: SHA256 Proof-of-Work
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 130&#8217;000 amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_konszenzusrendszer_újításai_peercoin_myriad_blackcoin_vericoin_nxt">A konszenzusrendszer újításai: Peercoin, Myriad, Blackcoin, Vericoin, NXT</h4>
+<div class="paragraph"><p>A bitcoin konszenzus mechanizmusa munkabizonyíték (Proof-of-Work) alapú, és az SHA256 algoritmust használja. Az első alt-coinok a scrypt-et használták alternatív Proof-of-Work algoritmusként, ekképp az egyébként ASIC centralizációra hajlamos bányászat CPU-barát folyamattá vált. A scrypt alkalmazása után a konszenzus mechanizmus lett az áttörő innovációk fő területe. Alt-coinok garmadáinál figyelhető meg a változatos algoritmus implementáció, például a scrypt, a   scrypt-N, a Skein, a Groestl, az SHA3, az X11, a Blake, és mások adoptációja. Néhány alt-coin egyszerre több algoritmust is alkalmaz a Proof-of-Work rendszerhez. 2013 folyamán a Proof-of-Work rendszernek egy olyan alternatívájával is találkoztunk, amelyet <em>kockázati bizonyítéknak</em> (Proof-of-Stake) hívnak, és amely számos modern alt-coin alapját képzi.</p></div>
+<div class="paragraph"><p>A kockázati bizonyíték (Proof-of-Stake) egy olyan rendszer, amelynél a fizetőeszköz tulajdonosai leköthetik fizetőeszközüket, mint egyfajta kamatozó biztosítékot. A letéti bizonylathoz (Certificate of Deposit azaz CD) hasonlóan a résztvevők leköthetik megtakarításaik egy részét, ezáltal nyereségre tehetnek szert új fizetőeszközök formájában (kamatkifizetésként) és traznakciós díjak formájában.</p></div>
+<div class="sect4">
+<h5 id="_peercoin">Peercoin</h5>
+<div class="paragraph"><p>A Peercoin-t 2012 augusztusában indították útjára. Ez volt az első olyan alt-coin, amely az új fizetőeszköz kibocsátásához a munkabizonyíték (Proof-of-Work) és a kockázati bizonyíték (Proof-of-Stake) algoritmusának a keverékét használta.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: (Hibrid) Proof-of-Stake, kezdetben pedig Proof-of-Work rendszer
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 14 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_myriad">Myriad</h5>
+<div class="paragraph"><p>A Myriad 2014 februárjában jelent meg, és azért említésre méltó, mert, öt különböző Proof-of-Work algoritmust alkalmaz (SHA256d, Scrypt, Qubit, Skein és Myriad-Groestl) egyszerre, és a nehézségi szint a bányászati részvétel függvényében minden algoritmusnál más és más lehet. A Myriad mögött meghúzódó szándék az, hogy az alt-coint éppúgy immúnissá tegye az ASIC specializációval és központosítással szemben, mint az egyesített támadásokkal szemben, mivel több bányász algoritmust egyidejűleg kellene támadni.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: átlagosan 30 másodperc (2,5perces iránycél bányászalgoritmus típusonként)
+</p>
+</li>
+<li>
+<p>
+Maximális érme mennyiség: 2 milliárd, 2024-ig
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: több algoritmust alkalmazó Proof-of-Work
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 120&#8217;000 amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_blackcoin">Blackcoin</h5>
+<div class="paragraph"><p>A Blackcoin 2014 februárjában jelent meg, és a kockázati (Proof-of-Stake) algoritmust használ konszenzus algoritmusként. Azért érdemel figyelmet, mert bevezette a „multipools”-t, azaz a bányásztársulatoknak egy olyan típusát, amely automatikusan váltani tud a különböző alt-coinok között, attól függően, hogy melyiknél rentábilisabb a bányászat.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 1 perc
+</p>
+</li>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: Proof-of-Stake
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 3,7 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_vericoin">VeriCoin</h5>
+<div class="paragraph"><p>A VeriCoin 2014 májusában jelent meg. Kockázati (Proof-of-Stake) algoritmust használ a közmegegyezésre, de olyan változó kamatlábbal, amely a piaci kínálat és kereslet szerint, dinamikusan alakul. Ugyancsak ez volt az első olyan alt-coin, amely , a pénztárcából történő bitcoinos fizetéseknél automatikusan  bitcoinra váltódik át.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 1 perc
+</p>
+</li>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: Proof-of-Stake
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 1,1 millió amerikai dollár 2014 első felében
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_nxt">NXT</h5>
+<div class="paragraph"><p>A NXT (ejtsd: „Next”) egy „színtiszta” Proof-of-Stake alt-coin, legalábbis abban az értelemben, hogy nem alkalmazza a Proof-of-Work bányászatot. Az NXT egy a „semmiből” implementált digitális fizetőeszköz, tehát sem nem a bitcoinnak, sem más alt-coinnak nem az elágazása. Az NXT-nek számos fejlett jellemzője van, pl. a név regisztráció (a Namecoinhoz hasonlóan), decentralizált eszközök cserelehetősége (a Colored Coin-okkal megegyezően), beépített decentralizált és biztonságos üzenetváltás (akárcsak a  Bitmessage-nél), és kockázat delegálás (a Proof-of-Stake másokra történő átruházása). A NXT hívei a „következő-generációs”, vagy 2.0 kriptopénznek is hívják ezt az alt-coint.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 1 perc
+</p>
+</li>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: Proof-of-Stake
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 30 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_kettős_célú_bányászati_innovációk_primecoin_curecoin_gridcoin">Kettős-célú bányászati innovációk: Primecoin, Curecoin, Gridcoin</h4>
+<div class="paragraph"><p>A bitcoin Proof-of-Work algoritmusának egy célja van: biztosítani a bitcoin hálózat biztonságát. A hagyományos kifizető rendszerek védelméhez hasonlítva a bányászat költségei nem is olyan jelentősek. Ennek ellenére sokak részéről érkezett olyan kritika, hogy a bányászat „költséges”. Az alt-coinok következő csoportja erre próbál megoldást találni. A kettős-célú Proof-of-Work algoritmus egyrészt valamilyen „hasznos” problémát old meg, másrészt a hálózat védelmére is használja a Proof-of-Work rendszert. Ha a fizetőeszköz védelmére szolgáló algoritmus egy külső felhasználással is rendelkezik, akkor ennek az a a kockázata, hogy ez a külső hatás is befolyásolni fogja a kereslet- kínálat görbéjét.</p></div>
+<div class="sect4">
+<h5 id="_primecoin">Primecoin</h5>
+<div class="paragraph"><p>A Primecoin 2013 júliusában látott napvilágot. Proof-of-Work algoritmusa prímszámok után kutat, nevezetesen Cunningham- és ikerprím láncok után. A prímszámok a tudomány számos területén hasznosak. A Primecoin blokklánca a munkabizonyíték algoritmussal feltárt prímszámokat tartalmazza, eképp a tudományos felfedezéseknek egyfajta nyilvános tárhelye, emellett egyben a tranzakciók nyilvános jegyzéke is.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 1 perc
+</p>
+</li>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Konszenzus  algoritmus: prímszám láncok előállítása révén megvalósított Proof-of-Work rendszer
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 1,3 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_curecoin">Curecoin</h5>
+<div class="paragraph"><p>A Curecoin 2013 májusában jelent meg. Az SHA256 Proof-of-Work algoritmust kombinálja a fehérjék feltekeredésének a tanulmányozásával a „<a href="mailto:Folding@Home�">Folding@Home�</a>�� projekten keresztül. A fehérjék feltekeredésének modellezése a fehérjék közötti biokémiai kölcsönhatások számításigényes szimulációját igényli, és a segítségével betegségek új gyógymódjai fedezhetők fel.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: fehérjék feltekeredésének a kutatásával megvalósított Proof-of-Work rendszer
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 58&#8217;000 amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_gridcoin">Gridcoin</h5>
+<div class="paragraph"><p>A Gridcoin-t 2013 októberében mutatták be. A scrypt-alapú Proof-of-Work rendszert a nyílt forrású BOINC grid-computing-ban való részvételért cserébe adott jutalom egészíti ki. A BOINC egy nyílt forráskódú protokoll, amely tudományos kutatások számításainál használható, és amely lehetővé teszi a résztvevők számára, hogy saját számítási kapacitásukat megosszák egy széles körű, akadémiai kutatást szolgáló számítási kapacitással. A Gridcoin a BOINC-ot, mint általános számítási platformot használja, tehát nem olyan specifikus problémák megoldására, mint amilyen például a prímszámok keresése, vagy a fehérjék feltekeredésének a szimulációja.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 150 másodperc
+</p>
+</li>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: BOINC grid computing alapján megvalósított, jutalommal kiegészített Proof-of-Work rendszer
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 122&#8217;000 amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_anonimitás_fokuszú_alt_coinok_cryptonote_bytecoin_monero_zerocash_zerocoin_darkcoin">Anonimitás-fokuszú alt-coinok: CryptoNote, Bytecoin, Monero, Zerocash/Zerocoin, Darkcoin</h4>
+<div class="paragraph"><p>A bitcoint, gyakran hibásan, anonim fizetőeszközként is jellemzik, holott adat elemzéssel viszonylag egyszerűen felderíthető egy bitcoin cím mögött megbújó személyazonosság, és a bitcoin címek összekapcsolása révén átfogó képet kaphatunk egy adott felhasználó bitcoin költekezési szokásairól. Számos olyan alt-coin született, amely kifejezetten ennek kérdésnek a megoldására szolgál, és amelyik kifejezetten a fokozott anonimitásra fókuszál. A legelső ilyen próbálkozás valószínűleg a <em>Zerocoin</em> volt, amely a bitcoinra épülő, és az anonimitást megőrző meta-coin protokol. A Zerocoint 2013-ban az IEEE Biztonsági és Titkosítási (Security and Privacy) szimpoziumán mutatták be. A Zerocoin egy teljesen külön alt-coinként, Zerocash néven kerül majd megvalósításra, evvel kapcsolatban a könyv írásának az idején is folynak a fejlesztések. Szintén az anonimtásra fókuszáló alternatíva a 2013 októberében egy dolgozatban bemutatott <em>CryptoNote</em>. A CryptoNote egy olyan alapvető technológia, amelyet számos alt-coin elágazás használ, és amelyről részletesebben alább lesz szó. A Zerocash-en és a Cryptonote-on kívül még egy sereg független és anonim alt-coint ismerünk, például a Darkcoin-t, amely lopakódó (stealth) titkos címekkel, vagy tranzakciók összekeverésével valósítja meg az aninimitást.</p></div>
+<div class="sect4">
+<h5 id="_zerocoin_zerocash">Zerocoin/Zerocash</h5>
+<div class="paragraph"><p>A Zerocoin a digitális fizetőeszköz anonimitásának elméleti megközelítése. A fejlesztést 2013-ban mutatták be a Johns Hopkins Egyetem kutatói. A Zerocash a Zerocoin alt-coin megvalósítása, és jelenleg is folyik a fejlesztése.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_cryptonote">CryptoNote</h5>
+<div class="paragraph"><p>A CryptoNote egy olyan referencia alt-coin implementáció, amely egy 2013 októberében bemutatott digitális anonim pénz alapjait biztosítja. Úgy lett kifejlesztve, hogy változatos implementációkhoz szolgálhasson elágazásként, illetve rendelkezik egy beépített periodikus „reset” mechanizmussal is, amely meggátolja, hogy a CryptoNote, mint fizetőeszköz kerüljön felhasználásra. A CryptoNote-ból rengeteg alt-coin született. Ide tartozik például a Bytecoin (BCN), az Aeon (AEON), a Boolberry (BBR), a duckNote (DUCK), a Fantomcoin (FCN), a Monero (XMR), a MonetaVerde (MCN) és a Quazarcoin (QCN). A CryptoNote azért is figyelemre méltó, mert nem a bitcoin egy elágazása, hanem teljes egészében egy újszerű kriptopénz implementáció</p></div>
+</div>
+<div class="sect4">
+<h5 id="_bytecoin">Bytecoin</h5>
+<div class="paragraph"><p>A Bytecoin volt az első CryptoNote-on alapuló implementáció, azaz a CryptoNote technológiáján alapuló első életképes anonim fizetőeszköz. A Bytecoin 2012 júliusában jelent meg. Itt kell megemlítenünk, hogy volt egy korábbi Bytecoin nevű alt-coin is BTE rövidítéssel, míg a CryptoNote derivatíva fizetőeszközének BCN a rövidítése. A Bytecoin a Cryptonight Proof-of-Work algoritmust használja, amely legalább 2 MB RAM-ot igényel bányász példányonként, ezáltal lehetetlenné teszi a GPU vagy az ASIC típusú bányászatot. A Bytecoin örökölte a CryptoNote-ból a ring-signatures-t, a belinkelhetetlen tranzakciókat és a blokklánc-elemzőkkel szembeni ellenállóképességét az anonimitás megőrzése érdekében.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 2 perc
+</p>
+</li>
+<li>
+<p>
+Maximális érme mennyiség: 184 milliárd BCN
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: Cryptonight Proof-of-Work
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 3 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_monero">Monero</h5>
+<div class="paragraph"><p>A Monero is egy CryptoNote implementáció. A kibocsátási görbéje a Bytecoin-nál egy árnyalatnyival előnyösebb, mivel az érmék 80% az első négy év során kerül kibocsátásra. Anonimitásra vonatkozó tulajdonságait a CryptoNote-tól örökölte, így azzal megegyeznek.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 1 perc
+</p>
+</li>
+<li>
+<p>
+Maximális érme mennyiség: 18.4 millió XMR
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: Cryptonight Proof-of-Work
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 5 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_darkcoin">Darkcoin</h5>
+<div class="paragraph"><p>A Darkcoin 2014 januárjában indult útjára. Anonim fizetőeszközt implementál egy DarkSend-nek nevezett  újra-keverő (re-mixing) protokollt használatával . A Darkcoin azért is érdekes, mert 11 különböző hash funkciót (blake, bmw, groestl, jh, keccak, skein, luffa, cubehash, shavite, simd, echo) használ a Proof-of-Work algoritmushoz.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 2.5 perc
+</p>
+</li>
+<li>
+<p>
+Maximális érme mennyiség: 22 millió DRK
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: több menetes, több algoritmust használó Proof-of-work
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 19 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nem_fizetőeszközként_használt_alt_chainek">Nem fizetőeszközként használt alt-chainek</h3>
+<div class="paragraph"><p>Az alt-chainek a blokklánc, mint ötlet alternatív implementációi, és elsősorban nem fizetőeszközként kerülnek alkalmazásra. Számos közülük fizetőeszközt is tartalmaz, de ez a fizetőeszköz inkább mint szimbólum/zseton kerül alkalmazásra, egyéb javak, vagy például egy szerződés szétosztásánál. Más szóval: a fizetőeszköz nem a platform lényegi kérdése, csak egy amolyan másodlagos adottsága.</p></div>
+<div class="sect3">
+<h4 id="_namecoin">Namecoin</h4>
+<div class="paragraph"><p>A Namecoin volt a bitcoin kód első elágazása. A Namecoin egy olyan decentralizált kulcsnyilvántartási és transzfer platform, amely blokkláncot használ. Az Internet domain-név regisztrációs rendszeréhez hasonló, globális domain-név nyilvántartást támogat. A Namecoin-t jelenleg a <tt>.bit</tt> gyökérdomain esetében alternatív Domain Név Szolgáltatóként (DNS) alkalmazzák. A Namecoin más névtérben lévő nevek és értékpárok nyilvántartására is alkalmas, például email címek, titkosítási kódok, SSL tanúsítványok,file aláírások, szavazói regiszterek, és számtalan egyéb dolog tárolására.</p></div>
+<div class="paragraph"><p>A Namecoin rendszer a namecoin fizetőeszközt is tartalmazza (szimbóluma NMC), amely a név-regisztrációk és név-cserék tranzakciós dijainak a megfizetésére használható. Jelenleg egy névregisztráció díja 0,01 NMC, azaz körülbelül 1 cent. A bitcoinhoz hasonlóan, a díjakat a Namecoin bányászok kapják.</p></div>
+<div class="paragraph"><p>A Namecoin alap paraméterei megegyeznek a bitcoinéval:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Blokk-generálási idő: 10 perc
+</p>
+</li>
+<li>
+<p>
+Maximális érme mennyiség: 21 millió NMC, 2140-ig.
+</p>
+</li>
+<li>
+<p>
+Konszenzus algoritmus: SHA256 Proof-of-Work
+</p>
+</li>
+<li>
+<p>
+Piaci kapitalizáció: 10 millió amerikai dollár 2014 közepén
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>A Namecoin névtere nem korlátozott, bárki, bárhogyan és bármilyen névteret használhat. Mindamellett, néhány bizonyos névtér rendelkezik egy jóváhagyott specifikációval, így amikor a blokkláncból kerül beolvasásra, a szoftver tudja, hogyan olvassa ki és hajtsa végre. Ha a név nem jólt formált, akkor a használt szoftvertől függetlenül hibát fogunk kapni. Íme, néhány példa a kedvelt névterekből:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+a <tt>d/</tt> a <tt>.bit</tt>  domain névtér domain-neve
+</p>
+</li>
+<li>
+<p>
+az <tt>id/</tt>  a személyes adatok, mint például email cím, PGP kulcsok, stb. jegyzékének a névtere
+</p>
+</li>
+<li>
+<p>
+az <tt>u/</tt>  egy további, jobban strukturált specifikáció személyazonosságok tárolására (openspecs alapú)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>A Namecoin kliens nagyon hasonlít a Bitcoin Core kliensre, lévén, hogy ugyanabból a forráskódból származik. Az installálásnál a kliens a Namecoin blokkláncnak egy teljes másolatát letölti, majd ezek után készen áll a nevek lekérdezésére és regisztrációjára. Három fő parancsa van:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<tt>name_new</tt>
+</dt>
+<dd>
+<p>
+egy név lekérdezése vagy pre-regisztrálása
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>name_firstupdate</tt>
+</dt>
+<dd>
+<p>
+egy név regisztrálása és a regisztráció publikálása
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>name_update</tt>
+</dt>
+<dd>
+<p>
+a részletek módosítása, vagy egy névregisztráció frissítése
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Például, a <tt>mastering-bitcoin.bit</tt> domain-név regisztrálására a <tt>name_new</tt> paranccsal a következőképpen lehetséges:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>A <tt>name_new</tt> parancs egy név-igényt regisztrál, azáltal, hogy létrehozza a névnek egy random kulccsal ellátott hash-ét. A <tt>name_new</tt> által visszaküldött két string: a hash és a random kulcs (<tt>a05555e0fc56c023</tt> a fenti példában), amelynek a felhasználásával a név regisztráció nyilvánossá tehető. Miután az adott igény regisztrálva lett a Namecoin blokkláncában, nyilvános regisztrációvá is konvertálható a <tt>name_firstupdate</tt> paranccsal, és a random kulcs megadásával:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ namecoind name_firstupdate d/mastering-bitcoin a05555e0fc56c023 "{"map": {"www": {"ip":"1.2.3.4"}}}}"
+b7a2e59c0a26e5e2664948946ebeca1260985c2f616ba579e6bc7f35ec234b01</tt></pre>
+</div></div>
+<div class="paragraph"><p>A fenti példa <tt>www.mastering-bitcoin.bit</tt> domain-nevet az 1.2.3.4. IP címhez rendeli hozzá. A visszaküldött hash a a tranzakció id-je, amellyel a regisztráció nyomon követhető. A regisztrált nevek a <tt>name_list</tt> parancs futtatásával nézhetők meg:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ namecoind name_list</tt></pre>
+</div></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>A Namecoin regisztrációkat minden 36&#8217;000 blokk után (kb. 200-250 naponként) frissíteni kell. A <tt>name_update</tt> parancsnak nincs díja, így a Namecoin domainok megújítása ingyenes. Szerény díj ellenében egy webes interfészen keresztül egy harmadik fél is kezelheti a regisztrációt, valamint az automatikus frissítést és megújítást. Ha egy harmadik fél végzi a műveleteket, akkor szükségtelen, hogy a Namecoin klienst mindenki saját maga futtassa, de ezzel elvész a Namecoin által kínált, decentralizált névnyilvántartás feletti független felügyelet.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_ethereum">Ethereum</h4>
+<div class="paragraph"><p>Az Ethereum egy blokklánc-nyilvántartáson alapuló, Turing-teljes szerződés feldolgozó és végrehajtó platform. Az Ethereum nem egy bitcoin klón, hanem egy teljesen független elvi alapokon álló implementáció. Az Ethereumnak van saját fizetőeszköze, az úgynevezett <em>éter</em> (ether), amely a <em>szerződések</em> végrehajtásához szükséges. A szerződéseket az Ethereum blokklánca rögzíti. A szerződések alacsony színtű, bájtkód-szerű, Turing-teljes nyelven vannak ábrázolva. A szerződések lényegében olyan programok, amelyek az egyes csomóponton az Ethereum rendszerén belül futnak. Az Ethereum szerződések adatokat tárolhatnak, ether kifizetéseket küldhetnek és fogadhatnak, ether-eket tárolhatnak, illetve végtelen számú (innen a Turing-teljesség) kiszámítható műveleteket végezhetnek, és decentralizált autonóm ügynökként funkcionálhatnak.</p></div>
+<div class="paragraph"><p>Az Ethereum-mal viszonylag bonyolult rendszerek valósíthatók meg, akár olyanok is, amelyek önmaguk is alt-chain implementációk. Például, alább egy Namecoinhoz hasonló név-regisztrációs szerződést láthatunk Ethereum-ban megírva (pontosabban, egy olyan magas szintű nyelven, amely lefordítható Ethereum kódra): </p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_fizetőeszközök_jövője">A fizetőeszközök jövője</h3>
+<div class="paragraph"><p>Összességében, a digitális fizetőeszközök jövője még a bitcoinénál is fényesebb. A bitcoin egy teljesen új formájú decentralizált szervezetet és közmegegyezést vezetett be, ami egyben hihetetlen innovációk százainak is teret nyitott. Ezek az innovációk minden bizonnyal hatással lesznek a gazdaság számos szektorára, az elosztott rendszerektől a pénzügyön, a közgazdaságtanon, a fizetőeszközökön, és a központi bankokon keresztül egészen az államháztartásig és a cégek szabályozásáig. Mostantól számos olyan emberi tevékenység válhat decentralizálttá, amelyhez korábban a hiteles és megbízható működés érdekében egy központosított intézményre vagy szervezetre volt szükség. A blokklánc és a közmegegyezés innovációja jelentősen csökkenteni fogja a nagy rendszerek létrehozásának és koordinációjának a költségét, egyben elkerülhető vele a hatalomkoncentráció, a korrupció és a túlszabályozás csapdája.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 17:00:01 UTC
+</div>
+</div>
+</body>
+</html>

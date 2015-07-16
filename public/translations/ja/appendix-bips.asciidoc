@@ -1,0 +1,136 @@
+[[appdxbitcoinimpproposals]]
+[appendix]
+== Bitcoin改善提案
+
+((("Bitcoin improvement proposals", id="ix_appdx-bips-asciidoc0", range="startofrange")))Bitcoin改善提案はBitcoinコミュニティーに情報を提供するための設計書であり、Bitcoinまたはその処理手順や環境に関する新しい機能を記述しているものです。 
+
+BIP0001 _BIPの目的とガイドライン_ にある通り、BIPには３種類のタイプがあります。
+
+_Standard_ BIP:: ほとんどのまたは全てのBitcoin実装に影響を与える変更を記述しています。例えば、Bitcoinネットワークプロトコルに関する変更や、ブロックやトランザクションの検証ルールに関する変更、Bitcoinを使ったアプリケーションの相互運用に影響を与える変更や追加など。
+_Informational_ BIP:: Bitcoin設計に関する問題点、またはBitcoinコミュニティーへの一般的なガイドラインや情報を記述しています。しかし、ここでは新しい機能は提案されません。Informational BIPは必然的にBitcoinコミュニティーでの合意内容や推薦事項を提供することになります。このため、ユーザや実装者はinformational BIPを無視するかもしれませんし、従うかもしれません。
+_Process_ BIP:: Bitcoinでの処理手順を記述したり、その処理手順(または処理中のイベント)に関する変更を提案しています。Process BIPはStandard BIPに似ていますが、Bitcoinプロトコルそのもの以外の領域に対しても適用されます。ここでは実装提案をするかもしれませんが、Bitcoinのコードをベースとしたものではありません(Bitcoinコミュニティー合意内容を頻繁に必要とします????)。Informational BIPと違ってこれらは単なる推薦的なものではなく、一般的にユーザはこれらを無視することはできません。例は処理手順やガイドライン、意思決定プロセスについての変更、Bitcoin開発で使うツールや環境についての変更が含まれます。
+
+Bitcoin改善提案は https://github.com/bitcoin/bips[GitHub] 上のバージョン管理リポジトリに記録されています。<<table_d-1>> は2014年秋の時点でのBIPを示しています。存在しているBIPやこれらの内容の最新の情報については信頼できるリポジトリを調べてみてください。
+
+[[table_d-1]]
+.BIPのスナップショット
+[options="header"]
+|=======================================================================
+|BIP番号|リンク|タイトル|オーナー|タイプ|ステータス
+|[[bip0001]]1|https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki|BIPの目的とガイドライン |Amir Taaki
+|Standard |有効
+
+|[[bip0010]]10|https://github.com/bitcoin/bips/blob/master/bip-0010.mediawiki|Multi-Sig Transaction Distribution |Alan
+Reiner |Informational |草案
+
+|[[bip0011]]11|https://github.com/bitcoin/bips/blob/master/bip-0011.mediawiki|M-of-N 標準トランザクション |Gavin
+Andresen |Standard |承認
+
+|[[bip0012]]12|https://github.com/bitcoin/bips/blob/master/bip-0012.mediawiki|OP_EVAL |Gavin Andresen |Standard
+|取り下げ
+
+|[[bip0013]]13|https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki|pay-to-script-hashでのアドレス形式
+|Gavin Andresen |Standard |最終版
+
+|[[bip0014]]14|https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki|プロトコルバージョンとユーザエージェント |Amir
+Taaki, Patrick Strateman |Standard |承認
+
+|[[bip0015]]15|https://github.com/bitcoin/bips/blob/master/bip-0015.mediawiki|エイリアス |Amir Taaki |Standard |取り下げ
+
+|[[bip0016]]16|https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki|Pay To Script Hash |Gavin Andresen
+|Standard |承認
+
+|[[bip0017]]17|https://github.com/bitcoin/bips/blob/master/bip-0017.mediawiki|OP_CHECKHASHVERIFY (CHV) |Luke Dashjr
+|Withdrawn |草案
+
+|[[bip0018]]18|https://github.com/bitcoin/bips/blob/master/bip-0018.mediawikilink:|hashScriptCheck |Luke Dashjr |Standard
+|草案
+
+|[[bip0019]]19|https://github.com/bitcoin/bips/blob/master/bip-0019.mediawiki|M-of-N Standard Transactions (Low SigOp)
+|Luke Dashjr |Standard |草案
+
+|[[bip0020]]20|https://github.com/bitcoin/bips/blob/master/bip-0020.mediawiki|URIスキーム |Luke Dashjr |Standard
+|置き換え
+
+|[[bip0021]]21|https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki|URIスキーム |Nils Schneider, Matt Corallo
+|Standard |承認
+
+|[[bip0022]]22|https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki|getblocktemplate - 基礎 |Luke
+Dashjr |Standard |承認
+
+|[[bip0023]]23|https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki|getblocktemplate - プールマイニング |Luke
+Dashjr |Standard |承認
+
+|[[bip0030]]30|https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki|二重トランザクション |Pieter Wuille
+|Standard |承認
+
+|[[bip0031]]31|https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki|Pong message |Mike Hearn |Standard
+|承認
+
+|[[bip0032]]32|https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki|階層的決定性ウォレット |Pieter
+Wuille |Informational |承認
+
+|[[bip0033]]33|https://github.com/bitcoin/bips/blob/master/bip-0033.mediawiki|Stratized Nodes |Amir Taaki |Standard
+|草案
+
+|[[bip0034]]34|https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki|ブロックバージョン2, coinbaseトランザクション内ブロック高 |Gavin
+Andresen |Standard |承認
+
+|[[bip0035]]35|https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki|mempool message |Jeff Garzik |Standard
+|承認
+
+|[[bip0036]]36|https://github.com/bitcoin/bips/blob/master/bip-0036.mediawiki|Custom Services |Stefan Thomas |Standard
+|草案
+
+|[[bip0037]]37|https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki|Bloom filtering |Mike Hearn and Matt
+Corallo |Standard |承認
+
+|[[bip0038]]38|https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki|パスフレーズ保護秘密鍵 |Mike
+Caldwell |Standard |草案
+
+|[[bip0039]]39|https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki|決定性キーを生成するmnemonic code
+ |Slush |Standard |草案
+
+|[[bip0040]]40||Stratumワイヤープロトコル |Slush |Standard |BIP番号割り当て済み
+
+|[[bip0041]]41||Stratumマイニングプロトコル |Slush |Standard |BStandard |BIP番号割り当て済み
+
+|[[bip0042]]42|https://github.com/bitcoin/bips/blob/master/bip-0042.mediawiki|bitcoinの有限マネーサプライ
+|Pieter Wuille |Standard |草案
+
+|[[bip0043]]43|https://github.com/bitcoin/bips/blob/master/bip-0043.mediawiki|決定性ウォレットのpurposeフィールド
+|Slush |Standard |草案
+
+|[[bip0044]]44|https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki|階層的ウォレットの複数アカウント階層構造
+ |Slush |Standard |草案
+
+|[[bip0050]]50|https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki|2013年3月に起きたブロックチェーンフォークに関する事後分析 |Gavin
+Andresen |Informational |草案
+
+|[[bip0060]]60|https://github.com/bitcoin/bips/blob/master/bip-0060.mediawiki|"version" messageのフィールド数の固定
+(Relay-Transactionsフィールド) |Amir Taaki |Standard |草案
+
+|[[bip0061]]61|https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki|"reject" P2P message |Gavin Andresen
+|Standard |草案
+
+|[[bip0062]]62|https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki|トランザクション展性に対する対処 |Pieter Wuille
+|Standard |草案
+
+|[[bip0063]]63||ステルスアドレス |Peter Todd |Standard |BIP番号割り当て済み
+
+|[[bip0064]]64|https://github.com/bitcoin/bips/blob/master/bip-0064.mediawiki|getutxos message |Mike Hearn |Standard
+|草案
+
+|[[bip0070]]70|https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki|支払いプロトコル |Gavin Andresen |Standard
+|草案
+
+|[[bip0071]]71|https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki|支払いプロトコルMIMEタイプ |Gavin
+Andresen |Standard |草案
+
+|[[bip0072]]72|https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki|支払いプロトコルURI |Gavin Andresen
+|Standard |草案
+
+|[[bip0073]]73|https://github.com/bitcoin/bips/blob/master/bip-0073.mediawiki|支払いリクエストURIに伴う"Accept"ヘッダの使用
+ |Stephen Pair |Standard |草案(((range="endofrange", startref="ix_appdx-bips-asciidoc0")))
+|=======================================================================
+

@@ -1,0 +1,22 @@
+["dedication", role="praise"]
+== 'Bitcoin Uzmanı Olmak' Hakkında Övgüler
+
+[quote, Gavin Andresen, Bitcoin Vakfı Baş Bilimcisi]
+____
+“Bitcoin hakkında sıradan insanlara konuşma yapareken bazen "Ama bu gerçekten nasıl çalışıyor?" şeklinde sorular geliyor. Şu anda bu soruya verebilecek muhteşem bir cevabım var, çünkü _Bitcoin Uzmanı Olmak_ kitabını okuyan herkes Bitcoin'in nasıl çalıştığını derinlemesine anlayabilir ve gelecek nesil kriptopara uygulamaları geliştirmek için iyi donanımlı hale gelir.”
+____
+
+[quote, Naval Ravikant, AngelList'in Kurucu Ortağı]
+____
+“Bitcoin ve blok zinciri teknolojileri gelecek nesil internet için temel yapı taşı haline geliyor. Silikon vadisinin en iyi ve en parlak isimleri onun üzerinde çalışıyor. Andeas'ın kitabı dünya ekonomisindeki yazılım devrimine katılmanızı sağlayacak.” 
+____
+
+[quote, Balaji S. Srinivasan (@balajis), General Partner&#x2c; Andreessen Horowitz]
+____
+“_Bitcoin Uzmanı Olmak_ şu anda bitcoin ile ilgili en iyi teknik referans durumunda. Ve geriye dönüp baktığınızda bitcoin muhtemelen bu 10 yılın en önemli teknolojisi. Öyle ki, bu kitaba özellikle bitcoin protokolü ile uygulama geliştirmek isteyen her geliştiricinin sahip olması gerekir. Şiddetle tavsiye edilir.”
+____
+
+[quote, Roger Ver, Bitcoin Girişimcisi ve Yatırımcısı]
+____
+“Bitcoin Blok Zinciri'nin icadı üzerine inşa edildiği internetin kendisinden bile daha çeşitli bir ekosistemin kapılarını aralayacak tamamen yeni bir platformu temsil etmektedir. Önde gelen liderlerden biri olan Andreas Antonopoulos bu kitabın yazarı olmak için çok iyi bir seçim.”
+____

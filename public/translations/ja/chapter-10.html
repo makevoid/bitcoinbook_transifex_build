@@ -1,0 +1,814 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch10">Bitcoinの安全性</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Bitcoinは、銀行口座の残高のように金額が要約されたもの（？？）ではないため、安全性を保つことは大変です。「実際に持っている者が９割方勝つ」（？？）という言い回しを聞いたことがあるかもしれませんが、Bitcoinでは実際に持っている者が１０割方勝ちます。Bitcoinの鍵を持っていることは、現金や貴金属の塊を持っていることと同じです。無くすことも、置き忘れることも、盗まれることも、誰かに誤った量を渡してしまうこともあります。これらのどのケースでも、歩道に現金を落としてしまったときと同様に、ユーザーはBitcoinを使うことができなくなります。</p></div>
+<div class="paragraph"><p>しかしながら、Bitcoinは、現金や金や銀行口座にはできないことができます。鍵が納められたBitcoinウォレットは、ファイルのようにバックアップが可能です。いくつもコピーを作って保存できますし、バックアップとして紙に印刷することもできます。現金や金や銀行口座は、「バックアップ」することはできません。Bitcoinは既存のどのようなものとも異なるので、私たちはBitcoinの安全性について考える時も、今までにない新しい方法で行う必要があります。</p></div>
+<div class="sect2">
+<h3 id="_安全性の原則">安全性の原則</h3>
+<div class="paragraph"><p>Bitcoinの重要な原則は分散化であり、このことはBitcoinの安全性について重要なインプリケーションを導きます。伝統的な銀行や支払ネットワークのような集中化モデルは、アクセス制限と審査によって、悪意のある主体をシステムから遠ざけます。一方、Bitcoinのような分散化システムは、責任と管理権をユーザーに付与します。ネットワークの安全性はproof of workに基づくものであってアクセス制限によるものではないため、ネットワークはオープンであり、Bitcoinのトラフィックに暗号化は必要ありません。</p></div>
+<div class="paragraph"><p>クレジットカードのような伝統的な支払ネットワークでは、 ユーザーのプライベートな識別情報（クレジットカード番号）を含んでいるので、支払いは無制限（？？）です。最初に課金してからも、その識別情報にアクセスできる者であれば、何度でもユーザーに課金してお金を「引き出す」ことができます。したがって支払ネットワークは、暗号化により徹底的に（？？）保護されなければなりませんし、支払いのトラフィックが、プロセスの途中であれ（安全に）保存された状態であれ、盗聴者や媒介者により漏洩され得ないことを保証しなければいけません。もし、悪意のある主体がシステムにアクセスできたら、現在のトランザクションと支払トークンの両方を手に入れ、これらを用いて新たなトランザクションを作り出すことが可能になります。さらに悪いことに、顧客情報が漏洩した場合には、その顧客はなりすましにさらされ、アカウントの不正使用を防ぐために行動を起こさなければならなくなります。</p></div>
+<div class="paragraph"><p>Bitcoinは全く異なります。Bitcoinのトランザクションは、特定の受取人に対する特定の金額（？）のみを承認するものであって、捏造されることも変更されることもありません。また、取引主体を特定するようなどんなプライベート情報も明かしませんし、追加的に別の支払いの承認に用いることもできません。従って、Bitcoinの支払ネットワークには、暗号化も盗聴者からの保護も必要ありません。実際、ユーザーは、厳格に保護されてはいない、WiFiやBluetoothといったオープンな公共チャネルを通じて、安全性を失うことなくトランザクションをブロードキャストできます。</p></div>
+<div class="paragraph"><p>Bitcoinの分散化された安全性モデルは、ユーザーの手に強い力を授けますが、その力は、鍵の秘匿性の維持に対する責任とともに与えられるものです。ほとんどのユーザーにとって、鍵の秘匿性の維持は簡単なことではありません。インターネットに接続したスマートフォンやPCといった、一般的な用途のコンピュータデバイスでは、特にそうです。Bitcoinの分散化モデルはクレジットカードで起こるような大規模な漏洩は防げるものの、多くのユーザーは鍵を適切に保護できておらず、ひとつずつハックされています。</p></div>
+<div class="sect3">
+<h4 id="_bitcoinのシステムを安全に開発する">Bitcoinのシステムを安全に開発する</h4>
+<div class="paragraph"><p>Bitcoin関連のソフトウェア開発者にとって、最も重要な原則は分散化です。ほとんどの開発者は集中化された安全性モデルに慣れており、開発しているBitcoinアプリケーションにこのモデルを適用する誘惑に駆られることでしょうが、それは悲惨な結果を生むことになります。</p></div>
+<div class="paragraph"><p>Bitcoinの安全性は、鍵の分散管理と、マイナーによる独立したトランザクション認証に基づいています。Bitcoinならではの安全性を活用したいのであれば、Bitcoinの安全性モデルの考え方から離れないでいる必要があります。つまり、鍵の管理はユーザーに任せよ、トランザクションはブロックチェーンに任せよ、ということです。</p></div>
+<div class="paragraph"><p>たとえば、初期のBitcoin交換所は、すべてのユーザーの資金をひとつの「ホットな」ウォレットに集め、鍵とともにひとつのサーバーに保存しました。こうした設計は、ユーザーから鍵の管理を取り上げ、単一のシステムに集約するものです。こうした多くのシステムはハックされ、顧客にとって悲惨な結果を招いています。</p></div>
+<div class="paragraph"><p>よくあるもうひとつの誤りは、トランザクション手数料を削減するため、またはトランザクションの処理プロセスを早めるための間違った努力のうちに、「ブロックチェーン外」でトランザクションを作ることです。「ブロックチェーン外」システムは、内部の集中化された元帳にトランザクションを記録し、Bitcoinのブロックチェーンとたまに同期するといったものです。こうした実践もまた、分散化されたBitcoinの安全性を、独占され集中化されたアプローチで代替するものです。トランザクションがブロックチェーンの外で作られると、適切に保護されていない集中化された元帳は改竄される可能性があり、その場合、気づかれないうちに、資金が流用され蓄えが使い切られることになります。</p></div>
+<div class="paragraph"><p>操作上の安全性、多重のアクセス制限、（伝統的な銀行が行っているような）監査といったものに多額の投資を行う用意がない限り、Bitcoinの分散化された安全性の考え方に反した状態で資金を持つことには、よほど慎重でなければいけません。たとえ、頑健な安全性モデルを実装するだけの資金と規律（？）があったとしても、なりすましや買収や横領に苦しめられてきた、伝統的な金融ネットワークという脆弱なモデルを、複製しているに過ぎないのです。Bitcoinのユニークな分散化された安全性モデルの強みを活かすためには、親しみは感じるけれども結局はBitcoinの安全性を脅かすことになる、集中化されたアーキテクチャへの誘惑を断たねばなりません。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_信頼の根源">信頼の根源</h4>
+<div class="paragraph"><p>伝統的な安全性のアーキテクチャは「信頼の根源」という概念に基づいています。それは、システムやアプリケーション全体の安全性の礎となる、信頼の中核です。安全性のアーキテクチャは、信頼の根源を中心にして同心円状に（タマネギのように）構成され、中心から外向きに信頼が広がっていく形をとります。各層は、より信頼度の高い内側の層に依っており、内側の層は、アクセス制限、デジタル署名、暗号化、安全性に関するその他の素朴な技術（？？）を用いています。ソフトウェアシステムが複雑化するにつれ、システムの安全性が脅かされるようなバグを含むことが多くなってきています。結果、ソフトウェアがより複雑なものになると、それを安全な状態に保つことはより難しくなります。信頼の根源の概念をもとにすると、信頼のほとんどは、システムのうちで最も複雑でない部分、従って最も脆弱でない部分に置かれ、その周囲に複雑なソフトウェアが層を成すことになります。この安全性のアーキテクチャは、異なる規模で繰り返されます。すなわち、最初は単一のシステムのハードウェアに信頼の根源が据えられ、その信頼の根源が、OSを通じてより高いレベルのシステムの働きにまで拡張され、最終的には、外に向かって信頼度が低下する同心円上に配置された、多くのサーバーまで拡がりるのです。</p></div>
+<div class="paragraph"><p>Bitcoinの安全性のアーキテクチャは異なります。Bitcoinでは、合意形成システムは、信頼できる公開された元帳を作り出し、その元帳は完全に分散化されたものです。正しく認証されたブロックチェーンは原初ブロックを信頼の根源として用い、最新のブロックまで続く信頼の連鎖を作り上げます。Bitcoinシステムはブロックチェーンを信頼の根源として用いることができますし、またそのようにしなければいけません。サービスの提供先が多くの異なるシステムであるような、複雑なBitcoinアプリケーションを設計するときには、どこに信頼が置かれようとしているかを明確にするため（？？）、安全性のアーキテクチャを注意深く精査する必要があります。結局、明確に信頼されるべき唯一のものは、完全に認証されたブロックチェーンなのです。明示的にであってもそうでなくても、あるアプリケーションがブロックチェーン以外のなにかに信頼の基礎を置いている場合、脆弱性を招き入れることになり、心配の種になるに違いありません。開発中のアプリケーションの安全性のアーキテクチャを評価する良い方法は、個々の構成要素を考え、その構成要素が悪意のある主体の管理下に置かれ、完全に毀損されるという仮説のシナリオを吟味することです。構成要素を一つ一つとりあげ、その構成要素が毀損されたとしたときの、全体の安全性に与える影響度を算定するのです。もし、構成要素が毀損されたときにアプリケーションが安全でなければ、それらに誤って信頼を置いていたことが分かります。脆弱性のないBitcoinアプリケーションとはつまり、Bitcoinの合意形成メカニズムが毀損されることに対してのみ、脆弱なアプリケーションです。それは、信頼の根源が、Bitcoinの安全性のアーキテクチャの中でも、最も強い部分に基づいていることを意味します。</p></div>
+<div class="paragraph"><p>ハックされたビットコイン交換所の数多くの事例を見れば、この点ははっきり分かります。なぜなら、彼らの安全性のアーキテクチャと設計は、誰からも全くと言っていいほど監督されていないからです。交換所において集中化された交換が実施されてきたことは（？？）、ホットウォレット、集中化された元帳データベース、脆弱な暗号キーといった、ブロックチェーンから離れた多くの構成要素を、信頼できるものとして明確に位置付けた上でのことでした。</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_安全性に関するベストプラクティス">安全性に関するベストプラクティス</h3>
+<div class="paragraph"><p>人類は、物理的な脅威から安全を守る手段を、何千年も用いてきました。これに対して、デジタルの世界の安全性に関する私たちの経験は、50年にも満たないものです。近頃の一般的な目的のOSは、非常に安全とは言えず、特にデジタルマネーの保存に適しているというわけでもありません。私達のコンピューターは、インターネットへの常時接続を通じ、外界からの脅威に常に晒されています。コンピューターは、多くのプログラマーによって作られたソフトウェアを何千と走らせ、そうしたソフトウェアは時として何の制約もなくユーザーのファイルにアクセスします。コンピューターにインストールされた何千ものソフトウェアのうち、詐欺ソフトがひとつでも紛れていたら、キーボードとファイルに障害が起こり、ウォレットアプリケーションに保管されたbitcoinが盗まれるかもしれません。コンピューターをウィルスやトロイの木馬がない状態に保つために、必要なメンテナンスの水準は、大多数のユーザーの技術を超えています。</p></div>
+<div class="paragraph"><p>何十年にも亘る情報セキュリティ上の研究と進歩にも関わらず、デジタル資産は、明確な敵対者に対し、いまだに情けないほど脆弱です。金融機関や諜報機関や防衛産業における、最も高度に保護され機密性の高いシステムでさえ、頻繁に破られます。Bitcoinが作り出すデジタル資産は、固有の価値を持っており、盗難されてすぐに新たな所有者に送られ、戻ってこなくなり得るものです。このことは、ハッカーにとって大きなインセンティブとなります。これまでハッカーは、クレジットカードや銀行口座といった、個人情報や口座トークン（？）について、盗み出した後に価値あるものに変換しなければなりませんでした。盗んだ金融情報の換金やロンダリングは困難であるにもかかわらず、盗難は増える一方でした。Bitcoinはそれ自体が価値であるため、換金やロンダリングの必要がなく、この問題をより大きくしています。</p></div>
+<div class="paragraph"><p>幸いなことに、Bitcoinはコンピューターのセキュリティを改善するインセンティブももたらします。以前は、コンピューターを危機に晒すリスクは、漠然としていて間接的でしたが、Bitcoinはこのリスクを明確なものにしています。bitcoinをコンピューターに保持することは、そのユーザーの関心を、コンピューターのセキュリティ改善の必要性に集中させることにつながります。Bitcoinや他のデジタル通貨の激増と拡がりの直接的な帰結として、私達は、ハッキング技術とセキュリティソリューションの両方が発展していく様子を見てきました。簡単に言えば、ハッカーは今やとても美味しいターゲットをみつけ、ユーザーは自分自身を守る明確なインセンティブを持っているわけです。</p></div>
+<div class="paragraph"><p>過去３年にわたって私達は、ビットコインの拡まり（？？）の直接的な帰結として、ハードウェア暗号化、鍵保管、ハードウェアウォレット、マルチシグネチャー技術、デジタルエスクローといった、情報セキュリティ分野における素晴らしいイノベーションを目の当たりにしてきました。次項では、実践的なユーザーセキュリティのための、多様なベストプラクティスを詳しく取り上げることにしましょう。</p></div>
+<div class="sect3">
+<h4 id="_物理的なbitcoinの保管">物理的なBitcoinの保管</h4>
+<div class="paragraph"><p>多くのユーザーは、情報として安全が保たれていることよりも、物理的に安全が保たれていることのほうに、はるかに安心を感じるので、bitcoinを物理的な形に変換するということは、bitcoinの安全な保持のために大変有効な方法です。Bitcoinの鍵は単なる長い数字の羅列です。このことは、鍵が、紙への印刷や、金属のコインへの刻印といった、物理的な形態で保存され得ることを意味しています。従って、鍵を安全に保つことは、bitcoinの鍵の紙のコピーを安全に保つことになります。紙に印刷されたBitcoinの鍵は「ペーパーウォレット」と呼ばれ、これを作るためのフリーツールが数多くあります。私は個人的に、自分のbitcoinのほとんど（99％以上）を、ペーパーウォレットに保存しています。そのウォレットはBIP0038で暗号化され、複数のコピーが鍵をかけた金庫に閉じ込んであります。Bitcoinをオフラインにしておくことはコールドストレージと呼ばれ、最も有効なセキュリティのテクニックのひとつです。コールドストレージシステムでは、鍵はオフラインシステム（インターネットに一度も接続したことがないシステム）で生成され、紙であれUSBメモリスティックのようなデジタルメディアであれ、オフラインで保存されます。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_ハードウェアウォレット">ハードウェアウォレット</h4>
+<div class="paragraph"><p>長い目で見れば、Bitcoinの安全性は、改竄に耐性のあるハードウェアウォレットの形態を、ますますとるようになるでしょう。スマートフォンやデスクトップコンピューターとは異なり、Bitcoinのハードウェアウォレットには、Bitcoinを安全に保有するというただひとつの目的しかありません。漏洩の原因となり得る一般的なソフトウェアがなく、インターフェースも限られるために、ハードウェアウォレットは、専門家でないユーザーに絶対と言っていいほど確実なセキュリティをもたらします。私は、ハードウェアウォレットは、Bitcoin保有の方法として広く用いられるようになると予想しています。このようなハードウェアウォレットの一例は、Trezor (<a href="http://www.bitcointrezor.com/)をご覧く�">http://www.bitcointrezor.com/)をご覧く�</a>��さい[Trezor]。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_リスクを比較衡量する">リスクを比較衡量する</h4>
+<div class="paragraph"><p>ほとんどのユーザーは、bitcoinの盗難について適切に注意を払っていますが、盗難よりも大きなリスクが存在します。データファイルはいつでも失われます。もしそのファイルがbitcoinを含んでいたら、極めて悲惨なことになります。Bitcoinウォレットを安全に保護しようと努力するあまり、やり過ぎてbitcoinを失うことにならないよう、ユーザーは注意深くならなければいけません。2011月7月、有名なBitcoinの教育啓発プロジェクトが、ほぼ7,000 bitcoinを失いました。盗難防止の努力の一環として、彼らは複雑に暗号化されたバックアップを実施していました。結局、彼らは暗号化鍵を誤って失くし、バックアップは無価値となり、財産を失いました。砂漠に埋めてお金を隠すように、bitcoinを安全にし過ぎると、二度と見つけられなくなるかもしれません。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_リスク分散">リスク分散</h4>
+<div class="paragraph"><p>あなたは、全財産を現金で財布の中に入れて持ち運びますか？ほとんどの人はこのようなことは向こう見ずと考えるのにもかかわらず、Bitcoinユーザーは、全てのbitcoinをひとつのウォレットに入れてしまうことがよくあります。そうではなくて、ユーザーは、複数の多様なBitcoinウォレットに、リスクを分散しなければなりません。慎重なユーザーは、自分のbitcoinのうちほんの少しだけ、おそらく5％に満たない程度を、オンラインまたはモバイルウォレットに「小銭」として持つようにしています。残りのbitcoinは、デスクトップウォレットやオフライン（コールドストレージ）のような、複数の異なる仕組みで保管されなければなりません。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_マルチシグネチャーと管理">マルチシグネチャーと管理</h4>
+<div class="paragraph"><p>企業や個人が多額のbitcoinを保管するときはいつでも、マルチシグネチャーbitcoinアドレスを用いることを考慮すべきです。マルチシグネチャーアドレスは、支払いに複数のサインを要求することで、資金を安全に守るものです。サインのための鍵は、複数の異なる場所に保管され、別々の人によって管理されなければなりません。たとえば、企業では、サインのための鍵が別々につくられ、複数の幹部によって保持され、誰であれ一人では資金に手を出せないようになっていないといけません。マルチシグネチャーアドレスを用いることで、冗長性を得る、すなわち、一人の人が複数の鍵を別々の場所に保持することも、可能となります。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_サバイバビリティ">サバイバビリティ</h4>
+<div class="paragraph"><p>安全性に関して、見過ごされがちですが考慮すべき重要な点として、鍵の持ち主が動けなくなったり死亡したりした場合に、どうやってbitcoinを手にするかということがあります。Bitcoinユーザーは、複雑なパスワードを用い、鍵を安全で秘匿された状態に保ち、誰とも共有してはいけない、と言われてきました。不幸なことに、こうしたプラクティスによって、ユーザー自身が鍵を使えないときに、ユーザーの家族が資金を再び手にすることはほとんど不可能です。実際、Bitcoinユーザーの家族は、bitcoinの資産の存在に全く気付かないことがほとんどでしょう。</p></div>
+<div class="paragraph"><p>多額のbitcoinを持っているのであれば、アクセスの詳細を信頼のおける親戚や弁護士と共有することを考えるべきです。より複雑なサバイバビリティの仕組みは、マルチシグネチャーアクセスと、「デジタル資産の遺言執行者」（？？）に特化した弁護士を通じて計画する財産（？？）から構成されます。</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_結び">結び</h3>
+<div class="paragraph"><p>Bitcoinは全く新しい、先例のない、そして複雑なテクノロジーです。いずれは、専門家でないユーザーにも使いやすい安全性のためのツールやプラクティスが、開発されることでしょう。差し当たり、Bitcoinユーザーは本書で扱った多くのTIPSを用いることで、安全でトラブルのないBitcoinエクスペリエンスを楽しむことができます。</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:55:24 UTC
+</div>
+</div>
+</body>
+</html>

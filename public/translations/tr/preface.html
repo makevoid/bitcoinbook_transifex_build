@@ -1,0 +1,996 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="paragraph"><p>Önsöz</p></div>
+<div class="sect2">
+<h3 id="_bitcoin_kitabının_yazılması">Bitcoin Kitabının Yazılması</h3>
+<div class="paragraph"><p>Bitcoin&#8217;e ilk kez -2011 yılının ortalarında rastladım. İlk tepkim aşağı yukarı "Puff! Aptalca Para!" oldu ve onu 6 ay boyunca umursamadım, önemini kavrayamadım. Beni biraz teselli eden, tanıdığım en zeki insanların arasında sürekli görmüş olduğum bir tepki olmasıydı. Bitcoin ile ikinci karşılaşmamız  bir e-posta listesi tartışmasında oldu.  Yetkili kaynağı incelemek ve hakkındaki her şeyi öğrenmek için Satoshi Nakamoto tarafından yazılmış olan makaleyi okumaya karar verdim. 9 sayfalık makaleyi bitirdiğim anı hala hatırlıyorum. Anladım ki bitcoin sadece dijital bir para birimi değil aynı zamanda para birimi olmaktan çok öte olanak sağlayan güvenilir bir ağdı. " Bu para değil, bu merkezi olmayan bir güven ağı" farkındalığı, bitcoin hakkında bulabildiğim her bilgi kırıntısını toplamak için 4 aylık bir seyahata çıkmama vesile oldu. Bir ekranın karşısında günde 12 ya da daha fazla vakit harcayarak, okuyarak, yazarak, kodlayarak ve öğrenebildiğim kadar çok öğrenerek takıntılı hale geldim ve büyülendim. Bu füg durumundan kurtuldum(az yemekten dolayı 9 kilodan fazla kaybettim) ve kendimi bitcoin üzerine çalışmaya adadım.</p></div>
+<div class="paragraph"><p>İki yıl sonra, bitcoin ile alakalı çeşitli servisler ve ürünler ile ilgili bir dizi başlangıç araştırmaları yaptıktan sonra, ilk kitabımı yazmanın tam zamanı olduğuna karar verdim. Beni bu yaratıcılık çılgınlığına sürükleyen ve düşüncelerimi kemiren konu bitcoindi. İnternetten beri karşılaşmış olduğum en heyecan verici teknolojiydi. Bu şaşırtıcı teknoloji hakkında daha geniş bir kitleye duygularımı paylaşmanın tam sırasıydı.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_hedef_kitle">Hedef Kitle</h3>
+<div class="paragraph"><p>Bu kitap çoğunlukla kodlayıcılar içindir. Eğer bir programlama dili kullanabiliyorsanız, bu kitap size kriptografik para birimlerinin nasıl çalıştığını, onları nasıl kullanacağınızı ve onlarla çalışarak nasıl yazılım geliştireceğinizi öğretecektir. Aynı zamanda ilk bir kaç bölüm, kodlayıcı olmayanlar içinde bitcoin ve kripto para birimlerinin iç çalışmalarını anlamanıza yardımcı olacak geniş kapsamlı bir tanıtım içermektedir.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_kapak_üzerinde_neden_böcekler_var">Kapak Üzerinde Neden Böcekler Var?</h3>
+<div class="paragraph"><p>Yaprakkesici karınca, süper organizma topluluğunda bayağı karmaşık davranış sergileyen bir türdür fakat her bir karınca, kimyasal kokularının değişimi ve sosyal etkileşim yoluyla oluşmuş bir dizi basit kurallar çerçevesinde iş görür. Wikipedia :" İnsanlara nazaran, yaprakkesici karınca türleri dünyada ki en geniş ve en karışık hayvan topluluğudur." Yaprakkesici karıncalar aslında yaprak yemezler fakat onları topluluğun ana yiyecek kaynağı olan bir tür mantarı ekmek için kullanırlar. Anladınız mı? Bu karıncalar çiftçilik yapıyor!</p></div>
+<div class="paragraph"><p>Karıncalar kast tabanlı bir topluluk oldukları ve yavruları doğuran bir kraliçeye sahip oldukları halde bir karınca topluluğunda lider ya da merkezi bir yetkili yoktur. Oldukça zeki ve karmaşık davranışlar sergileyen milyonlarca üyesi bulunan bir topluluk</p></div>
+<div class="paragraph"><p>Doğa gösteriyor ki, merkezi olmayan sistemler merkezi bir yetkiye, hiyerarşiye ya da karmaşık şeylere ihtiyaç duymaksızın,  esnek olabilir ve acil karmaşıklık ile inanılmaz gelişmişlik meydana getirebilir .</p></div>
+<div class="paragraph"><p>Bitcoin, sayısız finansal süreci destekleyebilen son derece karmaşık merkezsiz bir güven ağıdır. Ama bitcoin ağındaki her bir düğüm basit birkaç matematik kuralını takip eder. Birçok düğüm arasındaki etkileşim doğal karmaşıklığa ya da herhangi bir tek düğüme güvenilmesine değil karmaşık davranışların ortay çıkmasına yol açar. Karınca topluluğundaki gibi, bitcoin ağı basit düğümlerin basit kuralları takip ettiği esnek bir ağdır. Hiçbir merkezi koordinasyona gerek olmaksızın harika şeyler yapabilir.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_kitapta_kullanılan_kaideler">Kitapta Kullanılan Kaideler</h3>
+<div class="paragraph"><p>Bu kitapta aşağıdaki tipografik kaideler kullanılmıştır:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>Italic</em>
+</dt>
+<dd>
+<p>
+Yeni terimleri, URL&#8217;leri, e-posta adreslerini, dosya adlarını ve dosya uzantılarını gösterir.
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>Constant width</tt>
+</dt>
+<dd>
+<p>
+Program listeleri, buna ek olarak paragrafların içindeki değişkenler, işlev isimleri, veritabanları, veri çeşitleri, ortam değişkenleri, ifadeler ve   anahtar kelimeler gibi program elemanlarından bahsetmek için kullanılır.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong><tt>Constant width bold</tt></strong>
+</dt>
+<dd>
+<p>
+Kullanıcılar tarafından harfi harfine yazılmış olan komutları ya da diğer metinleri gösterir.
+</p>
+</dd>
+<dt class="hdlist1">
+<em><tt>Constant width italic</tt></em>
+</dt>
+<dd>
+<p>
+Kullanıcıların sağladığı değerlerle ya da bağlamla belirlenen değerler ile değiştirilmiş olan metinleri gösterir.
+</p>
+</dd>
+</dl></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bu simge bir ipucu, öneri ya da genel bir nota işaret eder.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bu simge bir uyarı ya da ihtar belirtir.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kod_örnekleri">Kod Örnekleri</h3>
+<div class="paragraph"><p>Örnekler; Python, C++, Linux ya da Mac OS X gibi Unix benzeri işletim sistemlerinin komut satırı kullanılarak gösterilmiştir. Tüm kod parçacıkları <a href="https://github.com/aantonop/bitcoinbook">GitHub repository</a> sitesinde, ana reponun alt dizinde mevcuttur.</p></div>
+<div class="paragraph"><p>Tüm kod parçacıkları uyan diller için, yorumlayıcı ve derleyicilerin minimum yüklemesi ile çoğu işletim sistemi üzerinde tekrarlanabilir. Biz gerekli olan temel yükleme talimatlarını sunuyoruz ve  bu talimatların çıktısını adım adım açıklıyoruz.</p></div>
+<div class="paragraph"><p>Bazı kod parçacıkları ve kod çıktısı yazmak için yeniden düzenlendi. Bu gibi durumlarda, yeni satır karakterini takiben gelen satırlar ters slash ile ayrıldı. Örnekleri kopyalarken bu iki satırı kaldırın ve tekrar satıra gelin.  Örnekte gösterilmiş olan sonucun aynısını göreceksiniz.</p></div>
+<div class="paragraph"><p>Tüm kod parçacıkları mümkün olan gerçek değer ve hesaplamaları kullanır, böylece örnekten örneğe inşa edebilir ve aynı değerleri hesaplamak için yazdığın herhangi bir koddaki aynı sonucu görürsün. Örneğin, özel anahtarlar ve bunlara bağlı açık anahtarlar ile adresler gerçektir. Model işlemler, bloklar ve blok zinciri referansları  gerçek bitcoin blok zincirinde tanıtılmıştır ve açık muhasebe defterinin bir parçasıdır. Böylece onları herhangi bir bitcoin sistemi üzerinde inceleyebilirsin.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_kod_örneklerinin_kullanımı">Kod Örneklerinin Kullanımı</h3>
+<div class="paragraph"><p>Bu kitap işinizi halletmeye yardımcı olmak için burada. Genel olarak bu kitapta sunulan örnek kodları kendi program ve dokümanlarınız da kullanabilirsiniz. Kodun önemli bir bölümünü çoğaltmadıkça izin almak için bizimle irtibata geçmenize gerek yoktur. Mesela, bu kitaptan birçok kod parçacığını kullanarak yazdığınız bir program  için izin almanıza gerek yoktur. O’Reilly kitaplarının CD örneklerini dağıtmak ya da satmak için izin almanız gerekir. Bu kitabı gerekçe göstererek bir soruyu cevaplamak ve örnek kodları alıntılamak için  izin almanıza gerek yoktur. Ürün dokümantasyonlarınıza bu kitaptan önemli miktarda örnek kod eklemek için izin almanız gerekir.</p></div>
+<div class="paragraph"><p>İhtiyaç duymasak ta atıfta bulunmanız bizim için değerlidir. Atıfta bulunurken genellikle başlık , yazar , yayıncı ve ISBN&#8217;yi yazmanız yeterlidir. Örneğin:  “<em>Mastering Bitcoin</em> by Andreas M. Antonopoulos (O’Reilly). Copyright 2015 Andreas M. Antonopoulos, 978-1-449-37404-4.”</p></div>
+<div class="paragraph"><p>Bu kitabın bazı sürümleri CC-BY-NC gibi (creativecommons.org)  bir açık kaynak lisansı altında sunulmuştur. Bu durumda o lisansın koşulları geçerlidir.</p></div>
+<div class="paragraph"><p>Eğer kullandığınız kod örneklerinin adil kullanım dışında kaldığını ya da verilen iznin dışında olduğunu düşünüyorsanız lütfen bizimle irtibata geçin <email>permissions@oreilly.com</email>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_safari_books_online">Safari® Books Online</h3>
+<div class="exampleblock safarienabled">
+<div class="content">
+<div class="paragraph"><p><ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly">Safari Books Online</ulink> is an on-demand digital library that delivers expert <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/content">content</ulink> in both book and video form from the world&#8217;s leading authors in technology and business.</p></div>
+</div></div>
+<div class="paragraph"><p>Teknoloji uzmanları, yazılım geliştiricileri web tasarımcıları ve iş dünyası ile yaratıcı uzmanlar, araştırmaları için birincil kaynak olarak, problem çözümleri, öğrenme ve sertifika eğitimi için Safari Books Online kullanır.</p></div>
+<div class="paragraph"><p>Safari Books Online offers a range of <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/subscriptions">product mixes</ulink> and pricing programs for <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/organizations-teams">organizations</ulink>, <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/government">government agencies</ulink>, and <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/individuals">individuals</ulink>. Subscribers have access to thousands of books, training videos, and prepublication manuscripts in one fully searchable database from publishers like O’Reilly Media, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Focal Press, Cisco Press, John Wiley &amp; Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones &amp; Bartlett, Course Technology, and dozens <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/publishers">more</ulink>. For more information about Safari Books Online, please visit us <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/">online</ulink>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_bizimle_nasıl_irtibat_kurabilirsiniz">Bizimle Nasıl İrtibat Kurabilirsiniz</h3>
+<div class="paragraph"><p>Lütfen bu kitap ile ilgili soru ve yorumlarınızı yayıncıya iletiniz:</p></div>
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (Amerika ya da Kanada'da)</member>
+<member>707-829-0515 (uluslararası ya da yerel)</member>
+<member>707-829-0104 (faks)</member>
+</simplelist>
+<div class="paragraph"><p>Bu kitap için düzeltmeleri, örnekleri ve diğer ek bilgileri yayınladığımız bir web sayfamız var. Bu sayfaya şu linkten ulaşabilirsiniz:http://bit.ly/mastering_bitcoin[].</p></div>
+<div class="paragraph"><p>Kitap hakkındaki yorumlarınız ve teknik sorularınız için bu adrese e-posta atabilirsiniz. [&lt;email&gt;<a href="mailto:bookquestions@oreilly.com">bookquestions@oreilly.com</a>&lt;/email&gt;]</p></div>
+<div class="paragraph"><p>Kitaplarımız, kurslarımız, konferanslarımız hakkında daha fazla bilgi almak ve haberler için sitemizi ziyaret ediniz <a href="http://www.oreilly.com">http://www.oreilly.com</a>.</p></div>
+<div class="paragraph"><p>Facebook&#8217;ta bizi bulun: <a href="http://facebook.com/oreilly">http://facebook.com/oreilly</a></p></div>
+<div class="paragraph"><p>Bizi Twitter&#8217;da takip edin: <a href="http://twitter.com/oreillymedia">http://twitter.com/oreillymedia</a></p></div>
+<div class="paragraph"><p>Bizi YouTube&#8217;dan izleyin: <a href="http://www.youtube.com/oreillymedia">http://www.youtube.com/oreillymedia</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_teşekkürler">Teşekkürler</h3>
+<div class="paragraph"><p>Bu kitap çok fazla insanın katkılarını ve emeklerini temsil ediyor.  Arkadaşlarıma, meslektaşlarıma ve kripto para birimleri ile bitcoin üzerine teknik bir kitap yazmak için bana katılarak emek veren tanımadığım tüm yabancılara bana yaptıkları yardımlar için minnettarım.</p></div>
+<div class="paragraph"><p>Bitcoin teknolojisi ve bitcoin toplumu arasında bir ayrım yapmak mümkün değildir ve bu kitap teknoloji üzerine bir kitap olduğu kadar bu topluluğunda bir ürünüdür. Bu kitap üzerine çalışmam en başından en sonuna kadar tüm bitcoin topluluğu tarafından teşvik edildi, alkışlandı, desteklendi ve ödüllendirildi. Hepsinden çok,  bu kitap iki yıl boyunca harika bir topluluğun parçası olmama izin verdi. Bu topluluğa beni kabul ettikleri için ne kadar teşekkür etsem azdır.  Konferanslarda, etkinliklerde, seminerlerde, buluşmalarda, pizza toplantılarında ve özel küçük toplantılarda rastladığım, bunun yanında benimle Twitter, Reddit, bitcointalk.org ve Github üzerinden iletişim kuran ve bu kitapta etkisi bulunan adı anılacak çok fazla insan var. Bu kitapta bulunan her fikir, kıyaslama, soru, cevap ve açıklama bir noktada topluluk ile etkileşimlerim yoluyla ilham alınmış, test edilmiş ve geliştirilmiştir. Tüm destekleriniz için teşekkürler; siz olmadan bu kitap olmazdı. Sonsuza kadar minnettarım.</p></div>
+<div class="paragraph"><p>Elbette, bir yazar olma yolculuğu ilk kitabımdan çok önce başladı. Benim ilk dilim (ve okul eğitimim) Yunancaydı, bu yüzden üniversitedeki ilk yılımda İngilizce yazma kursu almak zorunda kaldım. O yıl benim güven ve beceri kazanmama yardım eden İngilizce yazma öğretmenim Diana Kordas&#8217;a teşekkür borçluyum. Daha sonra bir uzman olarak,  <em>Network World</em> dergisi için veri merkezleri konusu üzerine yazı yazarak teknik yazma kabiliyetlerimi geliştirdim. <em>Network World</em> dergisinde bana köşe yazarı olarak ilk yazı işimi veren John Dix ve John Gallant&#8217;a, yayın müdürümüz Michael Cooney&#8217;e ve benim köşe yazılarımı düzenleyerek onları yayına uygun hale getiren meslektaşım Johna Till&#8217;e  teşekkür borçluyum. Dört yıl boyunca haftada 500 kelime yazmak bana nihayetinde bir yazar olma düşüncesi için yeterince tecrübe kazandırdı. Yazar olmak için bana ilk cesareti veren ve içimde bir kitap olduğuna daima inanan ve ısrar eden Jean de Vera&#8217;ya teşekkür ederim.</p></div>
+<div class="paragraph"><p>Ayrıca kitabımın taslağını O&#8217;Reilly&#8217;e teslim ettiğimde referans vererek ve taslağı inceleyerek beni destekleyenlere teşekkür ederim. Özellikle John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver ve Jon Matonis' teşekkür ediyorum. Taslağın ilk sürümlerini inceleyen Richard Kagan ve Tymon Mattoszko&#8217;ya ve taslağı kopyalayıp düzenleyen Matthew Owain Taylor&#8217;a özel teşekkürlerimi sunuyorum.</p></div>
+<div class="paragraph"><p>Beni O&#8217;Reilly ile tanıştıran Cricket Liu&#8217;ya(O&#8217;Reilly yazarı, title <em>DNS and BIND</em> ) teşekkür ederim. Aynı zamanda bu kitabı oluşturmama yardım etmek için aylarca çalışan O&#8217;Reilly&#8217;den Michael Loukides ve Allyson MacDonald&#8217;a da teşekkür ederim. Allyson özelikle,  planladığımız programa müdahale edilmişcesine son teslim tarihini kaçırdığımızda ve çıktılar geciktiğinde çok sabırlıydı.</p></div>
+<div class="paragraph"><p>İlk birkaç bölümün ilk taslakları en zor olanlardı. Çünkü bitcoin çözülmesi zor bir konuydu. Bitcoin teknolojisinin her bir konusunu aldığımda,  içindeki tüm şeyleri almalıydım.  Böyle yoğun bir teknik konu etrafında bir öykü oluşturmak ve konuyu anlaşılması kolay hale getirmek için çabalarken defalarca takılıp kaldım ve biraz umutsuzluğa kapıldım. Sonunda, bitcoinin hikayesini bitcoin kullanan insanların hikayeleri ile anlatmaya karar verdim ve tüm kitabı yazmak çok daha kolay bir hale geldi. Hikayeyi çözmemde ve kilitlendiğim anları aşmamda yardımcı olan arkadaşım ve akıl hocam olan Richard Kagan&#8217;a ve her bölümün ilk taslaklarını gözden geçiren ve onları daha iyi hale getirebilmek için zor sorular soran Pamela Morgan&#8217;a teşekkür borçluyum. Ayrıca, San Francisco Bitcoin Geliştiricileri Buluşması grubundaki geliştiricilere ve grubun kurucularından olan Taariq Lewis&#8217;e ilk materyallerin testlerindeki yardımları nedeniyle teşekkür ediyorum.</p></div>
+<div class="paragraph"><p>Kitabın gelişimi sırasında, ilk taslakları GitHub üzerinden yayınladım ve insanları yorum yapmaya davet ettim. Cevap olarak yüzden fazla yorum, öneri, düzeltme ve katkı sunuldu. Bu katkılar teşekkürlerimle doğrudan alınmıştır ve <a href="#github_contrib">[github_contrib]</a> içindedir. GitHub katkılarını düzenlemeye gönüllü olan ve kendiliğinden birçok önemli katkıda bulunan Minh T. Nguyen&#8217;e özel teşekkürlerimi sunuyorum. Ayrıca Andrew Naugler&#8217;e infografikler için teşekkür ederim.</p></div>
+<div class="paragraph"><p>Kitabın ilk taslağı oluşturulduğunda, birkaç tur teknik incelemeden geçti. Kapsamlı incelemeleri, yorum ve destekleri için Cricket Liu ve Lorne Lantz&#8217;a teşekkür ederim.</p></div>
+<div class="paragraph"><p>Birçok bitcoin geliştiricisi örnek kodlarla, incelemelerle, yorumlarıyla ve teşvikleriyle katkıda bulundu. Amir Taaki ve  Eric Voskuil&#8217;e örnek kod parçacıkları ve harika yorumları için, Vitalik Buterin ve Richard Kiss&#8217;e eliptik eğri matematiği konusunda ki yardımları ve kod katkıları için, Gavin Andresen&#8217;e düzeltmeleri, yorumları ve teşvikleri için, Michalis Kargakis&#8217;e yorumları, katkıları ve övgü dolu yazısı için ve Robin Inge&#8217;e ikinci baskının iyileştirilmesi maksadıyla yazım hatalarını gönderdiği için teşekkür ederim.</p></div>
+<div class="paragraph"><p>Kitaplara ve kelimelere olan sevgimi, beni bütün duvarları kitaplar ile kaplı bir evde büyüten annem Theresa&#8217;ya borçluyum. Annem teknofobisi olmasına rağmen 1982 yılında bana ilk bilgisayarımı da aldı. Babam Menelaos, ilk kitabını 80 yaşında yayınlayan, bana mantıklı ve analitik düşünmeyi öğreten ve bilim ve mühendislik aşkı kazandıran bir inşaat mühendisiydi.</p></div>
+<div class="paragraph"><p>Beni bu yolculuğumda destekleyen herkese teşekkürler.</p></div>
+</div>
+<div class="sect2">
+<h3 id="github_contrib">Ön Taslak Yayını (Github Katılımcıları)</h3>
+<div class="paragraph"><p>Çoğu katılımcı yorumlarını, düzeltmelerini ve eklemelerini Github&#8217;ta ki ön taslak yayına sundu. Bu kitaba katkıda bulunan herkese teşekkür ediyorum. Belli başlı Github katılımcılarının listesi parantez içinde Github kimlikleri ile birlikte aşağıdadır:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Minh T. Nguyen, GitHub katkıları editörü (enderminh)
+</p>
+</li>
+<li>
+<p>
+Ed Eykholt (edeykholt)
+</p>
+</li>
+<li>
+<p>
+Michalis Kargakis (kargakis)
+</p>
+</li>
+<li>
+<p>
+Erik Wahlström (erikwam)
+</p>
+</li>
+<li>
+<p>
+Richard Kiss (richardkiss)
+</p>
+</li>
+<li>
+<p>
+Eric Winchell (winchell)
+</p>
+</li>
+<li>
+<p>
+Sergej Kotliar (ziggamon)
+</p>
+</li>
+<li>
+<p>
+Nagaraj Hubli (nagarajhubli)
+</p>
+</li>
+<li>
+<p>
+ethers
+</p>
+</li>
+<li>
+<p>
+Alex Waters (alexwaters)
+</p>
+</li>
+<li>
+<p>
+Mihail Russu (MihailRussu)
+</p>
+</li>
+<li>
+<p>
+Ish Ot Jr. (ishotjr)
+</p>
+</li>
+<li>
+<p>
+James Addison (jayaddison)
+</p>
+</li>
+<li>
+<p>
+Nekomata (nekomata-3)
+</p>
+</li>
+<li>
+<p>
+Simon de la Rouviere (simondlr)
+</p>
+</li>
+<li>
+<p>
+Chapman Shoop (belovachap)
+</p>
+</li>
+<li>
+<p>
+Holger Schinzel (schinzelh)
+</p>
+</li>
+<li>
+<p>
+effectsToCause (vericoin)
+</p>
+</li>
+<li>
+<p>
+Stephan Oeste (Emzy)
+</p>
+</li>
+<li>
+<p>
+Joe Bauers (joebauers)
+</p>
+</li>
+<li>
+<p>
+Jason Bisterfeldt (jbisterfeldt)
+</p>
+</li>
+<li>
+<p>
+Ed Leafe (EdLeafe)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 17:01:29 UTC
+</div>
+</div>
+</body>
+</html>

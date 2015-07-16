@@ -1,0 +1,891 @@
+[[ch8]]
+== Minage et Consensus
+
+[[mining]]
+=== Introduction
+
+((("consensus", id="ix_ch08-asciidoc0", range="startofrange")))((("mining", id="ix_ch08-asciidoc1", range="startofrange")))((("miners")))Le minage est le processus par lequel de nouveaux bitcoins sont ajoutés à la masse monétaire. Il permet aussi de sécuriser le système bitcoin contre les transactions frauduleuses ou celles dépensant le même montant de bitcoin plus d'une fois, connu en tant que double-dépense. Les mineurs fournissent la puissance de calcul au réseau bitcoin en échange d'une récompense en bitcoins.  
+
+Les mineurs valident les nouvelles transactions et les enregistrent dans le registre global. Un nouveau bloc, contenant les transactions apparues depuis le dernier bloc, est « miné » toutes les 10 minutes en moyenne, ajoutant ainsi ces transactions à la blockchain. Les transactions qui font désormais partie d'un bloc et sont ajoutées à la blockchain sont considérées comme « confirmées », ce qui autorise les nouveaux propriétaires de bitcoin à dépenser ce qu'ils ont reçu dans de nouvelles transactions. 
+
+Les mineurs reçoivent deux types de récompenses en échange de leur minage : de nouveaux bitcoins créées avec chaque nouveau bloc, et les frais de transaction de toutes les transactions comprises dans le bloc. Pour gagner cette récompense, les mineurs s'affrontent pour résoudre un difficile problème mathématique basé sur un algorithme de hachage cryptographique. La solution au problème, appelée preuve de travail, est incluse dans le nouveau bloc et tient lieu de preuve aux efforts de calcul importants déployés par le mineur. La compétition pour résoudre l'algorithme preuve-de-travail afin de gagner la récompense et le droit d'enregistrer les transactions sur la blockchain est la base du modèle de sécurité bitcoin. 
+
+((("new coin generation")))Le processus de génération de nouveaux bitcoins est appelé minage parce que la récompense est conçue de manière à simuler des rendements en baisse, similairement au minage de métaux précieux. La masse monétaire bitcoin est créée à travers le minage, de la même façon qu'une banque centrale émet de la monnaie en imprimant de nouveaux billets. ((("bitcoin","rate of issuance")))La quantité de bitcoins nouvellement créés qu'un mineur peut ajouter à un bloc décroit approximativement tous les quatre ans (ou précisément tous les 210 000 blocs). Cela a commencé à 50 bitcoins par bloc en Janvier 2009 et fut réduit de moitié à 25 bitcoins par bloc en Novembre 2012. Il sera à nouveau réduit de moitié à 12,5 bitcoins par bloc dans le courant de l'année 2016. Sur la base de cette formule, les récompenses au minage de bitcoin diminuent de façon exponentielle jusqu'à environ l'année 2140, quand tous les bitcoins (20,99999998 millions) auront été délivrés. Après 2140, aucun nouveau bitcoin ne sera émis. 
+
+((("fees, transaction")))((("transactions","fees")))Les mineurs de bitcoins acquièrent également les frais de transactions. Chaque transaction peut inclure des frais de transaction, correspondant à l'excédent entre les entrées et les sorties d'une transaction. Le mineur gagnant parvient à "garder la monnaie" sur les transactions incluses dans le bloc gagnant. Aujourd'hui, les frais représentent 0,5% ou moins du revenu d'un mineur de bitcoin, la grande majorité provenant des bitcoins nouvellement frappés. Cependant, comme la récompense diminue avec le temps et que le nombre de transactions par blocs augmente, une plus grande proportion des revenus du minage proviendra des frais. Après 2140, tous les revenus des mineurs viendront des frais de transaction.
+
+Le mot « minage » est quelque peu trompeur. En évoquant l'extraction de métaux précieux, il attire notre attention sur la récompense du minage, les nouveaux bitcoins dans chaque bloc. Bien que le minage soit encouragé par cette récompense, le but principal du minage n'est pas la récompense ou la génération de nouvelles pièces. Si vous voyez seulement le minage comme le processus par lequel les bitcoins sont créés, vous confondez les moyens (les mesures d'incitation) et le but du processus. Le minage est le processus principal de la chambre de compensation décentralisée par lequel les transactions sont validées. Le minage sécurise le système bitcoin et permet l'émergence d'un consensus sur tout le réseau sans autorité centrale. 
+
+Le minage est l'invention qui rend bitcoin spécial, un mécanisme de sécurité décentralisé qui constitue la base de la monnaie numérique pair-à-pair. La récompense en pièces nouvellement frappées et en frais de transaction est une mesure d'incitation qui aligne les actions des mineurs à la sécurité du réseau, œuvrant dans le même temps à la création monétaire. 
+
+Dans ce chapitre, nous examinerons d'abord le minage en tant que mécanisme de création monétaire puis nous étudierons sa fonction la plus importante : le mécanisme de consensus émergent décentralisé qui fonde la sécurité du bitcoin.
+
+==== L'économie bitcoin et la création monétaire
+
+((("currency creation", id="ix_ch08-asciidoc2", range="startofrange")))((("mining","currency creation", id="ix_ch08-asciidoc3", range="startofrange"))) Les bitcoins sont "frappés" lors de la création de chaque bloc à un taux défini qui va en diminuant. Chaque bloc, généré en moyenne toutes les 10 minutes, contient entièrement de nouveaux bitcoins, créés à partir de rien. Tous les 210 000 blocs, soit environ tous les quatre ans, le taux d'émission de la monnaie est diminué de 50%. Pour les quatre premières années de fonctionnement du réseau, chaque bloc contenait 50 nouveaux bitcoins. 
+
+En Novembre 2012, le nouveau taux d'émission de bitcoin a été réduit à 25 bitcoins par bloc et il diminuera de nouveau à 12,5 bitcoins au bloc 420 000, qui sera miné courant 2016. Le taux de nouvelle monnaie diminue de façon exponentiel sur 64 "division par deux" jusqu'au bloc 13 230 000 (miné approximativement en 2137), où il atteindra l'unité de monnaie minimum de 1 satoshi. Enfin, après 13,44 millions blocs, en 2140 environ, près de 2 099 999 997 690 000 satoshis, soit près de 21 millions de bitcoins, seront émis. En conséquence, les blocs ne contiendront pas de nouveaux bitcoins, et les mineurs seront récompensés uniquement grâce aux frais de transaction. <<bitcoin_money_supply>> représente le nombre total de bitcoins en circulation au fil du temps, ainsi que l'émission de monnaie qui diminue.
+
+[[bitcoin_money_supply]]
+.L'émission de devise bitcoin au fil du temps basée sur un taux d'émission diminuant de façon mathématique
+image::images/msbt_0801.png["BitcoinMoneySupply"]
+
+[NOTE]
+====
+Le nombre maximum de pièces minées est la _limite supérieure_ de possibles récompenses au minage. Dans la pratique, un mineur peut volontairement miner un bloc et ne pas récupérer la totalité de sa récompense. De tels blocs ont déjà été minés et d'autres peuvent l'être à l'avenir, résultant en une émission totale de la monnaie moindre.
+====
+
+Dans l'exemple de code <<max_money>>, nous calculons la quantité totale de bitcoins qui sera émise.
+
+[[Max_money]]
+.Un script pour calculer combien de bitcoins seront émis
+====
+[Source, python]
+----
+include::code/max_money.py[]
+----
+====
+
+<<max_money_run>> représente la sortie produite par l'exécution de ce script.
+
+[[max_money_run]]
+.Exécution du script max_money.py
+====
+[source,bash]
+----
+$ python max_money.py 
+Total BTC to ever be created: 2099999997690000 Satoshis
+----
+====
+
+((("inflation, resisting")))L'émission finie et en diminution crée une masse monétaire fixe qui résiste à l'inflation. Contrairement à une monnaie fiduciaire, qui peut être imprimé en nombre infini par une banque centrale, le bitcoin ne peut jamais être augmenté par impression.
+
+.Une monnaie déflationniste
+****
+((("deflationary money")))La conséquence la plus importante et débattue d'une émission monétaire fixe et en diminution est que la monnaie aura tendance à être intrinsèquement _déflationniste_. La déflation est le phénomène de hausse de la valeur en raison de l'inadéquation entre l'offre et la demande, ce qui fait monter la valeur (et le taux de change) d'une monnaie. Le contraire de l'inflation, la déflation des prix signifie que l'argent a plus de pouvoir d'achat au fil du temps.
+
+De nombreux économistes estiment qu'une économie déflationniste est une catastrophe qui doit être évitée à tout prix. En effet, dans une période de déflation rapide, les gens ont tendance à thésauriser l'argent au lieu de le dépenser, en espérant que les prix vont baisser. Un tel phénomène s'est déroulé au cours de la "Décennie perdue" au Japon, quand un effondrement complet de la demande a poussé la monnaie dans une spirale déflationniste. 
+
+Les experts bitcoin estiment que la déflation n'est pas mauvaise en soi. Au contraire, la déflation est associée à un effondrement de la demande parce que c'est le seul exemple de déflation que nous pouvons étudier. Dans une monnaie fiduciaire avec la possibilité d'impression illimitée, il est très difficile d'entrer dans une spirale déflationniste sauf s'il y a un effondrement complet de la demande et une réticence à imprimer de l'argent. La déflation du bitcoin n'est pas causée par un effondrement de la demande, mais par une réserve limitée de manière prévisible. 
+
+Dans la pratique, il est devenu évident que l'instinct de thésaurisation causé par une monnaie déflationniste peut être surmonté par des marchands prêts à faire des remises, jusqu'à ce que la remise surmonte l'instinct de thésaurisation de l'acheteur. Parce que le vendeur est aussi motivé pour thésauriser, la remise devient le prix d'équilibre sur lequel les deux instincts de thésaurisation se retrouvent au même niveau. Avec des rabais de 30% sur le prix bitcoin, la plupart des détaillants bitcoin n'ont pas de difficulté à surmonter l'instinct de thésaurisation et à générer des revenus. Il reste à déterminer si l'aspect déflationniste de la monnaie est vraiment un problème quand il n'est pas entraîné par une rétraction économique rapide.(((range="endofrange", startref="ix_ch08-asciidoc3")))(((range="endofrange", startref="ix_ch08-asciidoc2")))
+****
+
+=== Le consensus décentralisé
+
+((("consensus","decentralized")))((("decentralized consensus")))Dans le chapitre précédent, nous nous sommes intéressé à la blockchain, le registre (ou liste) public mondial de toutes les transactions, que tout le monde sur le réseau bitcoin accepte comme l'acte de propriété faisant autorité. 
+
+Mais comment l'ensemble du réseau peut s'entendre sur une unique « vérité » universelle concernant qui possède quoi, sans avoir à faire confiance à personne ? Tous les systèmes de paiement traditionnels dépendent d'un modèle de confiance qui a une autorité centrale fournissant un service de compensation, essentiellement la vérification et la validation de toutes les transactions. Bitcoin n'a pas d'autorité centrale, et pourtant chaque nœud complet a la copie complète d'un registre public auquel il peut se fier comme étant le registre faisant autorité. La blockchain n'est pas créée par une autorité centrale, mais est assemblée de façon indépendante par chaque noeud du réseau. D'une manière ou d'une autre, chaque nœud sur le réseau, agissant suite à la reception d'informations transmises à travers des connexions réseau non sécurisées, peut arriver à la même conclusion et assembler une copie du même registre public que tout le monde. Ce chapitre examine le processus par lequel le réseau bitcoin réalise un consensus global sans autorité centrale.
+
+((("Nakamoto, Satoshi")))L'invention principale de Satoshi Nakamoto est le mécanisme décentralisé pour un((("emergent consensus"))) _consensus émergent_. Emergent, parce que le consensus n'est pas atteint explicitement – il n'y a pas d'élection ou de moment établi où le consensus se produit. Au lieu de cela, le consensus est un artefact émergent de l'interaction asynchrone de milliers de noeuds indépendants, tous suivant des règles simples. Toutes les caractéristiques de bitcoin, incluant la monnaie, les transactions, les paiements et le modèle de sécurité qui ne dépend pas d'une autorité centrale ou de la confiance, dérivent de cette invention. 
+
+Le consensus décentralisé bitcoin émerge de l'interaction de quatre processus qui se produisent indépendamment sur des nœuds à travers le réseau : 
+
+* La vérification indépendante de chaque transaction, par chaque noeud complet, sur la base d'une liste exhaustive de critères
+* L'agrégation indépendante de ces transactions dans de nouveaux blocs par les noeuds de minage, couplé aux calculs du matériel informatique prouvé par un algorithme proof-of-work
+* La vérification indépendante des nouveaux blocs par chaque nœud et leur assemblage dans une chaîne
+* La sélection indépendante, par chaque noeud, de la chaîne avec le plus de calculs démontrés par la preuve du travail
+
+Dans les prochaines sections nous allons examiner ces processus et comment ils interagissent pour créer la caractéristique émergente de consensus de l'ensemble du réseau qui permet à n'importe quel nœud bitcoin d'assembler sa propre copie du registre mondiale faisant autorité, de confiance et public.
+
+[[tx_verification]]
+=== Vérification indépendante des transactions
+
+((("consensus","transactions independent verification")))((("transactions","independent verification of")))Dans <<transactions>>, nous avons vu comment les logiciels portefeuilles créent des transactions en collectant les UTXO, fournissent les scripts de déverrouillage appropriés, construisant alors de nouvelles sorties assignées à un nouveau propriétaire. La transaction résultante est alors envoyée aux noeuds voisins dans le réseau bitcoin afin qu'elle puisse être propager à travers l'ensemble du réseau. 
+
+Cependant, avant de transmettre les transactions à ses voisins, chaque nœud bitcoin qui reçoit une transaction va d'abord la vérifier. Cela garantit que seules les transactions valides sont propagées à travers le réseau, tandis que les transactions non valides sont rejetées au premier noeud qui les rencontre. 
+
+((("emergent consensus","criteria for")))((("transactions","verification criteria for")))Chaque nœud vérifie toutes les transactions en fonction d'une longue liste de critères :
+
+* La syntaxe de la transaction et la structure de données doivent être correctes.
+* Ni les listes d'entrées ou de sorties ne sont vides.
+* La taille de la transaction en octets est inférieure à +MAX_BLOCK_SIZE+.
+* Chaque valeur de sortie, ainsi que le total, doivent être dans la plage autorisée de valeurs (moins de 21 millions de pièces, plus de 0).
+* Aucunes des entrées ont hash = 0, N = -1 (les transactions coinbase ne doivent pas être transmises).
+* +nLockTime+ est inférieur ou égal à +INT_MAX+.
+* La taille en octets de la transaction est supérieure ou égale à 100.
+* Le nombre d'opérations de signature contenues dans la transaction est inférieur à la limite d'opération de signature.
+* Le script de déverrouillage (+scriptSig+) peut seulement placer des nombres sur la pile, et le script de verrouillage (+scriptPubkey+) doit correspondre aux règles +isStandard+ (ceci rejette les transactions "non standard").
+* Une transaction correspondante dans la pool, ou dans un bloc de la branche principale, doit exister.
+* Pour chaque entrée, si la sortie référencée existe dans toute autre opération dans la pool, la transaction doit être rejetée.
+* Pour chaque entrée, regarder dans la branche principale et la pool de transaction pour trouver la transaction de sortie référencée. Si la transaction de sortie est manquante pour une entrée, ce sera une transaction d'orphelin. Ajouter à la pool des transactions orphelines, si une transaction correspondante n'est pas déjà dans la pool.
+* Pour chaque entrée, si la transaction de sortie référencée est une sortie coinbase, il doit avoir au moins +COINBASE_MATURITY+ (100) confirmations. 
+* Pour chaque entrée, la sortie référencée doit exister et ne peut pas être déjà dépensée.
+* En utilisant les transactions de sortie référencées pour obtenir les valeurs d'entrée, vérifier que chaque valeur d'entrée, ainsi que la somme, sont dans la plage de valeurs autorisée (moins de 21 millions de pièces, plus de 0).
+* Rejeter si la somme des valeurs d'entrée est inférieur à la somme des valeurs de sortie.
+* Rejeter si les frais de transaction serait trop faible pour être placer dans un bloc vide.
+* Les scripts de déverrouillage pour chaque entrée doivent être valider par les scripts de verrouillage de sortie correspondants.
+
+Ces conditions peuvent être vues en détail dans les fonctions +AcceptToMemoryPool+, +CheckTransaction+ et +CheckInputs+ dans le client de référence bitcoin. Notez que les conditions changent au fil du temps, pour répondre aux nouveaux types d'attaques par déni de service ou parfois pour assouplir les règles de manière à inclure davantage de types de transactions. 
+
+En vérifiant indépendamment chaque transaction dès sa réception et avant de la propager, chaque nœud construit une pool de transactions valides (mais non confirmées) connus sous le nom de _pool de transaction_, _pool de memoire_ ou _mempool_.
+
+=== Les nœuds de minage
+
+((("mining","nodes")))((("nodes","mining")))Certains des nœuds du réseau bitcoin sont des noeuds spécialisés appelés _mineurs_. Dans <<ch01_intro_what_is_bitcoin>> nous avons introduit Jing, un étudiant en génie informatique à Shanghai, en Chine, qui est un mineur de bitcoin. Jing gagne des bitcoins en exécutant un((("mining rigs"))) "mining rig", du matériel informatique spécialement conçu pour miner des bitcoins. Le matériel de minage de Jing est connecté à un serveur exécutant un noeud bitcoin complet. Contrairement à Jing, certains mineurs minent sans un noeud complet, comme nous allons le voir dans <<mining_pools>>. Comme chaque autre noeud complet, le nœud de Jing reçoit et propage les transactions non confirmées sur le réseau bitcoin. Le nœud de Jing, toutefois, agrège également ces transactions dans de nouveaux blocs.
+    
+Le nœud de Jing est à l'écoute de nouveaux blocs propagés sur le réseau bitcoin, comme le font tous les nœuds. Cependant, l'arrivée d'un nouveau bloc a une signification particulière pour un nœud de minage. En effet, la concurrence entre les mineurs se termine avec la propagation d'un nouveau bloc qui agit comme une annonce signalant un gagnant. Pour les mineurs, la réception d'un nouveau bloc signifie que quelqu'un d'autre a remporté le concours et qu'ils ont perdu. Cependant, dans une compétition, la fin d'un tour est aussi le début d'un prochain. Le nouveau bloc n'est pas seulement la ligne d'arrivée marquant la fin de la course; il est aussi le coup d'envoi pour le bloc suivant.
+
+=== Agréger les transactions dans des blocs
+
+((("blockchains","assembling blocks into")))((("blocks","assembling")))((("blocks","candidate, aggregating")))((("candidate blocks","aggregating")))((("mining","aggregating transactions and")))((("transaction pools","adding blocks to")))((("transactions","aggregating into blocks")))Après la validation des transactions, un noeud bitcoin les ajoutera à la((("memory pool"))) _pool de mémoire_ ou _pool de transaction_, où les transactions attendent jusqu'à ce qu'elles puissent être incluses (minées) dans un bloc. Le nœud de Jing recueille, valide et relaie les nouvelles transactions comme tout autre nœud. Contrairement à d'autres nœuds, cependant, le nœud de Jing va ensuite agréger ces transactions dans un _bloc candidat_.
+
+Suivons les blocs qui ont été créés depuis qu'Alice a acheté une tasse de café au bar de Bob (voir <<cup_of_coffee>>). La transaction d'Alice a été incluse dans le bloc 277 316. Dans le but d'expliquer certains concepts dans ce chapitre, supposons que le bloc a été miné par le système de minage de Jing et voyons la transaction d'Alice au moment où elle intègre ce nouveau bloc.
+
+Le noeud de minage de Jing conserve une copie locale de la blockchain, la liste de tous les blocs créés depuis le début du système bitcoin en 2009. Au moment où Alice achète sa tasse de café, le nœud de Jing a assemblé une chaîne allant jusqu'au bloc 277 314. Le nœud de Jing est à l'écoute de transactions, essayant de miner un nouveau bloc et aussi écoutant les blocs découverts par d'autres nœuds. Alors que le nœud de Jing est en train de miner, il reçoit le bloc 277 315 ​​via le réseau bitcoin. L'arrivée de ce bloc signifie la fin de la compétition pour le bloc 277 315 ​​et le début de la compétition pour créer le bloc 277 316.  
+
+Durant les 10 minutes précédentes, alors que le nœud de Jing était à la recherche d'une solution pour le bloc 277 315, il recueillait également les transactions en préparation du bloc suivant. Actuellement, il a rassemblé quelques centaines de transactions dans la pool mémoire. Après avoir reçu le bloc 277 315 ​​et l'avoir valider, le nœud de Jing vérifiera également toutes les transactions dans la pool mémoire et supprimera celles qui ont été incluses dans le bloc 277 315. N'importe quelles transactions restant dans la pool mémoire sont non-confirmées et sont en attente d'être enregistrées dans un nouveau bloc. 
+
+Le nœud de Jing construit immédiatement un nouveau bloc vide, un candidat pour le bloc 277 316. Ce bloc est appelé un bloc candidat parce qu'il n'est pas encore un bloc valide, ne contenant pas une preuve de travail valide. Le bloc devient valide seulement si le mineur parvient à trouver une solution à l'algorithme proof-of-work.
+
+==== Age d'une transaction, frais et priorité
+
+((("candidate blocks","age of transactions", id="ix_ch08-asciidoc4", range="startofrange")))((("candidate blocks","priority of transactions", id="ix_ch08-asciidoc5", range="startofrange")))((("candidate blocks","transaction fees", id="ix_ch08-asciidoc6", range="startofrange")))((("fees, transaction", id="ix_ch08-asciidoc7", range="startofrange")))((("transactions","age of", id="ix_ch08-asciidoc8", range="startofrange")))((("transactions","priority of", id="ix_ch08-asciidoc9", range="startofrange")))Pour construire le bloc candidat, le nœud bitcoin de Jing sélectionne les transactions de la pool mémoire en appliquant un indicateur de priorité à chaque transaction et en ajoutant en premier les transactions les plus prioritaires. Les transactions sont prioritaires en fonction de « l'âge » de l'UTXO qui est dépensé dans leurs entrées, permettant aux entrées âgées et à forte valeur d'être prioritaire sur les entrées récentes et plus petites. Les transactions prioritaires peuvent être envoyées sans frais, si il y a assez d'espace dans le bloc. 
+
+La priorité d'une transaction est calculée comme étant la somme de la valeur et de l'âge des entrées divisé par la taille totale de la transaction :
+
+----
+Priorité = Somme (Valeur de l'entrée * Age de l'entrée) / Taille de la transaction
+----
+
+Dans cette équation, la valeur d'une entrée est mesurée dans l'unité de base, c'est-à-dire en satoshis (1/100 de million de bitcoin). L'âge d'un UTXO est le nombre de blocs qui se sont écoulées depuis que l'UTXO a été enregistré sur la blockchain, mesurant sa "profondeur" dans la blockchain. La taille de la transaction est mesurée en octets.
+
+Pour qu'une transaction soit considérée comme « hautement prioritaire », sa priorité doit être supérieure à 57 600 000, ce qui correspond à un bitcoin (100 millions de satoshis), âgé d'un jour (144 blocs), dans une transaction d'une taille totale de 250 octets :
+
+----
+Priorité élevée > 100 000 000 satoshis * 144 blocs / 250 octets = 57 600 000
+----
+
+Les 50 premiers kilo-octets d'espace de transaction dans un bloc sont mis de côté pour les transactions à haute priorité. Le nœud de Jing remplira les 50 premiers kilo-octets, passant en priorité les plus prioritaires d'entre elles, quel que soit les frais. Cela permet aux transactions hautement prioritaires d'être traiter, même si elles n'ont aucun frais.
+
+Le noeud de minage de Jing remplit alors le reste du bloc jusqu'à la taille de bloc maximale (+MAX_BLOCK_SIZE+ dans le code), avec des transactions qui portent au moins les frais minimals, favorisant celles avec les plus grands frais par kilo-octet de transaction.
+
+S'il reste de l'espace dans le bloc, le nœud de minage de Jing pourrait choisir de le remplir avec des transactions sans frais. Certains mineurs choisissent de miner des transactions sans frais sur une base best-effort. D'autres mineurs peuvent choisir d'ignorer les transactions sans frais. 
+
+Toutes les transactions laissées dans la pool mémoire, après que le bloc soit rempli, resteront dans la pool pour inclusion dans le bloc suivant. Comme les transactions restent dans la pool mémoire, leurs entrées « vieillissent », au fur et à mesure que l'UTXO qu'ils dépensent s'enfoncent plus profondément dans la blockchain avec de nouveaux blocs ajoutés par dessus. Parce que la priorité d'une transaction dépend de l'âge de ses entrées, les transactions restantes dans la pool vieilliront et augmenteront par conséquent en priorité. A la longue, une transaction sans frais peut atteindre une priorité suffisamment élevée pour être incluse dans un bloc gratuitement. 
+
+((("transactions","expiration, lack of")))Les transactions bitcoin ne disposent pas d'un délai d'expiration. Une transaction qui est valable aujourd'hui sera valide à perpétuité. Toutefois, si une transaction est seulement propagée une seule fois à travers le réseau, elle persistera aussi longtemps qu'elle est maintenu dans la pool mémoire d'un nœud de minage. Quand un nœud de minage est redémarré, sa pool mémoire est effacée, car c'est une forme non-persistante de stockage. Bien qu'une transaction valide aurait pu être propagée à travers le réseau, si ce n'est pas fait il est possible qu'elle ne réside dans la pool mémoire d'aucuns mineurs. Les logiciels de portefeuille devraient retransmettre ces transactions ou les reconstruire avec des frais plus élevés si elles ne sont pas exécutées avec succès dans un laps de temps raisonnable.
+
+Lorsque le nœud de Jing agrège toutes les transactions à partir de la pool mémoire, le nouveau bloc candidat a 418 transactions avec un total de frais de transaction de 0,09094928 bitcoin. Vous pouvez voir ce bloc dans la blockchain en utilisant l'interface en ligne de commande du client Bitcoin Core, comme indiqué dans <<block277316>>.(((range="endofrange", startref="ix_ch08-asciidoc9")))(((range="endofrange", startref="ix_ch08-asciidoc8")))(((range="endofrange", startref="ix_ch08-asciidoc7")))(((range="endofrange", startref="ix_ch08-asciidoc6")))(((range="endofrange", startref="ix_ch08-asciidoc5")))(((range="endofrange", startref="ix_ch08-asciidoc4")))
+====
+[source,bash]
+----
+$ bitcoin-cli getblockhash 2773160000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4
+
+$ bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4
+----
+====
+[[block277316]]
+.Bloc 277 316
+====
+[source,json]
+----
+{
+    "hash" : "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4",
+    "confirmations" : 35561,
+    "size" : 218629,
+    "height" : 277316,
+    "version" : 2,
+    "merkleroot" : "c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e",
+    "tx" : [
+        "d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
+        "b268b45c59b39d759614757718b9918caf0ba9d97c56f3b91956ff877c503fbe",
+
+        ... 417 autres transactions ...
+
+       ],
+    "time" : 1388185914,
+    "nonce" : 924591752,
+    "bits" : "1903a30c",
+    "difficulty" : 1180923195.25802612,
+    "chainwork" : "000000000000000000000000000000000000000000000934695e92aaf53afa1a",
+    "previousblockhash" : "0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569",
+    "nextblockhash" : "000000000000000010236c269dd6ed714dd5db39d36b33959079d78dfd431ba7"
+}
+----
+====
+
+==== La transaction de production
+
+((("coinbase transaction", id="ix_ch08-asciidoc10", range="startofrange")))La première transaction ajoutée au bloc est une transaction spéciale, appelée _transaction de production_ ou _transaction coinbase_. Cette transaction est réalisée par le noeud de Jing et constitue sa récompense pour l'effort de minage. Le nœud de Jing crée la transaction de production comme un paiement à son propre portefeuille : "Paie l'adresse de Jing 25,09094928 bitcoins." Le montant total de la récompense que Jing recueille pour le minage d'un bloc est la somme de la récompense coinbase (25 nouveaux bitcoins) et les frais de transaction (0,09094928) de toutes les transactions comprises dans le bloc comme indiqué dans <<generation_tx_example>> : 
+
+
+====
+----
+$ bitcoin-cli getrawtransaction d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f 1
+----
+====
+
+[[generation_tx_example]]
+.Transaction de production
+====
+[source,json]
+----
+{
+    "hex" : "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0f03443b0403858402062f503253482fffffffff0110c08d9500000000232102aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21ac00000000",
+    "txid" : "d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "coinbase" : "03443b0403858402062f503253482f",
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 25.09094928,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "02aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21OP_CHECKSIG",
+                "hex" : "2102aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21ac",
+                "reqSigs" : 1,
+                "type" : "pubkey",
+                "addresses" : [
+                    "1MxTkeEP2PmHSMze5tUZ1hAV3YTKu2Gh1N"
+                ]
+            }
+        }
+    ],
+    "blockhash" : "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4",
+    "confirmations" : 35566,
+    "time" : 1388185914,
+    "blocktime" : 1388185914
+}
+----
+====
+
+Contrairement aux transactions normales, la transaction de production ne consomme pas (dépense) d'UTXO comme entrées. Au lieu de cela, elle a une seule entrée, appelé le _coinbase_, qui crée des bitcoins à partir de rien. La transaction de production dispose d'une sortie, payable à l'adresse bitcoin du mineur. La sortie de la transaction de production envoie la valeur de 25,09094928 bitcoins à l'adresse bitcoin du mineur, dans ce cas +1MxTkeEP2PmHSMze5tUZ1hAV3YTKu2Gh1N+. 
+
+==== Récompense coinbase et frais
+
+((("coinbase data","fees and")))((("coinbase reward, calculating")))((("fees, transaction","calculating")))((("fees, transaction","generation transactions and")))((("generation transaction","coinbase rewards and")))((("generation transaction","fees and")))Pour construire la transaction de production, le nœud de Jing calcule en premier le montant total des frais de transaction en ajoutant toutes les entrées et sorties des 418 transactions qui ont été ajoutés au bloc. Les frais sont calculés comme suit :
+
+----
+Total des frais = Somme (entrées) - Somme (sorties)
+----
+
+Dans le bloc 277 316, les frais totaux de transaction sont de 0,09094928 bitcoins. 
+
+Ensuite, le nœud de Jing calcule la récompense correcte pour le nouveau bloc. La récompense est calculé en fonction de la hauteur du bloc, à partir de 50 bitcoins par bloc et réduit de moitié tous les 210 000 blocs. Parce que ce bloc est à la hauteur de 277 316, la bonne récompense est 25 bitcoins. 
+
+Le calcul peut être vu dans la fonction +GetBlockValue+ dans le client Bitcoin Core, comme représenté sur <<getblockvalue_source>>.
+
+[[getblockvalue_source]]
+.Calculer la récompense de bloc – Fonction GetBlockValue, client Bitcoin Core, main.cpp, ligne 1305
+====
+[source, cpp]
+----
+int64_t GetBlockValue(int nHeight, int64_t nFees)
+{
+    int64_t nSubsidy = 50 * COIN;
+    int halvings = nHeight / Params().SubsidyHalvingInterval();
+
+    // Force la récompense à zéro lorsque le décalage à droite est indéfinie.
+    if (halvings >= 64)
+        return nFees;
+
+    // 'Subsidy' est réduit de moitié tous les 210 000 blocs qui vont se produire environ tous les 4 ans.
+    nSubsidy >>= halvings;
+
+    return nSubsidy + nFees;
+}
+----
+====
+
+La subvention initiale est calculé en satoshis en multipliant 50 avec la constante +COIN+ (100 000 000 satoshis). Ceci définit la récompense initiale (+nSubsidy+) à 5 milliards de satoshis. 
+
+((("halvings, calculating")))Ensuite, la fonction calcule le nombre de +halvings+ (réduction de moitié, dédoublement) qui ont eu lieu en divisant la hauteur du bloc courant par l'interval de dédoublement (+SubsidyHalvingInterval+). Dans le cas du bloc 277 316, avec un interval de dédoublement tous les 210 000 blocs, le résultat est de 1 dédoublement. 
+
+Le nombre maximum de dédoublements permis est de 64, afin que le code impose une récompense de zéro (retourne seulement les frais) si les 64 dédoublements sont dépassés.
+
+Ensuite, la fonction utilise l'opérateur binaire de décalage vers la droite pour diviser la récompense (+nSubsidy+) par deux pour chaque tour de dédoublement. Dans le cas du bloc 277 316, cela va être appliqué une fois à la récompense de 5 milliards satoshis (une réduction de moitié) et se traduire par 2,5 milliards de satoshis, ou 25 bitcoins. L'opérateur binaire de décalage vers la droite est utilisé car il est plus efficace pour la division par deux que la division d'entier ou de nombre à virgule flottante. 
+
+Enfin, la récompense coinbase (+nSubsidy+) est ajouté aux frais de transaction (+nFees+), et la somme est retournée. 
+
+==== Structure de la transaction de production
+
+((("generation transaction","structure of")))Avec ces calculs, le nœud de Jing construit alors la transaction de génération pour se payer à lui-même 25,09094928 bitcoins.
+
+Comme vous pouvez le voir dans <<generation_tx_example>>, la transaction de génération a un format spécial. Au lieu d'une entrée de transaction spécifiant un précédent UTXO, il a une entrée "coinbase". Nous avons examiné les entrées de transaction dans <<tx_in_structure>>. Comparons une entrée de transaction ordinaire avec une entrée de transaction de génération. <<table_8-1>> représente la structure d'une transaction ordinaire, tandis que <<table_8-2>> représente la structure d'une transaction de génération.
+
+[[table_8-1]]
+.La structure d'une entrée de transaction "normale"
+[options="header"]
+|=======
+|Taille| Champ | Description
+| 32 octets | Hash de transaction | Pointeur vers la transaction contenant l'UTXO à dépenser
+| 4 octets | Index de la sortie | Le numéro d'index de l'UTXO à dépenser, le premier est 0
+| 1-9 octets (VarInt) | Taille du script de déverrouillage | Longueur du script de déverrouillage en octets, (to follow)
+| Variable | Script de déverrouillage | Un script qui remplit les conditions du script de verrouillage de l'UTXO.
+| 4 octets | Numéro de séquence | Fonctionnalité de remplacement de transaction actuellement désactivée, fixé à 0xFFFFFFFF
+|=======
+
+[[table_8-2]]
+.La structure d'une entrée de transaction de génération
+[options="header"]
+|=======
+|Taille| Champ | Description
+| 32 octets | Hash de transaction | Tous les bits sont à zéro : pas une référence de hash de transaction
+| 4 octets | Index de sortie | Tous les bits sont à 1 : 0xFFFFFFFF
+| 1-9 octets (VarInt) | Taille des données coinbase | Longueur des données coinbase, de 2 à 100 octets
+| Variable | Données coinbase | Données arbitraires utilisés comme nonce supplémentaire et balises de minage
+dans les blocs v2, doit commencer avec la hauteur de bloc
+| 4 octets | Numéro de séquence | Fixé à 0xFFFFFFFF
+|=======
+
+Dans une transaction de génération, les deux premiers champs sont réglés à des valeurs qui ne représentent pas une référence d'UTXO. Au lieu d'un "Hash de transaction", le premier champ est rempli avec 32 octets tous mis à zéro. L' "Index de sortie" est rempli avec 4 octets tous fixés à 0xFF (255 en décimal). Le "Script de déverrouillage" est remplacé par les données coinbase, un champ arbitraire de données utilisé par les mineurs. 
+
+==== Les données coinbase
+
+((("coinbase data", id="ix_ch08-asciidoc11", range="startofrange")))((("generation transaction","coinbase data", id="ix_ch08-asciidoc12", range="startofrange")))((("unlocking scripts","generation transactions and")))Les transactions de génération ne disposent pas d'un champ pour un script de déverrouillage (alias, +scriptSig+). Au lieu de cela, ce champ est remplacé par les données coinbase, qui doivent être comprises entre 2 et 100 octets. Sauf pour les quelques premiers octets, le reste des données coinbase peut être utilisé par les mineurs de quelque façon qu'ils veulent; ce sont des données arbitraires. 
+
+Dans le bloc de genèse, par exemple, Satoshi Nakamoto a ajouté le texte "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks" (Le chancelier est sur le point de lancer un second plan de sauvetage pour les banques) dans les données coinbase, en l'utilisant comme une preuve de la date et pour transmettre un message. Actuellement, les mineurs utilisent les données coinbase pour inclure des valeurs de nonce supplémentaire et des chaînes de caractères identifiant la pool de minage, comme nous le verrons dans les sections suivantes. 
+
+Les quelques premiers octets de la coinbase étaient habituellement arbitraires, mais ce n'est plus le cas. Conformément à la Proposition d'Amélioration de Bitcoin 34 (BIP0034), les blocs de version 2 (blocs avec le champ de version réglé à 2) doivent contenir l'indice de la hauteur du bloc comme un script d'opération "push" au début du champ coinbase. 
+
+Dans le bloc 277 316, nous voyons que le coinbase (voir <<generation_tx_example>>), qui est dans le "Script de déverrouillage" ou champ +scriptSig+ de l'entrée de la transaction, contient la valeur hexadécimal +03443b0403858402062f503253482f+. Décodons cette valeur. 
+
+Le premier octet, +03+, demande au moteur d'exécution de script de pousser les trois prochains octets sur la pile de script (voir <<tx_script_ops_table_pushdata>>). Les trois prochains octets, +0x443b04+, sont la hauteur de bloc encodée en format little-endian (en arrière, l'octet le moins significatif en premier). Inversez l'ordre des octets et le résultat est +0x043b44+, qui correspond à 277 316 en décimal. 
+
+Les chiffres hexadécimaux suivants (+03858402062+) sont utilisés pour encoder un _nonce_ supplémentaire (voir <<extra_nonce>>), soit une valeur aléatoire, utilisé pour trouver une solution à la preuve de travail appropriée.
+
+La dernière partie des données coinbase (+2f503253482f+) est la chaîne de caractères ASCII +/P2SH/+, ce qui indique que le noeud de minage qui mine ce bloc supporte l'amélioration((("pay-to-script-hash (P2SH)","coinbase data and"))) pay-to-script-hash (P2SH) définie dans le BIP0016. L'introduction de la fonction P2SH a requis un « vote » de la part des mineurs afin d'approuver soit BIP0016 ou BIP0017. Ceux approuvant la mise en œuvre de BIP0016 devait inclure +/P2SH/+ dans leurs données coinbase. Ceux approuvant l'implémentation de P2SH par le BIP0017 devait inclure la chaîne +p2sh/CHV+ dans leurs données coinbase. Le BIP0016 a été élu comme le vainqueur, et de nombreux mineurs continuent d'inclure la chaîne +/P2SH/+ dans leur coinbase pour indiquer le support de cette fonctionnalité.
+
+<<satoshi_words>> utilise la bibliothèque libbitcoin présentée dans <<alt_libraries>> pour extraire les données coinbase du bloc de genèse, affichant le message de Satoshi. Notez que la bibliothèque libbitcoin contient une copie statique du bloc de genèse, de sorte que l'exemple de code peut récupérer le bloc de genèse directement à partir de la bibliothèque. 
+
+[[satoshi_words]]
+.Extraire les données coinbase du bloc de genèse
+====
+[source, cpp]
+----
+include::code/satoshi-words.cpp[]
+----
+====
+
+Nous compilons le code avec le compilateur GNU C++ et lançons l'exécutable produit, comme indiqué dans <<satoshi_words_run>>.(((range="endofrange", startref="ix_ch08-asciidoc12")))(((range="endofrange", startref="ix_ch08-asciidoc11")))(((range="endofrange", startref="ix_ch08-asciidoc10")))
+
+[[satoshi_words_run]]
+.Compiler et exécuter l'exemple de code "satoshi-words"
+====
+[source,bash]
+----
+$ # Compile the code
+$  g++ -o satoshi-words satoshi-words.cpp $(pkg-config --cflags --libs libbitcoin)
+$ # Run the executable
+$ ./satoshi-words
+^D��<GS>^A^DEThe Times 03/Jan/2009 Chancellor on brink of second bailout for banks
+----
+====
+
+=== Construire l'entête de bloc
+
+((("block headers","constructing")))Pour construire l'entête de bloc, le noeud de minage doit remplir six champs, comme indiqué dans <<block_header_structure_ch08>>.
+
+[[block_header_structure_ch08]]
+.La structure de l'entête de bloc
+[options="header"]
+|=======
+|Taille| Champ | Description
+| 4 octets | Version | Un numéro de version pour suivre les mises à jour logicielles/de protocole
+| 32 octets | Hash du bloc précédent | Une référence au hachage du précédent (parent) bloc dans la chaîne
+| 32 octets | Merkle Root | Un hachage de la racine de l'arbre de Merkle des transactions de ce bloc
+| 4 octets | Timestamp | Le temps de création approximative de ce bloc (secondes depuis le début de l'Ere Unix (Unix Epoch) )
+| 4 octets | Le niveau de difficulté | Le niveau de difficulté de l'algorithme proof-of-work pour ce bloc
+| 4 octets | Nonce | Un compteur utilisé pour l'algorithme proof-of-work
+|=======
+
+Au moment où le bloc 277 316 fut miné, le numéro de version décrivant la structure du bloc est la version 2, qui est codée au format little-endian sur 4 octets tel que +0x02000000 +. 
+
+Ensuite, le nœud de minage doit ajouter le((("Previous Block Hash"))) "Hash du bloc précédent". Tel est le hash de l'entête du bloc 277 315, le bloc précédent reçu du réseau, que le nœud de Jing a accepté et choisi comme le parent du bloc candidat 277 316. Le hash de l'entête de bloc pour le bloc 277 315 ​​est :
+
+----
+0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569
+----
+
+((("merkle trees","constructing block headers with")))La prochaine étape est de résumer toutes les transactions avec un arbre de Merkle, afin d'ajouter la racine de Merkle à l'entête du bloc. La transaction de génération est répertoriée comme la première transaction dans le bloc. Puis, plus de 418 transactions sont ajoutées, pour un total de 419 transactions dans le bloc. Comme nous l'avons vu dans le <<merkle_trees>>, il doit y avoir un nombre pair de nœuds « feuilles » dans l'arbre, c'est pourquoi la dernière transaction est dupliquée, créant 420 noeuds, chacun contenant le hachage d'une transaction. Les hachages de transaction sont ensuite combinés, par paires, créant chaque niveau de l'arbre, jusqu'à ce que toutes les transactions soient résumées dans un seul nœud à la "racine" de l'arbre. La racine de l'arbre de Merkle résume toutes les transactions en une valeur unique de 32 octets, que vous pouvez voir répertorié comme "racine de Merkle" dans <<block277316>>, et ici : 
+
+----
+c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e
+----
+    
+((("timestamping blocks")))Le noeud de minage va ensuite ajouter un horodatage de 4 octets, codé comme un timestamp Unix "Epoch", qui est basée sur le nombre de secondes écoulées à partir du 1er Janvier 1970, à minuit heure UTC/GMT. Le temps +1388185914+ est égal à vendredi 27 décembre 2013, 23:11:54 UTC/GMT.
+
+((("difficulty target","constructing block headers and")))Le noeud remplit alors le niveau de difficulté, qui définit la difficulté requise de la preuve de travail pour en faire un bloc valide. La difficulté est stockée dans le bloc en tant que "bits de difficulté", qui est un encodage de mantisse-exposant du niveau. L'encodage a un exposant de 1 octet, suivi par une mantisse de 3 octets (coefficient). Dans le bloc 277 316, par exemple, la valeur de la difficulté en bits est +0x1903a30c+. La première partie +0x19+ est un exposant hexadécimal, tandis que la partie suivante, +0x03a30c+, est le coefficient. Le concept d'un niveau de difficulté est expliqué dans <<difficulty_target>> et la représentation des "bits de difficulté" est expliquée dans <<difficulty_bits>>.
+
+((("nonce,","initializing in block header")))Le champ final est le nonce, qui est initialisée à zéro. 
+
+Avec tous les autres champs remplis, l'entête de bloc est maintenant terminé et le processus de minage peut commencer. L'objectif est maintenant de trouver une valeur pour le nonce qui se traduit par un hachage d'entête de bloc qui soit inférieur au niveau de difficulté. Le noeud de minage aura besoin de tester des milliards ou des trillions de valeurs de nonce avant qu'un nonce soit trouvé qui satisfasse les conditions requises. 
+
+=== Miner le bloc
+
+((("blocks","mining", id="ix_ch08-asciidoc13", range="startofrange")))((("mining","blocks", id="ix_ch08-asciidoc14", range="startofrange")))Maintenant qu'un bloc candidat a été construit par le nœud de Jing, il est temps pour la plate-forme de minage de Jing de « miner » le bloc, de trouver une solution à l'algorithme proof-of-work qui rend le bloc valide. Tout au long de ce livre, nous avons étudié les fonctions de hachage cryptographique utilisées dans divers éléments du système bitcoin. La fonction de hachage SHA256 est la fonction utilisée dans le processus de minage du bitcoin. 
+
+En termes simples, le minage est un processus, répété à reprises, de hachage de l'entête de bloc, en changeant un paramètre jusqu'à ce que le hachage résultant corresponde à une cible spécifique. Le résultat de la fonction de hachage ne peut être déterminé à l'avance, ni ne peut être créé un motif qui va produire une valeur spécifique de hachage. Cette fonctionnalité de fonctions de hachage signifie que la seule façon de produire un résultat de hachage correspondant à une cible spécifique est d'essayer encore et encore, en modifiant de manière aléatoire l'entrée jusqu'à ce que le résultat de hachage souhaité apparaisse par hasard. 
+
+==== L'algorithme proof-of-work
+
+((("mining","proof-of-work algorithm and", id="ix_ch08-asciidoc15", range="startofrange")))((("Proof-Of-Work algorithm", id="ix_ch08-asciidoc16", range="startofrange")))Un algorithme de hachage prend une entrée de données de longueur arbitraire et produit un résultat déterministe de longueur fixe, une empreinte numérique de l'entrée. Pour toute entrée spécifique, le hachage sera toujours le même et peut facilement être calculé et vérifié par quiconque mettant en œuvre le même algorithme de hachage. La caractéristique clé d'un algorithme de hachage cryptographique est qu'il est pratiquement impossible de trouver deux entrées différentes qui produisent la même empreinte digitale. En corollaire, il est également pratiquement impossible de sélectionner une entrée de manière à produire une empreinte souhaitée, autrement qu'en testant des entrées au hasard.
+
+Avec SHA256, la sortie est toujours de 256 bits de long, quelle que soit la taille de l'entrée. Dans <<sha256_example1>>, nous allons utiliser l'interpréteur Python pour calculer le hachage SHA256 de la phrase, "I am Satoshi Nakamoto". 
+
+[[sha256_example1]]
+.Exemple de SHA256
+====
+[source,bash]
+----
+$ python
+----
+[source,pycon]
+----
+Python 2.7.1
+>>> import hashlib
+>>> print hashlib.sha256("I am Satoshi Nakamoto").hexdigest()
+5d7c7ba21cbbcd75d14800b100252d5b428e5b1213d27c385bc141ca6b47989e
+----
+====
+
+<<sha256_example1>> représente le résultat du calcul du hachage de +"I am Satoshi Nakamoto"+ : +5d7c7ba21cbbcd75d14800b100252d5b428e5b1213d27c385bc141ca6b47989e+. Ce nombre de 256 bits est le _hachage_ ou _résumé_ de la phrase et dépend de chaque partie de la phrase. L'ajout d'une seule lettre, un signe de ponctuation ou tout autre caractère va produire un hachage différent.
+
+Maintenant, si nous changeons la phrase, nous devrions nous attendre à voir des hachages complètement différents. Essayons cela en ajoutant un numéro à la fin de notre phrase, en utilisant le script Python simple dans <<sha256_example_generator>>.
+
+[[sha256_example_generator]]
+.SHA256 Un script pour générer de nombreux hachages en itérant sur un nonce
+====
+[Source, python]
+----
+include::code/hash_example.py[]
+----
+====
+
+Exécuter cela va produire les hachages de plusieurs phrases, fait différemment en ajoutant un numéro à la fin du texte. En incrémentant le nombre, nous pouvons obtenir différents hachages, comme indiqué dans <<sha256_example_generator_output>>.
+
+((("nonce")))
+[[sha256_example_generator_output]]
+.Sortie SHA256 d'un script pour générer de nombreux hachages en itérant sur un nonce
+====
+[source,bash]
+----
+$ python hash_example.py
+----
+
+----
+I am Satoshi Nakamoto0 => a80a81401765c8eddee25df36728d732...
+I am Satoshi Nakamoto1 => f7bc9a6304a4647bb41241a677b5345f...
+I am Satoshi Nakamoto2 => ea758a8134b115298a1583ffb80ae629...
+I am Satoshi Nakamoto3 => bfa9779618ff072c903d773de30c99bd...
+I am Satoshi Nakamoto4 => bce8564de9a83c18c31944a66bde992f...
+I am Satoshi Nakamoto5 => eb362c3cf3479be0a97a20163589038e...
+I am Satoshi Nakamoto6 => 4a2fd48e3be420d0d28e202360cfbaba...
+I am Satoshi Nakamoto7 => 790b5a1349a5f2b909bf74d0d166b17a...
+I am Satoshi Nakamoto8 => 702c45e5b15aa54b625d68dd947f1597...
+I am Satoshi Nakamoto9 => 7007cf7dd40f5e933cd89fff5b791ff0...
+I am Satoshi Nakamoto10 => c2f38c81992f4614206a21537bd634a...
+I am Satoshi Nakamoto11 => 7045da6ed8a914690f087690e1e8d66...
+I am Satoshi Nakamoto12 => 60f01db30c1a0d4cbce2b4b22e88b9b...
+I am Satoshi Nakamoto13 => 0ebc56d59a34f5082aaef3d66b37a66...
+I am Satoshi Nakamoto14 => 27ead1ca85da66981fd9da01a8c6816...
+I am Satoshi Nakamoto15 => 394809fb809c5f83ce97ab554a2812c...
+I am Satoshi Nakamoto16 => 8fa4992219df33f50834465d3047429...
+I am Satoshi Nakamoto17 => dca9b8b4f8d8e1521fa4eaa46f4f0cd...
+I am Satoshi Nakamoto18 => 9989a401b2a3a318b01e9ca9a22b0f3...
+I am Satoshi Nakamoto19 => cda56022ecb5b67b2bc93a2d764e75f...
+----
+====
+
+Chaque phrase produit un résultat de hachage complètement différent. Ils semblent complètement aléatoire, mais vous pouvez reproduire les résultats de cet exemple sur n'importe quel ordinateur avec Python et voir exactement les mêmes hachages. 
+
+Le nombre utilisé en tant que variable dans un tel scénario est appelé un _nonce_. Le nonce est utilisé pour faire varier la sortie d'une fonction cryptographique, dans ce cas faire varier l'empreinte digitale SHA256 de la phrase. 
+
+((("difficulty target","defined")))Pour défier cet algorithme, nous allons fixer un objectif arbitraire : trouver une phrase qui produit un hachage hexadécimal qui commence par un zéro. Heureusement, ce ne est pas difficile! <<sha256_example_generator_output>> montre que la phrase "I am Satoshi Nakamoto13" produit le hachage +0ebc56d59a34f5082aaef3d66b37a661696c2b618e62432727216ba9531041a5+, ce qui correspond à nos critères. Il a fallu 13 tentatives pour le trouver. En termes de probabilités, si la sortie de la fonction de hachage est répartie uniformément nous nous attendons à trouver un résultat avec un 0 comme préfixe hexadécimal une fois tous les 16 hash (l'un des 16 chiffres hexadécimaux – de 0 à F). En termes numériques, cela signifie trouver une valeur de hachage qui est inférieure à +0x1000000000000000000000000000000000000000000000000000000000000000+. Nous appelons ce seuil la _cible_ et le but est de trouver un hachage qui soit numériquement _moins que la cible_. Si on diminue la cible, trouver un hachage qui lui est inférieure devient de plus en plus difficile. 
+ 
+Pour donner une analogie simple, imaginez un jeu où les joueurs jettent une paire de dés à plusieurs reprises, en essayant de faire moins qu'une cible spécifiée. Au premier tour, la cible est de 12. Sauf si vous jetez un double-six, vous gagnez. Au prochain tour, la cible est 11. Les joueurs doivent jeter 10 ou moins pour gagner, à nouveau une tâche facile. Disons que quelques tours plus tard la cible est abaissée à 5. Maintenant, plus de la moitié des lancés seront supérieurs à 5 et donc invalide. De façon exponentielle plus la cible baisse et plus de lancés de dés seront nécessaires pour gagner. Finalement, lorsque la cible est de 2 (le minimum possible), un seul lancé tous les 36, ou 2% d'entre eux, produira un résultat gagnant. 
+
+Dans <<sha256_example_generator_output>>, le "nonce" gagnant est 13 et ce résultat peut être confirmé par n'importe qui indépendamment. Tout le monde peut ajouter le numéro 13 comme suffixe à la phrase « I am Satoshi Nakamoto » et calculer le hachage, vérifiant qu'il est inférieure à la cible. Le résultat positif correspond aussi à la preuve de travail, car il prouve que nous avons fait le travail pour trouver ce nonce. Alors qu'il suffit d'un calcul de hachage pour le vérifier, il nous a fallu 13 calculs de hachage pour trouver un nonce qui a fonctionné. Si nous avions une cible inférieure (plus grande difficulté), il faudrait beaucoup plus de calculs de hachage pour trouver un nonce approprié, mais seulement un calcul de hachage pour quiconque veut le vérifier. En outre, en connaissant la cible, tout le monde peut estimer la difficulté en utilisant des statistiques et donc savoir combien de travail a été nécessaire pour trouver un tel nonce.
+
+La preuve de travail bitcoin est très similaire au défi représenté dans <<sha256_example_generator_output>>. Le mineur construit un bloc candidat rempli de transactions. Ensuite, le mineur calcule le hash de l'entête de ce bloc et voit si elle est inférieure à la _cible_ actuelle. Si le hash n'est pas inférieur à la cible, le mineur modifiera le nonce (habituellement juste en incrémentant de un) et essayer à nouveau. À la difficulté actuelle dans le réseau bitcoin, les mineurs doivent essayer des quadrillions de fois avant de trouver un nonce qui résulte en un assez faible hash d'entête de bloc.
+
+Un algorithme proof-of-work très simplifiée est mis en œuvre en Python dans <<pow_example1>>.((("proof of work")))
+
+[[pow_example1]]
+.Implémentation simplifiée de proof-of-work
+====
+[Source, python]
+----
+include::code/proof-of-work-example.py[]
+----
+====
+
+En exécutant ce code, vous pouvez régler la difficulté souhaitée (en bits, combien de bits en tête doivent être à zéro) et voir combien de temps il faudra à votre ordinateur pour trouver une solution. Dans <<pow_example_outputs>>, vous pouvez voir comment cela fonctionne sur un ordinateur portable moyen.
+
+[[pow_example_outputs]]
+.Exécuter l'exemple de la preuve de travail avec diverses difficultés
+====
+[source, bash]
+----
+$ python proof-of-work-example.py*
+----
+
+----
+Difficulty: 1 (0 bits)
+
+[...]
+
+Difficulty: 8 (3 bits)
+Starting search...
+Success with nonce 9
+Hash is 1c1c105e65b47142f028a8f93ddf3dabb9260491bc64474738133ce5256cb3c1
+Elapsed Time: 0.0004 seconds
+Hashing Power: 25065 hashes per second
+Difficulty: 16 (4 bits)
+Starting search...
+Success with nonce 25
+Hash is 0f7becfd3bcd1a82e06663c97176add89e7cae0268de46f94e7e11bc3863e148
+Elapsed Time: 0.0005 seconds
+Hashing Power: 52507 hashes per second
+Difficulty: 32 (5 bits)
+Starting search...
+Success with nonce 36
+Hash is 029ae6e5004302a120630adcbb808452346ab1cf0b94c5189ba8bac1d47e7903
+Elapsed Time: 0.0006 seconds
+Hashing Power: 58164 hashes per second
+
+[...]
+
+Difficulty: 4194304 (22 bits)
+Starting search...
+Success with nonce 1759164
+Hash is 0000008bb8f0e731f0496b8e530da984e85fb3cd2bd81882fe8ba3610b6cefc3
+Elapsed Time: 13.3201 seconds
+Hashing Power: 132068 hashes per second
+Difficulty: 8388608 (23 bits)
+Starting search...
+Success with nonce 14214729
+Hash is 000001408cf12dbd20fcba6372a223e098d58786c6ff93488a9f74f5df4df0a3
+Elapsed Time: 110.1507 seconds
+Hashing Power: 129048 hashes per second
+Difficulty: 16777216 (24 bits)
+Starting search...
+Success with nonce 24586379
+Hash is 0000002c3d6b370fccd699708d1b7cb4a94388595171366b944d68b2acce8b95
+Elapsed Time: 195.2991 seconds
+Hashing Power: 125890 hashes per second
+
+[...]
+
+Difficulty: 67108864 (26 bits)
+Starting search...
+Success with nonce 84561291
+Hash is 0000001f0ea21e676b6dde5ad429b9d131a9f2b000802ab2f169cbca22b1e21a
+Elapsed Time: 665.0949 seconds
+Hashing Power: 127141 hashes per second
+----
+====
+
+Comme vous pouvez le voir, en augmentant la difficulté de 1 bit on provoque une augmentation exponentielle dans le temps qu'il faut pour trouver une solution. Si vous pensez à l'ensemble de l'espace de nombre 256 bits, chaque fois que vous fixez un bit de plus à zéro, vous diminuez l'espace de recherche de moitié. Dans <<pow_example_outputs>>, il faut 84 millions de tentatives de hachage pour trouver un nonce qui produit un hachage avec les 26 premiers bits à zéro. Même à une vitesse de plus de 120 000 hachages par seconde, il nécessite encore 10 minutes sur un ordinateur portable pour trouver cette solution. 
+
+Au moment de l'écriture, le réseau tente de trouver un bloc dont le hash d'entête est inférieure à +000000000000004c296e6376db3a241271f43fd3f5de7ba18986e517a243baa7+. Comme vous pouvez le voir, il y a beaucoup de zéros au début de ce hachage, ce qui signifie que la fourchette acceptable de hachage est beaucoup plus petite, donc il est plus difficile de trouver un hash valide. Il faudra en moyenne plus de 150 quadrillions de calculs de hachage par seconde pour le réseau pour découvrir le prochain bloc. Cela semble être une tâche impossible, mais heureusement, le réseau apporte 100 petahashes par seconde (PH / sec) de puissance de calcul à supporter, lequel sera en mesure de trouver un bloc en 10 minutes en moyenne.(((range="endofrange", startref="ix_ch08-asciidoc16")))(((range="endofrange", startref="ix_ch08-asciidoc15"))) 
+
+[[difficulty_bits]]
+==== Représentation de la difficulté 
+
+((("difficulty target")))((("mining","difficulty bits")))((("mining","difficulty targets")))Dans <<block277316>>, nous avons vu que le bloc contient la cible de difficulté, dans une notation appelé "bits de difficulté" ou seulement "bits", qui dans le bloc 277 316 a la valeur de +0x1903a30c+. Cette notation exprime la cible de difficulté comme un format coefficient/exposant, avec les deux premiers chiffres hexadécimaux pour l'exposant et les six prochains chiffres hexadécimaux que le coefficient. Dans ce bloc, par conséquent, l'exposant est +0x19+ et le coefficient est +0x03a30c+.
+    
+La formule pour calculer la cible de difficulté de cette représentation est :
+
+----
+cible = coefficient * 2^(8 * (exposant - 3))
+----
+
+En utilisant cette formule, et la valeur de bits de difficulté 0x1903a30c, nous obtenons :
+
+----
+cible = 0x03a30c * 2^(0x08 * (0x19 - 0x03))^ 
+
+=> cible = 0x03a30c * 2^(0x08 * 0x16)^
+
+=> cible = 0x03a30c * 2 ^0xB0^
+----
+
+qui en décimal est :
+
+----
+=> cible = 238 348 * 2 ^176^
+
+=> cible = 22 829 202 948 393 929 850 749 706 076 701 368 331 072 452 018 388 575 715 328
+----
+
+reconverti en hexadécimal :
+
+----
+=> cible = 0x0000000000000003A30C00000000000000000000000000000000000000000000
+----
+
+Cela signifie qu'un bloc valide d'une hauteur de 277 316 doit avoir un hash d'entête de bloc inférieur à la cible. En binaire ce nombre aurait plus des 60 premiers bits mis à zéro. Avec ce niveau de difficulté, un seul mineur traitant 1 trillion de hashes par seconde (1 tera-hachage par seconde ou 1 TH/sec) ne ferait que trouver une solution une fois tous les 8 496 blocs ou une fois tous les 59 jours, en moyenne. 
+
+[[difficulty_target]]
+==== Cible de difficulté et de reciblage
+
+((("difficulty target","retargeting", id="ix_ch08-asciidoc17", range="startofrange")))Comme nous l'avons vu, la cible détermine la difficulté et par conséquent influe sur le temps nécessaire pour trouver une solution à l'algorithme proof-of-work. Cela conduit à des questions évidentes : Pourquoi est-ce que la difficulté est réglable, qui la règle et comment ?
+
+((("difficulty retargeting")))((("difficulty target","block generation rate and")))Les blocs bitcoin sont générés toutes les 10 minutes, en moyenne. Ceci est le rythme cardiaque de bitcoin et sous-tend la fréquence d'émission de la monnaie et la vitesse de règlement de la transaction. Cela doit rester constant et pas seulement à court terme, mais sur une période de plusieurs décennies. Pendant cette période, il est prévu que la puissance des ordinateurs continue d'augmenter à un rythme rapide. En outre, le nombre de participants au minage et les ordinateurs qu'ils utilisent vont également changer constamment. Pour garder le temps de génération de bloc à 10 minutes, la difficulté du minage doit être ajustée pour tenir compte de ces changements. En fait, la difficulté est un paramètre dynamique qui sera ajusté périodiquement pour atteindre une cible de bloc de 10 minutes. En termes simples, la cible de difficulté est réglée de façon à ce que la puissance de minage entraîne un intervalle de bloc de 10 minutes. 
+
+Comment, alors, est un tel ajustement se fait dans un réseau totalement décentralisé ? Le reciblage de la difficulté se produit automatiquement et sur chaque nœud complet indépendamment. Tous les 2016 blocs, tous les nœuds reciblent la difficulté de preuve de travail. L'équation pour le reciblage de la difficulté mesure le temps qu'il a fallu pour trouver les 2016 derniers blocs et le compare au temps estimé qui est de 20 160 minutes (deux semaines sur la base d'un temps désiré de 10 minutes par bloc). Le rapport entre le laps de temps réel et le laps de temps désiré est calculé et l'ajustement correspondant de la difficulté (haut ou bas) est réalisé. En termes simples : si le réseau trouve des blocs plus rapidement que toutes les 10 minutes, la difficulté augmente. Si la découverte de bloc est plus lente que prévu, la difficulté diminue. 
+
+L'équation peut être résumée comme suit :
+
+----
+Nouvelle difficulté = Vieille difficulté * (Temps réel des derniers 2016 blocs / 20160 minutes)
+----
+
+<<retarget_difficulty_code>> montre le code utilisé dans le client Bitcoin Core.
+
+[[retarget_difficulty_code]]
+.Reciblage de la difficulté de la preuve de travail – GetNextWorkRequired() dans pow.cpp, ligne 43
+====
+[source,cpp]
+----
+
+// Retour en arrière de l'équivalent de 14 jours de blocs
+const CBlockIndex* pindexFirst = pindexLast;
+for (int i = 0; pindexFirst && i < Params().Interval()-1; i++)
+    pindexFirst = pindexFirst->pprev;
+assert(pindexFirst);
+
+// Étape d'ajustement de limite
+int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
+LogPrintf("  nActualTimespan = %d  before bounds\n", nActualTimespan);
+if (nActualTimespan < Params().TargetTimespan()/4)
+    nActualTimespan = Params().TargetTimespan()/4;
+if (nActualTimespan > Params().TargetTimespan()*4)
+    nActualTimespan = Params().TargetTimespan()*4;
+
+// Reciblage
+uint256 bnNew;
+uint256 bnOld;
+bnNew.SetCompact(pindexLast->nBits);
+bnOld = bnNew;
+bnNew *= nActualTimespan;
+bnNew /= Params().TargetTimespan();
+
+if (bnNew > Params().ProofOfWorkLimit())
+    bnNew = Params().ProofOfWorkLimit();
+
+----
+====
+
+[NOTE]
+====
+Alors que le calibrage de la difficulté se produit tous les 2016 blocs, en raison d'une erreur off-by-one dans le client Bitcoin Core le calibrage est basé sur la durée totale des 2015 blocs précédents (non 2016 comme il se doit), ce qui entraîne un biais de reciblage vers une difficulté plus élevée de 0,05%.
+====
+
+
+Les paramètres Interval (2016 blocs) et TargetTimespan (deux semaines soit 1 209 600 de secondes) sont définis dans _chainparams.cpp_.
+
+Pour éviter une volatilité extrême dans la difficulté, l'ajustement de reciblage doit être inférieure à un facteur de quatre (4) par cycle. Si le réglage de la difficulté requise est supérieure à un facteur de quatre, il sera ajustée par le maximum et pas plus. Toute autre ajustement sera effectué dans la prochaine période de reciblage car le déséquilibre persistera à travers les 2016 blocs suivants. Par conséquent, de grandes différences entre le pouvoir de hachage et la difficulté pourraient prendre plusieurs cycles de 2016 blocs pour s'équilibrer. 
+
+[TIP]
+====
+La difficulté pour trouver un bloc bitcoin est d'environ "10 minutes de traitement" pour l'ensemble du réseau, basé sur le temps qu'il a fallu pour trouver les 2016 blocs précédents, ajusté tous les 2016 blocs.
+====
+
+Notez que la difficulté de la cible est indépendante du nombre de transactions ou la valeur des transactions. Cela signifie que la quantité de puissance hachage et donc de l'électricité dépensée pour sécuriser bitcoin est également tout à fait indépendante du nombre de transactions. L'adoption du bitcoin peut s'intensifier et le système restera sécurisé sans aucune augmentation de la puissance de hachage par rapport au niveau actuel. L'augmentation de la puissance de hachage dépend des forces du marché tel que de nouveaux mineurs arrivent sur le marché pour rivaliser pour la récompense. Tant qu'une puissance suffisante de hachage est sous le contrôle de mineurs agissant honnêtement à la poursuite de la récompense, cela est suffisant pour empêcher les attaques "takeover" et, par conséquent, suffisant pour sécurisé bitcoin. 
+
+((("difficulty target","electricity cost and")))((("electricity cost and target difficulty")))La difficulté cible est étroitement liée au coût de l'électricité et au taux de change du bitcoin vers la monnaie utilisée pour payer l'électricité. Les systèmes de minage haute performance sont aussi efficace que possible avec la génération actuelle de fabrication de silicium, convertissant l'électricité en calcul de hachage au taux le plus élevé possible. Le principal facteur d'influence sur le marché du minage est le prix d'un kilowatt-heure en bitcoin, parce que ceci détermine la rentabilité du minage et par conséquent les motivations à entrer ou sortir du marché du minage.(((range="endofrange", startref="ix_ch08-asciidoc17")))(((range="endofrange", startref="ix_ch08-asciidoc14")))(((range="endofrange", startref="ix_ch08-asciidoc13")))
+
+=== Miner le bloc avec succès
+
+((("consensus","mining blocks successfully")))Comme nous l'avons vu précédemment, le nœud de Jing a construit un bloc candidat et l'a préparé pour le minage. Jing a plusieurs plateformes de minage avec((("Application Specific Integrated Circuit (ASIC)","mining with"))) des ASIC (circuits intégrés pour application spécifique), où des centaines de milliers de circuits intégrés exécutent l'algorithme SHA256 en parallèle à des vitesses incroyables. Ces machines spécialisées sont connectés à son nœud de minage par USB. Ensuite, le nœud de minage en cours d'exécution sur l'ordinateur de Jing transmet l'entête de bloc à sa plateforme de minage, qui commence à tester des trillions de nonces par seconde. 
+
+Près de 11 minutes après avoir commencé à miner le bloc 277 316, l'une des machines de minage trouve une solution et l'envoie vers le nœud de minage. Lorsqu'elle est insérée dans l'entête de bloc, le nonce 4 215 469 401 produit un hachage de bloc de :
+
+----
+0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569
+----
+
+qui est inférieure à la cible :
+
+----
+0000000000000003A30C00000000000000000000000000000000000000000000
+----
+
+Immédiatement, le nœud de minage de Jing transmet le bloc à tous ses pairs. Ils reçoivent, valident puis propagent le nouveau bloc. Au fur et à mesure que le bloc navigue à travers le réseau, chaque noeud l'ajoute à sa propre copie de la blockchain, étendant celle-ci à une hauteur de 277 316 blocs. Comme les nœuds de minage reçoivent et valident le bloc, ils abandonnent leurs efforts pour trouver un bloc à la même hauteur et commencent immédiatement à calculer le bloc suivant dans la chaîne. 
+
+Dans la section suivante, nous allons examiner le processus que chaque nœud utilise pour valider un bloc et sélectionner la chaîne la plus longue, créant le consensus qui forme la blockchain décentralisée.
+
+=== Valider un nouveau bloc
+
+((("blocks","validating new")))((("consensus","validating new blocks")))((("mining","validating new blocks")))La troisième étape dans le mécanisme de consensus de bitcoin est la validation indépendante de chaque nouveau bloc par chaque nœud du réseau. A mesure que les blocs nouvellement résolus sont poussés à travers le réseau, chaque noeud effectue une série de tests pour le valider avant de le propager à ses pairs. Cela garantit que seuls les blocs valides sont propagés sur le réseau. La validation indépendante assure également que les mineurs qui agissent honnêtement voient leurs blocs incorporés dans la blockchain, gagnant ainsi la récompense. Quant aux mineurs qui agissent malhonnêtement, leurs blocs sont rejetés et ne perdent pas seulement la récompense, mais perdent également l'effort déployé pour trouver une solution de preuve de travail, subissant ainsi sans compensation le coût de l'électricité. 
+
+Quand un nœud reçoit un nouveau bloc, il va valider le bloc en vérifiant une longue liste de critères qui doivent tous être respectés; sinon, le bloc est rejetée. Ces critères peuvent être vus dans le client Bitcoin Core dans les fonctions((("CheckBlock function (Bitcoin Core client)")))((("CheckBlockHeader function (Bitcoin Core client)"))) +CheckBlock+  et +CheckBlockHeader+ et comprennent :
+
+* La structure de données du bloc est syntaxiquement valide
+* Le hash d'entête de bloc est inférieure à la difficulté cible (met en œuvre la preuve de travail)
+* Le timestamp du bloc est de moins de deux heures dans le future (permettant des erreurs de temps)
+* La taille du bloc est dans des limites acceptables
+* La première transaction (et seulement la première) est une transaction de génération coinbase
+* Toutes les transactions dans le bloc sont valides, respectant les critères de validation de transaction discutés dans <<tx_verification>>
+
+La validation indépendante de chaque nouveau bloc par chaque nœud du réseau assure que les mineurs ne peuvent tricher. Dans les sections précédentes nous avons vu comment les mineurs arrivent à écrire une transaction qui leur accorde les nouveaux bitcoins créés au sein d'un bloc, de même que réclamer les frais de transaction. Pourquoi les mineurs n'écrivent-ils pas pour eux-même une transaction avec un millier de bitcoin au lieu de la bonne récompense ? Parce que chaque noeud valide les blocs selon des règles communes. Une transaction coinbase invalide rendrait l'ensemble du bloc invalide, ce qui se traduirait par le refus du bloc et, par conséquent, cette transaction ne serait jamais incluse dans le registre. Les mineurs doivent construire un bloc parfait, sur la base de règles communes que tous les nœuds suivent, et le miner avec une solution à la preuve de travail correcte. Pour ce faire, ils dépensent beaucoup d'électricité en minage, et si ils trichent, toute l'électricité et l'effort est gaspillé. Ceci est la raison pour laquelle la validation indépendante est une composante clé du consensus décentralisé.
+
+=== Assemblage et sélection des chaînes de blocs
+
+((("blockchains","assembling", id="ix_ch08-asciidoc18", range="startofrange")))((("blockchains","selecting", id="ix_ch08-asciidoc19", range="startofrange")))((("blocks","assembling chains of", id="ix_ch08-asciidoc20", range="startofrange")))((("blocks","selecting chains of", id="ix_ch08-asciidoc21", range="startofrange")))La dernière étape dans le mécanisme de consensus décentralisé de bitcoin est l'assemblage de blocs en chaînes et la sélection de la chaîne avec le plus de preuve de travail. Une fois qu'un nœud a validé un nouveau bloc, il tentera alors de former une chaîne en reliant le bloc à la blockchain existante. 
+
+((("nodes","sets of blocks maintained by"))) Les nœuds maintiennent trois ensembles de blocs : ceux qui sont liés à la blockchain principale, ceux qui forment les branches qui dérivent de la blockchain principale((("secondary chains"))) (secondary chains), et enfin les blocs qui ne possèdent pas un parent connu dans les chaînes connues ((("orphan blocks"))) (orphans). Les blocs invalides sont rejetés dès qu'un des critères de validation échoue et ne sont alors pas inclus dans une chaîne. 
+
+((("blockchains","main")))((("main blockchain")))La "chaîne principale" est, à n'importe quel point dans le temps, la chaîne de blocs qui a le plus difficulté cumulée. Dans la plupart des cas, c'est également la chaîne avec le plus grand nombre de bloc, sauf s'il y a deux chaînes de longueur égale, auquel cas l'une des deux aura davantage de preuve de travail. ((("sibling chains (to main chain)")))La chaîne principale aura également des branches avec des blocs qui sont « frères et sœurs » aux blocs de la chaîne principale. Ces blocs sont valables, mais ne font pas partie de la chaîne principale. Ils sont conservés pour consultation ultérieure, au cas où l'une de ces chaînes est étendue au point de dépasser en difficulté la chaîne principale. Dans la section suivante (<<forks>>), nous allons voir comment les chaînes secondaires surviennent suite à un minage presque simultané de blocs de même hauteur. 
+    
+Quand un nouveau bloc est reçu, un nœud va essayer de l'insérer dans la blockchain existante. Le nœud regardera le champ "hash du bloc précédent" du bloc, qui est la référence au nouveau parent du bloc. Ensuite, le nœud va tenter de trouver ce parent dans la blockchain existante. La plupart du temps, le parent sera le « sommet » de la chaîne principale, ce qui signifie que ce nouveau bloc étend la chaîne principale. Par exemple, le nouveau bloc 277 316 a une référence au hash de son bloc parent 277 315. La plupart des nœuds qui reçoivent 277 316 auront déjà le bloc 277 315 ​​au sommet de leur chaîne principale et va donc lier le nouveau bloc et étendre cette chaîne. 
+
+Parfois, comme nous allons le voir dans <<forks>>, le nouveau bloc étend une chaîne qui n'est pas la chaîne principale. Dans ce cas, le nœud va attacher le nouveau bloc à la chaîne secondaire qu'il étend, puis comparer la difficulté de la chaîne secondaire à la chaîne principale. Si la chaîne secondaire a davantage de difficulté cumulée que la chaîne principale, le noeud va _reconverger_ sur la chaîne secondaire, ce qui signifie qu'il va choisir la chaîne secondaire comme sa nouvelle chaîne principale, faisant de la vieille chaîne principale une chaîne secondaire. Si le noeud est un mineur, il va maintenant construire un bloc étendant cette nouvelle chaîne, plus longue.
+
+Si un bloc valide est reçu et qu'aucun parent ne se trouve dans les chaînes existantes, ce bloc est considéré comme un « orphelin ». Les blocs orphelins sont enregistrés dans la pool de bloc orphelin où ils resteront jusqu'à ce que leur parent soit reçu. Une fois que le parent est reçu et lié aux chaînes existantes, l'orphelin peut être retiré de la pool d'orphelins et lié au parent, l'ajoutant à la chaîne. Les blocs orphelins se produisent généralement lorsque deux blocs qui ont été miné dans un court laps de temps l'un de l'autre sont reçus dans l'ordre inverse (enfant avant parent). 
+
+En sélectionnant la chaîne de plus grande difficulté, tous les nœuds finissent par parvenir à un consensus à l'échelle du réseau. Les écarts temporaires entre les chaînes sont résolus par la suite à mesure que plus de preuve de travail est ajouté, étendant une des chaînes possibles. Les nœuds de minage "votent" avec leur puissance de minage en choisissant quelle chaîne étendre en minant le bloc suivant. Quand ils extraient un nouveau bloc et étendent la chaîne, le nouveau bloc lui-même représente leur vote. 
+
+Dans la section suivante, nous allons voir comment les divergences entre chaînes concurrentes (forks) sont résolues par la sélection indépendante de la chaîne de difficulté la plus longue.
+
+[[forks]]
+==== Les forks de blockchain
+
+((("blockchains","forks", id="ix_ch08-asciidoc22", range="startofrange")))Parce que la blockchain est une structure de données décentralisée, différentes copies de celle-ci ne sont pas toujours identiques. Les blocs peuvent arriver à différents noeuds à différents moments, ce qui fait que les noeuds peuvent avoir une blockchain différente. Pour résoudre ce problème, chaque noeud sélectionne et tente toujours d'allonger la chaîne de blocs qui représente le plus de preuve de travail, aussi connue comme la chaîne la plus longue ou la chaîne de plus grande difficulté cumulée. En additionnant les difficultés enregistrées dans chaque bloc d'une chaîne, un nœud peut calculer le montant total de la preuve du travail qui a été dépensé pour créer cette chaîne. Tant que tous les nœuds sélectionnent la plus longue chaîne de difficulté cumulée, le réseau mondiale bitcoin converge vers un état cohérent. Les forks se produisent comme des incohérences temporaires entre les versions de la blockchain, qui sont résolus par une reconvergence à mesure que d'autres blocs sont ajoutés à l'un des forks.
+
+Dans les prochains schémas, nous suivons la progression d'un « fork » à travers le réseau. Le diagramme est une représentation simplifiée de bitcoin en tant que réseau mondial. En réalité, la topologie du réseau bitcoin n'est pas organisé géographiquement. Au contraire, elle constitue un réseau maillé de noeuds interconnectés, lesquels peuvent être situés très loin l'une de l'autre sur le plan géographique. La représentation d'une topologie géographique est une simplification utilisée afin d'illustrer un fork. Dans le réseau bitcoin réel, la « distance » entre les nœuds est mesurée en « sauts » de noeud en noeud, et non selon leur emplacement physique. À titre d'illustration, les différents blocs sont représentés avec des couleurs différentes, se diffusant sur le réseau et colorant les connexions qu'ils traversent.
+
+Dans le premier schéma (<<fork1>>), le réseau a une vue unique de la blockchain, avec le bloc bleu comme étant le sommet de la chaîne principale. 
+
+[[fork1]]
+.Visualisation d'un fork de blockchain – avant le fork
+image::images/msbt_0802.png["globalfork1"]
+
+Un « fork » se produit chaque fois qu'il y a deux blocs candidats en compétition pour former la plus longue blockchain. Cela se produit dans des conditions normales à chaque fois que deux mineurs résolvent l'algorithme proof-of-work dans un court laps de temps l'un de l'autre. Comme les deux mineurs découvrent une solution pour leur bloc candidat respectif, ils ont immédiatement diffusé leur propre bloc « gagnant » à leurs voisins immédiats qui commencent à propager le bloc à travers le réseau. Chaque noeud qui reçoit un bloc valide l'incorpore dans sa blockchain, étendant la blockchain d'un bloc. Si ce nœud voit plus tard un autre bloc candidat étendant le même parent, il relie le deuxième candidat sur une chaîne secondaire. En conséquence, certains noeuds vont « voir » un bloc candidat en premier, tandis que d'autres nœuds verront un autre bloc candidat et deux versions concurrentes de la blockchain vont émerger. 
+
+Dans <<fork2>>, nous voyons deux mineurs qui extraient deux blocs différents presque simultanément. Ces deux blocs sont des enfants du bloc bleu, destiné à étendre la chaîne en se rajoutant sur le bloc bleu. Pour nous aider à le suivre, l'un est représenté par un bloc rouge provenant du Canada, l'autre par un bloc vert provenant d'Australie. 
+
+Supposons, par exemple, qu'un mineur au Canada trouve une solution de preuve de travail pour un bloc "rouge" qui étend la blockchain, construisant par dessus le bloc parent "bleu". Presque simultanément, un mineur australien qui était également en train d'élargir le bloc "bleu" trouve une solution pour le bloc "vert", son bloc candidat. Maintenant, il y a deux blocs possibles, celui que nous appelons « rouge », originaire du Canada, et celui que nous appelons « vert », originaire d'Australie. Les deux blocs sont valables, les deux blocs contiennent une solution valide à la preuve du travail, et les deux blocs étendent le même parent. Les deux blocs contiennent probablement les mêmes transactions pour la plupart, avec peut-être seulement quelques différences sur leur ordre. 
+
+[[fork2]]
+.Visualisation d'un fork de blockchain : deux blocs trouvé simultanément 
+image::images/msbt_0803.png["globalfork2"]
+
+Comme les deux blocs se propagent, certains nœuds reçoivent le bloc "rouge" d'abord et certains reçoivent le bloc "vert" en premier. Comme le montre <<fork3>>, le réseau se divise en deux perspectives différentes de la blockchain, l'une avec un bloc rouge à son sommet, l'autre avec un bloc vert. 
+
+[[fork3]]
+.Visualisation d'un fork de blockchain : deux blocs se propagent, divisant le réseau
+image::images/msbt_0804.png["globalfork3"]
+
+A partir de ce moment, les nœuds du réseau bitcoin les plus proche (topologiquement, pas géographiquement) du noeud canadien vont entendre parler bloc rouge d'abord et vont créer une nouvelle blockchain avec la plus grande difficulté cumulée avec le rouge comme le dernier bloc de la chaîne (par exemple, bleu-rouge), en ignorant le bloc candidat vert qui arrive un peu plus tard. Pendant ce temps, les nœuds plus proches du noeud australien prendront ce bloc comme le vainqueur et prolongent la blockchain avec le vert comme le dernier bloc (par exemple, bleu-vert), en ignorant rouge qui arrive quelques secondes plus tard. Tous les mineurs qui ont vu le rouge en premier vont immédiatement construire des blocs candidats qui référence le rouge comme parent et commencent à essayer de résoudre la preuve de travail pour ces blocs candidats. Les mineurs qui ont accepté le vert à la place vont commencer à construire au-dessus du vert et étendre cette chaîne. 
+
+Les forks sont presque toujours résolus en un seul bloc. Quand une partie de la puissance de hachage du réseau est dédiée à construire au dessus du rouge comme parent, une autre partie de la puissance de hachage est concentrée à bâtir au dessus du vert. Même si la puissance de hachage est presque également divisée, il est probable qu'un ensemble de mineurs trouve une solution et la propage avant que l'autre ensemble n'aient trouvé une quelconque solution. Disons, par exemple, que les mineurs construisant au-dessus du vert trouvent un nouveau bloc rose qui étend la chaîne (par exemple, bleu-vert-rose). Ils propagent immédiatement ce nouveau bloc et l'ensemble du réseau le voit comme une solution valide comme indiqué dans <<fork4>>. 
+
+[[fork4]]
+.Visualisation d'un fork de blockchain : un nouveau bloc étend un fork
+image::images/msbt_0805.png["globalfork4"]
+
+Tous les nœuds qui avaient choisi le vert comme le gagnant au tour précédent étendront simplement la chaîne d'un autre bloc. Les nœuds qui ont choisi le rouge comme le vainqueur, cependant, voient maintenant deux chaînes : bleu-vert-rose et bleu-rouge. La chaîne bleu-vert-rose est maintenant plus longue (plus de difficulté cumulée) que la chaîne bleu-rouge. En conséquence, ces nœuds vont établir la chaîne bleu-vert-rose comme chaîne principale et changer la chaîne bleu-rouge en chaîne secondaire, comme indiqué dans <<fork5>>. Ceci est une reconvergence de chaîne, parce que ces nœuds sont obligés de réviser leur vue de la blockchain pour incorporer la nouvelle preuve d'une chaîne plus longue. Tous les mineurs qui travaillent sur l'extension de la chaîne bleu-rouge va maintenant arrêter ce travail parce que leur bloc candidat est un « orphelin », comme son parent "rouge" n'est plus sur la plus longue chaîne. Les transactions au sein du rouge sont à nouveau remis dans la file d'attente pour être traiter dans le bloc suivant, parce que ce bloc n'est plus dans la chaîne principale. Le réseau entier re-converge sur une seule blockchain bleu-vert-rose, avec le rose comme dernier bloc de la chaîne. Tous les mineurs commencent immédiatement à travailler sur des blocs candidats qui font référence au rose comme leur parent pour allonger la chaîne bleu-vert-rose.
+
+[[fork5]]
+.Visualisation d'un fork de blockchain : le réseau reconverge sur une nouvelle plus longue chaîne
+image::images/msbt_0806.png["globalfork5"]
+
+Il est théoriquement possible pour un fork de s'étendre sur deux blocs, si deux blocs sont trouvés presque simultanément par les mineurs sur les "côtés" opposés d'un fork précédent. Cependant, la chance que cela se produise est très faible. Alors qu'un fork d'un bloc peut se produire chaque semaine, un fork à deux blocs est extrêmement rare.
+
+L'intervalle de bloc de bitcoin de 10 minutes est un compromis entre des temps de confirmation rapides (de règlement des transactions) et la probabilité d'un fork. Un temps de bloc plus rapide rendrait la confirmation des transactions plus rapide, mais conduirait à des forks de blockchain plus fréquents, alors qu'un temps de bloc plus lent diminuerait le nombre de forks mais rendrait la confirmation plus lente.(((range="endofrange", startref="ix_ch08-asciidoc22")))(((range="endofrange", startref="ix_ch08-asciidoc21")))(((range="endofrange", startref="ix_ch08-asciidoc20")))(((range="endofrange", startref="ix_ch08-asciidoc19")))(((range="endofrange", startref="ix_ch08-asciidoc18"))) 
+
+=== Le minage et la course au hachage
+
+((("hashing race", id="ix_ch08-asciidoc23", range="startofrange")))((("mining","hashing race and", id="ix_ch08-asciidoc24", range="startofrange")))((("processing power and hash racing", id="ix_ch08-asciidoc25", range="startofrange")))Le minage de bitcoin est une industrie extrêmement compétitive. La puissance de hachage a augmenté de façon exponentielle d'année en année depuis l'existence de bitcoin. Certaines années la croissance a été le reflet d'un changement de technologie, comme en 2010 et 2011 où de nombreux mineurs sont passés du minage à CPU ((("graphical processing units (GPUs)","processing power of"))) au minage à GPU et ((("field programmable gate array (FPGA)"))) au "field programmable gate array" (FPGA). En 2013, l'introduction du minage à ((("Application Specific Integrated Circuit (ASIC)")))ASIC à conduit à un autre bond de géant dans la puissance de minage, en plaçant la fonction SHA256 directement dans des puces de silicium spécialement conçues pour le minage. Les premières puces de la sorte pourraient fournir plus de puissance de minage que le réseau bitcoin dans son ensemble en 2010.
+
+La liste suivante montre la puissance totale de hachage du réseau bitcoin, au cours des cinq premières années de fonctionnement :
+
+2009:: 0.5 MH/sec–8 MH/sec (16&#x00D7; growth)
+2010:: 8 MH/sec–116 GH/sec (14,500&#x00D7; growth)
+2011:: 16 GH/sec–9 TH/sec (562&#x00D7; growth)
+2012:: 9 TH/sec–23 TH/sec (2.5&#x00D7; growth)
+2013:: 23 TH/sec–10 PH/sec (450&#x00D7; growth)
+2014:: 10 PH/sec–150 PH/sec in August (15&#x00D7; growth)
+
+Dans le tableau dans <<network_hashing_power>>, nous voyons l'augmentation de la puissance de hachage du réseau bitcoin au cours des deux dernières années. Comme vous pouvez le voir, la compétition entre les mineurs et la croissance de bitcoin a entraîné une augmentation exponentielle de la puissance de hachage (hashs totaux par seconde à travers le réseau).
+
+[[network_hashing_power]]
+.Puissance totale de hachage, gigahashes par seconde, sur deux ans
+image::images/msbt_0807.png["NetworkHashingRate"]
+
+((("difficulty target","hashing power and")))Comme la quantité de puissance de hachage appliquée au minage de bitcoin a explosé, la difficulté a augmenté en conséquence. L'indicateur de difficulté dans le tableau <<bitcoin_difficulty>> est mesuré comme le rapport de difficulté actuel par rapport à la difficulté minimum (la difficulté du premier bloc).
+
+[[bitcoin_difficulty]]
+.Indicateur de la difficulté du minage de bitcoin, sur deux ans
+image::images/msbt_0808.png["BitcoinDifficulty"]
+
+Au cours des deux dernières années, les puces ASIC de minage sont devenues de plus en plus denses, approchant ce qui se fait de mieux en matière de puce en silicium avec une taille (résolution) de 22 nanomètres (nm). Actuellement, les fabricants d'ASIC visent à dépasser les fabricants de puces CPU à usage général, dessinant des puces avec une taille de 16nm, car la rentabilité du minage fait évoluer cette industrie encore plus vite que l'informatique en général. Il n'y a plus de sauts de géant dans le minage de bitcoin parce que l'industrie a atteint la pointe de((("Moore's Law"))) la loi de Moore, qui stipule que la densité de calcul va doubler tous les 18 mois environ. Pourtant, la puissance de minage du réseau continue de progresser à un rythme exponentiel;  à la course aux puces de plus haute densité correspond ((("data centers, mining with"))) une course pour des datacenters de densité plus élevée où des milliers de ces puces peuvent être déployées. La question n'est plus de savoir combien de minage peut être fait avec une puce, mais combien de puces peuvent rentrer dans un bâtiment, tout en dissipant la chaleur et en fournissant une puissance suffisante.
+
+[[extra_nonce]]
+==== La solution du nonce supplémentaire
+
+((("block headers","computing power and")))((("difficulty target","computing power and")))((("difficulty target","extra nonce solution and")))((("nonce","extra")))((("extra nonce solution to increasing difficulty targets")))((("hashing race","extra nonce solutions")))Depuis 2012, le minage de bitcoin a évolué pour résoudre une limitation fondamentale dans la structure de l'entête de bloc. Dans les premiers temps de bitcoin, un mineur pouvait trouver un bloc en itérant le nonce jusqu'à ce que le hachage résultant soit en dessous de la cible. Comme la difficulté a augmenté, les mineurs enchaînaient souvent toutes les 4 milliards de valeurs du nonce sans trouver un bloc. Cependant, cela a été facilement résolu en mettant à jour le timestamp du bloc pour tenir compte du temps écoulé. Parce que le timestamp est une partie de l'entête, le changement permettrait aux mineurs de parcourir les valeurs du nonce à nouveau avec des résultats différents. Une fois que le matériel de minage dépassa 4 GH/sec, cependant, cette approche est devenue de plus en plus difficile parce que les valeurs de nonce étaient épuisées en moins d'une seconde. Comme l'équipement minier ASIC a commencé à se développer et à dépasser le TH/sec de taux de hachage, le logiciel de minage avait besoin de plus d'espace pour les valeurs de nonce afin de trouver des blocs valides. Le timestamp pourrait être étiré un peu, mais le déplacer trop loin dans l'avenir aurait pour conséquence de rendre le bloc invalide. Une nouvelle source de « changement » était nécessaire dans l'entête de bloc. La solution fut d'utiliser la transaction coinbase comme une source de valeurs de nonce supplémentaires. Parce que le script coinbase peut stocker entre 2 et 100 octets de données, les mineurs ont commencé à utiliser cet espace comme espace de nonce supplémentaire, leur permettant d'explorer un éventail beaucoup plus large de valeurs d'entête de bloc pour trouver des blocs valides. La transaction coinbase est inclus dans l'arbre de Merkle, ce qui signifie que tout changement dans le script coinbase provoque une modification de la racine de Merkle. Huit octets de nonce supplémentaires, ainsi que les 4 octets de nonce "standard" permettent aux mineurs d'explorer un total de 2^96^ (8 suivi de 28 zéros) possibilités _par seconde_ sans avoir à modifier le timestamp. Si, à l'avenir, les mineurs pouvaient parcourir toutes ces possibilités, ils pourraient alors modifier le timestamp. Il y a aussi plus d'espace dans le script coinbase pour une future expansion de l'espace de nonce supplémentaire.
+
+[[mining_pools]]
+==== Les pools de minage
+
+((("hashing race","mining pools", id="ix_ch08-asciidoc26", range="startofrange")))((("mining pools", id="ix_ch08-asciidoc27", range="startofrange")))Dans cet environnement hautement concurrentiel,((("solo miners"))) les mineurs individuels travaillant seuls (également connus comme "mineurs solo") n'ont aucune chance. Pour eux, la probabilité de trouver un bloc qui compensera leurs coûts d'électricité et de matériel est si faible qu'elle représente un pari risqué, comme jouer à la loterie. Même le plus rapide des systèmes de minage ASIC pour particulier ne peut rivaliser avec les systèmes commerciaux qui empilent des dizaines de milliers de ces puces dans des entrepôts géants près de centrales hydro-électriques. Les mineurs collaborent désormais pour former des pools de minage, mettant en commun leur puissance de hachage et se partageant la récompense entre des milliers de participants. En participant à un pool, les mineurs reçoivent une plus petite part de la récompense globale, mais sont généralement récompensés chaque jour, réduisant l'incertitude.
+
+Prenons un exemple concret. Supposons qu'un mineur a acheté du matériel de minage avec un taux de hachage total de 6000 gigahashes par seconde (GH/s), soit 6 TH/s. En Août 2014 cet équipement coûtait environ 10 000 $. Le matériel consomme 3 kilowatts (kW) d'électricité lors de l'exécution, 72 kW-heures par jour, à un coût de 7 $ ou 8 $ par jour en moyenne. Avec la difficulté bitcoin en cours, le mineur sera en mesure de miner en solo un bloc environ une fois tous les 155 jours, soit tous les 5 mois. Si le mineur trouve un seul bloc dans ce délai, le paiement de 25 bitcoins, à environ 600 $ par bitcoin, se traduira en un seul versement de 15 000 dollars, qui couvrira la totalité du coût du matériel et de l'électricité consommée au cours de cette période, laissant un bénéfice net d'environ 3000 $. Cependant, les chances de trouver un bloc dans une période de cinq mois dépendent de la chance du mineur. Il pourrait trouver deux blocs en cinq mois et faire un très grand profit. Ou il pourrait ne pas trouver un bloc pendant 10 mois et subir une perte financière. Pire encore, la difficulté de l'algorithme bitcoin proof-of-work est susceptible de monter de façon significative au cours de cette période, au rythme actuel de la montée de la puissance de hachage, ce qui signifie que le mineur a, au plus, six mois pour trouver un bloc avant que le matériel ne devienne obsolète et doive être remplacé par du matériel de minage plus puissant. Si ce mineur participe à un pool de minage, au lieu d'attendre une fois tous les cinq mois une aubaine de 15 000 $, il sera en mesure de gagner environ 500 $ à 750 $ par semaine. Les paiements réguliers d'une pool de minage vont l'aider à amortir le coût du matériel et de l'électricité au fil du temps sans prendre un risque énorme. Le matériel sera toujours obsolète dans six à neuf mois et le risque est encore élevé, mais le chiffre d'affaires sera au moins régulier et fiable au cours de cette période.
+
+Les pools de minage coordonnent plusieurs centaines ou milliers de mineurs, sur des protocoles spécialisés de minage en pool. Les mineurs individuels configurent leurs équipements de minage pour se connecter à un serveur de pool, après avoir créé un compte avec la pool. Leur matériel de minage reste connecté au serveur de pool pendant le minage, synchronisant leur effort avec les autres mineurs. Ainsi, les mineurs en pool se partagent l'effort du minage de bloc et se partage ensuite les récompenses. 
+
+Les blocs gagnants paient la récompense à une adresse bitcoin de la pool, plutôt qu'aux mineurs individuels. Le serveur de pool va périodiquement effectuer des paiements aux adresses bitcoin des mineurs, une fois leur part des récompenses a atteint un certain seuil. Typiquement, le serveur de pool exige un certain pourcentage des récompenses pour fournir le service de pool de minage.
+
+Les mineurs participant à une pool se partagent le travail de recherche d'une solution d'un bloc candidat, gagnant des « parts » pour leur contribution au minage. La pool de minage se fixe un objectif de difficulté inférieure pour gagner une part, généralement plus de 1000 fois plus facile que la difficulté du réseau bitcoin. Quand quelqu'un dans la pool a miné un bloc avec succès, la récompense est gagnée par la pool et ensuite partagée avec tous les mineurs en proportion du nombre de parts qu'ils ont apporté à l'effort commun. 
+
+Les pools sont ouvertes à tout mineur, grand ou petit, professionnel ou amateur. Une pool aura par conséquent des participants avec une seule petite machine de minage, et d'autres avec un garage plein de matériel haut de gamme. Certains vont miner avec quelques dizaines de kilowatts d'électricité, d'autres piloteront un datacenter consommant un mégawatt d'électricité. Comment une pool de minage mesure les contributions individuelles, de manière à répartir équitablement les récompenses, sans possibilité de tricherie ? La réponse est d'utiliser l'algorithme proof-of-work, mais fixé à une difficulté inférieure, de sorte que même les plus petits mineurs de la pool gagnent une part suffisamment fréquemment pour qu'il continue de valoir la peine de contribuer à la pool. En fixant une difficulté inférieure afin de gagner des parts, la pool mesure la quantité de travail effectuée par chaque mineur. Chaque fois qu'un mineur de la pool trouve un hash d'entête de bloc qui est inférieure à la difficulté de la pool, il prouve qu'il a fait le travail de hachage pour trouver ce résultat. Plus important encore, le travail pour trouver des parts contribue, d'une manière statistiquement mesurable, à l'effort global pour trouver un hachage inférieur à la cible du réseau bitcoin. Des milliers de mineurs essayant de trouver des hashs de faible valeur finiront par en trouver un assez faible pour satisfaire la cible du réseau bitcoin. 
+
+Revenons à l'analogie du jeu de dés. Si les joueurs de dés jettent les dés avec pour objectif de jeter un résultat de moins de quatre (la difficulté globale du réseau), une pool fixerait une cible plus facile, comptant combien de fois les joueurs de la pool ont réussi à jeter moins de huit. Lorsque les joueurs de la pool jettent moins de huit (la cible de la pool), ils gagnent des parts, mais ils ne gagnent pas le jeu parce qu'ils ne réalisent pas la cible du jeu (moins de quatre). Les joueurs en pool vont atteindre la cible plus facile de la pool beaucoup plus souvent, gagnant des parts très régulièrement, même lorsqu'ils ne réalisent pas l'objectif plus difficile de gagner le jeu. De temps à autre, l'un des joueurs jettera moins de quatre et la pool gagnera. Ensuite, les gains peuvent être distribués aux joueurs de la pool sur la base des parts qu'ils ont gagnés. Même si la cible de huit ou moins ne gagnait pas, c'est une manière équitable de mesurer les dés jetés pour les joueurs, et il produit parfois un jet de moins de quatre. 
+
+De même, une pool de minage fixera une difficulté de pool qui fera en sorte qu'un mineur de pool peut assez souvent trouver un hash d'entête de bloc qui soit moins que la difficulté de la pool, gagnant des parts. De temps en temps, une de ces tentatives va produire un hash d'entête de bloc qui est inférieure à la cible du réseau bitcoin, ce qui en fait un bloc valide et l'ensemble de la pool gagne.(((range="endofrange", startref="ix_ch08-asciidoc27")))(((range="endofrange", startref="ix_ch08-asciidoc26"))) 
+
+===== Les pools gérées
+
+((("managed pools")))((("mining pools","managed pools")))La plupart des pools de minage sont « gérées », ce qui signifie qu'il y a une entreprise ou une personne exécutant un serveur de pool. Le propriétaire du serveur est appelé((("pool operator of mining pools"))) _opérateur de pool_, il facture aux mineurs en pool un pourcentage des gains. 
+
+Le serveur de pool fonctionne avec un logiciel spécialisé et un protocole de minage en pool qui coordonne les activités des mineurs de la pool. Le serveur est également connecté à un ou plusieurs nœuds bitcoin complets et dispose d'un accès direct à une copie complète de la base de données blockchain. Cela lui permet de valider des blocs et des transactions au nom des mineurs de la pool, leur évitant de devoir exécuter un noeud complet. Pour les mineurs en pool, cela est une considération importante, car un noeud complet nécessite un ordinateur dédié avec au moins 15 à 20 Go de stockage persistant (de disque dur) et au moins 2 Go de mémoire vive (RAM). En outre, le logiciel bitcoin s'exécutant sur un noeud complet doit être surveillé, entretenu et mis à jour fréquemment. Tous les temps d'arrêt causés par un manque d'entretien ou par un manque de ressources affectera les revenus du mineur. Pour de nombreux mineurs, la capacité à miner sans exécuter un noeud complet est un autre des grands avantages de rejoindre une pool gérée. 
+
+Les mineurs en pool se connectent au serveur de la pool en utilisant un protocole de minage tels que((("Stratum (STM) mining protocol"))) Stratum (STM) ou((("GetBlockTemplate (GBT) mining protocol"))) GetBlockTemplate (GBT). Une ancienne norme appelée((("GetWork (GWK) mining protocol"))) GetWork (GWK) est quasiment obsolète depuis fin 2012, car elle ne supporte pas facilement le minage à taux de hachage dépassant les 4 GH/s. Tant les protocoles STM que GBT créent des((("block templates")))  _templates_ de bloc qui contiennent un modèle d'entête de bloc candidat. Le serveur de pool construit un bloc candidat en agrégeant les transactions, en ajoutant une transaction coinbase (avec un espace de nonce en plus), le calcul de la racine de Merkle, et un lien vers le hash du bloc précédent. L'entête du bloc candidat est ensuite envoyé à chacun des mineurs de la pool comme un modèle. Chaque mineur de la pool mine alors à l'aide du template de bloc, à une difficulté inférieure à la difficulté de réseau bitcoin, et envoie chaque résultat positif au serveur de pool pour gagner des parts. 
+
+===== P2Pool
+
+((("mining pools","P2Pool")))((("P2Pool")))Les pools gérées créent une possibilité de tricherie de la part de l'opérateur de pool, qui pourraient diriger l'effort de la pool pour créer des transactions dépensées deux fois ou invalider des blocs ( voir <<consensus_attacks>>). En outre, le modèle centralisé des serveurs de pool représente une possibilité de faille concentrée sur un point unique. Si le serveur de pool est en panne ou est ralenti par une attaque par déni de service, les mineurs en pool ne peuvent plus miner. En 2011, pour résoudre ces problèmes de centralisation, une nouvelle méthode de minage en pool a été proposé et mis en œuvre : P2Pool est une pool de minage en peer-to-peer, sans opérateur central. 
+    
+Une P2Pool fonctionne en décentralisant les fonctions du serveur de pool, mettant en œuvre un système parallèle de blockchain appelé un((("share chains"))) _share chain_ ou _chaîne de parts_. Une chaîne de parts est une blockchain fonctionnant à une difficulté moindre que la blockchain bitcoin. La chaîne de parts permet aux mineurs en pool de participer à une pool décentralisée, en minant des parts sur la chaîne de parts au taux d'un bloc de part toutes les 30 secondes. Chacun des blocs sur la chaîne de parts enregistre une part de récompense proportionnée pour les mineurs en pool qui contribuent au travail, faisant progresser les parts à partir du bloc de part précédent. Lorsque l'un des blocs de part réalise également la cible de difficulté du réseau bitcoin, il se propage et est inclus dans la blockchain bitcoin, récompensant tous les mineurs de la pool qui ont contribué à toutes les parts qui ont précédé le bloc de part gagnant. Essentiellement, au lieu d'un serveur de pool qui garde trace des parts et des récompenses des mineurs en pool, la chaîne de parts permet à tous les mineurs de la pool de garder une trace de toutes les parts en utilisant un mécanisme de consensus décentralisé similaire au mécanisme de consensus de la blockchain bitcoin. 
+
+Le minage en P2Pool est plus complexe que le minage en pool car il nécessite que les mineurs aient un ordinateur dédié avec suffisamment d'espace disque, de mémoire et de bande passante internet pour soutenir un nœud bitcoin complet ainsi que le logiciel destiné aux noeuds P2Pool. Les mineurs P2Pool connectent leur matériel de minage à leur noeud P2Pool local, qui simule les fonctions d'un serveur de pool en envoyant les modèles de blocs au matériel de minage. En P2Pool, chaque mineur construit ses propres blocs candidats, agrégeant les transactions à la manière des mineurs solo, mais mine sur la chaîne de parts. Le P2Pool est une approche hybride qui a l'avantage de permettre des paiements beaucoup plus granulaire que le minage en solo, mais sans donner trop de contrôle à un opérateur de pool comme dans les pool gérées. 
+
+Récemment, la participation en P2Pool a augmenté de façon significative étant donné que la concentration du minage dans les pools de minage a atteint un niveau soulevant des inquiétudes quant à une((("51% attacks"))) attaque 51% (voir <<consensus_attacks>>). Le développement du protocole P2Pool se poursuit avec l'espoir d'éliminer la nécessité d'exécuter un nœud complet et donc faire que le minage décentralisé soit encore plus facile à utiliser.(((range="endofrange", startref="ix_ch08-asciidoc25")))(((range="endofrange", startref="ix_ch08-asciidoc24")))(((range="endofrange", startref="ix_ch08-asciidoc23"))) 
+
+Même si le P2Pool réduit la concentration du pouvoir chez les opérateurs de pools, il reste vulnérable à une attaque 51% contre la chaîne de parts elle-même. Une adoption plus large de P2Pool ne résout pas le problème d'attaque 51% pour bitcoin lui-même. Plutôt, le P2Pool fait de bitcoin un système plus robuste dans l'ensemble, en tant que partie d'un écosystème de minage riche. 
+
+[[consensus_attacks]]
+=== Les attaques par consensus
+
+((("consensus","attacks", id="ix_ch08-asciidoc28", range="startofrange")))((("security","consensus attacks", id="ix_ch08-asciidoc29", range="startofrange")))Le mécanisme de consensus bitcoin est, au moins théoriquement, vulnérable aux attaques des mineurs (ou des pools) qui tentent d'utiliser leur puissance de hachage à des fins malhonnêtes ou destructrices. Comme nous l'avons vu, le mécanisme de consensus dépend de la présence d'une majorité de mineurs qui agissent honnêtement par intérêt personnel. Toutefois, si un mineur ou un groupe de mineurs peuvent obtenir une part importante de la puissance de minage, ils peuvent attaquer le mécanisme de consensus afin de perturber la sécurité et la disponibilité du réseau bitcoin. 
+
+Il est important de noter que les attaques par consensus ne peuvent affecter qu'un consensus futur, ou, au mieux, le passé le plus récent (quelques dizaines de blocs). Le registre bitcoin devient de plus en plus immuable à mesure que le temps passe. Si, en théorie, un fork peut être réalisé à toute profondeur, dans la pratique, la puissance de calcul nécessaire pour forcer un fork très profond est immense, ce qui rend les anciens blocs pratiquement immuable. Aussi, les attaques par consensus n'affecte pas la sécurité de la clé privée et l'algorithme de signature (ECDSA). Une attaque par consensus ne peut pas voler des bitcoins, dépenser des bitcoins sans signatures, rediriger des bitcoins, modifier des transactions passées ou des preuves de propriété. Les attaques par consensus ne peuvent affecter que les blocs les plus récents et causer des perturbations par déni de service sur la création des blocs à venir. 
+
+((("51% attacks")))((("consensus attacks","51% attacks")))Un scénario d'attaque contre le mécanisme de consensus est appelé "l'attaque 51%". Dans ce scénario, un groupe de mineurs, contrôlant la majorité (51%) de la puissance de hachage de l'ensemble du réseau, s'entendent pour attaquer bitcoin. Avec la possibilité de miner la majorité des blocs, les mineurs attaquant peuvent provoquer des forks volontairement dans la blockchain, et dépenser des transactions deux fois ou exécuter des attaques par déni de service contre des transactions ou des adresses spécifiques.((("double-spend attack")))((("fork attack"))) Une attaque fork/double-dépense est celle où l'attaquant rend des blocs déjà confirmés invalides en forkant en dessous d'eux et en reconvergeant sur une chaîne alternative. Avec une puissance suffisante, un attaquant peut invalider six blocs ou plus d'affilée, ayant pour conséquence de rendre des transactions considérées comme immuables (six confirmations) invalides. Notez qu'une double dépenses ne peut être fait que sur les transactions appartenant à l'attaquant, pour lesquelles l'attaquant peut produire une signature valide. Faire des transactions de double dépenses peut être rentable si en invalidant une transaction l'attaquant peut obtenir un paiement non réversible ou un produit sans avoir à payer pour cela. 
+
+Examinons un exemple pratique d'attaque 51%. Dans le premier chapitre, nous avons vu une transaction entre Alice et Bob pour une tasse de café. Bob, le propriétaire du café, est prêt à accepter le paiement de tasses de café sans attendre la confirmation (le minage dans un bloc), parce que le risque de double-dépense pour une tasse de café est faible en comparaison de la commodité d'un service clientèle rapide . Ceci est similaire à la pratique des magasins qui acceptent les paiements par carte de crédit sans signature pour des montants inférieurs à 25 $, car le risque d'un rejet de débit de carte de crédit est faible alors que le coût de retardement de la transaction pour obtenir une signature est en comparaison plus grande. En revanche, la vente d'un article plus cher en bitcoins court le risque d'une attaque double-dépenses, où l'acheteur diffuse une transaction concurrente qui envoie les mêmes entrées (UTXO) et annule le paiement au marchand. Un attaque double-dépenses peut arriver de deux façons : soit avant qu'une transaction soit confirmée, ou si l'attaquant profite d'un fork de blockchain pour annuler plusieurs blocs. Une attaque 51% permet à des attaquants à dépenser deux fois leurs propres transactions dans la nouvelle chaîne, annulant ainsi la transaction correspondante dans la vieille chaîne. 
+
+Dans notre exemple, Mallory, un attaquant malveillant, va à la galerie de Carol et achète une belle peinture en triptyque représentant Satoshi Nakamoto comme Prométhée. Carol vend les peintures "The Great Fire" pour 250 000 dollars en bitcoins à Mallory. Au lieu d'attendre six confirmations ou plus sur la transaction, Carol enveloppe et donne les peintures à Mallory après une seule confirmation. Mallory agit avec un complice, Paul, qui exploite une grande pool de minage, et le complice lance une attaque 51% dès que la transaction de Mallory est incluse dans un bloc. Paul administre la pool de minage de manière à reminer un bloc de même hauteur que le bloc contenant la transaction de Mallory, remplaçant le paiement de Mallory à Carol avec une transaction qui double dépense la même entrée que le paiement de Mallory. La transaction double-dépenses consomme le même UTXO et paie de nouveau au portefeuille de Mallory, au lieu de payer celui de Carol, permettant à Mallory de garder les bitcoins. Paul dirige ensuite la pool de minage pour miner un bloc supplémentaire, afin de rendre la chaîne contenant la transaction double-dépenses plus vielle que la chaîne originale (provoquant un fork en dessous du bloc contenant la transaction de Mallory). Lorsque le fork de blockchain est résolu en faveur de la nouvelle (plus longue) chaîne, la transaction double-dépenses remplace le paiement initial à Carol. Carol perd alors les trois tableaux et n'a pas non plus le paiement de bitcoins. Tout au long de cette activité, les participants de la pool de minage de Paul pourraient rester parfaitement ignorant de la tentative de double-dépenses, parce qu'ils minent avec des mineurs automatisés et ne peuvent pas surveiller chaque transaction ou bloc.
+
+Pour se protéger contre ce type d'attaque, un commerçant vendant des articles de grande valeur doit attendre au moins six confirmations avant de donner le produit à l'acheteur. Alternativement, le commerçant doit utiliser un entiercement grâce à((("multi-signature account"))) compte multi-signature, et toujours attendre plusieurs confirmations après que le compte soit financé. Plus il y a de confirmations, plus il devient difficile d'invalider une transaction avec une attaque 51%. Pour les articles de grande valeur, le paiement par bitcoin sera toujours pratique et efficace même si l'acheteur doit attendre 24 heures pour la livraison, ce qui assurerait 144 confirmations. 
+
+((("consensus attacks","denial of service attack")))((("denial of service attack")))En plus d'une attaque double-dépenses, l'autre scénario pour une attaque par consensus est de provoquer un déni de service contre des participants du réseau bitcoin (adresses bitcoin spécifiques). Un attaquant disposant d'une majorité de la puissance de minage peut simplement ignorer des transactions spécifiques. Si elles sont incluses dans un bloc miné par un autre mineur, l'attaquant peut délibérément forker et re-miner ce bloc, toujours en ignorant des transactions spécifiques. Ce type d'attaque peut entraîner un déni de service soutenu contre une adresse spécifique ou un ensemble d'adresses pour aussi longtemps que l'attaquant contrôle la majorité de la puissance de minage. 
+
+En dépit de son nom, le cas d'une attaque 51% ne nécessite pas réellement 51% de la puissance de hachage. En fait, une telle attaque peut être tentée avec un pourcentage plus faible. Le seuil de 51% est tout simplement le niveau auquel une telle attaque est presque assurée de réussir. Une attaque par consensus est essentiellement un combat pour le prochain bloc et le groupe le "plus fort" est plus susceptible de gagner. Avec moins de puissance de hachage, la probabilité de succès est réduite, parce que d'autres mineurs contrôlent la génération de certains blocs avec leur puissance de minage "honnête". Une façon de voir les choses est que plus un attaquant a de puissance de hachage, plus le fork qu'il peut créer sera long, plus les blocs récemment inclus pourront être invalider ou plus il peut contrôler de blocs à venir. Des groupes de recherche en sécurité ont utilisé la modélisation statistique pour prétendre que divers types d'attaques consensuelles sont possibles avec aussi peu que 30% de la puissance de hachage. 
+
+L'augmentation massive de la puissance totale de hachage a sans doute rendu bitcoin imperméable aux attaques par un mineur unique. Il n'y a aucune voie possible pour un mineur en solo de contrôler plus qu'un petit pourcentage de la puissance totale de minage. Cependant, la centralisation du contrôle causée par les pools minières a introduit le risque d'attaques à but lucratif par un opérateur de pool. L'opérateur de pool dans une pool gérée contrôle la construction de blocs candidats et contrôle les transactions qui sont également incluses. Cela donne à l'opérateur de la pool le pouvoir d'exclure des transactions ou d'introduire des transactions double-dépenses. Si un tel abus de pouvoir est fait de manière limitée et subtile, un opérateur de pool pourrait éventuellement bénéficier d'une attaque par consensus sans être remarqué.
+
+Tous les attaquants ne seront pas motivés par le profit cependant. Un scénario d'attaque potentiel est celui où un attaquant a l'intention de perturber le réseau bitcoin sans la possibilité de profiter de cette perturbation. Une attaque malveillante visant à paralyser bitcoin nécessiterait d'énormes investissements et une planification secrète, mais pourrait éventuellement être lancé par un très riche attaquant, probablement financé par un Etat. Alternativement, un riche attaquant pourrait attaquer le consensus bitcoin en amassant simultanément le matériel de minage, en compromettant les opérateurs de pools et en attaquant d'autres pools avec déni de service. Tous ces scénarios sont théoriquement possible, mais de plus en plus impraticable à mesure que la puissance de hachage globale du réseau bitcoin continue à croître de façon exponentielle. 
+
+Sans aucun doute, une attaque par consensus grave éroderait la confiance en bitcoin dans le court terme, pouvant provoquer une baisse significative des prix. Cependant, le réseau et le logiciel bitcoin sont en constante évolution, de sorte que les attaques par consensus seraient adressées avec des contre-mesures immédiates par la communauté bitcoin, faisant de bitcoin un système plus robuste que jamais.(((range="endofrange", startref="ix_ch08-asciidoc29")))(((range="endofrange", startref="ix_ch08-asciidoc28")))(((range="endofrange", startref="ix_ch08-asciidoc1")))(((range="endofrange", startref="ix_ch08-asciidoc0")))
+

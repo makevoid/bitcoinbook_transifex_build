@@ -1,0 +1,158 @@
+[preface]
+== Prefață
+
+=== Cum am scris cartea despre Bitcoin
+
+Am dat prima data peste Bitcoin la jumătatea anului 2011. Reacția mea imediată a fost mai mult sau mai puțin "bani pentru tocilari, Pfft!" și l-am ignorat pentru încă șase luni, neînțelegand importanța sa. Aceasta reacție am văzut-o repetat la multe dintre cele mai inteligente persoane pe care le cunosc, ceea ce mă o consolează oarecum. A doua oară cand am dat peste Bitcoin, într-o discuție pe o listă de discuții, am decis să citesc documentația inițială scrisă de Satoshi Nakamoto, pentru a studia o sursă autorizată și pentru a vedea despre ce era vorba. Îmi amintesc încă momentul în care am terminat de citit aceste nouă pagini, și când am realizat că Bitcoin nu este doar o monedă digitală, ci o rețea de încredere, care ar putea oferi, de asemenea, baza pentru mult mai mult decât o monedă. Înțelegerea faptului că "aceștia nu sunt bani, ci o rețea de încredere descentralizate", a fost începutul unei perioade de patru luni in care am mistuit orice urmă de informații despre Bitcoin pe care am putut-o găsi. Am devenit obsedat și captivat, petreceam 12 sau mai multe ore pe zi lipit de ecran, citind, scriind, programând și învățând cât de mult am putut. Am ieșit din această stare de febrila cu peste 20 de livre mai ușoar din cauza lipsei de mese consistente fiind hotarât să mă dedic și să muncesc la Bitcoin. 
+
+Doi ani mai târziu, după crearea unui număr de mici start-up-uri pentru a explora diverse servicii și produse aferente Bitcoin, am decis că era timpul să scriu prima mea carte. Bitcoin a fost tema care m-a împins într-o frenezie de creativitate și mi-a consumat gândurile; a fost cea mai interesantă tehnologie pe care am descoperit-o după Internet. Era momentul să împărtășeasc pasiunea mea pentru această tehnologie uimitoare publicului larg. 
+
+=== Publicul țintă
+
+Această carte este în principal destinată programatorilor. Dacă puteți folosi un limbaj de programare, această carte vă va învăța cum funcționează monedele criptografice, cum să le folosiți, și cum să dezvoltați software care lucrează cu ele. Primele capitole sunt de asemenea potrivite ca o introducere în profunzime in lumea Bitcoin pentru cei care nu programeaza-cei care încearcă să înțeleagă mecanismele interne ale Bitcoin și ale modelor criptografice.
+
+=== De ce sunt gândaci pe copertă?
+
+Furnica leafcutter este o specie care prezintă un comportament extrem de complex într-o colonie super-organism, deși fiecare furnică individ funcționează după un set de reguli simple  bazate pe interacțiunea socială și schimbul de arome chimice (feromoni). Citat Wikipedia: "Alături de oameni, furnicile leafcutter formează cele mai mari și mai complexe societăți de animale de pe Pământ." Furnicile leafcutter nu mananca de fapt frunze, ci mai degrabă le folosesc pentru a cultiva o ciuperca, care este sursa de hrana centrală pentru colonie. Ați prins-o? Aceste furnici fac agricultura! 
+
+Deși furnicile formează o societate bazată pe caste și au o regină pentru producerea puilor, nu există nici o autoritate centrală sau lider într-o colonie de furnici. Comportamentul extrem de inteligent și sofisticat arătat de o colonie de milioane de membri este o proprietate rezultată din interacțiunea indivizilor într-o rețea socială. 
+
+Natura demonstrează că sistemele descentralizate pot fi reziliente și pot produce o complexitate și sofisticare incredibilă fără a fi nevoie de o autoritate centrală, ierarhie, sau piese complexe.
+
+Bitcoin este o rețea de încredere descentralizată extrem de sofisticată, care poate suporta o multitudine de procese financiare. Cu toate acestea, fiecare nod din rețeaua Bitcoin urmează câteva reguli matematice simple. Interacțiunea dintre mai multe noduri este ceea ce duce la apariția comportamentului sofisticat, fără complexitate inerentă sau încrederea într-un singur nod. Ca o colonie de furnici, rețeaua Bitcoin este o rețea robustă de noduri simple, urmând reguli simple care împreună pot face lucruri uimitoare, fără nici o coordonare centrală.
+
+=== Convenții utilizate în această carte
+
+Următoarele convenții tipografice sunt folosite în această carte:
+
+_Italic_:: Indică noi termeni, URL-uri, adrese de email, nume de fișiere și extensii de fișiere.
+
++Latime Constantă+:: folosit pentru listări de programe, precum și în cadrul paragrafelor pentru a face referiri la elemente de programare, cum ar fi variabile sau nume de funcții, baze de date, tipuri de date, variabile de mediu, declarații, și cuvintele cheie.
+
+** `Lățime constantă bold`**:: Indică comenzi sau alt text care ar trebui să fie introdus așa cum este de către utilizator.
+
+_ ++Lățime constantă italic++ _:: Arata un text care ar trebui să fie înlocuite cu valorile furnizate de utilizator sau prin valori determinate de context.
+
+
+[TIP]
+====
+Această pictogramă înseamnă un sfat, sugestie, sau nota generala.
+====
+
+[WARNING]
+====
+Această pictogramă indică un avertisment sau precauție.
+====
+
+=== Exemple de cod
+
+Exemplele sunt ilustrate în Python, C ++, folosind linia de comandă a unui sistem de operare Unix-like, cum ar fi Linux sau Mac OS X. Toate fragmente de cod sunt disponibile în locația https://github.com/aantonop/bitcoinbook[GitHub repository] în subdirectorul _code_ din repository-ul principal. Modificați exemplele de cod din carte, încercați exemple de cod, sau trimiteți corecturi prin GitHub. 
+
+Toate fragmente de cod poate fi reprodus pe majoritatea sistemelor de operare cu minim un compiltor si interpretor specific limbajelor de progrmare utilizate. Dacă este necesar, oferim instrucțiuni de instalare de bază și exemple pas cu pas de rezultate a acestor instrucțiuni. 
+
+Unele dintre fragmente de cod și rezultate au fost reformatate pentru tipărire. În toate aceste cazuri, liniile au fost împărțite cu backslash (\), urmat de un caracter linie nouă. În cazul transcrierii exemplelor, scoateți cele două caractere pentru alăturarea liniilor din nou și ar trebui să vedeți rezultate identice așa cum se arată în exemplul. 
+
+Toate fragmentele de cod folosesc valori reale și calcule acolo unde este posibil, astfel încât să puteți construi de la un exemplu la altul și sa vedeți aceleași rezultate în orice cod scrieți pentru a calcula aceleași valori. De exemplu, cheile private și cheile publice corespunzătoare și adresele sunt reale. Tranzacțiile eșantion, blocurile, si refrințele blockchain toate au fost introduse în blockchain real Bitcoin și fac parte din registrul de public, pentru a le putea examina pe orice sistem Bitcoin.
+
+=== Folosind exemple de cod
+
+Aceasta carte este aici pentru a vă ajuta sa vă duceți proiectul la bun sfârșit. În general, exemplele de cod oferite cu această carte se pot folosi în programele și documentația voastra. Nu este nevoie să ne contactați pentru permisiune dacă nu reproduceți o parte semnificativă a codului. De exemplu, scriind un program care utilizează câteva bucăți de cod din această carte nu are nevoie de permisiunea noastră. Vanzarea sau distribuirea CD-ROM-ul  cu exemple de la O'Reilly are nevoie de permisiune. Răspunzând unei întrebări, citând această carte și citând exemplul de cod nu are nevoie de permisiune. Încorporarea unei cantități semnificative din exemplele de cod din această carte în documentația produsului dvs. are nevoie în schimb de permisiune.
+
+Apreciem, dar nu solicităm, referința. O referință include, de obicei, titlu, autor, editor, si ISBN. De exemplu: "_Mastering Bitcoin_ de Andreas M. Antonopoulos (O'Reilly). Copyright 2015 Andreas M. Antonopoulos, 978-1-449-37404-4. "
+
+Unele ediții ale acestei cărți sunt oferite sub o licență open source, cum ar fi CC-BY-NC (creativecommons.org), caz în care se aplică termenii acelei licențe.
+
+In cazul in care considerați că utilizarea de exemple de cod nu se incadrează in permisiunea de mai sus, nu ezitați să ne contactați la pass:[<email> permissions@oreilly.com</email>].
+
+=== Safari® Books Online
+
+[rol = "safarienabled"]
+[NOTE]
+====
+pass:[<ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly"> Safari Books Online </ulink> ] este o bibliotecă digitală la cerere care oferă pass:[ <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/content"> conținut </ulink> ] specializat atât în ​​format carte cat și video de la autori recunoscuți pe plan mondial&#8217 în tehnologie și afaceri.
+====
+
+Profesioniști in tehnologie, dezvoltatori de software, web designeri, și profesioniștii din domeniul afacerilor și creației folosesc Safari Books Online ca resursă principală pentru cercetare, rezolvarea de probleme, învățare și instruire pentru certificare.
+
+Safari Books Online oferă o gamă de pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/subscriptions"> seturi de produse </ulink>] și grile de prețuri pentru pass:[ <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/organizations-teams"> organizații </ulink> ], pass:[ <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/government"> agenții guvernamentale </ulink> ], și pass:[ <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/individuals"> persoane fizice </ulink> ]. Abonații au acces la mii de carti, filme de training, și manuscrise înainte de publicare într-o bază de date unica cu funcție completa de căutare de la editori precum O'Reilly Media, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Focal Press, Cisco Press, John Wiley & Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett, Course Technology, și pass:[ <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/publishers"> alte </ulink> ] zeci. Pentru mai multe informații despre Safari Books Online, va rugam sa ne vizitați pass:[ <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/"> on-line </ulink> ].
+
+=== Cum să ne contactați
+
+Vă rugăm să adresați observații și întrebări cu privire la această carte editorului:
+
+++++
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (in the United States or Canada)</member>
+<member>707-829-0515 (international or local)</member>
+<member>707-829-0104 (fax)</member>
+</simplelist>
+++++
+
+Avem o pagina web pentru această carte, în cazul în care vom publica erata, exemple, precum și orice informații suplimentare. Puteți accesa această pagină la link:$$http://bit.ly/mastering_bitcoin$$[].
+
+
+Pentru a comenta sau pune întrebări tehnice cu privire la această carte, trimiteti un email la pass:[ <email> bookquestions@oreilly.com </email>].
+
+Pentru mai multe informații despre cărțile noastre, cursuri, conferințe, și știri, a se vedea site-ul nostru la link:$$http://www.oreilly.com$$[].
+
+Găsiți-ne pe Facebook: link:$$http://facebook.com/oreilly$$[]
+
+Urmăriți-ne pe Twitter: link:$$http://twitter.com/oreillymedia$$[]
+
+Urmariti-ne pe YouTube: link:$$http://www.youtube.com/oreillymedia$$[]
+
+
+=== Mulțumiri
+
+Această carte reprezintă eforturile și contribuțiile multor oameni. Sunt recunoscător pentru tot ajutorul primit de la prieteni, colegi și chiar necunoscuți, care s-au alăturat acestui efort de a scrie cartea tehnică de baza in domeniul monedelor digitale criptografice și Bitcoin. 
+
+Este imposibil să se facă o distincție între tehnologia bitcoin și comunitatea bitcoin, iar această carte este la fel de mult un produs al comunității cât și o carte despre tehnologie. Munca mea la această carte a fost încurajată, aclamată, susținută și răsplătită de către întreaga comunitate bitcoin încă de la început și până la sfârșit. Mai mult decât orice, această carte mi-a permis să fac parte dintr-o comunitate minunată timp de doi ani și nu pot mulțumi îndeajuns pentru acceptarea mea în această comunitate. Sunt prea multe persoane pentru a menționa numele acestora individual, oameni pe care i-am întâlnit la conferințe, evenimente, seminarii, meetups, întâlniri cu pizza, și adunări private mici, precum si mai mulți sunt cei cu care au comunicat cu mine pe Twitter, pe Reddit, pe bitcointalk.org, și pe GitHub și care au avut un impact asupra acestei cărți. Fiecare idee, analogie, întrebare, răspuns, și explicație veți găsi în această carte au fost la un moment dat inspirate, testate, sau îmbunătățite prin interacțiunile mele cu comunitatea. Vă mulțumesc tuturor pentru sprijinul acordat; fără voi această carte nu s-ar fi întâmplat. Sunt pentru totdeauna recunoscător.
+
+Aventura de a deveni un autor începe cu mult înainte de prima carte, desigur. Primul mea limbă (și școlarizare) a fost greaca, așa că a trebuit să fac curs de perfecționare pentru engleză scrisă în engleză, în primul meu an de facultate. Îi datorez mulțumiri Dianei Kordas, profesorul meu de limba engleză scris, care ma ajutat să-mi  construiesc încrederea și abilitățile în acel an. Mai târziu, ca profesionist, mi-am dezvoltat abilitățile de scris tehnice pe tema centre de date, scris pentru revista _Network World_. Îi datorez mulțumiri lui John Dix și lui John Gallant, care mi-a dat primul meu loc de muncă ca cronicar la _Network World_ și editorului meu, Michael Cooney și colegului meu Johna Till Johnson, care a editat articolele mele si le-a facut potrivite pentru publicare. Scrisul a  500 de cuvinte pe săptămână timp de patru ani mi-a dat suficientă experiență pentru a lua în considerare în cele din urmă să devin un autor. Mulțumesc lui Jean de Vera pentru încurajările ei încă de la început în a deveni autor și pentru insistența cu care a crezut mereu că am o carte în mine.
+
+Mulțumesc de asemenea celor care m-au sprijinit atunci când am prezentat propunerea mea carte la O'Reilly, prin furnizarea de referințe și revizuirea propunerii. Mai exact, mulțumesc lui John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, Ioan Dix, Johna Till Johnson, Roger Ver, și Jon Matonis. Mulțumiri speciale lui Richard Kagan și Tymon Mattoszko, care au revizuit primele versiuni ale propunerii și lui Matei Owain Taylor, care a copyeditat propunerea.
+
+Mulțumesc lui Cricket Liu, autor al title _DNS al O'Reilly și BIND_, care m-a prezentat la O'Reilly. Mulțumesc de asemeni lui Michael Loukides și Allyson MacDonald de la O'Reilly, care a lucrat de luni de zile pentru a face această carte se întâmple. Allyson a fost deosebit de răbdator atunci când termenele au fost ratate și rezultatele întârziau sa apară datorita intâmplarilor de viață intervenite în programul nostru planificat inițial. 
+
+Primele versiuni ale primelor capitole au fost cele mai grele, pentru că Bitcoin este un subiect dificil de deconspirat. De fiecare dată ccând am tmers pe un fir de tehnologie bitcoin, a trebuit să merg până la capăt. Am rămas blocat în mod repetat și un pic descurajat încercând să fac subiectul ușor de înțeles și să creez o narațiune în jurul unui astfel de subiect dens tehnic. În cele din urmă, am decis să spun povestea bitcoin prin poveștile oamenilor care folosesc bitcoin și întreaga carte a devenit mult mai ușor să fie scrie. Îi datorez mulțumiri prietenului și mentorului meu, Richard Kagan, care ma ajutat să descopăr povestea și să trec de momentele de blocaj scriitoricesc, și Pamelei Morgan, care a revizuit versiunile timpurii ale fiecărui capitol și a trimis întrebările necesare pentru a le face mai bune. De asemenea, mulțumesc dezvoltatorilor grupului San Francisco Bitcoin Developers Meetup și Taariq Lewis, co-fondator al grupului, pentru a ajutorul furnizat la testare materialul preliminar.
+
+Pe parcursul dezvoltării cărții, am făcut publicări anticipate disponibile pe GitHub și am invitat la comentarii publice. Au fost depuse mai mult de o sută de comentarii, sugestii și corecturi, și contribuții în răspuns. Aceste contribuții sunt recunoscute în mod explicit, cu mulțumirile mele, în <<github_contrib>>. Mulțumiri speciale lui Minh T. Nguyen, care s-a oferit voluntar să gestioneze contribuțiile GitHub și a adăugat mai multe contribuții semnificative el însuși. Mulțumesc de asemenea lui Andrew Naugler pentru desig-ul infographic. 
+
+Odată ce cartea a fost redactată, acesta a trecut prin mai multe runde de revizuire tehnice. Mulțumesc lui Cricket Liu și Lorne Lantz pentru revizuirea lor aprofundată, comentarii și pentru sprijin.
+
+Mai mulți dezvoltatorii bitcoin au contribuit cu mostre de cod, revizuiri, comentarii, și încurajari. Mulțumesc lui Amir Taaki și Eric Voskuil pentru fragmente și exemple de cod și multe comentarii excelente; lui Vitalik Buterin și Richard Kiss pentru ajutor la matematica curbelor eliptice și exemple de cod; lui Gavin Andresen pentru corecturi, comentarii, și încurajare; lui Michalis Kargakis pentru comentarii, contribuțiile și btcd writeup; și lui Robin Inge pentru contribuții la erată îmbunătățirea celei de a doua tipăriri.
+
+Datorez dragostea mea pentru cuvinte și cărți mamei mele, Theresa, care m-a crescut într-o casă cu cărți captușind fiecare perete. Mama mea mi-a cumparat de asemenea, primul meu calculator în 1982, în ciuda faptului că mă consider technofob. Tatăl meu, Menelaos, un inginer construcșți civile care tocmai a publicat prima sa carte la 80 de ani, a fost cel care m-a învățat gândirea logică și analitică și o iubire de știință și inginerie. 
+
+Vă mulțumesc tuturor pentru susținerea mea de-a lungul acestei călătorii. 
+
+[[github_contrib]]
+==== Versiune preliminara (Contributii GitHub)
+
+Mulți contributori au oferit comentarii, corecturi și completări la versiunea preliminară pe GitHub. Vă mulțumesc tuturor pentru contribuțiile dumneavoastră la această carte. În cele ce urmează este o listă de contributori Github care au ieșit în evidență, inclusiv ID-ul lor GitHub în paranteze:
+
+* Minh T. Nguyen, GitHub editor contribuții (enderminh)
+* Ed Eykholt (edeykholt)
+* Michalis Kargakis (kargakis)
+* Erik Wahlström (erikwam)
+* Richard Kiss (richardkiss)
+* Eric Winchell (Winchell)
+* Sergej Kotliar (ziggamon)
+* Nagaraj Hubli (nagarajhubli)
+* eteri
+* Alex Waters (alexwaters)
+* Mihail Russu (MihailRussu)
+* Iș Ot Jr. (ishotjr)
+* James Addison (jayaddison)
+* Nekomata (nekomata-3)
+* Simon de La Rouvière (simondlr)
+* Chapman Shoop (belovachap)
+* Holger Schinzel (schinzelh)
+* EffectsToCause (vericoin)
+* Stephan Oeste (Emzy)
+* Joe Bauers (joebauers)
+* Jason Bisterfeldt (jbisterfeldt)
+* Ed Leafe (EdLeafe)

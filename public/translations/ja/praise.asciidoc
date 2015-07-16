@@ -1,0 +1,22 @@
+["dedication", role="praise"]
+== 'Mastering Bitcoin' への賛辞
+
+[quote, Gavin Andresen, Chief Scientist Bitcoin Foundation]
+____
+「私が一般の人にBitcoinについて話すと、『で、実際どうやって動いているの？』と聞かれることがよくある。今や私は、その質問への素晴らしい回答を手にした。なぜなら、_Mastering Bitcoin_を読めば誰でも、Bitcoinがどのように動いているかについて深い理解に達し、次世代のわくわくするような暗号通貨のアプリケーションを作るのに十分な力が身に付くからだ」
+____
+
+[quote, Naval Ravikant, Co-founder AngelList]
+____
+「Bitcoinとブロックチェーン技術は、次世代のインターネットの基本的な構成要素になりつつある。シリコンバレーのベスト・アンド・ブライテストがこれに取り組んでいる。Andreasの著作は、この金融の世界のソフトウェア革命に加わるための、良い助けとなるだろう」 
+____
+
+[quote, Balaji S. Srinivasan (@balajis), General Partner&#x2c; Andreessen Horowitz]
+____
+「_Mastering Bitcoin_は、Bitcoinに関して今日手に入る、技術面で最高の文献だ。またBitcoinは、2010年代の最も重要な技術として振り返られるようになるだろう。本書は、開発に携わる者にとって、特にBitcoinプロトコルでのアプリケーション構築に関心がある者にとって、究極の必読図書である。強くお薦めする」
+____
+
+[quote, Roger Ver, Bitcoin Entrepreneur and Investor]
+____
+「Bitcoinブロックチェーンの発明は、インターネットそのものと同じくらい幅広く多様性に富んだ生態系を実現する、全く新たなプラットフォームが打ち立てられたことを意味している。卓越した思想家の一人であるAndreas Antonopoulosは、本書を書く人間として完璧な人選である」
+____

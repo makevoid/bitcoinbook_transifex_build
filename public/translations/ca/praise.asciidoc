@@ -1,0 +1,22 @@
+["Dedicatòria", rol = "elogis"]
+== Elogis per a 'Mastering Bitcoin'
+
+[cita, Gavin Andresen, Científic en cap de la Fundació Bitcoin]
+____
+"Quan parlo de bitcoin per al públic en general, de vegades em pregunten 'però com funciona realment? Ara tinc una gran resposta per a aquesta pregunta, perquè qualsevol que llegeixi _Mastering Bitcoin_ tindrà un profund coneixement de com funciona i estarà ben equipat per escriure la següent generació d'increíbles aplicacions de moneda digital".
+____
+
+[cita, Naval Ravikant, Cofundador AngelList]
+____
+"Bitcoin i les tecnologies de cadena de blocs s'estan convertint en els blocs de construcció fonamentals per la següent generació d'internet. Les millors i més brillants ments de Silicon Valley hi estan treballant. El llibre de l'Andreas t'ajudarà a entrar en la revolució del programari en el món de les finances". 
+____
+
+[cita, Balaji S. Srinivasan (@balajis), Soci general&#x2c;, Andreessen Horowitz]
+____
+"_Mastering Bitcoin_ és la millor referència tècnica disponible sobre bitcoin avui. I bitcoin és probable que sigui vist en retrospectiva com la tecnologia més important d'aquesta dècada. Com a tal, aquest llibre és imprescindible per a qualsevol desenvolupador, especialment aquells interessats en la creació d'aplicacions amb el protocol bitcoin. Altament recomanat. "
+____
+
+[cita, Roger Ver, Emprenedor i inversor en bitcoin]
+____
+"La invenció de la cadena de blocs bitcoin representa una plataforma completament nova sobre la qual construir, una plataforma que farà possible un ecosistema tan ampli i divers com la pròpia xarxa d'internet. Com un dels líders d'opinió per excel·lència, Andreas Antonopoulos és l'elecció perfecta per escriure aquest llibre ".
+____

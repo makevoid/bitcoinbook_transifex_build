@@ -1,0 +1,1030 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="blockchain">ブロックチェーン</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_はじめに">はじめに</h3>
+<div class="paragraph"><p>ブロックチェーンはトランザクションを内包するブロックが数珠つなぎに並べられ、それぞれがひとつ前のブロックに向けたリンクを持つ構造をとります。 ブロックチェーンはファイルまたはシンプルなデータベース内に保持されます。 ビットコイン・コアクライアントの場合GoogleのLevelDBにブロックチェーンのメタデータが保持されます。 ブロックはそれぞれ、数珠つなぎになったひとつ前のブロックへのリンクを持つため、しばしば垂直にブロックが積み重ねられ、一番下のブロックがその上にあるブロックの土台となっているような形で例えられます。このような垂直に積み重ねていく例えから、あるブロックの最初のブロックからの距離を表現するのに「高さ」という言葉を使い、一番最後のブロックを「トップ」または「頂点」というような言葉で表します。</p></div>
+<div class="paragraph"><p>ブロックチェーン内のそれぞれのブロックは、そのヘッダ情報にSHA256暗号学的ハッシュアルゴリズムを適用することで得られるハッシュ値をIDとして持ちます。また、それぞれのブロックは、そのヘッダー内の"previous block hash"のフィールド内に_親_ブロックと知られる一つ前のブロックのハッシュ値を持つことで親ブロックを参照しています。親ブロックへの参照によりリンクされ、それが親の親、さらにその親に数珠つなぎに連なり、最終的にはビットコインが始まって最初に生成された _ジェネシス・ブロック_と呼ばれるブロックにまで連なります。</p></div>
+<div class="paragraph"><p>ブロックは必ずたった一つの親ブロックを持ちますが、一時的に一つの親ブロックに複数の子ブロックができるケースがあります。その場合、それぞれの子ブロックのヘッダ内の"previous block hash"フィールドに同一の親ブロックのハッシュ値が格納されている状態です。このようなケースは複数の採掘者がほぼ同時に新しいブロックを採掘した場合に発生し、この時ブロックチェーンは一時的に「分岐」することになります（詳細は <a href="#forks">[forks]</a>項参照）。しかし最終的には複数の子ブロックの中の１つが選択されブロックチェーンを構成するブロックとなり分岐は解消されます。繰り返しになりますが、ブロックは複数の子ブロックを持つことはありえますが、それぞれのブロックの親ブロックは必ず１つであり、それはヘッダ内の"previous block hash"フィールドに単一の親ブロック情報が入っているためです。</p></div>
+<div class="paragraph"><p>"previous block hash"フィールドとして親ブロックのハッシュ値が子ブロックのヘッダ内にあるため、なんらか理由で親ブロックのハッシュ値が変更された場合は子ブロックのハッシュ値にも影響します。子ブロックの"previous block hash" フィールドは親ブロックを参照しているため、親ブロックのハッシュ値が変更された場合、その変更に合わせて"previous block hash"フィールドの値を変更する必要があり、結果、子ブロックのハッシュ値も変化します。同様に子ブロックのハッシュ値が変更されることで孫ブロック、孫の変更で曾孫のハッシュ値が変更というように続きます。 つまり、多くの世代が後に続くブロックの内容をなんらかの理由で変更するためには、その後の世代の全てのハッシュ値を再計算しないといけないということになります。この再計算は非常に時間を要するために、古い世代のブロックは誰にも変更が出来ず、この変更不可能性こそがビットコインの安全性の鍵となっています。</p></div>
+<div class="paragraph"><p>ブロックチェーンは地面や氷河のコア試料と似ているといえます。表層部分は季節や気候の変化によって変化しやすいものの、十数センチ下の層では状態はより安定し、さらに数十メートル下の層では数百万年前の状態がそのままのかたちで残っているのが見て取れます。ブロックチェーンでも同様です。最も最近の数ブロックは表層部分に似て分岐などによる再計算等の影響で変更される可能性があり安定しません。しかし６世代まで遡ると地面の十数センチ下の層のように不変的になります。さらに過去のブロックチェーンに遡れば遡るほど不変性は増してきます。100世代まで遡ると採掘した際に新たにコインが発行されたトランザクション（コインベース・トランザクション）の使うことが許されるほど不変性が高くなります。A few thousand blocks back (a month) and the blockchain is settled history, for all practical purposes. While the protocol always allows a chain to be undone by a longer chain and while the possibility of any block being reversed always exists, the probability of such an event decreases as time passes until it becomes infinitesimal.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_ブロックの構造">ブロックの構造</h3>
+<div class="paragraph"><p>ブロックは、公開元帳であるブロックチェーンに収録するために、幾つかのトランザクションを集積したコンテナー型のデータ構造をとります。ブロックはメタデータを含むヘッダと、ブロックのサイズの大半を占める大量のトランザクション情報のリストによって構成されます。ブロックのヘッダサイズは80バイトである一方、１つのトランザクション情報のサイズは最低でも250バイトあり、平均して500トランザクションが１つのブロックに内包されます。つまりブロック全体のサイズは、ヘッダ・サイズの1,000倍程度になります。 <a href="#block_structure1">[block_structure1]</a>にブロックの構造を示します。</p></div>
+<div class="tableblock" id="block_structure1">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. ブロック構造</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">サイズ</th>
+<th align="left" valign="top"> フィールド名 </th>
+<th align="left" valign="top"> 説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">4バイト</p></td>
+<td align="left" valign="top"><p class="table">Block Size</p></td>
+<td align="left" valign="top"><p class="table">このフィールド以降のブロックサイズ（バイト単位）。</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">80バイト</p></td>
+<td align="left" valign="top"><p class="table">Block Header</p></td>
+<td align="left" valign="top"><p class="table">幾つかのフィールドがこのヘッダフィールドに内包されています。</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9バイト（VarInt）</p></td>
+<td align="left" valign="top"><p class="table">Transaction Counter</p></td>
+<td align="left" valign="top"><p class="table">本ブロック内に含まれるブロック数</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">不定</p></td>
+<td align="left" valign="top"><p class="table">Transactions</p></td>
+<td align="left" valign="top"><p class="table">本ブロック内に記録されるブロックのリスト</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="block_header">ブロック・ヘッダ</h3>
+<div class="paragraph"><p>ブロックのヘッダには３種類のメタデータで構成されています。１つ目は親ブロックのハッシュ値であり、ブロックチェーンの中で親ブロックを示す情報になります。２つ目は _難易度_、_タイムスタンプ_、_ノンス_といった採掘競争に関係するメタデータです。採掘については<a href="#ch8">[ch8]</a>に詳しく述べます。そして３つ目は、ブロック内の全トランザクションデータを効率的に要約するためのマークル木のルートハッシュです。 <a href="#block_header_structure_ch07">[block_header_structure_ch07]</a> にブロック・ヘッダの構造を示します。</p></div>
+<div class="tableblock" id="block_header_structure_ch07">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. ブロック・ヘッダ構造</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">サイズ</th>
+<th align="left" valign="top"> フィールド名 </th>
+<th align="left" valign="top"> 説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">4バイト</p></td>
+<td align="left" valign="top"><p class="table">Version</p></td>
+<td align="left" valign="top"><p class="table">ソフトウェア/プロトコル バージョン番号</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">32バイト</p></td>
+<td align="left" valign="top"><p class="table">Previous Block Hash</p></td>
+<td align="left" valign="top"><p class="table">親ブロックのハッシュ値</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">32バイト</p></td>
+<td align="left" valign="top"><p class="table">Merkle Root</p></td>
+<td align="left" valign="top"><p class="table">本ブロック内の全トランザクションに関するマークル木のルートハッシュ</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4バイト</p></td>
+<td align="left" valign="top"><p class="table">Timestamp</p></td>
+<td align="left" valign="top"><p class="table">本ブロックの生成時刻（Unix時間）</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4バイト</p></td>
+<td align="left" valign="top"><p class="table">Difficulty Target</p></td>
+<td align="left" valign="top"><p class="table">本ブロック生成時のプルーフ・オブ・ワークの難易度値</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4バイト</p></td>
+<td align="left" valign="top"><p class="table">Nonce</p></td>
+<td align="left" valign="top"><p class="table">プルーフ・オブ・ワークで用いたノンス値</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>採掘の過程で使われる、ノンス、難易度値、タイムスタンプの詳細については<a href="#ch8">[ch8]</a>章で述べます。</p></div>
+</div>
+<div class="sect2">
+<h3 id="block_hash">ブロック識別子：ブロック・ヘッダー・ハッシュとブロック高</h3>
+<div class="paragraph"><p>最も重要なブロックの識別子はブロック・ヘッダーに対してSHA256アルゴリズムを２回適用して生成される暗号学的ハッシュ、つまりデジタル・フィンガープリントです。この32バイトのハッシュ値は <em>ブロックハッシュ</em> または、より正確に<em>ブロック・ヘッダ・ハッシュ</em>, <phrase role="keep-together">と呼ばれます。これはハッシュ値の計算にヘッダのデータのみ利用されていることによります。 例えば</phrase> <tt>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt> は一番最初に生成されたブロックのブロック・ハッシュです。ブロック・ハッシュは各ブロックにユニークに与えらえる識別子であり各ブロックのヘッダのみの情報から計算される識別子となっています。</p></div>
+<div class="paragraph"><p>ネットワーク内で伝送される際も、ブロックチェーンとしてストレージ内に格納される場合にも、ブロックがそのデータ構造内に自身のブロック・ハッシュを持たないことに注意してください。代わりにブロックを受け取った各ノードが、その受け取ったブロックのブロック・ハッシュを計算します。ブロック・ハッシュは各ノード内で、ブロック情報の取り出しを高速化するための索引情報として別テーブルに保持されることがあります。</p></div>
+<div class="paragraph"><p>ブロックを識別するもう一つの方法は、 <phrase role="keep-together"><emphasis>ブロック高</emphasis>であり、これはロックチェーン内での位置を示します。最初に作られたブロックのブロック高は0（ゼロ）であり、これは先ほど+000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f+というブロック・ハッシュ値で参照したブロック</phrase> <phrase role="keep-together">と同一のブロックを指し示します。</phrase> つまり一つのブロックはブロック・ハッシュと、ブロック高の２通りの方法で識別することが可能です。後続のブロックは最初のブロックの上に積み重ねられ、積み重ねられる度にブロック高は１つ高くなっていきます。2014年１月1日現在でブロック高は約278,000であり、これは2009年の１月に最初のブロックが生成されて以来278,000個のブロックが生成されたことを意味します。</p></div>
+<div class="paragraph"><p>ブロックハッシュと違って、ブロック高はユニークな識別子ではありません。１つのブロックは特定のブロック高が割り当てられていますが、逆は真ではありません。２つまたはもっと多くのブロックが同じブロック高を持っているかもしれないからです。これは、ブロックチェーン内の同じ場所をマイナーが競争して取得しようとしているためです。どのようにしてこれが起こるのかについては<a href="#forks">[forks]</a>の節で詳細に説明します。ブロック高はまたブロックのデータの一部でもありません。それぞれのノードは、Bitcoinネットワークからブロックを受け取ったときにこのブロックがブロックチェーン内のどこの位置(ブロック高)にあるのかをブロック高を使うことなくブロックハッシュから動的に特定します。ただこのブロック高は、ブロックチェーンからすばやくブロック情報を取得する目的でデータベースにメタデータとして保存されている可能性はあります。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>ブロックの <em>ブロックハッシュ</em> は常に1つのブロックを一意に指定します。ブロックはまた常に特定の <em>ブロック高</em> を持っています。しかし、常に特定のブロック高は1つのブロックを指定できるというわけではないのです。これは、２つまたはもっと多くのブロックがブロックチェーン内の１つ位置の取り合いをしているかもしれないためです。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_genesisブロック">genesisブロック</h3>
+<div class="paragraph"><p>ブロックチェーンの一番最初のブロックは起源ブロックと呼ばれており、これは2009年に作られたものです。これはブロックチェーンにある全てのブロックの祖先であり、どんなブロックからスタートしてチェーンを過去にさかのぼっていっても結局起源ブロックにぶつかります。</p></div>
+<div class="paragraph"><p>全てのノードは１つのブロックのブロックチェーンからいつも始まります。というのは、起源ブロックは変更できないようにBitcoinクライアントにハードコーディングされているためです。全てのノードは起源ブロックのハッシュとデータ、作成された日時、１つのトランザクションが含まれていることを"知って"おり、これにより信頼されたブロックチェーンを構築するときの安全な"根幹"を持つことができるのです。</p></div>
+<div class="paragraph"><p>Bitcoin Coreクライアントの内部にハードコーディングされた起源ブロックを見るには、 <a href="http://bit.ly/1x6rcwP">chainparams.cpp</a> を参照してみてください。</p></div>
+<div class="paragraph"><p>以下のハッシュが起源ブロックのハッシュです。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt></pre>
+</div></div>
+<div class="paragraph"><p>blockchain.infoのようなブロック探索サイトでブロックハッシュを検索することができ、以下のハッシュを含むURLを参照することで起源ブロックの内容が書かれたページを見ることができます。</p></div>
+<div class="paragraph"><p><a href="https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f">https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</a></p></div>
+<div class="paragraph"><p><a href="https://blockexplorer.com/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f">https://blockexplorer.com/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</a></p></div>
+<div class="paragraph"><p>Bitcoin Core参照クライアントの以下のコマンドを実行することでも起源ブロックの内容を確認することができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>起源ブロックには隠されたメッセージが含まれています。coinbaseトランザクションインプットには"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks."(リーマンショックの影響を受けた銀行へのイギリス政府からの資金援助に関する記事)という文章が記載されています。このメッセージはイギリスの新聞 <em>タイムズ紙</em> のヘッドラインを参照することで起源ブロックが2009年1月3日以前になかったことの証明になっています。また、皮肉にも銀行と独立した重要な通貨システムであるBitcoinが稼働し始め、前例のない全世界共通通貨の稼働という決定的な出来事が起きたリマインダーにもなっているのです。このメッセージはBitcoinの創造者であるSatoshi Nakamotoによって最初のブロックに埋め込まれたものです。</p></div>
+</div>
+<div class="sect2">
+<h3 id="_ブロックチェーン内でのブロック連結">ブロックチェーン内でのブロック連結</h3>
+<div class="paragraph"><p>Bitcoin full nodeは、起源ブロックから始まるブロックチェーンのローカルコピーを保持しています。このブロックチェーンのローカルコピーは、新しいブロックが見つかりチェーンが拡張されるたびに定期的にアップデートされます。ノードがBitcoinネットワークからブロックを受け取ったとき、これらのブロックの検証を行いすでに保持しているブロックチェーンにこれらを連結します。連結するために、ノードは受け取ったブロックヘッダを調べ"previous block hash"を探します。</p></div>
+<div class="paragraph"><p>例として、あるノードが277,314個のブロックをブロックチェーンのローカルコピーに持っていると仮定してみましょう。ノードが知っている一番最後のブロックはブロック277,314で、ブロックヘッダのハッシュは <tt>00000000000000027e7ba6fe7bad39faf3b5a83daed765f05f7d1b71a1632249</tt> です。</p></div>
+<div class="paragraph"><p>Bitcoinノードは新しいブロックをBitcoinネットワークから受け取りました。このブロックは以下のようなものです。</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>このノードはこの新しいブロックを参照し、親ブロックのハッシュを含む <tt>previousblockhash</tt> フィールドを見つけます。調べてみると、この <tt>previousblockhash</tt> フィールドにあるハッシュが、ノードが持っているブロックチェーンの一番最後のブロック高 277,314 のハッシュであったため、ノードはこの新しいブロックが一番最後のブロックの子ブロックであることが分かり、ローカルのブロックチェーンを拡張しました。最終的に、このノードは新しいブロックをブロックチェーンの最後に追加し、新しいブロック高 277,315 を持ったブロックチェーンを作りました。</p></div>
+</div>
+<div class="sect2">
+<h3 id="merkle_trees">Merkle Trees</h3>
+<div class="paragraph"><p>ブロックチェーンのそれぞれのブロックには <em>merkle tree</em> を使ったブロックに含まれる全てのトランザクションのサマリが含まれています。</p></div>
+<div class="paragraph"><p><em>merkle tree</em> は ((("binary hash tree")) <em>二分ハッシュ木</em> と呼ばれるもので、効率的に大きなデータをまとめ、データ全体を検証できるようにしています。merkle treeは暗号学的なハッシュを含む二分木です。"tree"という言葉は、コンピュータサイエンスの分野で使われる枝葉を持つデータ構造を表す言葉として使われています。しかし、これらの木はあとで出てくる例で見るように通常上下が逆の状態で表され、上方向が"根っこ"で下方向が葉になっています。</p></div>
+<div class="imageblock" id="chain_of_blocks">
+<div class="content">
+<img src="images/msbt_0701.png" alt="images/msbt_0701.png" />
+</div>
+<div class="title">Figure 1. ブロックヘッダにあるprevious block hashの参照によってチェーン内で連結されているブロック。</div>
+</div>
+<div class="paragraph"><p>merkle treeはブロックに含まれている全てのトランザクションをまとめるために使われ、トランザクション全体のデジタルフィンガープリントを作り出し、あるトランザクションがブロックに含まれているかどうかを確認するとても効率的な方法を提供します。 merkle treeは再帰的に葉ノードのペアから１つのハッシュ値を計算し、ハッシュが１つだけ残るまで続けます。この残ったハッシュを <em>root</em> または <em>merkle root</em> と呼びます。Bitcoinのmerkle treeに使われている暗号学的なハッシュアルゴリズムはSHA256を２回適用したもので、double-SHA256とも呼ばれています。</p></div>
+<div class="paragraph"><p>N個のデータ要素がハッシュ化されmerkle treeの中にまとめられているとき、多くても <tt>2*log<sub>2</sub>(N)</tt> 回の計算をすることであるデータ要素がmerkle treeに含まれているかどうかを知ることができます。</p></div>
+<div class="paragraph"><p>merkle treeは底部から作られていきます。次の例で見るように、A、B、C、Dの４つのトランザクションから始めてみましょう。これらは<a href="#simple_merkle">[simple_merkle]</a>図に示されている通りmerkle treeの <em>葉</em> を構成するものです。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>H~A~ = SHA256(SHA256(Transaction A))</tt></pre>
+</div></div>
+<div class="paragraph"><p>葉ノードの隣同士のペアは、ペアそれぞれのハッシュをくっつけたもののハッシュを取り親ノードにまとめられます。例えば、親ノード H<sub>AB</sub> を作るためには２つの子ノードの32バイトハッシュをくっつけて64バイトの文字列を作ります。この後この文字列は２回ハッシュ化され親ノードのハッシュが作り出されます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>H~AB~ = SHA256(SHA256(H~A~ + H~B~))</tt></pre>
+</div></div>
+<div class="paragraph"><p>このプロセスはノードが１つになるまで続けられ、この最後の１つのノードを merkle root と呼びます。32バイトハッシュはブロックヘッダに保存され、４つの全トランザクションのデータがmerkle rootのハッシュにまとめられます。</p></div>
+<div class="imageblock" id="simple_merkle">
+<div class="content">
+<img src="images/msbt_0702.png" alt="merkle_tree" />
+</div>
+<div class="title">Figure 2. merkle tree内での各ノードのハッシュ値計算</div>
+</div>
+<div class="paragraph"><p>merkle treeは二分木であるため、葉ノードが偶数個になる必要があります。もしトランザクションの数が奇数個である場合は、最後のトランザクションハッシュは自分自身とくっつけてハッシュを作りバランス木として知られている偶数個の葉ノードができるようにします。これは<a href="#merkle_tree_odd">[merkle_tree_odd]</a>図に示されており、トランザクションCが二重になっています。</p></div>
+<div class="imageblock" id="merkle_tree_odd">
+<div class="content">
+<img src="images/msbt_0703.png" alt="merkle_tree_odd" />
+</div>
+<div class="title">Figure 3. 1つのデータ要素を二重で使うことで偶数個のデータ要素を持ったmerkle treeを構成</div>
+</div>
+<div class="paragraph"><p>４つのトランザクションから木を作る方法は、どんなサイズの木にも一般化できます。Bitcoinでは、１つのブロックに数百から千個以上のトランザクションを持つことはよくあり、さきほどの方法と全く同じ方法でmerkle rootの32バイトハッシュとしてまとめられます。<a href="#merkle_tree_large">[merkle_tree_large]</a>図には、１６個のトランザクションからなるmerkle treeが書かれています。図の中でmerkle rootは葉ノードよりも大きく見えますが、厳密に同じサイズで32バイトです。ブロックの中に１つのトランザクションしかないのか、１０万個のトランザクションがあるのかに関わらず、merkle rootは常に32バイトのハッシュにまとめられます。</p></div>
+<div class="paragraph"><p>特定のトランザクションがブロックに含められていることを証明するために、Bitcoinノードはたった <tt>log<sub>2</sub>(N)</tt> 個の32バイトハッシュを作り出すだけでよく、これにより特定のトランザクションをmerkle tree rootに繋ぐ  <em>authentication path</em> または <em>merkle path</em> を構成します。これはブロックに含まれるトランザクションの数が多くなるにつれて特に重要になっていきます。というのは、トランザクション数の２を底とする対数はトランザクション数が増えてもほとんど大きくならないからです。このことで、データサイズが数MBにもなるブロックに含まれる千個以上のトランザクションから１個のトランザクションを特定するためのmerkle pathを、たった10個から12個のハッシュ(320-384バイト)で効率的に作り出すことができるのです。</p></div>
+<div class="imageblock" id="merkle_tree_large">
+<div class="content">
+<img src="images/msbt_0704.png" alt="merkle_tree_large" />
+</div>
+<div class="title">Figure 4. 多くのデータ要素をまとめているmerkle tree</div>
+</div>
+<div class="paragraph"><p><a href="#merkle_tree_path">[merkle_tree_path]</a>図にある通り、Bitcoinノードはたった４つの32バイトハッシュ(全部で128バイト)を使ったmerkle pathを作り出すことで、あるトランザクションKがブロックに含まれていることを証明できるのです。このmerkle pathは４つのハッシュ H<sub>L</sub> 、 H<sub>IJ</sub> 、 H<sub>MNOP</sub> 、 H<sub>ABCDEFGH</sub> から構成されます(これらハッシュは<a href="#merkle_tree_path">[merkle_tree_path]</a>図に青い四角で記されています)。これらの４つのハッシュがauthentication pathとして提示されると、あらゆるBitcoinノードは H<sub>K</sub> (<a href="#merkle_tree_path">[merkle_tree_path]</a>図に緑の四角で表示)がmerkle rootに含まれているということを対となる追加の４つのハッシュ、H<sub>KL</sub> 、 H<sub>IJKL</sub> 、 H<sub>IJKLMNOP</sub> 、 merkle tree root を計算することで示すことができます(<a href="#merkle_tree_path">[merkle_tree_path]</a>図に点線で縁取られた四角で表示)。</p></div>
+<div class="imageblock" id="merkle_tree_path">
+<div class="content">
+<img src="images/msbt_0705.png" alt="merkle_tree_path" />
+</div>
+<div class="title">Figure 5. データ要素が含まれていることの証明に使われるmerkle path</div>
+</div>
+<div class="paragraph"><p><a href="#merkle_example">[merkle_example]</a>にあるコードは、葉ノードからmerkle rootまでのmerkle treeを作り出すプロセスをデモンストレーションであり、いくつかの補助関数でlibbitcoinライブラリを使っています。</p></div>
+<?hard-pagebreak?>
+<div class="exampleblock" id="merkle_example">
+<div class="title">Example 1. マークル木の構築</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p><a href="#merkle_example_run">[merkle_example_run]</a>にさきほどのコードをコンパイルし実行した結果を示します。</p></div>
+<div class="exampleblock" id="merkle_example_run">
+<div class="title">Example 2. merkle例コードのコンパイルと実行</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>merkle treeの効率性はブロックのデータサイズスケールが大きくなるほど明らかになります。<a href="#block_structure2">[block_structure2]</a>は、ブロックのデータサイズ、ブロック内トランザクション数に応じて必要なmerkle pathの大きさを示しています。</p></div>
+<div class="tableblock" id="block_structure2">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 3. merkle treeの効率性</caption>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<thead>
+<tr>
+<th align="left" valign="top">トランザクション数</th>
+<th align="left" valign="top"> ブロック平均データサイズ </th>
+<th align="left" valign="top"> パスサイズ (ハッシュ数) </th>
+<th align="left" valign="top"> パスサイズ (bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">16 トランザクション</p></td>
+<td align="left" valign="top"><p class="table">4 kilobytes</p></td>
+<td align="left" valign="top"><p class="table">4 ハッシュ</p></td>
+<td align="left" valign="top"><p class="table">128 bytes</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">512 トランザクション</p></td>
+<td align="left" valign="top"><p class="table">128 kilobytes</p></td>
+<td align="left" valign="top"><p class="table">9 ハッシュ</p></td>
+<td align="left" valign="top"><p class="table">288 bytes</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">2048 トランザクション</p></td>
+<td align="left" valign="top"><p class="table">512 kilobytes</p></td>
+<td align="left" valign="top"><p class="table">11 ハッシュ</p></td>
+<td align="left" valign="top"><p class="table">352 bytes</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">65,535 トランザクション</p></td>
+<td align="left" valign="top"><p class="table">16 megabytes</p></td>
+<td align="left" valign="top"><p class="table">16 ハッシュ</p></td>
+<td align="left" valign="top"><p class="table">512 bytes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>表から分かるように、ブロックのデータサイズが急速に大きく(16個のトランザクションの時は4KBですが、65,535個のトランザクションだと16MB)なっていっても、merkle pathのデータサイズはトランザクション数が大きくなるよりもゆっくり大きくなります(128バイトから512バイトにしか増えない)。merkle treeとともに、Bitcoinノードはブロックヘッダ(１ブロックあたり80バイト)だけをダウンロードします。Bitcoinノードはfull nodeから小さなmerkle pathを取得することでブロックの中にあるトランザクションが含まれているかを知ることができます。これには、数GBもあるブロックチェーンの大半を保存したり、また受け渡してもらう必要もありません。simplified payment verification(SPVノード)と呼ばれるフルブロックチェーンを持っていないBitcoinノードは、merkle pathを使うことで全てのブロックをダウンロードすることなくトランザクションを検証しています。</p></div>
+</div>
+<div class="sect2">
+<h3 id="_merkle_treeとsimplified_payment_verification_spv">merkle treeとSimplified Payment Verification (SPV)</h3>
+<div class="paragraph"><p>merkle treeはSPVノードによってよく利用されます。SPVノードは全てのトランザクションを持たず完全なブロックチェーンをダウンロードすることもありません。SPVノードはauthentication pathまたはmerkle pathを使って、あるトランザクションがブロックに含まれているかどうか確認します。</p></div>
+<div class="paragraph"><p>例として、ウォレット内にあるBitcoinアドレスへの支払いにだけ関心のあるSPVノードを考えてみましょう。SPVノードは、ウォレット内のBitcoinアドレスを含むトランザクションだけを取得するためピアにbloom filterを送ります。ピアはbloom filterに合致するトランザクションを確認し、 <tt>merkleblock</tt> messageを使ってブロック情報を送り返します。この <tt>merkleblock</tt> messageにはブロックヘッダとmerkle pathが含まれており、このmerkle pathはSPVノードにとって関心のあるトランザクションからmerkle rootへの経路です。SPVノードはこのmerkle pathを使って関心のあるトランザクションを参照しブロック内に含まれていることを確認し、またブロックヘッダを使いブロックをブロックチェーンの残りと結びつけます。２つの連結の組み合わせ、トランザクションとブロック、ブロックとブロックチェーン、を使うことでこのトランザクションがブロックチェーンに記録されているということを確認します。SPVノードはブロックヘッダに対するデータとmerkle pathに関するデータという1KB以下のデータを受け取ることになり、full nodeと比べて１０００分の１以下のデータを保持するだけで済むことになります(現在だと1MB程度)。</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:58:52 UTC
+</div>
+</div>
+</body>
+</html>

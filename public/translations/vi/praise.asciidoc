@@ -1,0 +1,22 @@
+["dedication", role="praise"]
+== Ngợi khen dành cho sách 'Làm chủ Bitcoin'
+
+[quote, Gavin Andresen, Nhà khoa học đứng đầu tại Bitcoin Foundation]
+____
+“Khi tôi nói chuyện về bitcoin trước công chúng, đôi khi tôi được hỏi rằng 'nhưng thực sự thì hệ thống đó hoạt động như thế nào?' Bây giờ thì tôi có câu trả lời tuyệt vời cho câu hỏi đó, bởi vì bất cứ ai đọc _Làm chủ Bitcoin_ sẽ có được một sự hiểu biết ở mức sâu về cách thức hệ thống này hoạt động và sẽ được trang bị đầy đủ kiến thức để viết ra các ứng dụng ở thế hệ kế tiếp liên quan đến đồng tiền mã hoá cực kì ấn tượng này.”
+____
+
+[quote, Naval Ravikant, Đồng sáng lập tại AngelList]
+____
+“Bitcoin và các công nghệ blockchain đang trở thành các hình khối lắp ghép cơ bản cho internet ở thế hệ kế tiếp. Những cá nhân giỏi nhất và thông minh nhất của Silicon Valley đang nghiên cứu và phát triển nó. Sách của Andreas sẽ giúp bạn tham gia vào cuộc cách mạng phần mềm trong thế giới tài chính.” 
+____
+
+[quote, Balaji S. Srinivasan (@balajis), Thành viên điều hành&#x2c; Andreessen Horowitz]
+____
+“_Làm chủ Bitcoin_ là sách tham khảo về kĩ thuật tốt nhất hiện nay về bitcoin. Và bitcoin khi mà về sau nhớ lại có thể được xem như là công nghệ quan trọng nhất của thập kỉ. Như vậy, cuốn sách này chắc chắn là cuốn phải có đối với bất cứ một lập trình viên nào, đặc biệt là những người quan tâm đến việc tạo ra các ứng dụng dùng giao thức bitcoin. Tôi thực sự khuyên các bạn tìm đọc.”
+____
+
+[quote, Roger Ver, Nhà đầu tư và là chủ công ty về Bitcoin]
+____
+“Phát minh về Bitcoin Blockchain mang đến một nền tảng hoàn toàn mới để xây dựng lên trên đó, một thứ sẽ tạo ra một hệ sinh thái cũng rộng lớn và đa dạng như chính Internet. Là một trong những nhà tư tưởng xuất sắc, Andreas Antonopoulos là một sự lựa chọn hoàn hảo để viết ra cuốn sách này.”
+____

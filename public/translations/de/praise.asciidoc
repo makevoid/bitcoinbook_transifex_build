@@ -1,0 +1,22 @@
+["dedication", role="praise"]
+== Lob für 'Mastering Bitcoin'
+
+[quote, Gavin Andresen, Wissenschaftlicher Leiter Bitcoin Foundation]
+____
+"Wenn ich vor Publikum über Bitcoin spreche, werde ich manchmal gefragt: "Wie funktioniert Bitcoin wirklich?" Jetzt habe ich eine großartige Antwort für diese Frage, weil jeder der _Bitcoin meistern_ liest wird ein tiefgreifendes Verständnis haben wie es funktioniert und wird gut ausgestattet sein um die nächste Generation von atemberaubenden Kryptowährung-Anwendungen zu programmieren."
+____
+
+[quote, Naval Ravikant, Mitbegründer von AngelList]
+____
+"Bitcoin und Blockchain-Technologien werden zu fundamentalen Bausteinen für die nächste Generation des Internets. Die besten und strahlendsten Persönlichkeiten des Silicon Valley arbeiten daran. Andreas's Buch wird dir helfen der Software-Revolution in der Finanzwelt beizutreten." 
+____
+
+[quote, Balaji S. Srinivasan (@balajis), Aktiver Teilhaber&#x2c; Andreessen Horowitz]
+____
+"_Bitcoin meistern_ ist die beste heute verfügbare technische Referenz zu Bitcoin. Und Bitcoin wird im Nachhinein betrachtet als die bedeutendste Technologie dieses Jahrzehnts angesehen werden. Als solches, dieses Buch ist ein absolutes Muss für jeden Programmierer, speziell für jene die Interesse haben Anwendungen mit dem Bitcoin-Protokoll zu erstellen. Sehr empfehlenswert."  
+____
+
+[quote, Roger Ver, Bitcoin Entrepreneur und Investor]
+____
+"Die Erfindung der Bitcoin Blockchain repräsentiert eine komplett neue erweiterbare Plattform, eine die ein Ökosystem ermöglichen wird das so groß und facettenreich ist wie das Internet selbst. Als einer der überragendsten Vordenker, Andreas Antonopoulos ist die perfekte Wahl um dieses Buch zu schreiben."
+____

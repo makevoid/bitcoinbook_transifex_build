@@ -1,0 +1,158 @@
+[preface]
+Önsöz
+
+=== Bitcoin Kitabının Yazılması
+
+Bitcoin'e ilk kez -2011 yılının ortalarında rastladım. İlk tepkim aşağı yukarı "Puff! Aptalca Para!" oldu ve onu 6 ay boyunca umursamadım, önemini kavrayamadım. Beni biraz teselli eden, tanıdığım en zeki insanların arasında sürekli görmüş olduğum bir tepki olmasıydı. Bitcoin ile ikinci karşılaşmamız  bir e-posta listesi tartışmasında oldu.  Yetkili kaynağı incelemek ve hakkındaki her şeyi öğrenmek için Satoshi Nakamoto tarafından yazılmış olan makaleyi okumaya karar verdim. 9 sayfalık makaleyi bitirdiğim anı hala hatırlıyorum. Anladım ki bitcoin sadece dijital bir para birimi değil aynı zamanda para birimi olmaktan çok öte olanak sağlayan güvenilir bir ağdı. " Bu para değil, bu merkezi olmayan bir güven ağı" farkındalığı, bitcoin hakkında bulabildiğim her bilgi kırıntısını toplamak için 4 aylık bir seyahata çıkmama vesile oldu. Bir ekranın karşısında günde 12 ya da daha fazla vakit harcayarak, okuyarak, yazarak, kodlayarak ve öğrenebildiğim kadar çok öğrenerek takıntılı hale geldim ve büyülendim. Bu füg durumundan kurtuldum(az yemekten dolayı 9 kilodan fazla kaybettim) ve kendimi bitcoin üzerine çalışmaya adadım. 
+
+İki yıl sonra, bitcoin ile alakalı çeşitli servisler ve ürünler ile ilgili bir dizi başlangıç araştırmaları yaptıktan sonra, ilk kitabımı yazmanın tam zamanı olduğuna karar verdim. Beni bu yaratıcılık çılgınlığına sürükleyen ve düşüncelerimi kemiren konu bitcoindi. İnternetten beri karşılaşmış olduğum en heyecan verici teknolojiydi. Bu şaşırtıcı teknoloji hakkında daha geniş bir kitleye duygularımı paylaşmanın tam sırasıydı. 
+
+=== Hedef Kitle
+
+Bu kitap çoğunlukla kodlayıcılar içindir. Eğer bir programlama dili kullanabiliyorsanız, bu kitap size kriptografik para birimlerinin nasıl çalıştığını, onları nasıl kullanacağınızı ve onlarla çalışarak nasıl yazılım geliştireceğinizi öğretecektir. Aynı zamanda ilk bir kaç bölüm, kodlayıcı olmayanlar içinde bitcoin ve kripto para birimlerinin iç çalışmalarını anlamanıza yardımcı olacak geniş kapsamlı bir tanıtım içermektedir.
+
+=== Kapak Üzerinde Neden Böcekler Var?
+
+Yaprakkesici karınca, süper organizma topluluğunda bayağı karmaşık davranış sergileyen bir türdür fakat her bir karınca, kimyasal kokularının değişimi ve sosyal etkileşim yoluyla oluşmuş bir dizi basit kurallar çerçevesinde iş görür. Wikipedia :" İnsanlara nazaran, yaprakkesici karınca türleri dünyada ki en geniş ve en karışık hayvan topluluğudur." Yaprakkesici karıncalar aslında yaprak yemezler fakat onları topluluğun ana yiyecek kaynağı olan bir tür mantarı ekmek için kullanırlar. Anladınız mı? Bu karıncalar çiftçilik yapıyor! 
+
+Karıncalar kast tabanlı bir topluluk oldukları ve yavruları doğuran bir kraliçeye sahip oldukları halde bir karınca topluluğunda lider ya da merkezi bir yetkili yoktur. Oldukça zeki ve karmaşık davranışlar sergileyen milyonlarca üyesi bulunan bir topluluk  
+
+Doğa gösteriyor ki, merkezi olmayan sistemler merkezi bir yetkiye, hiyerarşiye ya da karmaşık şeylere ihtiyaç duymaksızın,  esnek olabilir ve acil karmaşıklık ile inanılmaz gelişmişlik meydana getirebilir .
+
+Bitcoin, sayısız finansal süreci destekleyebilen son derece karmaşık merkezsiz bir güven ağıdır. Ama bitcoin ağındaki her bir düğüm basit birkaç matematik kuralını takip eder. Birçok düğüm arasındaki etkileşim doğal karmaşıklığa ya da herhangi bir tek düğüme güvenilmesine değil karmaşık davranışların ortay çıkmasına yol açar. Karınca topluluğundaki gibi, bitcoin ağı basit düğümlerin basit kuralları takip ettiği esnek bir ağdır. Hiçbir merkezi koordinasyona gerek olmaksızın harika şeyler yapabilir.
+
+=== Kitapta Kullanılan Kaideler
+
+Bu kitapta aşağıdaki tipografik kaideler kullanılmıştır:
+
+_Italic_:: Yeni terimleri, URL'leri, e-posta adreslerini, dosya adlarını ve dosya uzantılarını gösterir.
+
++Constant width+:: Program listeleri, buna ek olarak paragrafların içindeki değişkenler, işlev isimleri, veritabanları, veri çeşitleri, ortam değişkenleri, ifadeler ve   anahtar kelimeler gibi program elemanlarından bahsetmek için kullanılır.
+
+**`Constant width bold`**:: Kullanıcılar tarafından harfi harfine yazılmış olan komutları ya da diğer metinleri gösterir.
+
+_++Constant width italic++_:: Kullanıcıların sağladığı değerlerle ya da bağlamla belirlenen değerler ile değiştirilmiş olan metinleri gösterir.
+
+
+[TIP]
+====
+Bu simge bir ipucu, öneri ya da genel bir nota işaret eder.
+====
+
+[WARNING]
+====
+Bu simge bir uyarı ya da ihtar belirtir.
+====
+
+=== Kod Örnekleri
+
+Örnekler; Python, C++, Linux ya da Mac OS X gibi Unix benzeri işletim sistemlerinin komut satırı kullanılarak gösterilmiştir. Tüm kod parçacıkları https://github.com/aantonop/bitcoinbook[GitHub repository] sitesinde, ana reponun alt dizinde mevcuttur. 
+
+Tüm kod parçacıkları uyan diller için, yorumlayıcı ve derleyicilerin minimum yüklemesi ile çoğu işletim sistemi üzerinde tekrarlanabilir. Biz gerekli olan temel yükleme talimatlarını sunuyoruz ve  bu talimatların çıktısını adım adım açıklıyoruz. 
+
+Bazı kod parçacıkları ve kod çıktısı yazmak için yeniden düzenlendi. Bu gibi durumlarda, yeni satır karakterini takiben gelen satırlar ters slash ile ayrıldı. Örnekleri kopyalarken bu iki satırı kaldırın ve tekrar satıra gelin.  Örnekte gösterilmiş olan sonucun aynısını göreceksiniz. 
+
+Tüm kod parçacıkları mümkün olan gerçek değer ve hesaplamaları kullanır, böylece örnekten örneğe inşa edebilir ve aynı değerleri hesaplamak için yazdığın herhangi bir koddaki aynı sonucu görürsün. Örneğin, özel anahtarlar ve bunlara bağlı açık anahtarlar ile adresler gerçektir. Model işlemler, bloklar ve blok zinciri referansları  gerçek bitcoin blok zincirinde tanıtılmıştır ve açık muhasebe defterinin bir parçasıdır. Böylece onları herhangi bir bitcoin sistemi üzerinde inceleyebilirsin.
+
+=== Kod Örneklerinin Kullanımı
+
+Bu kitap işinizi halletmeye yardımcı olmak için burada. Genel olarak bu kitapta sunulan örnek kodları kendi program ve dokümanlarınız da kullanabilirsiniz. Kodun önemli bir bölümünü çoğaltmadıkça izin almak için bizimle irtibata geçmenize gerek yoktur. Mesela, bu kitaptan birçok kod parçacığını kullanarak yazdığınız bir program  için izin almanıza gerek yoktur. O’Reilly kitaplarının CD örneklerini dağıtmak ya da satmak için izin almanız gerekir. Bu kitabı gerekçe göstererek bir soruyu cevaplamak ve örnek kodları alıntılamak için  izin almanıza gerek yoktur. Ürün dokümantasyonlarınıza bu kitaptan önemli miktarda örnek kod eklemek için izin almanız gerekir.
+
+İhtiyaç duymasak ta atıfta bulunmanız bizim için değerlidir. Atıfta bulunurken genellikle başlık , yazar , yayıncı ve ISBN'yi yazmanız yeterlidir. Örneğin:  “_Mastering Bitcoin_ by Andreas M. Antonopoulos (O’Reilly). Copyright 2015 Andreas M. Antonopoulos, 978-1-449-37404-4.”
+
+Bu kitabın bazı sürümleri CC-BY-NC gibi (creativecommons.org)  bir açık kaynak lisansı altında sunulmuştur. Bu durumda o lisansın koşulları geçerlidir.
+
+Eğer kullandığınız kod örneklerinin adil kullanım dışında kaldığını ya da verilen iznin dışında olduğunu düşünüyorsanız lütfen bizimle irtibata geçin pass:[<email>permissions@oreilly.com</email>].
+
+=== Safari® Books Online
+
+[role = "safarienabled"]
+[NOT]
+====
+pass:[<ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly">Safari Books Online</ulink>] is an on-demand digital library that delivers expert pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/content">content</ulink>] in both book and video form from the world&#8217;s leading authors in technology and business.
+====
+
+Teknoloji uzmanları, yazılım geliştiricileri web tasarımcıları ve iş dünyası ile yaratıcı uzmanlar, araştırmaları için birincil kaynak olarak, problem çözümleri, öğrenme ve sertifika eğitimi için Safari Books Online kullanır.
+
+Safari Books Online offers a range of pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/subscriptions">product mixes</ulink>] and pricing programs for pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/organizations-teams">organizations</ulink>], pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/government">government agencies</ulink>], and pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/individuals">individuals</ulink>]. Subscribers have access to thousands of books, training videos, and prepublication manuscripts in one fully searchable database from publishers like O’Reilly Media, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Focal Press, Cisco Press, John Wiley & Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett, Course Technology, and dozens pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/publishers">more</ulink>]. For more information about Safari Books Online, please visit us pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/">online</ulink>].
+
+=== Bizimle Nasıl İrtibat Kurabilirsiniz
+
+Lütfen bu kitap ile ilgili soru ve yorumlarınızı yayıncıya iletiniz:
+
+++++
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (Amerika ya da Kanada'da)</member>
+<member>707-829-0515 (uluslararası ya da yerel)</member>
+<member>707-829-0104 (faks)</member>
+</simplelist>
+++++
+
+Bu kitap için düzeltmeleri, örnekleri ve diğer ek bilgileri yayınladığımız bir web sayfamız var. Bu sayfaya şu linkten ulaşabilirsiniz:$$http://bit.ly/mastering_bitcoin$$[].
+
+
+Kitap hakkındaki yorumlarınız ve teknik sorularınız için bu adrese e-posta atabilirsiniz. [<email>bookquestions@oreilly.com</email>]
+
+Kitaplarımız, kurslarımız, konferanslarımız hakkında daha fazla bilgi almak ve haberler için sitemizi ziyaret ediniz link:$$http://www.oreilly.com$$[].
+
+Facebook'ta bizi bulun: link:$$http://facebook.com/oreilly$$[]
+
+Bizi Twitter'da takip edin: link:$$http://twitter.com/oreillymedia$$[]
+
+Bizi YouTube'dan izleyin: link:$$http://www.youtube.com/oreillymedia$$[]
+
+
+=== Teşekkürler
+
+Bu kitap çok fazla insanın katkılarını ve emeklerini temsil ediyor.  Arkadaşlarıma, meslektaşlarıma ve kripto para birimleri ile bitcoin üzerine teknik bir kitap yazmak için bana katılarak emek veren tanımadığım tüm yabancılara bana yaptıkları yardımlar için minnettarım. 
+
+Bitcoin teknolojisi ve bitcoin toplumu arasında bir ayrım yapmak mümkün değildir ve bu kitap teknoloji üzerine bir kitap olduğu kadar bu topluluğunda bir ürünüdür. Bu kitap üzerine çalışmam en başından en sonuna kadar tüm bitcoin topluluğu tarafından teşvik edildi, alkışlandı, desteklendi ve ödüllendirildi. Hepsinden çok,  bu kitap iki yıl boyunca harika bir topluluğun parçası olmama izin verdi. Bu topluluğa beni kabul ettikleri için ne kadar teşekkür etsem azdır.  Konferanslarda, etkinliklerde, seminerlerde, buluşmalarda, pizza toplantılarında ve özel küçük toplantılarda rastladığım, bunun yanında benimle Twitter, Reddit, bitcointalk.org ve Github üzerinden iletişim kuran ve bu kitapta etkisi bulunan adı anılacak çok fazla insan var. Bu kitapta bulunan her fikir, kıyaslama, soru, cevap ve açıklama bir noktada topluluk ile etkileşimlerim yoluyla ilham alınmış, test edilmiş ve geliştirilmiştir. Tüm destekleriniz için teşekkürler; siz olmadan bu kitap olmazdı. Sonsuza kadar minnettarım.
+
+Elbette, bir yazar olma yolculuğu ilk kitabımdan çok önce başladı. Benim ilk dilim (ve okul eğitimim) Yunancaydı, bu yüzden üniversitedeki ilk yılımda İngilizce yazma kursu almak zorunda kaldım. O yıl benim güven ve beceri kazanmama yardım eden İngilizce yazma öğretmenim Diana Kordas'a teşekkür borçluyum. Daha sonra bir uzman olarak,  _Network World_ dergisi için veri merkezleri konusu üzerine yazı yazarak teknik yazma kabiliyetlerimi geliştirdim. _Network World_ dergisinde bana köşe yazarı olarak ilk yazı işimi veren John Dix ve John Gallant'a, yayın müdürümüz Michael Cooney'e ve benim köşe yazılarımı düzenleyerek onları yayına uygun hale getiren meslektaşım Johna Till'e  teşekkür borçluyum. Dört yıl boyunca haftada 500 kelime yazmak bana nihayetinde bir yazar olma düşüncesi için yeterince tecrübe kazandırdı. Yazar olmak için bana ilk cesareti veren ve içimde bir kitap olduğuna daima inanan ve ısrar eden Jean de Vera'ya teşekkür ederim.
+
+Ayrıca kitabımın taslağını O'Reilly'e teslim ettiğimde referans vererek ve taslağı inceleyerek beni destekleyenlere teşekkür ederim. Özellikle John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver ve Jon Matonis' teşekkür ediyorum. Taslağın ilk sürümlerini inceleyen Richard Kagan ve Tymon Mattoszko'ya ve taslağı kopyalayıp düzenleyen Matthew Owain Taylor'a özel teşekkürlerimi sunuyorum.
+
+Beni O'Reilly ile tanıştıran Cricket Liu'ya(O'Reilly yazarı, title _DNS and BIND_ ) teşekkür ederim. Aynı zamanda bu kitabı oluşturmama yardım etmek için aylarca çalışan O'Reilly'den Michael Loukides ve Allyson MacDonald'a da teşekkür ederim. Allyson özelikle,  planladığımız programa müdahale edilmişcesine son teslim tarihini kaçırdığımızda ve çıktılar geciktiğinde çok sabırlıydı. 
+
+İlk birkaç bölümün ilk taslakları en zor olanlardı. Çünkü bitcoin çözülmesi zor bir konuydu. Bitcoin teknolojisinin her bir konusunu aldığımda,  içindeki tüm şeyleri almalıydım.  Böyle yoğun bir teknik konu etrafında bir öykü oluşturmak ve konuyu anlaşılması kolay hale getirmek için çabalarken defalarca takılıp kaldım ve biraz umutsuzluğa kapıldım. Sonunda, bitcoinin hikayesini bitcoin kullanan insanların hikayeleri ile anlatmaya karar verdim ve tüm kitabı yazmak çok daha kolay bir hale geldi. Hikayeyi çözmemde ve kilitlendiğim anları aşmamda yardımcı olan arkadaşım ve akıl hocam olan Richard Kagan'a ve her bölümün ilk taslaklarını gözden geçiren ve onları daha iyi hale getirebilmek için zor sorular soran Pamela Morgan'a teşekkür borçluyum. Ayrıca, San Francisco Bitcoin Geliştiricileri Buluşması grubundaki geliştiricilere ve grubun kurucularından olan Taariq Lewis'e ilk materyallerin testlerindeki yardımları nedeniyle teşekkür ediyorum.
+
+Kitabın gelişimi sırasında, ilk taslakları GitHub üzerinden yayınladım ve insanları yorum yapmaya davet ettim. Cevap olarak yüzden fazla yorum, öneri, düzeltme ve katkı sunuldu. Bu katkılar teşekkürlerimle doğrudan alınmıştır ve <<github_contrib>> içindedir. GitHub katkılarını düzenlemeye gönüllü olan ve kendiliğinden birçok önemli katkıda bulunan Minh T. Nguyen'e özel teşekkürlerimi sunuyorum. Ayrıca Andrew Naugler'e infografikler için teşekkür ederim. 
+
+Kitabın ilk taslağı oluşturulduğunda, birkaç tur teknik incelemeden geçti. Kapsamlı incelemeleri, yorum ve destekleri için Cricket Liu ve Lorne Lantz'a teşekkür ederim. 
+
+Birçok bitcoin geliştiricisi örnek kodlarla, incelemelerle, yorumlarıyla ve teşvikleriyle katkıda bulundu. Amir Taaki ve  Eric Voskuil'e örnek kod parçacıkları ve harika yorumları için, Vitalik Buterin ve Richard Kiss'e eliptik eğri matematiği konusunda ki yardımları ve kod katkıları için, Gavin Andresen'e düzeltmeleri, yorumları ve teşvikleri için, Michalis Kargakis'e yorumları, katkıları ve övgü dolu yazısı için ve Robin Inge'e ikinci baskının iyileştirilmesi maksadıyla yazım hatalarını gönderdiği için teşekkür ederim.
+
+Kitaplara ve kelimelere olan sevgimi, beni bütün duvarları kitaplar ile kaplı bir evde büyüten annem Theresa'ya borçluyum. Annem teknofobisi olmasına rağmen 1982 yılında bana ilk bilgisayarımı da aldı. Babam Menelaos, ilk kitabını 80 yaşında yayınlayan, bana mantıklı ve analitik düşünmeyi öğreten ve bilim ve mühendislik aşkı kazandıran bir inşaat mühendisiydi. 
+
+Beni bu yolculuğumda destekleyen herkese teşekkürler. 
+
+[[github_contrib]]
+=== Ön Taslak Yayını (Github Katılımcıları)
+
+Çoğu katılımcı yorumlarını, düzeltmelerini ve eklemelerini Github'ta ki ön taslak yayına sundu. Bu kitaba katkıda bulunan herkese teşekkür ediyorum. Belli başlı Github katılımcılarının listesi parantez içinde Github kimlikleri ile birlikte aşağıdadır:
+
+* Minh T. Nguyen, GitHub katkıları editörü (enderminh)
+* Ed Eykholt (edeykholt)
+* Michalis Kargakis (kargakis)
+* Erik Wahlström (erikwam)
+* Richard Kiss (richardkiss)
+* Eric Winchell (winchell)
+* Sergej Kotliar (ziggamon)
+* Nagaraj Hubli (nagarajhubli)
+* ethers
+* Alex Waters (alexwaters)
+* Mihail Russu (MihailRussu)
+* Ish Ot Jr. (ishotjr)
+* James Addison (jayaddison)
+* Nekomata (nekomata-3)
+* Simon de la Rouviere (simondlr)
+* Chapman Shoop (belovachap)
+* Holger Schinzel (schinzelh)
+* effectsToCause (vericoin)
+* Stephan Oeste (Emzy)
+* Joe Bauers (joebauers)
+* Jason Bisterfeldt (jbisterfeldt)
+* Ed Leafe (EdLeafe)

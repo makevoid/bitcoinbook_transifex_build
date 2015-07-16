@@ -1,0 +1,206 @@
+[[ch01_intro_what_is_bitcoin]]
+== Giriş
+
+=== Bitcoin Nedir?
+
+((("bitcoin", id="ix_ch01-asciidoc0", range="startofrange")))((("bitcoin","defined")))Bitcoin bir dijital para ekosisteminin dayanağını oluşturan kavramlar ve teknolojiler birikimidir. Bitcoinler denilen para birimleri bitcoin ağı içerisindeki katılımcıların arasında kıymet(değer) aktarmak ve saklamak için kullanılırlar. Bitcoin kullanıcıları birbirlerine bitcoin protokolü kullanarak esas olarak internet üzerinden ulaştıkları gibi başka farklı iletişim ağları üzerinden de ulaşabilirler. Bir açık kaynak yazılım olarak mevcut olan Bitcoin Protokol Yığını , dizüstü bilgisayarlar ve akıllı telefonlar gibi birçok bilgi-işlem cihazında çalıştırılabildiği için bu teknolojiye erişim kolaylaşır.
+
+Kullanıcılar geleneksel para birimleriyle yapabilecekleri neredeyse her işi bitcoinlerle ağ üzerinden göndermek suretiyle de halledebilirler. Bu işler mal alıp satmak, kişilere veya kuruluşlara para göndermek yada kredi vermek olabilir. Bitcoinler bazı özel para borsalarında alınabilir,satılabilir ve diğer para birimlerine dönüştürülebilir. Bitcoin  internet için bir bakıma mükemmel bir para şeklidir çünkü çok hızlı, güvenli ve sınırsızdır (coğrafi).
+
+Geleneksel para birimlerinin aksine, Bitcoinler tamamen sanaldır. Ortada fiziksel madeni para(coin) hatta dijital sikke filan da yoktur. Sikkeler(coins) göndericiden alıcıya kıymet(değer) transferi için mecazi ima edilir. Bitcoin kullanıcıları , bitcoin ağındaki işlemlerin mülkiyet(sahibiyet)ini ispatlamak için anahtarlara sahiptirler. Bu anahtarları kullanarak kıymet(değer)lerin kilitlerini açıp harcar ve başka bir alıcıya aktarır. Bu anahtarlar genelde her kullanıcının kendi bilgisayarında bir dijital cüzdanda saklanır. Bitcoinleri harcamak için tek ön koşul bir işlemin kilidini açacak anahtara sahip olmaktır. Bu sayede her bir kullanıcı kontrolü kendi elinde tutmuş olur.
+
+Bitcoin dağıtımlı , eşler arası bir sistemdir. Yani bir "merkezi" sunucu yada kontrol noktası yoktur. Bitcoinler "madencilik" adı verilen bir yolla ortaya çıkar(yaratılır). Madencilik, bitcoin işlemleri görüldüğü esnada matematiksel bir problemi çözmek için rekabet etmektir. Bitcoin ağındaki herhangi bir katılımcı(full bitcoin protokol yığınınıyla çalışan bir cihazı kullanan herhangi biri) madenci olarak iş görebilir. Kendi bilgisayarının işlemci gücünü ağdaki işlemleri doğrulamak ve kaydetmek için kullanır. Ortlama her 10 dakikada biri son 10 dakikada gerçekleşen işlemleri doğrulamayı başarır ve ödül olarak yepyeni bitcoinlerin ilk sahibi olmayı hak eder. Esasen bitcoin madenciliği, bir merkez bankasının para basma(tedavüle çıkarma) ve takas fonksiyonunu dağıtır(merkezsizleştirir) ve bu küresel rekabet sayesinde  herhangi bir merkez bankası ihtiyacını ortadan kaldırır. 
+ 
+((("mining","algorithms regulating")))Bitcoin protokolünün yapısında ağdaki madencilerin çalışmalarını regüle eden algoritmalar bulunur. Bitcoin ağındaki işlemlerin oluşturduğu bloğun başarıyla kayıt edilmesi gerekmektedir.  Madencilerin üstlendiği bu görevin zorluk derecesi ise dinamik olarak ayarlanır , öyleki herhangi bir anda kaç madenci (ve CPU) çalışıyorsa çalışsın ortalama her 10 dakikada bir kişi başarılı olur. ((("bitcoin","rate of issuance"))) . Protokol her dört yılda yeni bitcoin yaratma oranını yarıya indirir ve  yaratılacak toplam bitcoin sayısının limitini sabit olarak 21 milyonda tutar. Sonuç olarak sirkülasyondaki bitcoin sayısı tahmin edilebilir bir grafik eğrisini yakından takip eder, bu eğri 2140 yılında 21 milyona ulaşmış olur.  Bu azalan üretim oranı yüzünden bitcoin uzun vadede deflasyona neden olan bir para birimidir. Dahası, beklenen üretim oranından fazla ve ötede yeni para "basılması" söz konusu olmadığından bitcoin hacmi şişmez. 
+
+Sahne arkasında, bitcoin kullanılan bu protokolün adıdır, bir ağ ve bir dağıtık bilgi işlem buluşudur. Para olarak bitcoin ise bu buluşun sadece bir ilk uygulamasıdır. Ben bir geliştirici olarak bitcoini paranın-internetine benzetiyorum, öyleki değerin(kıymetin) üzerinde dağıtıldığı bir ağ vede dijital varlık sahibiyetinin dağıtık bilgi-işlem aracılığı ile temin edilmesi olarak. Kısacası bitcoin aslında gözle görünenden çok daha fazla şey sunar. 
+
+Bu bölüme, gerekli yazılımı elde etme, basit işlemler için bitcoini kullanma ve temel kavram ve terimlerden bazılarını açıklayarak başlayacağız. İleri ki bölümlerde bitcoini oluşturan bu teknoloji paketinin katmanlarını açmaya başlayacağız ve bitcoin ağı ve protokolünün iç işleyişini inceleyeceğiz. 
+
+Bitcoin Öncesinde Sayısal Paralar
+****
+
+Sorunsuz çalışan bir  dijital paranın bu ortaya çıkışı kriptografi alanındaki gelişmelerle yakından bağlantılıdır. Bu aslında çok şaşırılacak bir durum değil. Çünkü mal ve hizmetleri takas edeceğiniz kıymet(değer)leri temsil etmek için bitleri kullanmak bayağı bir uğraşı gerektiriyor. Dijital parayı kabul edebilecek bir kişi için şu iki temel soru geçerlidir: 
+
+1. Bu paranın sahte değil hakiki olduğuna güvenebilir miyim?
+2. Başkalarının , bu paranın bana değil de kendilerine ait oluğunu iddia etmeyeceklerinden emin olabilir miyim?(Aka the((("double-spend problem"))) “double-spend” problem.)
+ 
+((("counterfeiting")))((("crypto-currency","counterfeiting")))Kağıt para basanlar sürekli ortaya çıkan sahte para problemine karşı gittikçe daha sofistike kağıt ve baskı teknikleri kullanarak  mücadele ediyorlar. Geleneksel para, çifte-harcama problemini kolayca ortadan kaldırıyor çünkü bir kağıt para aynı anda iki yerde olamaz. Tabiiki geleneksel para da dijital olarak aktarılabilir ve muhafaza edilebilir. Bu gibi durumlarda  tüm elektronik işlemlerin, dolaşımdaki para biriminin genel bir görüşüne sahip merkezi otoritelerin elinden geçmesiyle sahtekarlık ve çifte-harcama sorunları halledilir. Ezoterik mürekkeplerin ve holografik şeritlerin faydalarından yararlanamayan dijital para için, ((("cryptography"))) kriptografi bir kullanıcının değer talebinin meşruluğuna güvenmek için temel sağlar. Özellikle, kriptografik dijital imzalar bir kullanıcıya, dijital bir varlığı imzalamasına ya da o varlığın sahipliğini kanıtlayan işlem yapmasına olanak sağlar. Uygun mimarisi ile dijital imzalar, çift harcama sorununu gidermek için de kullanılabilir.
+
+Kriptografi 1980'lerin sonlarında anlaşılmaya ve daha yaygın kullanılmaya başladığında, çoğu araştırmacı dijital para birimlerini kriptografiyi kullanarak inşa etmeye çalıştı. Bu ilk dijital para birimi çalışmaları genellikle ulusal bir para birimi ya da altın gibi değerli bir metal tarafından desteklenen dijital parayı üretti.
+
+Bu ilk dijital para birimleri iyi iş görmesine rağmen, merkeziydi ve sonuç olarak hükümetler ve bilgisayar korsanları tarafından saldırılması kolaydı. İlk dijital para birimleri, geleneksel bankacılık sistemindeki gibi, belli aralıklarda tüm işlemleri düzenleyen merkezi bir takas odasıydı. Malesef, henüz olgunlaşmamış bu dijital para birimleri çoğu durumda endişeli hükümetler tarafından hedef haline getirildi ve sonucunda sonlandırılmaları için dava açıldı. Bazı şirketler büyük çöküşlerde ana şirket onları aniden tasfiye ettiğinde başarısız oldu. Muhalifler (meşru hükümetler ya da bilgisayar korsanları) tarafından yapılabilecek müdahalelere karşı sağlam durabilmek ve tek bir noktaya yapılacak saldırılardan kaçınmak için merkezi olmayan bir dijital para birimi gerekliydi. Bitcoin, tamamen merkezsiz olarak tasarlanmış, onu bozulacak ya da saldırı yapılabilecek bir kontrol noktası olmayan ve herhangi merkezi bir yetkilinin olmadığı bir sistemdir.
+
+Bitcoin kriptografide ki yıllar süren araştırmaların ve dağıtık sistemlerin zirve noktasını temsil eder ve benzersiz ve güçlü 4 temel yenilik içerir. Bitcoini oluşturan unsurlar:
+ 
+* Merkezi olmayan eşten eşe bir ağ(Bitcoin Protokolü)
+* Halka açık bir işlem defteri(blok zinciri)
+* Merkezsiz matematiksel ve belirli bir para üretimi(dağıtık madencilik)
+* Merkezi olmayan bir işlem doğrulama sistemi(işlem yazısı)
+
+****
+
+=== Bitcoin'in Tarihi
+
+((("bitcoin","development of")))((("Nakamoto, Satoshi"))) Bitcoin ((("Bitcoin: A Peer-to-Peer Electronic Cash System. (Nakamoto)"))) "Bitcoin: Eşten Eşe Elektronik Ödeme Sistemi" başlığı ve Satoshi Nakamoto takma adı ile yayınlanan bir makale ile 2008'de bulundu.  Nakamoto ((("b-money")))((("HashCash"))) b-para ve HashCash gibi birçok önceki buluşu, para üretimi ya da ödeme ve işlemlerin onaylanması için merkezi bir yetkiye ihtiyaç duymayan tamamen merkezsiz bir elektronik ödeme sistemi oluşturmak için birleştirdi. Önemli nokta, her 10 dakikada bir merkezi olmayan ağa oy birliğine varması için izin veren, küresel bir seçimi yürütmek için dağıtılmış hesaplama sistemini (called a((("proof-of-work algorithm"))) "proof-of-work" algorithm) kullanmaktı. Bu, tek bir para biriminin iki defa harcanmış olabileceği anlamına gelen çift harcama sorununa hassas bir çözüm getirir. Önceden, çift harcama problemi dijital para birimlerinin zayıf bir noktasıydı ve merkezi bir takas odası yoluyla tüm işlemler takas edilerek gönderilirdi. 
+
+Bitcoin ağı((("bitcoin network","origin of"))), birçok yazılımcı tarafından düzeltildikten  sonra Nakamoto tarafından yayınlanan bir referans uygulamasına dayanarak 2009 yılında başladı. Bitcoin için esnekliği ve güvenliği sağlayan dağıtılmış hesaplama sistemi hızla arttı ve şimdi dünyanın en iyi süper-bilgisayarlarının işlem kapasitesinin birleşimini aşıyor. Bitcoinin toplam market değerinin, bitcoin-dolar değişim oranına bağlı olarak 5-10 milyar Amerikan Doları arasında olduğu tahmin ediliyor. Ağ tarafından bugüne kadar ki yapılmış en büyük işlem 150 milyon Amerikan Dolarıydı ve hiçbir kesinti olmadan anında iletildi.
+
+Satoshi Nakamoto Nisan 2011'de, kodun ve ağın geliştirilmesi sorumluluğunu büyüyen gönüllüler grubuna bırakarak topluluktan ayrıldı. Bitcoinin arkasındaki kişi ya da kişilerin kimliği hala bilinmiyor. Bununla birlikte, ne Satoshi Nakamoto ne de başka herhangi biri, tamamen şeffaf matematiksel kurallara dayanarak yürütülen bitcoin sistemi üzerinde kontrol sağlayamaz. Onun kendisi çığır açan bir buluştur ve şimdiden ekonomi, ekonometri ve dağıtılmış hesaplama alanlarında yeni bilimler türetmiştir. 
+
+
+Bir Dağıtık Hesaplama Problemine Çözüm
+****
+Satoshi Nakamoto'nun buluşu "Bizans Generalleri Problemi" olarak ta bilinen, dağıtılmış hesaplamada daha önce çözülmemiş problemin de pratik bir çözümüdür.  Kısacası problem, güvenilmez ve muhtemelen tehlikeli bir ağ üzeriden bilgi değiş-tokuşu yapılarak bir hareket tarzı üzerinde anlaşma denemelerinden oluşuyor. Satoshi Nakamoto'nun, merkezi güvenilir bir yetkili olmaksızın uzlaşma sağlamak için iş-kanıtı kavramını kullanan çözümü, dağıtık hesaplama biliminde ki bir buluşu temsil eder ve  bunun para birimi olmanın ötesinde geniş bir uygulanabilirliği vardır. Seçimlerin, piyangoların, varlık kayıtlarının, dijital noterin ve daha birçok şeyin adilliğini kanıtlayarak merkezsiz ağlarda uzlaşma sağlamak için kullanılabilir. 
+****
+
+
+[[user-stories]]
+=== Bitcoin Kullanımı, Kullanıcılar ve Hikayeleri
+
+Bitcoin bir terknolojidir ama parayı asıl olarak insanların aralarında değer(kıymet) takas etmek için kullandıkları bir lisan olarak ifade eder. Gelin bitcoinin para ve protokol olarak insanlar tarafından nasıl kullanıldıklarını bir kaç kişiyi örnek vererek ele alalım. Bu kişilerin öykülerini kitap süresince kullanarak dijital paranın gerçek hayattaki kullanım alanlarını ve bitcoinin barındırdırdığı birçok teknolojinin bunları nasıl mümkün kıldığını sergileyeceğiz. 
+
+Kuzey Amerikan düşük-değer perakende::
+Alice Kuzey Kaliforniya nın körfez bölgesinde yaşıyor. Bitcoini bilgisayar kurdu olan kız arkadaşlarından duymuş ve kullanmaya başlamak istiyor. Onun bitcoini nasıl öğrendiğini, nasıl sahip olduğunu ve daha sonra birazını da Palo Alto'daki Bob'un Kafe' sinde bir fincan kahve satın almak için nasıl harcadığını göreceğiz. Onun öyküsü bize yazılımı,borsaları ve temel işlemleri bir perakende-tüketicisinin bakış açısıyla sunacak.
+
+Kuzey Amerikan  yüksek-değer perakende::
+Carol'un San Francisco'da bir sanat galerisi var. Bitcoin karşılığında pahalı tablolar satıyor. Onun öyküsü bize yüksek-değerli mallar satan işletmeler için var olan "%51" mutabakat-saldırı risklerini sergileyecek. 
+
+Offshore sözleşme hizmetleri::
+Palo Alto'daki Kafe sahibi Bob kendine yeni bir web sitesi kurmak istiyor. Bu işi yapması için Bangalore'da yaşayan Hindistanlı web developer Gopesh beyle bir taahhüt sözleşmesi yapıyor. Gopesh bey hizmetinin  bitcoin olarak ödenmesini kabul ediyor. Bu öykü bitcoinin dışarıdan kaynak edinmede,taahhüt hizmetlerinde ve uluslararası havale transferlerinde nasıl kullanıldığını inceleyecek.  
+
+Hayırsever bağışları::
+Eugenia Filipinler'de bir çocuk-yardım derneğinin yöneticisi. Bitcoini geçenlerde keşfetti ve derneği için yerli ve yabancı hayırseverlerden yeni bağışlar toplayabilmek için kullanmak istiyor. Bunun yanında bitcoini kullanarak ihtiyacı olan bölgelere fonları nasıl daha hızlı dağıtabileceğinin yollarına da bakıyor. Bu öykü bitcoinin nasıl küresel çapta bağış toplamak için sınırlar ve dövizler arasında  kullanılabileceğini ve yardım kuruluşlarının şeffaflık için nasıl bir açık defterikebir kullanabileceklerine göz atacak.
+
+İthalat / İhracat::
+Muhammed Dubai'de bir elektronik ithalatçısı. ABD ve Çin'den satın alacağı elektroniği Birleşik Arap Emirliklerine ithal ederken ödeme işlemlerinin hızlanabilmesi için bitcoini denemek istiyor. Bu öykü fiziksel malların ticaretinde büyük firmaların uluslararası ödemler için nasıl bitcoin kullanabileceklerini gösterecek.
+
+Bitcoin madenciliği::
+Jing Şangay'da bir bilgisayar mühendisliği öğrencisi. Mühendislik becerilerini kullanarak bir ek gelir sağlasın diye bitcoin madenciliği yapıyor. Bu amaçla kendine bir madencilik teçhizatı toplamış . Bu öyküde  bitcoinin endüstriyel  tabanı , özel ekipmanlar aracılığıyla tedavüle yeni para tedarik edilmesi ve bitcoin ağının güvenliğinin sağlanması incelenecek.
+
+Bu öykülerin her biri hali hazırda bitcoin kullanan gerçek kişilere ve gerçek endüstrilere dayanmaktadır. Bu kişiler ve endüstriler bitcoin kullanarak yeni piyasalar ve küresel ekonomik problemlere yenilikçi çözümler üretiyorlar. 
+
+=== Başlarken
+
+((("bitcoin","forms of")))Bitcoin ağına katılmak ve bu para birimini kullanmak isteyen bir kullanıcının tek yapması gereken şey bilgisayarına internetten bir uygulama indirmek ya da bir web uygulaması kullanmaktır. Bitcoin bir standarttır , bu yüzden bitcoin istemci yazılımının bir çok tatbiki mevcut. Ayrıca Satoshi istemcisi olarak da bilinen bir kaynak uygulaması da bulunuyor. Bu uygulama,  Satoshi Nakamoto'nun yazdığı orjinal uygulamadan türetilmiş ve bir grup geliştirici tarafından açık kaynak olarak yönetilmektedir.  
+
+Bitcoin istemcilerinin üç temel biçimi:
+
+Full istemci:: ((("full nodes")))Bir tam istemci, yada ”tam düğüm” , bütün bitcoin işlemlerinin tüm kayıtlarını (her kullanıcının her işlemini, gelmiş-geçmiş her) muhafaza eden,kullanıcıların cüzdanlarını yöneten ve işlemleri doğrudan bitcoin ağı üzerinde başlatabilen bir istemcidir. Bu, tek başına bir e-posta sunucusuna benzer. Yani öyleki protokolün her türlü özelliğini başka hiç bir üçüncü şahıs hizmetine gerek duymadan yürütür.
+
+Hafif Siklet İstemci:: ((("lightweight client")))Bir hafif siklet istemci, kullanıcının cüzdanını muhafaza eder fakat bitcoin işlemlerine ve ağına giriş için üçüncü şahıslara ait sunuculara gerenekisinim duyar. Hafif istemci bütün işlemlerin tam kopyasını muhafaza etmez bu yüzden  işlemleri teyit etmek için üçüncü şahıs sunuculara güvenmek zorundadır. Bu, posta kutusuna giriş için bir posta sunucusuna bağlanan ve tek başına olan bir e-posta istemcisine benzer. Yani öyleki, ağla etkileşim  için üçüncü şahsa gereksinim duyar.  
+
+Ağ istemcisi::((("web clients"))) Ağ istemcilerine bir ağ tarayıcısı üzerinden ulaşılır ve bunlar kullanıcılarının cüzdanlarını üçüncü tarafa ait bir sunucuda depolarlar. Bu, tamamen üçüncü taraf sunucusuna güvene dayalı e-posta hizmetine benzerdir. 
+
+.Mobil Bitcoin
+****
+((("mobile clients")))((("smartphones, bitcoin clients for")))Android gibi sistemlere sahip akıllı telefonlardaki mobil istemciler, ya tam istemci, ya hafif istemci ya da web istemcileri olarak iş görebilirler. Bazı mobil istemciler masa üstü ya da web istemcilerle senkronize olurlar ki böylece birden fazla cihaz üzerinden çoklu-platform cüzdanı sağlarlar ederler ama ortak tek bir fon kaynağını kullanırlar.
+****
+
+Bitcoin istemcisinin seçimi, kullanıcının parası üzerinde ne kadar kontrol istediğine bağlıdır. Tam bir istemci kullanıcıya en yüksek seviyede kontrol ve bağımsızlık sunacaktır fakat yedekleme ve güvenlik yükünü kullanıcının üzerine bırakacaktır. Seçenek aralığının diğer ucunda, bir ağ istemcisi ayarlamak ve kullanmak için en kolay yoldur fakat bir ağ istemcisi ile takas yapmak karşı taraf riski olarak tanımlanır çünkü güvenlik ve kontrol kullanıcı ve ağ hizmetinin sahibi arasında paylaşılmıştır. Eğer bir ağ cüzdan hizmeti tehlikeye düşerse, çoğunun düştüğü gibi, kullanıcılar tüm paralarını kaybedebilir. Tersine, eğer kullanıcılar uygun yedekleme yapmaksızın tam bir istemci kullanırsa, bir bilgisayar arızası nedeniyle paralarını kaybedebilirler. 
+
+Bu kitabın amaçlarından biri, indirilebilir çeşitli bitcoin istemcilerinin[referans uygulamasından(the Satoshi client) ağ cüzdanlarına kadar] kullanımlarını göstermektir. Örneklerden bazıları, tam bir istemci olmanın yanı sıra cüzdan, ağ ve işlem hizmetlerine ait API'leri ortaya çıkaran referans istemcinin kullanımını gerektirecektir. Eğer bitcoin sistemindeki program arayüzlerini araştırmayı düşünüyorsanız, referans istemcisine ihtiyacınız olacak.
+
+==== Hızlı Başlangıç
+
+((("bitcoin","wallet setup")))((("wallets","setting up")))Alice, burada tanıttığımız kişi<<user-stories>>, teknik bir kullanıcı değil, sadece bitcoini arkadaşından yeni duymuş biri. Onun yolculuğu, geniş bir bitcoin istemci seçeneğinin bulunduğu ((("bitcoin.org"))) http://www.bitcoin.org[bitcoin.org] resmi sitesini ziyaret ederek başlıyor. Alice, bitcoin.org sitesindeki önerileri takip ederek hafif siklet bir bitcoin istemcisi olan Multibit'i((("Multibit client"))) seçiyor. 
+
+Alice, bitcoin.org sitesindeki bir bağlantıyı takip ederek Multibit'i indiriyor ve masa üstüne kuruyor. Multibit; Windows, Mac OS ve Linux üzerinde kullanılabilmektedir.
+
+[UYARI]
+====
+((("wallets","security of"))) Bir bitcoin cüzdanı mutlaka parola ile korunmalıdır. Zayıf parolaları kırmaya çalışan çok sayıda kötü niyetli kişi vardır. Bu yüzden kolayca kırılamayacak bir tane parola seçmeye dikkat edin. Küçük ve büyük karakterleri, numaraları ve sembolleri birlikte kullanın. Şahsınıza ait bilgileri(tuttuğunuz takım, doğum tarihi vb.) parolalarınızda kullanmayın. Herhangi bir dilde sözlüklerde  yaygın olarak kullanılan kelimelerden kaçının. Eğer yapabilirseniz,  tamamen rastgele ve en az 12 karakter uzunluğunda bir parola oluşturmak için parola üretici kullanın. Unutmayın: Bitcoin paradır ve dünyanın herhangi bir yerine anında iletilebilir. Eğer iyi korunmazsa kolayca çalınabilir.
+====
+
+Alice Multibit uygulamasını indirip kurduktan sonra, onu çalıştırır ve şu şekilde <<multibit-welcome>> bir Hoşgeldiniz ekranı ile karşılanır.
+
+[[multibit-welcome]]
+.Multibit bitcoin istemcisi Hoş geldiniz ekranı
+image::images/msbt_0101.png["MultibitWelcome"]
+
+((("addresses, bitcoin","created by Multibit")))Multibit kendiliğinden Alice için bir cüzdan ve yeni bir bitcoin adresi oluşturur. Alice burada gösterilen <<multibit-request>> istek sekmesine tıklayarak bunları görebilir.
+[[multibit-request]]
+Alice'in yeni bitcoin adresleri, Multibit istemcisinin istek sekmesinde
+image::images/msbt_0102.png["MultibitReceive"]
+
+Bu ekrandaki en önemli şey Alice'in bitcoin adresinin bir e-posta adresi gibi olması. Alice bu adresi paylaşabilir ve herkes bu adresi doğrudan onun cüzdanına para göndermek için kullanabilir. Ekranda sayı ve numaralardan oluşan uzun bir dize olarak görünüyor: +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+. Cüzdandaki bitcoin adresinin yanındaki QR kod, akıllı telefonların kameraları ile taranabilecek bir biçimde  ve aynı bilgileri içeren bir çeşit barkoddur. QR kod ekranın sağ tarafındaki siyah beyaz kare şeklindedir.Alice kopyala düğmesine basarak birbirine bitişik olan bitcoin adresini ya da QR kodunu kopyalayabilir. QR kodun üzerine tıklamak onu büyütecektir. Böylelikle akıllı telefonların kameraları tarafından kolaylıkla taranabilir hale gelecektir. 
+
+Alice, sayı ve harflerden oluşan bu uzun dizeyi yazmalarına gerek kalmadan, adresini başkalarına kolayca verebilmek için QR kodun çıktısını da alabilir. 
+
+[TIP]
+====
+((("addresses, bitcoin","sharing"))) Bitcoin adresleri 1 ya da 3 ile başlar. E-posta adreslerinde olduğu gibi, bu adresler doğrudan cüzdanınıza bitcoin göndermek isteyen diğer bitcoin kullanıcıları ile paylaşılabilir. E-posta adreslerinin aksine, hepsinin paralarınızı cüzdanınıza yönlendireceği  yeni adresleri istediğiniz sıklıkta oluşturabilirsiniz. Cüzdan basitçe adreslerin ve içindeki paranın kilidini açan anahtarların toplandığı yerdir. Gizliliğinizi, her işlemde farklı bir adres kullanarak arttırabilirsiniz. Kullanıcıların oluşturabileceği adres sayılarında pratikte hiç sınır yoktur.
+====
+
+Alice şimdi yeni bitcoin cüzdanını kullanmaya hazır. 
+
+[[getting_first_bitcoin]]
+==== İlk Bitcoinlerinizi Almak
+
+((("bitcoin","acquiring")))((("currency markets"))) Şu anda döviz bürolarından ya da bir bankadan bitcoin almak mümkün değildir. 2014 yılı itibariyle, çoğu ülkede bitcoin elde etmek hala oldukça zordur. Yerel para birimleri ile bitcoin alıp satabileceğiniz az sayıda, ihtisaslaşmış döviz borsaları vardır. Bunlar ağ tabanlı para birimi piyasaları olarak faaliyet gösterir ve bunlardan bazıları:
+
+http://bitstamp.net[Bitstamp]:: Banka havalesi yolu ile Euro ve Dolar gibi birkaç çeşit para birimini de destekleyen bir Avrupa döviz piyasasıdır.((("Bitstamp currency market")))
+http://www.coinbase.com[Coinbase]:: Amerika Birleşik Devletleri tabanlı, tüccarların ve tüketicilerin bitcoin ile işlem yapabildiği bir platform ve aynı zamanda bir bitcoin cüzdanıdır. Coinbase, ACH sistemi yoluyla kullanıcıların ABD çek hesaplarına bağlanmasına olanak sağlayarak bitcoin satıp-almayı kolaylaştırır.((("Coinbase.com")))
+
+Bu gibi kripto para borsaları, milli para birimleri ve kripto para birimlerinin kesişiminde faaliyet gösterir. Bu şekilde, ulusal ve uluslararası düzenlemelere tabi olurlar. Onlar genellikle tek bir ülke ya da ekonomik bir alana özgüdür ve o bölgenin ulusal para biriminde uzmanlaşmıştır. Döviz borsası seçiminiz kullandığınız ulusal para birimine göre belirlenecek ve ülkenizde yasal yetki alanı içinde faaliyet gösteren borsalarla sınırlı kalacaktır. Bir banka hesabı açmak gibi, bu hizmetleri kullanmak için gerekli hesapları ayarlamak birkaç gün ya da haftalar alır. Çünkü onlar, müşteriyi tanıma ve anti-kara para aklama gibi bankacılık düzenlemelerine riayet etmek için çeşitli kimlik bilgileri isterler. Bitcoin borsasından bir hesap açtıktan sonra, bir komisyoncu hesabı ile döviz alıyormuş gibi bitcoinleri hızlıca alıp satabilirsiniz.
+
+Daha eksiksiz bir listeyi, çok sayıda döviz borsasının piyasa verilerini ve fiyat tekliflerini sunan http://bitcoincharts.com/markets[bitcoin charts] adresinden bulabilirsiniz.  
+
+Yeni bir kullanıcı olarak bitcoin alabileceğiniz diğer dört yöntem:
+
+* Bitcoini olan bir arkadaş bulmak((("bitcoins, buying for cash"))) ve doğruca ondan satın almak. Çoğu bitcoin kullanıcısı bu yolu kullanır. 
+* Bölgenizde bulunan bir satıcıdan münferit bir işlemle nakit ile bitcoin almak için localbitcoins.com gibi sınıflandırılmış bir servis kullanmak. 
+* Bitcoin için bir hizmet ve ürün satmak. Eğer bir yazılımcı iseniz, yazılım kabiliyetlerinizi satınız. 
+* Şehrinizdeki bir bitcoin ATM'sini kullanın((("ATMs, bitcoin")))((("bitcoin ATMs"))). http://www.coindesk.com/bitcoin-atm-map/[CoinDesk] çevrim içi haritalarından size yakın bir bitcoin ATM'si bulun.
+
+Alice bitcoin ile bir arkadaşı tarafından tanıştırıldı ve California kripto para marketindeki onaylanmış ve aktif edilmiş hesabı ile kolayca bitcoin alabileceği bir yola sahip. 
+
+[[sending_receiving]]
+==== Bitcoin Gönderme ve Alma
+
+((("bitcoin","sending/receiving", id="ix_ch01-asciidoc1", range="startofrange")))Alice bitcoin cüzdanını oluşturdu ve şimdi para almaya hazır. Onun cüzdan uygulaması bitcoin adresi ile ilişkili rastgele bir özel anahtar (burada<<private_keys>> daha detaylı anlatıldı) üretti. Bu noktada, onun bitcoin adresini bitcoin ağı tarafından bilinmiyor ya da bitcoin sisteminin herhangi bir parçasında "kayıtlı" değil. Onun bitcoin adresi, parasına erişimi kontrol etmek için kullanabileceği bir anahtara karşılık gelen basitçe bir numaradır. Bir hesap ya da bir hesapla adresler arasında bir ilişki yoktur. Bitcoin defterine(blok zinciri) postalanan bir işlemdeki değer alıcısı olarak bu adrese başvurulana kadar, o sadece bitcoinde geçerli olan çok sayıdaki olası adreslerin bir parçasıdır. Bu adres bir işlem ile ilişkilendirilmiş olduğunda, ağda tanınan adreslerin bir parçası olur ve Alice bakiyesini herkes tarafından görülebilen defter(blok zinciri) üzerinden kontrol edebilir.  
+
+Alice yerel bir lokantada kendisini bitcoin ile tanıştıran arkadaşı Joe ile buluşur. Böylece onlar hesaplarına bitcoin alabilmek için Amerikan doları ile takas yapabilirler. Alice bitcoin cüzdanında ki QR kod ve bitcoin adresinin bir çıktısını getirdi. Bitcoin adresinin güvenlik açısından hassas bir durumu yok. Bitcoin adresi istenilen her yere yazılabilir ve bu onun hesabının güvenliğini riske atmaz. 
+
+Alice, bu yeni teknolojide çok fazla para riske etmemek için 10 dolarını bitcoine çevirmek istiyor. 10 doları ve adresinin çıktısını, kendisine 10 dolara eşdeğerde bitcoin gönderebilmesi için Joe'ya veriyor. 
+
+((("exchange rate, finding")))Daha sonra Joe, Alice'e doğru miktarda bitcoin verebilmek için döviz kurlarını hesaplamak zorunda. Mevcut piyasa kurunu verebilecek yüzlerce uygulama ve site var. İşte onların en popüler olanlarından bazıları:
+	
+http://bitcoincharts.com[Bitcoin Charts]:: ((("bitcoincharts.com"))) Dünya çapında birçok  farklı yerel para birimi cinsinden bitcoin piyasa kurunu gösteren bir piyasa verisi listeleme servisidir.
+http://bitcoinaverage.com/[Bitcoin Average]:: ((("bitcoinaverage.com"))) Her bir para birimi için hacim-ağırlık-ortalama cinsinden basit bir görünümünü sunan bir sitedir. 
+http://www.zeroblock.com/[ZeroBlock]:: ((("ZeroBlock"))) Farklı borsalarda ki bitcoin fiyatlarını gösteren ücretsiz bir Android ve iOS uygulamasıdır. (bakınız<<zeroblock-android>>)
+http://www.bitcoinwisdom.com/[Bitcoin Wisdom]:: ((("bitcoinwisdom.com"))) Bir diğer piyasa verileri listeleme servisi.
+	
+[[zeroblock-android]]
+.ZeroBlock, Android ve iOS için bitcoin piyasa fiyatı uygulaması
+image::images/msbt_0103.png["zeroblock screenshot"]
+	
+listelenen siteleri ya da uygulamaları kullanarak, Joe bir bitcoinin yaklaşık değerinin 100 dolar olduğuna karar veriyor. Bu kura göre Joe Alice'ten aldığı 10 doların karşılığı olarak ona 0.10(100 millibit) bitcoin vermelidir. 
+
+Joe adil bir takas fiyatı belirlediğinde, mobil cüzdan uygulamasını açar ve bitcoin "gönder" seçeneğini seçer. Örneğin, eğer o android bir telefonda Blockchain mobil cüzdanını kullanıyorsa, ekranında iki girdi isteyen şu şekilde bir görüntü<<blockchain-mobile-send>> görecektir.
+
+* İşlemin gideceği bitcoin adresi
+* Gönderilen bitcoin miktarı
+
+
+Bitcoin adresinin girildiği alanda, QR koda benzer küçük bir simge vardır. Bu Joe'nun, Alice'in oldukça uzun ve yazması zor olan bitcoin adresini(+1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+) yazmasına gerek kalmaksızın, akıllı telefonunun kamerası ile barkodu taramasını sağlar. Joe QR kod simgesine tıklar ve akıllı telefonun kamerasını aktif eder, Alice'in cüzdandan çıktısını alarak yanında getirdiği QR kodu tarar. Mobil cüzdan uygulaması bitcoin adresini doldurur ve Joe , Alice'in getirdiği adresle bu adresin bir kaç rakamını karşılaştırarak onun doğru taranıp taranmadığını kontrol edebilir. 
+
+[[blockchain-mobile-send]]
+.Blockchain mobil cüzdanının bitcoin gönderim ekranı
+image::images/msbt_0104.png["blockchain mobile send screen"]
+
+Daha sonra Joe işlem yapacağı bitcoin değerini girer, 0.10 bitcoin. Doğru miktarı girip girmediğini dikkatlice kontrol eder çünkü o parayı iletmek üzeredir ve herhangi bir hata pahalıya mal olabilir. Sonunda işlemi iletmek için Gönder tuşuna basar. Joe'nun mobil bitcoin cüzdanı Alice tarafından sağlanan adrese, Joe'nun özel anahtarları ile işlemi imzalayan ve Joe'nun cüzdanındaki parayı kaynak olarak kullanan, 0.10 bitcoin atayan bir işlem oluşturur. Bu işelm bitcoin ağına, Joe'nun kendi adreslerinden Alice'in yeni adresine değer transfer ettiğini anlatır. İşlem eşten eşe protokol yoluyla iletildiğinden bitcoin ağında hemen yayılır. Bir saniyeden kısa bir süre içinde, ağdaki en iyi bağlantılı düğümler bu işlemi alır ve Alice'in adresini ilk defa görürler. 
+
+Eğer Alice'in yanında bir akıllı telefon ya da diz üstü bilgisayar varsa bu işlemi görebilecektir. Bitcoin defteri —oluşturulan her bitcoin işleminin kaydedildiği, sürekli büyüyen bir dosya— halka açıktır, yani Alice kendi adresine herhangi bir para gönderilip gönderilmediğini görmek için kendi adresine bakmalıdır.  Alice bunu ((("blockchain.info website"))) blockchain.info sitesindeki arama kutusuna adresini yazarak kolayca yapabilir. Site onun adresi ile ilgili tüm işlemlerini liste http://bit.ly/1u0FFKL[page] halinde gösterecektir. Eğer Alice  sayfayı izliyorsa, Joe'nun ona gönderdiği 0.10 bitcoinlik transfer işlemini bakiyesinde göstermek için kısa bir süre sonra kendisini güncelleyecektir. 
+
+++++
+<?hard-pagebreak?>
+++++
+
+.Doğrulamalar
+****
+((("confirmation of transactions"))) Öncelikle, Alice'in adresi Joe'dan gelen işlemi "Onaylanmamış" olarak gösterecektir. Bu, işlemin ağa yayılmış olduğu fakat henüz blok zinciri olarak bilinen bitcoin işlem defterine dahil edilmemiş olduğu anlamına gelir. Dahil edilmiş olması için, işlem bir madenci tarafından "alınmalı" ve bir işlemler bloğuna dahil edilmelidir. Her yeni blok oluşturulduğunda, yaklaşık 10 dakikada bir, blok içerisindeki işlemler ağ tarafından harcanabilir ve "onaylanmış" olarak kabul edilecektir. İşlem herkes tarafından anında görülür fakat sadece yeni kazılmış bir bloğa dahil edildiğinde herkes tarafından "güvenilir" olur.
+****
+
+Alice şimdi harcayabileceği 0.10 bitcoinin sahibi olarak gururlu. Sıradaki bölümde, onun bitcoin ile yaptığı ilk alımına bakacağız ve işlemin temeli ile yayılma teknolojilerini daha detaylı bir şekilde inceleyeceğiz. (((range="endofrange", startref="ix_ch01-asciidoc1")))(((range="endofrange", startref="ix_ch01-asciidoc0")))
+

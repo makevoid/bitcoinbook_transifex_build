@@ -1,0 +1,2125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch04_keys_addresses_wallets">Clés, Adresses, Portefeuilles</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction">Introduction</h3>
+<div class="paragraph"><p>La détention de bitcoins se fait via des <em>clés numériques</em>, des adresses bitcoin_, et des <em>signatures électroniques</em>. Les clés ne sont pas stockées sur le réseau, mais sont plutôt créées et stockées par les utilisateurs dans un fichier, sous forme d&#8217;une base de données basique appelée un <em>portefeuille</em>. Les clés d&#8217;un portefeuille sont totalement indépendantes du protocole bitcoin, et peuvent être créées et gérées par un logiciel tiers, indépendamment de la blockchain et même sans accès à Internet. Ce sont ces clés qui rendent possibles de nombreuses caractéristiques intéressantes de bitcoin, comme le contrôle et la confiance décentralisée, la preuve de propriété, et le modèle de sécurité protégé par la cryptographie.</p></div>
+<div class="paragraph"><p>Une transaction bitcoin doit contenir une signature valide pour être ajoutée à la blockchain, et cette signature ne peut être construite qu&#8217;avec des clefs valides. Cela signifie que n&#8217;importe quelle personne possédant une copie de ces clefs peut utiliser les fonds qui y sont associés. Les clefs sont créées par paires: une clef privée (secrète) et une clef publique. On peut comparer la clef publique à un numéro de compte en banque, et la clef privée au PIN de la carte bleue (ou à la signature sur un chèque) qui permet d&#8217;utiliser les fonds de ce compte en banque. En général, on n&#8217;a pas besoin de manipuler directement ces clefs, qui sont gérées et sauvegardées par le porte-monnaie bitcoin.</p></div>
+<div class="paragraph"><p>Dans les sorties d&#8217;une transaction bitcoin, la clef publique du destinataire est représentée par une empreinte numérique appelée une <em>addresse bitcoin</em>, et qui est équivalente au nom du bénéficiaire sur un chèque ("payez à &#8230;"). Dans la plupart des cas, une adresse est simplement l&#8217;empreinte d&#8217;une clef publique, et est donc équivalente à cette clef publique. Mais il est aussi possible de créer des transactions dont les adresses de destination correspondent à autre chose qu&#8217;une simple clef publique, un script par exemple (voir plus loin dans ce chapitre). Plus généralement, les adresses bitcoin sont une représentation générique de différents types de destinataires, ce qui permet d&#8217;utiliser les transactions bitcoins pour de nombreux types de paiement, de la même façon qu&#8217;un chèque peut être utilisé pour payer des personnes privées, des entreprises, retirer de l&#8217;argent liquide&#8230; Une adresse bitcoin est simplement la représentation des clefs qui sera visible et partagée, via la blockchain, avec tout le monde.</p></div>
+<div class="paragraph"><p>Dans ce chapitre, nous allons présenter les portemonnaies, qui gèrent les clefs cryptographiques. Nous étudierons comment ces clefs sont générées, sauvegardées et utilisées. Nous passerons en revue les différents formats utilisés représenter pour les clefs privées et publiques, les adresses et les adresses de script. Puis nous étudierons des usages spécifiques: signature de message, preuve de propriété, génération d&#8217;adresses personnalisées, portemonnaies papier.</p></div>
+<div class="sect3">
+<h4 id="_cryptographie_à_clef_publique_et_cryptomonnaies">Cryptographie à clef publique et Cryptomonnaies</h4>
+<div class="paragraph"><p>La cryptographie à clef publique a été inventée dans les années 1970 et est un des fondements de la sécurité informatique.</p></div>
+<div class="paragraph"><p>Depuis l&#8217;invention de la cryptographie à clef publique, plusieurs fonctions mathématiques comme  l&#8217;exponentiation modulaire ou la multiplication en courbes elliptiques ont été découvertes. Ces fonctions sont pratiquement impossibles à inverser: on peut calculer y = f(x) si on connait x, mais il est pratiquement impossible de calculer x tel que f(x) = y si on connait y. En utilisant ce type de fonctions, la cryptographie permet de protéger des secrets et de créer des signatures numériques inviolables. Bitcoin utilise une cryptographie à clef publique basée sur les courbes elliptiques.</p></div>
+<div class="paragraph"><p>Bitcoin utilise la cryptographie à clef publique pour générer une paire de clefs qui permet de contrôler les fonds: une clef privée, et une clef publique unique (dérivée à partir de la clef privée). La clef publique est utilisée pour recevoir des bitcoins, et la clef privée pour signer des transactions qui dépensent ces bitcoins.</p></div>
+<div class="paragraph"><p>Il existe une relation mathématique entre la clef privée et la clef publique qui permet d&#8217;utiliser la clef privée pour signer un message, et la clef publique pour valider cette signature sans réveler la clef privée.</p></div>
+<div class="paragraph"><p>Pour dépenser ses bitcoins, un utilisateur crée une transaction qui contient sa clef publique et une signature (différente pour chaque transaction, mais génerée avec la même clef privée). Lorsque cette transaction est publiée sur le réseau bitcoin, tout le monde peut vérifier que la signature est valide et donc que l&#8217;utilisateur a bien le droit de transférer les fonds.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>La plupart des portemonnaies sauvegardent les clefs publiques et privées ensemble en tant que <em>paire de clefs</em>. Mais vu qu&#8217;il est possible de calculer la clef publique à partir de la clef privée, on peut aussi se contenter de ne sauvegarder que la clef privée.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="private_public_keys">Clefs publiques et privées</h4>
+<div class="paragraph"><p>Un portemonnaie bitcoin gère un ensemble de paires de clefs privé/publique. La clef privée (k) est un nombre, choisi aléatoirement en général. La clef publique (K) est générée à partir de la clef privée en utilisant la multiplication en courbes elliptiques, une fonction cryptographique non-inversible. On utilise ensuite un hash cryptographique pour générer l&#8217;adresse (A) à partir de la clef publique. Dans cette section, nous commencerons par générer la clef privée, étudierons les bases mathématiques des courbes elliptiques, calculerons la clef publique à partir de la clef privée, et générerons une adresse bitcoin à partir de la clef publique. Les relations entre clef privée, clef publique et adresse sont illustrées ici: <a href="#k_to_K_to_A">[k_to_K_to_A]</a>.</p></div>
+<div class="imageblock" id="k_to_K_to_A">
+<div class="content">
+<img src="images/msbt_0401.png" alt="privk_to_pubK_to_addressA" />
+</div>
+<div class="title">Figure 1. Clef privée, clef publique et adresse bitcoin</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="private_keys">Clefs privées</h4>
+<div class="paragraph"><p>Une privée est juste un nombre choisi au hasard. Pour un utilisateur bitcoin, la possession et la gestion de ses clefs privées est fondamentale pour le contrôle de ses fonds. La clef privée est utilisée pour créer des signatures qui permettent de prouver que l&#8217;on détient les fonds que l&#8217;on veut dépenser. Elle doit impérativement rester secrète: la divulguer revient à perdre le contrôle des fonds qu&#8217;elle protège. Elle doit aussi être sauvegardée: si elle est perdue il sera impossible de la régénérer et les fonds associés seront perdus aussi.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>"private keys"Une clef privée bitcoin est juste un nombre, que l&#8217;on peut générer aléatoirement avec un papier, un crayon et une pièce de monnaie: on joue à pile ou face 256 fois pour générer les 256 bits d&#8217;une clef privée que l&#8217;on pourra importer dans son portemonnaie. La clef publique pourra ensuite être générée à partir de la clef privée.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect4">
+<h5 id="_générer_une_clef_privée_à_partir_d_8217_un_nombre_aléatoire">Générer une clef privée à partir d&#8217;un nombre aléatoire</h5>
+<div class="paragraph"><p>"private keys"Pour générer des clefs la première étape, et la plus importante, est de trouver une bonne source d&#8217;entropie, c&#8217;est-à-dire de données alátoires. Créer une clef bitcoin revient à choisir un nombre aléatoire entre 1 et 2^256. La méthode utilisée importe peu, tant qu&#8217;elle est imprévisible et non répétable. Le logiciel bitcoin utilise le générateur aléatoire du systême d&#8217;exploitation pour générer 256 bits d&#8217;entropie. En général, ce générateur est initialisé par des données aléatoires produites par l&#8217;utilisateur, par exemple en lui demandant de bouger sa souris au hasard pendant quelques secondes. Mais pour les vrais paranoïaques, rien ne vaut une feuille de papier, un stylo et un dé.</p></div>
+<div class="paragraph"><p>Plus précisement, une clef privée peut être n&#8217;importe quel nombre compris entre <tt>1 et +n - 1</tt>, n étant l&#8217;ordre de la courbe utilisée par bitcoin (n = 1.158 * 10<sup>77</sup>, juste un peu moins que 2<sup>256</sup>)(voir <a href="#elliptic_curve">[elliptic_curve]</a>). Pour créer une telle clef, on choisit un nombre aléatoire à 256 bits et on vérifie qu&#8217;il est inférieur à <tt>n -1</tt>. Programmatiquement, on utilise habituellement une longue suite de nombres aléatoires générés par une source cryptographiquement sûre, que l&#8217;on hash avec l&#8217;algorithme SHA256 (qui produit un résultat sur 256 bits). Si le résultat est pls petit que <tt>n - 1</tt>, on a une clef privée valide, sinon on recommence.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Ne codez pas vous-même un générateur de nombres aléatoires, et n&#8217;utilisez pas les générateurs les plus simples fournis par votre langage de programmation.Utilisez un  générateur de nombres aléatoires cryptographiquement sûr (CSPRNG en anglais) initialisé avec une graine (seed) provenant d&#8217;une source ayant suffisamment d&#8217;entropie. Vérifiez dans la documentation que votre générateur de nombres aléatoires est bien cryptographiquement sûr. Une implémentation correct du CSPRNG est indispensable pour la sécurité de vos clefs.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Voici la représentation d&#8217;une clef privée générée aléatoirement au format hexadécimal (256 bits groupés en 64 nombres sur 4 bits, chaque nombre de 4 bits étant représenté par une lettre).</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>La taille de l&#8217;espace des clefs bitcoin, 2<sup>256</sup>, est une nombre gigantesque, qui défie l&#8217;imagination. Cela correspond environ à 10<sup>77</sup> en base 10. On estime que le nombre total d&#8217;atomes dans l&#8217;univers visible est à peu près 10<sup>80</sup>.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Pour générer une nouvelle clef avec le client Bitcoin Core (voir <a href="#ch03_bitcoin_client">[ch03_bitcoin_client]</a>), utilisez la commande <tt>getnewaddress</tt>. Pour des raisons de sécurité, seule la clef publique sera affichée. Utilisez la commande <tt>dumpprivkey</tt> pour afficher la clef privée. Elle sera affichée au format WIF (<em>Wallet Import Format</em>), un format qui contient la clef et une checksum, le tout encodé en base 58. Nous examinerons ce format en détail au chapitre <a href="#priv_formats">[priv_formats]</a>. Voici un exemple de génération et affichage de clefs avec ces 2 commandes:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind getnewaddress
+1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy
+$ bitcoind dumpprivkey 1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy
+KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</tt></pre>
+</div></div>
+<div class="paragraph"><p>La commande <tt>dumpprivkey</tt> ouvre le portemonnaie et extrait la clef privée générée par la commande <tt>getnewaddress</tt>. Il est impossible pour bitcoind de retrouver la clef privée à partir de la clef publique, à moins qu&#8217;elles ne soient toutes les 2 stockées dans le portemonnaie.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>La commande <tt>dumpprivkey</tt> ne génère par la clef privée à partir de la clef publique, c&#8217;est impossible. Elle va juste retrouver la clef privée déja stockée dans le portemonnaie et créée par la commande getnewaddress.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>On peut aussi utiliser l&#8217;outil en ligne de commande Bitcoin Explorer (voir <a href="#libbitcoin">[libbitcoin]</a>) pour générer et afficher des clefs privées avec les commandes <tt>seed</tt>, <tt>ec-new</tt> and <tt>ec-to-wif</tt>: </p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx seed | bx ec-new | bx ec-to-wif
+5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pubkey">Clefs publiques</h4>
+<div class="paragraph"><p>La clef public est calculée à partir de la clef privée en utilisant la multiplication en courbes elliptiques, qui n&#8217;est pas inversible: \(K = k * G\) où <em>k</em> est la clef privée, <em>G</em> est un point particulier appelé le <em>générateur de la courbe</em> et <em>K</em> est la clef publique. L&#8217;opération inverse —calculer <em>k</em> à partir de <em>K</em>, c&#8217;est-à-dire résoudre le logarithme discret — est aussi difficile qu&#8217;une attaque par force brute: essayer toutes les valeurs possibles pour <tt>k</tt>. Afin de montrer comment calculer la clef publique à partir de la clef privée, nous allons étudier plus précisement la cryptographie en courbes elliptiques.</p></div>
+</div>
+<div class="sect3">
+<h4 id="elliptic_curve">La cryptographie sur les courbes elliptiques</h4>
+<div class="paragraph"><p>La cryptographie sur les courbes elliptiques est un type pariculier de cyptographie assymétrique (i.e. à clef privée/clef publique) basée sur le problème du logarithme discret dans le groupe correspondant à la courbe elliptique (que l&#8217;on définit en introduisant les notions d&#8217;addition de points sur la courbe, et de multiplication de point par un entier).</p></div>
+<div class="paragraph"><p><a href="#ecc-curve">[ecc-curve]</a> est un exemple de courbe elliptique, similaire à celle utilisée par bitcoin.</p></div>
+<div class="imageblock" id="ecc-curve">
+<div class="content">
+<img src="images/msbt_0402.png" alt="ecc-curve" />
+</div>
+<div class="title">Figure 2. An elliptic curve</div>
+</div>
+<div class="paragraph"><p>Bitcoin utilise une courbe particulière définie dans le standard "secp256k1 curve standard") <tt>secp256k1</tt>, maintenu par le National Institute of Standards and Technology (NIST). La courbe <tt>secp256k1</tt> est définie par la fonction suivante:</p></div>
+<div class="mathblock">
+<div class="content">\begin{equation}
+{y^2 = (x^3 + 7)}~\text{over}~(\mathbb{F}_p)
+\end{equation}</div></div>
+<div class="paragraph"><p>ou</p></div>
+<div class="mathblock">
+<div class="content">\begin{equation}
+{y^2 \mod p = (x^3 + 7) \mod p}
+\end{equation}</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>_mod p_ (modulo le nombre premier p) signifie que cette courbe est définie sur le corps fini d'ordre _p_ premier, que l'on écrit aussi latexmath:[\(\mathbb{F}_p\)], ou p = 2^256^ – 2^32^ – 2^9^ – 2^8^ – 2^7^ – 2^6^ – 2^4^ – 1, un nombre premier très grand.</tt></pre>
+</div></div>
+<div class="paragraph"><p>Cette courbe n&#8217;est pas définie sur le corps des réels mais sur un corps fini d&#8217;ordre premier: elle ressemble à un ensemble de points répartis au hasard, ce qui la rend difficile à visualiser. Néanmois, les mathématiques qui régissent cette courbe sont les mêmes que pour les courbes sur les nombre réels. Par exemple, la figure <a href="#ecc-over-F17-math">[ecc-over-F17-math]</a> montre la même courbe mais définie sur un corps d&#8217;ordre 17, beaucoup plus petit. On peut voir la forme de la courbe dans le nuage de points. La courbe <tt>secp256k1</tt> utilisée par bitcoin peut être imaginée comme une forme beaucoup plus complexe sur une grille infiniment plus grande.</p></div>
+<div class="imageblock" id="ecc-over-F17-math">
+<div class="content">
+<img src="images/msbt_0403.png" alt="ecc-over-F17-math" />
+</div>
+<div class="title">Figure 3. Cryptographie en courbes elliptiques: visualisation d&#8217;une courbe définie sur F(p), avec p=17</div>
+</div>
+<div class="paragraph"><p>Par exemple, voici un point P de coordonnées (x, y) sur la courbe <tt>secp256k1</tt>. On peut le vérifier avec Python:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>P = (55066263022277343669578718895168534326250603453777594175500187360389116729240, 32670510020758816978083085130507043184471273380659243275938904335757337482424)</tt></pre>
+</div></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>En courbes elliptiques il existe un point appelé le "point à l&#8217;infini" qui correspond en gros à l'élement neutre 0 pour l&#8217;addition. On le représente parfois par x = y = 0 (ce qui ne satisfait pas l'équation de la courbe, mais c&#8217;est un c&#8217;est un cas particulier que l&#8217;on peut facilement traiter à part).</p></div>
+<div class="paragraph"><p>Il existe aussi un opérateur +, appelé "addition," qui se comporte comme l&#8217;addition sur les nombre réels que l&#8217;on apprend à l'école élementaire. Soit P<sub>1</sub> et P<sub>2</sub> 2 points sur la courbe elliptique, il existe un troisième point P<sub>3</sub> = P<sub>1</sub> + P<sub>2</sub>, qui est aussi sur la courbe elliptique.</p></div>
+<div class="paragraph"><p>D&#8217;un point de vue géométrique, on calcule P<sub>3</sub> en traçant une ligne entre P<sub>1</sub> et P<sub>2</sub>. Cette ligne coupe la courbe elliptique en exactement un point que l&#8217;on appelera P<sub>3</sub>' = (x, y). On prend alors le symmétrique de P<sub>3</sub>' par rapport à l&#8217;axe des x, ce qui donne P<sub>3</sub> = (x, –y).</p></div>
+<div class="paragraph"><p>Certains cas particuliers illustrent pourquoi on a besoin du "point à l&#8217;infini".</p></div>
+<div class="paragraph"><p>Si P<sub>1</sub> et P<sub>2</sub> sont en fait le même point, la droite entre P<sub>1</sub> et P<sub>2</sub> est en fait la tangente à la courbe au point P<sub>1</sub>. Cette tangente coupe la courbe en exactement un point. Les techniques issues de l&#8217;analyse numérique permet de calculer cette tangente. Etonnamment, ces techniques fonctionnent alors que l&#8217;on se restreint à des points sur la courbes dont les 2 coordonnées sont entières!</p></div>
+<div class="paragraph"><p>Dans certains cas (par exemple si P<sub>1</sub> and P<sub>2</sub> ont la même abscisse x mais des ordonnnées y différentes), la ligne qui les relie sera verticale, et P3 sera le "point à l&#8217;infini".</p></div>
+<div class="paragraph"><p>Si P<sub>1</sub> est le "point à l&#8217;infini," alors P<sub>1</sub> + P<sub>2</sub> = P<sub>2</sub>. De même, si P<sub>2</sub> est le point à l&#8217;infini, alors P<sub>1</sub> + P<sub>2</sub> = P<sub>1</sub>. Le "point à l&#8217;infini" joue le même rôle que l'élement neutre 0.</p></div>
+<div class="paragraph"><p>Il s&#8217;avère que + est associatif, ce qui signifie que (A + B) + C = A + (B + C). On peut donc écrire A + B + C sans parenthèses et sans ambiguité.</p></div>
+<div class="paragraph"><p>Maintenant que nous avons défini l&#8217;addition, on peut s&#8217;en servir pour définir la multiplication: Pour un point P sur la courbe elliptique et un entier k, on définit kP = P + P + P + &#8230; + P (k fois). Remarque: en Anglais k est parfois appelé "exponent" (exposant) ce qui peut être une source de confusion.</p></div>
+</div>
+<div class="sect3">
+<h4 id="public_key_derivation">Generation d&#8217;une clef publique</h4>
+<div class="paragraph"><p>On part d&#8217;une clef privée sous la forme d&#8217;un nombre aléatoire <em>k</em>, que l&#8217;on multiplie par un point particulier  de la courbe appelé  <em>point générateur</em> <em>G</em> pour obtenir un autre point sur la courbe: la clef publique <em>K</em>. Ce point générateur est défini dans le standard <tt>secp256k1</tt> et est toujours le même, pour toutes les clefs:</p></div>
+<div class="mathblock">
+<div class="content">\begin{equation}
+{K = k * G}
+\end{equation}</div></div>
+<div class="paragraph"><p>ou k est la clef privée, G le générateur de la courbe et K la clef publique (qui est un point sur la courbe). Comme le point générateur est toujours le même, la même clef privée k donnera toujours la même clef publique K. Il y a lien direct entre k et K, mais on ne peut le calculer que dans un sens, de k vers K. C&#8217;est pourquoi une clef publique peut être partagée avec tout le monde, sans risque de révéler la clef privée.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>On peut calculer la clef publique à partir de la clef privée, mais pas l&#8217;inverse, car les fonctions mathématiques utilisées ne sont pas inversibles.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Concrètement, avec la multiplication en courbes elliptiques, on prend la clef privé k générée précedemment que l&#8217;on multiplie par le générateur G pour obtenir la clef publique K:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD * G</tt></pre>
+</div></div>
+<div class="paragraph"><p>La clef publique K est le point <tt>K = (x,y)</tt>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>K = (x, y)
+
+avec:
+
+x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB</tt></pre>
+</div></div>
+<div class="paragraph"><p>Pour visualiser la multiplication d&#8217;un point par un entier, on utilisera une courbe elliptique plus simple, définie sur les nombres réels - les bases mathématiques sont les mêmes. L&#8217;objectif est de trouver le multiple kG du point générateur G, c&#8217;est-à-dire ajouter G à lui-même k fois. En courbes elliptiques, ajouter un point à lui-même revient à trouver l&#8217;intersection entre la tangente en ce point et la courbe, et prendre le symétrique par rapport à l&#8217;axe des x.</p></div>
+<div class="paragraph"><p><a href="#ecc_illustrated">[ecc_illustrated]</a> montre comment calculer G, 2G, 4G de façon géométrique.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>La plupart des implémentations bitcoin utilisent la <a href="http://bit.ly/1ql7bn8">librairie cryptographique OpenSSL</a> pour la cryptographie en courbes elliptiques. Par exemple, pour calculer la clef privée on utilise la fonction <tt>EC_POINT_mul()</tt>.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="imageblock" id="ecc_illustrated">
+<div class="content">
+<img src="images/msbt_0404.png" alt="ecc_illustrated" />
+</div>
+<div class="title">Figure 4. Cryptographie sur les courbes elliptiques: visualisation de la multiplication d&#8217;un point G par un entier k sur une courbe elliptique.</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adresses_bitcoin">Adresses Bitcoin</h3>
+<div class="paragraph"><p>Une adresse bitcoin est une chaîne de caractères (chiffres et lettres) que l&#8217;on peut communiquer avec n&#8217;importe quelle personne souhaitant vous envoyer des fonds. Une adresse génerée à partir d&#8217;une clef publique commence par "1". Voici un exemple d&#8217;adresse bitcoin:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy</tt></pre>
+</div></div>
+<div class="paragraph"><p>Dans une transaction bitcoin, l&#8217;adresse est ce qui corrersponds au "déstinataire" des fonds. L&#8217;adresse correspond à la ligne "Payez à" sur un chèque. Sur cette ligne, on peut inscrire le nom d&#8217;une personne, d&#8217;une entreprise, ou même "au porteur" pour que n&#8217;importe qui puisse encaisser le chèque et l&#8217;utiliser comme du cash ce qui fait des chèques un moyen de paiement très flexible, beaucoup plus que s&#8217;il fallait inscrire un numéro de compte en banque. Les adresses bitcoin ont la même flexibilité: elles peuvent représenter le détenteur d&#8217;une paire de clefs publique/privée, ou autre chose comme un script de paiement (voir <a href="#p2sh">[p2sh]</a>). Pour l&#8217;instant, examinons le cas le plus simple: une adresse bitcoin dérivée d&#8217;une clef publique.</p></div>
+<div class="paragraph"><p>On utilise un hash cryptographique pour dériver une adresse bitcoin à partir d&#8217;une clef publique. Un hash cryptographique est une fonction non inversible qui calcule une empreinte numérique à partir d&#8217;une donnée de taille quelconque. Les hash cryptographiques sont très utilisés dans bitcoin: pour les adresses bitcoin, les adresses de script, et la "preuve de travail" (Proof Of Work) utilisée pour le minage. Les algorithmes de hash utilisés pour transformer une clef publique en adresse bitcoin sont "Secure Hash Algorithm (SHA)") Secure Hash Algorithm (SHA) et  RACE Integrity Primitives Evaluation Message Digest (RIPEMD), plus précisement les versions SHA256 et RIPEMD160.</p></div>
+<div class="paragraph"><p>On calcule d&#8217;abord le hash SHA256 de la clef publique K, puis on calcule le hash RIPEMD160 du résultat, ce qui donne une nombre de 160 bits (20 octets):</p></div>
+<div class="mathblock">
+<div class="content">\begin{equation}
+{A = RIPEMD160(SHA256(K))}
+\end{equation}</div></div>
+<div class="paragraph"><p>K est la clef publique et A l&#8217;adresse bitcoin correspondante.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Une adresse bitcoin <em>n&#8217;est pas</em> la même chose qu&#8217;une clef publique: les adresses sont calculées à partir des clefs publiques en utilisant une fonction non inversible.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Les adresses bitcoin sont presque toujours affichées en utilisant l' "Base58Check" (voir <a href="#base58">[base58]</a>), qui utilise 58 caractères (un encodage en base 58) et une checksum pour améliorer la lisibilité, éviter les amibguïtés et les erreurs lors de la saisie et de la copie des adresses. L&#8217;encodage Base58Check est très utilisé dans bitcoin pour afficher de façon fiable des nombres aux utilisateurs: adresses bitcoin, clefs privées, clefs chiffrées, hash de scripts. Au prochain paragraphe nous étudierons l&#8217;encodage Base58Check. Voici un exemple de conversion de clef publique en adresse bitcoin:  <a href="#pubkey_to_address">[pubkey_to_address]</a>. </p></div>
+<div class="imageblock" id="pubkey_to_address">
+<div class="content">
+<img src="images/msbt_0405.png" alt="pubkey_to_address" />
+</div>
+<div class="title">Figure 5. Clef publique vers adresse bitcoin: conversion d&#8217;une clef publique en adresse bitcoin</div>
+</div>
+<div class="sect3">
+<h4 id="base58">Encodages Base58 et Base58Check</h4>
+<div class="paragraph"><p>Pour représenter de grands nombres de façon compacte on utilise souvent en informatique des représentations en base N avec N &gt; 10. Le système décimal, en base 10, utilise les chiffres de 0 à 9. Mais le système hexadécimal, en base 16, utilise aussi les lettres de A à F pour représenter les nombres de façon plus compacte que le système décimal. L&#8217;encodage Base-64 est encore plus compact et utilise 64 symboles (les 26 lettres de l&#8217;alphabet en minuscule, les 26 lettres en majuscule, les 10 chiffres et 2 symboles supplémentaires: "+" et "/"). Il est très utilisé pour transmettre des données binaires sous forme de texte, comme des attachements à des emails par exemple. Base58 est un système permettant d&#8217;encoder des données binaires sous forme de texte, développé pour bitcoin et utilisé par beaucoup d&#8217;autres crypto-monnaies. Il offre un bon conpromis entre compacité, lisibilité et précention/detection des erreurs. Base58 utilise un sous-ensemble des symboles de Base64 (lettres minuscules et majuscules, chiffres), en éliminant les symboles qui peuvent prêter à confusion, notamment avec certains jeux de caratctères: 0 (zéro) et O (la lettre O), l (L minuscule) et I (i majuscule), et les symboles "\+" et "/". Au final, il ne reste que les lettres minuscules et majuscules et les chiffres, sans les symboles (0, O, l, I).</p></div>
+<div class="exampleblock" id="base58alphabet">
+<div class="title">Example 1. alphabet Base58 utilisé par bitcoin</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz</tt></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Base58Check est un format basé sur Base58 très utilisé par bitcoin. Il contient une checksum qui permet de se protéger contre les fautes de frappes et erreurs de transmissions. Cette checksum, de 4 octets, est ajoutée à la fin des données encodées. Elle est calculée à partir du hash des données encodées et permet de détecter et éviter les erreurs. Lorsque l&#8217;on décode du Base58Check, on calcule la checksum et on la compare à celle qui se trouve à la fin des données encodées. Si ce n&#8217;est pas la même, cela veut dire qu&#8217;il y a une erreur et que les données Base58Check sont invalides. Par exemple, cela permet à un portemonnaie bitcoin de détecter qu&#8217;une adresse bitcoin contient une faute de frappe, et évite ainsi d&#8217;envoyer des fonds qui seront perdus.</p></div>
+<div class="paragraph"><p>Pour convertir des données binaires (représentant un nombre) au format Base58Check, on ajouter d&#8217;abord un préfixe  appelé "version" (généralement sur un octet), qui sert à identifier le type de donnée que l&#8217;on encode. Par exemple, pour une adresse bitcoin le préfixe est 0 (0x00 en hexa), et pour une cle privée c&#8217;est 128 (0x80 en hexa). La liste des préfixes les plus courants est disponible ici: <a href="#base58check_versions">[base58check_versions]</a>.</p></div>
+<div class="paragraph"><p>Ensuite on calcule un "double hash" SHA256 du préfixe et des données: on hash préfixe + données, et on hash le résultat.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>checksum = SHA256(SHA256(prefix+data))</tt></pre>
+</div></div>
+<div class="paragraph"><p>Cela donne un hash sur 32 octets (256 bits) dont on garde les 4 premiers octets qui constituent notre  checksum. Cette checksum est rajoutée à la fin des données.</p></div>
+<div class="paragraph"><p>Le résultat est donc composé de 3 parties: préfixe, données et checksum. Il est ensuite encodé en base 58 en utilisant l&#8217;alphabet présenté un peu plus haut. L&#8217;encodage Base58Check est illustré ici: <a href="#base58check_encoding">[base58check_encoding]</a></p></div>
+<div class="imageblock" id="base58check_encoding">
+<div class="content">
+<img src="images/msbt_0406.png" alt="Base58CheckEncoding" />
+</div>
+<div class="title">Figure 6. encodage Base58Check: un format basé sur Base58 et comprenant un préfixe et une checksum, pour un encodage sans ambiguïté des données bitcoin.</div>
+</div>
+<div class="paragraph"><p>Dans bitcoin, la plupart des données que voient les utilisateurs sont encodées en Base58Check afin de les rendre plus compactes, plus faciles à lire et de détecter les erreurs facilement. L&#8217;octet de version permet de distinguer facilement le type de données encodées: le résultat commencera par des caractères spécifiques, ce qui permet aux utilisateurs de reconnaitre facilement ce qui est encodé et comment s&#8217;en servir. Par exemple, c&#8217;est ce qui permet de différencier les adresses bitcoin, qui commencent par un 1, des clefs privées qui, une fois encodées en Base58Check (format WIF), commencent par un 5. Quelques valeurs de l&#8217;octet version et du résultat une fois encodé se trouvent ici: <a href="#base58check_versions">[base58check_versions]</a>.</p></div>
+<?hard-pagebreak?>
+<div class="olist arabic" id="base58check_versions"><ol class="arabic">
+<li>
+<p>
+préfixes utilisés par Base58Check, et résultat une fois encodé.
+</p>
+</li>
+</ol></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Type</th>
+<th align="left" valign="top"> préfixe Version (hex)</th>
+<th align="left" valign="top"> résultat Base58</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Bitcoin Address</p></td>
+<td align="left" valign="top"><p class="table">0x00</p></td>
+<td align="left" valign="top"><p class="table">1</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Pay-to-Script-Hash Address</p></td>
+<td align="left" valign="top"><p class="table">0x05</p></td>
+<td align="left" valign="top"><p class="table">3</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Bitcoin Testnet Address</p></td>
+<td align="left" valign="top"><p class="table">0x6F</p></td>
+<td align="left" valign="top"><p class="table">m or n</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Private Key WIF</p></td>
+<td align="left" valign="top"><p class="table">0x80</p></td>
+<td align="left" valign="top"><p class="table">5, K or L</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">BIP38 Encrypted Private Key</p></td>
+<td align="left" valign="top"><p class="table">0x0142</p></td>
+<td align="left" valign="top"><p class="table">6P</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">BIP32 Extended Public Key</p></td>
+<td align="left" valign="top"><p class="table">0x0488B21E</p></td>
+<td align="left" valign="top"><p class="table">xpub</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Examinons les étapes du processus de création d&#8217;une adresse bitcoin: on part de la clef privée, on calcule la clef publique (un point sur la courbe elliptique), puis le double hash et enfin l&#8217;encodage Base58Check. Le code C++ <a href="#addr_example">[addr_example]</a> implémente toutes ces étapes, de la clef privée à l&#8217;adresse bitcoin au format Base58Check. Ce code utilise la librairie libbitcoin, que nous avons présenté au chapitre <a href="#alt_libraries">[alt_libraries]</a> .</p></div>
+<div class="exampleblock" id="addr_example">
+<div class="title">Example 2. Création d&#8217;une adresse bitcoin au format Base58Check à partir d&#8217;une clef privée</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>Ce code utilise toujours la même clef privée, et produit donc toujours la même  adresse: <a href="#addr_example_run">[addr_example_run]</a>.</p></div>
+<div class="exampleblock" id="addr_example_run">
+<div class="title">Example 3. Compilation et exécution du code addr</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_les_différentes_formats_de_clefs">Les différentes formats de clefs</h4>
+<div class="paragraph"><p>Il existe différents formats pour représenter les clefs publiques et privées. Les résultats semblent différents mais il s&#8217;agit toujours de représentations des même nombres. Ces formats sont surtout utilisés pour rendre les clefs faciles à lire et à recopier, sans risque d&#8217;erreur.</p></div>
+<div class="sect4">
+<h5 id="priv_formats">Les formats de clefs privées</h5>
+<div class="paragraph"><p>Les clefs privées peuvent être représentées de différentes manières, qui correspondent toujours au même nombre de 256 bits. Les 3 formats les plus utilisés pour les clefs privées sont décrits ici:<a href="#table_4-2">[table_4-2]</a></p></div>
+<div class="tableblock" id="table_4-2">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. Formats d&#8217;encodage des clefs privées</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Type</th>
+<th align="left" valign="top">Préfixe</th>
+<th align="left" valign="top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Hex</p></td>
+<td align="left" valign="top"><p class="table">Aucun</p></td>
+<td align="left" valign="top"><p class="table">64 caractères (chiffres et lettres de A à F)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF</p></td>
+<td align="left" valign="top"><p class="table">5</p></td>
+<td align="left" valign="top"><p class="table">encodage Base58Check: encodage Base58 avec un préfixe(version) de 128 et une checksum de 32 bits</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF-compressed</p></td>
+<td align="left" valign="top"><p class="table">K ou L</p></td>
+<td align="left" valign="top"><p class="table">Comme au-dessus, mais en ajoutant le suffixe 0x01 à la clef avant d&#8217;encoder</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p><a href="#table_4-3">[table_4-3]</a> montre la clef privée encodée avec ces 3 formats/</p></div>
+<?hard-pagebreak?>
+<div class="tableblock" id="table_4-3">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. Exemple: la même clef, différents formats</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Format </th>
+<th align="left" valign="top"> Clef Privée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Hex</p></td>
+<td align="left" valign="top"><p class="table">1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF</p></td>
+<td align="left" valign="top"><p class="table">5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF-compressed</p></td>
+<td align="left" valign="top"><p class="table">KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Ce sont toutes des représentations différentes du même nombre (la clef privée). Ces formats ont l&#8217;air différents mais on peut facilement convertir de l&#8217;un vers l&#8217;autre.</p></div>
+<div class="paragraph"><p>On va utiliser la commande  <tt>wif-to-ec</tt>  de l&#8217;outil Bitcoin Explorer (voir <a href="#libbitcoin">[libbitcoin]</a>) pour vérifier que les 2 clefs WIF représentent bien la même clef privée:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx wif-to-ec 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd
+
+$ bx wif-to-ec KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
+1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="_décodage_du_format_base58check">Décodage du format Base58Check</h5>
+<div class="paragraph"><p>L&#8217;outil Bitcoin Explorer (voir<a href="#libbitcoin">[libbitcoin]</a>) permet d'écrire facilement des scripts et outils en ligne de commande pour manipuler les clefs, adresses et transactions bitcoin. On peut utiliser Bitcoin Explorer pour décoder le format Base58Check en ligne de commande.</p></div>
+<div class="paragraph"><p>On utilise la commande <tt>base58check-decode</tt> pour décoder la clef non-compressée:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx base58check-decode 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+wrapper
+{
+    checksum 4286807748
+    payload 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd
+    version 128
+}</tt></pre>
+</div></div>
+<div class="paragraph"><p>Le résultat comprend: la clef ("payload"), le préfixe WIF (Wallet Import Format) qui vaut 128 (0x80), et la checksum.</p></div>
+<div class="paragraph"><p>On remarque qu'à la fin de la clef compressée on trouve le suffixe <tt>01</tt>, ce qui signifie que la clef publique correspondant à cette clef privée devra être compressée.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx base58check-decode KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
+wrapper
+{
+    checksum 2339607926
+    payload 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd01
+    version 128
+}</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="_encodage_d_8217_hexadécimal_vers_base58check">Encodage d&#8217;hexadécimal vers Base58Check</h5>
+<div class="paragraph"><p>Pour encoder vers Base58Check (le contraire de la commande précedente), on utilise la commande <tt>base58check-encode</tt> de l&#8217;outil Bitcoin Explorer (voir<a href="#libbitcoin">[libbitcoin]</a>): on entre la clef privée au format hexa, suivie du  Wallet Import Format (WIF) préfixe version 128:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>bx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd --version 128
+5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="_encodage_hexadécimal_clef_compressée_vers_basse58check">Encodage hexadécimal (clef compressée) vers Basse58Check</h5>
+<div class="paragraph"><p>Pour encoder une clef privée au format Base58Check en mode "compressé" (voir <a href="#comp_priv">[comp_priv]</a>), on rajoute le suffixe <tt>01</tt> à la fin de la clef, et on encode:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd01 --version 128
+KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</tt></pre>
+</div></div>
+<div class="paragraph"><p>Le résultat, au format WIP compressé, commence par "K". Cela signifie que la clef privée qu&#8217;il représente se termine par le suffixe "01" et qu&#8217;elle sera utilisée pour produire des clefs publiques compressées (voir <a href="#comp_pub">[comp_pub]</a>).</p></div>
+</div>
+<div class="sect4">
+<h5 id="_les_formats_de_clefs_publiques">Les formats de clefs publiques</h5>
+<div class="paragraph"><p>Il existe aussi différents formats pour les clefs publiques. En particulier, on peut les représenter de façon <em>compressée</em> ou <em>non-compressée</em>.</p></div>
+<div class="paragraph"><p>Comme nous l&#8217;avons vu précedemment, une clef publique est un point <tt>(x,y)</tt> sur une courbe elliptique. On l&#8217;encode généralement avec le préfixe  <tt>04</tt> suivi de 2 nombres sur 256 bits:  <em>x</em> et <em>y</em>. Le préfixe <tt>04</tt> permet de distinguer les clefs publiques non-compressées des clefs publiques compressées, qui commencent par <tt>02</tt> ou <tt>03</tt>.</p></div>
+<div class="paragraph"><p>Voici la clef publique générée à partir de la clef privée que nous avons créée plus tôt, représentée en tant que point de coordonnées <tt>x</tt> et <tt>y</tt>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB</tt></pre>
+</div></div>
+<div class="paragraph"><p>Voici la même clef publique, sous la forme d&#8217;un nombre sur 520 bits (65 octets, donc 130 caractères en hexa): le préfixe <tt>04</tt>, suivi par <tt>x</tt> et <tt>y</tt>, ce qui donne <tt>04 x y</tt>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>K = 04F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A&lt;?pdf-cr?&gt;07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="comp_pub">Clefs publiques compressées</h5>
+<div class="paragraph"><p><?dbhtml orphans="4"?>Les clefs publiques compressées ont été ajoutées à bitcoin pour réduire la taille des transactions et donc sauver de l&#8217;espace disque sur les noeuds bitcoin. La plupart des transactions contiennent une clef publique, nécessaire pour valider que l&#8217;utilisateur a le droit de dépenser les fonds associés. Chaque clef publique prend 520 bits (prefix \+ x \+ y), ce qui, multiplié par plusieurs centaines de transactions par bloc, donc plusieurs dizaines de milliers de transactions par jour, prend beaucoup de place dans la blockchain.</p></div>
+<div class="paragraph"><p>Comme nous l&#8217;avons vu dans la section <a href="#pubkey">[pubkey]</a>, une clef publique est un point (x, y) sur une courbe elliptique. Cela veut dire que (x, y) est une solution à l'équation de la courbe. Donc, si l&#8217;on connait <em>x</em>, on peut calculer <em>y</em> en résolvant l'équation y<sup>2</sup> mod p = (x<sup>3</sup> + 7) mod p. Cela nous permet de ne garder que <em>x</em> pour représenter le point, et on économise ains 256 bits. Cela donne une réduction de la taille des transactions de presque 50%, ce qui avec le temps permet d'économiser beaucoup de place!</p></div>
+<div class="paragraph"><p>Alors que les clef publiques non-compressées commencent par le préfixe <tt>04</tt>, les clefs publiques compressées commencent par <tt>02</tt> ou <tt>03</tt>. Il y a 2 préfixes possibles parce qu&#8217;il y a toujours 2 solutions possibles à l'équation de la courbe: à gauche du signe = on trouve y<sup>2</sup>, donc les 2 solutions seront + ou - la racine carrée de ce qu&#8217;il y a à droite du signe =. Visuellement, cela se traduit de la façon suivante: la courbe (voir <a href="#ecc-curve">[ecc-curve]</a>) est symmétrique par rapport à l&#8217;axe des x: pour chaque point (x, y) sur la courbe, le point (x, -y) est aussi sur la courbe. Pour pouvoir identifier un point de façon unique, il nous faut donc x et le <em>signe</em> de y. Mais comme les calculs sur la courbe elliptique se font sur un corps fini d&#8217;ordre p premier, signe et parité sont équivalents: on va donc utiliser le préfixe <tt>02</tt> si <tt>y</tt> est pair, et <tt>03</tt> si y est impair. Cela nous permettra de recalculer <em>y</em> sans ambiguïté à partir de <em>x</em>. Ce procédé de compression des clefs publiques est illustré ici: <a href="#pubkey_compression">[pubkey_compression]</a>.</p></div>
+<div class="imageblock" id="pubkey_compression">
+<div class="content">
+<img src="images/msbt_0407.png" alt="pubkey_compression" />
+</div>
+<div class="title">Figure 7. Compression des clefs publiques</div>
+</div>
+<div class="paragraph"><p>Voici la même clef publique que précedemment, sous forme compressée (33 octets, soit 264 bits ou 66 caractéres en hexa), avec le préfix <tt>03</tt> qui signifie que <em>y</em> est impair:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>K = 03F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A</tt></pre>
+</div></div>
+<div class="paragraph"><p>Cette clef publique compressée correspond à la même clef privée, mais sa représentation est différente de celle de la même clef publique non-compressée: si on la convertie en adresse bitcoin en utilisant le double hash (<tt>RIPEMD160(SHA256(K))</tt>) on obtiendra une autre adresse. Cela peut être une source de confusion: 2 adresses bitcoin différentes, mais qui correspondent à la même clef publique (sous forme compressée et non-compressée) et à la même clef privée.</p></div>
+<div class="paragraph"><p>La plupart des clients bitcoin utilisent maintenant les clefs publiques compressées, ce qui permet de réduire fortement la taille des transactions et donc de la blockchain. Néanmoins, tous les clients ne supportent pas encore les clefs publiques compressées. Ceux qui les supportent doivent accepter les transactions provenant de vieux clients qui ne les supportent pas. C&#8217;est particulièrement important lorsqu&#8217;un portemonnaie importe des clefs privées provenant d&#8217;un autre portemonnaie, parce qu&#8217;il devra scanner la blockchain pour y trouver les transactions correspondant à ces clefs. Quelles adresses bitcoin doit-il chercher ? Les adresses correspondant aux clefs publiques compressées ? Ou celles correspondant aux clefs publiques non-compressées ? Les 2 sont valides, correspondent aux même clefs privées, mais restent des adresses différentes!</p></div>
+<div class="paragraph"><p>Pour résoudre ce problème, les portemonnaies récents utilise un format WIF (Wallet Import Format) différent pour indiquer que les clefs privées ont été utilisées pour générer des clefs publiques <em>compressées</em> et donc des adresses bitcoin <em>compressées</em>. Cela permet au portemonnaie qui les importe de distinguer les clefs privées provenant de vieux portemonnaies de celles provenant de portemonnaies récents, et de rechercher dans la blockchain les transactions correspondant aux clefs publiques compressées ou non-compressées selon le cas. Nous examinerons ce processus plus en détail dans la prochaine section.</p></div>
+</div>
+<div class="sect4">
+<h5 id="comp_priv">Clefs privées compressées</h5>
+<div class="paragraph"><p>Ironiquement, l&#8217;expression "clef privée compressée" est trompeuse car les clefs privées exportées au format WIF compressé font un octet <em>de plus</em> que les clef privées "non-compressées", à cause du suffixe 01 ajouté à la fin pour indiquer qu&#8217;elles proviennent d&#8217;un portemonnaie récent et doivent être utilisées pour générer des clefs publiques compressées. En fait, les clefs privées ne sont pas compressées (et ne peuvent pas être compressées). L&#8217;expression "clef privée compressée" signifie en fait "la clef publique issue de cette clef privée doit être compressée". Pour éviter de semer la confusion, on appellera ce format d&#8217;export "WIF compressé" ou "WIF" et on évitera d&#8217;utiliser le terme "compressé" pour les clefs privées.</p></div>
+<div class="paragraph"><p>Attention, ces formats en sont <em>pas</em> interchangeables. Les portemonnaies récents qui utilisent des clefs publiques compressées vont toujours exporter les clefs privées au format WIF compressé (commençant par K ou L). Les portemonnaie plus ancien ne supportant pas les clefs publiques compressées exportent les clefs privées au format WIF (commençant par un 5). L&#8217;objectif est de permettre au portemonnaie qui importe les clefs de savoir s&#8217;il doit rechercher dans la blockchain des adresses et clefs publiques compressées ou non-compressées.</p></div>
+<div class="paragraph"><p>Si un portemonnaie bitcoin supporte les clefs publiques compressées, il les utilisera dans toutes les transactions. Les clefs privées gérées par le portemonnaie seront utilisées pour générer des clefs publiques (i.e. des points sur la courbe) compressées, qui elles-mêmes généreront des adresses compressées, que le retrouvera dans les transactions. Lorsqu&#8217;un portemonnaie qui supporte les clefs publique compressées exporte des clefs privées, il utilise un format WIF modifié: l&#8217;octet <tt>01</tt> est ajouté à la fin de la clef privée, qui est ensuite encodée au format Base58Check: on appelle ce format "WIF compressé", et le résultat commence par K ou L, au lieu de "5" comme c&#8217;est le cas pour les clefs exportées au format WIF (non compressé) par de vieux portemonnaie.</p></div>
+<div class="paragraph"><p><a href="#table_4-4">[table_4-4]</a> montre  la même clef, encodée aux formats WIF et WIF compressé.</p></div>
+<div class="tableblock" id="table_4-4">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 3. Exemple: la même clef, différents formats</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Format </th>
+<th align="left" valign="top"> Clef Privée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Hex</p></td>
+<td align="left" valign="top"><p class="table">1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF</p></td>
+<td align="left" valign="top"><p class="table">5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Hex-compressé</p></td>
+<td align="left" valign="top"><p class="table">1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD_01_</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF-compressed</p></td>
+<td align="left" valign="top"><p class="table">KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Le terme "clef privée compressée" est mal choisi! Les clefs privées ne sont pas compressées, mais les clefs publiques qui en sont dérivées doivent être compressées ainsi que les adresses bitcoin correspondantes. Ironiquement, une clef privée au format "WIF compressé" fait un octet de plus à cause du suffixe 01 ajouté à la fin. </p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementation_des_clefs_et_adresses_en_python">Implementation des clefs et adresses en Python</h3>
+<div class="paragraph"><p>La librairie bitcoin la plus complète en Python est <a href="https://github.com/vbuterin/pybitcointools">pybitcointools</a> développée par  Vitalik Buterin. L&#8217;exemple<a href="#key-to-address_script">[key-to-address_script]</a> utilise la librairie pybitcointools (importée en tant que "bitcoin") pour générer et afficher des clefs et adresses avec différents formats.</p></div>
+<div class="exampleblock" id="key-to-address_script">
+<div class="title">Example 4. Génération et affichage de clefs et adresses avec la librairie pybitcointools</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p><a href="#key-to-address_script_run">[key-to-address_script_run]</a> est le résultat de l&#8217;execution de ce code.</p></div>
+<div class="exampleblock" id="key-to-address_script_run">
+<div class="title">Example 5. Execution de key-to-address-ecc-example.py</div>
+<div class="content">
+<screen>
+$ python key-to-address-ecc-example.py
+Private Key (hex) is:
+ 3aba4162c7251c891207b747840551a71939b0de081f85c4e44cf7c13e41daa6
+Private Key (decimal) is:
+ 26563230048437957592232553826663696440606756685920117476832299673293013768870
+Private Key (WIF) is:
+ 5JG9hT3beGTJuUAmCQEmNaxAuMacCTfXuw1R3FCXig23RQHMr4K
+Private Key Compressed (hex) is:
+ 3aba4162c7251c891207b747840551a71939b0de081f85c4e44cf7c13e41daa601
+Private Key (WIF-Compressed) is:
+ KyBsPXxTuVD82av65KZkrGrWi5qLMah5SdNq6uftawDbgKa2wv6S
+Public Key (x,y) coordinates is:
+ (41637322786646325214887832269588396900663353932545912953362782457239403430124L,
+ 16388935128781238405526710466724741593761085120864331449066658622400339362166L)
+Public Key (hex) is:
+ 045c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec<?pdf-cr?>243bcefdd4347074d44bd7356d6a53c495737dd96295e2a9374bf5f02ebfc176
+Compressed Public Key (hex) is:
+ 025c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec
+Bitcoin Address (b58check) is:
+ 1thMirt546nngXqyPEz532S8fLwbozud8
+Compressed Bitcoin Address (b58check) is:
+ 14cxpo3MBCYYWCgF74SWTdcmxipnGUsPw3
+</screen>
+</div></div>
+<div class="paragraph"><p><a href="#ec_math">[ec_math]</a>  est un autre exemple basé sur la librairie ECDSA Python pour la cryptographie en courbes  elliptiques, sans avoir besoin de librairies bitcoin spécifiques.</p></div>
+<div class="exampleblock" id="ec_math">
+<div class="title">Example 6. Un exemple d&#8217;utilisation des courbes elliptiques pour les clefs bitcoin</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt></tt></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p><a href="#ec_math_run">[ec_math_run]</a> est le résultat de l&#8217;execution de ce script.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Cet exemple utilise <tt>os.urandom</tt>, qui se base sur un générateur de nombres aléatoires cryptographiquement sûr (CSRNG) fourni par le systême d&#8217;exploitation. Sur un OS de type UNIX comme Linux, il les lit depuis le fichier <tt>/dev/urandom</tt>, et sous Windows il appelle <tt>CryptGenRandom()</tt>. Si aucun générateur convenable n&#8217;est disponible, l&#8217;exception <tt>NotImplementedError</tt> est lancée. Bien que le générateur aléatoire utilisé ici soit suffisant pour un exemple, il n&#8217;est <em>pas</em> suffisamment sécurisé pour générer des clefs bitcoin pour un systême en production.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="exampleblock" id="ec_math_run">
+<div class="title">Example 7. Installation de la librairie Python ECDSA et execution du script ec_math.py</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ # Installation du gestionnaire de paquets Python PIP
+$ sudo apt-get install python-pip
+$ # Installation de la librairie Python ECDSA
+$ sudo pip install ecdsa
+$ # execution du script
+$ python ec-math.py
+Secret:  38090835015954358862481132628887443905906204995912378278060168703580660294000
+EC point: (70048853531867179489857750497606966272382583471322935454624595540007269312627, 105262206478686743191060800263479589329920209527285803935736021686045542353380)
+BTC public key: 029ade3effb0a67d5c8609850d797366af428f4a0d5194cb221d807770a1522873</tt></pre>
+</div></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_portemonnaie">Portemonnaie</h3>
+<div class="paragraph"><p>Les portemonnaie sont des conteneurs de clefs privées, implémentés la plupart de temps sous forme de fichiers structurés ou de base de données très simples.
+Il est aussi possible d&#8217;utiliser un  algorithme de génération de clef <em>déterministe</em>. Chaque clef privée est dérivée, grâce à une fonction à sens-unique, d&#8217;une clef précedente, créant ainsi une chaîne de clefs. Il suffit ainsi de connaitre la première clef (aussi appelée <em>clef maître</em>) pour recréer la chaîne et générer toutes les clefs. Dans ce chapitre nous examinerons différentes méthodes de génération de clef et comment elles sont utilisées par les portemonnaie.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Les portemonnaie bitcoin contiennent des clefs, pas de l&#8217;argent. Chaque utilisateur a son portemonnaie qui gère ses clefs: en fait, ce sont des "trousseau de clefs" qui gèrent des paires de clefs publiques/privées (voir <a href="#private_public_keys">[private_public_keys]</a>). Les utilisateurs signent des transactions avec leurs clefs, prouvant ainsi qu&#8217;ils ont le droit de dépenser les sorties des transactions qui leur appartiennent (leurs "bitcoins"). Dans la blockchain, les bitcoins correspondent aux sorties des transactions, que l&#8217;on appelle souvent "vout" ou "txout".</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="random_wallet">Portemonnaie non-déterministes (aléatoires)</h4>
+<div class="paragraph"><p>Dans les premiers clients bitcoin, les portemonnaie généraient leurs clefs privées de façon aléatoire. Ce type de portemonnaie est appelé portemonnaie non-déterministe de type 0. Par exemple, le  client Bitcoin Core génère 100 clefs aléatoires lors de sa première utilisation, et génère ensuite d&#8217;autres clefs si nécessaire, afin que chaque clef ne soit utilisée qu&#8217;une seule fois. On surnomme ce type de portemonnaie "Just un Paquet de Clefs" (JBOK: Just a Bunch Of Keys" en anglais). Ils sont difficiles et fastidieux à gérer (sauvegarde, import de clefs, &#8230;) et on les remplace de plus en plus par des portemonnaie déterministes.  Le problème avec les clefs aléatoires est qu&#8217;il faut toutes les sauvegarder, sinon les fonds associés sont perdus. Il faut donc sauvegarder son portemonnaie très souvent, surtout si on génère beaucoup de clefs. C&#8217;est peu compatible avec la bonne pratique qui est de n&#8217;utiliser chaque adresse que pour une seule transaction. Réutiliser les mêmes adresses crée des liens entre elles et les transactions qui les utilisent, ce qui pose un problème de confidentialité. Les portemonnaie non-déterministyes de type 0 sont un mauvais choix, surtout si l&#8217;on veut éviter de réutiliser les mêmes adresses (ce qui oblige à générer beaucoup de clefs, et sauvegarder son portemonnaie fréquemment). Bien que le client Bitcoin Core intègre un portemonnaie de type 0, son utilisation est déconseillée par les développeurs de Bitcoin Core. <a href="#Type0_wallet">[Type0_wallet]</a> illustre un portemonnaie non-déterministe, qui contient un ensemble de clefs aléatoires.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_portemonnaies_déterministes">Portemonnaies déterministes</h4>
+<div class="paragraph"><p>Les portemonnaie déterministes contiennent des clefs privées qui sont toutes dérivées d&#8217;une même "graine" (valeur d&#8217;initialisation) grâce à une fonction de hash à sens unique. Les clefs privées sont dérivées à partir de cette graine (qui est un nombre aléatoire) et d&#8217;autres données, telles que l&#8217;index de la clef ou son "code chaîne" ("chaincode", voir  <a href="#hd_wallets">[hd_wallets]</a>). La graine est suffisante pour retrouver toutes les clefs d&#8217;un portemonnaie déterministe, et on peut donc ne faire q&#8217;une seule sauvegarde, au moment de la création du portemonnaie. On n&#8217;a besoin que de cette graine pour exporter/importer les clefs, ce qui facilite les transferts entre différents portemonnaie.</p></div>
+<div class="imageblock" id="Type0_wallet">
+<div class="content">
+<img src="images/msbt_0408.png" alt="non-deterministic wallet" />
+</div>
+<div class="title">Figure 8. Portemonnaie non déterministe (aléatoire) de type 0: un ensemble de clefs générées aléatoirement</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mnemonic_code_words">Code mnémonique</h4>
+<div class="paragraph"><p>Pour représnter la graine utilisée par un portemonnaie déterministe, qui est un nombre aléatoire, on utilise un encodage basé sur une suite de mots appelé codes mnémoniques. Connaitre cette suite de mot est suffisant pour retrouver la graine, et donc toutes les clefs du portemonnaie. Lors de sa création, un portemonnaie déterministe va afficher une suite de 12 à 24 codes mnémoniques, que l&#8217;utilisateur va conserver comme sauvegarde du portemonnaie. Elle lui permettra de re-créer les même clefs, avec n&#8217;importe quel portemonnaie compatible. Les codes mnémoniques sont plus facile à lire et écrire que des suites de nombres aléatoires, ce qui les rend plus faciles à utiliser pour sauvegarder les portemonnaie.</p></div>
+<div class="paragraph"><p>Les codes mnémoniques sont définis dans le BIP 39  (voir<a href="#bip0039">[bip0039]</a>), qui n&#8217;est pas encore définitevement accepté mais a encore le status de "proposition". Il existe un autre standard implémenté, avant la rédaction de BIP39, par le portemonnaie  Electrum et basé sur d&#8217;autres codes mnémoniques. BIP0039  est utilisé par le portemonnaie Trezor et par d&#8217;autres implémentations, mais n&#8217;est pas compatible avec le portemonnaie Electrum.</p></div>
+<div class="paragraph"><p>Voici comment BIP0039 défini la création d&#8217;une graine et de son code mnémonique:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Générer un nombre aléatoire (entropie) de 128 à 256 bits.
+</p>
+</li>
+<li>
+<p>
+Générer une checksum en prenant les premiers bits du hash SHA256 de ce nombre
+</p>
+</li>
+<li>
+<p>
+Ajouter cette checksum à la fin du nombre
+</p>
+</li>
+<li>
+<p>
+Découper le résultat en morceaux de 11 bits, et utiliser chaque morceau comme index dans un dictionnaire de 2048 mots prédéfinis
+</p>
+</li>
+<li>
+<p>
+le résultat, qui est une suite de 12 à 24 mots, représente notre code mnémonique.
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p><a href="#table_4-5">[table_4-5]</a> illustre le lien entre la taille du nombre aléatoire (entropie) et le nombre de mots du code mnémonique.</p></div>
+<div class="tableblock" id="table_4-5">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 4. Codes mnémoniques: entropie et nombre de mots</caption>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<thead>
+<tr>
+<th align="left" valign="top">Entropie (bits) </th>
+<th align="left" valign="top"> Checksum (bits) </th>
+<th align="left" valign="top"> Entropie+checksum </th>
+<th align="left" valign="top"> Nombre de mots</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">128</p></td>
+<td align="left" valign="top"><p class="table">4</p></td>
+<td align="left" valign="top"><p class="table">132</p></td>
+<td align="left" valign="top"><p class="table">12</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">160</p></td>
+<td align="left" valign="top"><p class="table">5</p></td>
+<td align="left" valign="top"><p class="table">165</p></td>
+<td align="left" valign="top"><p class="table">15</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">192</p></td>
+<td align="left" valign="top"><p class="table">6</p></td>
+<td align="left" valign="top"><p class="table">198</p></td>
+<td align="left" valign="top"><p class="table">18</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">224</p></td>
+<td align="left" valign="top"><p class="table">7</p></td>
+<td align="left" valign="top"><p class="table">231</p></td>
+<td align="left" valign="top"><p class="table">21</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">256</p></td>
+<td align="left" valign="top"><p class="table">8</p></td>
+<td align="left" valign="top"><p class="table">264</p></td>
+<td align="left" valign="top"><p class="table">24</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Le code mnémonique représente un nombre de 128 à 256 bits, qui est utiliser pour dériver une nombre plus long (512 bits) grâce à la fonction de dérivation de clef PBKDF2. Le résultat est utilisé comme graine pour initialiser un portemonnaie déterministe et calculer toutes ses clefs.</p></div>
+<div class="paragraph"><p>Les tables <xref linkend="table_4-6" xrefstyle="select: labelnumber"/> et <xref linkend="table_4-7" xrefstyle="select: labelnumber"/> illustre quelques exemples de clefs et de codes mnémoniques utilisés pour les générer</p></div>
+<div class="tableblock" id="table_4-6">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 5. Code mnémonique (entropie) sur 128 bits et graine correpondante</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Entropie (128 bits)</strong></p></td>
+<td align="left" valign="top"><p class="table">0c1e24e5917779d297e14d45f14e1a1a</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Code mnémonique (12 mots)</strong></p></td>
+<td align="left" valign="top"><p class="table">army van defense carry jealous true garbage claim echo media make crunch</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Graine (512 bits)</strong></p></td>
+<td align="left" valign="top"><p class="table">3338a6d2ee71c7f28eb5b882159634cd46a898463e9d2d0980f8e80dfbba5b0fa0291e5fb88
+8a599b44b93187be6ee3ab5fd3ead7dd646341b2cdb8d08d13bf7</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock" id="table_4-7">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 6. Code mnémonique sur 256 bits et graine correpondante</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Entropie (256 bits)</strong></p></td>
+<td align="left" valign="top"><p class="table">2041546864449caff939d32d574753fe684d3c947c3346713dd8423e74abcf8c</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Code mnémonique (24 mots)</strong></p></td>
+<td align="left" valign="top"><p class="table">cake apple borrow silk endorse fitness top denial coil riot stay wolf
+luggage oxygen faint major edit measure invite love trap field dilemma oblige</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Graine (512 bits)</strong></p></td>
+<td align="left" valign="top"><p class="table">3972e432e99040f75ebe13a660110c3e29d131a2c808c7ee5f1631d0a977fcf473bee22
+fce540af281bf7cdeade0dd2c1c795bd02f1e4049e205a0158906c343</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="hd_wallets">Portemonnaie déterministe hiérarchique (BIP0032/BIP0044)</h4>
+<div class="paragraph"><p>Les portemonnaie déterministes ont été créés pour faciliter la dérivation de multiples clef privées à partir d&#8217;une "graine" unique. Les portemonnaies déterministes les plus avancés sont les portemonnaie <em>déterministes hiérarchiques</em> souvent appelés <em>portemonnaie HD</em> (HD pour Hierarchical Deterministic en anglais), définis par le standard BIP0032. Les portemonnaie déterministes hiérarchiques permettent de gérer des arbres de clefs: une clef parent peut générer une série de clefs filles, qui peuvent elles-mêmes générer une série de clefs filles, et ainsi de suite sans limite de profondeur. Cette structure en arbre est illustrée ici: <a href="#Type2_wallet">[Type2_wallet]</a>.</p></div>
+<div class="imageblock" id="Type2_wallet">
+<div class="content">
+<img src="images/msbt_0409.png" alt="HD wallet" />
+</div>
+<div class="title">Figure 9. Portemonnaie déterministe hiérarchique de type 2: un arbre de clefs généré à partir d&#8217;une graine unique.</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Si vous développez un portemonnaie bitcoin, faites un portemonnaie HD et respectez les standard BIP0032 et BIP0044.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Les portemonnaie HD offrent 2 avantages significatifs par rapport aux portemonnaie aléatoire. Premierement, les clefs sont gérées sous forme d&#8217;arbre, dont la structure peut être modelée sur la structure opérationnelle d&#8217;une entreprise: une branche peut être utilisée pour recevoir des paiements, une autre pour gérer le change produit par l&#8217;envoi de fonds. On peut aussi faire correspondre les branches aux filialies, aux différents departements ou entités fonctionnelles, ou à différentes catégories comptables.</p></div>
+<div class="paragraph"><p>Le deuxième avantage des portemonnaie HD est que l&#8217;on peut gérer des arbres de clefs publiques sans connaitre les clefs privées correspondantes. On peut donc les utiliser pour recevoir des paiements sur des serveurs non sécurisés, en utilisant une nouvelle clef publique pour chaque transaction. Les clefs publiques n&#8217;ont pas besoin d'être préchargées ou calculées à l&#8217;avance, mais le serveur ne connait pas les clefs privées qui servent à dépenser les fonds reçus.</p></div>
+<div class="sect4">
+<h5 id="_création_d_8217_un_portemonnaie_hd_à_partir_d_8217_une_graine">création d&#8217;un portemonnaie HD à partir d&#8217;une graine</h5>
+<div class="paragraph"><p>Les portemonnaie HD sont initialisés avec une  <em>graine racine</em> unique, qui est un nombre aléatoire de 128, 256 ou 512 bits. Tout le reste est dérivé de cette graine, ce qui permet de le recréer entièrement dans un autre portemonnaie compatible HD. Il est ainsi très facile de sauvegarder, restaurer, exporter et importer des portemonnaie HD, même s&#8217;ils contiennent des milliers ou des millions de clefs, simplement en transférant la graine racine.  Cette graine est souvent représentée sous la forme d&#8217;une <em>liste de mots mnémoniques</em>, comme expliqué dans la section précédente  <a href="#mnemonic_code_words">[mnemonic_code_words]</a>, ce qui la rend plus facile à recopier.</p></div>
+<div class="paragraph"><p>La création d&#8217;une clef maître et d&#8217;un code chaîne pour un portemonnaie HD est illustré ici: <a href="#HDWalletFromSeed">[HDWalletFromSeed]</a>.</p></div>
+<div class="imageblock" id="HDWalletFromSeed">
+<div class="content">
+<img src="images/msbt_0410.png" alt="HDWalletFromRootSeed" />
+</div>
+<div class="title">Figure 10. Création d&#8217;une clef maître et d&#8217;un code chaîne à partir d&#8217;une graine racine</div>
+</div>
+<div class="paragraph"><p>La graine racine est hashée avec l&#8217;algorithme HMAC-SHA512, et le résultat est utilisé pour créer une <em>clef maître</em> (m) et un <em>code chaîne maître</em>.  On utilise ensuite la multiplication en courbes elliptiques pour générer une clef publique maître (M) à partir de (m), comme vu précédemment: <tt>M = m * G</tt>. Le code chaîne sert de source d&#8217;entropie pour les fonctions de dérivation de clefs filles à partir de clefs parents, comme nous le verrons dans la prochaine section.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_dérivation_des_clefs_privées_filles">Dérivation des clefs privées filles</h5>
+<div class="paragraph"><p>Les portemonnaie hiérarchiques déterministes utilisent une <em>fonction de dérivation de clef fille</em> (CKD: Child Key Derivation en anglais) pour dériver les clefs filles des clefs parents.</p></div>
+<div class="paragraph"><p>La fonction de dérivation de clef fille est basé sur une fonction de hash à sens unique qui combine:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Une clef parent publique (clef ECDSA compressée) ou privée
+</p>
+</li>
+<li>
+<p>
+Une graine appelée code chaîne (256 bits)
+</p>
+</li>
+<li>
+<p>
+Un numéro d&#8217;index (entier sur 32 bits)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Le code chaîne permet d&#8217;introduire des données pseudo-aléatoires dans le processus de dérivation, afin que l&#8217;index ne soit pas suffisant pour dériver d&#8217;autres clefs. Ainsi, avoir une clef fille ne permet pas de trouver ses soeurs, à moins de connaître le code chaîne. Le code chaîne initial (à la racine de l&#8217;arbre) est créé à partir de données aléatoires, et les codes chaines utilisés pour les clefs filles sont dérivés du code chaine parent.</p></div>
+<div class="paragraph"><p>Ces trois éléments sont combinés et hashés pour générer les clefs filles de la façon suivante:</p></div>
+<div class="paragraph"><p>La clef publique parent, le code chaîne et l&#8217;index sont hashés avec l&#8217;algorithme HMAC-SHA512 qui produit un hash sur 512 bits. Ce hash est coupé en 2 moitiés de 256 bits. La moitié de droite deviendra le code chaine de la clef fille, la moitié de gauche et l&#8217;index sont ajoutés à la clef privée parent pour donner la clef privée fille. <a href="#CKDpriv">[CKDpriv]</a>, illustre ce processus, avec l&#8217;index 0 pour produire la "0ieme" (première) clef fille de la clef parent.</p></div>
+<div class="imageblock" id="CKDpriv">
+<div class="content">
+<img src="images/msbt_0411.png" alt="ChildPrivateDerivation" />
+</div>
+<div class="title">Figure 11. Dérivation d&#8217;une clef privée fille à partir d&#8217;une clef privée parent</div>
+</div>
+<div class="paragraph"><p>En incrémentant l’index, on peut créer des séries de clefs filles: fille 0, fille 1, fille 2, etc. Chaque clef parent peut avoir 2 milliards de clefs filles.</p></div>
+<div class="paragraph"><p>On peut répéter ce processus à l&#8217;infini: à chaque niveau de l&#8217;arbre, chaque clef fille devenant à son tour une clef parent et peut générer d&#8217;autres clefs filles, et ainsi de suite.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_utilisation_des_clefs_filles">Utilisation des clefs filles</h5>
+<div class="paragraph"><p>Il est impossible de distinguer les clefs privées filles de clefs non-déterministes (aléatoires). Comme la fonction de dérivation est une fonction à sens unique, on ne peut pas retrouver la clef parent à partir de la clef fille. On ne peut pas non plus retrouver ses soeurs. Si vous connaissez la nième clef fille, vous ne pouvez pas retrouver la clef fille n-1 ou n+1 ou n&#8217;importe quelle autre. Pour calculer les clefs filles il est indispensable de connaître la clef parent et le code chaine. Sans celui-ci, on ne pourra pas non plus calculer les petits-enfants du parent: pour calculer une nouvelle branche il faut la clef privée fille et son code chaine.</p></div>
+<div class="paragraph"><p>Alors que peut-on faire avec la clef fille seule ? On peut créer une clef publique et une adresse bitcoin. On peut alors utiliser la clef pour signer des transactions afin de dépenser les fonds reçus à cette adresse.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>On ne peut pas distinguer des clefs privées dérivées, les clefs publiques associées et les adresses bitcoin correspondantes de clefs et adresses générées aléatoirement. Seule le portemonnaie HD qui les a créées connait l&#8217;arbre de clefs dont elles font partie. Une fois créées, elles fonctionnent exactement comme des clefs "normales".</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_clefs_étendues">Clefs étendues</h5>
+<div class="paragraph"><p>Comme vu précédemment, la fonction de dérivation de clefs permet de créer des clefs filles à partir de n&#8217;importe quelle position dans l&#8217;arbre de clefs en combinant trois éléments: une clef, un code chaine, et l&#8217;index de la clef que l&#8217;on veut dériver. Les deux éléments essentiels sont la clef et le code chaine. L&#8217;ensemble clef + code chaine est appelé une <em>clef étendue</em>. Mais on pourrait aussi l&#8217;appeler "clef extensible" car on peut l&#8217;utiliser pour dériver de nouvelles clefs.</p></div>
+<div class="paragraph"><p>Les clefs étendues sont stockées et représentées sous la forme d&#8217;une chaine de 512 bits: 256 bits pour la clef, suivis de 256 bits pour le code chaine. Il y a 2 sortes de clefs étendues: les clefs privées étendues (composée d&#8217;une clef privée et d&#8217;un code chaine) que l&#8217;on peut utiliser pour dériver des clefs privées filles (et ensuite les clefs publiques filles associées), et les clefs publiques étendues (composées d&#8217;une clef publique et d&#8217;une code chaine) que l&#8217;on peut utiliser pour dériver des clefs public filles, comme illustré ici: <a href="#public_key_derivation">[public_key_derivation]</a>.</p></div>
+<div class="paragraph"><p>On peut voir une clef étendue comme la racine d&#8217;une branche dans l&#8217;arbre de clefs d&#8217;un portemonnaie HD. A partir de cette racine on peut dériver le reste de la branche. Avec une clef privée  étendue on peut calculer une branche complète, alors qu&#8217;avec une clef publique étendue on ne peut calculer qu&#8217;une branche de clefs publiques.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Une clef étendue est composée d&#8217;une clef privée ou publique et d&#8217;un code chaine. On peut l&#8217;utiliser pour calculer une branche de l&#8217;arbre de clefs. Si on donne cette clef étendue, on donne l&#8217;accès à l&#8217;ensemble de cette branche.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Les clefs étendues sont encodées au format Base58Check pour être facilement exportées/importées depuis différents portemonnaie compatibles BIP0032. On utilise un préfixe version spécifique, ce qui fait que le résultat commence par "xprv" et "xpub" afin de rendre les clefs facilement identifiables. Les clefs étendues font 512 bits, et elles sont encodées avec des informations supplémentaires (profondeur, identifiant du parent, index&#8230;) ce qui donne un encodage Base58Check beaucoup plus long que ce que nous avons vu jusqu'à présent.</p></div>
+<div class="paragraph"><p>Voici un exemple d&#8217;encodage d&#8217;une clef privée étendue au format Base58Check:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>xprv9tyUQV64JT5qs3RSTJkXCWKMyUgoQp7F3hA1xzG6ZGu6u6Q9VMNjGr67Lctvy5P8oyaYAL9CAWrUE9i6GoNMKUga5biW6Hx4tws2six3b9c</tt></pre>
+</div></div>
+<div class="paragraph"><p>Voic la clef publique étendue correspondante au format Base58Check:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>xpub67xpozcx8pe95XVuZLHXZeG6XWXHpGq6Qv5cmNfi7cS5mtjJ2tgypeQbBs2UAR6KECeeMVKZBPLrtJunSDMstweyLXhRgPxdp14sk9tJPW9</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="public__child_key_derivation">Dérivation des clef publiques filles</h5>
+<div class="paragraph"><p>Comme évoqué précédemment, un des points forts des portemonnaie hiérarchiques déterministes est la possibilité de dériver des clefs publiques filles depuis une clef publique parent, <em>sans</em> connaitre les clefs privées. On a ainsi deux façons de dériver les clefs publiques filles: depuis les clefs privées filles, ou depuis la clef publique parent.</p></div>
+<div class="paragraph"><p>On peut ainsi utiliser une clef publique étendue pour dériver toutes les clefs <em>publiques</em> (et seulement les clefs publiques) de la branche dont elle est la racine.</p></div>
+<div class="paragraph"><p>On peut ainsi déployer des clefs de façon extrêmement sécurisée: sur un serveur (ou une application) on ne déploie que la clef publique étendue, mais aucune clef privée. On peut ainsi créer une infinité de clefs publiques et d&#8217;adresses bitcoin, mais sans pouvoir dépenser les fonds associés. En parallèle, on déploie la clef privée étendue sur un autre serveur sécurisé qui pourra dériver les clefs privées nécessaires pour signer les transactions et dépenser les fonds.</p></div>
+<div class="paragraph"><p>Ce type de déploiement est souvent utilisé dans les solutions de type eCommerce: on déploie la clef publique étendue sur le serveur web de l&#8217;application. En utilisant la fonction de dérivation de clef publique, le serveur web peut dériver une nouvelle adresse bitcoin pour chaque transaction (par exemple pour le panier de l&#8217;utilisateur). Il n&#8217;y a aucune clef privée sur le serveur web, donc aucun risque de vol ou piratage. Sans les portemonnaie HD, il faudrait d&#8217;abord générer des milliers d&#8217;adresses bitcoin sur un autre serveur et ensuite les pré-charger sur le serveur web: ce serait fastidieux et il faudrait sans cesse vérifier que le serveur n&#8217;a pas épuisé toutes ses clefs.</p></div>
+<div class="paragraph"><p>Ce scenario est aussi utilisé pour le stockage de bitcoin offline ("cold storage") et pas les portemonnaie matériels. La clef privée étendue est sauvegardée sur papier ou dans un portemonnaie matériel (comme le portemonnaie matériel Trezor), et la clef publique étendue peut être utilisée en mode connecté pour générer autant d&#8217;adresses bitcoin que l&#8217;on veut. Pour dépenser les fonds, on utilise la clef privée étendue soit via un client en mode déconnecté soir en faisant signer les transactions par le portemonnaie matériel. La dérivation de clefs publiques filles à partir d&#8217;une clef publique parent est illustrée ici: <a href="#CKDpub">[CKDpub]</a></p></div>
+<div class="imageblock" id="CKDpub">
+<div class="content">
+<img src="images/msbt_0412.png" alt="ChildPublicDerivation" />
+</div>
+<div class="title">Figure 12. Dérivation d&#8217;une clef publique fille à partir d&#8217;une clef publique étendue parent</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_dérivation_de_clefs_filles_durcies">Dérivation de clefs filles durcies</h5>
+<div class="paragraph"><p>Pouvoir dériver un arbre de clefs publiques à partir d&#8217;une clef publique étendue est très utile, mais il y a un problème de sécurité. Une clef publique étendue ne permet pas de calculer les clefs privées filles, mais elle contient le code chaine: si on connait une clef privée fille, on peut l&#8217;utiliser pour retrouver les autres. Avec une seule clef privée fille, et le code chaine de la clef parent, on peut retrouver toutes les clefs filles. Et pire encore: on peut aussi retrouver la clef privée parent.</p></div>
+<div class="paragraph"><p>Pour remédier à ce problème, les portemonnaie HD ont une autre fonctione de dérivation, appelée fonction de dérivation <em>durcie</em>, qui "casse" le lien entre la clef publique parent et le code chaine de la clef fille. Pour calculer le code chaine, la fonction de dérivation durcie utilise la clef privée parent (au lieu de la clef publique parent). Cela crée une "barrière" au milieu de la chaine parent/enfant, car ce code chaine ne peut pas être utilisé pour compromettre une clef parent ou la soeur d&#8217;une clef privée. La fonction de dérivation durcie est quasiment identique à la fonction de dérivation de clef privée normale, la seule différence est que l&#8217;on hash la clef privée parent au lieu de la clef publique parent, comme illustré ici: <a href="#CKDprime">[CKDprime]</a>.</p></div>
+<div class="imageblock" id="CKDprime">
+<div class="content">
+<img src="images/msbt_0413.png" alt="ChildHardPrivateDerivation" />
+</div>
+<div class="title">Figure 13. Dérivation d&#8217;une clef durcie; on n&#8217;utilise plus la clef publique parent</div>
+</div>
+<div class="paragraph"><p>La clef privée et le code chaine calculés par la fonction de dérivation durcie sont complétement différent de ceux obtenus avec la fonction de dérivation normale, et on peut les utiliser pour générer des clefs publiques étendues qui ne sont pas vulnérables, car leur code chaine ne peut pas être utilisé pour retrouver des clefs privées. La fonction de dérivation durcie crée un "trou" dans l&#8217;arbre de clefs juste au-dessus des clefs publiques étendues.</p></div>
+<div class="paragraph"><p>Pour faire simple: si vous voulez utilisez une clef publique étendue pour dériver un arbre de clefs publiques sans prendre le risque d&#8217;exposer vos clefs par une fuite du code chaine, vous devriez la dériver d&#8217;une clef durcie et pas d&#8217;une clef normale. La bonne pratique est la suivante: le premier niveau de clefs dérivées d&#8217;une clef maitre est toujours calculé avec la fonction de dérivation durcie, pour éviter de compromettre la clef maitre.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_numérotation_des_clefs_normales_et_durcies">Numérotation des clefs normales et durcies</h5>
+<div class="paragraph"><p>L&#8217;index, ou numéro de clef, utilisé par la fonction de dérivation est un entier sur 32 bits. Pour pouvoir distinguer facilement les clefs normales des clefs durcies, la plage des index est coupée en 2: de 0 à 2<sup>31</sup>–1 (0x0 to 0x7FFFFFFF) pour les  index normaux, et de  2<sup>31</sup> and 2<sup>32</sup>–1 (0x80000000 to 0xFFFFFFFF) pour les index durcis.  Donc, si l&#8217;index d&#8217;une clef est inférieur ou égal à 2<sup>31</sup> c&#8217;est une clef normale, s&#8217;il est supérieur à  2<sup>31</sup> c&#8217;est une clef durcie.</p></div>
+<div class="paragraph"><p>Pour faciliter la représentation des index on utilise la notation suivante: pour les index normaux on compte à partir de 0, pour les index durcis on compte à partir de 0x80000000 et on ajoute le signe "prime". Pour la première clef fille normale l&#8217;index s'écrit donc 0, et pour la première clef durcie (index = 0x80000000) on écrit <markup>0'</markup>. De même, pour la deuxième clef durcie (index = 0x80000001) on écrit 1', et ainsi de suite. Quand voyez i' pour un index de clef, le vrai numéro est 2<sup>31</sup>+i.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_identifiants_chemins_des_clefs_des_portemonnaies_hd">Identifiants (chemins) des clefs des portemonnaies HD</h5>
+<div class="paragraph"><p>Pour identifier les clefs dans un portemonnaie HD, on utilise une représentation de leur "chemin" dans l&#8217;arbre des clefs, avec le caractère "/" utilisé comme séparateur (voir <a href="#table_4-8">[table_4-8]</a>). Pour les clefs privées on représente la clef privée maitre par un "m", et pour les clefs publiques on représente la clef publique maitre par un "M". Par exemple, la première clef privée dérivée de la clef privée maitre est m/0, et la première clef publique est M/0. La deuxième clef fille de la première clef fille est m/0/1, et ainsi de suite.</p></div>
+<div class="paragraph"><p>On suit le chemin en partant de la droite, jusqu'à remonter à la clef maitre. Par exemple, m/x/y/z représente la z-ième fille de la clef m/x/y, qui est la y-ième fille de m/x, qui est la x-ième fille de m.</p></div>
+<div class="tableblock" id="table_4-8">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 7. exemples de chemins de clefs HD</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">chemin HD </th>
+<th align="left" valign="top"> description de la clef</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">m/0</p></td>
+<td align="left" valign="top"><p class="table">Première (0) clef privée fille de la clef privée maitre (m)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">m/0/0</p></td>
+<td align="left" valign="top"><p class="table">Première petite-fille, fille de la première clef privée fille (m/0)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">m/0'/0</p></td>
+<td align="left" valign="top"><p class="table">Première clef fille normale de la première clef fille <em>durcie</em> (m/0')</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">m/1/0</p></td>
+<td align="left" valign="top"><p class="table">Première clef privée fille de la deuxième fille (m/1)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">M/23/17/0/0</p></td>
+<td align="left" valign="top"><p class="table">Première clef publique fille de la première fille de la 18ème fille de la 24ème fille</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parcourir_l_8217_arbre_de_clefs_hd">Parcourir l&#8217;arbre de clefs HD</h5>
+<div class="paragraph"><p>Les arbres de clefs HD offrent beaucoup de possibilités. Chaque clef étendue parent peut générer 4 milliards de clef filles: 2 milliards de clefs normales et 2 milliards de clef durcies. Chaque clef fille peut à son tour générer 4 milliards de clef filles, et ainsi de suite. L&#8217;arbre peut être aussi profond que l&#8217;on veut: on peut générer une infinité de clefs. Il peut alors devenir difficile de s&#8217;y retrouver dans l&#8217;arbre de clef, et en particulier il est délicat de l&#8217;exporter vers un autre portemonnaie, car il y a un infinité de possibilités pour organiser l&#8217;arbre en branches et sous-branches.</p></div>
+<div class="paragraph"><p>Pour mieux gérer cette complexité, il existe 2 BIP qui proposent de standardiser l&#8217;arbre de clefs des portemonnaie HD. BIP0043 propose d&#8217;utiliser l&#8217;index de la première clef fille durcie d&#8217;une branche comme indicateur de "l&#8217;objet" de cette branche. En se conformant à BIP0043, un portemonnaie HD ne doit avoir qu&#8217;une seule branche de niveau 1, dont la structure est définie par cet objet. Par exemple, si un portemonnaie HD contient uniquement la branche m/i'/, l&#8217;objet de cette branche est identifié par l&#8217;index "i".</p></div>
+<div class="paragraph"><p>BIP0044 est une extension de BIP0043 qui propose d&#8217;utiliser comme "objet" l&#8217;index <tt>44</tt>. Tous les portemonnaies HD conformes à BIP0044 n&#8217;ont qu&#8217;une seule branche: m/44'/.</p></div>
+<div class="paragraph"><p>BIP004 défini une structure d&#8217;arbre sur 5 niveaux:</p></div>
+<div class="paragraph"><p><tt>m / objet' / type_de_monnaie' / compte' / change / index_addresse</tt></p></div>
+<div class="paragraph"><p>Le premier niveau "objet" est toujours <tt>44'</tt>. Le deuxième niveau "type_de_monnaie" identifie le type de cryptomonnaie ce qui permet de gérer plusieurs crytomonnaies avec le même portemonnaie HD, chaque cryptomonnaie ayant sa propre branche dédiée. Pour l&#8217;instant, 3 valeurs possibles ont été définies: m/44'/0' pour Buitcoin, <markup>m/44'/1'</markup> pour Bitcoin Testne; et <markup>m/44'/2'</markup> pour Litecoin.</p></div>
+<div class="paragraph"><p>Le troisième niveau, "compte", permet aux utilisateurs de diviser leur portemonnaie en différents comptes, pour des raisons comptables ou organisationnelles. Par exemple, un portemonnaie HD pourrait gérer les 2 comptes suivants: <markup>m/44'/0'/0'</markup> et <markup>m/44'/0'/1'</markup>. Chaque compte correspond à la racine de sa propre sous-branche de clef.</p></div>
+<div class="paragraph"><p>Le quatrième niveau, "change", est séparé en 2 branches, une pour recevoir des fonds et l&#8217;autre pour gérer les adresses de change. On remarquera qu&#8217;on utilise ici des clefs normales, alors qu&#8217;aux niveaux précédents on utilisait des clefs durcies. Ainsi, on peut exporter les clefs publiques étendues correspondant à ces 2 branches vers des environnements non-sécurisés. Les index des adresses utilisées par le portemonnaie sont dérivés de ces 2 branches et forment ainsi le cinquième niveau de l&#8217;arbre, "index_adresse".</p></div>
+<div class="tableblock" id="table_4-9">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 8. Exemples d&#8217;arbres BIP0044</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">chemin HD </th>
+<th align="left" valign="top"> description de la clef</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">M/44'/0'/0'/0/2</p></td>
+<td align="left" valign="top"><p class="table">La troisième clef pour recevoir des fonds, pour le premier compte bitcoin</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">M/44'/0'/3'/1/14</p></td>
+<td align="left" valign="top"><p class="table">La quinzième addresse de change du quatrième compte bitcoin</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">m/44'/2'/0'/0/1</p></td>
+<td align="left" valign="top"><p class="table">La deuxième clef privée du premier compte Litecoin, utilisée pour signer des transactions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_explorer_les_portemonnaie_hd_avec_bitcoin_explorer">Explorer les portemonnaie HD avec Bitcoin Explorer</h5>
+<div class="paragraph"><p>Avec l&#8217;outil en ligne de commande Bitcoin Explorer présenté au chapitre <a href="#ch03_bitcoin_client">[ch03_bitcoin_client]</a>, on peut générer et dériver des clefs déterministes BIP0032, et les afficher sous différents formats: </p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_clefs_et_adresses_concepts_avancés">Clefs et adresses: concepts avancés</h3>
+<div class="paragraph"><p>Dans les prochaines sections, nous éudierons plusieurs utilisations avancées des clefs et adresses: clef privées chiffrées, scripts et adresses multisignatures, adresses personnalisées, et portemonnaie papier.</p></div>
+<div class="sect3">
+<h4 id="_clefs_privées_chiffrées_bip0038">Clefs privées chiffrées (BIP0038)</h4>
+<div class="paragraph"><p>Il faut absolument que les clefs privées restent secrètes. Ce besoin de <em>confidentialité</em> entre en conflit avec un autre besoin tout aussi important: il faut aussi que les clefs privées restent <em>disponibles</em>. En effet faire en sorte que les clefs restent secrètes est nettement plus difficile quand on doit aussi les sauvegarder pour éviter de les perdre. Certains portemonnaie proposent des sauvegardes chiffrées qui contiennent les clefs privées, mais il faut conserver ces sauvegardes, et on peut parfois avoir besoin de transférer les clefs vers un autre portemonnaie - lors d&#8217;une mise à jour par exemple. On peut aussi sauvegarder les clefs privées sur papier (voir <a href="#paper_wallets">[paper_wallets]</a>), ou sur un lecteur externe comme une clef usb. Mais que se passe-t-il si la sauvegarde est perdue ou volée ? Pour adresser ces besoins contradictoires, BIP0038 (voir <a href="#bip0038">[bip0038]</a>) propose un standard pour le chiffrer les clefs privées de façon pratique, portable, et utilisable par de nombreux portemonnaie et clients.</p></div>
+<div class="paragraph"><p>BIP0038 propose un standard pour chiffrer les clefs privées avec une phrase de passe et encoder le résultat au format Base58Check, afin de le rendre facile à sauvegarder et exporter vers d&#8217;autres portemonnaie sans exposer la clef privée. La clef est chiffrée avec l&#8217;algorithme  Advanced Encryption Standard (AES), standardisé par le National Institute of Standards and Technology (NIST) et utilisé pour de nombreuses applications militaires et commerciales.</p></div>
+<div class="paragraph"><p>Le processus de chiffrement proposé par BIP0038 prend en entrée une clef privée, généralement encodée au format WIF (une chaine de caractère au format Base58Check, commençant par "5"), et une phrase de passe (c&#8217;est à dire un long mot de passe) qui est souvent une suite de mot ou un chaine de caractères complexe. Le résultat est encodé au format Base58Check et commence par <tt>6P</tt>. Si vous voyez une clef qui commence par <tt>6P</tt>, cela veut dire qu&#8217;elle est chiffrée et que vous aurez besoin de la phrase de passe pour la déchiffrer et la convertir au format WIF (qui commence par <tt>5</tt>) pour l&#8217;importer dans un portemonnaie. La plupart des portemonnaie reconnaissent les clefs chiffrées au format BIP0038 et demanderont le phrase de passe lors de l&#8217;importation. D&#8217;autres applications, comme le très utile client web <a href="http://bitaddress.org">Bit Address</a> (onglet Wallet Details) peuvent être utilisées pour décrypter les clefs BIP0038.</p></div>
+<div class="paragraph"><p>L&#8217;utilisation la plus courante de BIP0038 est la création de portemonnaie papiers. Si l&#8217;utilisateur choisit une bonne phrase de passe, créer un portemonnaie papier contenant une clef privée chiffrée au format BIP0038 est un moyen incroyablement sécurisé de stocker des bitcoin hors connection ("cold storage").</p></div>
+<div class="paragraph"><p>Utilisez  bitaddress.org pour essayer de déchiffrer les clefs de la table <a href="#table_4-10">[table_4-10]</a>.</p></div>
+<div class="tableblock" id="table_4-10">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 9. Exemples de clefs chiffrées au format BIP0038</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Clef privée (WIF)</strong></p></td>
+<td align="left" valign="top"><p class="table">5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Phrase de passe</strong></p></td>
+<td align="left" valign="top"><p class="table">MyTestPassphrase</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Clef chiffrée (BIP0038)</strong></p></td>
+<td align="left" valign="top"><p class="table">6PRTHL6mWa48xSopbU1cKrVjpKbBZxcLRRCdctLJ3z5yxE87MobKoXdTsJ</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="p2sh_addresses">Adresses Pay-to-Script Hash (P2SH) et Multi-Sig</h4>
+<div class="paragraph"><p>Comme nous l&#8217;avons déja vu, les adresses bitcoin usuelles sont dérivées d&#8217;une clef publique (elle même dérivée d&#8217;une clef privée) et commencent par "1". N&#8217;importe qui peut envoyer des bitcoins vers une adresse commençant par "1" mais il faut la clef privée et le hash de la clef publique pour les dépenser.</p></div>
+<div class="paragraph"><p>Les adresses bitcoin commençant par "3" sont des adresses pay-to-script hash (P2SH), parfois appelées à tort adresses multi-signatures ou multi-sig. Ces adresses ne représentent pas le hash d&#8217;une clef publique, mais le hash d&#8217;un script. Elles ont été proposées par le BIP0016 (voir <a href="#bip0016">[bip0016]</a>) en janvier 2012, et rapidement adoptées car elles offrent beaucoup plus de possibilités que les adresses classiques  pay-to-public-key-hash (P2PKH), qui commencent par "1". Pour utiliser les fonds envoyés vers une adresses P2SH il ne suffit pas de présenter une signature et un hash de clef publique, il faut aussi résoudre les contraintes définies dans le script qui a été hashé pour créeer l&#8217;adresse.</p></div>
+<div class="paragraph"><p>Les adresses "pay-to-script hash" sont créées à partir des scripts des transactions, qui définissent qui peut dépenser les sorties de ces transactions (voir <a href="#p2sh">[p2sh]</a>). Pour encoder une adresse "pay-to-script hash" on utilise le même double hash que pour les adresses, sauf que c&#8217;est le script que l&#8217;on hash et pas la clef publique:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>script hash = RIPEMD160(SHA256(script))</tt></pre>
+</div></div>
+<div class="paragraph"><p>Le résultat est encodé au format Base58Check en utilisant le préfixe 5, ce qui donne des adresses commençant par <tt>3</tt>. Par exemple, on peut générer l&#8217;adresse P2SH <tt>3F6i6kwkevjR7AsAd4te2YB2zZyASEm1HM</tt> avec l&#8217;outil Bitcoin Explorer  et les commandes  <tt>script-encode</tt>, <tt>sha256</tt>, <tt>ripemd160</tt>, et <tt>base58check-encode</tt> (voir<a href="#libbitcoin">[libbitcoin]</a>) de la façon suivante:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ echo dup hash160 [ 89abcdefabbaabbaabbaabbaabbaabbaabbaabba ] equalverify checksig &gt; script
+$ bx script-encode &lt; script | bx sha256 | bx ripemd160 | bx base58check-encode --version 5
+3F6i6kwkevjR7AsAd4te2YB2zZyASEm1HM</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Les transactions P2SH ne sont pas forcément des transactions multi-signature, même si c&#8217;est souvent le cas. Le script qui est hashé peut implémenter d&#8217;autres types de transactions.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect4">
+<h5 id="_adresses_multi_signature_et_p2sh">Adresses multi-signature et P2SH</h5>
+<div class="paragraph"><p>Aujourd&#8217;hui, les adresses P2SH représentent le plus souvent des scripts multi-signature. Comme leur nom l&#8217;indique, pour résoudre ces scripts et donc dépenser les fonds il faut plus d&#8217;une signature: il faut présenter M signatures (M est appelé le "seuil") qui soient valables pour M clefs parmi N clefs possibles, avec M plus petit ou égal à N. On parle aussi de multi-signature M-sur-N (M-of-N). Par exemple, notre ami Bob le propriétaire du café de <a href="#ch01_intro_what_is_bitcoin">[ch01_intro_what_is_bitcoin]</a> pourrait utiliser des adresses multi-signature 1-sur-2, les 2 clefs étant la sienne et celle de sa femme. De cette façon, sa femme ou lui peuvent dépenser les fonds, un peu comme un compte bancaire joint ou les 2 époux peuvent signer des chèques. De la même façon, Gopesh, le web designer que Bob a engagé pour faire son site web, pourrait utiliser des adresses multi-signature 2-sur-3, pour être certain que les fonds ne peuvent être dépensés que si au moins 2 associés ont signés la transaction.</p></div>
+<div class="paragraph"><p>Au chapitre <a href="#transactions">[transactions]</a> nous étudierons comment créer des transactions qui dépensent les fonds envoyés vers des adresses P2SH (et multi-signature).</p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_adresses_personnalisées">Adresses personnalisées</h4>
+<div class="paragraph"><p>Les adresses personnalisées sont des adresses bitcoin valides mais qui contiennent des mots ou des messages. Par exemple, <tt>1LoveBPzzD72PUXLzCkYAtGFYmK5vYNR33</tt> est une adresse valide qui commence par le mot "Love". Pour générer une adresse personnalisée, il faut essayer des milliards de clefs privées, jusqu'à ce que l&#8217;adresse obtenue contienne le mot recherché. Il existe quelques optimisations possible mais globalement, on tire une clef privée au sort, on génère la clef publique correspondante, puis l&#8217;adresse à partir de la clef publique, et on vérifie si l&#8217;adresse correspondant à la personnalisation souhaitée, en répétant l&#8217;opération plusieurs milliards de fois si nécessaire.</p></div>
+<div class="paragraph"><p>Une fois que l&#8217;on a trouvé la clef privée qui permet de générer l&#8217;adresse personnalisée voulue, on utilise cette adresse comme n&#8217;importe quelle autre adresse bitcoin. Les adresses personnalisées offrent exactement la même sécurité que les autres adresses, et se basent sur les mêmes algorithmes (ECC et SHA). Il n&#8217;est pas plus facile de retrouver la clef privée que pour une adresse normale.</p></div>
+<div class="paragraph"><p>Au chapitre <a href="#ch01_intro_what_is_bitcoin">[ch01_intro_what_is_bitcoin]</a>, nous avions fait la connaissance d&#8217;Eugenia, qui dirige une association caritative aux Philippines. Supposons qu&#8217;elle souhaite organiser une collecte en bitcoin, et veuille utiliser une adresse personnalisée commençant par "1Kids" pour faire la promotion de sa collecte. Regardons comment générer cette adresse, et l&#8217;impact sur la sécurité de la collecte.</p></div>
+<div class="sect4">
+<h5 id="_génération_d_8217_une_adresse_personnalisée">Génération d&#8217;une adresse personnalisée</h5>
+<div class="paragraph"><p>Il est important de garder à l&#8217;esprit qu&#8217;une adresse bitcoin n&#8217;est qu&#8217;un nombre représenté en base 58. Chercher une adresse commençant par "1Kids" revient à chercher une adresse comprise entre <tt>1Kids11111111111111111111111111111</tt> et <tt>1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz</tt>. Il y a environ 58<sup>29</sup> (environ1.4 * 10<sup>51</sup>) adresses entre ces 2 valeurs, qui commencent toutes par "1Kids". La table <a href="#table_4-11">[table_4-11]</a> décrit les plages d&#8217;adresses commençant par "1Kids".</p></div>
+<div class="tableblock" id="table_4-11">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 10. Les plages d&#8217;adresses commençant par "1Kids"</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>De</strong></p></td>
+<td align="left" valign="top"><p class="table"><tt>1Kids11111111111111111111111111111</tt></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"></p></td>
+<td align="left" valign="top"><p class="table"><tt>1Kids11111111111111111111111111112</tt></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"></p></td>
+<td align="left" valign="top"><p class="table"><tt>1Kids11111111111111111111111111113</tt></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"></p></td>
+<td align="left" valign="top"><p class="table"><tt>&#8230;</tt></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>A</strong></p></td>
+<td align="left" valign="top"><p class="table"><tt>1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Regardons à quel nombre "1Kids" correspond en base 58, et essayons de calculer la probabilité de trouver une adresse correspondante (voir <a href="#table_4-12">[table_4-12]</a>). Un PC de bureau standard, sans matériel dédié, peut essayer environ 100 000 clefs par secondes.</p></div>
+<div class="tableblock" id="table_4-12">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 11. Probabilité de trouver une adresse personnalisée (commençant par 1KidsCharity) et temps moyen pour la trouver sur un PC de bureau.</caption>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<thead>
+<tr>
+<th align="left" valign="top"> Longueur</th>
+<th align="left" valign="top"> Mot recherché</th>
+<th align="left" valign="top"> Fréquence</th>
+<th align="left" valign="top"> Temps moyen de recherche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">1</p></td>
+<td align="left" valign="top"><p class="table">1K</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur  58</p></td>
+<td align="left" valign="top"><p class="table">&lt; 1 milliseconde</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">2</p></td>
+<td align="left" valign="top"><p class="table">1Ki</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 3364</p></td>
+<td align="left" valign="top"><p class="table">50 millisecondes</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">3</p></td>
+<td align="left" valign="top"><p class="table">1Kid</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 195000</p></td>
+<td align="left" valign="top"><p class="table">&lt; 2 secondes</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4</p></td>
+<td align="left" valign="top"><p class="table">1Kids</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 11 millions</p></td>
+<td align="left" valign="top"><p class="table">1 minute</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">5</p></td>
+<td align="left" valign="top"><p class="table">1KidsC</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 656 million</p></td>
+<td align="left" valign="top"><p class="table">1 heure</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">6</p></td>
+<td align="left" valign="top"><p class="table">1KidsCh</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 38 milliards</p></td>
+<td align="left" valign="top"><p class="table">2 days</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">7</p></td>
+<td align="left" valign="top"><p class="table">1KidsCha</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 2.2 trillions</p></td>
+<td align="left" valign="top"><p class="table">3–4 mois</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">8</p></td>
+<td align="left" valign="top"><p class="table">1KidsChar</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 128 trillions</p></td>
+<td align="left" valign="top"><p class="table">13–18 ans</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">9</p></td>
+<td align="left" valign="top"><p class="table">1KidsChari</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 7 quadrillions</p></td>
+<td align="left" valign="top"><p class="table">800 ans</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">10</p></td>
+<td align="left" valign="top"><p class="table">1KidsCharit</p></td>
+<td align="left" valign="top"><p class="table">1 clef sur 400 quadrillions</p></td>
+<td align="left" valign="top"><p class="table">46,000 ans</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">11</p></td>
+<td align="left" valign="top"><p class="table">1KidsCharity</p></td>
+<td align="left" valign="top"><p class="table">1 sur 23 quintillions</p></td>
+<td align="left" valign="top"><p class="table">2.5 millions d&#8217;années</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Comme vous pouvez le constater, Eugenia n&#8217;est pas prête d&#8217;avoir son adresse "1KidsCharity", même en utilisant des millers d&#8217;ordinateurs. Chaque caractère supplémentaire multiplie le temps de recherche par 58. Chercher des adresses commençant par des motifs de plus de 7 lettres se fait en général sur des PC dédiés disposant de plusieurs  processeurs graphiques (GPUs). Ce sont souvent d&#8217;ancien mineurs de bitcoin qui ne sont plus rentables mais qu&#8217;on peut utiliser pour chercher des adresses personnalisées. Ce type de calcul est beaucoup plus rapide (plusieurs ordres de grandeur) sur GPU que sur un CPU généraliste.</p></div>
+<div class="paragraph"><p>Pour générer une adresse personnalisée il est aussi possible de s&#8217;adresser à un "pool" (regroupement) spécialisé comme <a href="http://vanitypool.appspot.com">Vanity Pool</a>. Un "pool" permet à des personnes possédant des GPU de se regrouper et de gagner de l&#8217;argent en cherchant des adresses personnalisées. Pour une somme modique (0.01 bitcoin soit environ $5 au moment de l'écriture de ce livre) Eugenia peut acheter une adresse personnalisée commençant par un motif de 7 caractères, et avoir le résultat en quelques heures au lieu d&#8217;attendre plusieurs mois en faisant la recherche sur un ordinateur de bureau.</p></div>
+<div class="paragraph"><p>La génération d&#8217;une adresse personnalisée est une recherche par force brute: on essaie une clef au hasard, on vérifie si l&#8217;adresse contient le motif souhaité, on recommence jusqu'à ce qu&#8217;on ait trouvé. <a href="#vanity_miner_code">[vanity_miner_code]</a> est un exemple de "mineur" d&#8217;adresses personnalisées écrit en C++ et basé sur la librarie  libbitcoin que nous avons déja vu au chapitre <a href="#alt_libraries">[alt_libraries]</a>.</p></div>
+<div class="exampleblock" id="vanity_miner_code">
+<div class="title">Example 8. Mineur d&#8217;adresses personnalisées</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Cet exemple utilise <tt>std::random_device</tt>. Certaines implémentations utilisent un générateur aléatoire cryptographiquement sur (CSRNG) fourni pas l&#8217;OS. Dans le cas d&#8217;OS de type UNIX, comme Linux, ces nombres sont lus depuis le fichier <tt>/dev/urandom</tt>. Le générateur aléatoire utilisé ici est suffisant pour une démonstration, mais il n&#8217;est <em>pas assez sécurisé</em> pour une utilisation en production.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Ce code soit être compilé avec un compilateur C<tt> et linké avec la librarie libbitcoin (qui doit d&#8217;abord être installée). Pour exécuter l&#8217;exemple, lancez le programme  </tt>vanity-miner++ sans paramètres (voir <a href="#vanity_miner_run">[vanity_miner_run]</a>), il essaiera de trouver une adresse personnalisée commençant par "1kid".</p></div>
+<div class="exampleblock" id="vanity_miner_run">
+<div class="title">Example 9. Compilation et exécution du programme vanity-miner</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>Il ne faut que quelques secondes pour trouver une adresse commençant par "kid", comme nous pouvons le mesurer avec la commande unix <tt>time</tt>. Essayez de changer le motif recherché dans le code source et regardez combien il faut de temps pour trouver un motif de 4 ou 5 caractères! </p></div>
+</div>
+<div class="sect4">
+<h5 id="_sécurité_des_adresses_personnalisées">Sécurité des adresses personnalisées</h5>
+<div class="paragraph"><p>Les adresses personnalisées peuvent être utilisées pour renforcer ou affaiblir la sécurité de vos bitcoins, et doivent être vues comme une arme à double tranchant. Une adresse personnalisée très distinctive peut être un atout en terme de sécurité, car il sera difficile à un attaquant de la remplacer par son adresse pour tromper vos clients. Mais il est aussi possible pour un attaquant de générer une adresse personnalisée qui <em>ressemble</em> à n&#8217;importe quelle autre (ou même qui ressemble à une autre adresse personnalisée) pour tromper vos clients.</p></div>
+<div class="paragraph"><p>Eugenia pourrait utiliser une adresse de dons aléatoire (par exemple <tt>1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy</tt>) ou une adresse personnalisée commençant par 1Kids et facilement reconnaissable.</p></div>
+<div class="paragraph"><p>Dans les 2 cas, utiliser une adresse fixe (plutôt qu&#8217;une adresse générée dynamiquement, pour chaque donneur) est dangereux car un pirate pourrait attaquer votre site et remplacer cette adresse par la sienne, et ainsi capter les dons. Si vous publiez votre adresse de dons à différents endroits, vos utilisateurs peuvent essayer de vérifier visuellement qu&#8217;ils paient vers la bonne adresse, qui apparait sur votre site, vos emails, etc&#8230;. Dans le cas d&#8217;une adresse aléatoire comme <tt>1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy</tt>, l&#8217;utilisateur moyen se contentera de vérifier que l&#8217;adresse commence bien par "1J7mdg". Utilisant un générateur d&#8217;adresses personnalisées, un attaquant pourrait la remplacer par une adresse qui commence de la même façon, voir <a href="#table_4-13">[table_4-13]</a>.</p></div>
+<div class="tableblock" id="table_4-13">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 12. Génération d&#8217;une adresse personnalisée qui ressemble à une adresse aléatoire</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Adresse aléatoire originale</strong></p></td>
+<td align="left" valign="top"><p class="table">1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Adresse personnalisée(mêmes 4 premiers caractères)</strong></p></td>
+<td align="left" valign="top"><p class="table">1J7md1QqU4LpctBetHS2ZoyLV5d6dShhEy</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Adresse personnalisée(mêmes 5 premiers caractères)</strong></p></td>
+<td align="left" valign="top"><p class="table">1J7mdgYqyNd4ya3UEcq31Q7sqRMXw2XZ6n</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Adresse personnalisée(mêmes 6 premiers caractères)</strong></p></td>
+<td align="left" valign="top"><p class="table">1J7mdg5WxGENmwyJP9xuGhG5KRzu99BBCX</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Est-ce que les adresses personnalisées améliorent la sécurité? Si Eugenia utilise l&#8217;adresse <tt>1Kids33q44erFfpeXrmDSz7zEqG2FesZEN</tt>, ses utilisateurs vont probablement vérifier que l&#8217;adresse de dons commence bien par "1Kids33" et obliger un attaquant à générer une adresse personnalisée dont les 6 premiers caractères sont les mêmes (2 de plus que "1Kids"), soit un effort 3364 fois (58 &#x00D7; 58) plus important que pour le calcul de l&#8217;adresse d&#8217;Eugenia. En gros, l&#8217;investissement d&#8217;Eugenia dans une adresse personnalisée oblige un attaquant à générer une adresse personnalisée plus couteuse. Si Eugenia avait voulu une adresse personnalisée en choisissant les 8 premiers caractères, l&#8217;attaquant devrait sans doute spécifier les 10 premiers, ce qui serait infaisable sur un ordinateur personnel et très couteux en passant par un mineur dédié ou un pool de minage. Ainsi ce qui est abordable en termes de couts pour Eugenia devient trop couteux pour un attaquant, surtout si les gains potentiels de la fraude ne couvrent pas la génération d&#8217;une adresse personnalisée. </p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="paper_wallets">Portemoinnaie papier</h4>
+<div class="paragraph"><p>Les portemonnaie papier sont des clefs privées bitcoin imprimées sur papier. On peut aussi imprimer les adresses bitcoin associées mais ce n&#8217;est pas obligatoire car on peut toujours les générer à partir des clefs privées. Les portemonnaie papier sont une bonne solution de sauvegarde ou de stockage en mode déconnecté ("cold storage"). Utilisé comme sauvegarde, cela permet de se protéger contre une panne de disque dur, la perte ou le vol de son ordinateur, ou la suppression accidentelle de ses clefs. Utilisé comme "cold storage", un portemonnaie papier dont les clefs ont été générées sur un ordinateur non connecté à internet, et qui n&#8217;ont jamais été importées sur un ordinateur connecté, est à l&#8217;abri des hackers, key-loggers et autre piratages.</p></div>
+<div class="paragraph"><p>Il existe beaucoup de portemonnaie papier, mais à la base il s&#8217;agit simplement de clefs et adresses imprimées sur papier. <a href="#table_4-14">[table_4-14]</a> est un exemple de portemonnaie papier le plus simple possible.</p></div>
+<div class="tableblock" id="table_4-14">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 13. Le portemonnaie papier le plus simple — une clef privée et une adresse bitcoin imprimées sur du papier</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Adresse publique</th>
+<th align="left" valign="top">Clef privée (WIF)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">1424C2F4bC9JidNjjTUZCbUxv6Sa1Mt62x</p></td>
+<td align="left" valign="top"><p class="table">5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Pour générer un portemonnaie papier on utilise des outils comme le générateur JavaScript  <em>bitaddress.org</em>. Cette page contient le code nécessaire à la génération de clef et de portemonnaie papier dans la navigateur, même sans connexion internet. Pour l&#8217;utiliser, sauvez la page HTML sur disque, ou sur une clef USB. Déconnectez-vous d&#8217;internet et ouvrez la page HTML depuis un navigateur. Encore mieux: bootez sur un OS vierge, en utilisant un Linux sur CD bootable par exemple. Vous pourrez ensuite créer des clefs et les imprimer avec une imprimante reliée par un cable USB, pour obtenir un portemonnaie papier dont les clefs n&#8217;existe que sur papier et n&#8217;ont jamais été stockées sur un système connecté à internet. Il n&#8217;y a plus qu'à le ranger dans un coffre ignifugé et "envoyer" des bitcoins vers les adresses du portemonnaie pour avoir une solution de "cold storage" simple mais très sécurisée. <a href="#paper_wallet_simple">[paper_wallet_simple]</a> montre un portemonnaie papier généré avec bitaddress.org.</p></div>
+<div class="imageblock" id="paper_wallet_simple">
+<div class="content">
+<img src="images/msbt_0414.png" alt="images/msbt_0414.png" />
+</div>
+<div class="title">Figure 14. Exemple de portemonnaie papier simple généré sur bitaddress.org</div>
+</div>
+<div class="paragraph"><p>Le problème avec les portemonnaie papier c&#8217;est qu&#8217;on peut les voler. Un voleur qui a accès au portemonnaie peut le voler ou le prendre en photo et récupérer les bitcoins associés à ses clefs. On peut utiliser un portemonnaie papier plus avancé dont les clefs sont chiffrées selon le standard BIP0038. Les clefs sont protégées par une phrase de passe mémorisée par l&#8217;utilisateur, et le portemonnaie est inutilisable sans cette phrase. C&#8217;est une meilleure solution qu&#8217;un portemonnaie chiffré car les clefs n&#8217;ont jamais été sur un ordinateur connecté: il faut les voler dans un coffre ou un système de stockage sécurisé. <a href="#paper_wallet_encrypted">[paper_wallet_encrypted]</a>montre un portemonnaie papier dont les clefs privées sont chiffrées (BIP0038) créé avec bitaddress.org.</p></div>
+<div class="imageblock" id="paper_wallet_encrypted">
+<div class="content">
+<img src="images/msbt_0415.png" alt="images/msbt_0415.png" />
+</div>
+<div class="title">Figure 15. Exemple de portemonnaie papier chiffré généré sur bitaddress.org.  La phrase de passe est "test".</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bien que l&#8217;on puisse envoyer des fonds vers un portemonnaie papier en plusieurs fois, il est conseillé de tout retirer en une seule fois, et de tout dépenser. En effet si on ne dépense pas tout certains portemonnaie vont générer une adresse de change. De plus, si l&#8217;ordinateur utilisé pour signer la transaction est compromis, on risque de dévoiler la clef privée. En dépensant tout en une fois, on diminue le risque de dévoiler la clef. Si vous n&#8217;avez besoin que d&#8217;une petite partie des fonds, envoyez le reste vers un autre portemonnaie papier dans la même transaction.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Il existe une grande variété de portemonnaie papier (design, format, &#8230;). Certains sont destinés à être donnés en cadeau et suivent une thématique précise (Noel, fêtes de fin d&#8217;année). D&#8217;autres sont prévus pour être conservés dans un coffre, la clef privée étant protégée (par un film opaque, parce que le portemonnaie est plié et collé avec une bande adhésive de sécurité). On peut voir ici <xref linkend="paper_wallet_bpw" xrefstyle="select: labelnumber"/> through <xref linkend="paper_wallet_spw" xrefstyle="select: labelnumber"/> différents portemonnaie papier et leur caractéristiques.</p></div>
+<div class="imageblock" id="paper_wallet_bpw">
+<div class="content">
+<img src="images/msbt_0416.png" alt="images/msbt_0416.png" />
+</div>
+<div class="title">Figure 16. Porte monnaie vendu par bitcoinpaperwallet.com, la clef est protégée par un volet qui se replie.</div>
+</div>
+<div class="imageblock" id="paper_wallet_bpw_folded">
+<div class="content">
+<img src="images/msbt_0417.png" alt="images/msbt_0417.png" />
+</div>
+<div class="title">Figure 17. Portemonnaie bitcoinpaperwallet.com replié, la clef privée est masquée.</div>
+</div>
+<div class="paragraph"><p>Sur d&#8217;autres portemonnaie, on trouve plusieurs copies des clefs et adresses sur des coupons détachables, ce qui permet de stocker plusieurs copies et de les protéger contre les incendies, inondations et autres désastres naturels.</p></div>
+<div class="imageblock" id="paper_wallet_spw">
+<div class="content">
+<img src="images/msbt_0418.png" alt="images/msbt_0418.png" />
+</div>
+<div class="title">Figure 18. Portemonnaie papier avec plusieurs copies de la clef sur des coupons détachables.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:56:55 UTC
+</div>
+</div>
+</body>
+</html>

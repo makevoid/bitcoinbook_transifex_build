@@ -1,0 +1,1826 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch03_bitcoin_client">A bitcoin kliens</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bitcoin_core_a_referencia_implementáció">Bitcoin Core – a referencia implementáció</h3>
+<div class="paragraph"><p>A <em>Bitcoin Core</em> referencia kliens, más néven a Satoshi kliens a bitcoin.org -ról tölthető le. A referencia kliens  a bitcoin rendszer összes részét megvalósítja:van benne pénztárca, tranzakció ellenőrzés, mely a tranzakciós főkönyv (a blokklánc) teljes másolatára épül, és egy teljes értékű peer-to-peer hálózat csomópont.</p></div>
+<div class="paragraph"><p>A referencia kliens a <a href="http://bitcoin.org/en/choose-your-wallet">http://bitcoin.org/en/choose-your-wallet</a> web helyről, a „Bitcoin Core” választásával tölthető le. Az operációs rendszertől függően egy végrehajtható installáló program fog letöltődni. A Windows esetén ez egy ZIP archívum vagy egy EXE végrehajtható program. A MAC OS esetén egy .dmg disk kép. A Linux változatok az Ubuntu esetén egy PPA csomagot vagy egy tar.gz archívumot tartalmaznak. Az ajánlott klienseket felsoroló bitcoin.org lap a <a href="#bitcoin-choose-client">[bitcoin-choose-client]</a> ábrán látható.</p></div>
+<div class="imageblock" id="bitcoin-choose-client">
+<div class="content">
+<img src="images/msbt_0301.png" alt="bitcoin choose client" />
+</div>
+<div class="title">Figure 1. A bitcoin kliens kiválasztása a bitcoin.org webhelyen</div>
+</div>
+<div class="sect3">
+<h4 id="_a_bitcoin_core_kliens_első_futattása">A Bitcoin Core kliens első futattása</h4>
+<div class="paragraph"><p>Ha egy végrehajtható csomagot, például egy .exe, .dmg, vagy PPA csomagot töltöttünk le, akkor ugyanúgy installálhatjuk az operációs rendszerünkön, mint bármely más alkalmazást. A Windows esetében futtassuk az .exe állományt, és lépésről lépésre kövessük az utasításokat. A Mac OS esetében indítsuk el a .dmg-t, és húzzuk a Bitcoin-QT ikont az <em>Alkalmazások</em> mappába. Az Ubuntu esetében a File Explorer-ben kattintsunk duplán a PPA-ra, ennek hatására megnyílik a package manager, amellyel installálható a csomag. Az installálás befejeződése után egy új „Bitcoin-Qt” alkalmazás jelenik meg az alkalmazások között. Az ikonon történő dupla kattintással indítsuk el a bitcoin klienst.</p></div>
+<div class="paragraph"><p>A Bitcoin Core első futtatásakor megkezdődik a blokklánc letöltése. A letöltési folyamat több napig tarthat (lásd <a href="#bitcoin-qt-firstload">[bitcoin-qt-firstload]</a>). Hagyjuk, hadd fusson a háttérben, amíg meg nem jelenik rajta az egyenleg mellett, hogy „Szinkronban” („Synchronized”), és már nem azt jelzi ki, hogy „Nincs szinkronban” („Out of sync”).</p></div>
+<div class="imageblock" id="bitcoin-qt-firstload">
+<div class="content">
+<img src="images/msbt_0302.png" alt="bitcoin-qt first run" />
+</div>
+<div class="title">Figure 2. A Bitcoin Core képernyője a blokklánc inicializálása során</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A Bitcoin Core a tranzakciós nyilvántartás (blokklánc) egy teljes másolatát állítja elő, melyben a bitcoin hálózat kezdete, vagyis 2009 óta lezajlott összes tranzakció megtalálható. Ez egy jó pár gigabájt méretű adathalmaz (2013 végén kb. 16 GB volt a mérete), és pár nap alatt, fokozatosan töltődik le. A kliens csak a blokklánc összes adatának letöltése után képes a tranzakciók feldolgozására vagy a számla egyenlegek módosítására . A letöltés ideje alatt a kliens az egyenleg mellett az jelzi ki, hogy „Nincs szinkronban” („Out of sync”), az ablak alján pedig azt, hogy „Szinkronizálás a hálózattal” ("Synchronizing"). Ellenőrizze, hogy van-e elég szabad hely a diszken, valamint elegendő sávszélesség és idő áll-e rendelkezésre a kezdeti szinkronizáláshoz.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_bitcoin_core_kliens_lefordítása_a_forráskódból">A Bitcoin Core kliens lefordítása a forráskódból</h4>
+<div class="paragraph"><p>A fejlesztők azt is megtehetik, hogy ZIP archívumkélnt letöltik a teljes forrást, vagy a Github-ról klónozzák a hiteles forráshalmazt. Menjen a <a href="https://github.com/bitcoin/bitcoin">GitHub bitcoin web lapra</a>, és válassza a „Download ZIP” gombot a jobb oldalról. Egy másik lehetőség az, ha a git parancssal létrehozza a forráskód egy helyi másolatát a rendszerén. A lenti példában egy Linux vagy Mac OS alatt kiadott Unix-szerű paranccsal fogjuk klónozni a forrás kódot:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ git clone https://github.com/bitcoin/bitcoin.git
+Cloning into 'bitcoin'...
+remote: Counting objects: 31864, done.
+remote: Compressing objects: 100% (12007/12007), done.
+remote: Total 31864 (delta 24480), reused 26530 (delta 19621)
+Receiving objects: 100% (31864/31864), 18.47 MiB | 119 KiB/s, done.
+Resolving deltas: 100% (24480/24480), done.
+$</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Az utasítások és azok kimenete verzióról verzióra változhat. Kövesse a forráskód melletti dokumentációt, még akkor is, ha az különbözik attól, amit itt lát, és ne lepődjön meg akkor sem, ha a képernyőjén megjelenő kimenet kicsit különbözik attól, mint amit az itteni példák tartalmaznak.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>A klónozási művelet befejeződése után a forráskódról egy teljes másolat lesz a helyi <em>bitcoin</em> könyvtárban. Menjen ebbe a könyvtárba. Gépelje be a <tt>cd bitcoin</tt> parancsot:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ cd bitcoin</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ha a git clone parancsban semmi sem volt megadva,  akkor a helyi példány a legfrisebb kóddal lesz szinkronban, ami akár a bitcoin kliens egy nem stabil vagy „béta” verziója is lehet. A kód lefordítása előtt egy release <em>tag</em> (<em>cimke</em>) megadásával egy adott verzió választható ki. A tag (cimke) kulcsszó a helyi másolatot a kódtár egy adott pillanatképével szinkronizálja. A fejlesztők a cimkék használatával tudják egy verziószámmal megjelelölni a kód egy adott verzióját . Azt, hogy milyen cimkék vannak, a <tt>git tag</tt> paranccsal írathatjuk ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ git tag
+v0.1.5
+v0.1.6test1
+v0.2.0
+v0.2.10
+v0.2.11
+v0.2.12
+
+[... sok egyéb cimke ...]
+
+v0.8.4rc2
+v0.8.5
+v0.8.6
+v0.8.6rc1
+v0.9.0rc1</tt></pre>
+</div></div>
+<div class="paragraph"><p>A cimkék listája a bitcoin összes kibocsájtott változatát tartalmazza. Megállapodás szerint azoknak a jelölteknek, melyek tesztelésre szolgálnak, „rc” az utótagja (ami a <em>release cadidate</em> kezdőbebűinek felel meg). A stabil változatoknak, melyek éles rendszereken futtathatók, nincs utótagjuk. A fenti listából a legmagasabb verziójú változatot választjuk, ami az adott időpontban a v0.9.0rc1. Ahhoz, hogy a helyi kód ezzel a változattal legyen szinkronban, a <tt>git checkout</tt> parancsot használjuk:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ git checkout v0.9.0rc1
+Note: checking out 'v0.9.0rc1'.
+
+HEAD is now at 15ec451... Merge pull request #3605
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>A forráskód tartalmaz némi dokumentációt is, melyek különféle állományokban találhatók. Nézze át a bitcoin könyvtár <em>README.md</em> állományában található dokumentációt. Ehhez gépelje be a prompt-on: <tt>more README.md</tt>, és lapozásra használja a szóköz billentyűt. Ebben a fejezetben egy parancssori bitcoin klienst fogunk újraépíteni, melyet a Linux-on <tt>bitcoind</tt>-nek hívnak. Nézze át, hogy hogyan kell az ön platformján a bitcoind parancssori klienst lefordítani, ehhez gépelje be: <tt>more doc/build-unix.md</tt> . A Mac OSX és a Windows esetében az utasítások a <em>doc</em> könyvtárban, a <em>build-osx.md</em> vagy a <em>build-msw.md</em> állományokban vannak.</p></div>
+<div class="paragraph"><p>Gondosan nézze át az újraépítés előfeltételeit, melyek a dokumentáció első részében találhatók. Az itt felsorolt könyvtáraknak a rendszerben léteznie kell, mielőtt megkezdené a fordítást. Ha az előfeltételek nem teljesülnek, akkor az újraépítési folyamat hibával ér véget. Ha azért képződött hiba, mert valamelyik előfeltétel nem teljesült, akkor a megfelelő könyvtár installálása után a build folyamat onnan folyatatható, ahol abbamaradt. Ha az előfeltételek teljesülnek, akkor az újraépítési folyamat úgy kezdhető el, hogy az <em>autogen.sh</em> scripttel létrehozza az újraépítésre szolgáló scripteket.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A bitcoind build folyamata a 0.9 változat óta az autogen/configure/make rendszert használja. A régebbi változatok egy egyszerű Makefile-t használnak, és a lenti példától kissé különböző módon működnek. Kövesse annak a változatnak az utasításait, amelyet szeretne lefordítani. Valószínűleg a 0.9-ben bevezetett autogen/configure/make lesz az összes jövőbeli kódváltozatnál használt rendszer, és a lenti példa ezt a rendszert mutatja be.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ ./autogen.sh
+configure.ac:12: installing `src/build-aux/config.guess'
+configure.ac:12: installing `src/build-aux/config.sub'
+configure.ac:37: installing `src/build-aux/install-sh'
+configure.ac:37: installing `src/build-aux/missing'
+src/Makefile.am: installing `src/build-aux/depcomp'
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>Az <em>autogen.sh</em> script automatikus konfiguráló scripteket hoz létre, melyek a rendszerből lekérdezik a helyes beállításokat, és biztosítják, hogy a fordításhoz szükséges összes könyvtár rendelkezésre álljon. Ezek közül a legfontosabb a  <tt>configure</tt> script, amely számos különféle lehetőséget ajánl a build folyamat egyedivé tételére. A különféle lehetőségek megjelenítésére gépelje be: <tt>./configure --help</tt></p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ ./configure --help
+
+`configure' configures Bitcoin Core 0.9.0 to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE. See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help display this help and exit
+      --help=short display options specific to this package
+      --help=recursive display the short help of all the included packages
+  -V, --version display version information and exit
+
+[... sok egyéb opció és változó kilistázása ...]
+
+Optional Features:
+  --disable-option-checking ignore unrecognized --enable/--with options
+  --disable-FEATURE do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG] include FEATURE [ARG=yes]
+
+[... további opciók ...]
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to &lt;info@bitcoin.org&gt;.
+
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>A <tt>configure</tt> scripttel bizonyos jellemzők engedélyezése vagy tiltása lehetséges, az <tt>--enable-FEATURE</tt> és <tt>--disable-FEATURE</tt> használatával, ahol a <tt>FEATURE</tt> a fenti listában szereplő jellemző neve. Ebben a fejezetben egy olyan bitcoind klienst építünk, amelynek alapértelmezett jellemzői lesznek. Nem használunk egyetlen egy konfigurálási lehetőséget sem, de érdemes átnézni, hogy a kliensnek milyen egyéb opcionális részei lehetnek. Ezután a <tt>configure</tt> script futtatásával automatikusan feltérképezzünk, hogy melyek a szükséges könyvtárak, és egy testre szabott build scriptet hozunk létre a rendszerünk számára:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ ./configure
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+
+[... sok egyéb vizsgált rendszerjellemző ...]
+
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/test/Makefile
+config.status: creating src/qt/Makefile
+config.status: creating src/qt/test/Makefile
+config.status: creating share/setup.nsi
+config.status: creating share/qt/Info.plist
+config.status: creating qa/pull-tester/run-bitcoind-for-test.sh
+config.status: creating qa/pull-tester/build-tests.sh
+config.status: creating src/bitcoin-config.h
+config.status: executing depfiles commands
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ha minden jól megy, akkor a <tt>configure</tt> parancs úgy ér véget, hogy egy testre szabott build scriptet hoz létre, amellyel lefordítható a bitcoind. Ha hiányzó könyvtárak vagy hibák vannak, akkor a <tt>configure</tt> parancs hibával fog véget érni, és nem hozza létre a fenti példában láátható build scripteket. Ha hiba történik, annak a legvalószínübb oka egy hiányzó vagy nem kompatibilis könyvtár. Nézze át ismét az újraépítésre vonatkozó dokumentációt, és installálja a hiányzó előfeltételeket. Azután futtassa le ismét a <tt>configure</tt> –t, és nézze meg, hogy elmúlt-e a hiba. Ezután fordítsa le a forráskódot – ez a folyamat akár egy óráig is tarthat. A fordítás során néhány másodpercenként vagy néhány percenként megjelenik valami – vagy hibaüzenetet kap, ha valami baj van. A fordítási folyamat bármikor folytatható, ha félbeszakadt. A fordítás megkezdéséhez gépelje be, hogy <tt>make</tt> :</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ make
+Making all in src
+make[1]: Entering directory `/home/ubuntu/bitcoin/src'
+make all-recursive
+make[2]: Entering directory `/home/ubuntu/bitcoin/src'
+Making all in .
+make[3]: Entering directory `/home/ubuntu/bitcoin/src'
+  CXX addrman.o
+  CXX alert.o
+  CXX rpcserver.o
+  CXX bloom.o
+  CXX chainparams.o
+
+[... sok egyéb fordítási üzenet ...]
+
+  CXX test_bitcoin-wallet_tests.o
+  CXX test_bitcoin-rpc_wallet_tests.o
+  CXXLD test_bitcoin
+make[4]: Leaving directory `/home/ubuntu/bitcoin/src/test'
+make[3]: Leaving directory `/home/ubuntu/bitcoin/src/test'
+make[2]: Leaving directory `/home/ubuntu/bitcoin/src'
+make[1]: Leaving directory `/home/ubuntu/bitcoin/src'
+make[1]: Entering directory `/home/ubuntu/bitcoin'
+make[1]: Nothing to be done for `all-am'.
+make[1]: Leaving directory `/home/ubuntu/bitcoin'
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>{ Ubuntu 12.04 LTS alatt a bitcoind fordításához szükséges parancsok: $ sudo apt-get install autoconf $ ./autogen.sh $ sudo apt-get install git-core build-essential libssl-dev libboost-all-dev libdb-dev libdb+<tt>-dev libgtk2.0-dev $ ./configure --with-incompatible-bdb $ make (A fordító megjegyzése) } Ha minden jól megy, akkor a bitcoind lefordul. Az utolsó lépés az, hogy a bitcoind végrehajtható programot a +make</tt> paranccsal a rendszer path-ba installáljuk:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ sudo make install
+Making install in src
+Making install in .
+ /bin/mkdir -p '/usr/local/bin'
+  /usr/bin/install -c bitcoind bitcoin-cli '/usr/local/bin'
+Making install in test
+make install-am
+ /bin/mkdir -p '/usr/local/bin'
+  /usr/bin/install -c test_bitcoin '/usr/local/bin'
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>A következőképpen bizonyosodhatunk meg arról, hogy a bitcoind helyesen van installálva:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Az alapértelemzés szerinti installáláskor a bitcoind a <em>/usr/local/bin</em> könyvtárba kerül. Amikor a bitcoind-t először futtatjuk, akkor üzen, hogy egy konfigurációs állományt kell létrehoznunk, melyben a JSON-RPC interface számára egy erős jelszó van megadva. Futtassunk a bitcoind-t a <tt>bitcoind</tt> terminálon történő begépelésével:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind
+Error: To use the "-server" option, you must set a rpcpassword in the configuration file:
+/home/ubuntu/.bitcoin/bitcoin.conf
+It is recommended you use the following random password:
+rpcuser=bitcoinrpc
+rpcpassword=2XA4DuKNCbtZXsBQRRNDEwEY2nM6M4H9Tx5dFjoAVVbK
+(you do not need to remember this password)
+The username and password MUST NOT be the same.
+If the file does not exist, create it with owner-readable-only file permissions.
+It is also recommended to set alertnotify so you are notified of problems;
+for example: alertnotify=echo %s | mail -s "Bitcoin Alert" admin@foo.com</tt></pre>
+</div></div>
+<div class="paragraph"><p>Egy általunk ismert szerkesztő programmal szerkesszük meg a konfigurációs állományt, jelszónak pedig adjunk meg egy erős jelszót, ahogyan azt a bitcoind javasolta. <em>Ne</em> használjuk a fenti jelszót. A <em>.bitcoin</em> könyvtáron belül hozzunk létre egy <em>bitcoin.conf</em> állományt, és adjuk meg benne a felhasználói nevet és jelszót:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>A konfigurációs állomány szerkesztése során egyéb paraméterek is beállíthatók, pl. a <tt>txindex</tt> (lásd <a href="#txindex">[txindex]</a>). A használható opciók a <tt>bitcoind --help</tt> begépelésével listázhatók ki.</p></div>
+<div class="paragraph"><p>Indítsuk el a bitcoin klienst. Az első futtatáskor az kliens a blokkok letöltésével újra fogja építeni a teljes bitcoin blokkláncot. Ennek sok gigabájt a mérete, és a teljes letöltése átlagosan 2 napig tart. A blokklánc inicializálási idő lerövidíthető, ha a blokklánc egy részleges másolatát bittorrent segítségével a <a href="http://bit.ly/1qkLNyh">SourceForge</a> helyről letöltjük.</p></div>
+<div class="paragraph"><p>A <tt>-daemon</tt> opció megadásával futtassuk a bitcoind-t a háttérben:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind -daemon
+
+Bitcoin version v0.9.0rc1-beta (2014-01-31 09:30:15 +0100)
+Using OpenSSL version OpenSSL 1.0.1c 10 May 2012
+Default data directory /home/bitcoin/.bitcoin
+Using data directory /bitcoin/
+Using at most 4 connections (1024 file descriptors available)
+init message: Verifying wallet...
+dbenv.open LogDir=/bitcoin/database ErrorFile=/bitcoin/db.log
+Bound to [::]:8333
+Bound to 0.0.0.0:8333
+init message: Loading block index...
+Opening LevelDB in /bitcoin/blocks/index
+Opened LevelDB successfully
+Opening LevelDB in /bitcoin/chainstate
+Opened LevelDB successfully
+
+[... további indulási üzenetek ...]</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_bitcoin_core_json_rpc_api_jának_a_használata_a_parancssorból">A Bitcoin Core JSON-RPC API-jának a használata a parancssorból</h3>
+<div class="paragraph"><p>The Bitcoin Core kliensben van egy parancssorból elérhető JSON-RPC interfész, amely a <tt>bitcoin-cli</tt> segédprogrammal érhető el. A parancssor lehetővé teszi, hogy interaktívan kísérletezzünk azokkal a lehetőségekkel, melyek az API-n keresztül programokból is elérhetők. Indulásként, a <tt>help</tt> parancs kiadásával jelenítsük meg a használható bitcoin RPC parancsok listáját:</p></div>
+<div class="listingblock" id="bitcoind_commands">
+<div class="content">
+<pre><tt>$ bitcoin-cli help
+addmultisigaddress nrequired ["key",...] ( "account" )
+addnode "node" "add|remove|onetry"
+backupwallet "destination"
+createmultisig nrequired ["key",...]
+createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,...}
+decoderawtransaction "hexstring"
+decodescript "hex"
+dumpprivkey "bitcoinaddress"
+dumpwallet "filename"
+getaccount "bitcoinaddress"
+getaccountaddress "account"
+getaddednodeinfo dns ( "node" )
+getaddressesbyaccount "account"
+getbalance ( "account" minconf )
+getbestblockhash
+getblock "hash" ( verbose )
+getblockchaininfo
+getblockcount
+getblockhash index
+getblocktemplate ( "jsonrequestobject" )
+getconnectioncount
+getdifficulty
+getgenerate
+gethashespersec
+getinfo
+getmininginfo
+getnettotals
+getnetworkhashps ( blocks height )
+getnetworkinfo
+getnewaddress ( "account" )
+getpeerinfo
+getrawchangeaddress
+getrawmempool ( verbose )
+getrawtransaction "txid" ( verbose )
+getreceivedbyaccount "account" ( minconf )
+getreceivedbyaddress "bitcoinaddress" ( minconf )
+gettransaction "txid"
+gettxout "txid" n ( includemempool )
+gettxoutsetinfo
+getunconfirmedbalance
+getwalletinfo
+getwork ( "data" )
+help ( "command" )
+importprivkey "bitcoinprivkey" ( "label" rescan )
+importwallet "filename"
+keypoolrefill ( newsize )
+listaccounts ( minconf )
+listaddressgroupings
+listlockunspent
+listreceivedbyaccount ( minconf includeempty )
+listreceivedbyaddress ( minconf includeempty )
+listsinceblock ( "blockhash" target-confirmations )
+listtransactions ( "account" count from )
+listunspent ( minconf maxconf  ["address",...] )
+lockunspent unlock [{"txid":"txid","vout":n},...]
+move "fromaccount" "toaccount" amount ( minconf "comment" )
+ping
+sendfrom "fromaccount" "tobitcoinaddress" amount ( minconf "comment" "comment-to" )
+sendmany "fromaccount" {"address":amount,...} ( minconf "comment" )
+sendrawtransaction "hexstring" ( allowhighfees )
+sendtoaddress "bitcoinaddress" amount ( "comment" "comment-to" )
+setaccount "bitcoinaddress" "account"
+setgenerate generate ( genproclimit )
+settxfee amount
+signmessage "bitcoinaddress" "message"
+signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )
+stop
+submitblock "hexdata" ( "jsonparametersobject" )
+validateaddress "bitcoinaddress"
+verifychain ( checklevel numblocks )
+verifymessage "bitcoinaddress" "signature" "message"
+walletlock
+walletpassphrase "passphrase" timeout
+walletpassphrasechange "oldpassphrase" "newpassphrase"</tt></pre>
+</div></div>
+<div class="sect3">
+<h4 id="_a_bitcoin_core_kliens_státuszának_lekérdezése">A Bitcoin Core kliens státuszának lekérdezése</h4>
+<div class="paragraph"><p>Parancs: <tt>getinfo</tt></p></div>
+<div class="paragraph"><p>A bitcoin <tt>getinfo</tt> RPC parancsával a bitcoin hálózati csomópontról, a pénztárcáról és a blokklánc adatbázisról irathatók ki a legfontosabb adatok. A parancs a +bitcoin-cli" használatával futtatható:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Az adatokat JavaScript Object Notation (JSON) formátumban kapjuk vissza. Ezt a formátumot az összes programozási nyelv könnyen „megérti”, ugyanakkor emberek számra is egész olvasható. Az adatok között látjuk a bitcoin kliens szoftver verzióját (90000), a protokol verzióját (70002), és a pénztárca verzióját (60000). Látjuk a pénztárcában lévő aktuális egyenleget, amely nulla. Látjuk a blokk magasságot (286216), amely azt mutatja, hogy a hány blokkot ismert a kliens. Láthatunk még a bitcoin hálózatra és a kliens belállítására vonatkozó különféle statisztikákat. A beállításokat a fejezet hátrelévő részében részletesebben megvizsgáljuk.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Eltarthat némi ideig, akár több napig is, amíg a bitcoind kliens „beéri” az aktuális blokklánc magasságot, miközben blokkokat tölt le a többi bitcoin klienstől. A folyamat menete úgy ellenőrizhető, hogy a <tt>getinfo</tt>-val kiiratjuk az ismert blokkok számát.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_pénztárca_beállítása_és_titkosítása">A  pénztárca beállítása és titkosítása</h4>
+<div class="paragraph"><p>Parancsok: <tt>encryptwallet</tt>, <tt>walletpassphrase</tt></p></div>
+<div class="paragraph"><p>Mielőtt tovább a kulcsok létrehozásával és más parancsokkal folytatnánk a dolgot, először egy jelszóval titkosítanunk kell a pénztárcát. Ennél a példánál az <tt>encryptwallet</tt> parancsot és a „foo” jelszót használjuk. Természetesen a „foo” jelszavat az önök pénztárcája esetében egy erős és összetett jelszóval kell helyettesíteni!</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli encryptwallet foo
+wallet encrypted; Bitcoin server stopping, restart to run with encrypted wallet. The keypool has been flushed, you need to make a new backup.
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>Úgy tudjuk ellőrizni, hogy titkosított lett-e a pénztárca, hogy ismét lefuttatjuk a <tt>getinfo</tt> parancsot. Ezúttal egy új sort is láthatunk, az <tt>unlocked_until</tt> sort, amely azt mutatja, hogy mennyi ideig lesz a pénztárca kikódoló jelszó a memóriában, és mennyi ideig fogja a pénztárcát nyitva tartani. Először nulla lesz az értéke, ami azt jelenti, hogy a pénztárca zárolva van:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>A pénztárca zárolásának feloldásához adjuk ki a <tt>walletpassphrase</tt> parancsot, melynek két paramétere van: a jelszó, és egy szám, amely azt mutatja, hogy hány másodperc múlva záródik be automatikusan a pénztárca (idő számláló):</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli walletpassphrase foo 360
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>A <tt>getinfo</tt> ismételt futtatásával nézzük meg, hogy kinyílt-e a pénztárca, és mennyi a lejárati idő:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+</div>
+<div class="sect3">
+<h4 id="_a_pénztárca_biztonsági_mentése_egyszerű_szövegént_történő_kivitele_és_visszaállítása">A pénztárca biztonsági mentése, egyszerű szövegént történő kivitele és visszaállítása</h4>
+<div class="paragraph"><p>Parancsok: <tt>backupwallet</tt>, <tt>importwallet</tt>, <tt>dumpwallet</tt></p></div>
+<div class="paragraph"><p>Ezután azt fogjuk gyakorolni, hogy hogyan lehet a pénztárcáról biztonsági mentést készíteni, és hogyan lehet a biztonsági mentésből visszaállítani a pénztárcát. A mentéshez a <tt>backupwallet</tt> parancs használható, melynek paramétere egy állománynév. Például mentsük el a pénztárcát a <em>wallet.backup</em> állományba:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli backupwallet wallet.backup
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>Most állítsuk helyre a pénztárcát az <tt>importwallet</tt> paranccsal. Ha a pénztárca zárolva van, akkor a biztonsági mentés visszaimportálása előtt először meg kell szüntetni a zárolását (lásd a fenti <tt>walletpassphrase</tt> parancsot).</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli importwallet wallet.backup
+$</tt></pre>
+</div></div>
+<div class="paragraph"><p>A <tt>dumpwallet</tt> paranccsal a pénztárca egy olvasható szöveges állományba vihető ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli dumpwallet wallet.txt
+$ more wallet.txt
+# Wallet dump created by Bitcoin v0.9.0rc1-beta (2014-01-31 09:30:15 +0100)
+# * Created on 2014-02- 8dT20:34:55Z
+# * Best block at time of backup was 286234 (0000000000000000f74f0bc9d3c186267bc45c7b91c49a0386538ac24c0d3a44),
+#   mined on 2014-02- 8dT20:24:01Z
+
+KzTg2wn6Z8s7ai5NA9MVX4vstHRsqP26QKJCzLg4JvFrp6mMaGB9 2013-07- 4dT04:30:27Z change=1 # addr=16pJ6XkwSQv5ma5FSXMRPaXEYrENCEg47F
+Kz3dVz7R6mUpXzdZy4gJEVZxXJwA15f198eVui4CUivXotzLBDKY 2013-07- 4dT04:30:27Z change=1 # addr=17oJds8kaN8LP8kuAkWTco6ZM7BGXFC3gk
+[... sok egyéb kulcs ...]
+
+$</tt></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_pénztárca_címek_és_pénzt_fogadó_tranzakciók">Pénztárca címek és pénzt fogadó tranzakciók</h4>
+<div class="paragraph"><p>Parancsok: getnewaddress, getreceivedbyaddress, listtransactions, getaddressesbyaccount, getbalance</p></div>
+<div class="paragraph"><p>A bitcoin referencia kliens nyilvántart egy címhalmazt, melynek mérete a <tt>getinfo</tt> parancs használatakor a <tt>keypoolsize</tt> -nál jelenik meg. Ezek a címek automatikusan jönnek létre, és nyilvános pénz fogadó címként vagy a visszajáró pénz címeként használhatók. Egy ilyen cím a <tt>getnewaddress</tt> paranccsal iratható ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getnewaddress
+1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ennek a címnek a használatával küldjünk egy kis bitcoint egy külső pénztárcából a bitcoind pénztárcánkba (ha már van némi bitcoinunk egy pénzváltóban, egy web-es pénztárcában vagy egy másik bitcoind pénztárcában). Példánkban 50 milliBitet (0.050 bitcoint) fogunk küldeni a fent visszaadott címre.</p></div>
+<div class="paragraph"><p>Ezután lekérdezhetjük a bitcoind klienstől, hogy mennyi pénz jött erre a címre, és megadhatjuk, hogy hány darab megerősítésre van szükség ahhoz, hogy a pénzt beszámítsa az egyenlegbe. Példánkban nulla megerősítést fogunk megadni. Néhány másodperccel azt követően, hogy a másik pénztárcából elküldtük a bitcoint, már látjuk, hogy megjelent a pénztárcában. A <tt>getreceivedbyaddress</tt> parancsot fogjuk használni a fenti címmel, és nulla (0) megerősítési számmal:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getreceivedbyaddress 1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL 0
+0.05000000</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ha a nullát elhagyjuk a parancs végéről, akkor csak azokat az összegeket fogjuk látni, melyeknek legalább <tt>minconf</tt> megerősítése van. A <tt>miniconf</tt> beállítás a bitcoind konfigurációs állományában található. Mivel a bitcoin küldő tranzakció csak az utolsó pár másodpercben érkezett meg, még nincs megerősítve, és emiatt a parancs nulla egyenleget fog kiírni:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getreceivedbyaddress 1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL
+0.00000000</tt></pre>
+</div></div>
+<div class="paragraph"><p>A pénztárca által fogadott összes tranzakció is kijelezhető, a  <tt>listtransactions</tt> paranccsal:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli listtransactions</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>A <tt>getaddressbyaccount</tt> paranccsal kilistázhatjuk a pénztárcához tartozó összes címet is:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getaddressesbyaccount ""</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Végül a <tt>getbalance</tt> paranccsal a pénztárca egészének egyenlegét irathatjuk ki, vagyis az összes olyan tranzakció összegét, amely legalább <tt>minconf</tt> megerősítéssel rendelkezik:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getbalance
+0.05000000</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Ha a tranzakció még nincs megerősítve, akkor a <tt>getbalance</tt> által visszadott egyenleg nulla lesz. A "minconf" konfigurációs beállítás határozza meg, hogy legalább hány darab megerősítésre van szükség ahhoz, hogy a tranzakció megjelenjen az egyenlegben.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tranzakciók_vizsgálata_és_dekódolása">Tranzakciók vizsgálata és dekódolása</h4>
+<div class="paragraph"><p>Parancsok: <tt>gettransaction</tt>, <tt>getrawtransaction</tt>, <tt>decoderawtransaction</tt></p></div>
+<div class="paragraph"><p>Most a <tt>gettransactions</tt> paranccsal megvizsgáljuk azt a bejövő tranzakciót, amelyet előzőleg kilistáztunk. A tranzakciót úgy tudjuk kilistázni, hogy a <tt>gettransaction</tt> parancsban a txid helyén megadjuk a tranzakció hash értékét (zanzáját):</p></div>
+<programlisting>
+$ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66<?pdf-cr?>c309acbae2c14ae3
+
+</programlisting>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A tranzakció azonosítók mindaddig nem hitelesek, amíg a tranzakció megerősítésre nem került. Ha a blokkláncban hiányzik a tranzakció azonosító, az nem jelenti azt, hogy a tranzakció nem lett feldolgozva. Ez az ú.n. „tranzakció képlékenység” („transaction malleability”), amelynek az az oka, hogy egy tranzakció hash-e az előtt, mielőtt megerősítésre kerül a blokkban, még módosítható. A megerősítés után a txid megváltoztathatatlan és hiteles.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>A <tt>gettransaction</tt> által fent kijelzett tranzakció egy egyszerűsített alak. A teljes tranzakció visszanyeréséhez és dekódolásához két parancsot fogunk használni, a <tt>getrawtransaction</tt> és a <tt>decoderawtransaction</tt> parancsot. Először, a <tt>getrawtransaction</tt> parancsnak paraméterként megadjuk a <em>tranzakció hash-t (txid-t)</em>, a parancs pedig „nyers” hexa stringként a teljes tranzakciót visszaadja, pontosan úgy, ahogyan azt a bitcoin hálózat ismeri :</p></div>
+<programlisting>
+$ bitcoin-cli getrawtransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1f<?pdf-cr?>c66c309acbae2c14ae3
+
+0100000001d717279515f88e2f56ce4e8a31e2ae3e9f00ba1d0add648e80c480ea22e0c7d3000<?pdf-cr?>000008b483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e61a2df0dd0758e22<?pdf-cr?>7383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2ac1bd193dfba2014<?pdf-cr?>104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b884ac5b5b6dede<?pdf-cr?>05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5ceaffffffff02404b4c0000000<?pdf-cr?>0001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac1f312906000000001976a9<?pdf-cr?>14107b7086b31518935c8d28703d66d09b3623134388ac00000000
+</programlisting>
+<div class="paragraph"><p>Ennek a hexa stringnek a dekódolására a <tt>decoderawtransaction</tt> parancs használható. Másoljuk a hexa stringet a <tt>decoderawtransaction</tt> első paraméterének a helyébe, ha a teljes tartalmat JSON adatstruktúraként szeretnénk megjeleníteni (formattálási okok miatt a hexa string a lenti példában rövidítve szerepel):</p></div>
+<programlisting>
+$ bitcoin-cli decoderawtransaction 0100000001d717279515f88e2f56ce4e8a31e2ae3e<?pdf-cr?>9f00ba1d0add648e80c480ea22e0c7d3000000008b483045022100a4ebbeec83225dedead659b<?pdf-cr?>bde7da3d026c8b8e12e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1<?pdf-cr?>f2c975b192d34c5b9b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44<?pdf-cr?>fa59248be58ede65e4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc7<?pdf-cr?>9e05dbfe5ceaffffffff02404b4c00000000001976a91407bdb518fa2e6089fd810235cf1100c<?pdf-cr?>9c13d1fd288ac1f312906000000001976a914107b7086b31518935c8d28703d66d09b36231343<?pdf-cr?>88ac00000000
+</programlisting>
+<screen>
+{
+    "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "d3c7e022ea80c4808e64dd0a1dba009f3eaee2318a4ece562f8ef815<?pdf-cr?>952717d7",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "3045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e<?pdf-cr?>61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2<?pdf-cr?>ac1bd193dfba20104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b<?pdf-cr?>884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5cea",
+                "hex": "483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e1<?pdf-cr?>2e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9<?pdf-cr?>b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e<?pdf-cr?>4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5cea"
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.05000000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c<?pdf-cr?>13d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        },
+        {
+            "value" : 1.03362847,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 107b7086b31518935c8d28703d66d09b36<?pdf-cr?>231343 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914107b7086b31518935c8d28703d66d09b3623134388ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "12W9goQ3P7Waw5JH8fRVs1e2rVAKoGnvoy"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+<div class="paragraph"><p>A tranzakció dekódolás a tranzakció összes részét, többek között a tranzakció bemeneteket és kimeneteket is megjeleníti. Ebben az esetben azt látjuk, hogy a tranzakció, amely 50 milliBitet írt jóvá az új címünkre, egy bemenetet és két kimenetet használt. A tranzakció bemenete egy előzőleg megerősített tranzakció kimenete volt (amely fent a <tt>d3c7</tt> kezdetű vin txid-ként szerepel). A két kiemenet megfelel az 50 milliBit jóváírásnak és a visszajáró pénznek.</p></div>
+<div class="paragraph"><p>A blokkláncot tovább tudjuk vizsgálni, ha ugyanezzel a paranccsal (vagyis a <tt>gettransaction</tt> paranccsal) a tranzakcióban szereplő előző tranzakciókat listázzuk ki.Tranzakcióról tranzakcióra lépve nyomon követhetjük a tranzakcióláncban, hogy az egyes tulajdonosok között  hogyan mozogtak az érmék.</p></div>
+<div class="paragraph"><p>Ha az általunk fogadott tranzakció már be lett foglalva egy blokkba és megerősítésre került, akkor a <tt>gettransaction</tt> parancs további információkat is szolgáltat, többek között megmutatja azt a <em>block hash-t (azonosítót)</em>, amelybe bele lett foglalva a tranzakció:</p></div>
+<screen>
+$ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66<?pdf-cr?>c309acbae2c14ae3
+</screen>
+<screen>
+{
+    "amount" : 0.05000000,
+    "confirmations" : 1,
+    "blockhash" : "000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31c<?pdf-cr?>2a717b",
+    "blockindex" : 18,
+    "blocktime" : 1392660808,
+    "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+    "time" : 1392660908,
+    "timereceived" : 1392660908,
+    "details" : [
+        {
+            "account" : "",
+            "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+            "category" : "receive",
+            "amount" : 0.05000000
+        }
+    ]
+}
+</screen>
+<div class="paragraph"><p>Az egyik új információ a <tt>blockhash</tt>, ami annak a blocknak a hashe (zanzája), amibe a tranzakció be lett foglalva, a másik pedig a <tt>blockindex</tt>, melynek értéke (18) azt mutatja, hogy a tranzakciónk a blokk 18. tranzakciója.</p></div>
+<div class="sidebarblock" id="txindex">
+<div class="content">
+<div class="title">A Tranzakciós Adatbázis Index és a  txindex opció</div>
+<div class="paragraph"><p>Alapértelmezésben a Bitcoin Core által felépített adatbázis <em>kizárólag</em> a felhasználó pénztárcájához tartozó tranzakciókat tartalmazza. Ha a <tt>gettransaction</tt> paranccsal szeretnénk <em>akármelyik</em> tranzakciót kilistázni, akkor a Bitcoin Core-t úgy kell beállítanunk, hogy egy teljes adatbázis indexet építsen föl, amely a  <tt>txindex</tt> opcióval lehetséges. Állítsa be a <tt>txindex=1</tt> opciót a Bitcoin Core konfigurációs állományában. (A konfigurációs állomány (általában) a felhasználó home könyvtrárában van, a <em>.bitcoin/bitcoin.conf</em> állományban). A paraméter beállítását követően újra kell indítani a bitcoind-t és meg kell várni, amíg az index újra nem épül.</p></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_blokkok_vizsgálata">Blokkok vizsgálata</h4>
+<div class="paragraph"><p>Parancsok: <tt>getblock</tt>, <tt>getblockhash</tt></p></div>
+<div class="paragraph"><p>Most, hogy tudjuk, melyik blokkba lett befoglalva a tranzakciónk, le tudjuk kérdezni ezt a blokkot. A <tt>getblock</tt> parancsot használjuk, és paraméterként a blokk hashét (zanzáját) adjuk meg:</p></div>
+<screen>
+$ bitcoin-cli getblock 000000000000000051d2e759c63a26e247f185ecb7926ed7a6624b<?pdf-cr?>c31c2a717b true
+</screen>
+<screen>
+{
+    "hash" : "000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31c2a717<?pdf-cr?>b",
+    "confirmations" : 2,
+    "size" : 248758,
+    "height" : 286384,
+    "version" : 2,
+    "merkleroot" : "9891747e37903016c3b77c7a0ef10acf467c530de52d84735bd555387<?pdf-cr?>19f9916",
+    "tx" : [
+        "46e130ab3c67d31d2b2c7f8fbc1ca71604a72e6bc504c8a35f777286c6d89bf0",
+        "2d5625725b66d6c1da88b80b41e8c07dc5179ae2553361c96b14bcf1ce2c3868",
+        "923392fc41904894f32d7c127059bed27dbb3cfd550d87b9a2dc03824f249c80",
+        "f983739510a0f75837a82bfd9c96cd72090b15fa3928efb9cce95f6884203214",
+        "190e1b010d5a53161aa0733b953eb29ef1074070658aaa656f933ded1a177952",
+        "ee791ec8161440262f6e9144d5702f0057cef7e5767bc043879b7c2ff3ff5277",
+        "4c45449ff56582664abfadeb1907756d9bc90601d32387d9cfd4f1ef813b46be",
+        "3b031ed886c6d5220b3e3a28e3261727f3b4f0b29de5f93bc2de3e97938a8a53",
+        "14b533283751e34a8065952fd1cd2c954e3d37aaa69d4b183ac6483481e5497d",
+        "57b28365adaff61aaf60462e917a7cc9931904258127685c18f136eeaebd5d35",
+        "8c0cc19fff6b66980f90af39bee20294bc745baf32cd83199aa83a1f0cd6ca51",
+        "1b408640d54a1409d66ddaf3915a9dc2e8a6227439e8d91d2f74e704ba1cdae2",
+        "0568f4fad1fdeff4dc70b106b0f0ec7827642c05fe5d2295b9deba4f5c5f5168",
+        "9194bfe5756c7ec04743341a3605da285752685b9c7eebb594c6ed9ec9145f86",
+        "765038fc1d444c5d5db9163ba1cc74bba2b4f87dd87985342813bd24021b6faf",
+        "bff1caa9c20fa4eef33877765ee0a7d599fd1962417871ca63a2486476637136",
+        "d76aa89083f56fcce4d5bf7fcf20c0406abdac0375a2d3c62007f64aa80bed74",
+        "e57a4c70f91c8d9ba0ff0a55987ea578affb92daaa59c76820125f31a9584dfc",
+        "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+
+#[... sok további tranzakció ...]
+
+    ],
+    "time" : 1392660808,
+    "nonce" : 3888130470,
+    "bits" : "19015f53",
+    "difficulty" : 3129573174.52228737,
+    "chainwork" : "000000000000000000000000000000000000000000001931d1658fc048<?pdf-cr?>79e466",
+    "previousblockhash" : "0000000000000000177e61d5f6ba6b9450e0dade9f39c257b4<?pdf-cr?>d48b4941ac77e7",
+    "nextblockhash" : "0000000000000001239d2c3bf7f4c68a4ca673e434702a57da8fe0<?pdf-cr?>d829a92eb6"
+
+</screen>
+<div class="paragraph"><p>A blokk 367 db tranzakciót tartalmaz, és a 18. kilistázott tranzakció (<tt>9ca8f9…</tt>) az a txid (tranzakció azonosító), amely 50 milliBitet írt jóvá a címünkre. A <tt>height</tt> sor szerint az adott blokk a 286384. blokk volt a blokkláncban.</p></div>
+<div class="paragraph"><p>Egy blokkot a magassága alapján a a <tt>getblockhash</tt> paranccsal tudjuk elérni, a parancs paramétere a blokk magasság, és a blokkhoz tartozó blokk hash-t (zanzát) adja vissza:</p></div>
+<screen>
+$ bitcoin-cli getblockhash 0
+
+000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+</screen>
+<div class="paragraph"><p>Fent a „genezis blokk” blokk hash-ét irattuk ki. A genezis blokk volt az első, Satoshi Nakamoto által kibányászott blokk, és nulla a magassága. A blokk a következőket tartalmazza:</p></div>
+<screen>
+$ bitcoin-cli getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1<?pdf-cr?>b60a8ce26f
+</screen>
+<screen>
+{
+    "hash" : "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26<?pdf-cr?>f",
+    "confirmations" : 286388,
+    "size" : 285,
+    "height" : 0,
+    "version" : 1,
+    "merkleroot" : "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7af<?pdf-cr?>deda33b",
+    "tx" : [
+        "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+    ],
+    "time" : 1231006505,
+    "nonce" : 2083236893,
+    "bits" : "1d00ffff",
+    "difficulty" : 1.00000000,
+    "chainwork" : "0000000000000000000000000000000000000000000000000000000100<?pdf-cr?>010001",
+    "nextblockhash" : "00000000839a8e6886ab5951d76f411475428afc90947ee320161b<?pdf-cr?>bf18eb6048"
+}
+</screen>
+<div class="paragraph"><p>A <tt>getblock</tt>, <tt>getblockhash</tt> és <tt>gettransaction</tt> paranccsokkal a blokklánc adatbázisát egy program segítségével is meg tudjuk vizsgálni.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_tranzakciók_létrehozása_aláírása_és_feladása_az_el_nem_költött_kimenetek_alapján">Tranzakciók létrehozása, aláírása és feladása az el nem költött kimenetek alapján</h4>
+<div class="paragraph"><p>Parancsok: <tt>listunspent</tt>, <tt>gettxout</tt>, <tt>createrawtransaction</tt>, <tt>decoderawtransaction</tt>, <tt>signrawtransaction</tt>, <tt>sendrawtransaction</tt></p></div>
+<div class="paragraph"><p>A bitcoin tranzakciókban az előző tranzakciók „kimeneteinek” az elköltése történik. Ezáltal egy olyan tranzakciós lánc jön létre, amely a tulajdonjogot az egyik címről a másikra ruházza át. A pénztárcánk épp most fogadott egy olyan tranzakciót, amely egy ilyen kimenetet a mi címünkhöz rendelt hozzá. A tranzakció megerősítése után el tudjuk költeni ezt a kimenetet.</p></div>
+<div class="paragraph"><p>Először is a <tt>listunspent</tt> paranccsal a pénztárcánkabn lévő összes elköltetelen, <em>megerősített</em> kimenetet kiiratjuk:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli listunspent</tt></pre>
+</div></div>
+<screen>
+[
+    {
+        "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c<?pdf-cr?>14ae3",
+        "vout" : 0,
+        "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+        "account" : "",
+        "scriptPubKey" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+        "amount" : 0.05000000,
+        "confirmations" : 7
+    }
+]
+</screen>
+<div class="paragraph"><p>Láthajuk, hogy a <tt>9ca8f9…</tt> tranzakció létrehozott egy kimenetet (0 vout index-szel), amely az <tt>1hvzSo…</tt> címhez van rendelve, a nagysága 50 milliBit, és már 7 megerősítést kaptunk róla. A tranzakciók az előzőleg létrehozott kimeneteket használják bemenetként oly módon, hogy a tranzakciókra az azonosítójukkal és vout indexükkel hivatkoznak. Most létre fogunk hozni egy tranzakciót, amely a bemenetén egy új címhez rendeli, és ezáltal elkölti a <tt>9ca8f9…</tt> tranzakció azonosító (txid) 0-ik kimenetét.</p></div>
+<div class="paragraph"><p>Először vizsgáljuk meg részletesebben az adott kimentet. A <tt>gettxout</tt> paranccsal a fenti elköltetlen kimenet részleteit irathatjuk ki. A tranzakciós kimenetekre mindig txid és vout alapján lehet hivatkozni, és ezeket a paramétereket adjuk meg a "gettxout+ -nak:</p></div>
+<screen>
+$ bitcoin-cli gettxout 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309ac<?pdf-cr?>bae2c14ae3 0
+</screen>
+<screen>
+{
+    "bestblock" : "0000000000000001405ce69bd4ceebcdfdb537749cebe89d371eb37e13<?pdf-cr?>899fd9",
+    "confirmations" : 7,
+    "value" : 0.05000000,
+    "scriptPubKey" : {
+        "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c13d1fd2
+         OP_EQUALVERIFY OP_CHECKSIG",
+        "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+        "reqSigs" : 1,
+        "type" : "pubkeyhash",
+        "addresses" : [
+            "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+        ]
+    },
+    "version" : 1,
+    "coinbase" : false
+}
+</screen>
+<div class="paragraph"><p>Azt látjuk, hogy a kimenet 50 milliBitet rendelt hozzá az <tt>1hvz…</tt> címünkhöz. A kimenet elköltéséhez egy új tranzakciót hozunk létre. Először állítsunk elő egy címet, ahová elküldhetjuk a pénzt:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoin-cli getnewaddress
+1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb</tt></pre>
+</div></div>
+<div class="paragraph"><p>25 milliBitet fogunk az újonnan létrehozott <tt>1LnfTn…</tt> címre elküldeni. Az új tranzakciónkban elköltjük az 50 milliBites kimenetet, és 25 milliBitet küldünk erre az új címre. Mivel az előző tranzakció <em>egész</em> kimentetét el kell költenünk, a visszajáró pénzt is kezelnünk kell. A visszajáró pénzt az <tt>1hzv…</tt> címre fogjuk visszaküldeni, vagyis ugyanarra a címre, amelyről a pénz származott. Végül tranzakciós díjat is kell fizetnünk a tranzakcióért. A díjat úgy fogjuk megfizetni, hogy a visszajáró összeget 0.5 milliBittel csökkentjük, és csak 24.5 milliBitet küldünk vissza. Az új kimenetek összegének (25 mBTC + 24.5 mBTC = 49.5 mBTC) és a bemenetnek (50 mBTC) a különbségét tranzakciós díjként a bányászok kapják.</p></div>
+<div class="paragraph"><p>A <tt>createrawtransaction</tt> parancsot használjuk a fenti tranzakció létrehozására. A <tt>createrawtransaction</tt> –nak paraméterként a tranzakció bemenetet adjuk meg (vagyis a megerősített tranzakciónkból az 50 milliBit elköltetlen kimenetet), valamint a két tranzakció kimenetet (az új címre küldött pénzt, és az előző címre visszaküldött visszajáró pénzt):</p></div>
+<screen>
+$ bitcoin-cli createrawtransaction '[{"txid" : "9ca8f969bd3ef5ec2a8685660fdbf<?pdf-cr?>7a8bd365524c2e1fc66c309acbae2c14ae3", "vout" : 0}]' '{"1LnfTndy3qzXGN19Jwscj1<?pdf-cr?>T8LR3MVe3JDb": 0.025, "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL": 0.0245}'
+
+0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000<?pdf-cr?>0000000ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a<?pdf-cr?>9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac0<?pdf-cr?>0000000
+</screen>
+<div class="paragraph"><p>A <tt>createrawtransaction</tt> parancs egy nyers hexadecimális stringet hoz létre, amely az általunk megadott tranzakció részleteit kódolja. Ellenőrizzük, hogy minden rendben van-e! Dekódoljuk ezt a nyers stringet a <tt>decoderawtransaction</tt> paranccsal:</p></div>
+<screen>
+$ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bd<?pdf-cr?>a8f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d<?pdf-cr?>90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa<?pdf-cr?>2e6089fd810235cf1100c9c13d1fd288ac00000000
+</screen>
+<screen>
+{
+    "txid" : "0793299cb26246a8d24e468ec285a9520a1c30fcb5b6125a102e3fc05d4f3cb<?pdf-cr?>a",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acb<?pdf-cr?>ae2c14ae3",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "",
+                "hex" : ""
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.02500000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 d90d36e98f62968d2bc9bbd68107564a15<?pdf-cr?>6a9bcf OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb"
+                ]
+            }
+        },
+        {
+            "value" : 0.02450000,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c1<?pdf-cr?>3d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+<div class="paragraph"><p>A tranzakció helyesnek látszik! Az új tranzakció „elfogyasztja” a megerősített tranzakció elköltetlen kimenetét, majd elkölti azt két kimenetben, ezek egyike 25 milliBit az új címre, míg a másik 24.5 milliBit visszajáró pénz az eredeti címre. A 0.5 milliBites különbség jelenti a tranzakciós díjat, mely annak a bányásznak lesz jóváírva, aki rábukkan a tranzakciónkat is magába foglaló blokkra.</p></div>
+<div class="paragraph"><p>Mint azt észrevehették, a tranzakció egy üres <tt>scriptSig</tt>-et tartalmaz, mivel még nincs aláírva. Aláírás nélkül a tranzakció értelmetlen, még nem bizonyítottuk, hogy a <em>miénk</em> az a cím, amelyből az elköltetlen kimenet származik. Az aláírás révén eltávolítjuk a kimeneten lévő akadályt, és bizonyítjuk, hogy a kimenet a mi birtokunkban van és el tudjuk költeni. A <tt>signrawtransaction</tt> parancsot használjuk a tranzakció aláírására. Paraméterként a nyers tranzakció hexadecimális stringjét adjuk meg neki.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A titkosított pénztárcákat az aláírás előtt ki kell nyitni, mivel az aláíráshoz szükség van a pénztárcában lévő titkos kulcsokra.</p></div>
+</td>
+</tr></table>
+</div>
+<screen>
+$ bitcoin-cli walletpassphrase foo 360
+$ bitcoin-cli signrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8<?pdf-cr?>f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d90<?pdf-cr?>d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e<?pdf-cr?>6089fd810235cf1100c9c13d1fd288ac00000000
+</screen>
+<screen>
+{
+    "hex" : "0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53e<?pdf-cr?>bd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54<?pdf-cr?>e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af<?pdf-cr?>52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc512<?pdf-cr?>7ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88<?pdf-cr?>ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000",
+    "complete" : true
+}
+</screen>
+<div class="paragraph"><p>A <tt>signrawtransaction</tt> parancs egy másik hexadecimálisan kódolt nyers tranzakciót ad vissza. Ha látni szeretnénk, hogy mi változott, a <tt>decoderawtransaction</tt>-nal kódolható vissza:</p></div>
+<screen>
+$ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda<?pdf-cr?>8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c<?pdf-cr?>800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87<?pdf-cr?>e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac<?pdf-cr?>1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9b<?pdf-cr?>bd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100<?pdf-cr?>c9c13d1fd288ac00000000
+</screen>
+<screen>
+{
+    "txid" : "ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b34<?pdf-cr?>6",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acb<?pdf-cr?>ae2c14ae3",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86<?pdf-cr?>a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e<?pdf-cr?>4af52051a0601 03c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5<?pdf-cr?>127",
+                "hex" : "47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d<?pdf-cr?>86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b27<?pdf-cr?>7e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71<?pdf-cr?>dc5127"
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.02500000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 d90d36e98f62968d2bc9bbd68107564a15<?pdf-cr?>6a9bcf OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb"
+                ]
+            }
+        },
+        {
+            "value" : 0.02450000,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c1<?pdf-cr?>3d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+<div class="paragraph"><p>Most a tranzakcióban használt bemenetek egy <tt>scriptsSig</tt>-et is tartalmaznak. A <tt>scriptSig</tt> egy digitális aláírás, ami bizonyítja az <tt>1hzv…</tt> cím tulajdonjogát, és megszünteti a kimeneten lévő akadályt, ami ezáltal elkölthetővé válik. Az aláírás a tranzakciót a bitcoin hálózat bármely csomópontja által ellenőrizhetővé teszi.</p></div>
+<div class="paragraph"><p>Most küldjük el ezt az újonnan létrehozott tranzakciót a hálózatnak. Ezt a <tt>sendrawtransaction</tt> paranccsal fogjuk megtenni, amelynek a paramétere a <tt>signrawtransaction</tt> által létrehozott nyers hexadecimális string lesz. Ez ugyanaz a string, amit épp most dekódoltunk:</p></div>
+<screen>
+$ bitcoin-cli sendrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8<?pdf-cr?>f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c8<?pdf-cr?>00c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e<?pdf-cr?>3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1<?pdf-cr?>d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bb<?pdf-cr?>d68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c<?pdf-cr?>9c13d1fd288ac00000000ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584<?pdf-cr?>ac17b346
+</screen>
+<div class="paragraph"><p>A <tt>sendrawtransaction</tt> parancs egy <em>tranzakció hash-t (txid-t)</em> ad vissza, miután feladta a tranzakciót a hálózatnak. Ekkor a <tt>gettransaction</tt> paranccsal le tudjuk kérdezni ezt a tranzakciót:</p></div>
+<screen>
+$ bitcoin-cli gettransaction ae74538baa914f3799081ba78429d5d84f36a0127438e9f7<?pdf-cr?>21dff584ac17b346
+</screen>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Mint korábban, most is részletesebben megvizsgálhatjuk ezt a tranzakciót a <tt>getrawtransaction</tt> és a <tt>decoderawtransaction</tt> parancsokkal. Ezek a parancsok pontosan ugyanazt a hexadecimális stringet adják vissza, mint amit az előtt állítottunk elő és dekódoltunk, mielőtt elküldtük volna a tranazakciót a hálózatnak.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="alt_libraries">Alternatív kliensek, könyvtárak és eszközkészletek</h3>
+<div class="paragraph"><p>A bitcoind referencia kliensen kívül vannak más kliensek és könyvtárak is, melyekkel kapcsolatba léphetünk a bitcoin hálózattal és az adatstruktúrákkal. Ezek különféle programozási nyelveken lettek megvalósítva, így a programozóknak az általuk használt programozási nyelven kínálnak natív interfészeket.</p></div>
+<div class="paragraph"><p>Alternativ megvalósítás többek között:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="https://github.com/libbitcoin/libbitcoin">libbitcoin</a>
+</dt>
+<dd>
+<p>
+Bitcoin Cross-Platform C++ Development Toolkit
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/libbitcoin/libbitcoin-explorer">bitcoin explorer</a>
+</dt>
+<dd>
+<p>
+Bitcoin parancssori eszköz
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/libbitcoin/libbitcoin-server">bitcoin server</a>
+</dt>
+<dd>
+<p>
+Bitcoin teljes csomópont és lekérdező szerver
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://code.google.com/p/bitcoinj/">bitcoinj</a>
+</dt>
+<dd>
+<p>
+Teljes csomópontot megvalósító Java kliens könyvtár
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://opensource.conformal.com/wiki/btcd">btcd</a>
+</dt>
+<dd>
+<p>
+Go nyelvű, teljes csomópontot megvalósító bitcoin kliens
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://bitsofproof.com">Bits of Proof (BOP)</a>
+</dt>
+<dd>
+<p>
+A bitcoin Java enterprise-zal történő megvalósítása
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/jgarzik/picocoin">picocoin</a>
+</dt>
+<dd>
+<p>
+Egy C-ben megvalósított pehelysúlyú bitcoin kliens könyvtár
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/vbuterin/pybitcointools">pybitcointools</a>
+</dt>
+<dd>
+<p>
+Python bitcoin könyvtár
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="https://github.com/richardkiss/pycoin">pycoin</a>
+</dt>
+<dd>
+<p>
+Egy másik Python bitcoin könyvtár
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><tt>Számos programozási nyelven sok további könyvtár létezik, és állandóan újabbak születnek.</tt></pre>
+</div></div>
+</dd>
+</dl></div>
+<div class="sect3">
+<h4 id="libbitcoin">A Libbitcoin és a Bitcoin Explorer</h4>
+<div class="paragraph"><p>The libbitcoin könyvtár többféle platformon használható C++ fejlesztő eszköz, amely a egy teljes libbitcoin szerver csomópontot és a Bitcoin Explorer (bx) parancssori eszközt valósítja meg.</p></div>
+<div class="paragraph"><p>A bx parancsoknak nagyon sok olyan tulajdonságuk van, mint a fejezetben szemléltetett bitcoind parancsoknak. A bx parancsok között vannak olyan kulcs kezelési és kulcs átalakító eszközök, melyek a bitcoind-ből hiányoznak, pl. a 2-es típusú determinisztikus kulcsok kezelése, a mnemonikus kulcsok kódolása, a lopakodó címek kezelése, fizetési és lekérdezési támogatás.</p></div>
+<div class="sect4">
+<h5 id="_a_bitcoin_explorer_installálása">A Bitcoin Explorer installálása</h5>
+<div class="paragraph"><p>A Bitcoin Explorer installálásához <a href="https://github.com/libbitcoin/libbitcoin-explorer/wiki/Download">töltse le a megfelelő operációs rendszerhez tartozó aláírt végrehajtható programot</a>. Az éles és a teszt hálózatot használó Linux, OS X, és  Windows programok találhatók itt.</p></div>
+<div class="paragraph"><p>A <tt>bx</tt> paraméterek nélkül begépelésével tudja kiíratni a rendelkezésre álló parancsokat (lásd <a href="#appdx_bx">[appdx_bx]</a>).</p></div>
+<div class="paragraph"><p>A Bitcoin Explorer installálóval <a href="https://github.com/libbitcoin/libbitcoin-explorer/wiki/Build">a Linux és OS X rendszereken forrásból tudunk fordítani, Windows-ban pedig Visual Studio projektekkel</a>. A források az Autotools használatával kézzel is lefordíthatók. Ezek a libbitcoin könyvtári függőséget is installálják.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A Bitcoin Explorer-ben sok hasznos parancs van a címek kódolására és dekódolására, valamint különféle formátumok és ábrázolások közötti átalakításokra. Segítségükkel a különféle formátumok, pl. a Base16 (hexadecimális), Base58, Base58Check, Base64, stb. vizsgálhatók.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_a_libbitcoin_installálása">A Libbitcoin installálása</h5>
+<div class="paragraph"><p>A libbitcoin könyvtár installálóval <a href="https://github.com/libbitcoin/libbitcoin-explorer/wiki/Build">a Linux és OS X rendszereken forrásból tudunk fordítani, Windows-ban pedig Visual Studio projektekkel</a>. A források az Autotools használatával kézzel is lefordíthatók.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A Bitcoin Explorer a bx-et és a libbitcoin könyvtárat egyaránt installálja, ezért ha a bx-et forrásból fordítottuk újra, akkor ezt a lépést átugorhatjuk.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pycoin">pycoin</h4>
+<div class="paragraph"><p>A <a href="http://github.com/richardkiss/pycoin"><em>pycoin</em></a> Python könyvtárat eredetileg  Richard Kiss írta és tartotta karban. A könyvtár a bitcoin kulcsok és tranzakciók kezelését támogatja, és még a script nyelvet is oly mértékben támogatja, hogy a nem szabványos tranzakciók kezelése is lehetséges benne.</p></div>
+<div class="paragraph"><p>A pycoin könyvtár mind a Python 2 (2.7.x), mind a Python 3 (3.3 utáni verziók) támogatására képes, és hasznos parancssori segédprogramjai vannak, pl. a ku és a tx. Ha szeretnénk a  pycoin 0.42-t Python 3 alatt, virtuális környezetben (venv) installálni, használjuk a következőket:</p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ python3 -m venv /tmp/pycoin
+$ . /tmp/pycoin/bin/activate
+$ pip install pycoin==0.42
+Downloading/unpacking pycoin==0.42
+  Downloading pycoin-0.42.tar.gz (66kB): 66kB downloaded
+  Running setup.py (path:/tmp/pycoin/build/pycoin/setup.py) egg_info for package pycoin
+
+Installing collected packages: pycoin
+  Running setup.py install for pycoin
+
+    Installing tx script to /tmp/pycoin/bin
+    Installing cache_tx script to /tmp/pycoin/bin
+    Installing bu script to /tmp/pycoin/bin
+    Installing fetch_unspent script to /tmp/pycoin/bin
+    Installing block script to /tmp/pycoin/bin
+    Installing spend script to /tmp/pycoin/bin
+    Installing ku script to /tmp/pycoin/bin
+    Installing genwallet script to /tmp/pycoin/bin
+Successfully installed pycoin
+Cleaning up...
+$</tt></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Az alábbiakban egy minta Python script látható, amely a pycoin könyvtár segítségével küld bitcoinokat:</p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>A ku és tx parancssori eszközök használatát lásd a <a href="#appdxbitcoinimpproposals">[appdxbitcoinimpproposals]</a> részben.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_btcd">btcd</h4>
+<div class="paragraph"><p>A btcd egy Go-ban megírt, teljes comópontot megvalósító bitcoin implementáció. Jelenleg helyesen letölti, ellenőrzi és kiszolgálja a blokkláncot. A blokkok elfogadása a referencia implementáció, a bitcoind pontos szabályai szerint történik (beleértve a hibákat is). Helyesen továbbítja az újonnan kibányászott blokkokat is, karban tartja a tranzakciós készletet és továbbítja azokat a tranzakciókat, melyek még nem lettek blokkba foglalva. Biztosítja, hogy a tranzakciós készletbe (pool-ba) befogadott összes tranzakció teljesítse a blokklánc által megkövetelt szabályokat, és azoknak a szigorú ellenőrzéseknek a túlnyomó többségét is tartalmazza, amelyek a bányászat követelményei szerint szűrik a tranzakciókat ("szabványos" tranzakciók).</p></div>
+<div class="paragraph"><p>A btcd és a bitcoind közötti egyik lényeges különbség az, hogy a btcd-ben tudatos tervezési döntés eredményeképpen nincs pénztárca funkció. Ez azt jelenti, hogy közvetlenül a btcd-vel nem lehet fizetni vagy pénzt fogadni. Ezt a funkciót a btcwallet és a btcgui projektek biztosítják, mindkettő aktív fejlesztés alatt áll. Egy másik figyelemre méltó különbség az, hogy a btcd nem csak a HTTP POST kéréseket támogatja (a bitcoind-hez hasonlóan), hanem a Websocket-eket is (ezt részesíti előnyben), és a btcd RPC összeköttetéseinél a TLS alapértelemben engedélyezve van.</p></div>
+<div class="sect4">
+<h5 id="_a_btcd_installálása">A btcd installálása</h5>
+<div class="paragraph"><p>A btcd Windows alatti installálása az alábbi msi letölésével és futtatásával lehetséges: <a href="https://github.com/conformal/btcd/releases">GitHub</a>. Linux alatt a következő parancs futattható, feltéve, hogy a Go nyelv már installálva van:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ go get github.com/conformal/btcd/...</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ha a btcd-t szeretné a legfrissebb verzóra frissíteni, futtassa a következőt:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ go get -u -v github.com/conformal/btcd/...</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="_a_btcd_használata">A btcd használata</h5>
+<div class="paragraph"><p>A btcd-nek számos beállítási lehetősége van. Ezeket a következőképpen lehet megnézni:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>A btcd egy btcctl parancssori segédprogrammal is rendelkezik. Ennek segítségével a btcd RPC-n keresztüli beállítása vagy lekérdező parancsai használhatók. A btcd alapéretelemben nem engedélyezi az RPC szerverét, emiatt minimálisan egy RPC felhasználó név és jelszó beállítására van szükség:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>btcd.conf</em>:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>btcctl.conf</em>:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Ha a parancssorból szeretné felülbírálni a konfigurációs állományban lévő értékeket, akkor:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>A rendelkezésre álló lehetőségek a következőképpen kilistázhatók ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ btcctl --help</tt></pre>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:56:11 UTC
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1005 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_prefață">Prefață</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_cum_am_scris_cartea_despre_bitcoin">Cum am scris cartea despre Bitcoin</h3>
+<div class="paragraph"><p>Am dat prima data peste Bitcoin la jumătatea anului 2011. Reacția mea imediată a fost mai mult sau mai puțin "bani pentru tocilari, Pfft!" și l-am ignorat pentru încă șase luni, neînțelegand importanța sa. Aceasta reacție am văzut-o repetat la multe dintre cele mai inteligente persoane pe care le cunosc, ceea ce mă o consolează oarecum. A doua oară cand am dat peste Bitcoin, într-o discuție pe o listă de discuții, am decis să citesc documentația inițială scrisă de Satoshi Nakamoto, pentru a studia o sursă autorizată și pentru a vedea despre ce era vorba. Îmi amintesc încă momentul în care am terminat de citit aceste nouă pagini, și când am realizat că Bitcoin nu este doar o monedă digitală, ci o rețea de încredere, care ar putea oferi, de asemenea, baza pentru mult mai mult decât o monedă. Înțelegerea faptului că "aceștia nu sunt bani, ci o rețea de încredere descentralizate", a fost începutul unei perioade de patru luni in care am mistuit orice urmă de informații despre Bitcoin pe care am putut-o găsi. Am devenit obsedat și captivat, petreceam 12 sau mai multe ore pe zi lipit de ecran, citind, scriind, programând și învățând cât de mult am putut. Am ieșit din această stare de febrila cu peste 20 de livre mai ușoar din cauza lipsei de mese consistente fiind hotarât să mă dedic și să muncesc la Bitcoin.</p></div>
+<div class="paragraph"><p>Doi ani mai târziu, după crearea unui număr de mici start-up-uri pentru a explora diverse servicii și produse aferente Bitcoin, am decis că era timpul să scriu prima mea carte. Bitcoin a fost tema care m-a împins într-o frenezie de creativitate și mi-a consumat gândurile; a fost cea mai interesantă tehnologie pe care am descoperit-o după Internet. Era momentul să împărtășeasc pasiunea mea pentru această tehnologie uimitoare publicului larg.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_publicul_țintă">Publicul țintă</h3>
+<div class="paragraph"><p>Această carte este în principal destinată programatorilor. Dacă puteți folosi un limbaj de programare, această carte vă va învăța cum funcționează monedele criptografice, cum să le folosiți, și cum să dezvoltați software care lucrează cu ele. Primele capitole sunt de asemenea potrivite ca o introducere în profunzime in lumea Bitcoin pentru cei care nu programeaza-cei care încearcă să înțeleagă mecanismele interne ale Bitcoin și ale modelor criptografice.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_de_ce_sunt_gândaci_pe_copertă">De ce sunt gândaci pe copertă?</h3>
+<div class="paragraph"><p>Furnica leafcutter este o specie care prezintă un comportament extrem de complex într-o colonie super-organism, deși fiecare furnică individ funcționează după un set de reguli simple  bazate pe interacțiunea socială și schimbul de arome chimice (feromoni). Citat Wikipedia: "Alături de oameni, furnicile leafcutter formează cele mai mari și mai complexe societăți de animale de pe Pământ." Furnicile leafcutter nu mananca de fapt frunze, ci mai degrabă le folosesc pentru a cultiva o ciuperca, care este sursa de hrana centrală pentru colonie. Ați prins-o? Aceste furnici fac agricultura!</p></div>
+<div class="paragraph"><p>Deși furnicile formează o societate bazată pe caste și au o regină pentru producerea puilor, nu există nici o autoritate centrală sau lider într-o colonie de furnici. Comportamentul extrem de inteligent și sofisticat arătat de o colonie de milioane de membri este o proprietate rezultată din interacțiunea indivizilor într-o rețea socială.</p></div>
+<div class="paragraph"><p>Natura demonstrează că sistemele descentralizate pot fi reziliente și pot produce o complexitate și sofisticare incredibilă fără a fi nevoie de o autoritate centrală, ierarhie, sau piese complexe.</p></div>
+<div class="paragraph"><p>Bitcoin este o rețea de încredere descentralizată extrem de sofisticată, care poate suporta o multitudine de procese financiare. Cu toate acestea, fiecare nod din rețeaua Bitcoin urmează câteva reguli matematice simple. Interacțiunea dintre mai multe noduri este ceea ce duce la apariția comportamentului sofisticat, fără complexitate inerentă sau încrederea într-un singur nod. Ca o colonie de furnici, rețeaua Bitcoin este o rețea robustă de noduri simple, urmând reguli simple care împreună pot face lucruri uimitoare, fără nici o coordonare centrală.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_convenții_utilizate_în_această_carte">Convenții utilizate în această carte</h3>
+<div class="paragraph"><p>Următoarele convenții tipografice sunt folosite în această carte:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>Italic</em>
+</dt>
+<dd>
+<p>
+Indică noi termeni, URL-uri, adrese de email, nume de fișiere și extensii de fișiere.
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>Latime Constantă</tt>
+</dt>
+<dd>
+<p>
+folosit pentru listări de programe, precum și în cadrul paragrafelor pentru a face referiri la elemente de programare, cum ar fi variabile sau nume de funcții, baze de date, tipuri de date, variabile de mediu, declarații, și cuvintele cheie.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<tt>Lățime constantă bold</tt>**:: Indică comenzi sau alt text care ar trebui să fie introdus așa cum este de către utilizator.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+_ <tt>Lățime constantă italic</tt> _
+</dt>
+<dd>
+<p>
+Arata un text care ar trebui să fie înlocuite cu valorile furnizate de utilizator sau prin valori determinate de context.
+</p>
+</dd>
+</dl></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Această pictogramă înseamnă un sfat, sugestie, sau nota generala.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Această pictogramă indică un avertisment sau precauție.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exemple_de_cod">Exemple de cod</h3>
+<div class="paragraph"><p>Exemplele sunt ilustrate în Python, C ++, folosind linia de comandă a unui sistem de operare Unix-like, cum ar fi Linux sau Mac OS X. Toate fragmente de cod sunt disponibile în locația <a href="https://github.com/aantonop/bitcoinbook">GitHub repository</a> în subdirectorul <em>code</em> din repository-ul principal. Modificați exemplele de cod din carte, încercați exemple de cod, sau trimiteți corecturi prin GitHub.</p></div>
+<div class="paragraph"><p>Toate fragmente de cod poate fi reprodus pe majoritatea sistemelor de operare cu minim un compiltor si interpretor specific limbajelor de progrmare utilizate. Dacă este necesar, oferim instrucțiuni de instalare de bază și exemple pas cu pas de rezultate a acestor instrucțiuni.</p></div>
+<div class="paragraph"><p>Unele dintre fragmente de cod și rezultate au fost reformatate pentru tipărire. În toate aceste cazuri, liniile au fost împărțite cu backslash (\), urmat de un caracter linie nouă. În cazul transcrierii exemplelor, scoateți cele două caractere pentru alăturarea liniilor din nou și ar trebui să vedeți rezultate identice așa cum se arată în exemplul.</p></div>
+<div class="paragraph"><p>Toate fragmentele de cod folosesc valori reale și calcule acolo unde este posibil, astfel încât să puteți construi de la un exemplu la altul și sa vedeți aceleași rezultate în orice cod scrieți pentru a calcula aceleași valori. De exemplu, cheile private și cheile publice corespunzătoare și adresele sunt reale. Tranzacțiile eșantion, blocurile, si refrințele blockchain toate au fost introduse în blockchain real Bitcoin și fac parte din registrul de public, pentru a le putea examina pe orice sistem Bitcoin.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_folosind_exemple_de_cod">Folosind exemple de cod</h3>
+<div class="paragraph"><p>Aceasta carte este aici pentru a vă ajuta sa vă duceți proiectul la bun sfârșit. În general, exemplele de cod oferite cu această carte se pot folosi în programele și documentația voastra. Nu este nevoie să ne contactați pentru permisiune dacă nu reproduceți o parte semnificativă a codului. De exemplu, scriind un program care utilizează câteva bucăți de cod din această carte nu are nevoie de permisiunea noastră. Vanzarea sau distribuirea CD-ROM-ul  cu exemple de la O&#8217;Reilly are nevoie de permisiune. Răspunzând unei întrebări, citând această carte și citând exemplul de cod nu are nevoie de permisiune. Încorporarea unei cantități semnificative din exemplele de cod din această carte în documentația produsului dvs. are nevoie în schimb de permisiune.</p></div>
+<div class="paragraph"><p>Apreciem, dar nu solicităm, referința. O referință include, de obicei, titlu, autor, editor, si ISBN. De exemplu: "<em>Mastering Bitcoin</em> de Andreas M. Antonopoulos (O&#8217;Reilly). Copyright 2015 Andreas M. Antonopoulos, 978-1-449-37404-4. "</p></div>
+<div class="paragraph"><p>Unele ediții ale acestei cărți sunt oferite sub o licență open source, cum ar fi CC-BY-NC (creativecommons.org), caz în care se aplică termenii acelei licențe.</p></div>
+<div class="paragraph"><p>In cazul in care considerați că utilizarea de exemple de cod nu se incadrează in permisiunea de mai sus, nu ezitați să ne contactați la <email> permissions@oreilly.com</email>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_safari_books_online">Safari® Books Online</h3>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly"> Safari Books Online </ulink>  este o bibliotecă digitală la cerere care oferă  <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/content"> conținut </ulink>  specializat atât în ​​format carte cat și video de la autori recunoscuți pe plan mondial&amp;#8217 în tehnologie și afaceri.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Profesioniști in tehnologie, dezvoltatori de software, web designeri, și profesioniștii din domeniul afacerilor și creației folosesc Safari Books Online ca resursă principală pentru cercetare, rezolvarea de probleme, învățare și instruire pentru certificare.</p></div>
+<div class="paragraph"><p>Safari Books Online oferă o gamă de <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/subscriptions"> seturi de produse </ulink> și grile de prețuri pentru  <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/organizations-teams"> organizații </ulink> ,  <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/government"> agenții guvernamentale </ulink> , și  <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/individuals"> persoane fizice </ulink> . Abonații au acces la mii de carti, filme de training, și manuscrise înainte de publicare într-o bază de date unica cu funcție completa de căutare de la editori precum O&#8217;Reilly Media, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Focal Press, Cisco Press, John Wiley &amp; Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones &amp; Bartlett, Course Technology, și  <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/publishers"> alte </ulink>  zeci. Pentru mai multe informații despre Safari Books Online, va rugam sa ne vizitați  <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/"> on-line </ulink> .</p></div>
+</div>
+<div class="sect2">
+<h3 id="_cum_să_ne_contactați">Cum să ne contactați</h3>
+<div class="paragraph"><p>Vă rugăm să adresați observații și întrebări cu privire la această carte editorului:</p></div>
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (in the United States or Canada)</member>
+<member>707-829-0515 (international or local)</member>
+<member>707-829-0104 (fax)</member>
+</simplelist>
+<div class="paragraph"><p>Avem o pagina web pentru această carte, în cazul în care vom publica erata, exemple, precum și orice informații suplimentare. Puteți accesa această pagină la <a href="http://bit.ly/mastering_bitcoin">http://bit.ly/mastering_bitcoin</a>.</p></div>
+<div class="paragraph"><p>Pentru a comenta sau pune întrebări tehnice cu privire la această carte, trimiteti un email la  <email> bookquestions@oreilly.com </email>.</p></div>
+<div class="paragraph"><p>Pentru mai multe informații despre cărțile noastre, cursuri, conferințe, și știri, a se vedea site-ul nostru la <a href="http://www.oreilly.com">http://www.oreilly.com</a>.</p></div>
+<div class="paragraph"><p>Găsiți-ne pe Facebook: <a href="http://facebook.com/oreilly">http://facebook.com/oreilly</a></p></div>
+<div class="paragraph"><p>Urmăriți-ne pe Twitter: <a href="http://twitter.com/oreillymedia">http://twitter.com/oreillymedia</a></p></div>
+<div class="paragraph"><p>Urmariti-ne pe YouTube: <a href="http://www.youtube.com/oreillymedia">http://www.youtube.com/oreillymedia</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_mulțumiri">Mulțumiri</h3>
+<div class="paragraph"><p>Această carte reprezintă eforturile și contribuțiile multor oameni. Sunt recunoscător pentru tot ajutorul primit de la prieteni, colegi și chiar necunoscuți, care s-au alăturat acestui efort de a scrie cartea tehnică de baza in domeniul monedelor digitale criptografice și Bitcoin.</p></div>
+<div class="paragraph"><p>Este imposibil să se facă o distincție între tehnologia bitcoin și comunitatea bitcoin, iar această carte este la fel de mult un produs al comunității cât și o carte despre tehnologie. Munca mea la această carte a fost încurajată, aclamată, susținută și răsplătită de către întreaga comunitate bitcoin încă de la început și până la sfârșit. Mai mult decât orice, această carte mi-a permis să fac parte dintr-o comunitate minunată timp de doi ani și nu pot mulțumi îndeajuns pentru acceptarea mea în această comunitate. Sunt prea multe persoane pentru a menționa numele acestora individual, oameni pe care i-am întâlnit la conferințe, evenimente, seminarii, meetups, întâlniri cu pizza, și adunări private mici, precum si mai mulți sunt cei cu care au comunicat cu mine pe Twitter, pe Reddit, pe bitcointalk.org, și pe GitHub și care au avut un impact asupra acestei cărți. Fiecare idee, analogie, întrebare, răspuns, și explicație veți găsi în această carte au fost la un moment dat inspirate, testate, sau îmbunătățite prin interacțiunile mele cu comunitatea. Vă mulțumesc tuturor pentru sprijinul acordat; fără voi această carte nu s-ar fi întâmplat. Sunt pentru totdeauna recunoscător.</p></div>
+<div class="paragraph"><p>Aventura de a deveni un autor începe cu mult înainte de prima carte, desigur. Primul mea limbă (și școlarizare) a fost greaca, așa că a trebuit să fac curs de perfecționare pentru engleză scrisă în engleză, în primul meu an de facultate. Îi datorez mulțumiri Dianei Kordas, profesorul meu de limba engleză scris, care ma ajutat să-mi  construiesc încrederea și abilitățile în acel an. Mai târziu, ca profesionist, mi-am dezvoltat abilitățile de scris tehnice pe tema centre de date, scris pentru revista <em>Network World</em>. Îi datorez mulțumiri lui John Dix și lui John Gallant, care mi-a dat primul meu loc de muncă ca cronicar la <em>Network World</em> și editorului meu, Michael Cooney și colegului meu Johna Till Johnson, care a editat articolele mele si le-a facut potrivite pentru publicare. Scrisul a  500 de cuvinte pe săptămână timp de patru ani mi-a dat suficientă experiență pentru a lua în considerare în cele din urmă să devin un autor. Mulțumesc lui Jean de Vera pentru încurajările ei încă de la început în a deveni autor și pentru insistența cu care a crezut mereu că am o carte în mine.</p></div>
+<div class="paragraph"><p>Mulțumesc de asemenea celor care m-au sprijinit atunci când am prezentat propunerea mea carte la O&#8217;Reilly, prin furnizarea de referințe și revizuirea propunerii. Mai exact, mulțumesc lui John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, Ioan Dix, Johna Till Johnson, Roger Ver, și Jon Matonis. Mulțumiri speciale lui Richard Kagan și Tymon Mattoszko, care au revizuit primele versiuni ale propunerii și lui Matei Owain Taylor, care a copyeditat propunerea.</p></div>
+<div class="paragraph"><p>Mulțumesc lui Cricket Liu, autor al title <em>DNS al O&#8217;Reilly și BIND</em>, care m-a prezentat la O&#8217;Reilly. Mulțumesc de asemeni lui Michael Loukides și Allyson MacDonald de la O&#8217;Reilly, care a lucrat de luni de zile pentru a face această carte se întâmple. Allyson a fost deosebit de răbdator atunci când termenele au fost ratate și rezultatele întârziau sa apară datorita intâmplarilor de viață intervenite în programul nostru planificat inițial.</p></div>
+<div class="paragraph"><p>Primele versiuni ale primelor capitole au fost cele mai grele, pentru că Bitcoin este un subiect dificil de deconspirat. De fiecare dată ccând am tmers pe un fir de tehnologie bitcoin, a trebuit să merg până la capăt. Am rămas blocat în mod repetat și un pic descurajat încercând să fac subiectul ușor de înțeles și să creez o narațiune în jurul unui astfel de subiect dens tehnic. În cele din urmă, am decis să spun povestea bitcoin prin poveștile oamenilor care folosesc bitcoin și întreaga carte a devenit mult mai ușor să fie scrie. Îi datorez mulțumiri prietenului și mentorului meu, Richard Kagan, care ma ajutat să descopăr povestea și să trec de momentele de blocaj scriitoricesc, și Pamelei Morgan, care a revizuit versiunile timpurii ale fiecărui capitol și a trimis întrebările necesare pentru a le face mai bune. De asemenea, mulțumesc dezvoltatorilor grupului San Francisco Bitcoin Developers Meetup și Taariq Lewis, co-fondator al grupului, pentru a ajutorul furnizat la testare materialul preliminar.</p></div>
+<div class="paragraph"><p>Pe parcursul dezvoltării cărții, am făcut publicări anticipate disponibile pe GitHub și am invitat la comentarii publice. Au fost depuse mai mult de o sută de comentarii, sugestii și corecturi, și contribuții în răspuns. Aceste contribuții sunt recunoscute în mod explicit, cu mulțumirile mele, în <a href="#github_contrib">[github_contrib]</a>. Mulțumiri speciale lui Minh T. Nguyen, care s-a oferit voluntar să gestioneze contribuțiile GitHub și a adăugat mai multe contribuții semnificative el însuși. Mulțumesc de asemenea lui Andrew Naugler pentru desig-ul infographic.</p></div>
+<div class="paragraph"><p>Odată ce cartea a fost redactată, acesta a trecut prin mai multe runde de revizuire tehnice. Mulțumesc lui Cricket Liu și Lorne Lantz pentru revizuirea lor aprofundată, comentarii și pentru sprijin.</p></div>
+<div class="paragraph"><p>Mai mulți dezvoltatorii bitcoin au contribuit cu mostre de cod, revizuiri, comentarii, și încurajari. Mulțumesc lui Amir Taaki și Eric Voskuil pentru fragmente și exemple de cod și multe comentarii excelente; lui Vitalik Buterin și Richard Kiss pentru ajutor la matematica curbelor eliptice și exemple de cod; lui Gavin Andresen pentru corecturi, comentarii, și încurajare; lui Michalis Kargakis pentru comentarii, contribuțiile și btcd writeup; și lui Robin Inge pentru contribuții la erată îmbunătățirea celei de a doua tipăriri.</p></div>
+<div class="paragraph"><p>Datorez dragostea mea pentru cuvinte și cărți mamei mele, Theresa, care m-a crescut într-o casă cu cărți captușind fiecare perete. Mama mea mi-a cumparat de asemenea, primul meu calculator în 1982, în ciuda faptului că mă consider technofob. Tatăl meu, Menelaos, un inginer construcșți civile care tocmai a publicat prima sa carte la 80 de ani, a fost cel care m-a învățat gândirea logică și analitică și o iubire de știință și inginerie.</p></div>
+<div class="paragraph"><p>Vă mulțumesc tuturor pentru susținerea mea de-a lungul acestei călătorii.</p></div>
+<div class="sect3">
+<h4 id="github_contrib">Versiune preliminara (Contributii GitHub)</h4>
+<div class="paragraph"><p>Mulți contributori au oferit comentarii, corecturi și completări la versiunea preliminară pe GitHub. Vă mulțumesc tuturor pentru contribuțiile dumneavoastră la această carte. În cele ce urmează este o listă de contributori Github care au ieșit în evidență, inclusiv ID-ul lor GitHub în paranteze:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Minh T. Nguyen, GitHub editor contribuții (enderminh)
+</p>
+</li>
+<li>
+<p>
+Ed Eykholt (edeykholt)
+</p>
+</li>
+<li>
+<p>
+Michalis Kargakis (kargakis)
+</p>
+</li>
+<li>
+<p>
+Erik Wahlström (erikwam)
+</p>
+</li>
+<li>
+<p>
+Richard Kiss (richardkiss)
+</p>
+</li>
+<li>
+<p>
+Eric Winchell (Winchell)
+</p>
+</li>
+<li>
+<p>
+Sergej Kotliar (ziggamon)
+</p>
+</li>
+<li>
+<p>
+Nagaraj Hubli (nagarajhubli)
+</p>
+</li>
+<li>
+<p>
+eteri
+</p>
+</li>
+<li>
+<p>
+Alex Waters (alexwaters)
+</p>
+</li>
+<li>
+<p>
+Mihail Russu (MihailRussu)
+</p>
+</li>
+<li>
+<p>
+Iș Ot Jr. (ishotjr)
+</p>
+</li>
+<li>
+<p>
+James Addison (jayaddison)
+</p>
+</li>
+<li>
+<p>
+Nekomata (nekomata-3)
+</p>
+</li>
+<li>
+<p>
+Simon de La Rouvière (simondlr)
+</p>
+</li>
+<li>
+<p>
+Chapman Shoop (belovachap)
+</p>
+</li>
+<li>
+<p>
+Holger Schinzel (schinzelh)
+</p>
+</li>
+<li>
+<p>
+EffectsToCause (vericoin)
+</p>
+</li>
+<li>
+<p>
+Stephan Oeste (Emzy)
+</p>
+</li>
+<li>
+<p>
+Joe Bauers (joebauers)
+</p>
+</li>
+<li>
+<p>
+Jason Bisterfeldt (jbisterfeldt)
+</p>
+</li>
+<li>
+<p>
+Ed Leafe (EdLeafe)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 17:01:31 UTC
+</div>
+</div>
+</body>
+</html>

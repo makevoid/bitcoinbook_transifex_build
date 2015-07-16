@@ -1,0 +1,61 @@
+[preface]
+== Kurz-Glossar
+
+Dieses Kurz-Glossar enthält viele Begriffe bezogen auf Bitcoin. Diese Begriffe werden während des ganzen Buches verwendet, also fügen sie ein Lesezeichen als Schnellreferenz hinzu.
+
+Adresse::
+    Eine Bitcoin Adresse hat das Format +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. Sie besteht aus einer Zeichenkette von Zahlen und Buchstaben beginnend mit "1" (Zahl eins). Genauso wie du andere bittest dir eine E-Mail an deine E-Mail Adresse zu senden, bittest du andere dir Bitcoin an deine Bitcoin-Adresse zu senden.((("bitcoin address")))((("address", see="bitcoin address")))((("public key", see="bitcoin address"))) 
+
+BIP::
+    Bitcoin Improvement Proposal (Bitcoin Verbesserungsvorschläge). Eine Reihe von Vorschlägen die von Mitgliedern der Bitcoin Gemeinschaft eingereicht wurden um Bitcoin zu verbessern. Zum Beispiel, BIP0021 ist ein Vorschlag zur Verbesserung des Bitcoin uniform resource identifier (URI) Schemas.((("bip"))) 
+
+Bitcoin::
+    Der Name der Währungseinheit (Münze), des Netzwerks und der Software.((("bitcoin"))) 
+
+Block::
+    Eine Zusammenfassung von Transaktionen, markiert mit einem Zeitstempel und eines Fingerabdrucks des vorhergehenden Blocks. Der Block-Header ist mit einer Prüfsumme versehen und stellt einen Arbeitsnachweis (proof-of-work) dar um damit die Transaktionen zu validieren. Gültige Blöcke werden zur Haupt-Blockchain durch Netzwerk-Konsens hinzugefügt.
+
+Blockchain::
+	Eine Liste von gültigen Blöcken, jeder mit seinem Vorgänger verknüpft bis zum Genesis-Block.((("blockchain")))
+	
+Bestätigungen::
+	Sobald eine Transaktion einem Block hinzugefügt wurde hat diese eine Bestätigung. Sobald ein weiterer Block derselben Blockchain hinzugefügt wurde hat die Transaktion zwei Bestätigungen, usw.. Sechs weitere Bestätigungen werden als ausreichender Beweis angesehen das eine Transaktion nicht mehr rückgängig gemacht werden kann.((("confirmations")))
+
+Schwierigkeitgrad::
+	Eine netzwerkweite Einstellung die steuert wie viel Rechenleistung benötigt wird um den Arbeitsnachweis (proof-of-work) zu erstellen.((("difficulty")))
+
+Ziel-Schwierigkeitsgrad::
+ 	Ein Schwierigkeitsgrad an dem die gesamte Rechenleistung des Netzwerkes ungefähr alle 10 Minuten einen Block erstellen (schürfen) wird.
+
+Anpassung des Schwierigkeitsgrades::
+	Eine netzwerkweite Neuberechung des Schwierigkeitsgrades die alle 2106 Blöcke stattfindet und dabei die Prüfsummen-Rechenleistung der letzten 2106 Blöcke berücksichtigt.((("difficulty retargeting"))) 
+	
+Gebühren::
+	Der Absender einer Transaktion entrichtet oft eine Gebühr an das Netzwerk für das verarbeiten der Transaktion. Die meisten Transaktionen benötigigen einen Mindestgebühr von 0,5 mBTC.((("fees")))
+
+Prüfsumme::
+	Ein digitaler Fingerabdruck einer binären Eingabe.((("hash")))
+
+Genesis-Block::
+	Der erste Block in der Blockchain, wurde verwendet um die kryptographische Währung zu initialisieren.((("genesis block")))
+	
+Miner::
+Ein Netzwerkknoten, der durch wiederholtes Anwenden eines Hash-Codes gültige Ergebnisse für neue Blocks findet.((("miner")))
+
+Netzwerk::
+Ein Peer-to-Peer Netzwerk, welches Transaktionen und Blocks an jeden Netzwerkknoten im Netzwerk weiterleitet.((("network")))
+	
+Proof-Of-Work::
+	Ein Datensatz, der erhebliche Rechenkapazität benötigt um gefunden zu werden. Bei Bitcoin müssen von den Minern für den SHA256 Algorithmus numerische Lösungen gefunden werden, die dem netzwerkweiten Ziel-Schwierigkeitsgrad entsprechen. ((("proof-of-work")))
+
+Belohnung::
+Ein Betrag, der in jedem Block als Belohnung des Netzwerks and den Miner, der die Lösung für die Proof-Of-Work Aufgabe gefunden hat. Dieser beträgt momentan 25BTC pro Block. ((("reward")))
+
+Sicherheitsschlüssel (auch bekannt als privater Schlüssel)::
+	Die Geheimnummer, die an die entsprechende Adresse gesandte Bitcoins verwendbar macht. Ein Sicherheitsschlüssel sieht folgendermaßen aus +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("secret key")))((("private key", see="secret key")))
+	
+Transaktion::
+In einfache Worten, der Übertrag von Bitcoins von einer Adresse auf eine andere. Genau genommen, ist eine Transaktion eine signierte Datenstruktur, die den Übertrag eines Wertes repräsentiert. Transaktionen werden über das Bitcoin-Netzwerk übertragen, von den Minern gesammelt und in Blocks eingearbeitet, wo sie dauerhaft in der Blockchain erfasst werden.((("transaction")))
+
+Geldbörse::
+Software, die alle Bitcoin Adessen und Sicherheitsschlüssel beinhaltet. Benutze sie, um Bitcoin zu senden, zu empfangen und aufzubewahren.((("wallet"))) 

@@ -1,0 +1,1421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="transactions">Tranzakciók</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="ch5_intro">Bevezetés</h3>
+<div class="paragraph"><p>A tranzakciók a bitcoin rendszer legfontosabb részei. A bitcoinban minden más úgy lett megtervezve, hogy biztosítsa a tranzakciók létrehozását, hálózaton keresztüli továbbítását, ellenőrzését és végül a tranzakciók hozzáadását a rendszer globális főkönyvéhez, a blokklánchoz. A tranzakciók olyan adatstruktúrák, melyek az érték átruházását kódolják a bitcoin rendszer résztvevői között. Mindegyik tranzakció egy nyilvános bejegyzés a bitcoin kettős könyvelésében, a blokkláncban.</p></div>
+<div class="paragraph"><p>Ebben a fejezetben a tranzakciók különféle fajtáit vizsgáljuk: mit tartalmaznak, hogyan hozhatók létre, hogyan ellenőrizhetők és hogyan válnak az összes tranzakciót megörökítő maradandó feljegyzés részévé.</p></div>
+</div>
+<div class="sect2">
+<h3 id="tx_lifecycle">A tranzakciók életciklusa</h3>
+<div class="paragraph"><p>A tranzakciók életciklusa a tranzakció létrehozásával kezdődik. Ezután a tranzakció aláírásra kerül, vagyis egy vagy több aláírás kerül rá, ami engedélyezi a tranzakció által hivatkozott összegek elköltését. A tranzakció ezután továbbításra kerül a bitcoin hálózatban. A hálózat minden egyes csomópontja (résztvevője) ellenőrzi a tranzakciót, és továbbítja azt, amíg a tranzakció el nem jut a hálózat (majdnem) valamennyi csomópontjához. Végül a tranzakciót egy bányász csomópont ellenőrzi, és befoglalja egy tranzakciókat tartalmazó blokkba, amely a blokkláncban tárolódik.</p></div>
+<div class="paragraph"><p>Miután a tranzakció a blokkláncban tárolásra került, és a blokkot elégéséges számú további blokk (megerősítés) követi, a tranzakció a bitcoin főkönyv állandó részévé válik, és az összes résztvevő érvényesnek tekinti. A tranzakció által az új tulajdonoshoz rendelt összeget ezután egy újabb tranzakcióban lehet elkölteni. Az új tranzakcióval tovább bővül tulajdonosi lánc, és a tranzakciós életciklus ismét elkezdődik.</p></div>
+<div class="sect3">
+<h4 id="tx_origination">Tranzakciók létrehozása</h4>
+<div class="paragraph"><p>Segítségünkre lehet, ha a tranzakciót úgy képzeljül el, mint egy papír csekket. Egy csekkhez hasonlóan a tranzakció is egy olyan eszköz, amellyel pénz továbbítási szándék fejezhető ki, de a pénzügyi rendszer számára csak akkor lesz látható, ha már fel lett adva végrehajtásra. A csekkhez hasonlóan a tranzakció kezdeményezője sem feltétlenül azonos a tranzakció aláírójával.</p></div>
+<div class="paragraph"><p>Tranzakciókat online vagy offline módon bárki létrehozhat, még akkor is, ha a tranzakciót létrehozó személy nincs meghatalmazva arra, hogy aláírja a számlát. Például egy pénztáros előkészítheti azokat a csekkeket, amelyeket az igazgató ír alá. Hasonló módon, egy pénztáros létre tud hozni olyan bitcoin tranzakciókat, melyek később az igazgató digitális aláírása érvényesít. Míg a csekk esetében az összeg forrását egy adott számla jelenti, a bitcoin tranzakció nem egy számlára, hanem bizonyos előző tranzakciókra hivatkozik.</p></div>
+<div class="paragraph"><p>A tranzakciót a létrehozása után a forrrás összeg tulajdonosa (vagy tulajdonosai) aláírják. Ha a tranzakció alakilag helyes és alá lett írva, akkor érvényessé válik, és az összes olyan információt tartalmazza, amely a pénzküldés végrehajtásához szükséges. Utolsó lépésként az érvényes tranzakciónak el kell jutnia a bitcoin hálózatba, hogy továbbításra kerülhessen, és egy bányász befoglalhassa a nyilvános főkönyvbe, a blokkláncba.</p></div>
+<div class="paragraph" id="tx_bcast"><p>====A bitcoin tranzakció elküldése a bitcoin hálózatnak</p></div>
+<div class="paragraph"><p>Először is a tranzakciót el kell juttatni a bitcoin hálózatba, hogy továbbításra kerülhessen a többi csomópontnak és be lehessen foglalni a blokkláncba. Lényegében egy bitcoin tranazakció csupán 300-400 bájt adat, melynek a több tízezer bitcoin csomópont mindegyikéhez el kell jutnia. A küldőnek nem kell megbíznia a tranzakció szétsugárzására használt csomópontokban, ha több csomópontot használatával biztosítja, hogy a tranzakció biztosan szétterjedjen. A csomópontoknak nem kell bízniuk a küldőben, és nem kell megállapítaniuk a küldő „személyazonosságát”. Mivel a tranzakció alá van írva, és nem tartalmaz bizalmas adatokat, titkos kulcsokat vagy tanúsítványokat, bármilyen mögöttes hálózati átviteli mechanizmussal közvetíthető. Ezzel szemben a hitelkártya tranzakciók bizalmas adatokat tartalmaznak, és csak titkosított hálózati kapcsolaton továbbíthatók. A bitcoin tranzakciók viszont bármilyen hálózatot használhatnak. Ha a tranzakció képes eljutni egy bitcoin csomóponthoz, amely továbbítja azt a bitcoin hálózatnak, lényegtelen, hogy a tranzakció hogyan jutott el az első csomóponthoz.</p></div>
+<div class="paragraph"><p>A bitcoin tranzakciók emiatt nem titkosított hálózati kapcsolatokkal is eljuttathatók a bitcoin hálózatba. Használható pl. Wifi, Bluetooth, Chirp, vonalkódok, vagy egy web nyomtatványba történő bemásolás. Rendkívüli esetekben a bitcoin tranzakció csomagkapcsolt rádióval, műholdas reléállomással vagy rövidhullámú adással is  továbbítható. Ha fontos a fedett és zavarásmentes kommunikáció, akkor szórt spektrumú kommunikáció vagy frekvencia ugrásos rendszerek használhatók. A bitcoin tranzakciók még hangulatjelzések (smileys) segítségével is kódolhatók, posztolhatók nyilvános fórumokon, vagy elküldhetők szöveges üzenet vagy Skype üzenet formájában. A bitcoin a pénzt adatstruktúrává változtatja át, és lényegében mindenkinek lehetővé teszi a bitcoin tranzakciók létrehozását és végrehajtását.</p></div>
+</div>
+<div class="sect3">
+<h4 id="tx_propagation">A tranzakciók szétterjedése a bitcoin hálózatban</h4>
+<div class="paragraph"><p>Miután a bitcoin tranzakciót továbbítottuk a bitcoin hálózat egy tetszőleges csomópontjának, a csomópont ellenőrzi a tranzakciót. Ha a tranzakció érvényes, akkor a csomópont továbbítja a vele kapcsolatban lévő többi csomópontnak, és a sikerről szinkron módon egy üzenetet ad vissza a kezdeményezőnek. Ha a tranzakció érvénytelen, akkor a csomópont elutasítja a tranzakciót, és az elutasítás tényéről szinkron módon egy üzenetet küld a kezdeményezőnek.</p></div>
+<div class="paragraph"><p>A bitcoin hálózat egy peer-to-peer hálózat, ami azt jelenti, hogy mindegyik bitcoin csomópont kapcsolatban van pár további bitcoin csomóponttal. Ezeket a csomópontokat a kliens a peer-to-peer protokoll révén, az induláskor találja meg. Az egész hálózat egy lazán kapcsolódó háló, melynek nincs rögzített topológiája vagy valamilyen adott szerkezete, és amelyben az összes csomópont egyenrangú. Az üzeneteket, pl. a tranzakciókat és a blokkokat az egyes csomópontok mindazoknak a csomópontoknak továbbítják, melyekkel kapcsolatban vannak. Ezt a folyamatot "elárasztásnak" ("flooding") hívják. Ha bármelyik csomópontra egy új, érvényes tranzakció érkezik, a csomópont továbbküldi azt a vele kapcsolatban lévő szomszédos csomópontoknak. A szomszédok mindegyik továbbküldi a vele kapcsolatban lévő csomópontoknak, és így tovább. Ily módon néhány másodperc alatt az érvényes tranzakció egy exponenciálisan bővülő hullámban tovaterjed a hálózatban, amíg minden egyes kapcsolódó csomóponthoz el nem jut.</p></div>
+<div class="paragraph"><p>A bitcoin hálózat úgy lett megtervezve, hogy a tranzakciókat és a blokkokat hatékony módon továbbítsa az összes csomópontnak, és a külső támadásokkal szemben védett legyen. A bitcoin rendszerrel szembeni támadások (pl. spamming, DDoS) kivédése érdekében mindegyik csomópont a többitől függetlenül minden egyes tranzakciót ellenőriz, mielőtt továbbítaná. Egy helytelen formátumú tranzakció egy csomópontnál nem jut tovább. A tranzakciók ellenőrzésére szolgáló szabályokat részletesebben a <a href="#tx_verification">[tx_verification]</a> rész ismerteti.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tx_structure">A tranzakciók szerkezete</h3>
+<div class="paragraph"><p>A tranzakció egy olyan <em>adatstruktúra</em>, amely pénz küldést tesz lehetővé a pénzforrások, vagyis a  <em>bemenetek</em> és a rendeltetési helyek, vagyis  <em>kimenetek</em> között. A tranzakció bemeneteinek és kimeneteinek nincs semmi közük sem a számlákhoz vagy a személyazonosságokhoz. Inkább úgy képzeljék el őket, mint bitcoint mennyiségeket, bitcoin darabkákat, melyek egy olyan titokkal lettek zárolva, melyet csak a tulajdonos vagy a titkot ismerő személy tud megszűntetni. A tranzakció számos mezőt tartalmaz, amint azt a <a href="#tx_data_structure">[tx_data_structure]</a> mutatja:</p></div>
+<div class="tableblock" id="tx_data_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. Egy tranzakció szerkezete</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Méret </th>
+<th align="left" valign="top"> Mező </th>
+<th align="left" valign="top"> Leírás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Verzió</p></td>
+<td align="left" valign="top"><p class="table">Megadja, hogy melyek a tranzakció által követett szabályok</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bájt (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Input Counter</p></td>
+<td align="left" valign="top"><p class="table">A tranzakció bemeneteinek a száma</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Változó</p></td>
+<td align="left" valign="top"><p class="table">Inputs</p></td>
+<td align="left" valign="top"><p class="table">Egy vagy több tranzakció bemenet</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bájt (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Output Counter</p></td>
+<td align="left" valign="top"><p class="table">A tranzakció kimeneteinek a száma</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Változó</p></td>
+<td align="left" valign="top"><p class="table">Outputs</p></td>
+<td align="left" valign="top"><p class="table">Egy vagy több tranzakció kimenet</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Locktime</p></td>
+<td align="left" valign="top"><p class="table">Unix időbélyeg vagy blokk szám</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Tranzakció zárolási idő</div>
+<div class="paragraph"><p>A Locktime (Zárolási idő) definiálja, hogy a tranzakció legkorábban mikor adható a blokklánchoz. A referencia kliensben nLockTime a neve. A legtöbb tranzakcióban 0 az értéke, ami az azonnali végrehajtásnak felel meg. Ha a Locktime nem nulla, és 500 millió alatti szám, akkor blokk magasságként van értelmezve, és azt jelenti, hogy a tranzakció nem érvényes, és a megadott blokk magasság elérése előtt nem kerül továbbításra ill. nem kerül be a blokkláncba. Ha az érték 500 millió feletti, akkor Unix időbélyeget (az 1970. jan. 1. óta eltelt másodpercek számát) jelenti, és a tranzakció a megadott idő előtt nem érvényes. A zárolási idővel rendelkező tranzakciókat, melyekben jövőbe mutató idő vagy jövőbeli blokk szerepel, az őket létrehozó rendszerben kell megőrizni, és csak akkor szabad a bitcoin hálózatba továbbítani, ha már érvényesekké váltak. A zárolási idő megfelel egy papír alapú csekk antedatálásának.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="tx_inputs_outputs">Tranzakció kimenetek és bemenetek</h3>
+<div class="paragraph"><p>Egy bitcoin tranzakció alapvető építő eleme az <em>elköltetlen tranzakció kimenet</em> vagy UTXO (unspent transaction output). Az UTXO a bitcoin oszthatatlan darabja, amely egy adott tulajdonoshoz van kötve, szerepel a blokkláncban, és az egész hálózat által elismert pénzegység. A bitcoin hálózat az összes rendelkezésre álló (el nem kültött) UTXO-t nyomon követi. Ezek száma jelenleg a milliós tartományban van. Ha a felhasználónak bitcoint küld valaki, az összeg nagysága a blokkláncon belül UTXO-ként van rögzítve. Így aztán egy felhasználó bitcoinjai UTXO-k formájában tranzakciók százai és blokkok százai között lehetnek szétszórva. Igazából nincs is olyasmi, hogy egy bitcoin cím egyenlege vagy számla egyenlege, csak szétszórt UTXO-k vannak, melyek egy adott felhasználókhoz vannak kötve. A felhasználó bitcoin egyenlege egy olyan fogalom, amely a pénztárca szintjén jelenik meg. A felhasználó egyenlegét a pénztárca számítja ki oly módon, hogy végigpásztázza a blokkláncot és összegzi az adott felhasználóhoz tartozó összes UTXO-t.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A bitcoinban nincsenek számlák ill. egyenlegek, csak <em>el nem költött tranzakció kimenetek</em> (UTXO-k) vannak, melyek szét vannak szórva a blokkláncban.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Az UTXO-kat satoshiban mérjük, és tetszőleges értékük lehet. A dollár esetében  a legkisebb egység a  két tizedesjeggyel ábrázolható cent. Hasonló módon a bitcoinnál a legkisebb egység a  nyolc tizedesjeggyel ábrázolható satoshi. Noha egy UTXO értéke teteszőleges lehet, a létrejötte után már épp úgy oszthatatlan, mint egy érme, amely nem vágható ketté. Ha az UTXO nagyobb, mint a tranzakció kívánt értéke, akkor is teljes mértékben el kell költeni, és a tranzakcióban visszajáró pénzt kell generálni.  Más szóval, ha van egy 20 bitcoinos UTXO-nk, és 1 bitcoint szeretnénk kifizetni, akkor a tranzakciónknak az egész 20 bitcoinos UTXO-t el kell költenie, és két kimenetet kell létrehoznia: az első kimenet 1 bitcoint fizet a kívánt címzettnek, a második a visszajáró 19 bitcoint utalja a saját pénztárcánkba. Emiatt a bitcoin tranzakcióknak legtöbbször a visszajáró pénzt is kezelniük kell.</p></div>
+<div class="paragraph"><p>Képzeljünk el egy vásárlót, aki 1.50 $-ért vesz valamilyen italt, benyúl a pénztárcájába, és megpróbálja érmékkel és bankjegyekkel kifizetni az 1.50 $-os összeget. Fizethet egy egy dolláros bankjeggyel és két negyeddolláros érmével, vagy aprópénzzel (6 db negyeddollárossal), vagy akár egy nagyobb címletű bankjeggyel is (pl. egy 5 dolláros bankjeggyel). Ha a vásárló egy nagyobb címletű bankjeggyel, pl. egy 5 dollárossal fizet, akkor 3.50 $ visszajár, ezt elteszi a pénztárcájába, és jövőbeli tranzakciókban tudja felhasználni.</p></div>
+<div class="paragraph"><p>Hansonlóképpen, egy bitcoin tranzakció is a felhasználónál rendelkezésre álló, különféle címletű UTXO-kból jön létre. A tranzakció nem tudja az UTXO-kat félbe vágni, mint ahogy egy egy dolláros bankjegy sem vágható félbe. A felhasználó pénztárca alkalmazása a felhasználó számára rendelkezésre álló UTXO-k közül általában úgy válogatja össze a különböző értékeket, hogy azok a kívánt tranzakció összegénél nagyobb vagy egyenlő összeget eredményezzenek.</p></div>
+<div class="paragraph"><p>A valós élethez hasonlóan a bitcoin alkalmazás is különféle módszereket használhat a vásárlás összegének kifizetéséhez: használhat több kisebb egységet, és a segítségükkel pontosan megadhatja a kívánt összeget, vagy használhat egy, a tranzakció összegénél nagyobb egységet, és ilyenkor pénzt kap vissza. Az UTXO-k kezelésének bonyolult műveletét a pénztárca automatikusan végzi, a felhasználók ezt észre sem veszik. Csak akkor van ennek jelentősége, ha az UTXO-kból egy programmal állítunk elő egy tranzakciót.</p></div>
+<div class="paragraph"><p>A tranzakció által elfogyasztott UTXO-kat a tranzakció bemeneteinek, míg a tranzakció által létrehozott UTXO-kat a tranzakció kimeneteinek nevezzük. Ily módon bitcoin érték-darabkák vándorolnak tulajdonosról tulajdonosra a tranzakciós láncon, ennek során UTXO-k semmisülnek meg és UTXO-k jönnek létre. A tranzakciók úgy fogyasztanak el egy adott UTXO-t, hogy az adott tulajdonos az aláírásával felszabadítja azt a zárolás alól, és úgy hoznak létre egy új UTXO-t, hogy azt az új tulajdonos bitcoin címéhez kötik.</p></div>
+<div class="paragraph"><p>A bemeneti és kimeneti láncból kilóg egy speciális tranzakciótípus, az ún. <em>coinbase</em> tranzakció, amely mindegyik blokkban az első tranzakció. Ezt a tranzakciót a „nyertes” bányász helyezi el a blokkban. Ez a tranzakció vadonatúj bitcoinokat hoz létre, melyek a nyertes bányásznak fizetendők ki, jutalmul a bányászatért. A bitcoinban így jön létre az új pénz a bányászat során, amint azt a <a href="#ch8">[ch8]</a> című részben látni fogjuk.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Mi volt előbb? A bemenetek vagy a kimenetek, a tyúk vagy a tojás? Tulajdonképpen a kimenetek voltak előbb, mert a coinbase tranzakcióknak, melyek új bitcoinokat állítanak elő, nincsenek bemenetei és kimeneteket hoznak létre a semmiből.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="tx_outs">A tranzakció kimenetei</h4>
+<div class="paragraph"><p>Minden bitcoin tranzakció kimeneteket hoz létre, ezeket a bitcoin főkönyv örökíti meg. Ezen kimenetek szinte mindegyike, egy típus kivételével (lásd <a href="#op_return">[op_return]</a>) elkölthető bitcoin darabokat hoz létre, melyeket <em>elköltetlen tranzakció kimeneteknek</em>, vagy UTXO-nak hívunk. Az UTXO-kat az egész hálózat általánosan elfogadja, és a tulajdonos egy jövőbeli tranzakcióban elköltheti. Valakinek bitcoint küldeni egyenértékű azzal, hogy olyan el nem költött tranzakció kimenetet (UTXO-t) hozunk létre, amely a címzett bitcoin címéhez tartozik, és a címzett tudja elkölteni.</p></div>
+<div class="paragraph"><p>Az UTXO-kat midegyik teljes bitcoin kliens a memóriában tartja, egy <em>UTXO pool</em>-nak nevezett adatbázisban. Az új tranzakciók az UTXO pool-ból fogyasztanak (költenek) el egy vagy több kimenetet.</p></div>
+<div class="paragraph"><p>A tranzakció kimenetek két részből állnak:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+egy bitcoin összegből, amely a legkisebb bitcoin mértékegységben, <em>satoshi</em>-ban van megadva
+</p>
+</li>
+<li>
+<p>
+Egy <em>zárolást végző scriptből</em>, másképpen „akadályból”, amely oly módon „zárolja” ezt az összeget, hogy megadja, mely feltételeknek kell teljesülnie a kimenet elköltéséhez
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>A tranzakció script nyelvét, melyet a feljebb említett zároló script használ, részletesen a  <a href="#tx_script">[tx_script]</a> rész tárgyalja. A <a href="#tx_out_structure">[tx_out_structure]</a> a tranzakció kimenet felépítését mutatja.</p></div>
+<div class="tableblock" id="tx_out_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. Egy tranzakciós kimenet szerkezete</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Méret </th>
+<th align="left" valign="top"> Mező </th>
+<th align="left" valign="top"> Leírás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">8 bájt</p></td>
+<td align="left" valign="top"><p class="table">Összeg</p></td>
+<td align="left" valign="top"><p class="table">Bitcoin érték Satoshi-ban (10<sup>-8</sup> bitcoinban)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bájt (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Zároló script mérete</p></td>
+<td align="left" valign="top"><p class="table">A zároló script hossza bájtokban, e nélkül a szám nélkül</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Változó</p></td>
+<td align="left" valign="top"><p class="table">Zároló scipt</p></td>
+<td align="left" valign="top"><p class="table">Egy script, amely a kimenet elköltéséhez szükséges feltételeket definiálja</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>A <a href="#get_utxo">[get_utxo]</a> -ban a blockchain.info API-val keressük meg  egy adott cím elköltetlen kimeneteit (UTXO).</p></div>
+<div class="exampleblock" id="get_utxo">
+<div class="title">Example 1. A blockchain.info API-t hívó script, mely egy cím UTXO-it keresi meg</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>A  script futtatása egy listát állít elő. A lista sorai a tranzakciók azonosítóját, az elköltetlen tranzakciós kimenet (UTXO) és az UTXO Satoshi-ban megadott értékét tartalmazzák. A zároló script ebben a <a href="#get_utxo_run">[get_utxo_run]</a> listában nem szerepel.</p></div>
+<div class="exampleblock" id="get_utxo_run">
+<div class="title">Example 2. A get-utxo.py script futtatása</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_költési_feltételek_akadályok">Költési feltételek (akadályok)</h4>
+<div class="paragraph"><p>A tranzakció kimenetek egy (Satoshi-ban) megadott összeget egy adott <em>akadállyal</em>, vagy zároló scripttel hoznak kapcsolatba. Ez a zároló script adja meg, hogy milyen feltételeknek kell teljesülniük az összeg elköltéséhez. A legtöbb esetben a zároló script a kimenetet egy adott bitcoin címhez köti, ezáltal az összeg tulajdonjogát egy új felhasználóhoz rendeli hozzá. Mikor Alice kifizette a csésze kévéját, Alice tranzakciója egy 0.015 bitcoinos kimenetet hozott létre, amely a kávéház bitcoin címéhez volt hozzákötve, vagyis ez volt az <em>akadály</em>. A 0.015 bitcoinos kimenet a blokkláncon került rögzítésre, és az el nem költött tranzakció kimenetek (UTXO) halmazának részévé vált, vagyis Bob pénztárcájában a rendelkezésre álló egyenleg részévé vált. Ha Bob szeretné elkölteni ezt az összeget, akkor az általa létrehozott tranzakció eltávolítja az akadályt, vagyis megszünteti a kimenet zárolását. Ezt oly módon teszi, hogy létrehoz egy scriptet, amely tartalmaz egy aláírást Bob titkos kulcsával.</p></div>
+</div>
+<div class="sect3">
+<h4 id="tx_inputs">A tranzakció bemenetei</h4>
+<div class="paragraph"><p>A tranzakció bemenetei csupán mutatók az UTXO-kra. Egy bemenet úgy mutat egy adott UTXO-ra, hogy megadja a tranzakció hash-t és egy sorszámot, amely megmutatja, hogy az UTXO hányadik a tranzakció kimenetek között. A tranzakció bemenet tartalmaz továbbá egy zárolást feloldó scriptet, amely teljesíti az UTXO-ban meghatározott feltételeket és amellyel az UTXO elkölthető. A zárolást feloldó script általában egy aláírás, amely annak a bitcoin címnek a tulajdonjogát bizonyítja, amely a zárolási scriptben szerepel.</p></div>
+<div class="paragraph"><p>Ha a felhasználó fizetni szeretne, akkor a pénztárcája a rendelkezésre álló UTXO-kból állít össze egy tranzakciót. Például 0.015 bitcoin kifizetéséhez a pénztárca választhat egy 0.01 bitcoin értékű UTXO-t és egy 0.005 bitcoin értékű UTXO-t, mert e kettő együtt éppen a kívánt összeget eredményezi.</p></div>
+<div class="paragraph"><p>A lenti <a href="#select_utxo">[select_utxo]</a> példa egy "mohó" algoritmust használ arra, hogy a rendelkezésre álló UTXO-kból a megkívánt összeget előállítsa. A példában a rendelkezésre álló UTXO-k egy konstans tömbben vannak megadva, de a valóságban a rendelkezésre álló UTXO-ket RPC hívással a Bitcoin Core-ból vagy egy harmadik fél által szállított API segítségével kérdezik le, amint <a href="#get_utxo">[get_utxo]</a> mutatja.</p></div>
+<div class="exampleblock" id="select_utxo">
+<div class="title">Example 3. Egy script, amely azt számítja ki, hogy összesen hány bitcoin fog forgalomba kerülni</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>Ha paraméter nélkül futtatjuk a <em>select-utxo.py</em> scriptet, akkor a scipt egy 55&#8217;000&#8217;000 Satoshi (0.55 bitcoin) nagyságú fizetséghez próbálja meg előállítani az UTXO halmazt (és a visszajáró pénzt). Ha paraméterként megadjuk a cél összeget, a script annyi UTXO-t választ ki, amennyi fedezi a cél összeget. Lent a script futtatásával 0.5 bitcoin (azaz 50&#8217;000&#8217;000 Satoshi) kifizetését kíséreltük meg:</p></div>
+<div class="exampleblock" id="select_utxo_run">
+<div class="title">Example 4. A select-utxo.py script futtatása</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ python select-utxo.py 50000000
+For transaction amount 50000000 Satoshis (0.500000 bitcoin) use:
+([&lt;7dbc497969c7475e45d952c4a872e213fb15d45e5cd3473c386a71a1b0c136a1:0 with 25000000 Satoshis&gt;, &lt;7f42eda67921ee92eae5f79bd37c68c9cb859b899ce70dba68c48338857b7818:0 with 16100000 Satoshis&gt;, &lt;6596fd070679de96e405d52b51b8e1d644029108ec4cbfe451454486796a1ecf:0 with 16050000 Satoshis&gt;], 'Change: 7150000 Satoshis')</tt></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Az UTXO-k kiválasztását követően a pénztárca előállítja az egyes UTXO-khoz az aláírt zárolást feloldó scripteket, ami elkölthetővé teszik őket, hiszen így már kielégülnek a zároló script által meghatározott feltételek. A pénztárca ezeket az UTXO hivatkozásokat és zárolást feloldó scripteket a tranzakció bemeneteihez adja hozzá. A <a href="#tx_in_structure">[tx_in_structure]</a> egy tranzakció bemenet szerkezetét mutatja.</p></div>
+<div class="tableblock" id="tx_in_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 3. Egy tranzakció bemenet szerkezete</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Méret </th>
+<th align="left" valign="top"> Mező </th>
+<th align="left" valign="top"> Leírás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">32 bájt</p></td>
+<td align="left" valign="top"><p class="table">Tranzakció hash</p></td>
+<td align="left" valign="top"><p class="table">Mutató arra a tranzakcióra, amely az elköltendő UTXO-t tartalmazza</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Output Index</p></td>
+<td align="left" valign="top"><p class="table">Az elköltendő UTXO indexe, az első 0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bájt (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">A zárolást feloldó script mérete</p></td>
+<td align="left" valign="top"><p class="table">A zárolást feloldó script mérete bájtokban</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Változó</p></td>
+<td align="left" valign="top"><p class="table">A zárolást feoldó script</p></td>
+<td align="left" valign="top"><p class="table">Az UTXO-t zároló script feltételeit kielégítő script</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Sorszám</p></td>
+<td align="left" valign="top"><p class="table">Tx-helyettesítő lehetőség, Jelenleg letiltva, 0xFFFFFFFF</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A sorszámmal a tranzakció a zárolási idő lejárta előtt módosítható, de ez jelenleg le van tiltva a bitcoinban. A legtöbb tranzakció a max. egész értékre (0xFFFFFFFF) állítja ezt az értéket, amit a bitcoin hálózat elhanyagol. Ha a tranzakció zárolási ideje nem nulla, akkor a zárolási idő csak akkor jut érvényre, ha a bemenetei közül legalább az egyiknél a sorszám 0xFFFFFFFF alatt van.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tx_fees">Tranzakciós díjak</h4>
+<div class="paragraph"><p>A legtöbb tranzakció tranzakciós díjat tartalmaz, amely a bitcoin bányászokat jutalmazza a hálózati biztonság megteremtéséért. A bányászat, a tranzakciós díjak és a bányászok által kapott jutalmak a <a href="#ch8">[ch8]</a> részben vannak részletesebben tárgyalva. Ebben a részben azt vizsgáljuk meg, hogyan kerül tranzakciós díj egy tipikus tranzakcióba. A legtöbb pénztárca automatikusan kiszámítja és befoglalja a tranzakciós díjakat. Ha azonban programból állítjuk elő a tranzakciókat, vagy egy parancssori felületet használunk, akkor kézzel kell kiszámítani és alkalmazni ezeket a díjakat.</p></div>
+<div class="paragraph"><p>A tranzakciós díj – azáltal, hogy minden tranzakcióra egy kis költséget ró ki – ösztönzésül szolgál ahhoz, hogy a tranzakció befoglalásra kerüljön a következő blokkba, és védekezésként a „spam” tranzakciókkal szemben, melyek visszaélnének a rendszerrel. A tranzakciós díjat az a bányász kapja meg, aki kibányássza a tranzakciót tartalmazó blokkot, melynek révén a tranzakció bekerül a blokkláncba.</p></div>
+<div class="paragraph"><p>A tranzakciós díj nem a tranzakció bitcoinban mért nagyságától, hanem a tranzakció kilobájtokban mért méretétől függ. Összefoglalva, a tranzakciós díjak a bitcoin hálózaton belüli piaci hatások alapján határozhatók meg. A bányászok különféle szempontok alapján állítják sorba a tranzakciókat, pl. a tranzakciós díj alapján, de bizonyos körülmények között akár ingyen is feldolgozzák őket. A tranzakciós díj a feldolgozási prioritást befolyásolja, vagyis egy megfelelő tranzakciós díjjal rendelkező tranzakció nagyobb valószínűséggel kerül be a következőnek kibányászott blokkba, míg egy kevesebb vagy nulla tranzakciós díjjal rendelkező tranzakció késedelmet szenvedhet, és csak pár blokkal később történik meg a feldolgozása, vagy egyáltalán nem kerül feldolgozásra. A tranzakciós díj nem kötelező, és tranzakciós díj nélküli tranzakciók is feldolgozásra kerülhetnek végső soron, de a tranzakciós díj megadása elősegíti a gyors feldolgozást.</p></div>
+<div class="paragraph"><p>A tranzakciós díjak kiszámítási módja és a tranzakció prioritására gyakorolt hatásuk nem mindig volt olyan, mint most. Először a tranzakciós díj fix összeg volt az egész hálózatban. Fokozatosan lazítottak a díjstruktúrán, hogy a díjat a hálózati kapacitás és a tranzakciók száma alapján a piaci erők is befolyásolhassák. A jelenlegi legkisebb tranzakciós díj kilobájtonként 0.0001 bitcoin, vagy másképpen egytized millibitcoin, és nemrég csökkentették le egy millibitcoinról. A legtöbb tranzakció egy kilobájtnál kisebb méretű, de azok, amelyeknek sok bemenetük és kimenetük van, nagyobbak is lehetnek. A bitcoin protokoll jövőbeli változatainál a pénztárca alkalmazás várhatóan a korábbi tranzakciók átlagos díja alapján, statisztikai elemzéssel fogja kiszámítani a legmegfelelőbb tranzakciós díjat.</p></div>
+<div class="paragraph"><p>A bányászok által jelenleg használt algoritmust, amely a tranzakciós díj alapján priorizálja a tranzakciók blokkba foglalását, részletesen a <a href="#ch8">[ch8]</a> részben fogjuk megvizsgálni.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_a_tranzakciós_díj_megadása">A tranzakciós díj megadása</h4>
+<div class="paragraph"><p> A tranzakciók adatstruktúrájában nincs díj mező. A díjak hallgatólagosan a bemenetek összegének és a kimenetek összegének különbségével egyenlők. Az összes kimenetnek az összes bemenetből történő levonása után maradó összeg a bányászoké lesz.</p></div>
+<div class="listingblock" id="tx_fee_equation">
+<div class="title">A tranzakciós díj hallgatólagos, a bemenetek és a kimenetek különbsége utáni maradék</div>
+<div class="content">
+<pre><tt>Díj = Összeg(Bemenetek) - Összeg(Kimenetek)</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ez a tranzakciók kissé zavarba ejtő jellemzője, de fontos megérteni, mert ha mi magunk állítjuk elő a tranzakcióinkat, akkor vigyáznunk kell arra, nehogy nagyon nagy legyen a díj, mert a bemenetekből nem költünk eleget. Ez azt jelenti, hogy figyelembe kell vennünk az összes bemenetet, és ha szükséges, akkor a visszajáró pénzt is kezelnünk kell, különben a bányászok nagyon nagy borravalót kapnak a végén!</p></div>
+<div class="paragraph"><p>Például, ha egy 20 bitcoin értékű UTXO-t használunk egy 1 bitcoinos fizetséghez, akkor egy 19 bitcoin értékű kimenetet kell létrehoznunk a visszajáró pénznek. Ha nem így teszünk, akkor a „maradék” tranzakcós díjnak lesz tekintve, és azé a bányászé lesz, aki a tranzakciót blokkba foglalta. Igaz ugyan, hogy sürgősségi feldolgozásban lesz részünk, és egy bányászt nagyon boldoggá teszünk, de nem biztos, hogy ezt szerettük volna.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Ha egy kézzel előállított tranzakcióban elfelejtünk a visszajáró pénznek egy kimenetet létrehozni, akkkor a visszajáró pénz teljes egészében a tranzakciós díjat fogja növelni. „Tartsa meg a visszajáró pénzt!” – nem biztos, hogy ez volt a szándékunk.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Nézzük meg, hogyan működik mindez a gyakorlatban, ismét Alice kávévásárlását vizsgálva. Alice 0.015 bitcoint szeretne elköltelni, hogy kifizesse a kávéját. Szeretné, ha a tranzakciója gyorsan feldolgozásra kerülne, ezért tranzakciós díjat is megad, mondjuk 0.001 bitcoint. Ez azt jelenti, hogy a tranzakció teljes költsége 0.016 bitcoin. A pénztárcájában lévő UTXO halmaz összegének ezért 0.016 bitcoinnak vagy nagyobbnak kell lennie, és ha szükséges, kezelni kell a visszajáró pénzt. Mondjuk, legyen a pénztárcában 0.2 bitcoin UTXO. Ennek az UTXO-nak a felhasználásával  létre kell hozni egy 0.015 BTC-s kimenetet Bob kávéháza számára, és egy második kimenetet 0.184 bitcoinnal, amely a visszajáró pénzt Alice saját pénztárcájába utalja vissza. Ily módon 0.001 bitcoin marad, vagyis ez lesz a tranzakció implicit díja.</p></div>
+<div class="paragraph"><p>Most vizsgáljunk meg egy ettől eltérő helyzetet. Eugénia, a gyermekvédelmi alap igazgatója gyűjtést szervezett, hogy a Fülöp-szigeti gyerekeknek tankönyveket vásárolhasson. Sok ezer kicsiny adományt kapott szerte a nagyvilágból, összesen 50 bitcoint. Most szeretne pár száz tankönyvet venni a helyi kiadótól, és bitcoinnal szeretne fizetni.</p></div>
+<div class="paragraph"><p>Eugénia pénztárca programja a sok ezer piciny adományból kell egy nagyobb kifizetést létrehoznia, vagyis a piciny összegeket tartalmazó UTXO-kból kell a fedzetet biztosítania. Ez azt jelenti, hogy az eredményként létrejövő tranzakciónak száznál is több kis értékű UTXO-t tartalmazó bemenete lesz, de csak egyetlen egy kimenete, amellyel a könyvkiadónak fizet. Az ilyen sok bemenetet tartalmazó tranzakció nagyobb lesz egy kilobájtnál, akár 2-3 kilobájt is lehet. Emiatt a 0.0001 bitcoin minimális hálózati díjnál nagyobb díjra lesz szükség.</p></div>
+<div class="paragraph"><p>Eugénia pénztárca alkalmazása úgy számítja ki a megfelelő díjat, hogy összeszorozza a a tranzakció méretét a kilobájtonkénti díjjal. Sok pénztárca a nagyobb méretű tranzakciók esetén túlfizeti a díjat, hogy biztosítsa a tranzakció gyors feldolgozását. A nagyobb díjat nem azért kell megfizetni, mert Eugénia több pénzt költ, hanem azért, mert a tranzakció bonyolultabb és nagyobb méretű – a díj független attól, hogy a tranzakcióban mekkora érték szerepel.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tx_chains">Tranzakciós láncok, árva tranzakciók</h3>
+<div class="paragraph"><p>Mint láttuk, a tranzakciók egy láncot alkotnak, ahol egy tranzakció az előző tranzakciók (az ún. szülők) kimeneteit költi el, és kimeneteket hoz létre egy további tranzakció (az ún. gyermek) számára. Néha a függőségekből egy egész tranzakciós lánc alakul ki, pl. ha egy szülő, gyermek és unoka egy bonyolult tranzakciós munkafolyamat során ugyankkor jön létre, és követelmény, hogy a gyerekek előbb legyenek aláírva, mint a szülő. Például a CoinJoin tranzakciók ezzel a módszerrel egyesítik több ügyfél tranzakcióit, hogy fokozzák a tranzakciók titkosságát.</p></div>
+<div class="paragraph"><p>Ha egy tranzakciós lánc kerül továbbításra a hálózaton, akkor a tranzakciók nem mindig az eredeti sorrendben érkeznek meg. Néha a gyerek a szülő előtt érkezik meg. Ebben az esetben azok a csomópontok, melyek a gyermeket látják először, látják, hogy a tranzakció egy olyan szülőre hivatkozik, amely még ismeretlen. De nem vetik el a gyereket, hanem egy átmeneti halmazba teszik, ahol várakozhat a szülő megérkezésére, és továbbítják a többi csomópontnak. A szülő nélküli tranzakciók halmazának a neve: az  <em>árva tranzakciók pool-ja/halmaza/készlete</em>. Ha megérkezik a szülő tranzakció, akkor azok a gyerekek, melyek a szülő által létrehozott UTXO-ra hivatkoznak, kikerülnek a listából, rekurzív módon ismét ellenőrzésre kerülnek, és aután az egész tranzakciós lánc bekerül a kibányászható tranazkciók készletbe. A tranzakciós láncok tetszőleges hosszúak lehetnek, és egymással párhuzamosan tetszőleges számú generáció továbbítható a hálózaton. Az a mechanizmus, amely az árvákat az árva tranzakciók halmazában tartja, biztosítja, hogy az egyébként érvényes tranzakciók ne legyenek elevetve csak azért, mert a szüleje késve érkezett. Végül az a lánc, amelyhez tartoznak, a helyes sorrendben helyreáll, függetlenül az érkezés sorrendjétől.</p></div>
+<div class="paragraph"><p>A memóriában tárolható árva tranzakciók számára van egy felső határ, hogy ne lehessen ily módon DoS támadást indítani a bitcoin csomópontok ellen. A korlátot a bitcoin referencia kiliens forráskódjában a  <tt>MAX_ORPHAN_TRANSACTIONS</tt> definiálja. Ha az árva tranzakciók száma meghaladja a <tt>MAX_ORPHAN_TRANSACTIONS</tt>-t, akkor egy vagy több véletlenszerűen kiválasztott árva tranzakció eltávolításra kerül a készletből, mindaddig, amíg a pool mérete a korláton belülre nem kerül.</p></div>
+</div>
+<div class="sect2">
+<h3 id="tx_script">A tranzakciós scriptek és a script nyelv</h3>
+<div class="paragraph"><p>A bitcoin kliensek egy script végrehajtásával ellenőrzik a tranzakciók helyességét. A script egy Forth-szerű script nyelven van írva. Mind az UTXO-ra helyezett zároló script (akadály), mind a zárolást feloldó, aláírt script ezen a nyelven van megírva. A tranzakció ellenőrzésekor az egyes bemenetekben szereplő, zárolást feloldó scriptet és a hozzá tartozó zároló scripttel együtt futtatják, hogy megállapítsák, vajon kielégíti-e a pénz elköltésének a feltételeit.</p></div>
+<div class="paragraph"><p>Manapság a bitcoin hálózatban feldolgozott legtöbb tranzakció „Alice fizet Bobnak” alakú, és egy olyan scripten alapul, melyet „fizetség-nyilvános-kulcs-hashnek” scriptnek hívnak (Pay-to-Public-Key-Hash script). Mivel azonban a kimenetek zárolására és a bemeneteken a zárolás feloldására használt scriptek egy programozási nyelvhez hasonlóak, a tranzakciók számtalan feltételt tartalmazhatnak. A bitcoin tranzakciók nem korlátozódnak az „Alice fizet Bobnak” típusú és alakú tranzakcióra.</p></div>
+<div class="paragraph"><p>A fenti fenti példa csak a a jéghegy csúcsát jelenti a script nyelvvel kifejezhető lehetőségek között. Ebben a részben a bitcoin tranzakciós nyelvének elemeit szemléltetjük, és bemutatjuk, hogyan lehet őket bonyolult feltételek kifejezésére használni, és hogyan lehet ezeket a feltételeket a zárolást feloldó scriptekben kielégíteni.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A bitcoin tranzakciókban az ellenőrzés nem statikus, hanem egy script nyelv végrehajtásával valósul meg. Ez a nyelv szinte végtelen számú feltétel kifejezését teszi lehetővé. A bitcoin ezáltal lesz „programozható pénz”.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="_script_létrehozása_zárolás_zárolás_feloldás">Script létrehozása (zárolás + zárolás feloldás)</h4>
+<div class="paragraph"><p>A bitcoinban a tranzakciók ellenőrzése kétféle script vizsgálatával történik – a zárolást végző és a zárolás feloldó scriptével.</p></div>
+<div class="paragraph"><p>A zároló script a kimenetre helyezett akadály, amely megadja, hogy milyen feltételeket kell teljesíteni a kimenet jövőbeli elköltéséhez. Történetileg a zároló scriptet <em>scriptPubKey</em>-nek hívták, mert általában egy nyilvános kulcsot vagy bitcoin címet tartalmazott. Ebben a könyvben „zároló scriptnek” hívjuk, mert jelezni akarjuk a script alkalmazásában rejlő tágabb lehetőségeket. A legtöbb bitcoin alkalmazásban az általunk zároló scriptnek hívott script a forráskódban <tt>scriptPubKey</tt>-ként jelenik meg.</p></div>
+<div class="paragraph"><p>A zárolást feloldó script olyan script, amely „megoldja”, azaz kielégíti azokat a feltételeket, melyeket a zároló script helyez a kimenetre, és lehetővé teszi a kimenet elköltését. A zárolást feloldó scriptek minden egyes tranzakciós bemenetben szerepelnek, és a legtöbbször egy digitális aláírást tartalmaznak, amelyet a felhasználó pénztárcája állít elő a titkos kulcsból. Történetileg a zárolás feloldó scriptet <em>scriptSig</em>-nek hívták, mert általában egy digitális aláírást tartalmazott. Ebben a könyvben „zárolást feloldó scriptnek” hívjuk, ismét csak azért, hogy jelezzük a script írási módszerben rejlő lehetőségeket, hiszen nem minden zárolást feloldó scriptnek kell aláírást tartalmaznia.</p></div>
+<div class="paragraph"><p>A bitcoin kliensek a tranzakciókat úgy ellenőrzik, hogy a zárolást feloldó és a zároló scripteket együtt hajtják végre. A tranzakció bemeneteire vonatkozóan az ellenőrző program először azokat az UTXO-t keresi meg, melyekre a bemenet hivatkozik. Ez az UTXO egy zároló scriptet tartalmaz, amely a kimenet elköltéséhez szükséges feltételeket deiniálja. Az ellenőrző program ezután veszi a bemenetben szereplő, zárolást feloldó scriptet, amely megkísérli az UTXO elköltését, és végrehajtja a két scriptet.</p></div>
+<div class="paragraph"><p>Az eredeti bitcoin kliensben a zárolást feloldó és a zároló scriptet összefűzte a program, és egymás után hajtotta végre. Biztonsági okokból ez 2010-ben megváltozott, mert volt egy támadhatóság, amely egy rosszul formált zárolást feloldó scriptnek megengedte, hogy adatokat tegyen a verembe, és a zároló scriptet tönkretegye. A jelenlegi implementációban a scriptek végrehajtása egymás után történik, és a verem a két végrehajtás között az alábbiaknak megfelelően kerül továbbításra.</p></div>
+<div class="paragraph"><p>Először a zárolást feloldó script kerül végrehajtásra. Ha ez hiba nélkül lefut (pl. nem maradtak "függő" operátorok), akkor a fő veremtár (nem az alternatív) lemásolásra kerül, és zároló script kerül futtatásra. Ha a zárolást végző script eredménye a zárolást feloldó script adataival futattatva "IGAZ", akkor az zárolást feloldó scriptnek sikerült a zároló script által támasztott feltételeket kielégítenie, vagyis a bemeneten egy érvényes meghatalmazás van az UTXO elkötésére. Ha a kombinált script végrehatása az "IGAZ"-tól eltérő eredménnyel zárul, akkor a bemenet érvénytelen, mivel nem sikerült kielégítenie az UTXO által támasztott feltételeket. Megjegyzendő, hogy az UTXO a blokkláncban végleges és megváltoztathatatlan formában van tárolva, emiatt egy új tranzakció sikertelen költési kísérletei nem befolyásolják. Csak az UTXO feltételeit helyesen kielégítő, érvényes tranzakció hatására lesz az UTXO "elköltve", és lesz a rendelkezésre álló (elköltetlen) UTXO-k halmazásból eltávolítva.</p></div>
+<div class="paragraph"><p>A <a href="#scriptSig_and_scriptPubKey">[scriptSig_and_scriptPubKey]</a> ábrán a leggyakrabban előforduló bitcoin tranzakció scriptekre (kifizetés egy nyilvános kulcs hash-nek) látható egy példa, amely a scipt ellenőrzése előtti állapotban bemutatja a zárolást feloldó és zároló script összefűzésével előálló teljes scriptet:</p></div>
+<div class="imageblock" id="scriptSig_and_scriptPubKey">
+<div class="content">
+<img src="images/msbt_0501.png" alt="scriptSig_and_scriptPubKey" />
+</div>
+<div class="title">Figure 1. A scriptSig és scriptPubKey összefűzésével előálló tranzakciós script kiértékelése</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tx_script_language">Script nyelv</h4>
+<div class="paragraph"><p>A bitcoin tranzakciós script nyelve, melyet eléggé zavaró módon szintén <em>Script</em>-nek hívnak, egy Forth-szerű, fordított lengyel jelölésnek megfelelő, verem alapú végrehajtási nyelv. Ha ez blablának hangzik, akkor önök valószínűleg nem tanulmányozták az 1960-as évek programozási nyelveit. A Script egy nagyon egyszerű, pehelysúlyú nyelv, amely korlátozott célokra szolgál, és számos hardver típuson végrehajtható, még olyan egyszerű hardvereken is, mint egy beágyazott eszköz, vagy egy kézi számológép. Minimális feldolgozási igénye van, és sok olyan feladat elvégezhető vele, mint a modern programozási nyelvekkel. A programozható pénz esetében egy tudatos biztonsági megoldásról van szó.</p></div>
+<div class="paragraph"><p>A bitcoin script nyelvét azért hívják verem-alapú nyelvnek, mert egy  <em>verem</em>-nek nevezett adatstruktúrát használ. A verem egy nagyon egyszerű adatszerkezet, melyet úgy lehet elképzelni, mint egy kártyapaklit. A pakli két műveletet tesz lehetővé: ráhelyezést (push) és levételt (pop). Ráhelyezéskor egy újabb tétel kerül a verem tetejére. A levétel eltávolítja a verem tetején lévő elemet.</p></div>
+<div class="paragraph"><p>A script nyelv úgy hajtja végre a scriptet, hogy balról jobbra minden egyes elemet végrehajt. A számok (adat konstansok) a veremre kerülnek. A műveletek egy vagy több paramétert eltávolítanak a veremről, elvégzik az adott műveletet, majd az eredményt a veremre helyezik vissza. Például az <tt>OP_ADD</tt> két tételt távolít el a veremről, összeadja őket, és az eredményként kapott összeget visszehelyezi a veremre.</p></div>
+<div class="paragraph"><p>A feltételes műveletek egy feltétel kiértékelése után IGAZ vagy HAMIS eredményt állítanak elő. Például az <tt>OP_EQUAL</tt> két tételt távolít el a veremről, és IGAZ értéket tesz a veremre (az IGAZ értéknek az 1 felel meg) ha a két szám egyenlő, és HAMIS értéket (amelyet a nulla ábrázol), ha a két szám nem egyenlő. A bitcoin tranzakciós scriptek általában feltételes műveletet tartalmaznak, hogy az érvényes tranzakciót jelző IGAZ eredmény előállítható legyen.</p></div>
+<div class="paragraph"><p>A következő <a href="#simplemath_script">[simplemath_script]</a> példában a <tt>2 3 OP_ADD 5 OP_EQUAL</tt> script az <tt>OP_ADD</tt> összeadási műveletet szemlélteti: összead két számot, az eredményt a veremre helyezi, majd ezt követően egy OP_EQUAL feltételes művelettel megvizsgálja, hogy az eredményül kapott összeg egyenlő-e <tt>5</tt>-tel. A rövidség kedvéért az <tt>OP_</tt> előtagot a részletes, lépésről-lépésre történő kiértékelésben elhagytuk.</p></div>
+<div class="paragraph"><p>A következő egy kicsit bonyolultabb példa, amely a <tt>2 + 7 - 3 + 1</tt> kifejezés értékét számítja ki. Figyeljük meg, hogy ha a script számos egymás utáni műveletet tartalmaz, a verem lehetővé teszi, hogy az eredményt a következő művelet felhasználhassa:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 7 OP_ADD 3 OP_SUB 1 OP_ADD 7 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>Próbálják meg parírral és ceruzával kiértékelni a fenti scriptet. A script kiértékelésének a végén a veremnek az IGAZ értéket kell tartalmaznia.</p></div>
+<div class="paragraph"><p>Noha a legtöbb zároló script egy bitcoin címre vagy nyilvános kulcsra hivatkozik, és emiatt megköveteli a tulajdonjog bizonyítását az összeg elkötése előtt, a scriptnek nem kell ennyire bonyolultnak lennie. A zárolást feloldó és zároló scriptek bármely kombinációja, amely IGAZ eredményt ad, érvényes. Az általunk használt egyszerű számtani példa, melyet a fenti script példában használtunk, szintén érvényes zároló scriptet alkot, amellyel zárolható egy tranzakció kimenete.</p></div>
+<div class="paragraph"><p>Használjuk zároló scriptként a számtani példa következő részét:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>3 OP_ADD 5 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>amely egy olyan tranzakcióval elégíthető ki, melynek bemenetén a következő, zárolást feloldó script áll:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2</tt></pre>
+</div></div>
+<div class="paragraph"><p>Az ellenőző szoftver összekapcsolja a zárolást feloldó és zároló scripteket. Az eredményül kapott script a következő:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 3 OP_ADD 5 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>Amint azt a fenti, <a href="#simplemath_script">[simplemath_script]</a> példa lépésről lépésre történő végrehajtása során láttuk, ennek a scriptnek a végrehajtásakor az eredmény IGAZ, vagyis a tranzakció érvényes. Egy érvényes zároló scriptet hoztunk létre, amelynél a létrehozott UTXO elköltésére bárki képes, aki ismeri a számtant, és tudja, hogy a 2 kielégíti a scriptet. </p></div>
+<div class="imageblock" id="simplemath_script">
+<div class="content">
+<img src="images/msbt_0502.png" alt="TxScriptSimpleMathExample" />
+</div>
+<div class="title">Figure 2. A bitcoin script ellenőrző algoritmusa az egyszerű matek példában</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p></p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_turing_nem_teljesség">Turing nem teljesség</h4>
+<div class="paragraph"><p>A bitcoin tranzakciós script nyelve sok műveletet tartalmaz, de egy fontos tekintetben tudatosan korlátozott – nincsenek benne ciklusok vagy a feltételes kifejezéseken kívül más, bonyolultabb vezérlésátadó lehetőségek. Emiatt a nyelv nem <em>Turing-teljes</em>, ami azt jelenti, hogy a nyelvnek korlátozott a bonyolultsága és megjósolható a végrehajtási ideje. Ezek a korlátozások biztosítják, hogy a nyelvben a tranzakción belül ne lehessen végtelen ciklust vagy más efféle „logikai bombát” létrehozni, ami a bitcoin rendszer elleni Denial-of-Service (szolgáltalás megtagadási) támadást tenne lehetővé. Emlékeztetünk rá, hogy a bitcoin hálózat mindegyik teljes csomópontja az összes tranzakciót ellenőrzi. A nyelvi korlát megakadályozza, hogy ezt az ellenőrzési mechanizmust használja valaki támadásra.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_állapotmentes_ellenőrzés">Állapotmentes ellenőrzés</h4>
+<div class="paragraph"><p>A bitcoin tranzakciós script nyelve állapotmentes, mivel a scriptnek a végrehajtás előtt nincs állapota, és a végrehajtása után nem kerül semmilyen állapot sem elmentésre. Emiatt a végrehajtáshoz szükséges összes információ a scriptben van tárolva. A script megjósolható módon, ugyanúgy hajtódik végre bármelyik rendszerben. Ha a rendszerünk az ellenőrzés során helyesnek találja a scriptet, akkor biztosak lehetünk benne, hogy a bitcoin hálózat bármelyik másik tagja szintén helyesnek fogja találni a scriptet, ami azt jelenti, hogy a tranzakció mindenki számára érvényes, és mindenki tudja ezt. Az eredménynek ez a megjósolhatósága a bitcoin rendszer egyik legfontosabb előnye.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="std_tx">Szabványos tranzakciók</h3>
+<div class="paragraph"><p>A bitcoin fejlesztés első néhány évében a fejlesztők bizonyos korlátozásokat vezettek be a referencia kliens által feldolgozható script típusok vonatkozásában. Ezek a korlátozások az <tt>isStandard()</tt> függvényben vannak kódolva. A függvény ötféle „szabványos” tranzakciót definiál. Ezek a korlátozások átmenetiek, és lehet, hogy akkor, amikor ön e sorokat olvassa, már nem lesznek érvényben. Addig is, a referencia kliens és a legtöbb bányász, amelyik a referencia klienst futtatja, csak az ötféle szabványos tranzakciós scriptet fogadja el. Lehetséges ugyan olyan nem szabványos tranzakció létrehozása, amelyikben a script semelyik szabványos script típusnak sem felel meg, de ha a tranzakciót blokkba szeretnénk foglaltatni, akkor találnunk kell egy bányászt, amelyik nem alkalmazza ezeket a korlátozásokat.</p></div>
+<div class="paragraph"><p>A Bitcoin Core kliens (referencia kliens) forráskódjából állapítható meg, hogy éppen melyek a megengedett tranzakciós scriptek.</p></div>
+<div class="paragraph"><p>Az öt szabványos tranzakciós script típus a következő: (1) Pay-to-Public-Key-Hash (P2PKH), (2) Public Key, (3) Multi-Signature (max. 15 kulcsra korlátozva), (4) Pay-to-Script-Hash (P2SH), és (5) adat kimenet (OP_RETURN). Ezeket alább részletesebben ismertetjük.</p></div>
+<div class="sect3">
+<h4 id="p2pkh">Fizetés nyilvános kulcs hashnek, (P2PKH, Pay-to-Public-Key-Hash)</h4>
+<div class="paragraph"><p>A bitcoin hálózatban feldolgozott tranzakciók túlnyomó többbsége „Fizetés nyilvános kulcs hashnek” tranzakció, melyet P2PKH tranzakcióként is hívnak. Ezek olyan zároló scriptet tartalmaznak, amely a kimenetet egy nyilvános kulcs hash értékével zárolja. A nyilvános kulcs hash-e nem más, mint a bitcoin cím. Azok a tranzakciók, melyek egy bitcoin címre továbbítják a fizetséget, P2PKH scripteket tartalmaznak. Egy P2PKH scripttel zárolt kimenet zárolása oly módon szűntethető meg, hogy megadjuk a nyilvános kulcsot és a nyilvános kulcshoz tartozó titkos kulccsal egy digitális aláírást.</p></div>
+<div class="paragraph"><p>Például tekintsük ismét Alice fizetségét. Alice 0.015 bitcoint fizetett ki a kévéért Bob kávéházának bitcoin címére. A tranzakció kimenetén lévő zároló script a következő formájú:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_DUP OP_HASH160 &lt;a kávéház nyilvános kulcsának a hash értéke&gt; OP_EQUAL OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>A <tt>Kávéház nyilvános kulcsának hash-e</tt> egyenérétkű a kávéház bitcoin címével, de Base58Check kódolás nélkül. A legtöbb alkalmazás a <em>nyilvános kulcs hash-ét</em> hexadecimális kódolással jeleníti meg, nem pedig az ismerős Base58Check formátumban, amely egy „1”-sel kezdődik.</p></div>
+<div class="paragraph"><p>A fenti zároló script a következő formájú, zárolást megszűntető scripttel elégíthető ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;a kávéházhoz tartozó aláírás&gt; &lt;a kávéház nyilvános kulcsa&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>A két script együttesen a következő egyesített ellenőrző scriptet alkotja:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;a kávéházhoz tartozó aláírás&gt; &lt;a kávéház nyilvános kulcsa&gt; OP_DUP OP_HASH160 &lt;a kávéház nyilvános kulcsának hash értéke&gt; OP_EQUAL OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>A végrehajtás során az egyesített script akkor és csak akkor lesz IGAZ, ha a zárolást feloldó script megfelel a zároló script által felállított feltételeknek. Más szóval, az eredmény akkor lesz IGAZ, ha a zárolást feloldó scriptben van egy érvényes aláírás a kávéház titkos kulcsával, ami megfelel az akadályként állított nyilvános kulcs hashnek.</p></div>
+<div class="paragraph"><p>A  <xref linkend="P2PubKHash1" xrefstyle="select: labelnumber"/> és <xref linkend="P2PubKHash2" xrefstyle="select: labelnumber"/> ábrák (két részben) az egyesített tranzakció lépésről lépésre történő végrehajtását mutatják, amely bizonyítja, hogy érvényes tranzakcióról van szó.</p></div>
+<div class="imageblock" id="P2PubKHash1">
+<div class="content">
+<img src="images/msbt_0503.png" alt="Tx_Script_P2PubKeyHash_1" />
+</div>
+<div class="title">Figure 3. Egy P2PKH tranzakció scriptének kiértékelése (1. rész)</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="p2pk">Fizetés nyilvános kulcsnak (Pay-to-Public-Key)</h4>
+<div class="paragraph"><p>A „fizetés nyilvános kulcsnak” (Pay-to-Public-Key) egyszerűbb bitcoin fizetési forma, mint a „fizetés nyilvános kulcs hashnek” (Pay-to-Public-Key-Hash). Ebben a script típusban nem a nyilvános kulcs hashe, hanem maga a nyilvános kulcs van a zároló scriptben tárolva. A „fizetés nyilvános kulcs hashnek” (Pay-to-Public-Key-Hash) típust Satoshi találta föl, hogy a bitcoin címek rövidebbek, könnyebben használhatók legyenek. A „fizetés nyilvános kulcsnak” (Pay-to-Public-Key) a leggyakrabban a coinbase tranzakciókban található meg. Ezeket régebbi bányász szoftverek állítják elő, melyeket még nem lettek a P2PKH-ra frissítve.</p></div>
+<div class="paragraph"><p>A „fizetés nyilvános kulcsnak” zároló scriptje így néz ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;az A nyilvános kulcs&gt; OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>A neki megfelelő zárolást feloldó script, amelyet az ilyen típusú kimenet zárolásának feloldásához kell bemutatni, a következő:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;aláírás az A titkos kulccsal&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>Az egyesített script, melyet a tranzakció ellenőrző program ellenőriz:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;aláírás az A titkos kulccsal&gt;  &lt;az A nyilvános kulcs&gt; OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>A fenti script egyszerűen meghívja a <tt>CHECKSIG</tt> műveletet. Ez a művelet ellenőrzi, hogy az aláírás a megadott kulcshoz tartozik-e. Ha igen, akkor IGAZ értéket ad vissza a vermen.</p></div>
+<div class="imageblock" id="P2PubKHash2">
+<div class="content">
+<img src="images/msbt_0504.png" alt="Tx_Script_P2PubKeyHash_2" />
+</div>
+<div class="title">Figure 4. Egy P2PKH tranzakció scriptének kiértékelése (2. rész)</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="multisig">Többszörös aláírás (Multi-Signature)</h4>
+<div class="paragraph"><p>A több aláírást megkövetelő scriptek az N darab nyilvános kulcsot tartalmazó scriptben úgy állítják be a feltételt, hogy az akadály feloldásához a nyilvános kulcsok közül legalább M darabhoz szerepelnie kell az aláírásnak. Ezt másképp N-ből-M sémának hívják, ahol N az összes kulcs darabszáma, M pedig az ellenőrzéshez szükséges aláírások küszöbszáma. Például egy 3-ból-2 többszörös aláírást megkövetelő script esetén 3 nyilvános kulcs szerepel, mint lehetséges aláíró, és közülük legalább 2-nek kell aláírnia a tranzakciót ahhoz, hogy érvényes legyen, és el lehessen költeni. A könyv írásának idején a szabványos többszörös aláírást megkövetelő scriptek legfeljebb 15 nyilvános kulcsot sorolhatnak föl, vagyis az 1-ből-1 és a 15-ből-15 közötti bármilyen többszörös aláírást megkövetelő script használható. A 15 kulcsra történő korlátozást lehet, hogy feloldják, mire ez a könyv megejelenik. Az <tt>isStandard()</tt> ellenőrzésével állapítható meg, hogy a hálózat éppen mit fogad el.</p></div>
+<div class="paragraph"><p>Az N-ből-M többszörös aláírást megkövetelő script zárolási feltételének általános alakja:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>M &lt;1. nyilvános kulcs&gt; &lt;2. nyilv. kulcs &gt; ... &lt;N-ik nyilv. kulcs&gt; N OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>ahol az N a felsorolt nyilvános kulcsok száma, M pedig a kimenet elkötéséhez minimálisan szükséges aláírások száma.</p></div>
+<div class="paragraph"><p>Egy 3-ból-2 többszörös aláírást megkövetelő script zároló feltétele a következőképpen néz ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;A nyilv. kulcs&gt; &lt;B nyilv. kulcs&gt; &lt;C nyilv. kulcs&gt; 3 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>A fenti zároló script egy olyan zárolást feloldó scripttel elégíthető ki, amely legalább két aláírást tartalmaz:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_0 &lt;B aláírása&gt; &lt;C aláírása&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>vagy a három felsorolt nyilvános kulcshoz tartozó  titkos kulcsok közül bármelyik kettő aláírása.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p> Az <tt>OP_0</tt> előtagra azért van szükség, mivel a <tt>CHECKMULTISIG</tt> eredeti implementációjában van egy hiba, ami a szükségesnél eggyel több elemet emel le a veremről. Az <tt>OP_0</tt> egyszerűen egy helytöltő, és a <tt>CHECKMULTISIG</tt> elhanyagolja.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>A két script együttesen a lenti egyesített ellenőrző scriptet alkotja:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_0 &lt;B aláírása&gt; &lt;C aláírása&gt; 2 &lt;A nyilv. kulcs&gt; &lt;B nyilv. kulcs&gt; &lt;C nyilv. kulcs&gt; 3 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>A végrehajtáskor a fenti egyesített script akkor és csak akkor fog IGAZ eredményt adni, ha a zárolást feloldó script megfelel a zároló script által beállított feltételeknek, vagyis esetünkben a zárolást feloldó script tartalmaz két titkos kulccsal két aláírást, és a két titkos kulcs megfelel az akadályként állított három nyilvános kulcs közül kettőnek.</p></div>
+</div>
+<div class="sect3">
+<h4 id="op_return">Adat kimenet (OP_RETURN)</h4>
+<div class="paragraph"><p>A bitcoin elosztott és időbélyeggel ellátott főkönyvének, a blokkláncnak a pénz továbbításon kívül számos egyéb alkalmazása lehetséges. A bitcoin rendszer biztonságára és ellenállóképességére alapozva sok fejlesztő próbált a script nyelvvel egyéb alkalmazásokat létrehozni, pl. digitális közjegyzői szolgáltatásokat, részvény tanúsítványokat és intelligens szerződéseket. A korai kísérletekben, melyben a bitcoin script nyelvét használták erre célra, ez olyan tranzakciók létrehozásával járt, melyek a blokkláncban egyéb adatokat tároltak, például egy állomány digitális ujjlenyomatát. Ily módon a tranzakció segítségével bárki meg tudta állípítani, hogy létezett-e ez az állomány egy adott időpontban.</p></div>
+<div class="paragraph"><p>A bitcoin blokkláncának adattárolásra történő használata független a bitcoin pénztovábbítástól, és ellentmondásos terület. Sok fejlesztő az ilyen felhasználást helytelennek tartja és elutasítja. Mások a blokklánc erősségének jelét látják benne, és bátorítani akarják az ilyen kísérletezést. Azok, akik ellenzik a nem pénügyi adatok kezelését, úgy érvelnek, hogy ez a „blokklánc meghízásához” vezet, és akadályt jelent azok számára, akik teljes bitcoin csomópontokat futtanak, mert olyan tárolási költségeit kell elviselniük, amelyeknek eredetileg nem a blokkláncban volt a helye. Még nagyobb gond, hogy az ilyen tranzakciók olyan UTXO-kat hoznak létre, melyek nem költhetők el, mert a címzett bitcoin címét használják, mint szabad formátumú 20 bájtos mezőt. Mivel a címet adatként használják, a cím semmilyen titkos kulcsnak sem felel meg, és az így kapott UTXO soha sem költhető el, a kifizetés nem valós. Ez a gyakorlat okozta a memóriában tartott UTXO halmaz méretének megnövekedését, mivel ezek a tranzakciók <em>soha sem</em> költhetők el, emiatt soha sem lesznek eltávolítva az UTXO-k közül, ami azt UTXO adatbázis méretének állandó növekedését, "meghízását" okozza.</p></div>
+<div class="paragraph"><p>A Bitcoin Core kliens 0.9 verziójában az <tt>OP_RETURN</tt> művelet bevezetésével egy kompromisszumra jutottak. Az <tt>OP_RETURN</tt>-nel a fejlesztők 80 bájt nem pénzügyi adatot tárolhatnak a tranzakció kimenetében. Az „ál” UTXO-kkal ellentétben azonban az <tt>OP_RETURN</tt> művelettel egy <em>bizonyíthatóan nem elkölthető</em> kimenet jön létre, amit nem kell az UTXO halmazban tárolni. Az <tt>OP_RETURN</tt> kimeneteket tárolodnak a blokkláncban, emiatt diszk helyet foglalnak és hozzájárulnak a blokklánc méretének növekedéséhez, de nem tárolódnak az UTXO halmazban, és emiatt nem hízlalják feleslegesen az UTXO memória területet, és a teljes csomópontok RAM költségét sem növelik.</p></div>
+<div class="paragraph"><p>Az <tt>OP_RETURN</tt> script így néz ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_RETURN &lt;adat&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>Az adat rész 80 bájtra van korlátozva, és leggyakrabban egy hash értéknek felel meg, pl. az SHA256 algoritmus kimenetének (32 bájt). Sok alkalmazás egy előtagot helyez az adatok elé, hogy könnyebb legyen az alkalmazás azonosítása. Például a <a href="http://proofofexistence.com">Proof of Existence</a> digitális közjegyzői szolgáltatás a „DOCPROOF” 8 bájtos előtagot használja, amely hexadecimális alakban <tt>444f4350524f4f46</tt>.</p></div>
+<div class="paragraph"><p>Emlékeztetünk rá, hogy az <tt>OP_RTEURN</tt>-höz nem tartozik „zárolás feloldó script”, amellyel „elkölthető” lenne az <tt>OP_RETURN</tt>. Az <tt>OP_RETURN</tt>-nek épp az az értelme, hogy nem költhető el az adott kimenetben zárolt pénz, és ezért nem kell a kimenetet az UTXO halmazban tartani, mint potenciálisan elkölthető kimenetet – az <tt>OP_RETURN</tt> <em>bizonyíthatóan nem elkölthető</em>. Az <tt>OP_RETURN</tt> általában egy nulla összegű bitcoin kimenet, mivel az ilyen kimenethez rendelt bitcoinok örökre elvesznének. Ha a script ellenőrző program egy <tt>OP_RETURN</tt>-nel találkozik, akkor azonnal félbeszakítja az ellenőrző script végrehajtását, és a tranzakciót érvénytelennek tekinti. Emiatt ha véletlenül egy <tt>OP_RETURN</tt> kimenetre hivatkozunk egy tranzakció bemenetében, akkor a tranzakció érvénytelen lesz.</p></div>
+<div class="paragraph"><p>Egy érvényes tranzakciónak (amely megefelel az <tt>isStandard()</tt> ellenőrzéseknek( csak egy <tt>OP_RETURN</tt> kimenete lehet. Az <tt>OP_RETURN</tt> kimenet azonban tetszőleges egyéb kimeneti típusokkal kombinálható.</p></div>
+<div class="paragraph"><p>A Bitcoin Core 0.10.0 verziójában két új parancssori opció használható. A <tt>datacarrier</tt> az OP_RETURN tranzakciók továbbítását és bányászatát szabályozza: alapértelemben "1" az értéke, és engedélyezi őket. A <tt>datacarriersize</tt> opciónak egy numerikus paramétere van, mellyel az OP_RETURN adatok maximális hossza adható meg bájtokban, és alapértelmezett értéke 40.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Az OP_RETURN-nél eredetileg 80 bájtos korlátozást javasoltak, de a korlát 40 bájtra lett csökkentve, mikor ez az új jellemző megjelent. 2015 februárjában a Bitcoin Core 0.10.0-ban a korlátot ismét 80-ra emelték. A csomópontok választhatnak, hogy nem továbbítják vagy nem bányásszák ki az OP_RETURN-t tartalmazó tranzakciókat, vagy csak azokat az OP_RETURN tranzakciókat továbbítják és bányásszák ki, mely 80 bájtnál kevesebb adatot tartalmaz.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="p2sh">Fizetés script hashnek (Pay to Script Hash, P2SH)</h4>
+<div class="paragraph"><p>A „fizetés script hashnek” (Pay-to-scipt-hash, P2SH) 2012-ben lett bevezeteve. A P2SH egy hatékony új tranzakciótípus, amely nagyban leegyszerűsíti a bonyolult tranzakciós scriptek használatát. Lássunk egy gyakorlati példát arra, hogy miért van szükség P2SH-ra.</p></div>
+<div class="paragraph"><p>Az <a href="#ch01_intro_what_is_bitcoin">[ch01_intro_what_is_bitcoin]</a> fejezetben bemutattuk Mohammedet, aki elektronikai termékeket importál Dubaiba. Mohammed cége sokat használja a multi-sig scipteket a cég számláinál. A multi-sig scriptek a leggyakrabban használt korszerű bitcoin scriptek, melyek nagyon hatékonyak. Mohammed cége az összes ügyfél befizetésénél multi-sig scripteket használ, ezt a könyvelők „követelés”-nek hívják. A multi-sig scriptek használata esetén az ügyfelek befizetései úgy vannak zárolva, hogy a felszabadításukhoz legalább két aláírásra van szükség: Mohammedtől és azegyik üzlettársától, vagy az ügyvédjétől, akinek van egy tartalék kulcsa. Az ilyen multi-sig tranzakciók lehetővé teszik a cégvezetés számára a felügyeletet, és védenek a lopás, hűtlen kezelés (sikkasztás) és a veszteségek ellen.</p></div>
+<div class="paragraph"><p>Az így kapott script egészen hosszú, és így néz ki:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;Mohammed nyilvános kulcsa&gt; &lt;Az 1. partner nyilvános kulcsa&gt; &lt;A 2. partner nyilvános kulcsa&gt; &lt;A 3. partner nyilvános kulcsa&gt; &lt;Az ügyvéd nyilvános kulcsa&gt; 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>Noha a multi-sig scriptek nagyon hatékonyak, de nehezen használhatók. A fenti script esetén Mohammednek a fizetés előtt mindegyik ügyfélhez el kell juttatnia a fenti scriptet. Mindegyik ügyfélnek különleges bitcoin pénztárcát kell használnia, melynek szoftvere képes egyedi tranzakciós scriptek előállítására, és minegyik ügyfélnek tudnia kell, hogyan lehet az egyedi scripttel egy tranzakciót létrehozni. Ezen kívül a kapott tranzakció kb. ötször nagyobb lesz, mint egy egyszerű fizetési tranzakció, mivel a script nagyon hosszú nyilvános kulcsokat tartalmaz. Az extra-nagy tranzakció terhét tranzakciós díjak formájában az ügyfél állja. Végül, az ilyen nagy tranzakciós scripteket mindegyik teljes csomópont az UTXO halmazban, a RAM-ban tartja mindaddig, amíg el nem költik. Ezen okok miatt a bonyolult scriptek használata a gyakorlatban nehéz.</p></div>
+<div class="paragraph"><p>A „fizetés-script-hasnek” (P2SH, Pay-to-Script-Hash) scripteket azért fejlesztették ki, hogy megoldják ezeket a gyakorlati nehézségeket, és a bonyolult scriptek használatát is olyan egyszerűvé tegyék, mint egy bitcoin címre történő fizetést. A P2SH fizetési mód esetében a zároló scriptet a digitális ujjlenyomata, egy kriptográfiai hash helyettesíti. Amikor utóbb egy olyan tranzakció keletkezik, amely megkísérli elkölteni az UTXO-t, akkor ennek a zárolást feloldó scripten kívül tartalmaznia kell azt a scriptet is, amelynek hashe egyezik az eredetileg megadott hash-sel. A P2SH egyszerűen azt jelenti, hogy „fizess annak a scriptnek, amelynek hashe egyezik ezzel a hash-sel, a script később, a kimenet elköltésekor lesz bemutatva”.</p></div>
+<div class="paragraph"><p>A P2SH tranzakciókban a zároló scriptet egy hash helyettesíti, melynek <em>redeem script</em> (beváltási script) a neve, mert a beváltáskor kerül majd bemutatásra a rendszernek. A <a href="#without_p2sh">[without_p2sh]</a> P2SH nélkül mutatja a példa scriptet, míg a <a href="#with_p2sh">[with_p2sh]</a> ugyanezt a sciptet P2SH kódolással mutatja.</p></div>
+<div class="tableblock" id="without_p2sh">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 4. Egy bonyolult script, P2SH nélkül</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Zároló script</p></td>
+<td align="left" valign="top"><p class="table">2 PubKey1 PubKey2 PubKey3 PubKey4 PubKey5 5 OP_CHECKMULTISIG</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Zárolást feloldó script</p></td>
+<td align="left" valign="top"><p class="table">Sig1 Sig2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock" id="with_p2sh">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 5. Egy bonyult script P2SH használatával</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Beváltási script</p></td>
+<td align="left" valign="top"><p class="table">2 PubKey1 PubKey2 PubKey3 PubKey4 PubKey5 5 OP_CHECKMULTISIG</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Zároló script</p></td>
+<td align="left" valign="top"><p class="table">OP_HASH160 &lt;a beváltási script 20 bájtos hashe&gt; OP_EQUAL</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Zárolást feloldó script</p></td>
+<td align="left" valign="top"><p class="table">Sig1 Sig2 beváltási script</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Amint az a fenti táblázatokból látható, a P2SH használatakor a nem jelenik meg az a bonyolult script a kimenetben (redeemScript, beváltási script), amely a kimenet elköltéséenek feltételeit részletezi. Csak a script egy hashe van jelen a zárolást végző scriptben, a beváltási script pedig később, a kimenet elköltésekor, a zárolást feloldó script részeként kerül bemutatásra. Ennek révén a komplexitás és a trenzakciós díjak terhe a tranzakció küldőjéről a címzettre tevődik/tolódik át.</p></div>
+<div class="paragraph"><p>Tekintsük Mohanmmed cégét, a bonyolult multi-sig scriptet és az eredményként kapott P2SH scriptet.</p></div>
+<div class="paragraph"><p>Nézzük először azt a multi-sig scriptet, melyet Mohammed cége az összes bejövő fizetésnél használ:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;Mohammed nyilvános kulcsa&gt; &lt;Az 1. partner nyilvános kulcsa&gt; &lt;A 2. partner nyilvános kulcsa&gt; &lt;A 3. partner nyilvános kulcsa&gt; &lt;Az ügyvéd nyilvános kulcsa&gt; 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ha a fenti üres helyekre behelyettesítjük a tényleges nyilvános kulcsokat, (melyek 04-gyel kezdődő, 520 bites számok), akkor a script nagyon hosszú lesz:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2
+04C16B8698A9ABF84250A7C3EA7EEDEF9897D1C8C6ADF47F06CF73370D74DCCA01CDCA79DCC5C395D7EEC6984D83F1F50C900A24DD47F569FD4193AF5DE762C58704A2192968D8655D6A935BEAF2CA23E3FB87A3495E7AF308EDF08DAC3C1FCBFC2C75B4B0F4D0B1B70CD2423657738C0C2B1D5CE65C97D78D0E34224858008E8B49047E63248B75DB7379BE9CDA8CE5751D16485F431E46117B9D0C1837C9D5737812F393DA7D4420D7E1A9162F0279CFC10F1E8E8F3020DECDBC3C0DD389D99779650421D65CBD7149B255382ED7F78E946580657EE6FDA162A187543A9D85BAAA93A4AB3A8F044DADA618D087227440645ABE8A35DA8C5B73997AD343BE5C2AFD94A5043752580AFA1ECED3C68D446BCAB69AC0BA7DF50D56231BE0AABF1FDEEC78A6A45E394BA29A1EDF518C022DD618DA774D207D137AAB59E0B000EB7ED238F4D800 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>De az egész script egy 20 bájtos hash-sel ábrázolható, ha először az SHA256 hash algoritmust, majd a RIPEMD160 algoritmust alkalmazzuk a scriptre. A fenti script 20 bájtos hash-e:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>54c557e07dde5bb6cb791c7a540e0a4796f5e97e</tt></pre>
+</div></div>
+<div class="paragraph"><p>A P2SH tranzakció a kimenetét a hosszabb script helyett a következő scripttel zárolja:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_HASH160 54c557e07dde5bb6cb791c7a540e0a4796f5e97e OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>amely láthatóan sokkal rövidebb. Ahelyett, hogy azt mondanánk, „fizess erre az 5 kulcsból álló multi-sig címre”, az ezzel egyenértékű P2SH tranzakció a következő: „fizess annak a scriptnek, melynek ez és ez a hashe”. Mohammed ügyfeleinek csupán ezt a jóval rövidebb zároló scriptet kell megadniuk. Ha Mohammed el akarja költeni ezt az UTXO-t, akkor be kell mutatnia az eredeti beváltási scriptet (azt, amelynek hash-ével az UTXO zárolva lett), valamint a zárolást feloldó aláírásokat, pl. így:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Sig1&gt; &lt;Sig2&gt; &lt;2 PK1 PK2 PK3 PK4 PK5 5 OP_CHECKMULTISIG&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>A két script összekapcsolása két szakaszban történik. Először a beváltási script hash-e kerül ellenőrzésre, hogy megegyezik-e a zároló scriptben lévő hash-sel:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;2 PK1 PK2 PK3 PK4 PK5 5 OP_CHECKMULTISIG&gt; OP_HASH160 &lt;beváltási script hash-e&gt; OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ha a beváltási script hash-e megegyezik a zároló sciptben lévő hash-sel, akkor zárolást feloldó script egymagában kerül végrehajtásra, hogy megszüntesse a zárolást:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Sig1&gt; &lt;Sig2&gt; 2 PK1 PK2 PK3 PK4 PK5 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="sect4">
+<h5 id="_fizetés_script_hashnek_címek_pay_to_script_hash_addresses">Fizetés script hashnek címek (Pay-to-Script-Hash Addresses)</h5>
+<div class="paragraph"><p>A P2SH egy másik fontos jellemzője, hogy a script hash címként is kódolható, amint azt a BIP0013 defniálja. A P2SH címek a script 20 bájtos hash-ének Base58Check kódolásával állnak elő, pont úgy, ahogy a bitcoin címek a nyilvános kulcs 20 bájtos hash-ének Base58Check kódolásával. A P2SH címek az „5” verzió előtagot használják, ez pedig „3”-mal kezdődő Base58Check kódolású címeket eredményez. Például Mohammed bonyolult scriptjéből a hash-elés és Base58Check kódolás után a <tt>39RF6JqABiHdYHkfChV6USGMe6Nsr66Gzw</tt> cím lesz. Mohammed ezt a „címet” oda tudja adni az ügyfeleinek, ők pedig szinte bármilyen pénztárcát használhatnak, és úgy fizethetnek, mintha egy egyszerű bitcoin címről lenne szó. A 3-as előtag jelzi nekik, hogy különleges címről van szó, ami nem nyilvános kulcshoz, hanem script hash-hez tartozik, egyébként azonban pontosan úgy működik, mint egy bitcoin címre történő kifizetés.</p></div>
+<div class="paragraph"><p>A P2SH címek elrejtik a bonyolultságot, a fizetést végrehajtó személy nem látja a scriptet.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_a_fizetés_script_hashnek_pay_to_script_hash_előnyei">A „fizetés script hashnek” (Pay-to-Script-Hash) előnyei</h5>
+<div class="paragraph"><p> A „fizetés script hashnek” a következő előnyökkel rendelkezik a kimenetek zárolására használt bonyolult scriptek közvetlen használatához képest:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+a bonyolult scripteket a tranzakció kimenetben a a rövidebb ujjlenyomatok helyettesítik, ezáltal a tranzakció kisebb lesz
+</p>
+</li>
+<li>
+<p>
+a scriptek címként kódolhatók, ezért a küldőnek és a küldő pénztárcájának nincs szüksége a P2SH bonyolult megvalósítására
+</p>
+</li>
+<li>
+<p>
+a P2SH a script előállításának a terhét a küldőről a címzettre hárítja át
+</p>
+</li>
+<li>
+<p>
+a P2SH a hosszú script adattárolásának a terhét a kimenetről (ami az UTXO halmazban van) a bemenetre (amit csak a blokklánc tárol) hárítja át
+</p>
+</li>
+<li>
+<p>
+a P2SH a hosszú script adattárolási terhét a jelenből (fizetés) a jövőbe (amikor elköltik) viszi át
+</p>
+</li>
+<li>
+<p>
+a P2SH a hosszú script miatti tranzakciós díjat a küldőről a címzettre hárítja, mert a címzettnek kell a hosszú beváltási scriptet bemutatnia, ha el akarja költeni az összeget.
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_a_beváltási_script_és_az_isstandard_ellenőrzés">A beváltási script és az isStandard ellenőrzés</h5>
+<div class="paragraph"><p>A Bitcoin Core kliens 0.9.2-es változata előtt a „fizetés script hasnek” (Pay-to-Script-Hash) az <tt>isStandard()</tt> függvény által engedélyezett szabványos bitcoin tranzakciós script típusokra korlátozódott. Ez azt jelenti, hogy az összeg elkötésekor bemutatott beváltási script a következő szabványos típusok valamelyike lehetett: P2PK, P2PKH vagy Multi-Sig, de nem lehetett <tt>OP_RETURN</tt> és P2SH.</p></div>
+<div class="paragraph"><p>A Bitcoin Core kliens 0.9.2-es verziója óta a P2SH scriptek bármilyen érvényes scriptet tartalmazhatnak, ami a P2SH szabványt sokkal rugalmasabbá teszi, és sok újfajta, összetett tranzakciótípust kipróbálását/használatát teszi lehetővé.</p></div>
+<div class="paragraph"><p>Megjegyezzük, hogy egy P2SH beváltási scripten belül nem lehet újabb P2SH script, mivel a P2SH specifikáció nem engedi meg a rekurziót. A beváltási scriptben <tt>OP_RETURN</tt> sem használható, mivel az <tt>OP_RETURN</tt> definíció szerint nem költhető el.</p></div>
+<div class="paragraph"><p>Megjegyezzük, hogy mivel a beváltási script addig nem jelenik meg a hálózatban, amíg meg nem próbáljuk meg elkölteni a P2SH kimenetet, ezért ha egy érvénytelen tranzakció hashével zárolunk egy kimenetet, akkor ez feldolgozásra fog kerülni. De a kimenetet nem tudjuk elkölteni, mivel az összeg elköltésekor meg kell adni a beváltási scriptet, ezt viszont a rendszer nem fogja elfogadni, mert nem érvényes. Ez kockázatot jelent, mivel a P2SH-val úgy zárolhatók bitcoinok, hogy később sem lehet elkölteni őket. A hálózat még akkor is elfogadja a P2SH "akadályt", ha az egy érvénytelen beváltási scriptnek felel meg, mert a script hashe semmilyen utalást sem ad arra vonatkozóan, hogy a hash milyen scriptnek felel meg.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p></p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:57:44 UTC
+</div>
+</div>
+</body>
+</html>

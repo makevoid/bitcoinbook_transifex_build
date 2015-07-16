@@ -1,0 +1,136 @@
+[[appdxbitcoinimpproposals]]
+[appendix]
+== Bitcoin Geliştirme Önerileri
+
+((("Bitcoin geliştirme teklifleri", id="ix_appdx-bips-asciidoc0", range="startofrange")))Bitcoin geliştirme teklifleri bitcoin topluluğuna tasarım dokümanları hakkında bilgi sağlar veya bitcoin ve ekosistemi için geliştirilen yeni özellikleri tanımlar. 
+
+BIP0001 _BIP Amaç ve Kuralları_'e göre, 3 türde BIP vardır:
+
+_Standart_ BIP:: Bitcoin uygulamalarının çoğunu veya tamamını değiştiren herhangi bir değişimi tanımlar, örneğin ağ protokolündeki değişim, blok veya aktarım doğrulama kuralları, veya bitcoin kullanan uygulamaların birlikte çalışabilirliğini etkileyen eklemeler gibi.
+_Bilgisel_ BIP:: Bitcoin tasarım konusunu tanımlar veya bitcoin topluluğuna genel kurallar veya bilgi sağlar ancak yeni bir özellik sunmaz. Bilgisel BIPler bitcoin topluluğunda fikir birliğini veya tavsiyeyi karşılamak zorunda değildir, bu yüzden kullanıcılar ve uygulayıcılar bu teklifleri gözardı edebilirler veya bu tavsiyelere uyabilirler.
+_Süreç_ BIP:: Bir bitcoin sürecini tanımlar, ya da bir süreçteki olayın değiştirilmesini teklif eder. Süreç BIPleri standart BIPler gibidir ancak bitcoin protokolünden farklı alanları kapsar. Bitcoin'in kod tabanına dahil olmayan bir implementasyonu önerebilirler, uygulanması (implemente edilmesi) için Bilgisel BIPlerin aksine genelde toplulukta fikir birliğine ihtiyaç duyarlar, tavsiyeden ziyade kullanıcıların gözardı etmesi pek mümkün değildir. Örnekleri; yordamları, kuralları, karar verme süreçlerindeki değişiklikleri ve Bitcoin geliştirmede kullanılan ortamdaki değişiklikleri kapsar. Herhangi bir meta-BIP bir süreç BIP'i olarak düşünülür.
+
+Bitcoin geliştirme teklifleri versiyonlu olarak kaydedilerek şu github deposunda saklanır:  https://github.com/bitcoin/bips[GitHub]. <<table_d-1>> BIPlerin 2014 sonbaharındaki bir tablosunu göstermektedir. Güncel BIPlerin olduğu depoyu ve içeriğini görmek için verilen github deposuna bakabilirsiniz.
+
+[[table_d-1]]
+.BIP Ekran Görüntüleri
+[options="header"]
+|=======================================================================
+|BIP# | Bağlantı | Başlık |Sahip |Tür |Durum
+|[[bip0001]]1|https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki|BIP Amaç ve Kurallar |Amir Taaki
+|Standart |Aktif
+
+|[[bip0010]]10|https://github.com/bitcoin/bips/blob/master/bip-0010.mediawiki|Multi-Sig İşlem Dağılımı |Alan
+Reiner |Bilgilendirici |Taslak
+
+|[[bip0011]]11|https://github.com/bitcoin/bips/blob/master/bip-0011.mediawiki|M-of-N Standart İşlemler |Gavin
+Andresen |Standart |Kabul Edildi
+
+|[[bip0012]]12|https://github.com/bitcoin/bips/blob/master/bip-0012.mediawiki|OP_EVAL |Gavin Andresen |Standart
+|İptal Edildi
+
+|[[bip0013]]13|https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki|Address Format for pay-to-script-hash
+|Gavin Andresen |Standart |Son
+
+|[[bip0014]]14|https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki|Protocol (Protokol) Sürümü ve Kullanıcı Aracısı |Amir
+Taaki, Patrick Strateman |Standart |Kabul Edildi
+
+|[[bip0015]]15|https://github.com/bitcoin/bips/blob/master/bip-0015.mediawiki|Aliases (Takma Adlar) |Amir Taaki |Standart |İptal Edildi
+
+|[[bip0016]]16|https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki|Pay To Script Hash |Gavin Andresen
+|Standart |Kabul Edildi
+
+|[[bip0017]]17|https://github.com/bitcoin/bips/blob/master/bip-0017.mediawiki|OP_CHECKHASHVERIFY (CHV) |Luke Dashjr
+|İptal Edildi |Taslak
+
+|[[bip0018]]18|https://github.com/bitcoin/bips/blob/master/bip-0018.mediawikilink:|hashScriptCheck |Luke Dashjr |Standart
+|Taslak
+
+|[[bip0019]]19|https://github.com/bitcoin/bips/blob/master/bip-0019.mediawiki|M-of-N Standart İşlemler(Düşük SigOp)
+|Luke Dashjr |Standart |Taslak
+
+|[[bip0020]]20|https://github.com/bitcoin/bips/blob/master/bip-0020.mediawiki|URI Şeması |Luke Dashjr |Standart
+|Değiştirildi
+
+|[[bip0021]]21|https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki|URI Şeması |Nils Schneider, Matt Corallo
+|Standart |Kabul Edildi
+
+|[[bip0022]]22|https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki|getblocktemplate - Temelleri |Luke
+Dashjr |Standart |Kabul Edildi
+
+|[[bip0023]]23|https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki|getblocktemplate - Havuz Madenciliği |Luke
+Dashjr |Standart |Kabul Edildi
+
+|[[bip0030]]30|https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki|Duplicate transactions(Yinelenen İşlemler) |Pieter Wuille
+|Standart |Kabul Edildi
+
+|[[bip0031]]31|https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki|Pong mesajı |Mike Hearn |Standart
+|Kabul Edildi
+
+|[[bip0032]]32|https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki|Hierarchical Deterministic Wallets(Belirli Sıralı Cüzdanlar) |Pieter
+Wuille |Bilgilendirici |Kabul Edildi
+
+|[[bip0033]]33|https://github.com/bitcoin/bips/blob/master/bip-0033.mediawiki|Stratized (Katmanlaşmış) Düğümler |Amir Taaki |Standart
+|Taslak
+
+|[[bip0034]]34|https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki|Block v2, Kod Tabanındaki uzunluk|Gavin
+Andresen |Standart |Kabul Edildi
+
+|[[bip0035]]35|https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki|mempool mesajı|Jeff Garzik |Standart
+|Kabul Edildi
+
+|[[bip0036]]36|https://github.com/bitcoin/bips/blob/master/bip-0036.mediawiki|Custom Services |Stefan Thomas |Standart
+|Taslak
+
+|[[bip0037]]37|https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki|Bloom filtering |Mike Hearn ve Matt
+Corallo |Standart |Kabul edildi
+
+|[[bip0038]]38|https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki|Şifre-korumalı özel anahtar|Mike
+Caldwell |Standart |Taslak
+
+|[[bip0039]]39|https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki|Deterministik anahtar üretmek için kullanılan
+Hafıza kodu |Slush |Standart |Taslak
+
+|[[bip0040]]40||Stratum iletişim protokolü|Slush |Standart |BIP numarası atanmış
+
+|[[bip0041]]41||Stratum maden protokolü|Slush |Standart |BIP numarası atanmış
+
+|[[bip0042]]42|https://github.com/bitcoin/bips/blob/master/bip-0042.mediawiki|Bitcoin için sonlu para arzı
+|Pieter Wuille |Standart |Taslak
+
+|[[bip0043]]43|https://github.com/bitcoin/bips/blob/master/bip-0043.mediawiki|Deterministik Cüzdanlar için Amaç Alanı
+|Slush |Standart |Taslak
+
+|[[bip0044]]44|https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki|Deterministik Cüzdanlar için Çok-Hesaplı
+Hiyerarşi |Slush |Standart |Taslak
+
+|[[bip0050]]50|https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki|Mart 2013 Blok zinciri forkunun otopsisi|Gavin
+Andresen |Bilgisel |Taslak
+
+|[[bip0060]]60|https://github.com/bitcoin/bips/blob/master/bip-0060.mediawiki|Sabit Uzunluklu "version" Mesajı
+(Geçiş İşlemleri Alanı) |Amir Taaki |Standart |Taslak
+
+|[[bip0061]]61|https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki|"reject" P2P mesaj |Gavin Andresen
+|Standart |Taslak
+
+|[[bip0062]]62|https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki|Değiştirilebilirliği ele almak |Pieter Wuille
+|Standart |Taslak
+
+|[[bip0063]]63||Stealth(Gizli) Adresler |Peter Todd |Standart |BIP numarası atanmış
+
+|[[bip0064]]64|https://github.com/bitcoin/bips/blob/master/bip-0064.mediawiki|getutxos mesajı |Mike Hearn |Standart
+|Taslak
+
+|[[bip0070]]70|https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki|Ödeme protokolü |Gavin Andresen |Standart
+|Taslak
+
+|[[bip0071]]71|https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki|Ödeöe protokolü MIME tipleri|Gavin
+Andresen |Standart |Taslak
+
+|[[bip0072]]72|https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki|Ödeme protokolü URI'ları |Gavin Andresen
+|Standart |Taslak
+
+|[[bip0073]]73|https://github.com/bitcoin/bips/blob/master/bip-0073.mediawiki|Ödeme İsteği URL'leri ile "Accept" başlığının 
+kullanılması |Stephen Pair |Standart |Taslak(((range="endofrange", startref="ix_appdx-bips-asciidoc0")))
+|=======================================================================
+

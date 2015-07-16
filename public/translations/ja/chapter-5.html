@@ -1,0 +1,1424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="transactions">トランザクション</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="ch5_intro">はじめに</h3>
+<div class="paragraph"><p>トランザクションはBitcoinシステムの中で最も重要な部分です。Bitcoinのそれ以外のものは、トランザクションが作成され、Bitcoinネットワークを伝搬し、検証そして最後にグローバルなトランザクション元帳(ブロックチェーン)に追加されるという流れを支えるように作られています。トランザクションはBitcoinシステム参加者間での価値の転送をデジタル化したデータの集合体です。それぞれのトランザクションはBitcoinのブロックチェーン(グローバルな複式簿記元帳)の中にある誰でも見ることができる取引です。</p></div>
+<div class="paragraph"><p>この章では、いろいろな形式のトランザクションや、トランザクションは何を含んでいるのか、トランザクションはどのように作られるのか、またどのように検証されるのか、どのように永続的な記録の一部になるのか、ということを説明していきます。</p></div>
+</div>
+<div class="sect2">
+<h3 id="tx_lifecycle">トランザクションのライフサイクル</h3>
+<div class="paragraph"><p>トランザクションのライフサイクルはまず s <em>origination</em> と呼ばれるトランザクションの生成から始まります。このときトランザクションは１つまたは複数の署名で署名されます。これら署名はトランザクションによって参照されている資金を使う許可を意味します。署名後にトランザクションはBitcoinネットワークにブロードキャストされます。それぞれのネットワークノード(Bitcoinネットワークへの参加者)はトランザクションを確認し、(ほぼ)全てのノードに行き渡るまでトランザクションがどんどんBitcoinネットワーク内を伝搬していきます。最後に、トランザクションはマイニングノードによって検証され、ブロックチェーンの中のブロックに記録されます。</p></div>
+<div class="paragraph"><p>一度ブロックチェーンに記録され十分なブロックによって確認される(confirmation)と、トランザクションはBitcoin元帳の永続的な一部となり、全ての参加者によって有効なものとして受け入れられます。トランザクションによって新しい所有者に割り当てられた資金は新しいトランザクションの中で使用することができ、所有者の連鎖を拡げて再びトランザクションのライフサイクルが始まることになります。</p></div>
+<div class="sect3">
+<h4 id="tx_origination">トランザクションの生成</h4>
+<div class="paragraph"><p>小切手と同じやり方を使ってトランザクションを考えてみると考えやすいです。小切手と同じように、トランザクションはお金を転送するという意思を表す道具で、実際に使われるまで目に見える形にはなりません。また小切手と同じように、トランザクションの発行人はトランザクションに署名している人である必要はありません。</p></div>
+<div class="paragraph"><p>仮にトランザクションを作った人が口座の正規署名者でなかったとしてもトランザクションは誰かによってオンラインまたはオフラインで作ることができます。例えば、口座へのアクセス権を持った事務員はCEOによる署名が入った小切手を作ることができ、同様に口座へのアクセス権を持った事務員はBitcoinトランザクションを作ることができ、トランザクションを有効にするデジタル署名をトランザクションに適用することができます。小切手は資金がある特定の口座を参照している一方、Bitcoinトランザクションは口座ではなく１つ前のトランザクションを参照することになります。</p></div>
+<div class="paragraph"><p>トランザクションが一度作られると、資金の所有者(または所有者たち)によって署名されます。もし正規の形式を保持しつつ署名されていれば、署名されたトランザクションは有効になり資金の転送を実行するために必要な全ての情報を含んでいることになります。最終的に、有効なトランザクションはBitcoinネットワークを伝搬していき、マイナーによって公的な元帳(ブロックチェーン)に格納されます。</p></div>
+</div>
+<div class="sect3">
+<h4 id="tx_bcast">Bitcoinネットワークへのトランザクションのブロードキャスト</h4>
+<div class="paragraph"><p>最初に、トランザクションはブロックチェーンに記録されるためにBitcoinネットワークに放出される必要があります。Bitcoinトランザクションは300から400バイトのデータを持ち、数万ものBitcoinノードのいずれか１つに辿り着かなければいけません。２つ以上のBitcoinノードにブロードキャストするため、送信者はBitcoinノードを信用する必要はありません。ノードは送信者を信用する必要はなく、また送信者が誰なのかを特定する必要もありません。トランザクションは署名されており、また一切の機密情報(秘密鍵や証明書)も含まれていないため、公にブロードキャストするためにいかなる転送手段を使っても構いません。例えば、センシティブな情報が含まれているため暗号化されたネットワークでしかデータの転送ができないクレジットカードのトランザクションと違って、Bitcoinのトランザクションはいかなるネットワークを通してでも送ることができます。トランザクションがBitcoinノードにたどり着くことができるのであれば、最初の転送方法はどうでもよいのです。</p></div>
+<div class="paragraph"><p>このため、BitcoinトランザクションはWiFiやBlutooth、NFC、Chirp、バーコード、Bitcoinアドレスのウェブフォームへのコピペのような安全でないネットワークを通してでも転送することができます。安全でない極端な場合として、パケット通信や衛星中継、バースト転送を用いた短波通信、周波数ホッピングなどのスペクトラム拡散などがあります。Bitcoinトランザクションは、絵文字としてでさえ表現でき、公的なフォーラムへの投稿、またテキストメッセージ、Skypeチャットメッセージとして送ることもできます。Bitcoinはお金をデータの形に変え、これにより誰もトランザクションを作成や実行を阻止できないようにしたのです。</p></div>
+</div>
+<div class="sect3">
+<h4 id="tx_propagation">Bitcoinネットワーク上でのトランザクションの伝搬</h4>
+<div class="paragraph"><p>一度BitcoinトランザクションがBitcoinネットワークに接続されたノードに送られると、このトランザクションは送られたノードで有効なものか検証されます。有効なものだと確認されると、そのノードは接続している他のノードにこのトランザクションを伝搬します。同時に、成功メッセージが発行ノードに返却されます。もしこのトランザクションが無効なものであればノードはこのトランザクションを棄却し、同時に棄却メッセージを発行ノードに返却します。</p></div>
+<div class="paragraph"><p>Bitcoinネットワークはpeer-to-peerネットワークであり、それぞれのBitcoinノードは数個のノードに接続されています。この数個のノードはpeer-to-peerプロトコルに従ってノードを起動したときに発見したノードです。全Bitcoinネットワークは緩やかに接続されたメッシュであり、固定されたトポロジーや構造を持つことなく全てのノードは平等に扱われます。トランザクションやブロックを含んだメッセージはそれぞれのノードから接続されている他のピアに伝搬します。このプロセスは"flooding"と呼ばれています。有効だと確認された新しいトランザクションは接続された全てのノード(隣接ノード)に送られ、それぞれの隣接ノードはまた全ての隣接ノードにこのトランザクションを送ります。このような方法で、全ての接続されたノードがこのトランザクションを受け取るまで波紋のようにBitcoinネットワーク内を伝わっていき数秒以内に全体に広がっていきます。</p></div>
+<div class="paragraph"><p>Bitcoinネットワークは、攻撃に強く、また効率的なルールに従って全てのノードにトランザクションとブロックを伝搬できるように設計されています。Bitcoinシステムにとって厄介なDOS攻撃のような強制的なデータの送りつけを防ぐために、全てのノードはトランザクションを次のノードに送る前に全てのトランザクションが有効なものか確認しています。このため、おかしなトランザクションが次のノードに送られることはありません。この方法について<a href="#tx_verification">[tx_verification]</a>で詳細に説明します。</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tx_structure">トランザクションの構造</h3>
+<div class="paragraph"><p>トランザクションは、資金源( <em>インプット</em> と呼ばれる)から送り先( <em>アウトプット</em> と呼ばれる)への価値の転送を記号化した  _デー&gt;タ構造_ です。トランザクションのインプットやアウトプットは、アカウントやIDなど、個人を特定できる情報と結びついているわけではありません。代わりに、これらを所有者だけがもっている秘密&gt;鍵でロックされているbitcoinの固まりとして考えるべきです。トランザクションは<a href="#tx_data_structure">[tx_data_structure]</a>に示すようないくつかのフィールドを含んでいます。</p></div>
+<div class="tableblock" id="tx_data_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. トランザクションの構造</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">サイズ</th>
+<th align="left" valign="top"> フィールド名 </th>
+<th align="left" valign="top"> 説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Version</p></td>
+<td align="left" valign="top"><p class="table">このトランザクションがどのルールに従っているかを指定</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1–9 bytes (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Input Counter</p></td>
+<td align="left" valign="top"><p class="table">いくつのインプットが含まれているか</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variable</p></td>
+<td align="left" valign="top"><p class="table">Inputs</p></td>
+<td align="left" valign="top"><p class="table">１つまたは複数のトランザクションインプット</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1–9 bytes (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Output Counter</p></td>
+<td align="left" valign="top"><p class="table">いくつのアウトプットが含まれているか</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variable</p></td>
+<td align="left" valign="top"><p class="table">Outputs</p></td>
+<td align="left" valign="top"><p class="table">１つまたは複数のトランザクションアウトプット</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Locktime</p></td>
+<td align="left" valign="top"><p class="table">Unixタイムスタンプ、またはブロック高</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">トランザクションLocktime</div>
+<div class="paragraph"><p>locktimeはトランザクションが検証されたり、Bitcoinネットワーク内でリレーされたり、またブロックチェーンに追加されたりした最も早い時刻です。これは、参照実装であるBitcoin Coreの中でnLockTimeとしても知られていたものです。ほとんどのトランザクションではすぐに伝搬されたことを表すためにlocktimeが0に設定されます。もしlocktimeが0でないかまたは５億より下になっているときはlocktimeをブロック高として解釈し、このブロック高より前のブロックではこのトランザクションがブロックチェーンに取り込まれていないということを意味します。もし５億よりも大きいときはlocktimeをUNIX Epochタイムスタンプ(1970/1/1からの秒数)として解釈し、この時刻よりも前にこのトランザクションが有効ではなかったということを意味します。locktimeが将来のブロックまたは時刻になっている場合は発行システムによってトランザクションが保持されていなければならず、トランザクションが有効になってからのみBitcoinネットワークに送信されなければいけません。locktimeは先日付小切手の日付のようなものです。</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="tx_inputs_outputs">トランザクションアウトプットとインプット</h3>
+<div class="paragraph"><p>Bitcoinトランザクションの基本的な構成要素は、 <em>未使用トランザクションアウトプット</em> または UTXO(unspent transaction output)です。UTXOは、特定の所有者にロックされた分割不可能なbitcoinの固まりで、ブロックチェーンに記録されており、Bitcoinネットワーク全体によって通貨の単位として捉えられているものです。Bitcoinネットワークは全ての利用可能(未使用)なUTXOを追跡しており、現在数百万に達するほどの量があります。ユーザがbitcoinを受け取るときはいつでも、UTXOとしてブロックチェーンに記録されます。このため、ユーザのbitcoinは数百個のトランザクションまたは数百個のブロックの中にUTXOとして散り散りな状態になってしまっているかもしれません。事実上、Bitcoinアドレスまたは口座の残高として記録されている訳ではないのです。あるのはただ散り散りになり特定の所有者に利用が制限されたUTXOだけです。ユーザのbitcoin残高という概念は、ウォレットによって作り上げられたものにすぎません。ウォレットはブロックチェーンをスキャンしてユーザに属している全てのUTXOを掻き集め残高を計算しているのです。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoinに口座も残高もありません。あるのは単にブロックチェーンの中に散らばった <em>未使用トランザクションアウトプット</em> (UTXO)だけです。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>UTXOは  satoshi を単位とした任意の値を持つことができます。ドルがセントというさらに下の２桁の十進数を持つように、bitcoinはsatoshiという８桁の十進数を持ちます。UTXOは任意の値ですが、一度作られるとコインのように２つに切ることができません。 別の言い方をすると、もし20bitcoinのUTXOを持っていて1bitcoinだけ使いたいとすると、トランザクションは20bitcoinのUTXOを消費しなければならないため２つのアウトプットを作らなければいけません。１つは支払った1bitcoin、もう１つはあなたのウォレットに戻ってくるおつりの19bitcoinです。結果として、ほぼ多くのBitcoinトランザクションはおつりを生成します。</p></div>
+<div class="paragraph"><p>$1.50の飲み物を買う人を想像してみましょう。彼女の財布から$1.50になるコインと紙幣の組み合わせを探しだします。もし財布にあるならおつりのいらないちょうどの金額(1ドル札と2つの25セントコイン、または6つの25セントコイン)、無理であれば５ドル札のような大きな単位の紙幣を選びます。もし多くのお金を持っているとすると、$5をショップオーナーに支払い$3.50のおつりを期待します。彼女はこの$3.50を財布に戻し、将来の買い物のときに使うことができます。</p></div>
+<div class="paragraph"><p>同様に、Bitcoinトランザクションはユーザが使用可能なUTXOから作られます。ユーザはUTXOを半分に割ることはできません。ウォレットは通常ユーザの利用可能なUTXOを選び、トランザクションに必要な金額以上になるように組み合わせます。</p></div>
+<div class="paragraph"><p>実用上は、Bitcoinアプリケーションは購入額を満たすためにいくつかのやり方を使うことができます。いくつかのより小さい単位の額を組み合わせる、おつりがないようなきっちりした金額を選ぶ、またはトランザクションに必要な金額より大きい額を使っておつりを作るなどです。このやり方はウォレットのほうで自動的に実行され、ユーザには見えないようになっています。関係してくるとしたら、生トランザクションをUTXOからプログラムを通して手で構成する場合だけです。</p></div>
+<div class="paragraph"><p>トランザクションによって消費されたUTXOはトランザクションインプットと呼ばれ、トランザクションによって作られたUTXOをトランザクションアウトプットと呼びます。UTXOを消費したまたは作成したトランザクションの中で、bitcoinの固まりはある所有者からある所有者に移っていきます。トランザクションは現在の所有者の署名を使って解錠されることでUTXOを消費します。</p></div>
+<div class="paragraph"><p>インプットとアウトプットの連鎖の例外は、 <em>coinbase</em> トランザクションと呼ばれる特殊なトランザクションです。これは、それぞれのブロックの一番最初のトランザクションです。このトランザクションは採掘に"勝った"マイナーによってブロックの一番最初に置かれ、マイニングに対する報酬としてマイナーにbitcoinが支払われるトランザクションとなります。<a href="#ch8">[ch8]</a>で説明するように、このようにしてマイニングプロセスを通してBitcoinのお金が供給されていきます。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>最初に何が来るでしょうか？インプットそれともアウトプット、鶏それとも卵？厳密に言って、アウトプットが最初に来ます。なぜなら、新しいbitcoinを生成するcoinbaseトランザクションはインプットを持っておらず、何もないところからアウトプットを作るからです。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="tx_outs">トランザクションアウトプット</h4>
+<div class="paragraph"><p>全てのBitcoinトランザクションはアウトプットを作ります。このアウトプットはBitcoin元帳上に記録され、ほとんど全てのアウトプット(１つの例外を除いて。<a href="#op_return">[op_return]</a>参照)は、 <em>未使用トランザクションアウトプット</em> またはUTXOと呼ばれる使用可能なbitcoinの固まりを作ります。UTXOはBitcoinネットワーク全体によって認識されており、所有者が将来の取引でこれを使うことができます。誰かにbitcoinを送ることは、送り先のBitcoinアドレスと紐づけられた未使用トランザクションアウトプット(UTXO)を作り出すことです。このUTXOは受信者が使うことが可能なトランザクションアウトプットです。</p></div>
+<div class="paragraph"><p>UTXOは全てのfull-node Bitcoinクライアントによって追跡され、 <em>UTXOセット</em> または <em>UTXOプール</em> と呼ばれるメモリに持っているデータベースで管理されています。そして、新しいトランザクションはUTXOセットにある１つまたは複数のアウトプットを消費(使用)することになります。</p></div>
+<div class="paragraph"><p>トランザクションアウトプットは以下２つの部分で成り立っています。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+bitcoinの最小単位である <em>satoshi</em> 単位で表されたbitcoin金額
+</p>
+</li>
+<li>
+<p>
+アウトプットと使用するにあたって満たさなければいけない条件である"解除条件"として知られている  <em>locking script</em>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>locing scriptの中で使われているトランザクションスクリプト言語の詳細については<a href="#tx_script">[tx_script]</a>で説明します。<a href="#tx_out_structure">[tx_out_structure]</a>はトランザクションアウトプットの構造を示しています。</p></div>
+<div class="tableblock" id="tx_out_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. トランザクションアウトプットの構造</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">サイズ</th>
+<th align="left" valign="top"> フィールド名 </th>
+<th align="left" valign="top"> 説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">8 bytes</p></td>
+<td align="left" valign="top"><p class="table">Amount</p></td>
+<td align="left" valign="top"><p class="table">satoshi単位(10<sup>-8</sup> bitcoin)のbitcoin額</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bytes (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Locking-Script Size</p></td>
+<td align="left" valign="top"><p class="table">次に続くlocking scriptのバイト長</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variable</p></td>
+<td align="left" valign="top"><p class="table">Locking-Script</p></td>
+<td align="left" valign="top"><p class="table">アウトプットを使用するために必要な条件を定義したscript</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p><a href="#get_utxo">[get_utxo]</a>でblockchain.info APIを使って特定のBitcoinアドレスの未使用アウトプット(UTXO)を調べています。</p></div>
+<div class="exampleblock" id="get_utxo">
+<div class="title">Example 1. あるBitcoinアドレスに関連したUTXOを見つけ出す blockchain.info APIを呼び出すスクリプト</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>このスクリプトを実行すると、"トランザクションID":"特定の未使用トランザクションアウトプット(UTXO)のインデックス" - "UTXOの satoshi 単位での金額" という形のリストが表示されます。<a href="#get_utxo_run">[get_utxo_run]</a>のアウトプットにlocking scriptは表示されていません。</p></div>
+<div class="exampleblock" id="get_utxo_run">
+<div class="title">Example 2. get-utxo.py スクリプトの実行</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="sect4">
+<h5 id="_使用条件_解除条件">使用条件(解除条件)</h5>
+<div class="paragraph"><p>トランザクションアウトプットはbitcoin(satoshi単位で表された)を、特定の <em>解除条件</em> またはbitcoinを使うにあたって満たさなければいけない条件を定義したlocking scriptと関連づけています。多くの場合、locking scriptは特定のBitcoinアドレスにアウトプットをロックし、これにより所有権が新しい所有者に移ります。アリスがボブのカフェにコーヒー代を支払ったとき、彼女のトランザクションにはカフェのBitcoinアドレスにロックされた0.015bitcoinアウトプットが含まれていました。この0.015bitcoinアウトプットはブロックチェーンに記録され、カフェのBitcoinアドレスに紐づいた未使用トランザクションアウトプットセットの一部になったのです。ボブがこの0.015bitcoinアウトプットを支払いに使うことにしたときに、彼のトランザクションはボブの秘密鍵による署名を含むunlocking scriptを提示することでこの0.015bitcoinアウトプットのロックを外すのです。</p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tx_inputs">トランザクションインプット</h4>
+<div class="paragraph"><p>簡単に言って、トランザクションインプットはUTXOへのポインタです。トランザクションインプットは、トランザクションハッシュとUTXOが記録されているブロックチェーン内の場所を示すシーケンス番号を使って特定のUTXOを指定します。UTXOを使うために、トランザクションインプットはunlocking scriptというUTXOのロックを解除するscriptも持っています。unlocking scriptは通常locking scriptの中にあるBitcoinアドレスの所有権を証明している署名です。</p></div>
+<div class="paragraph"><p>ユーザが支払いをするとき、ウォレットは使用可能なUTXOを選びトランザクションを構成します。例えば、0.015bitcoinの支払いをするのであれば、ウォレットは0.01bitcoinのUTXOと0.005bitcoinのUTXOを選び支払いに必要な金額になるようにするかもしれません。</p></div>
+<div class="paragraph"><p><a href="#select_utxo">[select_utxo]</a>では"貪欲(greedy)"アルゴリズムを使うことである金額を満たすように使用可能なUTXOを選ぶ例を示しています。この例では、使用可能なUTXOをあらかじめ決められた配列で与えています。しかし、現実では、使用可能なUTXOはBitcoin CoreのRPC APIを使って集めてくるか、または<a href="#get_utxo">[get_utxo]</a>にあるようなサードパーティAPIを使って集めてきます。</p></div>
+<div class="exampleblock" id="select_utxo">
+<div class="title">Example 3. 支払いに総額いくらのbitcoinが必要となるかを計算するためのスクリプト</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>もし <em>select-utxo.py</em> スクリプトをパラメータなしで実行すると、55,000,000satoshi(0.55bitcoin)の支払いに対してUTXOの組み合わせ(とおつりも)を構成しようとします。パラメータとして支払額を指定すると、スクリプトは指定した支払額を満たすようにUTXOを選びます。<a href="#select_utxo_run">[select_utxo_run]</a>では、0.5bitcoinまたは50,000,000satoshiの支払い額を指定してスクリプトを実行しています。</p></div>
+<div class="exampleblock" id="select_utxo_run">
+<div class="title">Example 4. select-utxo.py スクリプトの実行</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ python select-utxo.py 50000000
+For transaction amount 50000000 Satoshis (0.500000 bitcoin) use:
+([&lt;7dbc497969c7475e45d952c4a872e213fb15d45e5cd3473c386a71a1b0c136a1:0 with 25000000 Satoshis&gt;, &lt;7f42eda67921ee92eae5f79bd37c68c9cb859b899ce70dba68c48338857b7818:0 with 16100000 Satoshis&gt;, &lt;6596fd070679de96e405d52b51b8e1d644029108ec4cbfe451454486796a1ecf:0 with 16050000 Satoshis&gt;], 'Change: 7150000 Satoshis')</tt></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>一度UTXOが選ばれると、ウォレットはそれぞれのUTXOに対して署名を含んでいるunlocking scriptを作ります。このunlocking scriptによってlocking scriptの条件を満たすためUTXOが使用可能になります。ウォレットはこれらのUTXOへの参照とunlocking scriptをインプットとしてトランザクションに追加します。<a href="#tx_in_structure">[tx_in_structure]</a>はトランザクションインプットの構造を示しています。</p></div>
+<div class="tableblock" id="tx_in_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 3. トランザクションインプットの構造</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">サイズ</th>
+<th align="left" valign="top"> フィールド名 </th>
+<th align="left" valign="top"> 説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">32 bytes</p></td>
+<td align="left" valign="top"><p class="table">Transaction Hash</p></td>
+<td align="left" valign="top"><p class="table">使われるUTXOを含むトランザクションハッシュ</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Output Index</p></td>
+<td align="left" valign="top"><p class="table">使われるUTXOのトランザクション内インデックス、一番最初のアウトプットの場合は0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bytes (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Unlocking-Script Size</p></td>
+<td align="left" valign="top"><p class="table">unlocking-scriptのバイト長</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variable</p></td>
+<td align="left" valign="top"><p class="table">Unlocking-Script</p></td>
+<td align="left" valign="top"><p class="table">UTXOのlocking scriptを満たすscript</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Sequence Number</p></td>
+<td align="left" valign="top"><p class="table">Currently disabled Tx-replacement feature, set to 0xFFFFFFFF</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>The sequence number is used to override a transaction prior to the expiration of the transaction locktime, which is a feature that is currently disabled in bitcoin. Most transactions set this value to the maximum integer value (0xFFFFFFFF) and it is ignored by the bitcoin network. If the transaction has a nonzero locktime, at least one of its inputs must have a sequence number below 0xFFFFFFFF in order to enable locktime.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tx_fees">トランザクション手数料</h4>
+<div class="paragraph"><p>ほとんどのトランザクションはトランザクション手数料を含んでいて、この手数料はBitcoinマイナーに与えられます。マイニングと手数料、マイナーによって集められた報酬についての詳細は<a href="#ch8">[ch8]</a>で説明することにします。この節では、どのようにしてトランザクション手数料がトランザクションに含められるかを説明します。ほとんどのウォレットはトランザクション手数料を自動的に計算しトランザクションに含めます。しかし、もしトランザクションをプログラムを通して構築する、またはコマンドラインを使って構築する場合は、手動でこれらの手数料をトランザクションに含めなければいけません。</p></div>
+<div class="paragraph"><p>トランザクション手数料はトランザクションを次にブロックに含める(採掘する)ことのインセンティブとして働き、また少額でも手数料をトランザクションに入れなければいけないため"スパム"トランザクションやBitcoinシステムを悪用することに対する逆のインセンティブとして働きます。トランザクション手数料はブロックチェーン上にトランザクションを記録しているブロックを採掘したマイナーによって集められます。</p></div>
+<div class="paragraph"><p>トランザクション手数料はトランザクションのデータサイズ(KB)に基づいて計算され、いくらの支払いをしたかによって手数料は決まりません。トランザクション手数料はBitcoinネットワーク内での市場原理に基づいて決められます。マイナーごとにどのトランザクションを優先的に選ぶかの判断条件は違っており、この判断条件には手数料の大きさも含まれます。手数料が含まれていないトランザクションも状況によってはマイナーに選ばれるかもしれません。しかし、トランザクション手数料はマイナーによって処理される優先順位に影響し、十分な手数料をもっているトランザクションが次の頻繁にマイニングされているブロックに含まれる可能性が高くなり、一方十分な手数料を持っていないかまたは手数料がないトランザクションはブロックに取り込まれることが遅れてしまうか、もしく数ブロック後に取り込まれる、またはそもそも処理されないということになるかもしれません。トランザクション手数料は必須ではなく、ときどき手数料がないトランザクションもマイナーに処理されますが、トランザクション手数料を含めることは処理の優先順位をあげることに繋がるのです。</p></div>
+<div class="paragraph"><p>時間とともに、トランザクション手数料の計算方法やトランザクションの優先順位付け方法が発展してきました。最初、トランザクション手数料は固定されており、Bitcoinネットワーク全体で一定でした。次第に手数料は緩和され、Bitcoinネットワークのキャパシティやトランザクション量に基づく市場の力関係にトランザクション手数料が影響されるようになってきました。現在の最小トランザクション手数料はトランザクションのデータサイズ1KBあたり0.0001bitcoin、10ミリbitcoinに固定されており、最近1ミリbitcoinに減らされました。多くのトランザクションは1KBより小さいですが、いくつかのインプットまたはアウトプットを持っているとより大きな手数料になります。Bitocinプロトコルの将来の改定で、ウォレットが最近のトランザクションの手数料平均値に基づき統計的に最適な手数料を決定できるようになると予想されています。</p></div>
+<div class="paragraph"><p>マイナーがトランザクションの優先順位付けをする際に使っている現在のアルゴリズムについては<a href="#ch8">[ch8]</a>で詳細に説明します。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_手数料のトランザクションへの追加">手数料のトランザクションへの追加</h4>
+<div class="paragraph"><p>トランザクションのデータ構造には手数料に対するフィールドはありません。代わりに、手数料はインプットの総和とアウトプットの総和との差として暗に含められる形になっています。全てのインプットの総和から全てのアウトプットの総和を引いて残った余分な額がマイナーによって集められる手数料です。</p></div>
+<div class="listingblock" id="tx_fee_equation">
+<div class="title">トランザクション手数料はインプットとアウトプットの差として暗に含められています。</div>
+<div class="content">
+<pre><tt>Fees = Sum(Inputs) – Sum(Outputs)</tt></pre>
+</div></div>
+<div class="paragraph"><p>これは、幾分トランザクションを理解する上で混乱してしまうところですが重要なポイントです。というのは、もし自身でトランザクションを構築するとしたときに、うっかり大きな額の手数料を含めないようにしないといけないためです。もし必要ならおつりを作成することによって全てのインプットを把握しておかなければいけません。さもなければ、マイナーにとても大きなチップをあげることになってしまうのです！</p></div>
+<div class="paragraph"><p>例えば、20bitcoinのUTXOを消費して1bitcoinの支払いをしようとするなら、19bitcoinのおつりがアウトプットに含まれていなければいけません。そうしないと、19bitcoinの"残り物"はトランザクション手数料としてカウントされてしまい、あなたのトランザクションを含むブロックを採掘したマイナーによって19bitcoinが集められてしまうのです。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>手動でトランザクションを構築したときにもしおつりのアウトプットを追加し忘れてしまうと、おつり分をトランザクション手数料として払ってしまうことになります。"おつりを守りなさい！"というのは、通常の支払いの感覚からすると不思議に感じるかもしれません。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>再度アリスのコーヒー代支払いの例を使って実用上どのように動作するかを見ていきましょう。アリスは0.015bitcoinをコーヒー代として支払おうとしています。分かりやすくするために彼女は0.001bitcoinをトランザクション手数料として含めようとしているとしてみましょう。これはトランザクションの総コストが0.016bitcoinになることを意味しています。よって、彼女のウォレットは0.016bitcoinかまたはそれより多い額になるようにUTXOを集め、必要ならおつりを作らなければいけません。彼女のウォレットが0.2bitcoinのUTXOが使用可能だとしてみると、このUTXOを消費することになります。アウトプットとしては、ボブのカフェ店への支払いとして0.015bitcoinのアウトプットを作り、そして２つ目のアウトプットとして自分自身のウォレットに返ってくる0.184bitcoinのおつりのアウトプットを作ります。0.001bitcoinが残っていますが、これが暗にトランザクションに含められているトランザクション手数料になります。</p></div>
+<div class="paragraph"><p>違ったシナリオを考えてみましょう。フィリピンの子供チャリティーディレクターのEugeniaは子供のために学校の教科書を購入するための支援金集めが完了し、全世界の人々からいただいた数千個の小さな寄付を受け取りました。総額にして50bitcoinです。このため、彼女のウォレットは小さな支払い(UTXO)でいっぱいになってしまいました。彼女は数百冊の学校の教科書を地元の出版社から購入したいと考えていて、支払いをbitcoinでするつもりでいます。</p></div>
+<div class="paragraph"><p>Eugeniaのウォレットは１個の大きなトランザクションを作ろうとしたため、多くの小さな額のUTXOで占められている使用可能なUTXOセットからUTXOを集めてこなければいけません。結果として作られるトランザクションはインプットとして数百個の小さな額のUTXOと出版社に支払われるたった１個のアウトプットで構成されることになります。多くのインプットを伴ったトランザクションのデータサイズは1KBよりも大きく、おそらく2、3KBです。結果的に、最小手数料0.0001bitcoinよりも高いトランザクション手数料が必要になります。</p></div>
+<div class="paragraph"><p>Eugeniaのウォレットはトランザクションのデータサイズと1KBあたりの手数料を掛け合わせて適切な手数料を計算することになります。多くのウォレットは大きなトランザクションに対して手数料を多めに払っています。これは、トランザクションを迅速に処理してもらうためです。高い手数料を払うのはEugeniaが多くのお金を使っているからではなく、トランザクションがより複雑でよりデータサイズが大きいからです。トランザクション手数料の額はトランザクションのbitcoin額とは無関係なのです。</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tx_chains">トランザクション連鎖とOrphanトランザクション</h3>
+<div class="paragraph"><p>今まで見てきたように、トランザクションは連鎖を形成します。この連鎖というのは、１つのトランザクションは前のトランザクションアウトプット(親と呼ばれる)を使い、また次のトランザクションのためにアウトプット(子と呼ばれる)を作る、という連鎖です。ときどきトランザクションの連鎖全体(親トランザクション、子トランザクション、孫トランザクション)が一度に作られることがあります。これは、親トランザクションが署名される前に署名された子トランザクションが必要な場合です。例えば、これは  CoinJoin トランザクションの場合のテクニックに使われます。CoinJoinトランザクションは、複数の人のトランザクションを別のトランザクションに加えて混ぜることでプライバシーを守るために使われます。</p></div>
+<div class="paragraph"><p>トランザクションの連鎖はBitcoinネットワークを通して放出されたとき、順番通りにノードに届くわけではなく、もしかすると親よりも先に子が届いてしまうかもしれません。この場合、子を最初に見つけたノードは、この子が参照している親トランザクションのことはまだ知りません。子供を拒否するよりもむしろ、一時的なプールに子を置いておき、親が届くことを待ちます。親がいないトランザクションのプールを  <em>orphanトランザクションプール</em> と呼びます。一度親が届くと、親のUTXOを参照しているorphanは全てプールから取り出され、再帰的に再確認されます。このとき、トランザクションの連鎖全体がorphanトランザクションプールからトランザクションプールに取り込まれ、ブロックに取り込まれる準備が整います。トランザクションの連鎖は多くの世代が伴なったとしてもどれだけでも長くでき、同時に送信できます。orphanプールにorphanトランザクションを保持しておく方法を使うことで、親の到着が遅れたとしても子を放棄することなく、かつ正しい順番でトランザクションの連鎖を構築できるのです。</p></div>
+<div class="paragraph"><p>メモリに保持できるorphanトランザクションの数には制限があります。これは、BitcoinノードからのDOS攻撃を防ぐためです。制限数は、  <tt>MAX_ORPHAN_TRANSACTIONS</tt> というBitcoin参照クライアントのソースコード内にあるパラメータで定義されています。もしプールにあるorphanトランザクションの数が <tt>MAX_ORPHAN_TRANSACTIONS</tt> を越えると、ランダムに選ばれたいくつかのorphanトランザクションがプールから追い出され、プールにあるorphanトランザクション数が制限以内になるように調整されます。</p></div>
+</div>
+<div class="sect2">
+<h3 id="tx_script">トランザクションスクリプトとスクリプト言語</h3>
+<div class="paragraph"><p>Bitcoinクライアントはscriptを実行することでトランザクションの有効性をチェックします。UTXOにあるlocking script(解除条件)と通常署名を含んでいるunlocking scriptはこのscript言語で書かれています。トランザクションが有効かチェックされるときは、資金の使用条件を満たしているかどうかをみるためにそれぞれのインプットにあるunlocking scriptが対応したlocking scriptとともに実行されます。</p></div>
+<div class="paragraph"><p>今日、Bitcoinネットワークを通して処理される多くのトランザクションは"アリスがボブに支払う"というような形式になっており、Pay-to-Public-Key-Hash scriptと呼ばれるscriptに基づいています。しかし、アウトプットをロックしインプットを解錠するscriptを使うことは、プログラミング言語を通してトランザクションに無限個の条件を含められることを意味します。"アリスがボブに支払う"という形式に対してBitcoinトランザクションは何の制約も受けていないのです。</p></div>
+<div class="paragraph"><p>これは単にこのスクリプト言語によって表現できる可能性の氷山の一角を見せているに過ぎません。この節では、Bitcoinトランザクションのスクリプト言語の要素を説明し、どのように資金の使用に対する完全な条件を表現するのか、どのようにunlocking scriptは条件を満たすことができるのかを説明していきます。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoinトランザクションの有効性チェックは静的なパターンに基づいているわけではなく、script言語の実行を通して行われています。この言語はほとんど無限個の条件を表現することができます。このようにしてBitcoinは"プログラム可能な通貨"を実現しているのです。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="_スクリプトの構築_lock_unlock">スクリプトの構築(Lock + Unlock)</h4>
+<div class="paragraph"><p>Bitcoinのトランザクション有効性チェックエンジンは二種類のスクリプトによって成り立っていま&gt;す。１つはlocking script、もう１つはunlocking scriptです。</p></div>
+<div class="paragraph"><p>locking scriptはアウトプットに置かれている解除条件で、将来アウトプットを使用する際に満たさなければいけない条件を指定しています。歴史的に、locking scriptは <em>scriptPubKey</em> と呼ばれていました。というのは、locking scriptに通常公開鍵またはBitcoinアドレスが含まれているからです。この本では、スクリプトテクノロジーの可能性をより多く得るためにそれを"locking script"と呼ぶことにします。多くのBitcoinアプリケーションでは、locking scriptと呼んだものが <tt>scriptPubKey</tt> としてソースコードに出てきます。</p></div>
+<div class="paragraph"><p>unlocking scriptは、locking scriptによってアウトプットに置かれた条件を"解く"または満たすスクリプトで、アウトプットを使用できるようにします。unlocking scriptは全てのトランザクションインプットの一部であり、ほとんどの場合秘密鍵からウォレットが作り出したデジタル署名を含んでいます。歴史的に、unlocking scriptが通常デジタル署名を含んでいるためunlocking scriptは <em>scriptSig</em> と呼ばれています。多くのBitcoinアプリケーションのソースコードの中では、unlocking scriptを <tt>scriptSig</tt> と呼んでいます。この本では、これを"unlocking script"と呼ぶことにしています。というのは、全てのunlocking scriptが署名を含んでいなければいけないわけではなく、locking scriptの解除をするために必要なものは署名以外にもあるということに気づいてもらうためです。</p></div>
+<div class="paragraph"><p>全てのBitcoinクライアントはlocking scriptとunlocking scriptを一緒に実行することでトランザクションが有効であることをチェックします。トランザクションにあるそれぞれのインプットに対して、有効性チェックソフトウェアは最初にインプットによって参照されているUTXOを取得しようとします。このUTXOは、UTXOを使うときに必要な条件が定義してあるlocking scriptを含んでいます。有効性チェックソフトウェアはこのときこのUTXOの資金を使おうとしているインプットに含まれているunlocking scriptを取り出し、locking scriptとunlocking scriptを実行します。</p></div>
+<div class="paragraph"><p>オリジナルのBitcoinクライアントでは、unlocking scriptとlocking scriptは結合されており順番に実行されていました。セキュリティの観点からこれは2010年に変更されました。悪意あるunlocking scriptがスタックにデータをプッシュし、locking scriptを意味がないものにしてしまうという弱点が生じてしまうためです。現在の実装では、次に説明するようにスクリプトはunlocking scriptとlocking scriptの間で転送されるスタックと別々に実行されるようになっています。</p></div>
+<div class="paragraph"><p>最初に、スタック実行エンジンを使ってunlocking scriptが実行されます。もしunlocking scriptがエラーなく(例えば、"まだ実行されていない"オペレータが何も残っていないなど)実行されると、メインスタック(代替スタックではなく)がコピーされlocking scriptが実行されます。もしunlocking scriptからコピーされたスタックデータとともに実行されたlocking scriptの結果が"真"なら、unlocking scriptはlocking scriptによって課されていた条件を解くことに成功したということです。よって、インプットはUTXOを使用する有効な権限を持っているということになります。もし"真"以外が実行結果に残ってしまっているのであれば、インプットは有効ではありません。UTXOに置いてある使用条件を満たすことができなかったからです。重要なこととして、UTXOはブロックチェーンに永遠に記録され続けるため成功しなかった場合UTXOであるという状態は変化せず、何度新しいトランザクションがUTXOを不正に使用しようとしてもUTXOは全く影響を受けません。UTXOの条件を正しく満たす有効なトランザクションだけがUTXOに"使用済み"という印をつけ、使用可能な(未使用)UTXOのセットから削除させることができるのです。</p></div>
+<div class="paragraph"><p><a href="#scriptSig_and_scriptPubKey">[scriptSig_and_scriptPubKey]</a>はunlocking scriptとlocking scriptのよくある例(公開鍵ハッシュへの支払い)です。これは、スクリプトの有効性チェックの前のunlocking scriptとlocking scriptが連結されたスクリプトを示しています。</p></div>
+<div class="imageblock" id="scriptSig_and_scriptPubKey">
+<div class="content">
+<img src="images/msbt_0501.png" alt="scriptSig_and_scriptPubKey" />
+</div>
+<div class="title">Figure 1. トランザクションscriptを評価するためのscriptSigとscriptPubKeyの結合</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tx_script_language">スクリプト言語</h4>
+<div class="paragraph"><p> <em>Script</em> と呼ばれているBitcoinトランザクションスクリプト言語は、Forth言語のような逆ポーランド記法の言語です。もしちんぷんかんぷんに聞こえるとしたら、あなたはおそらく1960年代のプログラミング言語を勉強したことがないのでしょう。スクリプトはとてもシンプルな言語で、限られたハードウェアで動くように設計された言語です。おそらく電卓のような組み込みデバイスくらい簡単なハードウェアです。これは最小の処理のみを必要とし、最近のプログラミング言語でできるようなことの多くはできません。</p></div>
+<div class="paragraph"><p>Bitcoinのスクリプト言語はスタックベース言語と呼ばれています。というのは、 <em>スタック</em> と呼ばれるデータ構造を使っているからです。スタックとはとても簡単なデータ構造で、イメージ的にはカードを重ねたもののようなものです。スタックは２つの操作を許しています。pushとpopです。pushはアイテムをスタックの一番上に加えます。popは一番上にあるアイテムをスタックから除きます。</p></div>
+<div class="paragraph"><p>スクリプト言語はそれぞれのアイテムを左から右に処理することでスクリプトを実行していきます。数値(定数)がスタックにpushされます。オペレーターは１つまたは複数の値をスタックに対してpush&gt;、popし、またはそれらに対して何らかの操作をします。場合によっては操作した結果をスタックにpushするかもしれません。例えば、 <tt>OP_ADD</tt> はスタックから２つのアイテムをpopして、２つのアイ&gt;テムを加え合わせ結果をスタックにpushします。</p></div>
+<div class="paragraph"><p>条件オペレーターは条件を評価して、TRUEかFALSEというブール型の結果を作り出します。例えば、 <tt>OP_EQUAL</tt> はスタックから２つのアイテムをpopして、もしそれらが等しいならTRUE(TRUEは数値の1によって表現されます)をpushし、等しくなければFALSE(数値の0で表します)をpushします。Bitcoinトランザクションスクリプトは通常有効なトランザクションを示すTRUEの結果を生成するために条件オペレーターを含んでいます。</p></div>
+<div class="paragraph"><p><a href="#simplemath_script">[simplemath_script]</a>図では <tt>2 3 OP_ADD 5 OP_EQUAL</tt> というスクリプトで、加法オペレーター <tt>OP_ADD</tt> を実行し２つの数値を加え結果をスタックに置き、次に <tt>OP_ADD</tt> の結果と <tt>5</tt> が等しいかをチェックする条件オペレーター <tt>OP_EQUAL</tt> を実行しています。簡潔に言えば、 <tt>OP_</tt> という接頭詞は <a href="#simplemath_script">[simplemath_script]</a> で省略されています。</p></div>
+<div class="paragraph"><p>以下はちょっとだけ複雑なスクリプトで、 <tt>2 + 7 – 3 + 1</tt> を計算しています。スクリプトがいくつかのオペレーターを含んでいるとき、スタックの性質上１つのオペレーターの結果を次のオペレーターだけが使うことができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 7 OP_ADD 3 OP_SUB 1 OP_ADD 7 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>鉛筆と紙を使ってこのスクリプトが有効かあなた自身でやってみましょう。スクリプトの実行が終わった段階で、スタックにTRUEが残っているはずです。</p></div>
+<div class="paragraph"><p>ほとんどのlocking scriptは資金の使用にあたっての所有権の証明のためBitcoinアドレスや公開鍵を参照していますが、locking scriptは複雑である必要はありません。結果としてTRUEが出力されるlocking scriptとunlocking scriptのどんな組み合わせも有効とみなされます。スクリプト言語の例として使った簡単な算数も、トランザクションアウトプットをロックするために使うことができるきちんとしたlocking scriptです。</p></div>
+<div class="paragraph"><p>locking scriptとしてさきほどの算数のスクリプト例の一部を使ってみましょう。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>3 OP_ADD 5 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>これは以下のunlocking scriptを持つインプットがトランザクションにあれば満たすことができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2</tt></pre>
+</div></div>
+<div class="paragraph"><p>有効性を確認するソフトウェアはlocking scriptとunlocking scriptをくっつけて以下のスクリプトを作ります。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 3 OP_ADD 5 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p><a href="#simplemath_script">[simplemath_script]</a>図で見たように、このスクリプトが実行されるとこの結果は <tt>OP_TRUE</tt> になりトランザクションは有効であると分かります。この場合、有効なトランザクションアウトプットのlocking scriptだけでなく、算数の計算ができる人であれば誰でも2がこのスクリプトを満たすことがわかるので誰でもUTXOを使うことができることになります。</p></div>
+<div class="imageblock" id="simplemath_script">
+<div class="content">
+<img src="images/msbt_0502.png" alt="TxScriptSimpleMathExample" />
+</div>
+<div class="title">Figure 2. Bitcoinのscript検証を使って簡単な算数をやってみる。</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>もしスタックの一番上に真( <tt>&#x7b;0x01&#x7d;</tt> のように表現されます)、または真ではないが０以外の値があればトランザクションは有効と検証されたことになります。または、script実行後にスタックに空値ではなく何も残っていなかった場合もトランザクションは有効と検証されたことになります。トランザクションが無効になってしまう場合は、スタックの一番上に偽(a zero-length empty value,  <tt>&#x7b;&#x7d;</tt> のように表現される長さ０の空値)がある場合や、OP_VERIFYやOP_RETURNまたはOP_ENDIFのような条件付き終了オペレータなどによって明示的にscript実行が終了させられる場合です。詳細については <a href="#tx_script_ops">[tx_script_ops]</a> を参照してください。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_チューリング不完全">チューリング不完全</h4>
+<div class="paragraph"><p>Bitcoinトランザクションスクリプト言語は多くのオペレーターを持っています。しかし、意図的にループやif文などの分岐処理がないように制限されています。これは言語が <em>チューリング完全</em> ではないということを言っており、このようになっているのはスクリプトの簡潔さや実行時間を予測できるようにすることがあります。スクリプト言語は汎用言語ではないのです。これらの制限によって、無限ループを作ることやBitcoinネットワークを使ったDOS攻撃を起こすようなトランザクションに内在する"論理爆弾(logic bomb)"などを作ることができなくなっています。思い出してみてください、全てのトランザクションはBitcoinネットワーク上の全てのfull nodeによって有効性を確認されているので、トランザクションの有効性確認処理に問題があれば簡単に脆弱性が作れてしまいます。言語が制限されているためにトランザクションの有効性確認メカニズムが脆弱性を生むことを防いでいるのです。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_ステートレスな検証">ステートレスな検証</h4>
+<div class="paragraph"><p>Bitcoinトランザクションスクリプト言語はステートレスです。これは、スクリプトの実行前の状態を何も保持しない、またはスクリプトの実行後の状態を一切保存しないということです。このため、スクリプトを実行するために必要な全ての情報はスクリプトの中に含まれていることになり、スクリプトはどんなシステム上でも同じプロセスで実行できることが予測できるということになります。もしあなたのシステムがスクリプトを検証できるなら、確実にBitcoinネットワーク内の他全てのシステムもまたスクリプトを検証でき、有効なトランザクションは全ての人に対して有効なのです。この結果の予測可能性はBitcoinシステムの本質的な利点です。</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="std_tx">標準的なトランザクション</h3>
+<div class="paragraph"><p>Bitcoinの発展の最初の数年は、開発者たちがBitcoin参照クライアントによって処理されるスクリプトの種類にいくつかの制限を加えていました。これらの制限は <tt>isStandard()</tt> と呼ばれる関数の中にあり、５つの"標準的なトランザクション"の種類が定義されています。これらの制限は一時的なもので、あなたがこれを読むときまでに解除されているかもしれません。これらの制限が解除されるまでは、５つの標準的なトランザクションスクリプトだけがBitcoin Coreクライアントやこれを動作させている多くのマイナーに受け入れられています。非標準的なトランザクションを作ることは可能ですが、このトランザクションをブロックに入れてくれるマイナーを見つけなければいけません。</p></div>
+<div class="paragraph"><p>どんなスクリプトが有効なトランザクションスクリプトとして現在許可されているかを見るためにBitcoin Coreクライアント(参照実装)のソースコードをチェックしてみましょう。</p></div>
+<div class="paragraph"><p>トランザクションスクリプトの５つの標準的な種類は、pay-to-public-key-hash (P2PKH), public-key, multi-signature (最大15個のキーまで), pay-to-script-hash (P2SH), data output (OP_RETURN) です。これらの詳細な説明は次の節で行います。</p></div>
+<div class="sect3">
+<h4 id="p2pkh">Pay-to-Public-Key-Hash (P2PKH)</h4>
+<div class="paragraph"><p>Bitcoinネットワーク上で処理されているトランザクションの多くはP2PKHトランザクションです。これはBitcoinアドレスとして知られている公開鍵ハッシュを伴ったトランザクションアウトプットを拘束しているlocking scriptを含んでいます。Bitcoinアドレスへの支払いをするトランザクションはP2PKHスクリプトを含んでおり、このP2PKHスクリプトでロックされているアウトプットは公開鍵とこの公開鍵に対応したデジタル署名を提示することで解除(資金の使用)ができます。</p></div>
+<div class="paragraph"><p>例えば、アリスがボブのカフェに支払う場面を再度見てみましょう。アリスはこのカフェのBitcoinアドレスに0.015bitcoinの支払いをします。このトランザクションアウトプットは以下のようなlocking scriptが含まれています。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_DUP OP_HASH160 &lt;Cafe Public Key Hash&gt; OP_EQUAL OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p><tt>Cafe Public Key Hash</tt> はこのカフェのBitcoinアドレス(Base58Checkエンコーディングが施されていないもの)と同じものです。多くのアプリケーションでは <em>公開鍵ハッシュ</em> を１６進数で表したものを使っており、なじみのある"1"から始まるBase58Check形式のBitcoinアドレスではありません。</p></div>
+<div class="paragraph"><p>このlocking scriptは以下のunlocking scriptで条件を満たすことができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Cafe Signature&gt; &lt;Cafe Public Key&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>この２つのスクリプトを合わせることで、以下の検証スクリプトの形になります。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Cafe Signature&gt; &lt;Cafe Public Key&gt; OP_DUP OP_HASH160
+&lt;Cafe Public Key Hash&gt; OP_EQUAL OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>これを実行するとき、unlocking scriptがlocking scriptの条件を満たしかつその場合に限り、この結合されたスクリプトはTRUEと評価されます。他の言い方をすると、もしunlocking scriptがボブのカフェの秘密鍵から作られた有効な署名を持っていれば結果はTRUEになります。</p></div>
+<div class="paragraph"><p>図 <xref linkend="P2PubKHash1" xrefstyle="select: labelnumber"/> と図 <xref linkend="P2PubKHash2" xrefstyle="select: labelnumber"/> は結合されたスクリプトの逐次実行を(２つの部分で)表しており、この結合されたスクリプトが有効なトランザクションであることを証明することになります。</p></div>
+<div class="imageblock" id="P2PubKHash1">
+<div class="content">
+<img src="images/msbt_0503.png" alt="Tx_Script_P2PubKeyHash_1" />
+</div>
+<div class="title">Figure 3. P2PKHトランザクションにおけるscriptの評価(1/2)</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="p2pk">Pay-to-Public-Key</h4>
+<div class="paragraph"><p>pay-to-public-keyはpay-to-public-key-hashよりもよりシンプルなBitcoin支払いの形式です。このスクリプト形式は、前に出てきたP2PKHでのとても短い公開鍵ハッシュではなく、公開鍵そのものをlocking scriptに配置しています。pay-to-public-key-hashはBitcoinアドレスをより短くし使いやすくするためにSatoshi Nakamotoによって発明されたものです。現在pay-to-public-keyはcoinbaseトランザクションでよく見られるもので、P2PKHが使用できるように更新されていない古いマイニングソフトウェアで使われています。</p></div>
+<div class="paragraph"><p>pay-to-public-key locing scriptは以下のようなものです。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Public Key A&gt; OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>アウトプットを解除するために提示されなければならないunlocking scriptは以下のようなシンプルな署名です。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Signature from Private Key A&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>トランザクションの有効性検証に使われる結合されたスクリプトは以下です。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Signature from Private Key A&gt; &lt;Public Key A&gt; OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>このスクリプトは <tt>CHECKSIG</tt> オペレーターを使ったシンプルなスクリプトで、正しい秘密鍵に紐づく署名を検証しています。</p></div>
+<div class="imageblock" id="P2PubKHash2">
+<div class="content">
+<img src="images/msbt_0504.png" alt="Tx_Script_P2PubKeyHash_2" />
+</div>
+<div class="title">Figure 4. P2PKHトランザクションにおけるscriptの評価(2/2)</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="multisig">マルチシグネチャー</h4>
+<div class="paragraph"><p>マルチシグネチャースクリプトはN個の公開鍵と、解除条件を解放する少なくともM個の署名が入っている条件を設定しています。これはM-of-Nスキーマとしても知られており、Nはキーの総数、Mは検証に必要な署名数です。例えば2-of-3マルチシグネチャーでは、あらかじめ登録しておいた署名者の３つの公開鍵があり、これらのうち２つを使って有効なトランザクションに対する署名を作らなければいけません。このとき、標準的なマルチシグネチャースクリプトは多くても１５個の公開鍵だけが使用できるように制限されており、これは1-of-1から15-of-15までのマルチシグネチャー、またはそれぞれの組み合わせを使用できるということを示しています。この制限はこの本が出版されるまでに引き上げられるかもしれません。Bitcoinネットワークによって現在何が許可されているかを見るために  <tt>isStandard()</tt> 関数をチェックしてみてください。</p></div>
+<div class="paragraph"><p>M-of-Nマルチシグネチャー条件を設定しているlocking scriptの一般形式は以下です。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>M &lt;Public Key 1&gt; &lt;Public Key 2&gt; ... &lt;Public Key N&gt; N OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>ただし、Nは登録されている公開鍵の総数、Mはアウトプットを使うにあたって必要な署名数です。</p></div>
+<div class="paragraph"><p>2-of-3マルチシグネチャー条件を設定しているlocking scriptは以下のようなものです。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;Public Key A&gt; &lt;Public Key B&gt; &lt;Public Key C&gt; 3 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>このlocking scriptは署名と公開鍵のペアを含む以下のunlocking scriptで条件を満たすことができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_0 &lt;Signature B&gt; &lt;Signature C&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>または、署名A・署名Cなどの登録されている３つの公開鍵に対応する秘密鍵から作られる２つの署名のどんな組み合わせも使うことができます。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>最初に置かれている <tt>OP_0</tt> は <tt>CHECKMULTISIG</tt> のオリジナルの実装にバグがありそれを補完するために必要となっています。このバグというのは、 <tt>CHECKMULTISIG</tt> を実行した時に処理に関係のないスタック上のアイテムを余分に１つpopしてしまうというバグです。 <tt>CHECKMULTISIG</tt> 処理は事実 <tt>OP_0</tt> を無視して実行され、 <tt>OP_0</tt> は単なる空箱のようなものになっています。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>この２つのスクリプトは以下の結合された検証スクリプトを形作ります。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_0 &lt;Signature B&gt; &lt;Signature C&gt; 2 &lt;Public Key A&gt; &lt;Public Key B&gt; &lt;Public Key C&gt; 3 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>これを実行するとき、unlocking scriptがlocking scriptの条件を満たしかつその場合に限り、この結合されたスクリプトはTRUEと評価されます。この場合、unlocking scriptが解除条件に設定してある３つの公開鍵のうち２つに対応した秘密鍵から作られる有効な署名を持っているかどうかが条件になります。</p></div>
+</div>
+<div class="sect3">
+<h4 id="op_return">データアウトプット(OP_RETURN)</h4>
+<div class="paragraph"><p>Bitcoinの時刻が刻印された分散化元帳であるブロックチェーンは支払い以上のポテンシャルを持っています。多くの開発者たちは  デジタル公証人サービス、株券、スマートコントラクトのようなアプリケーションのためにトランザクションスクリプト言語を使うことでより進んだシステムの安全性や可用性を確保しようとしてきました。当初Bitcoinのスクリプト言語をこれらの目的に使っていく場合、ブロックチェーン上に記録されたデータであるトランザクションアウトプットを利用することが考えられました。これで行う例としては、ファイルの存在証明があります。このトランザクションが参照している特定の日付を利用して、あるファイルの存在証明(proof-of-existence)を誰でもできるようにすることでファイルのデジタルフィンガープリントを記録します。</p></div>
+<div class="paragraph"><p>bitcoinの支払いと無関係なデータをブロックチェーン上に記録することは物議を引き起こしました。多くの開発者たちはこのようなブロックチェーンの使い方を汚いものと考え、思いとどまらせようと考えました。またある人たちはこれがブロックチェーンテクノロジーの強力な拡張性を示すものと感じ、このような実験を押し進めようとしました。支払いと関係のないデータを含めることに反対な人たちはこれにより"ブロックチェーンの肥大化"を引き起こすと考えており、ブロックチェーンが本来運ぶ必要のなかったデータのためにディスクストレージのコストが増大しfull nodeを動作させているサーバのコストが増えてしまうと考えました。さらに、このようなトランザクションは使用されないUTXOを作り出し、送り先Bitcoinアドレスの領域20byteを自由に使える領域として使ってしまいます。このBitcoinアドレスはデータのために使われるので、これは秘密鍵に対応しておらず <em>決して使われない</em> UTXOを結果として生み出してしまうのです。これはあたかも偽物の支払いのようになってしまいます。決して使われないこれらのトランザクションはUTXOセットから決して削除されず、永遠にUTXOデータベースのサイズを大きくし続け、"肥大化"させてしまいます。</p></div>
+<div class="paragraph"><p>Bitcoin Coreクライアントのバージョン0.9では、妥協策として <tt>OP_RETURN</tt> オペレーターが導入されました。 <tt>OP_RETURN</tt> は開発者たちが支払いに関係のない80byteのデータをトランザクションアウトプットに追加できるようにしています。"偽物の"UTXOと違って、 <tt>OP_RETURN</tt> オペレーターはUTXOセットに保持される必要がない <em>明示的使用不可</em> アウトプットを作り出します。 <tt>OP_RETURN</tt> アウトプットはブロックチェーン上に記録されるためディスク容量を消費しブロックチェーンのデータサイズ増大を促してしまいますが、UTXOセットに保存されないためUTXOメモリプールと高価なRAMのコストの肥大化にはならないようになっています。</p></div>
+<div class="paragraph"><p><tt>OP_RETURN</tt> スクリプトは以下のようなものです。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_RETURN &lt;data&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>このdataは80byteに制限され、多くの場合SHA256アルゴリズム(32バイト)の出力結果のようなハッシュになっています。多くのアプリケーションはアプリケーションを示すidをdataの前にprefixとして置いています。例えば、 <a href="http://proofofexistence.com">Proof of Existence</a> というデジタル公証人サービスは8byteのprefix "DOCPROOF" を使っていて、ASCIIコードで表すと１６進数で <tt>44f4350524f4f46</tt> になります。</p></div>
+<div class="paragraph"><p><tt>OP_RETURN</tt> アウトプットを"使用する"ための"unlocking script"がないことを覚えておいてください。つまり、<tt>OP_RETURN</tt> ではこのアウトプットでロックされている資金を使うことはできないのです。そして、使用可能なものとしてUTXOセットに保持しておく必要はありません。このアウトプットに割り当てられているどんなbitcoinも永遠に失われてしまうため、 <tt>OP_RETURN</tt> アウトプットは通常0bitcoinを持ちます。もしスクリプト検証ソフトウェアが <tt>OP_RETURN</tt> を見つけた場合には、検証スクリプトの実行を直ちに停止しトランザクションを無効にします。このため、もし偶然 <tt>OP_RETURN</tt> アウトプットをトランザクションインプットが参照した場合は、このトランザクションは無効になります。</p></div>
+<div class="paragraph"><p>標準的なトランザクション( <tt>isStandard()</tt> を確認してみてください)はたった１つだけしか <tt>OP_RETURN</tt> アウトプットを持つことができませんが、 <tt>OP_RETURN</tt> アウトプットは他の種類のアウトプットを持つトランザクションと結合することができます。</p></div>
+<div class="paragraph"><p>現在のBitcoin Coreバージョン0.10では２つの新しいコマンドラインオプションが追加されました。 <tt>datacarrier</tt> オプションはOP_RETURNトランザクションのリレーとマイニングを行うかどうかをコントロールしており、デフォルトは"1"でリレーとマイニングの実行を許可するものになっています。 <tt>datacarriersize</tt> オプションは数値を引数として取りOP_RETURNデータの最大バイトサイズを指定します。この最大バイトサイズのデフォルトは40バイトです。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>OP_RETURNは最初80バイトの制限を付けた形で提案されていましたが、この機能が実際にリリースされた時に制限が40バイトに削減されました。2015年2月にリリースされたBitcoin Coreバージョン0.10の中で、この制限は80バイトに引き上げられました。ノードはOP_RETURNトランザクションをリレー、マイニングしないか、または単にリレーだけして80バイトより小さいデータを持つOP_RETURNトランザクションだけをマイニングするか、を選べるようになっています。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="p2sh">Pay-to-Script-Hash (P2SH)</h4>
+<div class="paragraph"><p>pay-to-script-hash (P2SH)は2012年に導入されたもので、複雑なトランザクションスクリプトをはるかに簡単化した新しい種類のトランザクションです。P2SHを説明するために、実用的な例を見てみましょう。</p></div>
+<div class="paragraph"><p><a href="#ch01_intro_what_is_bitcoin">[ch01_intro_what_is_bitcoin]</a>で、ドバイで電子機器の輸入業をやっているムハンマドを紹介しました。ムハンマドの会社は会社の口座のためにBitcoinのマルチシグネチャー機能を利用しています。マルチシグネチャースクリプトはBitcoinの先進的なスクリプト言語の主要な使い方の１つで、とても強力な機能です。ムハンマドの会社は全ての顧客からの支払い(会計用語で"売掛金")にマルチシグネチャーを使っています。マルチシグネチャースキームを使い、顧客による全ての支払いは次のような方法で安全性を担保しています。支払いを実行するには少なくとも２つの署名が必要であり、登録されている人はムハンマド、彼のパートナーのうちの１人、バックアップキーを持っている彼の代理人です。このようなマルチシグネチャースキームはコーポレートガバナンスを提供し、盗難、横領、または紛失を防ぐ役割があります。</p></div>
+<div class="paragraph"><p>このためのスクリプトはとても長く、以下のようなものです。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;Mohammed's Public Key&gt; &lt;Partner1 Public Key&gt; &lt;Partner2 Public Key&gt; &lt;Partner3 Public Key&gt; &lt;Attorney Public Key&gt; 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>マルチシグネチャースクリプトはとても強力な機能ですが、これは扱いにくいものなのです。というのは、ムハンマドは支払いをする前にこのスクリプトについて全ての顧客に説明する必要があるためです。それぞれの顧客は特別なトランザクションスクリプトを作ることができる特別なウォレットを使う必要があり、また特別なスクリプトを使ってどのようにトランザクションを作ればよいか理解する必要があります。さらに、このスクリプトがとても長い公開鍵を含んでいるため、作られたトランザクションは単純な支払いトランザクションと比べて約５倍も大きいのです。余分に大きいトランザクションの負担が顧客ごとのトランザクション手数料として乗っかってきます。最終的に、このような大きなトランザクションスクリプトは使用されるまで全てのfull nodeのRAM内のUTXOセットに保持されます。このような問題点によって実用上、複雑なアウトプットスクリプトの使用が難しくなってしまうのです。</p></div>
+<div class="paragraph"><p>pay-to-script-hash (P2SH) はこれらの実用的な難点を解決するために開発され、Bitcoinアドレスでの支払いと同じくらい簡単に複雑なスクリプトが使えるようにしたのです。P2SHでの支払いで、複雑なlocking scriptは暗号学的なハッシュであるデジタルフィンガープリントに置き換えられます。UTXOを使おうとするトランザクションがのちに作られたとき、このトランザクションはunlocking scriptだけでなくこのハッシュとマッチするスクリプトを含んでいなければいけません。簡単に言って、P2SHは"このハッシュとマッチするスクリプトに対して支払い、スクリプトはこのアウトプットが使用されるときにのちに与えられます"という意味です。</p></div>
+<div class="paragraph"><p>P2SHトランザクションでは、ハッシュによって置き換えられたlocking scriptは <em>redeem script</em> と呼ばれます。なぜなら、これがlocking scriptとしてよりはむしろ回収時にシステムに提供されるからです。<a href="#without_p2sh">[without_p2sh]</a>はP2SHではないスクリプトを示し、<a href="#with_p2sh">[with_p2sh]</a>はP2SHでエンコードされた同じスクリプトを示しています。</p></div>
+<div class="tableblock" id="without_p2sh">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 4. P2SHを使用しない複雑なscript</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Locking Script</p></td>
+<td align="left" valign="top"><p class="table">2 PubKey1 PubKey2 PubKey3 PubKey4 PubKey5 5 OP_CHECKMULTISIG</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Unlocking Script</p></td>
+<td align="left" valign="top"><p class="table">Sig1 Sig2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock" id="with_p2sh">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 5. P2SHを使用した複雑なscript</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Redeem Script</p></td>
+<td align="left" valign="top"><p class="table">2 PubKey1 PubKey2 PubKey3 PubKey4 PubKey5 5 OP_CHECKMULTISIG</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Locking Script</p></td>
+<td align="left" valign="top"><p class="table">OP_HASH160 &lt;20-byte hash of redeem script&gt; OP_EQUAL</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Unlocking Script</p></td>
+<td align="left" valign="top"><p class="table">Sig1 Sig2 redeem script</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>テーブルにある通りP2SHのほうは、アウトプットを使用するための詳細条件が書かれた複雑なスクリプトがlocking scriptにはありません。その代わり、redeem scriptのハッシュだけがlocking scriptにはあり、redeem script自身はアウトプットが使用されるときのunlocking scriptの一部としてあとで提供されます。</p></div>
+<div class="paragraph"><p>ムハンマドの会社の場合の複雑なマルチシグネチャースクリプトとP2SHスクリプトを見てみましょう。</p></div>
+<div class="paragraph"><p>まず、ムハンマドの会社が顧客からの支払いに使っているマルチシグネチャースクリプトは以下です。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;Mohammed's Public Key&gt; &lt;Partner1 Public Key&gt; &lt;Partner2 Public Key&gt; &lt;Partner3 Public Key&gt; &lt;Attorney Public Key&gt; 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>上記の大なり小なり括弧を実際の公開鍵(04から始まる520bitの数値)に置き換えてみると、以下のようにとても長くなってしまうことが分かるはずです。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2
+04C16B8698A9ABF84250A7C3EA7EEDEF9897D1C8C6ADF47F06CF73370D74DCCA01CDCA79DCC5C395D7EEC6984D83F1F50C900A24DD47F569FD4193AF5DE762C58704A2192968D8655D6A935BEAF2CA23E3FB87A3495E7AF308EDF08DAC3C1FCBFC2C75B4B0F4D0B1B70CD2423657738C0C2B1D5CE65C97D78D0E34224858008E8B49047E63248B75DB7379BE9CDA8CE5751D16485F431E46117B9D0C1837C9D5737812F393DA7D4420D7E1A9162F0279CFC10F1E8E8F3020DECDBC3C0DD389D99779650421D65CBD7149B255382ED7F78E946580657EE6FDA162A187543A9D85BAAA93A4AB3A8F044DADA618D087227440645ABE8A35DA8C5B73997AD343BE5C2AFD94A5043752580AFA1ECED3C68D446BCAB69AC0BA7DF50D56231BE0AABF1FDEEC78A6A45E394BA29A1EDF518C022DD618DA774D207D137AAB59E0B000EB7ED238F4D800 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>このスクリプト全体は20byteの暗号学的ハッシュで表現でき、このハッシュは最初にSHA256ハッシュ化アルゴリズムを適用しその後この結果にRIPEMD160アルゴリズムを適用することで作成されます。前のスクリプトに対してのこのハッシュ化して得た20byteのハッシュは以下になります。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>54c557e07dde5bb6cb791c7a540e0a4796f5e97e</tt></pre>
+</div></div>
+<div class="paragraph"><p>P2SHトランザクションは、以下のような長いスクリプトの代わりにこのハッシュを含めたlocking scriptでアウトプットをロックしています。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_HASH160 54c557e07dde5bb6cb791c7a540e0a4796f5e97e OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>見て分かるように前のlocking scriptよりもずいぶん短いことが分かります。"5つのキーのマルチシグネチャースクリプトに対する支払い"ではなく、P2SHでは"このハッシュを持ったスクリプトへの支払い(pay to a script with this hash)"になります。ムハンマドの会社への支払いをする顧客は彼の支払いの中にあるもっと短いlocking scriptを含めるだけで支払いができるのです。ムハンマドがこのUTXOを使いたいときは、オリジナルのredeem scriptと解除するための署名を以下のように提供しなければいけません。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Sig1&gt; &lt;Sig2&gt; &lt;2 PK1 PK2 PK3 PK4 PK5 5 OP_CHECKMULTISIG&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>２つのスクリプトは２つの段階で結合されます。まず、このハッシュが合っているかを確認するためにlocking scriptに対してredeem scriptがチェックされます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;2 PK1 PK2 PK3 PK4 PK5 5 OP_CHECKMULTISIG&gt; OP_HASH160 &lt;redeem scriptHash&gt; OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>もしredeem scriptハッシュが合っていれば、unlocking scriptはredeem scriptwp解除するために実行されます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Sig1&gt; &lt;Sig2&gt; 2 PK1 PK2 PK3 PK4 PK5 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="sect4">
+<h5 id="_pay_to_script_hashアドレス">Pay-to-script-hashアドレス</h5>
+<div class="paragraph"><p>P2SHに関してもう１つの重要な点は、BIP0013で定義されているようにスクリプトハッシュをエンコードしてアドレスとして使えるようにする点です。P2SHアドレスはスクリプトの20バイトハッシュをBase58Checkエンコードしたものです。これはちょうど公開鍵の20バイトハッシュのBase58CheckエンコードをしたBitcoinアドレスのようなものです。P2SHアドレスはversion prefixとして"5"が使われており、Base58Checkエンコードしたアドレスは"3"から始まるものになっています。例えば、ムハンマドの複雑なスクリプトでは、P2SHとして20バイトにハッシュ化されてBase58Checkエンコードを施されたP2SHアドレスは <tt>39RF6JqABiHdYHkfChV6USGMe6Nsr66Gzw</tt> になります。ムハンマドはこの"アドレス"を彼の顧客に送ることで、彼の顧客はBitcoinアドレスに対する支払いとあたかも同じようにウォレットを使うことができます。3というprefixはこのアドレスが特別な種類のアドレスであることを示します。</p></div>
+<div class="paragraph"><p>P2SHアドレスは全ての複雑な点を隠蔽し、支払う人がスクリプトを見ることなく支払いができるようにしています。</p></div>
+</div>
+<div class="sect4">
+<h5 id="_pay_to_script_hashの利点">pay-to-script-hashの利点</h5>
+<div class="paragraph"><p>pay-to-script-hashはlocking scriptを複雑なまま直接扱うことに比べて以下の利点があります。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+より短いフィンガープリントで複雑なスクリプトを置き換えることで、トランザクションのデータサイズを小さくする
+</p>
+</li>
+<li>
+<p>
+スクリプトがアドレスとして実装されることで、送り主と送り主のウォレットはP2SHに関する複雑な実装をする必要がない
+</p>
+</li>
+<li>
+<p>
+P2SHは、スクリプトを構成する負担を送り手ではなく受け手側に移している
+</p>
+</li>
+<li>
+<p>
+P2SHは、アウトプットが持つ長いスクリプト(これはUTXOセットに含まれるためメモリを圧迫する)をインプット側(ブロックチェーン上にのみ保存される)に移すことでデータストレージの負担をインプット側に移している
+</p>
+</li>
+<li>
+<p>
+P2SHは、支払い時点に生じる長いスクリプトを資金が使われる時点で生じるようにすることで、データストレージの負担が生じる時刻を移している
+</p>
+</li>
+<li>
+<p>
+P2SHは、送り手が長いスクリプトを伴って資金を送るときに負担するトランザクション手数料を、受け手がredeem scriptを使って資金を使うときに負担するように変更している
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_redeem_scriptとisstandard検証">redeem scriptとisStandard検証</h5>
+<div class="paragraph"><p>Bitcoin Coreクライアントのバージョン0.9.2より前では、pay-to-script-hashは <tt>isStandard()</tt> 関数によって標準的なBitcoinトランザクションスクリプトに含められていませんでした。これは、トランザクションを使用するときに提供されるredeem scriptが、 <tt>OP_RETURN</tt> とP2SH自身を除くP2PK、P2PKH、マルチシグネチャーのうちのどれか１つに統合されるしかないということを意味しています。</p></div>
+<div class="paragraph"><p>現在のBitcoin Coreクライアントのバージョン0.9.2では、P2SHトランザクションは有効なスクリプトはなんでも含むことができ、P2SHはもっとフレキシブルになり、多くの斬新であり、またトランザクションが複合された実験が許可されています。</p></div>
+<div class="paragraph"><p>P2SH redeem scriptの中にP2SHを置くことはできないという点に注意してください。というのは、P2SHの設計で再帰ができないようになっているためです。また、まだredeem scriptの中で <tt>OP_RETURN</tt> を使用することはできません。 <tt>OP_RETURN</tt> は定義によってあとでこれを含むアウトプットを使用するということができないためです。</p></div>
+<div class="paragraph"><p>注意点として、redeem scriptはP2SHアウトプットを使用しようとするまでBitcoinネットワークに提供されません。このため、もし無効なトランザクションのハッシュを伴ったアウトプットをロックした場合も、お構いなしにBitcoinノードの検証をパスします。しかし、このアウトプットを使うことはできません。なぜなら、このアウトプットを使用しようとするトランザクションはredeem scriptを含んでいますが、このscriptが無効であるためトランザクションが受理されないのです。これはリスクを生み出してしまいます。というのは、あとで使用することができないP2SHにbitcoinがロックされてしまうためです。このredeem scriptハッシュだけではredeem scriptが無効であるか分からないため、たとえ無効なredeem scriptだとしてもBitcoinネットワークはP2SH解除条件をパスしてしまうでしょう。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>P2SH locking scriptはredeem scriptのハッシュを含んでいます。このハッシュは、redeem scriptそのものの推測に関して一切ヒントを与えません。もしこのredeem scriptが無効だったとしてもP2SHトランザクションは有効だと考えられ受け入れられてしまいます。間違ってあとで使えないような方法でbitcoinをロックしてしまうかもしれません。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:57:45 UTC
+</div>
+</div>
+</body>
+</html>

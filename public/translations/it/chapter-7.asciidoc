@@ -1,0 +1,260 @@
+[[blockchain]]
+== La Blockchain
+
+=== Introduzione
+
+((("blockchain", id="ix_ch07-asciidoc0", range="startofrange")))I dati della struttura dati blockchain sono un'ordinata, back-linked list di blocchi di transazioni. La blockchain può essere salvata come un file piatto, o in un semplice database. Il client Bitcoin Core salva i metadati della blockchain usando((("il database LevelDB (Google)"))) il database LevelDB (libreria C scritta dai programmatori che lavorano a Google). I blocchi sono collegati "indietro", ognuno si riferisce al blocco precedente presente nella catena. La blockchain è spesso visualizzata come una pila verticale, con blocchi stratificati l'uno sopra l'altro e il primo blocco serve da fondamenta della pila. La visualizzazione dei blocchi impilati uno sopra l'altro provoca l'uso di terminologie come "altezza" (height) per riferirsi alla distanza dal primo blocco, e "top" o "tip" (cima o punta) per riferirsi al blocco aggiunto più recentemente. 
+
+Ogni blocco contenuto nella blockchain è identificato da un hash, generato usando l'algoritmo crittografico di hashing SHA256 sull'header del blocco. Ogni blocco inoltre referenzia il blocco precedente, conosciuto anche come ((("parent block"))) _parent_ block, attraverso il campo "previous block hash" nel block header. La sequenza di hash che collegano ogni blocco al proprio parent crea una catena che si collega, blocco per blocco fino al primo blocco creato, conosciuto con il nome di((("genesis block"))), ovvero blocco di genesi. 
+
+Anche se un blocco ha solo un genitore, può temporaneamente avere multipli figli. Ognuno dei figli si riferisce allo stesso blocco del padre e contiene lo stesso hash (padre) nel campo "previous block hash" (hash del blocco precedente). Multipli figli emergono durante un "fork" (biforcazione) della blockchain, una situazione temporanea che occorre quando differenti blocchi sono scoperti quasi simultaneamente da miner differenti (vedi <<forks>>). Eventualmente, solo un blocco figlio diventa parte della blockchain e la "biforcazione" viene risolta. Anche se un blocco può avere più di un figlo, ogni blocco può avere solo un genitore. Questo perchè un blocco ha un singolo campo "hash del blocco precedente" (previous block hash) che si riferisce al suo singolo genitore. 
+
+Il campo "previous block hash" è dentro l'header del blocco e per questo influenza l'hash del blocco _attuale_. L'identità stessa del figlio cambia nel caso in cui cambi l'identità del genitore. Quando il genitore viene modificato in qualsiasi modo, l'hash del genitore cambia. L'hash modificato del genitore necessita un cambio nel puntatore "previous block hash" del figlio. Questo a sua volta causa il cambio dell'hash del figlio, che richiede il cambio nel puntatore dell'hash nipote, che a sua volta cambia il puntamento al nipote, e così via...((("sicurezza","immutabilità della blockchain e")))Questo effetto a cascata assicura che fino a quando un blocco ha tante generazioni di blocchi che lo seguono, non può essere modificato senza forzare un ricalcolo su tutti i blocchi seguenti. Visto che per questo ricalcolo servirebbe un'enorme potenza computazionale, l'esistenza di una lunga catena di blocchi fa si che la storia più profonda della blockchain sia immutabile, che è una degli elementi chiave della sicurezza di bitcoin.   
+
+Un modo di pensare alla blockchain è come ai livelli di una stratificazione geologica, o a una carota di ghiaccio. Gli strati superficiali possono cambiare con le stagioni o anche essere eliminati prima che abbiano il tempo di depositarsi, ma se si scende di pochi centimetri gli strati geologici diventano sempre più stabili. Al punto che arrivi a guardare poche centinaia di metri sotto stai vedendo una foto del passato che è stata lasciata intatta da milioni di anni. Nella blockchain i blocchi più recenti potrebbero cambiare se c'è un fork. Gli ultimi sei blocchi sono come alcuni centimentri del suolo. Ma se vai più in profondità nella blockchain, oltre sei blocchi, i blocchi hanno sempre meno probabilità di essere modifcati. Dopo 100 blocchi c'è così tanta solidita che la transazione di coinbase - una transazione contenente i nuovi bitcoin minati - può essere spesa. Alcune migliaia di blocchi indietro (un mese), e la blockchain è saldata nella storia, per qualunque tipo di dato. Mentre il protocollo permette sempre che una  catena possa essere sostituita da una catena più lunga ed esiste sempre la possibilità che una catena diventi reversibile, la possibilità che questo accada diminuisce coi blocchi fino a diventare infinitesima.
+
+=== Struttura del Blocco
+
+((("blocks","structure of")))A block is a container data structure that aggregates transactions for inclusion in the public ledger, the blockchain. The block is made of a header, containing metadata, followed by a long list of transactions that make up the bulk of its size. The block header is 80 bytes, whereas the average transaction is at least 250 bytes and the average block contains more than 500 transactions. A complete block, with all transactions, is therefore 1,000 times larger than the block header. <<block_structure1>> describes the structure of a block.
+
+[[block_structure1]]
+.La struttura di un blocco
+[options="header"]
+|=======
+|Dimensione| Campo | Descrizione
+| 4 byte | Dimensione del Blocco (Block Size) | La dimensione del blocco, in byte
+| 80 bytes | Header del Blocco (Block Header) | Multipli campi dall'header del blocco
+| 1-9 byte (VarInt) | Contatore di transazione (Transaction Counter) | Quante transazioni seguono
+| Variabile | Transazioni | Le transazioni registrate nel blocco
+|=======
+
+[[block_header]]
+=== Header del Blocco
+
+((("block headers")))((("blocks","headers")))The block header consists of three sets of block metadata. First, there is a reference to a previous block hash, which connects this block to the previous block in the blockchain. The second set of metadata, namely the((("difficulty target","in block header")))((("nonce,","in block header")))((("timestamping blocks","in block header"))) _difficulty_, _timestamp_, and _nonce_, relate to the mining competition, as detailed in <<ch8>>. The third piece of metadata is the merkle tree root, a data structure used to efficiently summarize all the transactions in the block. <<block_header_structure_ch07>> describes the structure of a block header.
+ 
+        
+[[block_header_structure_ch07]]
+.La struttura di un block header
+[options="header"]
+|=======
+|Dimensione| Campo | Descrizione
+| 4 byte | Versione | Un numero di versione per tracciare upgrade al software e/o al protocollo
+| 32 byte | Hash del Blocco Precedente | Un riferimento all'hash del blocco precedente (genitore) nella chain
+| 32 byte | Merkle Root | Un'hash della radice del merkle tree delle transazioni di questo blocco
+| 4 byte | Timestamp | Il tempo approssimato della creazione del blocco corrente (secondi dalla Unix Epoch)
+| 4 bytes | Target di Difficoltà (Difficulty Target) | Il target di difficoltà dell'algoritmo di proof-of-work per questo blocco
+| 4 byte | Nonce | Un contatore utilizzato per l'algoritmo di proof-of-work
+|=======
+
+Il nonce, il target di difficoltà, e il timestamp sono usati nel processo di mining e saranno discussi in maggiore dettaglio nel <<ch8>>.
+
+[[block_hash]]
+=== Identificatori di blocco: Hash del Block Header e Altezza del Blocco (Block Height)
+
+((("blocks","header hash")))((("blocks","height")))((("blocks","identifiers")))The primary identifier of a block is its cryptographic hash, a digital fingerprint, made by hashing the block header twice through the SHA256 algorithm. The resulting 32-byte hash is called the((("block hash")))((("block header hash"))) _block hash_ but is more accurately the _block header hash_, pass:[<phrase role="keep-together">because only the block header is used to compute it. For example,</phrase>] +000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f+ is the block hash of the first bitcoin block ever created. The block hash identifies a block uniquely and unambiguously and can be independently derived by any node by simply hashing the block header. 
+
+Note that the block hash is not actually included inside the block's data structure, neither when the block is transmitted on the network, nor when it is stored on a node's persistence storage as part of the blockchain. Instead, the block's hash is computed by each node as the block is received from the network. The block hash might be stored in a separate database table as part of the block's metadata, to facilitate indexing and faster retrieval of blocks from disk.
+
+A second way to identify a block is by its position in the blockchain, called the((("block height"))) pass:[<phrase role="keep-together"><emphasis>block height</emphasis>. The first block ever created is at block height 0 (zero) and is the</phrase>] pass:[<phrase role="keep-together">same block that was previously referenced by the following block hash</phrase>] +000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f+. A block can thus be identified two ways: by referencing the block hash or by referencing the block height. Each subsequent block added "on top" of that first block is one position "higher" in the blockchain, like boxes stacked one on top of the other. The block height on January 1, 2014, was approximately 278,000, meaning there were 278,000 blocks stacked on top of the first block created in January 2009. 
+
+Unlike the block hash, the block height is not a unique identifier. Although a single block will always have a specific and invariant block height, the reverse is not true—the block height does not always identify a single block. Two or more blocks might have the same block height, competing for the same position in the blockchain. This scenario is discussed in detail in the section <<forks>>. The block height is also not a part of the block's data structure; it is not stored within the block. Each node dynamically identifies a block's position (height) in the blockchain when it is received from the bitcoin network. The block height might also be stored as metadata in an indexed database table for faster retrieval. 
+    
+[TIP]
+====
+A block's _block hash_ always identifies a single block uniquely. A block also always has a specific _block height_. However, it is not always the case that a specific block height can identify a single block. Rather, two or more blocks might compete for a single position in the blockchain. 
+====
+
+=== Il Genesis Block
+
+((("blockchains","genesis block")))((("genesis block")))The first block in the blockchain is called the genesis block and was created in 2009. It is the common ancestor of all the blocks in the blockchain, meaning that if you start at any block and follow the chain backward in time, you will eventually arrive at the genesis block. 
+
+Every node always starts with a blockchain of at least one block because the genesis block is statically encoded within the bitcoin client software, such that it cannot be altered. Every node always "knows" the genesis block's hash and structure, the fixed time it was created, and even the single transaction within. Thus, every node has the starting point for the blockchain, a secure "root" from which to build a trusted blockchain. 
+
+((("client Bitcoin Core","genesis block nel")))Visualizza il genesis block staticamente encoded nel client Bitcoin Core, in http://bit.ly/1x6rcwP[chainparams.cpp].
+
+Il seguente hash identificativo appartiene al genesis block: 
+
+----
+000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+----
+
+Puoi cercare quel block hash in un qualsiasi sito block explorer, come blockchain.info, e troverai una pagina che descrive il contenuto di questo blocco, con un'URL contenente quell'hash:
+
+https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+
+https://blockexplorer.com/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+
+Usando il client di riferimento Bitcoin Core da riga di comando:
+
+
+----
+$ bitcoind getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+----
+[source,json]
+----
+{
+    "hash" : "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+    "confirmations" : 308321,
+    "size" : 285,
+    "height" : 0,
+    "version" : 1,
+    "merkleroot" : "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+    "tx" : [
+        "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+    ],
+    "time" : 1231006505,
+    "nonce" : 2083236893,
+    "bits" : "1d00ffff",
+    "difficulty" : 1.00000000,
+    "nextblockhash" : "00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048"
+}
+----
+
+The genesis block contains a hidden message within it. The coinbase transaction input contains the text "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks." This message was intended to offer proof of the earliest date this block was created, by referencing the headline of the British newspaper _The Times_. It also serves as a tongue-in-cheek reminder of the importance of an independent monetary system, with bitcoin's launch occurring at the same time as an unprecedented worldwide monetary crisis. The message was embedded in the first block by Satoshi Nakamoto, bitcoin's creator. 
+
+=== Collegando i Blocchi nella Blockchain
+
+((("blockchains","linking blocks to")))((("blocks","linking to blockchain")))Bitcoin full nodes maintain a local copy of the blockchain, starting at the genesis block. The local copy of the blockchain is constantly updated as new blocks are found and used to extend the chain. As a node receives incoming blocks from the network, it will validate these blocks and then link them to the existing blockchain. To establish a link, a node will examine the incoming block header and look for the "previous block hash."
+
+Assumiamo, per esempio, che il nodo abbia 277,314 blocchi nella copia locale della blockchain. L'ultimo blocco del quale il nodo sa qualcosa è il blocco 277,314, con un hash dell'header del blocco di +00000000000000027e7ba6fe7bad39faf3b5a83daed765f05f7d1b71a1632249+ 
+
+Il nodo bitcoin in seguito riceve un nuovo blocco dalla rete, che lo analizza come riportato qui:
+
+[source,json]
+----
+{
+    "size" : 43560,
+    "version" : 2,
+    "previousblockhash" : 
+        "00000000000000027e7ba6fe7bad39faf3b5a83daed765f05f7d1b71a1632249",
+    "merkleroot" : 
+        "5e049f4030e0ab2debb92378f53c0a6e09548aea083f3ab25e1d94ea1155e29d",
+    "time" : 1388185038,
+    "difficulty" : 1180923195.25802612,
+    "nonce" : 4215469401,
+    "tx" : [
+        "257e7497fb8bc68421eb2c7b699dbab234831600e7352f0d9e6522c7cf3f6c77",
+
+ #[... molte altre transazioni omesse ...]
+
+        "05cfd38f6ae6aa83674cc99e4d75a1458c165b7ab84725eda41d018a09176634"
+    ]
+}
+----
+
+Osservando questo nuovo blocco, possiamo notare che il nodo trova il campo +previousblockhash+, che contiene l'hash del blocco genitore. E' un hash conosciuto al nodo, come l'ultimo blocco della chain all'altezza (block height) 277,314. Quindi questo nuovo blocco è un figlio dell'ultimo blocco della chain e estende la blockchain esistente. Il nodo aggiunge questo nuovo blocco alla fine della catena (chain), rendendo la blockchain più lunga con una nuova height di 277,315. <<chain_of_blocks>> mostra la chain di tre blocchi, collegati da referenze nel campo +previousblockhash+.
+
+
+[[merkle_trees]]
+=== I Merkle Tree
+
+((("blockchains","merkle trees and", id="ix_ch07-asciidoc1", range="startofrange")))((("merkle trees", id="ix_ch07-asciidoc2", range="startofrange")))Each block in the bitcoin blockchain contains a summary of all the transactions in the block, using a _merkle tree_.
+
+A _merkle tree_, also known as a((("binary hash tree"))) _binary hash tree_, is a data structure used for efficiently summarizing and verifying the integrity of large sets of data. Merkle trees are binary trees containing cryptographic hashes. The term "tree" is used in computer science to describe a branching data structure, but these trees are usually displayed upside down with the "root" at the top and the "leaves" at the bottom of a diagram, as you will see in the examples that follow.
+
+[[chain_of_blocks]]
+.Blocchi collegati in una catena, per referenza al precedente hash dell'header del blocco
+image::images/msbt_0701.png[]
+
+Merkle trees are used in bitcoin to summarize all the transactions in a block, producing an overall digital fingerprint of the entire set of transactions, providing a very efficient process to verify whether a transaction is included in a block. A((("Merkle trees","constructing"))) Merkle tree is constructed by recursively hashing pairs of nodes until there is only one hash, called the _root_, or _merkle root_. The cryptographic hash algorithm used in bitcoin's merkle trees is SHA256 applied twice, also known as double-SHA256. 
+
+When N data elements are hashed and summarized in a merkle tree, you can check to see if any one data element is included in the tree with at most +2*log~2~(N)+ calculations, making this a very efficient data structure.  
+
+Il merkle tree è costruito dal basso verso l'alto. Nel seguente esempio, partiamo con quattro transazioni, A, B, C e D, che formano le _foglie_ del Merkle tree, come mostrato in  <<simple_merkle>>. Le transazioni non sono salvate nel merkle tree; invece, i loro dati sono hash-ati e l'hash risultante è salvato in ogni nodo figlia come H~A~, H~B~, H~C~, e H~D~:
+
+----
+H~A~ = SHA256(SHA256(Transaction A))
+----
+
+Consecutive pairs of leaf nodes are then summarized in a parent node, by concatenating the two hashes and hashing them together. For example, to construct the parent node H~AB~, the two 32-byte hashes of the children are concatenated to create a 64-byte string. That string is then double-hashed to produce the parent node's hash:
+
+----
+H~AB~ = SHA256(SHA256(H~A~ + H~B~))
+----
+
+The process continues until there is only one node at the top, the node known as the Merkle root. That 32-byte hash is stored in the block header and summarizes all the data in all four transactions.
+
+[[simple_merkle]]
+.Calcolando i nodi in un merkle tree
+image::images/msbt_0702.png["merkle_tree"]
+
+Visto che il merkle tree è un albero binario, necessita di un numero pari di nodi foglia. Se il numero di transazioni da sintetizzare è un numero pari, l'ultimo hash di transazione sarà duplicato per creare un numero pari di nodi foglia, questo tipo di alberi sono conosciuti come ((("alberi bilanciati"))) _alberi bilanciati_. Il tutto è mostrato in <<merkle_tree_odd>>, dove la transazione C è duplicata.
+
+[[merkle_tree_odd]]
+.Duplicando un elemento (data element) ottiene un numero di elementi pari
+image::images/msbt_0703.png["merkle_tree_odd"]
+
+The same method for constructing a tree from four transactions can be generalized to construct trees of any size. In bitcoin it is common to have several hundred to more than a thousand transactions in a single block, which are summarized in exactly the same way, producing just 32 bytes of data as the single merkle root. In <<merkle_tree_large>>, you will see a tree built from 16 transactions. Note that although the root looks bigger than the leaf nodes in the diagram, it is the exact same size, just 32 bytes. Whether there is one transaction or a hundred thousand transactions in the block, the merkle root always summarizes them into 32 bytes. 
+
+To prove that a specific transaction is included in a block, a node only needs to produce +log~2~(N)+ 32-byte hashes, constituting an((("authentication path")))((("merkle path"))) _authentication path_ or _merkle path_ connecting the specific transaction to the root of the tree. This is especially important as the number of transactions increases, because the base-2 logarithm of the number of transactions increases much more slowly. This allows bitcoin nodes to efficiently produce paths of 10 or 12 hashes (320–384 bytes), which can provide proof of a single transaction out of more than a thousand transactions in a megabyte-size block. 
+
+[[merkle_tree_large]]
+.Un merkle tree che riassume tanti data element
+image::images/msbt_0704.png["merkle_tree_large"]
+
+In <<merkle_tree_path>>, a node can prove that a transaction K is included in the block by producing a merkle path that is only four 32-byte hashes long (128 bytes total). The path consists of the four hashes (noted in blue in <<merkle_tree_path>>) H~L~, H~IJ~, H~MNOP~ and H~ABCDEFGH~. With those four hashes provided as an authentication path, any node can prove that H~K~ (noted in green in the diagram) is included in the merkle root by computing four additional pair-wise hashes H~KL~, H~IJKL~, H~IJKLMNOP~, and the merkle tree root (outlined in a dotted line in the diagram). 
+
+[[merkle_tree_path]]
+.Un merkle path usato per provare l'inclusione di un data element
+image::images/msbt_0705.png["merkle_tree_path"]
+
+
+Il codice nel <<merkle_example>> dimostra il processo di creazione di un merkle tree dagli hash del nodo-foglia fino alla radice, usando la libreria libbitcoin per qualche funzione helper.
+
+++++
+<?hard-pagebreak?>
+++++
+
+[[merkle_example]]
+.Costruendo un merkle tree
+====
+[source, cpp]
+----
+include::code/merkle.cpp[]
+----
+====
+
+<<merkle_example_run>> mostra il risultato della compilazione e esecuzione del codice merkle.
+
+[[merkle_example_run]]
+.Compilando e eseguendo il codice di esempio dell'esempio merkle
+====
+[source,bash]
+----
+$ # Compila il codice in merkle.cpp
+$ g++ -o merkle merkle.cpp $(pkg-config --cflags --libs libbitcoin)
+$ # Esegui l'eseguibile merkle
+$ ./merkle
+Lista di hash merkle corrente:
+  32650049a0418e4380db0af81788635d8b65424d397170b8499cdc28c4d27006
+  30861db96905c8dc8b99398ca1cd5bd5b84ac3264a4e1b3e65afa1bcee7540c4
+
+Lista di hash merkle corrente:
+  d47780c084bad3830bcdaf6eace035e4c6cbf646d103795d22104fb105014ba3
+
+Risultato: d47780c084bad3830bcdaf6eace035e4c6cbf646d103795d22104fb105014ba3
+
+----
+====
+
+The efficiency of merkle trees becomes obvious as the scale increases. <<block_structure2>> shows the amount of data that needs to be exchanged as a merkle path to prove that a transaction is part of a block.
+
+[[block_structure2]]
+.Efficenza del merkle tree
+[options="header"]
+|=======
+|Numero di transazioni| Dimensione approssimativa del blocco | Dimensione del path (hash) | Dimensione del path (byte)
+| 16 transazioni | 4 kilobyte | 4 hash | 128 byte
+| 512 transazioni | 128 kilobyte | 9 hash | 288 byte
+| 2048 transazioni | 512 kilobyte | 11 hash | 352 byte
+| 65,535 transazioni | 16 megabyte | 16 hash | 512 byte
+|=======
+
+As you can see from the table, while the block size increases rapidly, from 4 KB with 16 transactions to a block size of 16 MB to fit 65,535 transactions, the merkle path required to prove the inclusion of a transaction increases much more slowly, from 128 bytes to only 512 bytes. With merkle trees, a node can download just the block headers (80 bytes per block) and still be able to identify a transaction's inclusion in a block by retrieving a small merkle path from a full node, without storing or transmitting the vast majority of the blockchain, which might be several gigabytes in size. Nodes that do not maintain a full blockchain, called simplified payment verification (SPV nodes), use merkle paths to verify transactions without downloading full blocks.(((range="endofrange", startref="ix_ch07-asciidoc2")))(((range="endofrange", startref="ix_ch07-asciidoc1")))
+
+=== Merkle Tree e Simplified Payment Verification (SPV)
+
+((("merkle tree","SPV e")))((("Nodi di Simplified Payment Verification (SPV)","merkle trees e")))I merkle trees sono usati estensivamente dai nodi SPV (o VSP in italiano - Verifica Semplificata del Pagamento, ndt). I nodi SPV non hanno tutte le transazioni e non scaricano blocchi completi, ma solo header dei blocchi. Per verificare che una transazione sia inclusa in un blocco, senza dover scaricare tutte le transazioni nel blocco, essi utilizzano un percorso di autenticazione, chiamato anche merkle path. 
+
+Consider, for example, an SPV node that is interested in incoming payments to an address contained in its wallet. The SPV node will establish a bloom filter on its connections to peers to limit the transactions received to only those containing addresses of interest. When a peer sees a transaction that matches the bloom filter, it will send that block using a((("merkleblock message"))) +merkleblock+ message. The +merkleblock+ message contains the block header as well as a merkle path that links the transaction of interest to the merkle root in the block. The SPV node can use this merkle path to connect the transaction to the block and verify that the transaction is included in the block. The SPV node also uses the block header to link the block to the rest of the blockchain. The combination of these two links, between the transaction and block, and between the block and blockchain, proves that the transaction is recorded in the blockchain. All in all, the SPV node will have received less than a kilobyte of data for the block header and merkle path, an amount of data that is more than a thousand times less than a full block (about 1 megabyte currently).(((range="endofrange", startref="ix_ch07-asciidoc0")))

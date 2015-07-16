@@ -1,0 +1,158 @@
+[preface]
+== Förord
+
+=== Skrivandet av Boken om Bitcoin
+
+Första gången jag snubblade över bitcoin var i mitten på 2011. Till att börja med reagerade jag mest med "Pfft! Nördpengar!" och ignorerade det i ytterligare sex månader utan att förstå dess betydelse. Denna reaktion har jag sett upprepas hos många av de smartaste människorna jag känner, vilket ger mig en viss tröst. Andra gången jag hörde talas om bitcoin, i en diskussionstråd i en e-postlista, så bestämde jag mig för att läsa originalartikeln skriven av Satoshi Nakamoto, för att gå direkt till källan och se vad all uppståndelse handlade om. Jag kommer fortfarande ihåg stunden då jag precis läst färdigt den niosidiga artikeln, då jag första gången insåg att bitcoin inte bara är en digital valuta, utan ett nätverk för förtroende som kunde utgöra grunden för så mycket mer än bara valutor. Denna insikt att "detta är inte pengar, det är ett decentraliserat nätverk för förtroende" påbörjade en fyra månaders resa där jag slukade varje fragment av information om bitcoin som jag kunde komma över. Som besatt spenderade jag 12 timmar eller mer varje dag vid skärmen med att läsa, skriva, programmera och lära mig så mycket jag kunde om bitcoin. Jag vaknade upp ur denna trans mer än 10 kg lättare från oregelbundna måltider, fast besluten att dedikera mig åt att arbeta med bitcoin. 
+
+Två år senare, efter att ha skapat flera startuppföretag för att utforska olika bitcoin-relaterade tjänster och produkter, så bestämde jag mig för att det var dags att skriva min första bok. Bitcoin var ämnet som hade drivit mig till en frenesi av kreativitet och konsumerat mina tankar; det var den mest intressanta teknologi jag hade stött på sedan internet. Nu var det dags att dela min passion för denna fantastiska teknologi med en bredare publik.  
+
+=== Målgrupp
+
+Denna bok är främst avsedd för programmerare. Om du kan programmera så kommer denna bok att lära dig hur kryptovalutor fungerar, hur de kan användas, och hur man kan utveckla mjukvara som fungerar med dem. De första kapitlen är också lämpliga som en djupgående introduktion till bitcoin för ickeprogrammerare och de som försöker förstå de inre mekanismerna av bitcoin och kryptovalutor.  
+
+=== Varför Är Det Myror på Omslaget?
+
+Bladskärarmyran är en art som uppvisar ett komplext beteendemönster i en koloni-superorganism, samtidigt som varje enskild myra följer en enkel uppsättning regler driven av social interaktion och utbyte av kemiska doftämnen (feromoner). Från Wikipedia: "Näst efter människan bildar bladskärarmyror de största och mest komplexa djursamhällena på jorden". Bladskärarmyrorna äter inte bladen utan använder dem för att föda upp svamp som är den huvudsakliga näringskällan för kolonin. Förstod du? Dessa myror är alltså bönder!       
+
+Trots att myrorna lever i ett kastsamhälle och är beroende av en drottning för att producera avkomma så finns det ingen central auktoritet eller ledare i en myrkoloni. Det högintelligenta och sofistikerade beteendet hos en mångmiljon-koloni av myror är resultatet av enskilda interaktioner mellan individer i ett socialt nätverk.     
+
+Naturen demonstrerar att decentraliserade system kan vara motståndskraftiga och producera framväxande komplexitet och sofistikering utan behov av en central auktoritet, hierarki, eller komplexa delar. 
+
+Bitcoin är ett högst sofistikerat decentralicerat förtroendenätverk som kan stödja en myriad av finansiella processer. Varje nod i bitcoin-nätverket följer dock endast ett fåtal enkla matematiska regler. Det är interaktionen mellan många noder som leder till det framväxande sofistikerade beteendet, inte någon inneboende komplexitet eller förtroende för enskilda noder. Likt en myrkoloni är bitcoin-nätverket ett motståndskraftigt nätverk av enkla noder som genom att följa enkla regler kan göra fantastiska saker utan central koordinering.   
+
+=== Konventioner i den här Boken
+
+Följande typografiska konventioner används i den här boken:
+
+_Italic_:: Indicates new terms, URLs, email addresses, filenames, and file extensions.
+
++Constant width+:: Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, databases, data types, environment variables, statements, and keywords.
+
+**`Constant width bold`**:: Shows commands or other text that should be typed literally by the user.
+
+_++Constant width italic++_:: Shows text that should be replaced with user-supplied values or by values determined by context.
+
+
+[TIP]
+====
+Denna ikon innebär ett tips, förslag, eller allmän anmärkning.
+====
+
+[WARNING]
+====
+Denna ikon innebär en varning att vara försiktig.
+====
+
+=== Exempel på Kod
+
+Exemplen illustreras i Python, C++ och med kommandotolken i ett Unix-liknande operativsystem såsom Linux eller Mac OS X. Alla kodstycken är tillgängliga på https://github.com/aantonop/bitcoinbook[GitHub repository] i underkatalogen _code_ i huvudbiblioteket. Forka kodstyckena i boken, prova kodexemplen eller skicka in korrigeringar via GitHub. 
+
+Alla kodstycken kan replikeras på de flesta operativsystem med en minimal installation av kompilatorer och tolkar för de motsvarande programmeringsspråken. Där det behövs ger vi grundläggande instruktioner för installation och steg-för-steg exempel på output från de instruktionerna.  
+
+Some of the code snippets and code output have been reformatted for print. In all such cases, the lines have been split by a backslash (\) character, followed by a newline character. When transcribing the examples, remove those two characters and join the lines again and you should see identical results as shown in the example. 
+
+All the code snippets use real values and calculations where possible, so that you can build from example to example and see the same results in any code you write to calculate the same values. For example, the private keys and corresponding public keys and addresses are all real. The sample transactions, blocks, and blockchain references have all been introduced in the actual bitcoin blockchain and are part of the public ledger, so you can review them on any bitcoin system.
+
+=== Using Code Examples
+
+This book is here to help you get your job done. In general, if example code is offered with this book, you may use it in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. For example, writing a program that uses several chunks of code from this book does not require permission. Selling or distributing a CD-ROM of examples from O’Reilly books does require permission. Answering a question by citing this book and quoting example code does not require permission. Incorporating a significant amount of example code from this book into your product’s documentation does require permission.
+
+We appreciate, but do not require, attribution. An attribution usually includes the title, author, publisher, and ISBN. For example: “_Mastering Bitcoin_ by Andreas M. Antonopoulos (O’Reilly). Copyright 2015 Andreas M. Antonopoulos, 978-1-449-37404-4.”
+
+Some editions of this book are offered under an open source license, such as CC-BY-NC (creativecommons.org), in which case the terms of that license apply.
+
+If you feel your use of code examples falls outside fair use or the permission given above, feel free to contact us at pass:[<email>permissions@oreilly.com</email>].
+
+=== Safari® Books Online
+
+[role = "safarienabled"]
+[NOTE]
+====
+pass:[<ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly">Safari Books Online</ulink>] is an on-demand digital library that delivers expert pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/content">content</ulink>] in both book and video form from the world&#8217;s leading authors in technology and business.
+====
+
+Technology professionals, software developers, web designers, and business and creative professionals use Safari Books Online as their primary resource for research, problem solving, learning, and certification training.
+
+Safari Books Online offers a range of pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/subscriptions">product mixes</ulink>] and pricing programs for pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/organizations-teams">organizations</ulink>], pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/government">government agencies</ulink>], and pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/individuals">individuals</ulink>]. Subscribers have access to thousands of books, training videos, and prepublication manuscripts in one fully searchable database from publishers like O’Reilly Media, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Focal Press, Cisco Press, John Wiley & Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett, Course Technology, and dozens pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/publishers">more</ulink>]. For more information about Safari Books Online, please visit us pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/">online</ulink>].
+
+=== How to Contact Us
+
+Please address comments and questions concerning this book to the publisher:
+
+++++
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (in the United States or Canada)</member>
+<member>707-829-0515 (international or local)</member>
+<member>707-829-0104 (fax)</member>
+</simplelist>
+++++
+
+We have a web page for this book, where we list errata, examples, and any additional information. You can access this page at link:$$http://bit.ly/mastering_bitcoin$$[].
+
+
+To comment or ask technical questions about this book, send email to pass:[<email>bookquestions@oreilly.com</email>].
+
+For more information about our books, courses, conferences, and news, see our website at link:$$http://www.oreilly.com$$[].
+
+Find us on Facebook: link:$$http://facebook.com/oreilly$$[]
+
+Follow us on Twitter: link:$$http://twitter.com/oreillymedia$$[]
+
+Watch us on YouTube: link:$$http://www.youtube.com/oreillymedia$$[]
+
+
+=== Acknowledgments
+
+This book represents the efforts and contributions of many people. I am grateful for all the help I received from friends, colleagues, and even complete strangers, who joined me in this effort to write the definitive technical book on cryptocurrencies and bitcoin. 
+
+It is impossible to make a distinction between the bitcoin technology and the bitcoin community, and this book is as much a product of that community as it is a book on the technology. My work on this book was encouraged, cheered on, supported, and rewarded by the entire bitcoin community from the very beginning until the very end. More than anything, this book has allowed me to be part of a wonderful community for two years and I can't thank you enough for accepting me into this community. There are far too many people to mention by name—people I've met at conferences, events, seminars, meetups, pizza gatherings, and small private gatherings, as well as many who communicated with me by Twitter, on reddit, on bitcointalk.org, and on GitHub who have had an impact on this book. Every idea, analogy, question, answer, and explanation you find in this book was at some point inspired, tested, or improved through my interactions with the community. Thank you all for your support; without you this book would not have happened. I am forever grateful.
+
+The journey to becoming an author starts long before the first book, of course. My first language (and schooling) was Greek, so I had to take a remedial English writing course in my first year of university. I owe thanks to Diana Kordas, my English writing teacher, who helped me build confidence and skills that year. Later, as a professional, I developed my technical writing skills on the topic of data centers, writing for _Network World_ magazine. I owe thanks to John Dix and John Gallant, who gave me my first writing job as a columnist at _Network World_ and to my editor Michael Cooney and my colleague Johna Till Johnson who edited my columns and made them fit for publication. Writing 500 words a week for four years gave me enough experience to eventually consider becoming an author. Thanks to Jean de Vera for her early encouragement to become an author and for always believing and insisting that I had a book in me.
+
+Thanks also to those who supported me when I submitted my book proposal to O'Reilly, by providing references and reviewing the proposal. Specifically, thanks to John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver, and Jon Matonis. Special thanks to Richard Kagan and Tymon Mattoszko, who reviewed early versions of the proposal and Matthew Owain Taylor, who copyedited the proposal.
+
+Thanks to Cricket Liu, author of the O'Reilly title _DNS and BIND_, who introduced me to O'Reilly. Thanks also to Michael Loukides and Allyson MacDonald at O'Reilly, who worked for months to help make this book happen. Allyson was especially patient when deadlines were missed and deliverables delayed as life intervened in our planned schedule. 
+
+The first few drafts of the first few chapters were the hardest, because bitcoin is a difficult subject to unravel. Every time I pulled on one thread of the bitcoin technology, I had to pull in the whole thing. I repeatedly got stuck and a bit despondent as I struggled to make the topic easy to understand and create a narrative around such a dense technical subject. Eventually, I decided to tell the story of bitcoin through the stories of the people using bitcoin and the whole book became a lot easier to write. I owe thanks to my friend and mentor, Richard Kagan, who helped me unravel the story and get past the moments of writer's block, and Pamela Morgan, who reviewed early drafts of each chapter and asked the hard questions to make them better. Also, thanks to the developers of the San Francisco Bitcoin Developers Meetup group and Taariq Lewis, the group's co-founder, for helping to test the early material.
+
+During the development of the book, I made early drafts available on GitHub and invited public comments. More than a hundred comments, suggestions, corrections, and contributions were submitted in response. Those contributions are explicitly acknowledged, with my thanks, in <<github_contrib>>. Special thanks to Minh T. Nguyen, who volunteered to manage the GitHub contributions and added many significant contributions himself. Thanks also to Andrew Naugler for infographic design. 
+
+Once the book was drafted, it went through several rounds of technical review. Thanks to Cricket Liu and Lorne Lantz for their thorough review, comments, and support.
+
+Several bitcoin developers contributed code samples, reviews, comments, and encouragement. Thanks to Amir Taaki and Eric Voskuil for example code snippets and many great comments; Vitalik Buterin and Richard Kiss for help with elliptic curve math and code contributions; Gavin Andresen for corrections, comments, and encouragement; Michalis Kargakis for comments, contributions, and btcd writeup; and Robin Inge for errata submissions improving the second print.
+
+I owe my love of words and books to my mother, Theresa, who raised me in a house with books lining every wall. My mother also bought me my first computer in 1982, despite being a self-described technophobe. My father, Menelaos, a civil engineer who just published his first book at 80 years old, was the one who taught me logical and analytical thinking and a love of science and engineering. 
+
+Thank you all for supporting me throughout this journey. 
+
+[[github_contrib]]
+==== Early Release Draft (GitHub Contributions)
+
+Many contributors offered comments, corrections, and additions to the early-release draft on GitHub. Thank you all for your contributions to this book. Following is a list of notable GitHub contributors, including their GitHub ID in parentheses:
+
+* Minh T. Nguyen, GitHub contribution editor (enderminh)
+* Ed Eykholt (edeykholt)
+* Michalis Kargakis (kargakis)
+* Erik Wahlström (erikwam)
+* Richard Kiss (richardkiss)
+* Eric Winchell (winchell)
+* Sergej Kotliar (ziggamon)
+* Nagaraj Hubli (nagarajhubli)
+* ethers
+* Alex Waters (alexwaters)
+* Mihail Russu (MihailRussu)
+* Ish Ot Jr. (ishotjr)
+* James Addison (jayaddison)
+* Nekomata (nekomata-3)
+* Simon de la Rouviere (simondlr)
+* Chapman Shoop (belovachap)
+* Holger Schinzel (schinzelh)
+* effectsToCause (vericoin)
+* Stephan Oeste (Emzy)
+* Joe Bauers (joebauers)
+* Jason Bisterfeldt (jbisterfeldt)
+* Ed Leafe (EdLeafe)

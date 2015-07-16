@@ -1,0 +1,181 @@
+[[appdx_bx]]
+[appendix]
+
+== Bitcoin Gezgini (bx) Komutları
+
+((("Bitcoin Explorer commands","commands in", id="ix_appdx-bx-asciidoc0", range="startofrange")))
+
+----
+Kullanım: bx KOMUT [--help]
+
+Bilgi: bx komutları şunlardır:
+
+address-decode
+address-embed
+address-encode
+address-validate
+base16-decode
+base16-encode
+base58-decode
+base58-encode
+base58check-decode
+base58check-encode
+base64-decode
+base64-encode
+bitcoin160
+bitcoin256
+btc-to-satoshi
+ec-add
+ec-add-secrets
+ec-multiply
+ec-multiply-secrets
+ec-new
+ec-to-address
+ec-to-public
+ec-to-wif
+fetch-balance
+fetch-header
+fetch-height
+fetch-history
+fetch-stealth
+fetch-tx
+fetch-tx-index
+hd-new
+hd-private
+hd-public
+hd-to-address
+hd-to-ec
+hd-to-public
+hd-to-wif
+help
+input-set
+input-sign
+input-validate
+message-sign
+message-validate
+mnemonic-decode
+mnemonic-encode
+ripemd160
+satoshi-to-btc
+script-decode
+script-encode
+script-to-address
+seed
+send-tx
+send-tx-node
+send-tx-p2p
+settings
+sha160
+sha256
+sha512
+stealth-decode
+stealth-encode
+stealth-public
+stealth-secret
+stealth-shared
+tx-decode
+tx-encode
+uri-decode
+uri-encode
+validate-tx
+watch-address
+wif-to-ec
+wif-to-public
+wrap-decode
+wrap-encode
+----
+
+Daha fazla bilgi almak için,  https://github.com/libbitcoin/libbitcoin-explorer[Bitcoin Gezgini ana sayfası] ve https://github.com/libbitcoin/libbitcoin-explorer/wiki[Bitcoin Gezgini kullanıcı dokümanı] sayfalarını ziyaret ediniz.
+
+=== bx komutu kullanım örnekleri
+
+Anahtarlar ve adresleri denemek için Bitcoin Kaşif komutlarının bazı kullanım örneklerine bakalım:
+
+ +seed+ komutunu kullanarak((("Bitcoin Explorer","seed command")))((("seed command (bx)"))), işletim sisteminin rastgele numara üreticisini kullanan rastgele bir "tohum(seed)" değeri oluşturun. Yeni bir özel anahtar oluşturmak için "seed" komutunu +ec-new+ komutu ile değiştirin((("Bitcoin Explorer","ec-new command")))((("ec-new command (bx)"))). Standart çıktıyı _private_key_ dosyasının içine kaydediyoruz:
+
+----
+$ bx seed | bx ec-new > private_key
+$ cat private_key 
+73096ed11ab9f1db6135857958ece7d73ea7c30862145bcc4bbc7649075de474
+----
+
+Şimdi, +ec-to-public+ komutunu kullanarak((("Bitcoin Explorer","ec-to-public command")))((("ec-to-public command (bx)"))) bu özel anahtardan açık anahtar oluşturun. _private_key_ dosyasını standart girdi içine dahil ediyoruz ve komutun standart çıktısını yeni bir _public_key_ dosyasının içine kaydediyoruz:
+
+----
+$ bx ec-to-public < private_key > public_key
+$ cat public_key 
+02fca46a6006a62dfdd2dbb2149359d0d97a04f430f12a7626dd409256c12be500
+----
+
++ec-to-address+ komutunu kullanarak((("Bitcoin Explorer","ec-to-address command")))((("ec-to-address command (bx)"))) +public_key+ değerini bir adres olarak yeniden biçimlendirebiliriz. Standart girdi içine  _public_key_ değerini dahil ederiz:
+
+----
+$ bx ec-to-address < public_key 
+17re1S4Q8ZHyCP8Kw7xQad1Lr6XUzWUnkG
+----
+
+Bu şekilde oluşturulan anahtarlar tip-0 belirli olmayan bir cüzdan üretir. Bu her anahtarın bağımsız bir tohumdan(seed) türetilmiş olduğu anlamına gelir. Bitcoin kaşif komutları da BIP0032 uygun olarak belirli bir şekilde anahtarlar oluşturabilir. Bu durumda, bir ana anahtar bir tohumdan(seed) oluşturulur ve sonra alt anahtar ağacını üretmek için belirli bir şekilde genişletilir. Tip-2 kararlı bir cüzdan ile sonuçlanır.
+
+Biz ilk önce, anahtarların sıralamasını türetmemize dayanak olarak kullanılacak olan bir ana anahtar oluşturmak için ((("Bitcoin Explorer","seed command")))((("seed command (bx)"))) +seed+ ve ((("Bitcoin Explorer","hd-new command")))((("hd-new command (bx)"))) +hd-new+ komutlarını kullanırız. 
+
+----
+$ bx seed > seed
+$ cat seed
+eb68ee9f3df6bd4441a9feadec179ff1
+
+$ bx hd-new < seed > master
+$ cat master
+xprv9s21ZrQH143K2BEhMYpNQoUvAgiEjArAVaZaCTgsaGe6LsAnwubeiTcDzd23mAoyizm9cApe51gNfLMkBqkYoWWMCRwzfuJk8RwF1SVEpAQ
+----
+
+Şimdi +hd-private+ komutunu katılaşmış bir "hesap" anahtarı ve hesap içindeki iki özel anahtarın bir sırasını oluşturmak için kullanıyoruz((("Bitcoin Explorer","hd-private command")))((("hd-private command (bx)"))).
+
+----
+$ bx hd-private --hard < master > account
+$ cat account
+xprv9vkDLt81dTKjwHB8fsVB5QK8cGnzveChzSrtCfvu3aMWvQaThp59ueufuyQ8Qi3qpjk4aKsbmbfxwcgS8PYbgoR2NWHeLyvg4DhoEE68A1n
+
+$ bx hd-private --index 0 < account
+xprv9xHfb6w1vX9xgZyPNXVgAhPxSsEkeRcPHEUV5iJcVEsuUEACvR3NRY3fpGhcnBiDbvG4LgndirDsia1e9F3DWPkX7Tp1V1u97HKG1FJwUpU
+
+$ bx hd-private --index 1 < account
+xprv9xHfb6w1vX9xjc8XbN4GN86jzNAZ6xHEqYxzbLB4fzHFd6VqCLPGRZFsdjsuMVERadbgDbziCRJru9n6tzEWrASVpEdrZrFidt1RDfn4yA3
+----
+
+Daha sonra +hd-public+ komutunu kullanarak((("Bitcoin Explorer","hd-public command")))((("hd-public command (bx)"))) iki açık anahtarın karşılık gelen sırasını oluşturuyoruz.
+
+----
+$ bx hd-public --index 0 < account
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+$ bx hd-public --index 1 < account
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+----
+
+Açık anahtarlar, +hd-to-public+ komutunu kullanarak((("Bitcoin Explorer","hd-to-public command")))((("hd-to-public command (bx)"))) onların ilişkili oldukları özel anahtarlardan da çıkarılabilir.
+
+----
+$ bx hd-private --index 0 < account | bx hd-to-public
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+$ bx hd-private --index 1 < account | bx hd-to-public
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+----
+
+Kararlı bir zincirde, hepsi tek bir tohumdan(seed) çıkarılan neredeyse sonsuz sayıda anahtar üretebiliriz. Bu teknik çoğu cüzdan uygulamasında, tek bir tohum(seed) değeri ile yedeklenen ve geri kurtarılan anahtarlar oluşturmak için kullanılır. Bu, rastgele üretilmiş tüm anahtarlarından her seferinde yeni bir anahtar oluşturan cüzdanınızın yedeğini almaktan daha kolaydır.
+
+Bu tohum(seed) +mnemonic-encode+ komutu kullanılarak ((("Bitcoin Explorer","mnemonic-encode command")))((("mnemonic-encode command (bx)"))) kodlanabilir.
+
+----
+$ bx hd-mnemonic < seed > words
+adore repeat vision worst especially veil inch woman cast recall dwell appreciate
+----
+
+Tohum(seed), +mnemonic-decode+ komutu kullanılarak ((("Bitcoin Explorer","mnemonic-decode command")))((("mnemonic-decode command (bx)"))) çözülebilir.
+
+----
+$ bx mnemonic-decode < words
+eb68ee9f3df6bd4441a9feadec179ff1
+----
+
+Anımsatıcı kodlama kaydetmek ve hatta hatırlamak için tohumu daha kolay hale getirebilir.(((range="endofrange", startref="ix_appdx-bx-asciidoc0")))

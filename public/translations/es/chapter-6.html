@@ -1,0 +1,1056 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="bitcoin_network_ch06">La Red Bitcoin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_arquitectura_de_red_entre_pares_p2p">Arquitectura de Red Entre Pares (P2P)</h3>
+<div class="paragraph"><p>Bitcoin se estructura como una arquitectura de red P2P superpuesta a internet. El términto de igual a igual, o P2P, significa que las computadoras que participan en la red son semejantes, que son todas iguales, que no hay nodos "especiales", y que todos los nodos comparten la carga de proveer servicios a la red. Los nodos de la red se interconectan en una malla de redes con una topología "plana". No hay servidor, no ha servicio centralizado, ni jerarquía dentro de la red. Los nodos en una red P2P proveen tanto como consumen servicios al mismo tiempo con reciprocidad actuando como el incentivo para participar. Las redes P2P son inherentemente resilientes, decentralidzadas y abiertas. El ejemplo preeminente de una red P2P fue la Internet temprana misma, donde los nodos de la red IP eran iguales. La estructura del internet actual es más jerárquica, pero el Protocolo de Internet  mantiene la esencia de topología plana. Más allá de bitcoin, la más grande y exitosa aplicación de tecnologías P2P es la compartición de archivos con Napster como pionera y la red BitTorrent como la más reciente evolución de la arquitectura.</p></div>
+<div class="paragraph"><p>La arquitectura de red entre pares (P2P) de bitcoin es mucho más que una elección topológica. Bitcoin es un sistema de dinero digital entre pares por diseño, y la arquitectura de red es tanto una reflexión y un fundamento de esa característica base. La descentralización del control es un principio de diseño base y eso solo puede ser alcanzado y mantenido por una red de consenso entre pares plana y descentralizada.</p></div>
+<div class="paragraph"><p> El término "red bitcoin" se refiere a la colección de nodos que ejecutan el protocolo p2p bitcoin. Además del protocolo P2P bitcoin, hay otros protocolos tales como  Stratum, que se utilizan para la minería y carteras ligeras o móviles. Estos protocolos adicionales son proporcionados por servidores de enrutamiento de puerta de enlace que acceden a la red Bitcoin utilizando el protocolo P2P bitcoin, y que luego se extienden por esa red de nodos que ejecutan otros protocolos. Por ejemplo, los servidores Stratum conectan los nodos de minería Stratum través del protocolo Stratum a la red bitcoin principal y puente del protocolo Stratum al protocolo P2P bitcoin. Utilizamos el término "red bitcoin extendida" para referirse a la red global que incluye los protocolos protocolo p2p bitcoin, al pool de la minería, el protocolo de Stratum, y cualesquiera otros protocolos relacionados que conectan los componentes del sistema de Bitcoin.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_tipos_de_nodos_y_roles">Tipos de Nodos y Roles</h3>
+<div class="paragraph"><p>Aunque los nodos en la red entre pares bitcoin son iguales puede que asuman roles distintos dependiendo de la funcionalidad que soporten. Un nodo bitcoin es una colección de funciones: enrutamiento, la base de datos de la cadena de bloques, minado y servicios de cartera. Una nodo completo con todas estas funciones se detalla en <a href="#full_node_reference">[full_node_reference]</a>.</p></div>
+<div class="imageblock" id="full_node_reference">
+<div class="content">
+<img src="images/msbt_0601.png" alt="FullNodeReferenceClient_Small" />
+</div>
+<div class="title">Figure 1. Un nodo de la red bitcoin con todas sus cuatro funciones: cartera, minero, base de datos de cadena de bloques completa, y enrutamiento de red</div>
+</div>
+<div class="paragraph"><p>Todos los nodos incluyen la función de enrutamiento para participar en la red y pueden incluir otras funcionalidades. Todos los nodos validan y propagan las transacciones y bloques, y descubren y mantienen conexiones con sus compañeros. En el ejemplo de nodo completo <a href="#full_node_reference">[full_node_reference]</a>, La función de enrutamiento se indica mediante un círculo de color naranja llamado "Network Node Routing".</p></div>
+<div class="paragraph"><p>Algunos nodos, denominados nodos completos, también mantienen una completa y actualizada copia de la blockchain. Los nodos completos tienen forma autónoma y con autoridad, para verificar cualquier transacción sin referencia externa. Algunos nodos mantienen sólo un subconjunto de la blockchain y verifican las transacciones utilizando un método llamado  nodos de <em>verificación de pago simplificado</em> o SPV. Estos nodos son conocidos como SPV o nodos de peso ligero. En la figura de ejemplo de nodo completo, el nodo completo blockchain hace la función de base de datos y se indica mediante un círculo azul llamado "Full Blockchain." En la <a href="#bitcoin_red">[bitcoin_red]</a>, los nodos SPV se dibujan sin el círculo azul, que demuestra que no tienen una copia completa de la blockchain.</p></div>
+<div class="paragraph"><p>Los nodos de Minería compiten para crear nuevos bloques ejecutando hardware especializado para resolver el algoritmo de prueba de trabajo. Algunos nodos de minería son también nodos completos, manteniendo una copia completa del blockchain, mientras que otros son nodos ligeros que participan en el pool de la minería y en función de un servidor de grupo para mantener un nodo completo. La función de la minería se muestra en el nodo completo como un círculo negro llamado "Miner".</p></div>
+<div class="paragraph"><p>Carteras de usuario podrían formar parte de un nodo completo, como suele ser el caso con los clientes Bitcoin escritorio. Cada vez más, muchas carteras de los usuarios, en especial los que se ejecuta en dispositivos con recursos limitados, tales como teléfonos inteligentes, son nodos SPV. La función de la cartera se muestra en la <a href="#full_node_reference">[full_node_reference]</a> como un círculo verde llamado "Monedero".</p></div>
+<div class="paragraph"><p>Además de los principales tipos de nodos en el protocolo P2P bitcoin, hay servidores y nodos que ejecutan otros protocolos, como los protocolos de pool de minera especializados y protocolos de cliente de acceso ligeros.</p></div>
+<div class="paragraph"><p><a href="#node_type_ledgend">[node_type_ledgend]</a> muestra los tipos de nodos más comunes en la red bitcoin extendida.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_la_red_bitcoin_extendida">La Red Bitcoin Extendida</h3>
+<div class="paragraph"><p>  La red bitcoin principal, ejecuta el protocolo P2P bitcoin, consta de entre 7.000 y 10.000 nodos de escucha que ejecutan diferentes versiones del bitcoin cliente de referencia (Bitcoin Core) y unos pocos cientos de nodos que ejecutan varias otras implementaciones del protocolo P2P bitcoin, tales como   ((("biblioteca libbitcoin") )) BitcoinJ, Libbitcoin, y btcd. Un pequeño porcentaje de los nodos de la red P2P bitcoin también están minando los nodos, que compiten en el proceso de minería, la validación de las transacciones, y la creación de nuevos bloques. Varios interfaz de grandes empresas con la red bitcoin ejecutando clientes de nodo completo basado en el cliente Bitcoin Core, con copias completas de la blockchain y un nodo de la red, pero sin la minería o las funciones de monedero. Estos nodos actúan como routers de borde de la red, permitiendo que varios otros servicios (casas de cambio, carteras, exploradores bloque, procesamiento de pagos de comerciantes) que se construirán en la parte superior.</p></div>
+<div class="paragraph"><p>La red bitcoin extendida incluye la red que ejecute el protocolo P2P bitcoin, descrito anteriormente, así como nodos que ejecutan protocolos especializados. Adjuntos a la red P2P bitcoin principal hay una serie de  servidores de pool y pasarelas de protocolo que conectan los nodos que ejecutan otros protocolos. Estos otros nodos de protocolo son en su mayoría los nodos de minería del pool (ver <a href="#ch8">[ch8]</a>) y los clientes de carteras ligeros, que no llevan una copia completa de la blockchain.</p></div>
+<div class="paragraph"><p><a href="#bitcoin_network">[bitcoin_network]</a> muestra la red bitcoin extendida con los distintos tipos de nodos, servidores de puerta de enlace, los routers de borde, y los clientes de cartera y los distintos protocolos que utilizan para conectarse entre sí.</p></div>
+<div class="imageblock" id="node_type_ledgend">
+<div class="content">
+<img src="images/msbt_0602.png" alt="BitcoinNodeTypes" />
+</div>
+<div class="title">Figure 2. Diferentes tipos de nodos sobre la red bitcoin extendida</div>
+</div>
+<div class="imageblock" id="bitcoin_network">
+<div class="content">
+<img src="images/msbt_0603.png" alt="BitcoinNetwork" />
+</div>
+<div class="title">Figure 3. La red bitcoin extendida muestra varios tipos de nodos, puertas de enlace y protocolos</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_descubrimiento_de_red">Descubrimiento de Red</h3>
+<div class="paragraph"><p>   Cuando un nodo nuevo aparece, debe descubrir otros nodos en la red Bitcoin para poder participar. Para iniciar este proceso, un nuevo nodo debe descubrir al menos un nodo existente en la red y conectarse a él. La ubicación geográfica de los otros nodos es irrelevante; la topología de la red Bitcoin no está definida geográficamente. Por lo tanto, cualquier nodo Bitcoin existentes pueden ser seleccionados al azar.</p></div>
+<div class="paragraph"><p> Para conectarse a un compañero conocido, los nodos establecen una conexión TCP, por lo general en el puerto 8333 (puerto conocido generalmente como el utilizado por bitcoin), o un puerto alternativo si se proporciona. Al establecer una conexión, el nodo se iniciará un "apretón de manos" (ver &lt;&lt;network_handshake&gt; &gt;) mediante la transmisión de un  <tt>versión</tt> de mensaje, que contiene información básica de identificación, incluyendo:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<tt>PROTOCOL_VERSION</tt>
+</dt>
+<dd>
+<p>
+Una constante que define la versión del protocolo P2P bitcoin que el cliente "habla" (por ejemplo, 70002)
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>nLocalServices</tt>
+</dt>
+<dd>
+<p>
+Una lista de los servicios locales soportados por el nodo, actualmente solo <tt>NODE_NETWORK</tt>
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>nTime</tt>
+</dt>
+<dd>
+<p>
+La fecha y hora actuales
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>AddrYou</tt>
+</dt>
+<dd>
+<p>
+La dirección IP del nodo remoto como se ve desde este nodo
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>AddrMe</tt>
+</dt>
+<dd>
+<p>
+La dirección IP del nodo local, tal como se ve desde el otro nodo local
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>Subver</tt>
+</dt>
+<dd>
+<p>
+Una sub-versión que muestra el tipo de software que se ejecuta en este nodo (por ejemplo, "/Satoshi:0.9.2.1/")+
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>BestHeight</tt>
+</dt>
+<dd>
+<p>
+La altura de bloque de la cadena de bloques de este nodo
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>(Ver <a href="http://bit.ly/1qlsC7w">GitHub</a> para un ejemplo de la <tt>versión</tt> del mensaje de red).</p></div>
+<div class="paragraph"><p>El nodo de pares responde con <tt>verack</tt> para reconocer y establecer una conexión, y envía opcionalmente su propia <tt>versión</tt> mensaje si quiere corresponder a la conexión y conectar de nuevo como un igual.</p></div>
+<div class="paragraph"><p>¿Cómo funciona un nuevo nodo para encontrar compañeros? El primer método consiste en consultar DNS utilizando una serie de   "semillas de DNS", que son los servidores DNS que proporcionan una lista de direcciones IP de nodos Bitcoin. Algunas de esas semillas DNS proporcionan una lista estática de direcciones IP de los nodos Bitcoin escuchar estables. Algunas de las semillas de DNS son implementaciones personalizadas de BIND (Berkeley Internet Name Daemon) que devuelven un subconjunto aleatorio de una lista de direcciones de nodo Bitcoin recogidos por un rastreador o un nodo bitcoin de larga duración. El cliente Bitcoin Core contiene los nombres de cinco semillas DNS diferentes. La diversidad de la propiedad y la diversidad de la aplicación de las diferentes semillas DNS ofrece un alto nivel o la fiabilidad del proceso de bootstrapping inicial. En el cliente Bitcoin Core, la opción de utilizar las semillas de DNS es controlado por la  opción <tt>-dnsseed</tt> (ajustado a 1 por defecto, para usar la semilla DNS).</p></div>
+<div class="paragraph"><p>Alternativamente, un nodo nuevo que no sabe nada de la red debe tener la dirección IP de al menos un nodo bitcoin, después de lo cual se puede establecer conexiones a través de nuevas introducciones. El argumento de línea de comandos + -seednode + se puede utilizar para conectarse a un nodo sólo para introducciones, usándolo como una semilla. Después de que el nodo de semilla inicial se utiliza para formar las introducciones, el cliente se desconecta de ella y utilizar los compañeros recién descubiertos.</p></div>
+<div class="imageblock" id="network_handshake">
+<div class="content">
+<img src="images/msbt_0604.png" alt="NetworkHandshake" />
+</div>
+<div class="title">Figure 4. El apretón de manos inicial entre pares</div>
+</div>
+<div class="paragraph"><p>Una vez que se establecen una o más conexiones, el nuevo nodo enviará un  <tt>addr</tt> mensaje que contiene su propia dirección IP para sus vecinos. Los vecinos, a su vez, remitirá el addr <tt>mensaje</tt> a sus vecinos, lo que garantiza que el nodo recién conectado se convierte en bien conocida y mejor conectados. Además, el nodo recién conectado puede enviar <tt>getaddr</tt> para los vecinos, pidiéndoles que se devolverá una lista de direcciones IP de otros compañeros. De esa manera, un nodo puede encontrar compañeros para conectarse y anunciar su existencia en la red para otros nodos para encontrarlo. <a href="#address_propagation">[address_propagation]</a> mMuestra el protocolo de descubrimiento de direcciones.</p></div>
+<div class="imageblock" id="address_propagation">
+<div class="content">
+<img src="images/msbt_0605.png" alt="AddressPropagation" />
+</div>
+<div class="title">Figure 5. Descubrimiento y propagación de la dirección</div>
+</div>
+<div class="paragraph"><p>Un nodo debe conectarse a un par de compañeros diferentes a fin de establecer diversos caminos en la red Bitcoin. Los caminos no son fiables -nodos que van y vienen- , y por lo que el nodo deben seguir descubriendo nuevos nodos, ya que pierde conexiones antiguas, así como ayudar a otros nodos cuando iniciarse. Sólo se necesita una conexión para arrancar, ya que el primer nodo puede ofrecer introducciones a sus nodos pares y los pares puede ofrecer nuevas introducciones. También es innecesario y derrochador de recursos de red para conectarse a más de un puñado de nodos. Después de iniciarse, un nodo se acordará de sus conexiones entre pares de éxito más recientes, por lo que si se reinicia puede restablecer rápidamente las conexiones con su antigua red de pares. Si ninguno de los pares anteriores responder a su solicitud de conexión, el nodo puede utilizar los nodos de semillas al realizar el arranque de nuevo.</p></div>
+<div class="paragraph"><p>En un nodo que ejecuta el cliente Bitcoin Core, puede listar las conexiones entre pares con el comando  <tt>getpeerinfo</tt>:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p> Para anular la gestión automática de pares y para especificar una lista de direcciones IP, los usuarios pueden proporcionar la opción <tt>-connect=&lt;IPAddress&gt;</tt> y especificar una o más direcciones IP. Si se utiliza esta opción, el nodo sólo se conectará a las direcciones IP seleccionados, en lugar de descubrir y mantener las conexiones entre pares automáticamente.</p></div>
+<div class="paragraph"><p>Si no hay tráfico en una conexión, los nodos se envían periódicamente un mensaje para mantener la conexión. Si un nodo no se ha comunicado en una conexión por más de 90 minutos, se supone que está desconectado y se buscará un nuevo par. De este modo, la red se ajusta dinámicamente a los nodos transitorios y problemas de la red, y puede crecer y encogerse según sea necesario sin ningún tipo de control central orgánicamente.    (((rango = "endofrange", startref = "ix_ch06-asciidoc1") ))</p></div>
+</div>
+<div class="sect2">
+<h3 id="_nodos_completos">Nodos Completos</h3>
+<div class="paragraph"><p>   Los nodos completos son nodos que mantienen un blockchain completo con todas las transacciones. Más exactamente, probablemente deberían ser llamados "nodos blockchain completos." En los primeros años del bitcoin, todos los nodos eran nodos completos y actualmente el cliente Bitcoin Core es un nodo blockchain completo. En los últimos dos años, sin embargo, las nuevas formas de clientes Bitcoin que se han introducido no mantienen una blockchain completa, pero corren como clientes ligeros. Examinaremos estos con más detalle en la siguiente sección.</p></div>
+<div class="paragraph"><p> Los nodos completos blockchain mantienen una copia completa y actualizada de la blockchain bitcoin con todas las transacciones, que se construyen de forma independiente y verifican, empezando por el primer bloque (bloque de génesis) y la construcción hasta el último bloque conocido en la red. Un nodo blockchain completo puede de forma independiente y con autoridad verificar cualquier transacción sin recurrir o depender de cualquier otro nodo o fuente de información. El nodo blockchain completo se basa en la red para recibir actualizaciones sobre nuevos bloques de transacciones, que posteriormente verifica e incorpora en su copia local de la blockchain.</p></div>
+<div class="paragraph"><p>Ejecución de un nodo blockchain completo le da la pura experiencia bitcoin: la verificación independiente de todas las transacciones sin la necesidad de depender de cualquier otro sistema, o de confianza. Es fácil saber si se está ejecutando un nodo completo, ya que requiere más de 20 gigabytes de almacenamiento persistente (espacio en disco) para almacenar el blockchain completa. Si usted necesita una gran cantidad de espacio en disco y se tarda dos o tres días para sincronizar a la red, está ejecutando un nodo completo. Ese es el precio de la completa independencia y libertad de la autoridad central.</p></div>
+<div class="paragraph"><p>Hay algunas implementaciones alternativas en los clientes bitcoin blockchain completos, construidas utilizando diferentes lenguajes de programación y arquitecturas de software. Sin embargo, la aplicación más común es el cliente de referencia  Bitcoin Core, también conocido como el cliente Satoshi. Más de 90% de los nodos en la red bitcoin ejecutar varias versiones de Bitcoin Core. Se identifica como "Satoshi" en la cadena de sub-versión enviada en el mensaje <tt>versión+y muestra mediante el comando +getpeerinfo</tt> como vimos anteriormente; por ejemplo, <tt>/Satoshi:0.8.6/</tt>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_intercambiando_inventario">Intercambiando "Inventario"</h3>
+<div class="paragraph"><p>    La primera cosa que un nodo completo hará una vez que se conecta a los compañeros es tratar de construir un blockchain completo. Si es un nodo nuevo y no tiene blockchain en absoluto, que sólo conoce un bloque, el bloque de génesis, que está integrado de forma estática en el software de cliente. Comenzando con el bloque # 0 (el bloque génesis), el nuevo nodo tendrá que descargar cientos de miles de bloques para sincronizar con la red y volver a establecer la blockchain completa.</p></div>
+<div class="paragraph"><p> El proceso de sincronización de la blockchain comienza con el mensaje <tt>versión</tt>, porque contiene la <tt>BestHeight</tt>, la altura blockchain actual de un nodo (número de bloques). Un nodo verá los mensajes <tt>versión</tt> de sus compañeros, para saber cuántos bloques tiene cada uno, y ser capaz de comparar a cuántos bloques que tiene en su propia blockchain. Los Nodos intercambiarán el mensage <tt>getblocks</tt> que contiene el hash (huella digital) del bloque de la parte superior de su blockchain local. Uno de los compañeros será capaz de identificar el hash recibido como perteneciente a un bloque que no está en la cima, sino que pertenece a un bloque mayor, deduciendo de esta manera que su propia blockchain local es más alta que su par.</p></div>
+<div class="paragraph"><p>El par que tiene el blockchain con más bloques que el otro nodo y puede identificar que bloques de los otros necesitan los nodos con el fin de "ponerse al día". Identificará los primeros 500 bloques para compartir y transmitir sus valores hash utilizando una  + message inv + (inventario). All nodo que le falten estos bloques podrá luego recuperarlos, mediante la emisión de una serie de mensajes <tt>getdata</tt> solicitando los datos de bloque completo y la identificación de los bloques solicitados utilizando los hashes de la <tt>inv</tt> mensaje.</p></div>
+<div class="paragraph"><p>Supongamos, por ejemplo, que un nodo sólo tiene el bloque de génesis. A continuación, recibirá un mensaje <tt>inv</tt> de sus pares que contienen los hashes de los próximos 500 bloques en la cadena. Se iniciará solicitando bloques de todos sus pares conectados, repartir la carga y asegurar que no abrume a cualquier punto con peticiones. El nodo mantiene un registro de cuántos bloques están "en tránsito" por conexión de pares, bloquea lo que significa que se ha solicitado pero no lo recibido, comprobando que no exceda un límite  (+ MAX_BLOCKS_IN_TRANSIT_PER_PEER +). De esta manera, si se necesita una gran cantidad de bloques ,sólo se solicitarán otros nuevos que se cumplan las solicitudes anteriores, permitiendo a los compañeros controlar el ritmo de cambios y no sobrecargar la red. Como se recibe cada bloque, como se agrega a la blockchain, lo veremos en <a href="#blockchain">[blockchain]</a>. Como el blockchain local está construido gradualmente, se solicitan más bloques y se recibirán, y el proceso continúa hasta que el nodo se pone al día con el resto de la red.</p></div>
+<div class="paragraph"><p>Este proceso de comparar el blockchain local con los compañeros y la recuperación de todos los bloques que faltan sucede cada vez que un nodo se desconecta por cualquier período de tiempo. Ya sea un nodo que ha estado desconectado durante unos minutos y faltan pocos bloques, o un mes y faltan unos pocos miles de bloques, se inicia mediante el envío de <tt>getblocks</tt>, recibe un <tt>inv</tt> de respuesta, y comienza la descarga de los bloques que faltan. <a href="#inventory_synchronization">[inventory_synchronization]</a> muestra el protocolo de inventario y la propagación de bloque.</p></div>
+</div>
+<div class="sect2">
+<h3 id="spv_nodes">Nodos de Verificaicón de Pago Simplificada (SPV)</h3>
+<div class="paragraph"><p>   No todos los nodos tienen la capacidad de almacenar la blockchain completa. Muchos clientes Bitcoin están diseñados para funcionar en dispositivos con restricciones de espacio y  de energía, tales como teléfonos inteligentes, tabletas o sistemas embebidos. Para tales dispositivos, se utiliza un método de <em>pago de verificacion simplificado</em> (SPV)  para permitir operar sin almacenar el blockchain completo. Este tipo de clientes se llaman clientes SPV o clientes ligeros. Con la oleada de adopción de bitcoin, el nodo SPV se está convirtiendo en la forma más común de nodo bitcoin, especialmente para carteras Bitcoin.</p></div>
+<div class="paragraph"><p> Los nodos SPV descargan sólo los encabezados de bloque y no descarga las transacciones incluidas en cada bloque. La cadena resultante de bloques, sin transacciones, es 1000 veces menor que el blockchain completo. Los nodos SPV no pueden construir una imagen completa de todos los UTXOs que están disponibles para el gasto, ya que no saben acerca de todas las transacciones en la red. Los nodos SPV verifican las transacciones utilizando una metodología ligeramente diferente que se basa en pares para proporcionar vistas parciales de las partes pertinentes del blockchain bajo demanda.</p></div>
+<div class="imageblock" id="inventory_synchronization">
+<div class="content">
+<img src="images/msbt_0606.png" alt="InventorySynchronization" />
+</div>
+<div class="title">Figure 6. Nodo sincronizando la cadena de bloques pidiendo bloques a un par</div>
+</div>
+<div class="paragraph"><p>Como analogía, un nodo completo es como un turista en una ciudad extraña, equipado con un mapa detallado de cada calle y cada dirección. En comparación, un nodo SPV es como un turista en una ciudad extraña preguntando a extraños al azar indicaciones giro a giro a sabiendas sólo de una avenida principal. Aunque tanto los turistas pueden verificar la existencia de una calle por visitarla, el turista sin un mapa no sabe lo que se hay en cualquiera de las calles laterales y no sabe lo que existen otras calles. Situado frente a 23 Church Street, el turista sin un mapa no puede saber si hay una docena de otras direcciones a "23 Church Street" en la ciudad y si este es el correcto. La mejor oportunidad del turismo sin mapas es preguntar a bastante gente y esperando que algunos de ellos no esté tratando de robarle.</p></div>
+<div class="paragraph"><p>La verificación del pago simplificado verifica las transacciones en función de su <em>profuncidad</em> en el blockchain lugar de su <em>altura</em>. Considerando que un nodo blockchain completo construirá una cadena completamente verificada de miles de bloques y transacciones que llegan hasta la blockchain (atrás en el tiempo) todo el camino hasta el bloque de génesis, un nodo de SPV verificará la cadena de todos los bloques (pero no todas las transacciones) y vinculalrá esa cadena a la transacción de intereses.</p></div>
+<div class="paragraph"><p>Por ejemplo, al examinar una transacción en el bloque 300 000, un nodo total con todas las conexiónes de los 300.000 bloques descargados desde el génesis y construída una base de datos completa de UTXO, establece la validez de la transacción mediante la confirmación de que el UTXO permanece sin gastar. Un nodo SPV no puede validar si el UTXO es no gastado. En su lugar, el nodo SPV establecerá un vínculo entre el comercio y el bloque que lo contiene, usando  <em>merkle direccion</em> (ver <a href="#merkle_trees">[merkle_trees]</a>). A continuación, el nodo SPV espera hasta que ve los seis bloques 300001 través 300.006 apilados uno encima del bloque que contiene la transacción y verifica mediante el establecimiento de su profundidad bajo bloques de 300.006 a 300.001. El hecho de que otros nodos de la red aceptan bloque 300000 y luego hicieron el trabajo necesario para producir seis bloques más en la parte superior de la misma es la prueba, por poder, que la operación no fue un doble gasto.</p></div>
+<div class="paragraph"><p>Un nodo SPV no puede ser persuadido de que existe una transacción en un bloque cuando la transacción en realidad no existe. El nodo SPV establece la existencia de una transacción en un bloque mediante la solicitud de un camino merkle prueba y validación de la prueba de trabajo en la cadena de bloques. Sin embargo, la existencia de una transacción puede estar "oculto" de un nodo SPV. Un nodo SPV puede definitivamente probar que existe una transacción, pero no puede verificar que una transacción, como un doble gasto de la misma UTXO, no existe, ya que no tiene un registro de todas las transacciones. Esta vulnerabilidad se puede utilizar en un ataque de denegación de servicio o de un ataque contra el doble gasto de nodos SPV. Para defenderse de esto, un nodo de SPV necesita conectarse al azar a varios nodos, para aumentar la probabilidad de que está en contacto con al menos un nodo honesto. Esta necesidad de conectar al azar significa que los nodos SPV también son vulnerables a los ataques de la red de particionado o ataques Sybil, donde están conectados a los nodos falsos o redes falsas y no tienen acceso a los nodos honestos o la red bitcoin real.</p></div>
+<div class="paragraph"><p>Para efectos prácticos, los nodos SPV bien conectados son lo suficientemente seguros, encontrar el equilibrio adecuado entre las necesidades de recursos, practicidad y seguridad. Para mayor seguridad infalible, sin embargo, no hay nada mejor que ejecutar un nodo blockchain completo.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p> Un nodo blockchain completo verifica una transacción por el control de toda la cadena de miles de bloques por debajo de ella con el fin de garantizar que el UTXO no esté gastado, mientras que un nodo SPV una chequea lo profundo del bloque que está enterrado solo por un puñado de bloques por encima de ella.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p> Para obtener los encabezados de bloque, los nodos SPV utilizan un mesaje  <tt>getHeaders</tt> en lugar de <tt>getblocks</tt>. El par que responde enviará hasta 2.000 cabeceras de bloques utilizando un único mensaje de <tt>cabeceras</tt>. El proceso es de lo contrario la misma que la utilizada por un nodo completo para recuperar bloques completos. Los nodos SPV también establecen un filtro en la conexión con sus compañeros, para filtrar el flujo de bloques y futuras transacciones enviadas por los compañeros. Cualquier transacción de interés se recuperan mediante una petición <tt>getdata</tt>. El par genera un mensaje <tt>tx</tt>  que contiene las transacciones, en respuesta. <a href="#spv_synchronization">[spv_synchronization]</a> muestra la sincronización de las cabeceras de bloque.</p></div>
+<div class="imageblock" id="spv_synchronization">
+<div class="content">
+<img src="images/msbt_0607.png" alt="SPVSynchronization" />
+</div>
+<div class="title">Figure 7. Nodo SPV sincronizando los encabezados de bloque</div>
+</div>
+<div class="paragraph"><p>Debido a que los nodos SPV necesitan para recuperar transacciones específicas con el fin de verificar selectivamente ellos, sino que también crean un riesgo para la privacidad. A diferencia de los nodos blockchain completos, que recogen todas las transacciones dentro de cada bloque, las solicitudes del nodo SPV para los datos específicos pueden revelar inadvertidamente las direcciones en su billetera. Por ejemplo, un tercero monitorear una red podría llevar un registro de todas las transacciones solicitadas por una billetera en un nodo SPV y utilizar las asociaciones de direcciones bitcoin con el usuario de esa cartera, destruyendo de la privacidad del usuario.</p></div>
+<div class="paragraph"><p>Poco después de la introducción de los SPV / nodos ligeros, los desarrolladores de Bitcoin añaden una característica llamada <em>bloom filters</em> para abordar los riesgos de privacidad de nodos SPV. Los filtros Bloom permiten a los nodos SPV recibir un subconjunto de las transacciones sin revelar con precisión qué se dirige a ellos les interesa, a través de un mecanismo de filtrado que utiliza probabilidades en lugar de patrones fijos.   </p></div>
+</div>
+<div class="sect2">
+<h3 id="_filtros_de_bloom">Filtros de Bloom</h3>
+<div class="paragraph"><p>   Un filtro Bloom es un filtro de búsqueda probabilística, de manera que describe un patrón deseado sin especificar exactamente. Los filtros Bloom ofrecen una forma eficiente para expresar un patrón de búsqueda al mismo tiempo protegen la privacidad. Son utilizados por los nodos SPV para pedir a sus compañeros las transacciones que coincidan con un patrón específico, sin revelar exactamente qué direcciones están buscando.</p></div>
+<div class="paragraph"><p>En nuestra analogía anterior, un turista sin un mapa está pidiendo direcciones a una dirección específica, "23 Iglesia de San" Si la pide a extraños para las direcciones a esta calle, ella inadvertidamente revela su destino. Un filtro de bloom es como preguntar: "¿Hay calles en este barrio cuyo nombre termina en RCH?" Una pregunta como que revela un poco menos sobre el destino deseado de pedir "23 Iglesia de San" Usando esta técnica, un turista puede especificar la dirección deseada con mayor detalle como "termina en urch" o menos detalle "que termina en H." Mediante la variación de la precisión de la búsqueda, el turista revela más o menos información, a expensas de obtener resultados más o menos específicos. Si ella le pide un patrón menos específica, se pone mucho más direcciones posibles y una mejor privacidad, pero muchos de los resultados son irrelevantes. Si ella pide un patrón muy específico, se pone menos resultados, pero pierde la privacidad.</p></div>
+<div class="paragraph"><p>Filtros Bloom sirven para esta función al permitir que un nodo SPV especifique un patrón de búsqueda de transacciones que se pueden sintonizar hacia precisión o privacidad. Un filtro de bloom más específico producirá resultados precisos, pero a expensas de revelar las direcciones que se utilizan en la billetera del usuario. Un filtro de bloom menos específico producirá más datos sobre más transacciones, muchos irrelevantes para el nodo, pero permitirá que el nodo pueda mantener mejor la privacidad.</p></div>
+<div class="paragraph"><p>Un nodo SPV inicializará un filtro de bloom como "vacío" y en ese estado del filtro de bloom coincidirá con cualquier patrón. El nodo SPV entonces hace una lista de todas las direcciones en su cartera y crea un patrón de búsqueda que coincida con el de salida de transacción que corresponde a cada dirección. Por lo general, el patrón de búsqueda de pago es una  clave pública-hash de script que es la secuencia de comandos de cierre esperado que estará presente en cualquier transacción pagar al-hash de clave pública (dirección). Si el nodo SPV está rastreando el saldo de un  dirección P2SH, el patrón de búsqueda será un pay-to-guión-hash de escritura, en su lugar. El nodo SPV luego añade cada uno de los patrones de búsqueda al filtro de bloom, de manera que el filtro de bloom puede reconocer el patrón de búsqueda si está presente en una transacción. Finalmente, el filtro de bloom se envía a los pares y los pares utiliza para que coincida con las transacciones para la transmisión al nodo de SPV.</p></div>
+<div class="paragraph"><p>Los filtros Bloom se implementan como una matriz de tamaño variable de los n dígitos binarios (un campo de bit) y un número variable de funciones hash M. Las funciones de hash están diseñados para producir siempre una salida que es entre 1 y N, que corresponde a la serie de dígitos binarios. Las funciones hash se generan de manera determinista, de modo que cualquier nodo de la aplicación de un filtro de Bloom siempre utilizará las mismas funciones hash y obtendrá los mismos resultados para una entrada específica. Al elegir diferentes longitud (N) Filtros Bloom y un número diferente (M) de las funciones de hash, el filtro de la floración puede ser sintonizado, variando el nivel de precisión y por lo tanto la privacidad.</p></div>
+<div class="paragraph"><p>En <a href="#bloom1">[bloom1]</a>, usamos una pequeña serie de 16 bits y un conjunto de tres funciones hash para demostrar cómo funcionan los filtros de Bloom.</p></div>
+<div class="imageblock" id="bloom1">
+<div class="content">
+<img src="images/msbt_0608.png" alt="Bloom1" />
+</div>
+<div class="title">Figure 8. Un Ejemplo de un filtro de Bloom simplista, con un campo de 16 bits y tres funciones hash</div>
+</div>
+<div class="paragraph"><p>El filtro de Bloom se inicializa para que la matriz de bits sea todo ceros. Para agregar un patrón para el filtro de Bloom, el patrón se hace hash por cada función de hash a su vez. La aplicación de la primera función de hash a los resultados de entrada en un número entre 1 y N. El bit correspondiente en la matriz (indexadas de 1 a N) se encuentra y se pone a <tt>1</tt>, registrando así la salida de la función hash. Entonces, la siguiente función hash se utiliza para establecer otro bit y así sucesivamente. Una vez que todas las funciones de hash M se han aplicado, el patrón de búsqueda se "registra" en el filtro de Bloom como M bits que se han cambiado de <tt>0</tt> a <tt>1</tt>.</p></div>
+<div class="paragraph"><p><a href="#bloom2">[bloom2]</a> Es un ejemplo de la adición de un patrón "A" para el filtro Bloom sencillo mostrado en la <a href="#bloom1">[bloom1]</a>.</p></div>
+<div class="paragraph"><p>Añadir un segundo patrón es tan simple como la repetición de este proceso. El patrón se le hace hash por cada función hash a su vez y el resultado se registra mediante el establecimiento de los bits a <tt>1</tt>. Tenga en cuenta que como un filtro de Bloom se llena con más patrones, un resultado de la función de hash podría coincidir con uno  que ya está ajustado a <tt>1</tt>, en cuyo caso no se cambia el bit. En esencia, lo más patrones son superpuestos, el filtro de la floración comienza a saturarse con más bits establecidos en <tt>1</tt> y la precisión del filtro disminuye. Por ello, el filtro es un dato probabilístico y su estructura se vuelve menos precisa a medida que se agregan más patrones. La precisión depende del número de los patrones de agregados en comparación con el tamaño de la matriz de bits (N) y el número de funciones hash (M). Una matriz de poco más grande y más funciones hash pueden grabar más patrones con mayor precisión. Una matriz de bits más pequeño o menos funciones hash registrarán menos patrones y producirá menos precisión.</p></div>
+<div class="imageblock" id="bloom2">
+<div class="content">
+<img src="images/msbt_0609.png" alt="Bloom2" />
+</div>
+<div class="title">Figure 9. Añadiendo un patrón "A" a nuestro filtro de Bloom simple</div>
+</div>
+<div class="paragraph"><p><a href="#bloom3">[bloom3]</a> Es un ejemplo de añadir un segundo patrón "B" para el filtro Bloom simple.</p></div>
+<div class="imageblock" id="bloom3">
+<div class="content">
+<img src="images/msbt_0610.png" alt="Bloom3" />
+</div>
+<div class="title">Figure 10. Añadiendo un segundo patrón "B" a nuestro filtro de Bloom simple</div>
+</div>
+<div class="paragraph"><p>Para probar si un patrón es parte de un filtro de Bloom, el patrón se hace hash por cada función hash y el patrón de bits resultante se prueba contra la matriz de bits. Si todos los bits indexados por las funciones de hash se establecen en <tt>1</tt>, entonces el patrón es <em>probablemente</em> registrado en el filtro de Bloom. Debido a que los bits se pueden establecer debido a la superposición de múltiples patrones, la respuesta no es cierta, sino que es probabilística. En términos simples, un resultado positivo de filtro de Bloom es un "Tal vez, sí."</p></div>
+<div class="paragraph"><p><a href="#bloom4">[bloom4]</a> es un ejemplo de pruebas de la existencia de "X" en el filtro de Bloom simple. Los bits correspondientes se establecen en <tt>1</tt>, por lo que el patrón es probablemente una coincidencia.</p></div>
+<div class="imageblock" id="bloom4">
+<div class="content">
+<img src="images/msbt_0611.png" alt="Bloom4" />
+</div>
+<div class="title">Figure 11. Testing La existencia de "X" en el filtro de Bloom. El resultado es coincidencia positiva probabilístico, es decir, "Tal vez."</div>
+</div>
+<div class="paragraph"><p>Por el contrario, si un patrón se prueba contra el filtro de Bloom y uno cualquiera de los bits se establece en <tt>0</tt>, esto demuestra que el patrón no se registró en el filtro de Bloom. Un resultado negativo no es una probabilidad, es una certeza. En términos simples, un resultado negativo en un filtro de la floración es un "Definitivamente no!"</p></div>
+<div class="paragraph"><p><a href="#bloom5">[bloom5]</a> Es un ejemplo para probar la existencia del patrón "Y" en el filtro Bloom simple. Uno de los bits correspondientes se establece en <tt>0</tt>, por lo que el patrón no es definitivamente un resultado.</p></div>
+<div class="imageblock" id="bloom5">
+<div class="content">
+<img src="images/msbt_0612.png" alt="images/msbt_0612.png" />
+</div>
+<div class="title">Figure 12. .Testeando la existencia del patrón "Y" en el filtro de Bloom. El resultado es una combinación negativa definitiva, que significa "Definitivamente no!"</div>
+</div>
+<div class="paragraph"><p>La aplicación de filtros de floración en Bitcoin se describe en la Propuesta de Mejora Bitcoin 37 (BIP0037). Consulte <a href="#appdxbitcoinimpproposals">[appdxbitcoinimpproposals]</a> O visite <a href="http://bit.ly/1x6qCiO">GitHub</a>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_filtros_bloom_y_actualizaciones_de_inventario">Filtros Bloom y actualizaciones de inventario</h3>
+<div class="paragraph"><p> Los filtros Bloom se utilizan para filtrar las transacciones (y bloques que los contienen) que un nodo SPV recibe de sus compañeros. Los nodos SPV crearán un filtro que coinciden sólo las direcciones mantenidas en la cartera del nodo SPV. El nodo SPV le enviará un mensaje de filtro de carga  a los pares, que contiene el filtro de Bloom para usar en la conexión. Después de establecer un filtro, el peer entonces probará las salidas de cada transacción contra el filtro de Bloom. Sólo las operaciones que coincidan con el filtro se envían al nodo.</p></div>
+<div class="paragraph"><p>En respuesta a un mensaje <tt>getdata</tt> desde el nodo, los compañeros enviará un mensaje <tt>merkleblock</tt> que contiene sólo los encabezados de bloques para los bloques que emparejan el filtro y un camino merkle (ver <a href="#merkle_trees">[merkle_trees]</a>) para cada transacción correspondiente. El par entonces también enviará mensajes <tt>tx</tt> que contienen las operaciones coincidentes por el filtro.</p></div>
+<div class="paragraph"><p>La configuración del nodo filtro Bloom puede añadir de forma interactiva los patrones al filtro mediante el envío de un mensaje  <tt>filterclear</tt>. Debido a que no es posible eliminar un patrón de un filtro de Bloom, un nodo tiene que borrar y volver a enviar un nuevo filtro de Bloom si ya no se desea un patrón.  </p></div>
+</div>
+<div class="sect2">
+<h3 id="transaction_pools">Reservas de Transacciones</h3>
+<div class="paragraph"><p>      Casi todos los nodos en la red bitcoin mantiene una lista temporal de las transacciones no confirmadas llamadas <em>memory pool</em>, <em>mempool</em>, o <em>transaction pool</em>. Los nodos utilizan esta pool para mantener un registro de las transacciones que se sabe que la red, pero aún no están incluidas en el blockchain. Por ejemplo, un nodo que tiene la cartera de un usuario utilizará la pool de transacción para rastrear los pagos entrantes a la cartera del usuario que se han recibido en la red, pero aún no han se confirmado.</p></div>
+<div class="paragraph"><p>Cuando se reciben y se verifican las transacciones, se añaden a la pool de transacción y se retransmiten a los nodos vecinos para propagar en la red.</p></div>
+<div class="paragraph"><p> Algunas implementaciones de nodo también mantienen una pool separada de las operaciones que han quedado huérfanas. Si las entradas de una transacción se refieren a una transacción que aún no se conoce, tal como un padre que falta, la transacción huérfana será almacenada temporalmente en la pool huérfana hasta que llegue la transacción padre.</p></div>
+<div class="paragraph"><p>Cuando se añade una transacción a la pool de transacción, la pool huérfana se comprueba para cualquier huérfanos que hacen referencia a las salidas de esta transacción (sus hijos). Cualquier huérfanos que coincidan se validan. Si es válida, se retiran de la pool huérfana y se añaden a la pool de transacción, completando la cadena que comenzó con la transacción padre. A la luz de la operación que se acaba de agregar, que ya no es un huérfana, el proceso se repite recursivamente en busca de cualquier descendientes más, hasta que no se encuentran más descendientes. A través de este proceso, la llegada de una transacción padre desencadena una reconstrucción en cascada de toda una cadena de transacciones interdependientes por volver a unir a los huérfanos con sus padres hasta el final de la cadena.</p></div>
+<div class="paragraph"><p>  Tanto la pool de transacción y la pool huérfana (donde implementó) se almacenan en la memoria local y no se guardan en almacenamiento persistente; más bien, son dinámicamente pobladas de mensajes entrantes de la red. Cuando se inicia un nodo, las dos pools están vacías y son progresivamente ocupados con nuevas transacciones recibidas en la red.</p></div>
+<div class="paragraph"><p>Algunas implementaciones del cliente bitcoin también mantienen una base de datos UTXO o pool UTXO, que es el conjunto de todas las salidas no utilizadas en la blockchain. Aunque el nombre "pool UTXO" suena similar a la pool de transacción, representa un conjunto diferente de datos. A diferencia de las pools de transacción y huérfanas, la pool UTXO no se ha inicializado vacío sino que contiene millones de entradas de salidas de transacción no utilizadas, incluyendo algunos que datan de 2009. La piscina UTXO pueden ser alojados en la memoria local o como una tabla de base de datos indexada en almacenamiento persistente .</p></div>
+<div class="paragraph"><p>Mientras que la transacción y las pools huérfanas representan perspectiva local de un solo nodo y pueden variar significativamente de un nodo a otro, dependiendo de cuando se inicia o reinicia el nodo, la piscina UTXO representa el consenso emergente de la red y por lo tanto va a variar poco entre los nodos. Además, las pools de transacciones y huérfanas sólo contienen transacciones no confirmadas, mientras que la pool UTXO sólo contiene salidas confirmadas.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_mensajes_de_alerta">Mensajes de Alerta</h3>
+<div class="paragraph"><p>  Los mensajes de alerta son una función rara vez utilizados, pero no obstante se aplican en la mayoría de los nodos. Los mensajes de alerta de Bitcoin "sistema de transmisión de emergencia" es un medio por el cual el núcleo bitcoin de desarrolladores pueden enviar un mensaje de texto de emergencia a todos los nodos Bitcoin. Esta función se lleva a cabo para permitir que el equipo de desarrollo del núcleo pueda notificar a todos los usuarios de Bitcoin por un grave problema en la red bitcoin, como un error crítico que requiere la intervención del usuario. El sistema de alerta sólo se ha utilizado un puñado de veces, sobre todo a principios de 2013, cuando un error de base de datos críticos causó un fork multibloque que ocurrió en la cadena de bloques de bitcoin.</p></div>
+<div class="paragraph"><p>Los mensajes de alerta se propagan por el mensaje <tt>alert</tt>. El mensaje de alerta contiene varios campos, incluyendo:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+ID
+</dt>
+<dd>
+<p>
+Un identificador de alerta de modo que las alertas duplicados puede ser detectadas
+</p>
+</dd>
+<dt class="hdlist1">
+Vencimiento 
+</dt>
+<dd>
+<p>
+Un tiempo después de que expire la alerta
+</p>
+</dd>
+<dt class="hdlist1">
+ParadaHasta
+</dt>
+<dd>
+<p>
+Un tiempo después de que la alerta no debe ser transmitida
+</p>
+</dd>
+<dt class="hdlist1">
+MinVer, MaxVer
+</dt>
+<dd>
+<p>
+El rango de versiones de protocolo Bitcoin a los cuales se aplica esta alerta
+</p>
+</dd>
+<dt class="hdlist1">
+subVer
+</dt>
+<dd>
+<p>
+La versión del software de cliente que se aplica a esta alerta
+</p>
+</dd>
+<dt class="hdlist1">
+Prioridad 
+</dt>
+<dd>
+<p>
+Un nivel de prioridad de alerta, actualmente no se utiliza
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Las alertas son criptográficamente firmados por una clave pública. La clave privada correspondiente está en manos de unos pocos miembros selectos del equipo de desarrollo del núcleo. La firma digital asegura que falsas alertas no se propagarán en la red.</p></div>
+<div class="paragraph"><p>Cada nodo de recibir este mensaje de alerta debe verificarlo, compruebar el vencimiento y propagarlo a todos sus compañeros, garantizando así la propagación rápida en toda la red. Además de la propagación de la alerta, los nodos pueden implementar una función de interfaz de usuario para presentar la alerta al usuario.</p></div>
+<div class="paragraph"><p> En el cliente Bitcoin Core, la alerta está configurado con la opción de línea de comandos <tt>-alertnotify +, que especifica un comando a ejecutar cuando se recibe una alerta. El mensaje de alerta se pasa como un parámetro al comando +alertnotify</tt>. Por lo general, el comando <tt>alertnotify</tt> se establece para generar un mensaje de correo electrónico al administrador del nodo, que contiene el mensaje de alerta. La alerta también se muestra como un cuadro de diálogo emergente en la interfaz gráfica de usuario (bitcoin-Qt) si se está ejecutando.</p></div>
+<div class="paragraph"><p>Otras implementaciones del protocolo bitcoin pueden manejar la alerta de diferentes maneras.  Muchos sistemas de minería bitcoin hardware embebido pueden no aplicar la función de mensajes de alerta porque no tienen interfaz de usuario. Se recomienda encarecidamente que los mineros que ejecutan estos sistemas mineras suscribirse a las alertas a través de un operador de la pool minera o ejecutando un nodo ligera sólo para fines de alerta. </p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:58:23 UTC
+</div>
+</div>
+</body>
+</html>

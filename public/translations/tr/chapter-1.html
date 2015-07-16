@@ -1,0 +1,1064 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch01_intro_what_is_bitcoin">Giriş</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bitcoin_nedir">Bitcoin Nedir?</h3>
+<div class="paragraph"><p>Bitcoin bir dijital para ekosisteminin dayanağını oluşturan kavramlar ve teknolojiler birikimidir. Bitcoinler denilen para birimleri bitcoin ağı içerisindeki katılımcıların arasında kıymet(değer) aktarmak ve saklamak için kullanılırlar. Bitcoin kullanıcıları birbirlerine bitcoin protokolü kullanarak esas olarak internet üzerinden ulaştıkları gibi başka farklı iletişim ağları üzerinden de ulaşabilirler. Bir açık kaynak yazılım olarak mevcut olan Bitcoin Protokol Yığını , dizüstü bilgisayarlar ve akıllı telefonlar gibi birçok bilgi-işlem cihazında çalıştırılabildiği için bu teknolojiye erişim kolaylaşır.</p></div>
+<div class="paragraph"><p>Kullanıcılar geleneksel para birimleriyle yapabilecekleri neredeyse her işi bitcoinlerle ağ üzerinden göndermek suretiyle de halledebilirler. Bu işler mal alıp satmak, kişilere veya kuruluşlara para göndermek yada kredi vermek olabilir. Bitcoinler bazı özel para borsalarında alınabilir,satılabilir ve diğer para birimlerine dönüştürülebilir. Bitcoin  internet için bir bakıma mükemmel bir para şeklidir çünkü çok hızlı, güvenli ve sınırsızdır (coğrafi).</p></div>
+<div class="paragraph"><p>Geleneksel para birimlerinin aksine, Bitcoinler tamamen sanaldır. Ortada fiziksel madeni para(coin) hatta dijital sikke filan da yoktur. Sikkeler(coins) göndericiden alıcıya kıymet(değer) transferi için mecazi ima edilir. Bitcoin kullanıcıları , bitcoin ağındaki işlemlerin mülkiyet(sahibiyet)ini ispatlamak için anahtarlara sahiptirler. Bu anahtarları kullanarak kıymet(değer)lerin kilitlerini açıp harcar ve başka bir alıcıya aktarır. Bu anahtarlar genelde her kullanıcının kendi bilgisayarında bir dijital cüzdanda saklanır. Bitcoinleri harcamak için tek ön koşul bir işlemin kilidini açacak anahtara sahip olmaktır. Bu sayede her bir kullanıcı kontrolü kendi elinde tutmuş olur.</p></div>
+<div class="paragraph"><p>Bitcoin dağıtımlı , eşler arası bir sistemdir. Yani bir "merkezi" sunucu yada kontrol noktası yoktur. Bitcoinler "madencilik" adı verilen bir yolla ortaya çıkar(yaratılır). Madencilik, bitcoin işlemleri görüldüğü esnada matematiksel bir problemi çözmek için rekabet etmektir. Bitcoin ağındaki herhangi bir katılımcı(full bitcoin protokol yığınınıyla çalışan bir cihazı kullanan herhangi biri) madenci olarak iş görebilir. Kendi bilgisayarının işlemci gücünü ağdaki işlemleri doğrulamak ve kaydetmek için kullanır. Ortlama her 10 dakikada biri son 10 dakikada gerçekleşen işlemleri doğrulamayı başarır ve ödül olarak yepyeni bitcoinlerin ilk sahibi olmayı hak eder. Esasen bitcoin madenciliği, bir merkez bankasının para basma(tedavüle çıkarma) ve takas fonksiyonunu dağıtır(merkezsizleştirir) ve bu küresel rekabet sayesinde  herhangi bir merkez bankası ihtiyacını ortadan kaldırır.</p></div>
+<div class="paragraph"><p>Bitcoin protokolünün yapısında ağdaki madencilerin çalışmalarını regüle eden algoritmalar bulunur. Bitcoin ağındaki işlemlerin oluşturduğu bloğun başarıyla kayıt edilmesi gerekmektedir.  Madencilerin üstlendiği bu görevin zorluk derecesi ise dinamik olarak ayarlanır , öyleki herhangi bir anda kaç madenci (ve CPU) çalışıyorsa çalışsın ortalama her 10 dakikada bir kişi başarılı olur.  . Protokol her dört yılda yeni bitcoin yaratma oranını yarıya indirir ve  yaratılacak toplam bitcoin sayısının limitini sabit olarak 21 milyonda tutar. Sonuç olarak sirkülasyondaki bitcoin sayısı tahmin edilebilir bir grafik eğrisini yakından takip eder, bu eğri 2140 yılında 21 milyona ulaşmış olur.  Bu azalan üretim oranı yüzünden bitcoin uzun vadede deflasyona neden olan bir para birimidir. Dahası, beklenen üretim oranından fazla ve ötede yeni para "basılması" söz konusu olmadığından bitcoin hacmi şişmez.</p></div>
+<div class="paragraph"><p>Sahne arkasında, bitcoin kullanılan bu protokolün adıdır, bir ağ ve bir dağıtık bilgi işlem buluşudur. Para olarak bitcoin ise bu buluşun sadece bir ilk uygulamasıdır. Ben bir geliştirici olarak bitcoini paranın-internetine benzetiyorum, öyleki değerin(kıymetin) üzerinde dağıtıldığı bir ağ vede dijital varlık sahibiyetinin dağıtık bilgi-işlem aracılığı ile temin edilmesi olarak. Kısacası bitcoin aslında gözle görünenden çok daha fazla şey sunar.</p></div>
+<div class="paragraph"><p>Bu bölüme, gerekli yazılımı elde etme, basit işlemler için bitcoini kullanma ve temel kavram ve terimlerden bazılarını açıklayarak başlayacağız. İleri ki bölümlerde bitcoini oluşturan bu teknoloji paketinin katmanlarını açmaya başlayacağız ve bitcoin ağı ve protokolünün iç işleyişini inceleyeceğiz.</p></div>
+<div class="paragraph"><p>Bitcoin Öncesinde Sayısal Paralar</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Sorunsuz çalışan bir  dijital paranın bu ortaya çıkışı kriptografi alanındaki gelişmelerle yakından bağlantılıdır. Bu aslında çok şaşırılacak bir durum değil. Çünkü mal ve hizmetleri takas edeceğiniz kıymet(değer)leri temsil etmek için bitleri kullanmak bayağı bir uğraşı gerektiriyor. Dijital parayı kabul edebilecek bir kişi için şu iki temel soru geçerlidir:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Bu paranın sahte değil hakiki olduğuna güvenebilir miyim?
+</p>
+</li>
+<li>
+<p>
+Başkalarının , bu paranın bana değil de kendilerine ait oluğunu iddia etmeyeceklerinden emin olabilir miyim?(Aka the “double-spend” problem.)
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>Kağıt para basanlar sürekli ortaya çıkan sahte para problemine karşı gittikçe daha sofistike kağıt ve baskı teknikleri kullanarak  mücadele ediyorlar. Geleneksel para, çifte-harcama problemini kolayca ortadan kaldırıyor çünkü bir kağıt para aynı anda iki yerde olamaz. Tabiiki geleneksel para da dijital olarak aktarılabilir ve muhafaza edilebilir. Bu gibi durumlarda  tüm elektronik işlemlerin, dolaşımdaki para biriminin genel bir görüşüne sahip merkezi otoritelerin elinden geçmesiyle sahtekarlık ve çifte-harcama sorunları halledilir. Ezoterik mürekkeplerin ve holografik şeritlerin faydalarından yararlanamayan dijital para için,  kriptografi bir kullanıcının değer talebinin meşruluğuna güvenmek için temel sağlar. Özellikle, kriptografik dijital imzalar bir kullanıcıya, dijital bir varlığı imzalamasına ya da o varlığın sahipliğini kanıtlayan işlem yapmasına olanak sağlar. Uygun mimarisi ile dijital imzalar, çift harcama sorununu gidermek için de kullanılabilir.</p></div>
+<div class="paragraph"><p>Kriptografi 1980&#8217;lerin sonlarında anlaşılmaya ve daha yaygın kullanılmaya başladığında, çoğu araştırmacı dijital para birimlerini kriptografiyi kullanarak inşa etmeye çalıştı. Bu ilk dijital para birimi çalışmaları genellikle ulusal bir para birimi ya da altın gibi değerli bir metal tarafından desteklenen dijital parayı üretti.</p></div>
+<div class="paragraph"><p>Bu ilk dijital para birimleri iyi iş görmesine rağmen, merkeziydi ve sonuç olarak hükümetler ve bilgisayar korsanları tarafından saldırılması kolaydı. İlk dijital para birimleri, geleneksel bankacılık sistemindeki gibi, belli aralıklarda tüm işlemleri düzenleyen merkezi bir takas odasıydı. Malesef, henüz olgunlaşmamış bu dijital para birimleri çoğu durumda endişeli hükümetler tarafından hedef haline getirildi ve sonucunda sonlandırılmaları için dava açıldı. Bazı şirketler büyük çöküşlerde ana şirket onları aniden tasfiye ettiğinde başarısız oldu. Muhalifler (meşru hükümetler ya da bilgisayar korsanları) tarafından yapılabilecek müdahalelere karşı sağlam durabilmek ve tek bir noktaya yapılacak saldırılardan kaçınmak için merkezi olmayan bir dijital para birimi gerekliydi. Bitcoin, tamamen merkezsiz olarak tasarlanmış, onu bozulacak ya da saldırı yapılabilecek bir kontrol noktası olmayan ve herhangi merkezi bir yetkilinin olmadığı bir sistemdir.</p></div>
+<div class="paragraph"><p>Bitcoin kriptografide ki yıllar süren araştırmaların ve dağıtık sistemlerin zirve noktasını temsil eder ve benzersiz ve güçlü 4 temel yenilik içerir. Bitcoini oluşturan unsurlar:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Merkezi olmayan eşten eşe bir ağ(Bitcoin Protokolü)
+</p>
+</li>
+<li>
+<p>
+Halka açık bir işlem defteri(blok zinciri)
+</p>
+</li>
+<li>
+<p>
+Merkezsiz matematiksel ve belirli bir para üretimi(dağıtık madencilik)
+</p>
+</li>
+<li>
+<p>
+Merkezi olmayan bir işlem doğrulama sistemi(işlem yazısı)
+</p>
+</li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_bitcoin_8217_in_tarihi">Bitcoin&#8217;in Tarihi</h3>
+<div class="paragraph"><p> Bitcoin  "Bitcoin: Eşten Eşe Elektronik Ödeme Sistemi" başlığı ve Satoshi Nakamoto takma adı ile yayınlanan bir makale ile 2008&#8217;de bulundu.  Nakamoto  b-para ve HashCash gibi birçok önceki buluşu, para üretimi ya da ödeme ve işlemlerin onaylanması için merkezi bir yetkiye ihtiyaç duymayan tamamen merkezsiz bir elektronik ödeme sistemi oluşturmak için birleştirdi. Önemli nokta, her 10 dakikada bir merkezi olmayan ağa oy birliğine varması için izin veren, küresel bir seçimi yürütmek için dağıtılmış hesaplama sistemini (called a "proof-of-work" algorithm) kullanmaktı. Bu, tek bir para biriminin iki defa harcanmış olabileceği anlamına gelen çift harcama sorununa hassas bir çözüm getirir. Önceden, çift harcama problemi dijital para birimlerinin zayıf bir noktasıydı ve merkezi bir takas odası yoluyla tüm işlemler takas edilerek gönderilirdi.</p></div>
+<div class="paragraph"><p>Bitcoin ağı, birçok yazılımcı tarafından düzeltildikten  sonra Nakamoto tarafından yayınlanan bir referans uygulamasına dayanarak 2009 yılında başladı. Bitcoin için esnekliği ve güvenliği sağlayan dağıtılmış hesaplama sistemi hızla arttı ve şimdi dünyanın en iyi süper-bilgisayarlarının işlem kapasitesinin birleşimini aşıyor. Bitcoinin toplam market değerinin, bitcoin-dolar değişim oranına bağlı olarak 5-10 milyar Amerikan Doları arasında olduğu tahmin ediliyor. Ağ tarafından bugüne kadar ki yapılmış en büyük işlem 150 milyon Amerikan Dolarıydı ve hiçbir kesinti olmadan anında iletildi.</p></div>
+<div class="paragraph"><p>Satoshi Nakamoto Nisan 2011&#8217;de, kodun ve ağın geliştirilmesi sorumluluğunu büyüyen gönüllüler grubuna bırakarak topluluktan ayrıldı. Bitcoinin arkasındaki kişi ya da kişilerin kimliği hala bilinmiyor. Bununla birlikte, ne Satoshi Nakamoto ne de başka herhangi biri, tamamen şeffaf matematiksel kurallara dayanarak yürütülen bitcoin sistemi üzerinde kontrol sağlayamaz. Onun kendisi çığır açan bir buluştur ve şimdiden ekonomi, ekonometri ve dağıtılmış hesaplama alanlarında yeni bilimler türetmiştir.</p></div>
+<div class="paragraph"><p>Bir Dağıtık Hesaplama Problemine Çözüm</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Satoshi Nakamoto&#8217;nun buluşu "Bizans Generalleri Problemi" olarak ta bilinen, dağıtılmış hesaplamada daha önce çözülmemiş problemin de pratik bir çözümüdür.  Kısacası problem, güvenilmez ve muhtemelen tehlikeli bir ağ üzeriden bilgi değiş-tokuşu yapılarak bir hareket tarzı üzerinde anlaşma denemelerinden oluşuyor. Satoshi Nakamoto&#8217;nun, merkezi güvenilir bir yetkili olmaksızın uzlaşma sağlamak için iş-kanıtı kavramını kullanan çözümü, dağıtık hesaplama biliminde ki bir buluşu temsil eder ve  bunun para birimi olmanın ötesinde geniş bir uygulanabilirliği vardır. Seçimlerin, piyangoların, varlık kayıtlarının, dijital noterin ve daha birçok şeyin adilliğini kanıtlayarak merkezsiz ağlarda uzlaşma sağlamak için kullanılabilir.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="user-stories">Bitcoin Kullanımı, Kullanıcılar ve Hikayeleri</h3>
+<div class="paragraph"><p>Bitcoin bir terknolojidir ama parayı asıl olarak insanların aralarında değer(kıymet) takas etmek için kullandıkları bir lisan olarak ifade eder. Gelin bitcoinin para ve protokol olarak insanlar tarafından nasıl kullanıldıklarını bir kaç kişiyi örnek vererek ele alalım. Bu kişilerin öykülerini kitap süresince kullanarak dijital paranın gerçek hayattaki kullanım alanlarını ve bitcoinin barındırdırdığı birçok teknolojinin bunları nasıl mümkün kıldığını sergileyeceğiz.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Kuzey Amerikan düşük-değer perakende
+</dt>
+<dd>
+<p>
+Alice Kuzey Kaliforniya nın körfez bölgesinde yaşıyor. Bitcoini bilgisayar kurdu olan kız arkadaşlarından duymuş ve kullanmaya başlamak istiyor. Onun bitcoini nasıl öğrendiğini, nasıl sahip olduğunu ve daha sonra birazını da Palo Alto&#8217;daki Bob&#8217;un Kafe' sinde bir fincan kahve satın almak için nasıl harcadığını göreceğiz. Onun öyküsü bize yazılımı,borsaları ve temel işlemleri bir perakende-tüketicisinin bakış açısıyla sunacak.
+</p>
+</dd>
+<dt class="hdlist1">
+Kuzey Amerikan  yüksek-değer perakende
+</dt>
+<dd>
+<p>
+Carol&#8217;un San Francisco&#8217;da bir sanat galerisi var. Bitcoin karşılığında pahalı tablolar satıyor. Onun öyküsü bize yüksek-değerli mallar satan işletmeler için var olan "%51" mutabakat-saldırı risklerini sergileyecek.
+</p>
+</dd>
+<dt class="hdlist1">
+Offshore sözleşme hizmetleri
+</dt>
+<dd>
+<p>
+Palo Alto&#8217;daki Kafe sahibi Bob kendine yeni bir web sitesi kurmak istiyor. Bu işi yapması için Bangalore&#8217;da yaşayan Hindistanlı web developer Gopesh beyle bir taahhüt sözleşmesi yapıyor. Gopesh bey hizmetinin  bitcoin olarak ödenmesini kabul ediyor. Bu öykü bitcoinin dışarıdan kaynak edinmede,taahhüt hizmetlerinde ve uluslararası havale transferlerinde nasıl kullanıldığını inceleyecek.
+</p>
+</dd>
+<dt class="hdlist1">
+Hayırsever bağışları
+</dt>
+<dd>
+<p>
+Eugenia Filipinler&#8217;de bir çocuk-yardım derneğinin yöneticisi. Bitcoini geçenlerde keşfetti ve derneği için yerli ve yabancı hayırseverlerden yeni bağışlar toplayabilmek için kullanmak istiyor. Bunun yanında bitcoini kullanarak ihtiyacı olan bölgelere fonları nasıl daha hızlı dağıtabileceğinin yollarına da bakıyor. Bu öykü bitcoinin nasıl küresel çapta bağış toplamak için sınırlar ve dövizler arasında  kullanılabileceğini ve yardım kuruluşlarının şeffaflık için nasıl bir açık defterikebir kullanabileceklerine göz atacak.
+</p>
+</dd>
+<dt class="hdlist1">
+İthalat / İhracat
+</dt>
+<dd>
+<p>
+Muhammed Dubai&#8217;de bir elektronik ithalatçısı. ABD ve Çin&#8217;den satın alacağı elektroniği Birleşik Arap Emirliklerine ithal ederken ödeme işlemlerinin hızlanabilmesi için bitcoini denemek istiyor. Bu öykü fiziksel malların ticaretinde büyük firmaların uluslararası ödemler için nasıl bitcoin kullanabileceklerini gösterecek.
+</p>
+</dd>
+<dt class="hdlist1">
+Bitcoin madenciliği
+</dt>
+<dd>
+<p>
+Jing Şangay&#8217;da bir bilgisayar mühendisliği öğrencisi. Mühendislik becerilerini kullanarak bir ek gelir sağlasın diye bitcoin madenciliği yapıyor. Bu amaçla kendine bir madencilik teçhizatı toplamış . Bu öyküde  bitcoinin endüstriyel  tabanı , özel ekipmanlar aracılığıyla tedavüle yeni para tedarik edilmesi ve bitcoin ağının güvenliğinin sağlanması incelenecek.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Bu öykülerin her biri hali hazırda bitcoin kullanan gerçek kişilere ve gerçek endüstrilere dayanmaktadır. Bu kişiler ve endüstriler bitcoin kullanarak yeni piyasalar ve küresel ekonomik problemlere yenilikçi çözümler üretiyorlar.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_başlarken">Başlarken</h3>
+<div class="paragraph"><p>Bitcoin ağına katılmak ve bu para birimini kullanmak isteyen bir kullanıcının tek yapması gereken şey bilgisayarına internetten bir uygulama indirmek ya da bir web uygulaması kullanmaktır. Bitcoin bir standarttır , bu yüzden bitcoin istemci yazılımının bir çok tatbiki mevcut. Ayrıca Satoshi istemcisi olarak da bilinen bir kaynak uygulaması da bulunuyor. Bu uygulama,  Satoshi Nakamoto&#8217;nun yazdığı orjinal uygulamadan türetilmiş ve bir grup geliştirici tarafından açık kaynak olarak yönetilmektedir.</p></div>
+<div class="paragraph"><p>Bitcoin istemcilerinin üç temel biçimi:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Full istemci
+</dt>
+<dd>
+<p>
+Bir tam istemci, yada ”tam düğüm” , bütün bitcoin işlemlerinin tüm kayıtlarını (her kullanıcının her işlemini, gelmiş-geçmiş her) muhafaza eden,kullanıcıların cüzdanlarını yöneten ve işlemleri doğrudan bitcoin ağı üzerinde başlatabilen bir istemcidir. Bu, tek başına bir e-posta sunucusuna benzer. Yani öyleki protokolün her türlü özelliğini başka hiç bir üçüncü şahıs hizmetine gerek duymadan yürütür.
+</p>
+</dd>
+<dt class="hdlist1">
+Hafif Siklet İstemci
+</dt>
+<dd>
+<p>
+Bir hafif siklet istemci, kullanıcının cüzdanını muhafaza eder fakat bitcoin işlemlerine ve ağına giriş için üçüncü şahıslara ait sunuculara gerenekisinim duyar. Hafif istemci bütün işlemlerin tam kopyasını muhafaza etmez bu yüzden  işlemleri teyit etmek için üçüncü şahıs sunuculara güvenmek zorundadır. Bu, posta kutusuna giriş için bir posta sunucusuna bağlanan ve tek başına olan bir e-posta istemcisine benzer. Yani öyleki, ağla etkileşim  için üçüncü şahsa gereksinim duyar.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Ağ istemcisi:: Ağ istemcilerine bir ağ tarayıcısı üzerinden ulaşılır ve bunlar kullanıcılarının cüzdanlarını üçüncü tarafa ait bir sunucuda depolarlar. Bu, tamamen üçüncü taraf sunucusuna güvene dayalı e-posta hizmetine benzerdir.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Mobil Bitcoin</div>
+<div class="paragraph"><p>Android gibi sistemlere sahip akıllı telefonlardaki mobil istemciler, ya tam istemci, ya hafif istemci ya da web istemcileri olarak iş görebilirler. Bazı mobil istemciler masa üstü ya da web istemcilerle senkronize olurlar ki böylece birden fazla cihaz üzerinden çoklu-platform cüzdanı sağlarlar ederler ama ortak tek bir fon kaynağını kullanırlar.</p></div>
+</div></div>
+<div class="paragraph"><p>Bitcoin istemcisinin seçimi, kullanıcının parası üzerinde ne kadar kontrol istediğine bağlıdır. Tam bir istemci kullanıcıya en yüksek seviyede kontrol ve bağımsızlık sunacaktır fakat yedekleme ve güvenlik yükünü kullanıcının üzerine bırakacaktır. Seçenek aralığının diğer ucunda, bir ağ istemcisi ayarlamak ve kullanmak için en kolay yoldur fakat bir ağ istemcisi ile takas yapmak karşı taraf riski olarak tanımlanır çünkü güvenlik ve kontrol kullanıcı ve ağ hizmetinin sahibi arasında paylaşılmıştır. Eğer bir ağ cüzdan hizmeti tehlikeye düşerse, çoğunun düştüğü gibi, kullanıcılar tüm paralarını kaybedebilir. Tersine, eğer kullanıcılar uygun yedekleme yapmaksızın tam bir istemci kullanırsa, bir bilgisayar arızası nedeniyle paralarını kaybedebilirler.</p></div>
+<div class="paragraph"><p>Bu kitabın amaçlarından biri, indirilebilir çeşitli bitcoin istemcilerinin[referans uygulamasından(the Satoshi client) ağ cüzdanlarına kadar] kullanımlarını göstermektir. Örneklerden bazıları, tam bir istemci olmanın yanı sıra cüzdan, ağ ve işlem hizmetlerine ait API&#8217;leri ortaya çıkaran referans istemcinin kullanımını gerektirecektir. Eğer bitcoin sistemindeki program arayüzlerini araştırmayı düşünüyorsanız, referans istemcisine ihtiyacınız olacak.</p></div>
+<div class="sect3">
+<h4 id="_hızlı_başlangıç">Hızlı Başlangıç</h4>
+<div class="paragraph"><p>Alice, burada tanıttığımız kişi<a href="#user-stories">[user-stories]</a>, teknik bir kullanıcı değil, sadece bitcoini arkadaşından yeni duymuş biri. Onun yolculuğu, geniş bir bitcoin istemci seçeneğinin bulunduğu  <a href="http://www.bitcoin.org">bitcoin.org</a> resmi sitesini ziyaret ederek başlıyor. Alice, bitcoin.org sitesindeki önerileri takip ederek hafif siklet bir bitcoin istemcisi olan Multibit&#8217;i seçiyor.</p></div>
+<div class="paragraph"><p>Alice, bitcoin.org sitesindeki bir bağlantıyı takip ederek Multibit&#8217;i indiriyor ve masa üstüne kuruyor. Multibit; Windows, Mac OS ve Linux üzerinde kullanılabilmektedir.</p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph"><p> Bir bitcoin cüzdanı mutlaka parola ile korunmalıdır. Zayıf parolaları kırmaya çalışan çok sayıda kötü niyetli kişi vardır. Bu yüzden kolayca kırılamayacak bir tane parola seçmeye dikkat edin. Küçük ve büyük karakterleri, numaraları ve sembolleri birlikte kullanın. Şahsınıza ait bilgileri(tuttuğunuz takım, doğum tarihi vb.) parolalarınızda kullanmayın. Herhangi bir dilde sözlüklerde  yaygın olarak kullanılan kelimelerden kaçının. Eğer yapabilirseniz,  tamamen rastgele ve en az 12 karakter uzunluğunda bir parola oluşturmak için parola üretici kullanın. Unutmayın: Bitcoin paradır ve dünyanın herhangi bir yerine anında iletilebilir. Eğer iyi korunmazsa kolayca çalınabilir.</p></div>
+</div></div>
+<div class="paragraph"><p>Alice Multibit uygulamasını indirip kurduktan sonra, onu çalıştırır ve şu şekilde <a href="#multibit-welcome">[multibit-welcome]</a> bir Hoşgeldiniz ekranı ile karşılanır.</p></div>
+<div class="imageblock" id="multibit-welcome">
+<div class="content">
+<img src="images/msbt_0101.png" alt="MultibitWelcome" />
+</div>
+<div class="title">Figure 1. Multibit bitcoin istemcisi Hoş geldiniz ekranı</div>
+</div>
+<div class="paragraph"><p>Multibit kendiliğinden Alice için bir cüzdan ve yeni bir bitcoin adresi oluşturur. Alice burada gösterilen <a href="#multibit-request">[multibit-request]</a> istek sekmesine tıklayarak bunları görebilir.</p></div>
+<div class="paragraph" id="multibit-request"><p>Alice&#8217;in yeni bitcoin adresleri, Multibit istemcisinin istek sekmesinde
+<span class="image">
+<img src=":images/msbt_0102.png" alt="MultibitReceive" />
+</span></p></div>
+<div class="paragraph"><p>Bu ekrandaki en önemli şey Alice&#8217;in bitcoin adresinin bir e-posta adresi gibi olması. Alice bu adresi paylaşabilir ve herkes bu adresi doğrudan onun cüzdanına para göndermek için kullanabilir. Ekranda sayı ve numaralardan oluşan uzun bir dize olarak görünüyor: <tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>. Cüzdandaki bitcoin adresinin yanındaki QR kod, akıllı telefonların kameraları ile taranabilecek bir biçimde  ve aynı bilgileri içeren bir çeşit barkoddur. QR kod ekranın sağ tarafındaki siyah beyaz kare şeklindedir.Alice kopyala düğmesine basarak birbirine bitişik olan bitcoin adresini ya da QR kodunu kopyalayabilir. QR kodun üzerine tıklamak onu büyütecektir. Böylelikle akıllı telefonların kameraları tarafından kolaylıkla taranabilir hale gelecektir.</p></div>
+<div class="paragraph"><p>Alice, sayı ve harflerden oluşan bu uzun dizeyi yazmalarına gerek kalmadan, adresini başkalarına kolayca verebilmek için QR kodun çıktısını da alabilir.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p> Bitcoin adresleri 1 ya da 3 ile başlar. E-posta adreslerinde olduğu gibi, bu adresler doğrudan cüzdanınıza bitcoin göndermek isteyen diğer bitcoin kullanıcıları ile paylaşılabilir. E-posta adreslerinin aksine, hepsinin paralarınızı cüzdanınıza yönlendireceği  yeni adresleri istediğiniz sıklıkta oluşturabilirsiniz. Cüzdan basitçe adreslerin ve içindeki paranın kilidini açan anahtarların toplandığı yerdir. Gizliliğinizi, her işlemde farklı bir adres kullanarak arttırabilirsiniz. Kullanıcıların oluşturabileceği adres sayılarında pratikte hiç sınır yoktur.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Alice şimdi yeni bitcoin cüzdanını kullanmaya hazır.</p></div>
+</div>
+<div class="sect3">
+<h4 id="getting_first_bitcoin">İlk Bitcoinlerinizi Almak</h4>
+<div class="paragraph"><p> Şu anda döviz bürolarından ya da bir bankadan bitcoin almak mümkün değildir. 2014 yılı itibariyle, çoğu ülkede bitcoin elde etmek hala oldukça zordur. Yerel para birimleri ile bitcoin alıp satabileceğiniz az sayıda, ihtisaslaşmış döviz borsaları vardır. Bunlar ağ tabanlı para birimi piyasaları olarak faaliyet gösterir ve bunlardan bazıları:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="http://bitstamp.net">Bitstamp</a>
+</dt>
+<dd>
+<p>
+Banka havalesi yolu ile Euro ve Dolar gibi birkaç çeşit para birimini de destekleyen bir Avrupa döviz piyasasıdır.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.coinbase.com">Coinbase</a>
+</dt>
+<dd>
+<p>
+Amerika Birleşik Devletleri tabanlı, tüccarların ve tüketicilerin bitcoin ile işlem yapabildiği bir platform ve aynı zamanda bir bitcoin cüzdanıdır. Coinbase, ACH sistemi yoluyla kullanıcıların ABD çek hesaplarına bağlanmasına olanak sağlayarak bitcoin satıp-almayı kolaylaştırır.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Bu gibi kripto para borsaları, milli para birimleri ve kripto para birimlerinin kesişiminde faaliyet gösterir. Bu şekilde, ulusal ve uluslararası düzenlemelere tabi olurlar. Onlar genellikle tek bir ülke ya da ekonomik bir alana özgüdür ve o bölgenin ulusal para biriminde uzmanlaşmıştır. Döviz borsası seçiminiz kullandığınız ulusal para birimine göre belirlenecek ve ülkenizde yasal yetki alanı içinde faaliyet gösteren borsalarla sınırlı kalacaktır. Bir banka hesabı açmak gibi, bu hizmetleri kullanmak için gerekli hesapları ayarlamak birkaç gün ya da haftalar alır. Çünkü onlar, müşteriyi tanıma ve anti-kara para aklama gibi bankacılık düzenlemelerine riayet etmek için çeşitli kimlik bilgileri isterler. Bitcoin borsasından bir hesap açtıktan sonra, bir komisyoncu hesabı ile döviz alıyormuş gibi bitcoinleri hızlıca alıp satabilirsiniz.</p></div>
+<div class="paragraph"><p>Daha eksiksiz bir listeyi, çok sayıda döviz borsasının piyasa verilerini ve fiyat tekliflerini sunan <a href="http://bitcoincharts.com/markets">bitcoin charts</a> adresinden bulabilirsiniz.</p></div>
+<div class="paragraph"><p>Yeni bir kullanıcı olarak bitcoin alabileceğiniz diğer dört yöntem:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Bitcoini olan bir arkadaş bulmak ve doğruca ondan satın almak. Çoğu bitcoin kullanıcısı bu yolu kullanır.
+</p>
+</li>
+<li>
+<p>
+Bölgenizde bulunan bir satıcıdan münferit bir işlemle nakit ile bitcoin almak için localbitcoins.com gibi sınıflandırılmış bir servis kullanmak.
+</p>
+</li>
+<li>
+<p>
+Bitcoin için bir hizmet ve ürün satmak. Eğer bir yazılımcı iseniz, yazılım kabiliyetlerinizi satınız.
+</p>
+</li>
+<li>
+<p>
+Şehrinizdeki bir bitcoin ATM&#8217;sini kullanın. <a href="http://www.coindesk.com/bitcoin-atm-map/">CoinDesk</a> çevrim içi haritalarından size yakın bir bitcoin ATM&#8217;si bulun.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Alice bitcoin ile bir arkadaşı tarafından tanıştırıldı ve California kripto para marketindeki onaylanmış ve aktif edilmiş hesabı ile kolayca bitcoin alabileceği bir yola sahip.</p></div>
+</div>
+<div class="sect3">
+<h4 id="sending_receiving">Bitcoin Gönderme ve Alma</h4>
+<div class="paragraph"><p>Alice bitcoin cüzdanını oluşturdu ve şimdi para almaya hazır. Onun cüzdan uygulaması bitcoin adresi ile ilişkili rastgele bir özel anahtar (burada<a href="#private_keys">[private_keys]</a> daha detaylı anlatıldı) üretti. Bu noktada, onun bitcoin adresini bitcoin ağı tarafından bilinmiyor ya da bitcoin sisteminin herhangi bir parçasında "kayıtlı" değil. Onun bitcoin adresi, parasına erişimi kontrol etmek için kullanabileceği bir anahtara karşılık gelen basitçe bir numaradır. Bir hesap ya da bir hesapla adresler arasında bir ilişki yoktur. Bitcoin defterine(blok zinciri) postalanan bir işlemdeki değer alıcısı olarak bu adrese başvurulana kadar, o sadece bitcoinde geçerli olan çok sayıdaki olası adreslerin bir parçasıdır. Bu adres bir işlem ile ilişkilendirilmiş olduğunda, ağda tanınan adreslerin bir parçası olur ve Alice bakiyesini herkes tarafından görülebilen defter(blok zinciri) üzerinden kontrol edebilir.</p></div>
+<div class="paragraph"><p>Alice yerel bir lokantada kendisini bitcoin ile tanıştıran arkadaşı Joe ile buluşur. Böylece onlar hesaplarına bitcoin alabilmek için Amerikan doları ile takas yapabilirler. Alice bitcoin cüzdanında ki QR kod ve bitcoin adresinin bir çıktısını getirdi. Bitcoin adresinin güvenlik açısından hassas bir durumu yok. Bitcoin adresi istenilen her yere yazılabilir ve bu onun hesabının güvenliğini riske atmaz.</p></div>
+<div class="paragraph"><p>Alice, bu yeni teknolojide çok fazla para riske etmemek için 10 dolarını bitcoine çevirmek istiyor. 10 doları ve adresinin çıktısını, kendisine 10 dolara eşdeğerde bitcoin gönderebilmesi için Joe&#8217;ya veriyor.</p></div>
+<div class="paragraph"><p>Daha sonra Joe, Alice&#8217;e doğru miktarda bitcoin verebilmek için döviz kurlarını hesaplamak zorunda. Mevcut piyasa kurunu verebilecek yüzlerce uygulama ve site var. İşte onların en popüler olanlarından bazıları:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="http://bitcoincharts.com">Bitcoin Charts</a>
+</dt>
+<dd>
+<p>
+ Dünya çapında birçok  farklı yerel para birimi cinsinden bitcoin piyasa kurunu gösteren bir piyasa verisi listeleme servisidir.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://bitcoinaverage.com/">Bitcoin Average</a>
+</dt>
+<dd>
+<p>
+ Her bir para birimi için hacim-ağırlık-ortalama cinsinden basit bir görünümünü sunan bir sitedir.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.zeroblock.com/">ZeroBlock</a>
+</dt>
+<dd>
+<p>
+ Farklı borsalarda ki bitcoin fiyatlarını gösteren ücretsiz bir Android ve iOS uygulamasıdır. (bakınız<a href="#zeroblock-android">[zeroblock-android]</a>)
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.bitcoinwisdom.com/">Bitcoin Wisdom</a>
+</dt>
+<dd>
+<p>
+ Bir diğer piyasa verileri listeleme servisi.
+</p>
+</dd>
+</dl></div>
+<div class="imageblock" id="zeroblock-android">
+<div class="content">
+<img src="images/msbt_0103.png" alt="zeroblock screenshot" />
+</div>
+<div class="title">Figure 2. ZeroBlock, Android ve iOS için bitcoin piyasa fiyatı uygulaması</div>
+</div>
+<div class="paragraph"><p>listelenen siteleri ya da uygulamaları kullanarak, Joe bir bitcoinin yaklaşık değerinin 100 dolar olduğuna karar veriyor. Bu kura göre Joe Alice&#8217;ten aldığı 10 doların karşılığı olarak ona 0.10(100 millibit) bitcoin vermelidir.</p></div>
+<div class="paragraph"><p>Joe adil bir takas fiyatı belirlediğinde, mobil cüzdan uygulamasını açar ve bitcoin "gönder" seçeneğini seçer. Örneğin, eğer o android bir telefonda Blockchain mobil cüzdanını kullanıyorsa, ekranında iki girdi isteyen şu şekilde bir görüntü<a href="#blockchain-mobile-send">[blockchain-mobile-send]</a> görecektir.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+İşlemin gideceği bitcoin adresi
+</p>
+</li>
+<li>
+<p>
+Gönderilen bitcoin miktarı
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Bitcoin adresinin girildiği alanda, QR koda benzer küçük bir simge vardır. Bu Joe&#8217;nun, Alice&#8217;in oldukça uzun ve yazması zor olan bitcoin adresini(<tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>) yazmasına gerek kalmaksızın, akıllı telefonunun kamerası ile barkodu taramasını sağlar. Joe QR kod simgesine tıklar ve akıllı telefonun kamerasını aktif eder, Alice&#8217;in cüzdandan çıktısını alarak yanında getirdiği QR kodu tarar. Mobil cüzdan uygulaması bitcoin adresini doldurur ve Joe , Alice&#8217;in getirdiği adresle bu adresin bir kaç rakamını karşılaştırarak onun doğru taranıp taranmadığını kontrol edebilir.</p></div>
+<div class="imageblock" id="blockchain-mobile-send">
+<div class="content">
+<img src="images/msbt_0104.png" alt="blockchain mobile send screen" />
+</div>
+<div class="title">Figure 3. Blockchain mobil cüzdanının bitcoin gönderim ekranı</div>
+</div>
+<div class="paragraph"><p>Daha sonra Joe işlem yapacağı bitcoin değerini girer, 0.10 bitcoin. Doğru miktarı girip girmediğini dikkatlice kontrol eder çünkü o parayı iletmek üzeredir ve herhangi bir hata pahalıya mal olabilir. Sonunda işlemi iletmek için Gönder tuşuna basar. Joe&#8217;nun mobil bitcoin cüzdanı Alice tarafından sağlanan adrese, Joe&#8217;nun özel anahtarları ile işlemi imzalayan ve Joe&#8217;nun cüzdanındaki parayı kaynak olarak kullanan, 0.10 bitcoin atayan bir işlem oluşturur. Bu işelm bitcoin ağına, Joe&#8217;nun kendi adreslerinden Alice&#8217;in yeni adresine değer transfer ettiğini anlatır. İşlem eşten eşe protokol yoluyla iletildiğinden bitcoin ağında hemen yayılır. Bir saniyeden kısa bir süre içinde, ağdaki en iyi bağlantılı düğümler bu işlemi alır ve Alice&#8217;in adresini ilk defa görürler.</p></div>
+<div class="paragraph"><p>Eğer Alice&#8217;in yanında bir akıllı telefon ya da diz üstü bilgisayar varsa bu işlemi görebilecektir. Bitcoin defteri —oluşturulan her bitcoin işleminin kaydedildiği, sürekli büyüyen bir dosya— halka açıktır, yani Alice kendi adresine herhangi bir para gönderilip gönderilmediğini görmek için kendi adresine bakmalıdır.  Alice bunu  blockchain.info sitesindeki arama kutusuna adresini yazarak kolayca yapabilir. Site onun adresi ile ilgili tüm işlemlerini liste <a href="http://bit.ly/1u0FFKL">page</a> halinde gösterecektir. Eğer Alice  sayfayı izliyorsa, Joe&#8217;nun ona gönderdiği 0.10 bitcoinlik transfer işlemini bakiyesinde göstermek için kısa bir süre sonra kendisini güncelleyecektir.</p></div>
+<?hard-pagebreak?>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Doğrulamalar</div>
+<div class="paragraph"><p> Öncelikle, Alice&#8217;in adresi Joe&#8217;dan gelen işlemi "Onaylanmamış" olarak gösterecektir. Bu, işlemin ağa yayılmış olduğu fakat henüz blok zinciri olarak bilinen bitcoin işlem defterine dahil edilmemiş olduğu anlamına gelir. Dahil edilmiş olması için, işlem bir madenci tarafından "alınmalı" ve bir işlemler bloğuna dahil edilmelidir. Her yeni blok oluşturulduğunda, yaklaşık 10 dakikada bir, blok içerisindeki işlemler ağ tarafından harcanabilir ve "onaylanmış" olarak kabul edilecektir. İşlem herkes tarafından anında görülür fakat sadece yeni kazılmış bir bloğa dahil edildiğinde herkes tarafından "güvenilir" olur.</p></div>
+</div></div>
+<div class="paragraph"><p>Alice şimdi harcayabileceği 0.10 bitcoinin sahibi olarak gururlu. Sıradaki bölümde, onun bitcoin ile yaptığı ilk alımına bakacağız ve işlemin temeli ile yayılma teknolojilerini daha detaylı bir şekilde inceleyeceğiz. </p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:55:04 UTC
+</div>
+</div>
+</body>
+</html>

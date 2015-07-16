@@ -1,0 +1,1079 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch01_intro_what_is_bitcoin">Introductie</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_wat_is_bitcoin">Wat is Bitcoin?</h3>
+<div class="paragraph"><p>Bitcoin is een verzameling van concepten en technologieën die de basis vormen van een digitaal geld ecosysteem. Valuta-eenheden genaamd bitcoins worden gebruikt voor het opslaan en verzenden van waarde tussen deelnemers in het bitcoin-netwerk. Bitcoin-gebruikers communiceren via het bitcoin-protocol voornamelijk over het internet alhoewel andere transportnetwerken ook gebruikt kunnen worden. Het bitcoin-protocol-stack (beschikbaar als open source software) kan draaien op verschillende soorten apparaten zoals laptops en smartphones wat de technologie makkelijk toegankelijk maakt.</p></div>
+<div class="paragraph"><p>Gebruikers kunnen bitcoins versturen over het netwerk zoals ook gedaan kan worden met conventionele munten, zoals kopen en verkopen van spullen, geld sturen naar mensen, bedrijven of het uitbreiden van krediet. Bitcoins kunnen worden gekocht, verkocht of gewisseld tegen ander munteenheden bij speciale geldwisselkantoren. Bitcoin is een perfecte munteenheid voor het internet omdat het: snel, veilig en geen landgrenzen kent.</p></div>
+<div class="paragraph"><p>Bitcoins zijn in tegenstelling tot traditionele valuta geheel virtueel. Er zijn geen fysieke of digitale munten. Munten worden afgeleid uit de waarde die wordt overgedragen in een transactie tussen een verzender en een ontvanger. Gebruikers van bitcoin bezitten sleutels waarmee ze kunnen bewijzen dat ze eigenaar zijn van een transactie op het bitcoin-netwerk. Bitcoins kunnen worden uitgegeven door met dit bewijs de waarde in een transactie te ontgrendelen en over te dragen naar een nieuwe ontvanger. Sleutels worden meestal bewaard in een digitale portemonnee op de computers van de gebruikers. Het bezitten van een sleutel waarmee een transactie kan worden ontgrendeld is de enige voorwaarde voor het uitgeven van bitcoins, dit zorgt ervoor dat gebruikers de controle volledig in eigen handen hebben.</p></div>
+<div class="paragraph"><p>Bitcoin is een gedistribueerd peer-to-peer systeem. Er is geen "centrale" server of punt van aansturing. Creatie van bitcoins wordt gedaan door een proces dat “mining” heet en bestaat uit een competitie waarbij gezocht wordt naar een oplossing op een wiskundige formule in samenhang met het verwerken van transacties. Iedere deelnemer van het bitcoinnetwerk (iedereen die een apparaat met het volledige bitcoin protocol stack heeft draaien) kan opereren als ‘miner’ door de rekenkracht van zijn of haar computer in te zetten om transacties te verifiëren en vast te leggen. Gemiddeld is er iedere 10 minuten iemand die de transacties van de vorige 10 minuten kan valideren en wordt beloond met splinternieuwe bitcoins. In feite zorgt bitcoin mining voor het decentraliseren van geldcreatie en de clearingfunctie van een centrale bank en vervangt de noodzaak voor een centrale bank met deze globale competitie.</p></div>
+<div class="paragraph"><p>Het bitcoin protocol heeft ingebouwde algoritmes die zorgen voor de regulering van de mining-functie van het netwerk. De moeilijkheidsgraad van de taak die miners moeten uitvoeren (om een blok van transacties vast te leggen voor het bitcoin-netwerk) wordt dynamisch aangepast zodat er gemiddeld iedere 10 minuten iemand in slaagt een blok vast te leggen ongeacht van hoeveel miners (en CPU’s) de taak proberen uit te voeren. Het protocol zorgt er ook voor dat het aantal bitcoins die worden uitgegeven iedere 4 jaar halveert en limiteert het totaal aantal bitcoins die ooit gecreëerd kunnen worden op 21 miljoen bitcoins. Het resultaat is dat het aantal bitcoins in circulatie nauw samen loopt met een voorspelbare lijn die op 21 miljoen uitkomt in het jaar 2140. Doordat er na verloop van tijd steeds minder bitcoins worden uitgegeven zorgt dit ervoor dat bitcoin als valuta op lange termijn deflationair is. Daarnaast is het niet mogelijk om meer inflatie op te wekken door het “printen” van nieuw geld meer dan de voorspelde lijn.</p></div>
+<div class="paragraph"><p>Achter de schermen is bitcoin ook de naam van het protocol, het netwerk en een distributed computing innovatie. De bitcoin valuta is in feite pas de eerste toepassing van deze uitvinding. Als ontwikkelaar zie ik bitcoin als het internet van geld, een netwerk voor het propageren van waarde en het veilig stellen van eigendom van digital assets via distributed computation. Bitcoin omvat veel meer dan op het eerste oog te zien is.</p></div>
+<div class="paragraph"><p>In dit hoofdstuk beginnen we met de uitleg van een aantal van de belangrijke concepten en termen, het verkrijgen van de benodigde software en het gebruiken van bitcoin voor simpele transacties. In de volgende hoofdstukken bestuderen we de verschillende lagen aan technologie die bitcoin mogelijk maken en bekijken we onder de motorkap hoe het bitcoin netwerk en protocol werkt.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Digitale munteenheden voor Bitcoin</div>
+<div class="paragraph"><p>De opmars van bruikbaar digitaal geld is nauw verbonden met de ontwikkeling van cryptografie. Dit is niet verrassend als men nadenkt over de fundamentele uitdagingen die er zijn bij het gebruik van bits om waarde te vertegenwoordigen die gebruikt kan worden in ruil voor goederen en diensten. Twee fundamentele vragen voor iedereen die digitaal geld accepteert zijn:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Kan ik er zeker zijn dat het geld authentiek is en niet vervalst?
+</p>
+</li>
+<li>
+<p>
+Kan ik er zeker van zijn dat niemand anders kan claimen dat dit geld van hen is en niet van mij? (het "dubbel-uitgeven" probleem)
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>Uitgevers van bankbiljetten bevinden zich continu in een strijd tegen geldvervalsers en proberen dit tegen te gaan door biljetten en printer technologie steeds meer te verfijnen. Voor fysiek geld is het dubbel-uitgeven probleem makkelijk aan te pakken omdat hetzelfde biljet niet tegelijk op twee plaatsen kan zijn. Natuurlijk wordt conventioneel geld ook vaak digitaal opgeslagen en verstuurd. In deze gevallen wordt vervalsing en dubbel-uitgeven bestreden door alle digitale transacties te laten verlopen via een centrale autoriteit die zicht heeft op al het geld in circulatie. Bij digitaal geld kan er geen gebruik gemaakt worden van speciale inkt of holografische strips, cryptografie vormt de basis voor het vaststellen of de claim van iemand zijn recht op waarde legitiem is. Om preciezer te zijn, een cryptografisch digitale handtekening maakt het mogelijk voor een gebruiker om digitaal bezit of een transactie te ondertekenen als bewijs van eigendom op dat bezit. Met de geschikte architectuur kunnen digitale handtekeningen ook gebruikt worden om het dubbel-uitgeven probleem tegen te gaan.</p></div>
+<div class="paragraph"><p>Toen cryptografie eind jaren '80 steeds breder beschikbaar en begrepen werd hebben veel onderzoekers geprobeerd om cryptografie te gebruiken om digitale valuta&#8217;s te maken. Deze vroege digitale valuta projecten gaven digitaal geld uit, meestal ondersteund door een nationale valuta of edele metalen zoals goud.</p></div>
+<div class="paragraph"><p>Hoewel deze eerdere digitale valuta werkten waren ze gecentraliseerd en als gevolg makkelijk aan te vallen door overheden en hackers. Vroege digitale valuta&#8217;s maakte gebruik van een centraal systeem om alle transacties af te wikkelen op regelmatige tijdstippen net als een traditioneel bancair systeem. Helaas werden in de meeste gevallen deze opkomende digitale valuta het doelwit van bezorgde overheden en uiteindelijk geprocedeerd tot ze niet meer bestonden. Sommige faalden in spectaculaire crashes waarbij het moederbedrijf abrupt werd geliquideerd. Om robuust te zijn tegen antagonisten, ongeacht of het legitieme regeringen of criminele elementen waren, was een decentrale digitale munt nodig om een ​​aanval op een enkel punt te voorkomen. Bitcoin is een dergelijk systeem, vanuit het ontwerp volledig gedecentraliseerd en vrij van centrale autoriteit of een enkel punt van controle die kan worden aangevallen of beschadigd.</p></div>
+<div class="paragraph"><p>Bitcoin vertegenwoordigt het hoogtepunt van tientallen jaren van onderzoek in de cryptografie en gedistribueerde systemen en omvat vier belangrijke vernieuwingen samengebracht in een unieke en krachtige combinatie. Bitcoin bestaat uit:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Een gedecentraliseerd peer-to-peer-netwerk (het bitcoin protocol)
+</p>
+</li>
+<li>
+<p>
+Een publieke transactie grootboek (de blockchain)
+</p>
+</li>
+<li>
+<p>
+Een gedecentraliseerde wiskundige en deterministische uitgifte van valuta (gedistribueerd mining)
+</p>
+</li>
+<li>
+<p>
+Een gedecentraliseerd transactie verificatiesysteem (transactie script)
+</p>
+</li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_geschiedenis_van_bitcoin">Geschiedenis van Bitcoin</h3>
+<div class="paragraph"><p>  Bitcoin werd uitgevonden in 2008 met de publicatie van een paper met de titel "Bitcoin: A Peer-to-Peer Electronic Cash System." geschreven onder het pseudoniem Satoshi Nakamoto. Nakamoto combineerde diverse eerdere uitvindingen zoals   b-money en HashCash om een volledig decentraal elektronisch cash-systeem te maken dat niet afhankelijk is van een centrale autoriteit voor uitgifte van valuta of verrekening en validatie van de transacties. De belangrijkste innovatie was om een ​​distributed computing system (een zogenaamde  "proof-of-work" algoritme) iedere 10 minuten een ​​globale "verkiezing" uit te laten voeren waardoor het decentrale netwerk een <em>consensus</em> kan bereiken over de toestand van transacties. Dit lost het dubbele-uitgaven probleem (waarbij een enkele munt tweemaal kan worden besteed) op een elegante manier op. Voorheen was het dubbel-uitgaven probleem een zwakte van digitale valuta en werd dit opgelost door alle transacties te laten verwerken door een centraal clearinghouse.</p></div>
+<div class="paragraph"><p>Het bitcoin netwerk is gestart in 2009, op basis van een referentie-implementatie gepubliceerd door Nakamoto en sinds herzien door vele andere programmeurs. De gedistribueerde berekeningen die zorgen voor veiligheid en veerkracht van Bitcoin is exponentieel toegenomen en bedraagt ​​nu meer rekenkracht dan de capaciteit van de top super-computers ter wereld bij elkaar. De totale marktwaarde van Bitcoin wordt geschat op tussen de 5 en 10 miljard dollar, afhankelijk van de bitcoin-naar-dollarkoers. De grootste transactie tot nu toe door het netwerk verwerkt bedroeg 150 miljoen dollar, direct verzonden en verwerkt zonder enige kosten.</p></div>
+<div class="paragraph"><p>Satoshi Nakamoto trok zich terug uit het publiek in april 2011 en liet de verantwoordelijkheid van het ontwikkelen van de code en het netwerk achter voor een ​​bloeiende groep vrijwilligers. De identiteit van de persoon of groep achter bitcoin is nog steeds onbekend. Echter noch Satoshi Nakamoto noch iemand anders heeft controle over het bitcoin systeem, dat werkt op basis van volledig transparante wiskundige principes. De uitvinding zelf is baanbrekend en heeft al geleid tot nieuwe wetenschap op het gebied van distributed computing, economie en econometrie.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Een oplossing voor een Distributed Computing probleem</div>
+<div class="paragraph"><p>Satoshi Nakamoto&#8217;s uitvinding is ook een praktische oplossing voor een eerder onopgelost probleem in distributed computing, bekend als  het "Byzantine Generals' Problem.". In het kort bestaat dit probleem uit het proberen een overeenstemming te bereiken over een uit te voeren plan door het uitwisselen van informatie via een onbetrouwbare en mogelijk aangetast netwerk. Satoshi Nakamoto&#8217;s oplossing, die het concept van de proof-of-work gebruikt om consensus te bereiken zonder een centrale vertrouwde autoriteit, is een doorbraak in de wetenschap van distributed computing en kan naast valuta breder worden toegepast. Het kan in decentrale netwerken gebruikt worden om consensus te bereiken om de eerlijkheid te bewijzen van de verkiezingen, loterijen, registratie van eigendom, digitale notariële akten en meer.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="user-stories">Bitcoin gebruik, de gebruikers en hun verhalen</h3>
+<div class="paragraph"><p>Bitcoin is een technologie maar het drukt zicht uit als geld wat fundamenteel een taal is voor het uitwisselen van waarde tussen mensen. Laten we eens kijken naar de verhalen van mensen die gebruik maken van bitcoin en een aantal van de meest voorkomende vormen van gebruik van de munt en het protocol. We zullen deze verhalen in het boek steeds opnieuw gebruiken om het gebruik van digitaal geld in de praktijk te illustreren en hoe ze worden mogelijk gemaakt door de verschillende technieken die deel uitmaken van Bitcoin.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Noord-Amerikaanse low-value retail
+</dt>
+<dd>
+<p>
+Alice woont in de Bay Area van Noord-Californië. Ze heeft gehoord over Bitcoin van haar techneut-vrienden en wil het gaan gebruiken. We zullen haar verhaal volgen als ze leert over bitcoin, een aantal verwerft en een aantal van haar bitcoin uitgeeft om een ​​kopje koffie te kopen bij Bob&#8217;s Café in Palo Alto. Dit verhaal zal ons kennis laten maken met de software, de beurzen en eenvoudige transacties vanuit het perspectief van een retail consument.
+</p>
+</dd>
+<dt class="hdlist1">
+Noord-Amerikaanse high-value retail
+</dt>
+<dd>
+<p>
+Carol is een eigenaar van een kunstgalerie in San Francisco. Ze verkoopt dure schilderijen voor bitcoin. Dit verhaal introduceert de risico&#8217;s van een "51%" consensus aanval voor retailers van high-value items.
+</p>
+</dd>
+<dt class="hdlist1">
+Offshore contract services
+</dt>
+<dd>
+<p>
+Bob, de cafe eigenaar in Palo Alto is een nieuwe website aan het maken. Hij heeft Gopesh ingehuurd, een Indiase web ontwikkelaar woonachtend in Bangalore, India. Gopesh heeft ingestemd om te worden uitbetaald in bitcoin. Dit verhaal zal het gebruik van Bitcoin voor outsourcing, uitbesteding en internationale overschrijvingen uitlichten.
+</p>
+</dd>
+<dt class="hdlist1">
+Donaties aan goede doelen
+</dt>
+<dd>
+<p>
+Eugenia is de directeur van een liefdadigheidsinstelling voor kinderen in de Filippijnen. Ze heeft onlangs bitcoin ontdekt en wil het gebruiken om een ​​hele nieuwe groep van binnen- en buitenlandse donoren bereiken om fondsen te werven voor haar goede doel. Ze onderzoekt ook manieren om bitcoin gebruiken om fondsen snel verspreiden naar gebieden van nood. Dit verhaal zal het gebruik tonen van bitcoin voor wereldwijde fondsenwerving over verschillende valuta&#8217;s en grenzen en het gebruik van een open grootboek voor transparantie in bij goede doelen.
+</p>
+</dd>
+<dt class="hdlist1">
+Import/export
+</dt>
+<dd>
+<p>
+Mohammed is een importeur van elektronica in Dubai. Hij probeert bitcoin te gebruiken om het betalingsproces te versnellen van het kopen van elektronica uit de VS en China voor invoer in de Verenigde Arabische Emiraten. Dit verhaal laat zien hoe bitcoin kan worden gebruikt voor grote business-to-business internationale betalingen gerelateerd aan fysieke goederen.
+</p>
+</dd>
+<dt class="hdlist1">
+Bitcoin delven (<em>mining</em>)
+</dt>
+<dd>
+<p>
+Jing is een computer engineering student in Shanghai. Met behulp van zijn technische vaardigheden heeft hij een "mining"-kast gebouwd om bitcoins te delven om zo zijn inkomen aan te vullen. Dit verhaal zal de "industriële" basis van bitcoin uitlichten; de gespecialiseerde apparatuur die wordt gebruikt om het bitcoin netwerk te beveiligen en de uitgifte van nieuwe munten.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Elk van deze verhalen is gebaseerd op echte mensen en echte industrieën die momenteel bitcoin gebruiken om nieuwe markten, nieuwe industrieën en innovatieve oplossingen voor globale economische vraagstukken te creëren.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_aan_de_slag">Aan de slag</h3>
+<div class="paragraph"><p>Het enige wat een gebruiker hoeft te doen om aan te melden op het bitcoin netwerk en te beginnen met het gebruiken van de munt is een applicatie downloaden of een webapplicatie gebruiken. Omdat bitcoin een standaard is zijn er vele implementaties van de bitcoin client software. Er is ook een referentie-implementatie, ook wel bekend als de Satoshi client, die wordt beheerd als een open source-project door een team van ontwikkelaars en is afgeleid van de oorspronkelijke implementatie geschreven door Satoshi Nakamoto.</p></div>
+<div class="paragraph"><p>De drie belangrijkste vormen van bitcoin clients zijn:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Full client
+</dt>
+<dd>
+<p>
+ Een full client, of "full node," is een client die de hele geschiedenis van bitcoin transacties (elke transactie door elke gebruiker ooit) opslaat, beheert portefeuilles van de gebruikers en kan de transacties direct starten op het bitcoin netwerk. Dit is vergelijkbaar met een standalone mail server in de zin dat deze alle aspecten van het protocol behandelt zonder afhankelijk te zijn van andere servers of diensten van derden.
+</p>
+</dd>
+<dt class="hdlist1">
+Lightweight client
+</dt>
+<dd>
+<p>
+A lightweight client stores the user&#8217;s wallet but relies on third-party–owned servers for access to the bitcoin transactions and network. The light client does not store a full copy of all transactions and therefore must trust the third-party servers for transaction validation. This is similar to a standalone email client that connects to a mail server for access to a mailbox, in that it relies on a third party for interactions with the network.
+</p>
+</dd>
+<dt class="hdlist1">
+Web client
+</dt>
+<dd>
+<p>
+Web clients are accessed through a web browser and store the user&#8217;s wallet on a server owned by a third party. This is similar to webmail in that it relies entirely on a third-party server.
+</p>
+</dd>
+</dl></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Mobile Bitcoin</div>
+<div class="paragraph"><p>Mobile clients for smartphones, such as those based on the Android system, can either operate as full clients, lightweight clients, or web clients. Some mobile clients are synchronized with a web or desktop client, providing a multiplatform wallet across multiple devices but with a common source of funds.</p></div>
+</div></div>
+<div class="paragraph"><p>The choice of bitcoin client depends on how much control the user wants over funds. A full client will offer the highest level of control and independence for the user, but in turn puts the burden of backups and security on the user. On the other end of the range of choices, a web client is the easiest to set up and use, but the trade-off with a web client is that counterparty risk is introduced because security and control is shared with the user and the owner of the web service. If a web-wallet service is compromised, as many have been, the users can lose all their funds. Conversely, if users have a full client without adequate backups, they might lose their funds through a computer mishap.</p></div>
+<div class="paragraph"><p>For the purposes of this book, we will be demonstrating the use of a variety of downloadable bitcoin clients, from the reference implementation (the Satoshi client) to web wallets. Some of the examples will require the use of the reference client, which, in addition to being a full client, also exposes APIs to the wallet, network, and transaction services. If you are planning to explore the programmatic interfaces into the bitcoin system, you will need the reference client.</p></div>
+<div class="sect3">
+<h4 id="_snel_aan_de_slag">Snel aan de slag</h4>
+<div class="paragraph"><p>Alice, who we introduced in <a href="#user-stories">[user-stories]</a>, is not a technical user and only recently heard about bitcoin from a friend. She starts her journey by visiting the official website <a href="http://www.bitcoin.org">bitcoin.org</a>, where she finds a broad selection of bitcoin clients. Following the advice on the bitcoin.org site, she chooses the lightweight bitcoin client Multibit.</p></div>
+<div class="paragraph"><p>Alice follows a link from the bitcoin.org site to download and install Multibit on her desktop. Multibit is available for Windows, Mac OS, and Linux desktops.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A bitcoin wallet must be protected by a password or passphrase. There are many bad actors attempting to break weak passwords, so take care to select one that cannot be easily broken. Use a combination of upper and lowercase characters, numbers, and symbols. Avoid personal information such as birth dates or names of sports teams. Avoid any words commonly found in dictionaries, in any language. If you can, use a password generator to create a completely random password that is at least 12 characters in length. Remember: bitcoin is money and can be instantly moved anywhere in the world. If it is not well protected, it can be easily stolen.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Once Alice has downloaded and installed the Multibit application, she runs it and is greeted by a Welcome screen, as shown in <a href="#multibit-welcome">[multibit-welcome]</a>.</p></div>
+<div class="imageblock" id="multibit-welcome">
+<div class="content">
+<img src="images/msbt_0101.png" alt="MultibitWelcome" />
+</div>
+<div class="title">Figure 1. Het welkomstscherm van de Multibit bitcoin client</div>
+</div>
+<div class="paragraph"><p>Multibit automatically creates a wallet and a new bitcoin address for Alice, which Alice can see by clicking the Request tab shown in <a href="#multibit-request">[multibit-request]</a>.</p></div>
+<div class="imageblock" id="multibit-request">
+<div class="content">
+<img src="images/msbt_0102.png" alt="MultibitReceive" />
+</div>
+<div class="title">Figure 2. Alice&#8217;s new bitcoin address, in the Request tab of the Multibit client</div>
+</div>
+<div class="paragraph"><p>The most important part of this screen is Alice&#8217;s <em>bitcoin address</em>. Like an email address, Alice can share this address and anyone can use it to send money directly to her new wallet. On the screen it appears as a long string of letters and numbers: <tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>. Next to the wallet&#8217;s bitcoin address is a QR code, a form of barcode that contains the same information in a format that can be scanned by a smartphone camera. The QR code is the black-and-white square on the right side of the window. Alice can copy the bitcoin address or the QR code onto her clipboard by clicking the copy button adjacent to each of them. Clicking the QR code itself will magnify it, so that it can be easily scanned by a smartphone camera.</p></div>
+<div class="paragraph"><p>Alice can also print the QR code as a way to easily give her address to others without them having to type the long string of letters and numbers.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoin addresses start with the digit 1 or 3. Like email addresses, they can be shared with other bitcoin users who can use them to send bitcoin directly to your wallet. Unlike email addresses, you can create new addresses as often as you like, all of which will direct funds to your wallet. A wallet is simply a collection of addresses and the keys that unlock the funds within. You can increase your privacy by using a different address for every transaction. There is practically no limit to the number of addresses a user can create.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Alice is nu klaar om te beginnen met haar nieuwe bitcoin portemonnee.</p></div>
+</div>
+<div class="sect3">
+<h4 id="getting_first_bitcoin">Je eerste bitcoins verkrijgen</h4>
+<div class="paragraph"><p>It is not possible to buy bitcoins at a bank or foreign exchange kiosks at this time. As of 2014, it is still quite difficult to acquire bitcoins in most countries. There are a number of specialized currency exchanges where you can buy and sell bitcoin in exchange for a local currency. These operate as web-based currency markets and include:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="http://bitstamp.net">Bitstamp</a>
+</dt>
+<dd>
+<p>
+A European currency market that supports several currencies including euros (EUR) and US dollars (USD) via wire transfer.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.coinbase.com">Coinbase</a>
+</dt>
+<dd>
+<p>
+A US-based bitcoin wallet and platform where merchants and consumers can transact in bitcoin. Coinbase makes it easy to buy and sell bitcoin, allowing users to connect to US checking accounts via the ACH system.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Cryptocurrency exchanges such as these operate at the intersection of national currencies and cryptocurrencies. As such, they are subject to national and international regulations, and are often specific to a single country or economic area and specialize in the national currencies of that area. Your choice of currency exchange will be specific to the national currency you use and limited to the exchanges that operate within the legal jurisdiction of your country.  Similar to opening a bank account, it takes several days or weeks to set up the necessary accounts with these services because they require various forms of identification to comply with KYC (know your customer) and AML (anti-money laundering) banking regulations. Once you have an account on a bitcoin exchange, you can then buy or sell bitcoins quickly just as you could with foreign currency with a brokerage account.</p></div>
+<div class="paragraph"><p>You can find a more complete list at <a href="http://bitcoincharts.com/markets">bitcoin charts</a>, a site that offers price quotes and other market data across many dozens of currency exchanges.</p></div>
+<div class="paragraph"><p>There are four other methods for getting bitcoins as a new user:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Find a friend who has bitcoins and buy some from him directly. Many bitcoin users start this way.
+</p>
+</li>
+<li>
+<p>
+Use a classified service such as localbitcoins.com to find a seller in your area to buy bitcoins for cash in an in-person transaction.
+</p>
+</li>
+<li>
+<p>
+Sell a product or service for bitcoin. If you&#8217;re a programmer, sell your programming skills.
+</p>
+</li>
+<li>
+<p>
+Use a bitcoin ATM in your city.  Find a bitcoin ATM close to you using an online map from <a href="http://www.coindesk.com/bitcoin-atm-map/">CoinDesk</a>.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Alice was introduced to bitcoin by a friend and so she has an easy way of getting her first bitcoins while she waits for her account on a California currency market to be verified and activated.</p></div>
+</div>
+<div class="sect3">
+<h4 id="sending_receiving">Verzenden en ontvangen van bitcoins</h4>
+<div class="paragraph"><p>Alice has created her bitcoin wallet and she is now ready to receive funds. Her wallet application randomly generated a private key (described in more detail in <a href="#private_keys">[private_keys]</a>) together with its corresponding bitcoin address. At this point, her bitcoin address is not known to the bitcoin network or "registered" with any part of the bitcoin system. Her bitcoin address is simply a number that corresponds to a key that she can use to control access to the funds. There is no account or association between that address and an account. Until the moment this address is referenced as the recipient of value in a transaction posted on the bitcoin ledger (the blockchain), it is simply part of the vast number of possible addresses that are "valid" in bitcoin. Once it has been associated with a transaction, it becomes part of the known addresses in the network and Alice can check its balance on the public ledger.</p></div>
+<div class="paragraph"><p>Alice meets her friend Joe, who introduced her to bitcoin, at a local restaurant so they can exchange some US dollars and put some bitcoins into her account. She has brought a printout of her address and the QR code as displayed in her bitcoin wallet. There is nothing sensitive, from a security perspective, about the bitcoin address. It can be posted anywhere without risking the security of her account.</p></div>
+<div class="paragraph"><p>Alice wants to convert just 10 US dollars into bitcoin, so as not to risk too much money on this new technology. She gives Joe a $10 bill and the printout of her address so that Joe can send her the equivalent amount of bitcoin.</p></div>
+<div class="paragraph"><p>Next, Joe has to figure out the exchange rate so that he can give the correct amount of bitcoin to Alice. There are hundreds of applications and websites that can provide the current market rate. Here are some of the most popular:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="http://bitcoincharts.com">Bitcoin Charts</a>
+</dt>
+<dd>
+<p>
+A market data listing service that shows the market rate of bitcoin across many exchanges around the globe, denominated in different local currencies
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://bitcoinaverage.com/">Bitcoin Average</a>
+</dt>
+<dd>
+<p>
+A site that provides a simple view of the volume-weighted-average for each currency
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.zeroblock.com/">ZeroBlock</a>
+</dt>
+<dd>
+<p>
+A free Android and iOS application that can display a bitcoin price from different exchanges (see <a href="#zeroblock-android">[zeroblock-android]</a>)
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.bitcoinwisdom.com/">Bitcoin Wisdom</a>
+</dt>
+<dd>
+<p>
+Another market data listing service
+</p>
+</dd>
+</dl></div>
+<div class="imageblock" id="zeroblock-android">
+<div class="content">
+<img src="images/msbt_0103.png" alt="zeroblock screenshot" />
+</div>
+<div class="title">Figure 3. ZeroBlock, a bitcoin market-rate application for Android and iOS</div>
+</div>
+<div class="paragraph"><p>Using one of the applications or websites just listed, Joe determines the price of bitcoin to be approximately 100 US dollars per bitcoin. At that rate he should give Alice 0.10 bitcoin, also known as 100 millibits, in return for the 10 US dollars she gave him.</p></div>
+<div class="paragraph"><p>Once Joe has established a fair exchange price, he opens his mobile wallet application and selects to "send" bitcoin. For example, if using the Blockchain mobile wallet on an Android phone, he would see a screen requesting two inputs, as shown in <a href="#blockchain-mobile-send">[blockchain-mobile-send]</a>.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The destination bitcoin address for the transaction
+</p>
+</li>
+<li>
+<p>
+The amount of bitcoin to send
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>In the input field for the bitcoin address, there is a small icon that looks like a QR code. This allows Joe to scan the barcode with his smartphone camera so that he doesn&#8217;t have to type in Alice&#8217;s bitcoin address (<tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>), which is quite long and difficult to type. Joe taps the QR code icon and activates the smartphone camera, scanning the QR code from Alice&#8217;s printed wallet that she brought with her. The mobile wallet application fills in the bitcoin address and Joe can check that it scanned correctly by comparing a few digits from the address with the address printed by Alice.</p></div>
+<div class="imageblock" id="blockchain-mobile-send">
+<div class="content">
+<img src="images/msbt_0104.png" alt="blockchain mobile send screen" />
+</div>
+<div class="title">Figure 4. Blockchain mobile wallet&#8217;s bitcoin send screen</div>
+</div>
+<div class="paragraph"><p>Joe then enters the bitcoin value for the transaction, 0.10 bitcoin. He carefully checks to make sure he has entered the correct amount, because he is about to transmit money and any mistake could be costly. Finally, he presses Send to transmit the transaction. Joe&#8217;s mobile bitcoin wallet constructs a transaction that assigns 0.10 bitcoin to the address provided by Alice, sourcing the funds from Joe&#8217;s wallet and signing the transaction with Joe&#8217;s private keys. This tells the bitcoin network that Joe has authorized a transfer of value from one of his addresses to Alice&#8217;s new address. As the transaction is transmitted via the peer-to-peer protocol, it quickly propagates across the bitcoin network. In less than a second, most of the well-connected nodes in the network receive the transaction and see Alice&#8217;s address for the first time.</p></div>
+<div class="paragraph"><p>If Alice has a smartphone or laptop with her, she will also be able to see the transaction. The bitcoin ledger—a constantly growing file that records every bitcoin transaction that has ever occurred—is public, meaning that all she has to do is look up her own address and see if any funds have been sent to it. She can do this quite easily at the blockchain.info website by entering her address in the search box. The website will show her a <a href="http://bit.ly/1u0FFKL">page</a> listing all the transactions to and from that address. If Alice is watching that page, it will update to show a new transaction transferring 0.10 bitcoin to her balance soon after Joe hits Send.</p></div>
+<?hard-pagebreak?>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Confirmations</div>
+<div class="paragraph"><p>At first, Alice&#8217;s address will show the transaction from Joe as "Unconfirmed." This means that the transaction has been propagated to the network but has not yet been included in the bitcoin transaction ledger, known as the blockchain. To be included, the transaction must be "picked up" by a miner and included in a block of transactions. Once a new block is created, in approximately 10 minutes, the transactions within the block will be accepted as "confirmed" by the network and can be spent. The transaction is seen by all instantly, but it is only "trusted" by all when it is included in a newly mined block.</p></div>
+</div></div>
+<div class="paragraph"><p>Alice is now the proud owner of 0.10 bitcoin that she can spend. In the next chapter we will look at her first purchase with bitcoin, and examine the underlying transaction and propagation technologies in more detail.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:55:10 UTC
+</div>
+</div>
+</body>
+</html>

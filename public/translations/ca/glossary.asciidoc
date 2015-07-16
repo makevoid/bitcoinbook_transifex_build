@@ -1,0 +1,61 @@
+[prefaci]
+== Glossari ràpid
+
+Aquest glossari ràpid conté molts dels termes utilitzats en relació a bitcoin. Aquests termes es fan servir al llarg del llibre, així doncs tingues-lo a mà per consultes ràpides.
+
+adreça::
+    Una adreça bitcoin és de la forma +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. Consisteix en una sèrie de lletres i números que comencen amb un "1" (número u). De la mateixa manera que demanaries que t'enviïn un correu electrònic a la teva adreça de correu, també pots demanar que t'enviïn bitcoin a la teva adreça bitcoin.((("Adreça bitcoin"))) ((("adreça", veure="adreça bitcoin"))) ((("clau pública", veure="adreça Bitcoin")))
+
+bip::
+    Propostes de Millora de Bitcoin. Es tracta d'un conjunt de propostes que els membres de la comunitat bitcoin han presentat per millorar Bitcoin. Per exemple, BIP0021 és una proposta per millorar l'esquema de l'identificador de recursos uniforme (URI) bitcoin ((("bip"))). 
+
+bitcoin::
+    El nom de la unitat monetària (la moneda), la xarxa i el programari. ((("Bitcoin"))) 
+
+bloc::
+    Una agrupació de transaccions, marcat amb una data, i una marca indentificativa del bloc anterior. És calcula un resum (hash) de la capçalera del bloc per a produir una prova de treball, validant així les transaccions. Els blocs vàlids s'afegeixen a la cadena de blocs (blockchain) principal amb el consens de la xarxa. ((("bloc")))
+
+cadena de blocs::
+	Una llista dels blocs validats, cadascun enllaçat al seu predecessor, i així fins al bloc gènesi. ((("cadena de blocs")))
+	
+confirmacions::
+	Una vegada que una transacció s'inclou en un bloc, té una confirmació. Tan aviat com _un altre_ bloc es mina a la mateixa cadena de blocs, la transacció té dues confirmacions, i així successivament. Sis o més confirmacions es considera prova suficient que una transacció no pot ser revertida.((("confirmacions")))
+
+dificultat::
+	Una configuració general de la xarxa que controla la quantitat de càlculs que cal per produir una prova de treball. ((("dificultat")))
+
+dificultat objectiu::
+ 	Una dificultat amb la qual tota la computació de la xarxa trobarà blocs aproximadament cada 10 minuts. ((("dificultat objectiu")))
+
+ajust de dificultat::
+	Un nou càlcul a nivell general de la xarxa de la dificultat que té lloc un cop cada 2.106 blocs i considera la potència de càlcul de hashos dels 2.106 blocs anteriors. ((("ajust de dificultat")))
+	
+comissions::
+	El remitent d'una transacció sovint inclou una taxa a la xarxa per al processament de la transacció sol·licitada. La majoria de les transaccions requereixen una comissió mínima de 0,5 MBTC. ((("comissions")))
+
+hash::
+	Una empremta digital calculada a partir d'una entrada binària.((("hash")))
+
+bloc gènesi::
+	El primer bloc de la cadena, utilitzat per inicialitzar la moneda digital.((("bloc gènesi")))
+	
+miner::
+Un node de xarxa que troba una prova vàlida de treball per als nous blocs, repetint càlculs de hashing. ((("Miner")))
+
+xarxa::
+Una xarxa punt-a-punt que propaga transaccions i blocs a cada node bitcoin a la xarxa.((("xarxa")))
+	
+Prova-de-treball::
+	Una peça d'informació que requereix una quantitat de càlculs important per a ser trobada. A bitcoin, els miners han de trobar una solució numèrica per l'algorisme SHA256 d'acord amb un objectiu general a nivell de xarxa, l'objectiu de dificultat. ((("prova-de-treball")))
+
+recompensa::
+Un import inclòs en cada nou bloc trobat com a recompensa de la xarxa al miner que ha trobat la prova-de-treball solució. Actualment és de 25BTC per bloc. ((("recompensa")))
+
+clau secreta (clau privada) ::
+	El número secret que desbloqueja els bitcoins enviats a l'adreça corresponent. Una clau secreta és de la següent forma +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+. ((("clau secreta"))) ((("clau privada", veure="clau secreta")))
+	
+transacció ::
+En termes simples, una transferència de bitcoins d'una adreça a una altra. Més exactament, una transacció és una estructura de dades signada que expressa una transferència de valor. Les transaccions són enviades a través de la xarxa bitcoin, recollides pels miners, i finalment incloses en blocs, enregistrant-se així de forma permanent a la cadena de blocs. ((("transacció")))
+
+moneder/cartera::
+Programari que guarda totes les teves adreces bitcoin i claus secretes. Utilitza'l per enviar, rebre i emmagatzemar els teus bitcoin. ((("moneder/cartera"))) 

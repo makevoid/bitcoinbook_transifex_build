@@ -1,0 +1,1400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="transactions">Transacciones</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="ch5_intro">Introducción</h3>
+<div class="paragraph"><p>Las transacciones son la parte más importante del sistema bitcoin. Todo lo demás en bitcoin fue diseñado para asegurar que las transacciones puedan ser creadas, propagadas por la red, validadas y finalmente añadidas al libro contable global (la cadena de bloques). Las transacciones son estructuras de datos que codifican el valor de una transacción entre participantes en el sistema bitcoin. Cada transacción es una entrada pública en la cadena de bloques de bitcoin, el libro contable global de contabilidad por partida doble.</p></div>
+<div class="paragraph"><p>En este capítulo examinaremos las varias formas de transacciones, qué contienen, cómo crearlas, cómo se verifican y cómo se vuelven parte del registro permanente de todas las transacciones.</p></div>
+</div>
+<div class="sect2">
+<h3 id="tx_lifecycle">Ciclo de Vida de una Transacción</h3>
+<div class="paragraph"><p>El ciclo de vida de una transacción comienza con la creación de la transascción, también conocido como <em>generación</em>. La transacción es luego firmada con una o más firmas indicando la autorización a gastar los fondos referenciados por la transacción. La transacción es luego transmitida sobre la red bitcoin, donde cada nodo de la red (participante) valida y propaga la transacción hasta que alcanza a (casi) todos los nodos en la red. Finalmente la transacción es verificada por un nodo minero e incluída en un bloque de transacciones que es registrado en la cadena de bloques.</p></div>
+<div class="paragraph"><p>Una vez registrada en la cadena de bloques y confirmada por suficientes bloques subsecuentes (confirmaciones), la transacción pasa a ser una parte permanente del libro contable y es aceptada como válida por todos los participantes. Los fondos asignados a un nuevo dueño por la transacción pueden luego ser gastados en una nueva transacción, extendiendo la cadena de propiedad y comenzando el ciclo de vida de una transacción nuevamente.</p></div>
+<div class="sect3">
+<h4 id="tx_origination">Creando Transacciones</h4>
+<div class="paragraph"><p>En algunas formas ayuda pensar en una transacción como si fuera un cheque de papel. Al igual que un cheque, una transacción es un instrumento que expresa la intención de transferir dinero y no es visible en el sistema financiero hasta que es enviado para ser liquidado. Tal como con un cheque, el originador de una transacción no necesita ser quien firme la transacción.</p></div>
+<div class="paragraph"><p>Las transacciones pueden ser creadas online u offline por cualquiera, incluso si la persona creando la transacción no es un firmante autorizado de la cuenta. Por ejemplo, un empleado a cargo de cuentas a pagar puede poseer cheques pagables para ser firmados por el presidente ejecutivo. De forma similar, un empleado a cargo de cuentas a pagar puede crear transacciones bitcoin y luego enviarlas al presidente ejecutivo para aplicar su firma digital y así hacerlas válidas. Así como un cheque referencia una cuenta específica como fuente de los fondos, una transacción bitcoin referencia un una transacción previa específica como su fuente en vez de una cuenta.</p></div>
+<div class="paragraph"><p>Una vez que una transacción ha sido creada es firmada por el dueño (o dueños) de los fondos fuente. Si es propiamente formada y firmada, la transacción es ahora válida y contiene toda la información necesaria para ejecutar la transferencia de fondos. Finalmente, la transacción válida debe alcanzar la red bitcoin para que pueda ser propagada hasta alcanzar un minero para su inclusión en el libro contable público (la cadena de bloques).</p></div>
+</div>
+<div class="sect3">
+<h4 id="tx_bcast">Transmitiendo Transacciones a la Red Bitcoin</h4>
+<div class="paragraph"><p>Primero una transacción debe ser enviada a la red bitcoin para poder ser propagada e incluída en la cadena de bloques. En esencia, una transacción bitcoin contiene entre 300 y 400 bytes de datos y debe alcanzar alguno las decenas de miles de nodos bitcoin. Los remitentes no necesitan confiar en los nodos que utilizan para transmitir la transacción siempre y cuando utilicen más de uno para asegurar su propagación. Los nodos no necesitan confiar en el remitente para establecer la "identidad" del remitente. Como la transacción se encuentra firmada no contiene información confidencial, claves privadas o credenciales, puede ser transmitida públicamente usando cualquier red de transporte que resulte conveniente. A diferencia de transacciones de tarjetas de crédito, por ejemplo, las cuales contienen información sensible y solo pueden ser transmitidas sobre redes encriptadas, una transacción bitcoin puede ser enviada sobre cualquier red. Siempre y cuando la transacción pueda alcanzar un nodo de la red bitcoin que la propague, no importa cómo es transportada al primer nodo.</p></div>
+<div class="paragraph"><p>Las transacciones bitcoin pueden, por lo tanto, ser transmitidas a la red bitcoin a través de redes inseguras tales como WiFi, Bluetooth, NFC, Chirp, códigos de barras, o copiando y pegando de un formulario web. En casos extremos, una transacción bitcoin puede ser transmitida a través de paquetes vía radio, transmisión satelital, onda corta usando transmisión de ráfagas, espectro ensanchado o salto de frecuencia para evadir detección o interferencia. Una transacción bitcoin puede incluso ser codificada como smileys (emotíconos) y publicada en un foro público o enviada como un mensaje de texto de Skype. Bitcoin ha convertido al dinero en una estructura de datos, haciendo prácticamente imposible el evitar que cualquiera ejecute una transacción bitcoin.</p></div>
+</div>
+<div class="sect3">
+<h4 id="tx_propagation">Propagando Transacciones sobre la Red Bitcoin</h4>
+<div class="paragraph"><p>Una vez que una transacción bitcoin es enviada a un nodo conectado a la red bitcoin, la transacción será validada por dicho nodo. Si es válida el nodo la propagará a otros nodos a los que se encuentra conectado, y un mensaje de éxito será devuelto sincrónicamente al originador. Si la transacción es inválida, el nodo la rechazará y devolverá un mensaje de rechazo sincrónicamente al originador.</p></div>
+<div class="paragraph"><p>La red bitcoin es una red entre pares (peer-to-peer), lo cual significa que cada nodo bitcoin se encuentra conectado a unos pocos otros nodos bitcoin que descubre durante su inicialización a través del protocolo entre pares. La totalidad de la red forma una malla parcialmente conectada sin una topología rígida ni estrucutra, haciendo de cada nodo un par equitativo. Los mensajes, incluyendo transacciones y bloques, son propagados de cada nodo a todos los pares a los que se encuentra conectado, un proceso conocido como "inundación" (flooding). Una nueva transacción validada inyectada en cualquier nodo de la red será enviada a todos sus nodos conectados a él (vecinos), cada uno de los cuales enviará la transacción a todos sus vecinos, y así sucesivamente. De esta forma, en apenas unos pocos segundos una transacción válida se propagará en una onda en expansión exponencial a través de la red hasta que todos los nodos de la red la hayan recibido.</p></div>
+<div class="paragraph"><p>La red bitcoin fue diseñada para propagar transacciones y bloques a todos los nodos de manera eficiente y resistente a ataques. Para prevenir el spamming, ataques por denegación de servicio u otros ataques molestos al sistema bitcoin, cada nodo valida cada transacción independientemente antes de continuar con su propagación. Una transacción malformada no se propagará más allá de un nodo. Las reglas por las que las transacciones son validadas se encuentran explicadas en mayor detalle en <a href="#tx_verification">[tx_verification]</a>.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tx_structure">Estructura de una Transacción</h3>
+<div class="paragraph"><p>Una transacción es una <em>estructura de datos</em> que codifica una transferencia de valor de una fuente de fondos, llamada  <em>entrada</em> (input), a un destinatario, llamado una <em>salida</em> (output). Las entradas y salidas de una transacción no se encuentran relacionadas a cuentas ni identidades. En cambio debes pensar en ellas como montos de bitcoin—trozos de bitcoin—asegurados con un secreto específico que solo su dueño, o persona que conoce el secreto, puede liberar. Una transacción contiene un número de campos, como se detalla en <a href="#tx_data_structure">[tx_data_structure]</a>.</p></div>
+<div class="tableblock" id="tx_data_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. La estructura de una transacción</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Tamaño</p></td>
+<td align="left" valign="top"><p class="table">Campo</p></td>
+<td align="left" valign="top"><p class="table">Descripción</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Versión</p></td>
+<td align="left" valign="top"><p class="table">Especifica qué reglas sigue esta transacción</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1–9 bytes (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Contador de Entradas</p></td>
+<td align="left" valign="top"><p class="table">Cuántas entradas son incluidas</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variable</p></td>
+<td align="left" valign="top"><p class="table">Entradas</p></td>
+<td align="left" valign="top"><p class="table">Una o más entradas de la transacción</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1–9 bytes (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Contador de Salidas</p></td>
+<td align="left" valign="top"><p class="table">Cuántas salidas son incluidas</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variable</p></td>
+<td align="left" valign="top"><p class="table">Salidas</p></td>
+<td align="left" valign="top"><p class="table">Una o más salidas de la transacción</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Locktime</p></td>
+<td align="left" valign="top"><p class="table">Un sello de tiempo (timestamp) Unix o número de bloque</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Tiempo de Bloqueo de una Transacción</div>
+<div class="paragraph"><p>El tiempo de bloqueo (Locktime), también conocido como nLockTime por el nombre de variable utilizado para en el cliente de referencia, define el tiempo más cerecano en que una transacción será válida y puede ser transmitida a la red e incluida en la cadena de bloques. En la mayoría de las transacciones su valor se establece en cero para indicar propagación y ejecución inmediatos. Si el tiempo de bloqueo no es cero y por debajo de 500 millones, se interpreta como una altura de bloque, lo cual significa que la transacción no es válida y no es transmitida ni incluida en la cadena de bloques antes de alcanzar la altura de bloque especificada. Si se encuentra por encima de los 500 millones es interpretada como un sello de tiempo Unix Epoch (segundos transcurridos desde el 1ro de enero de 1970) y la transacción no se considera válida antes del tiempo especificado. Las transacciones con tiempo de bloqueo referenciando un tiempo o bloque futuros deben ser conservadas por el sistema originario y transmitidas a la red bitcoin únicamente luego de volverse válidas. El uso del tiempo de bloqueo es equivalente a posfechar un cheque en papel.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="tx_inputs_outputs">Entradas y Salidas de una Transacción</h3>
+<div class="paragraph"><p>La pieza fundamental de una transacción bitcoin es una <em>salida de transacción no gastada</em> (unspent transaction output), o UTXO. Las UTXO son trozos indivisibles de moneda bitcoin atados a un propietario específico, registrados en la cadena de bloques y reconocido como unidades de moneda por toda la red. La red bitcoin monitorea todas las UTXO, actualmente estimadas en millones. Cuando un usuario recibe bitcoins, ese monto es registrado en la cadena de bloques como una UTXO. Por lo tanto, los bitcoins de un usuario pueden estar dispersados como UTXOs entre cientos de transacciones y cientos de bloques. De hecho, no existe tal cosa como un saldo almacenado de una dirección bitcoin o una cuenta; tan solo hay UTXOs dispersados, asignados a propietarios específicos. El concepto de salto de bitcoins de un usuario es una construcción creada por la aplicación de cartera. La cartera calcula el saldo del usuario escaneando la cadena de bloques y sumando todos los UTXOs pertenecientes a ese usuario.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>No existe cuentas o saldos en bitcoin; solo <em>salidas de transacciones sin gastar</em> (UTXO) dispersados en la cadena de bloques.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Una UTXO puede tener un valor arbitrario denominado como un múltiplo de satoshis. Tal como los dólares pueden ser divididos hasta dos cifras decimales en centavos, los bitcoins pueden ser divididos hasta ocho cifras decimales en satoshis. Aunque una UTXO puede ser de cualquier valor arbitrario, una vez creada es indivisible tal como una moneda que no puede ser partida a la mitad. Si una UTXO es mayor que el valor deseado de la transacción aun debe ser consumida por completo y debe generarse cambio en la transacción. En otras palabras, si tienes una UTXO de 20 bitcoins y quieres pagar 1 bitcoin, tu transacción debe consumir la UTXO de 20 bitcoins entera y producir dos salidas: una pagando 1 bitcoin al destinatario deseado y otra pagando 19 bitcoins de cambio de regreso a tu cartera. Como resultado la mayoría de las transacciones bitcoins generarán cambio.</p></div>
+<div class="paragraph"><p>Imagina una consumidora comprando una bebida de $1,50, abriendo su cartera para buscar una combinación de monedas y billetes que cubran el costo de $1,50. La consumidora elegirá el cambio exacto de estar disponible (un billete de un dólar y dos monedas de 25 centavos), o una combinación de denominaciones menores (seis monedas de 25 centavos), o, de ser necesario, una unidad mayor como un billete de cinco dólares. Si paga al vendedor con un valor mayor, digamos $5, ella esperaría recibir $3,50 de cambio, los cuales regresará a su cartera y tendrá disponibles para futuras transacciones.</p></div>
+<div class="paragraph"><p>De forma similar, una transacción bitcoin debe ser creada a partir de las UTXOs del usuario en cualquier combinación de denominaciones que el usuario tenga disponible. Los usuarios no pueden partir una UTXO a la mitad de la misma forma que un billete de un dólar no puede ser cortado a la mitad y aun ser usado como moneda. La aplicación de cartera del usuario usualmente seleccionará de entre las UTXOs del usuario varias unidades para componer un monto mayor o igual al de la transacción deseada.</p></div>
+<div class="paragraph"><p>Al igual que en la vida real, una aplicación bitcoin puede usar varias estrategias para satisfacer el monto de la compra: combinar varias unidades más pequeñas, encontrar el cambio exacto, o usar una única unidad mayor al valor de la transacción y generar cambio. Todo este complejo montaje de UTXOs es calculado por la cartera del usuario automáticamente y es invisible al usuario. Solo es relevante si estás construyendo transacciones en crudo a partir de UTXOs programáticamente.</p></div>
+<div class="paragraph"><p>Las UTXOs consumidas por una transacción se llaman entradas de transacción (inputs), y las UTXOs creadas por la transacción se llaman salidas de transacción (outputs). De esta forma, trozos de valor en bitcoin son movidos de un dueño al siguiente en una cadena de transacciones consumiendo y generando UTXOs. Las transacciones consumen UTXOs al liberarlas con la firma del propietario corriente y crean UTXOs al asignarlas a la dirección bitcoin del nuevo propietario.</p></div>
+<div class="paragraph"><p>La excepción en la cadena de salidas y entradas es un tipo especial de transacción llamada transacción <em>coinbase</em>, la cual es la primera transacción en cada bloque. Esta transacción es colocada allí por el minero "ganador" y crea nuevos bitcoins asignados a dicho minero como recompensa por el minado. Así es como la masa monetaria de bitcoin es creada durante el proceso de minado, como veremos en <a href="#ch8">[ch8]</a>.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>¿Qué estuvo primero? ¿Entradas o salidas, el huevo o la gallina? Hablando en sentido estricto, las salidas están primero porque las transacciones coinbase, las cuales generan nuevos bitcoins, no poseen entradas y generan salidas de la nada.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="tx_outs">Salidas de Transacción</h4>
+<div class="paragraph"><p>Toda transacción bitcoin crea salidas, las cuales son registradas en el libro de transacciones bitcoin. Casi todas estas salidas, con una excepción (ver <a href="#op_return">[op_return]</a>) crean trozos de bitcoin gastables llamados <em>salidas de transacción sin gastar</em> (unspent transaction outputs) o UTXO, las cuales son reconocidas por toda la red y están disponibles para que el propietario las gaste en transacciones futuras. Enviar bitcoins a alguien significa crear una salida de transacción sin gastar (UTXO) registrada con su dirección y disponible para ser gastadas.</p></div>
+<div class="paragraph"><p>Las UTXOs son monitoreadas por todos los nodos completos de bitcoin como un set de datos conocido como la <em>set UTXO</em> o <em>reserva UTXO</em>, mantenido en una base de datos. Las nuevas transacciones consumen (gastan) una o más de estas salidas del set UTXO.</p></div>
+<div class="paragraph"><p>Las salidas de una transacción consisten en dos partes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Una cantidad de bitcoins denominada en <em>satoshis</em>, la unidad más pequeña de bitcoin
+</p>
+</li>
+<li>
+<p>
+Un <em>script de bloqueo</em> (locking script), también conocido como una "obstrucción" que "bloquea" este monto especificando las condiciones que deben ser cumplidas para gastar esta salida
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>El lenguaje de scripting de transacciones, usado por el script de bloqueo mencionado anteriormente, es analizado en detalle en <a href="#tx_script">[tx_script]</a>. <a href="#tx_out_structure">[tx_out_structure]</a> muestra la estructura de una salida de transacción.</p></div>
+<div class="tableblock" id="tx_out_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. La estrucutra de una salida de transacción</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Tamaño</p></td>
+<td align="left" valign="top"><p class="table">Campo</p></td>
+<td align="left" valign="top"><p class="table">Descripción</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">8 bytes</p></td>
+<td align="left" valign="top"><p class="table">Cantidad</p></td>
+<td align="left" valign="top"><p class="table">Valor de bitcoins en satoshis (10<sup>-8</sup> bitcoins)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bytes (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Tamaño del Script de Bloqueo</p></td>
+<td align="left" valign="top"><p class="table">Longitud en bytes del Script de Bloqueo, a seguir</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variable</p></td>
+<td align="left" valign="top"><p class="table">Script de Bloqueo</p></td>
+<td align="left" valign="top"><p class="table">Un script definiendo las condiciones necesarias para gastar la salida</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>En <a href="#get_utxo">[get_utxo]</a> usamos la API de blockchain.info para encontrar las salidas sin gastar (UTXO) de una dirección específica.</p></div>
+<div class="exampleblock" id="get_utxo">
+<div class="title">Example 1. Un script que llama a la API de blockchain.info para encontrar la UTXO relacionada a una dirección</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>Al ejecutar el script vemos una lista de IDs de transacciones, un carácter de dos puntos, el número de índice de la salida de transacción sin gastar (UTXO) específica, y el valor de esa UTXO en satoshis. El script de bloqueo no es mostrado en la salida en <a href="#get_utxo_run">[get_utxo_run]</a>.</p></div>
+<div class="exampleblock" id="get_utxo_run">
+<div class="title">Example 2. Ejecutando el script get-utxo.py</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="sect4">
+<h5 id="_condiciones_de_gasto_obstrucciones">Condiciones de gasto (obstrucciones)</h5>
+<div class="paragraph"><p>Las salidas de transacción asocian un monto específico (en satoshis) con una <em>obstrucción</em> específica o script de bloqueo que define la condición que debe ser cumplida para gastar ese monto. En la mayoría de los casos el script de bloqueo asignará la salida a una dirección bitcoin específica, de esa forma transfiriendo la propiedad de ese monto a su nuevo dueño. Cuando Alice paga al Café de Bob por su taza de café, su transacción crea una salida de 0,015 bitcoins <em>obstruida</em> o asignada a la dirección bitcoin del café. Esa salida de 0,015 bitcoins fue registrada en la cadena de bloques y se convirtió en parte del grupo de Salidas de Transacción Sin Gastar (UTXO), lo que significa que se mostrará en la cartera de Bob como parte de su saldo disponible. Cuando Bob decide gastar ese monto, su transacción liberará la obstrucción, destrabando la salida al proveer un script de desbloqueo que contenga la firma proveniente de la clave privada de Bob.</p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tx_inputs">Entradas de Transacción</h4>
+<div class="paragraph"><p>En términos simples, las entradas de transacción son punteros a UTXOs. Apuntan a una UTXO específica referenciando el hash de transacción y número de secuencia donde la UTXO se encuentra registrada en la cadena de bloques. Para gastar una UTXO, una entrada de transacción también incluye scripts de desbloqueo que satisfacen las condiciones de gasto establecidas por la UTXO. El script de desbloqueo es generalmente una firma la cual prueba la pertenencia de la dirección bitcoin que se encuentra en el script de bloqueo.</p></div>
+<div class="paragraph"><p>Cuando los usuarios hacen un pago sus carteras construyen una transacción seleccionando de sus UTXOs disponibles. Por ejemplo,  para realizar un pago de 0,015 bitcoins, la aplicación de cartera puede seleccionar una UTXO de 0,01 y otra de 0,005, usando ambas para sumar el monto de pago deseado.</p></div>
+<div class="paragraph"><p>En <a href="#select_utxo">[select_utxo]</a> vemos el uso de un algoritmo "codicioso" para seleccionar de entre los UTXOs disponibles para llegar al monto de un pago específico. En este ejemplo las UTXOs disponibles son provistas como una cadena de constantes, pero en la realidad las UTXOs disponibles serían pedidas con una llamada a RPC a Bitcoin Core o una API de terceros como se muestra en <a href="#get_utxo">[get_utxo]</a>.</p></div>
+<div class="exampleblock" id="select_utxo">
+<div class="title">Example 3. Un script para calcular cuántos bitcoins serán emitidos en total</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>Si ejecutamos el script <em>select-utxo.py</em> sin un parámetro intentará construir un juego de UTXOs (y cambio) para un pago de 55.000.000 satoshis (0,55 bitcoins). Si proveemos un pago objetivo como parámetro el script seleccionará UTXOs para alcanzar el monto de ese pago objetivo. En <a href="#select_utxo_run">[select_utxo_run]</a> ejecutamos el script intentando hacer un pago de 0,5 bitcoins o 50.000.000 satoshis.</p></div>
+<div class="exampleblock" id="select_utxo_run">
+<div class="title">Example 4. Ejecutando el script select-utxo.py</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ python select-utxo.py 50000000
+Para un monto de transacción de 50000000 Satoshis (0,500000 bitcoins) usa:
+([&lt;7dbc497969c7475e45d952c4a872e213fb15d45e5cd3473c386a71a1b0c136a1:0 with 25000000 Satoshis&gt;, &lt;7f42eda67921ee92eae5f79bd37c68c9cb859b899ce70dba68c48338857b7818:0 with 16100000 Satoshis&gt;, &lt;6596fd070679de96e405d52b51b8e1d644029108ec4cbfe451454486796a1ecf:0 with 16050000 Satoshis&gt;], 'Change: 7150000 Satoshis')</tt></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Una vez que las UTXOs son seleccionadas, la cartera produce scripts de desbloqueo conteniendo firmas para cada una de las UTXO, de esa forma haciéndolas gastables al satisfacer las condiciones del script de bloqueo. La cartera añade estas referencias a UTXOs y scripts de desbloqueo como entradas de la transacción. <a href="#tx_in_structure">[tx_in_structure]</a> muestra la estructura de una entrada de transacción.</p></div>
+<div class="tableblock" id="tx_in_structure">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 3. La estructura de la entrada de una transacción</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Tamaño</p></td>
+<td align="left" valign="top"><p class="table">Campo</p></td>
+<td align="left" valign="top"><p class="table">Descripción</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">32 bytes</p></td>
+<td align="left" valign="top"><p class="table">Hash de Transacción</p></td>
+<td align="left" valign="top"><p class="table">Puntero a la transacción que contiene la UTXO a ser gastada</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Índice de Salida</p></td>
+<td align="left" valign="top"><p class="table">El número de índice de la UTXO a ser gastada; comenzando por 0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bytes (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Tamaño del Script de Desbloqueo</p></td>
+<td align="left" valign="top"><p class="table">Longitud del Script de Desbloqueo en bytes, a seguir</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variable</p></td>
+<td align="left" valign="top"><p class="table">Script de Desbloqueo</p></td>
+<td align="left" valign="top"><p class="table">Un script que cumple con las condiciones del script de bloqueo de UTXOs</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Número de Secuencia</p></td>
+<td align="left" valign="top"><p class="table">Funcionalidad de reemplazo de transacción actualmente deshabilitada, establecer en 0xFFFFFFFF</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph"><p>El número de secuencia se usa para sobreescribir una transacción previamente a la expiración del tiempo de bloqueo de la transacción, lo cual es una funcionalidad actualmente deshabilitada en bitcoin. La mayoría de las transacciones establecen este valor al máximo valor entero (0xFFFFFFFF) y es ignorado por la red bitcoin. Si la transacción posee un tiempo de bloqueo distinto de cero al menos una de sus entradas debe tener un número de secuencia por debajo de 0xFFFFFFFF para habilitad el tiempo de bloqueo.</p></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="tx_fees">Comisiones de Transacción</h4>
+<div class="paragraph"><p>La mayoría de las transacciones incluyen tarifas de transacción, las cuales compensan a los mineros bitcoin por asegurar la red. La minería y las tarifas y recompensas recolectadas por los mineros son analizadas en mayor detalle en <a href="#ch8">[ch8]</a>. Esta sección examina cómo las tarifas de transacción son incluidas en una transacción típica. La mayoría de las carteras calculan e incluyen tarifas de transacción automáticamente. Sin embargo, si estás construyendo transacciones programáticamente o usando una interfaz de línea de comando, debes tomar en cuenta e incluir estas tarifas manualmente.</p></div>
+<div class="paragraph"><p>Las tarifas de transacción sirven de incentivo para incluir (minar) una transacción en el siguiente bloque y también como desinsentivo contra el "spam" de transacciones o cualquier tipo de abuso del sistema, al requerir un pequeño costo en cada transacción. Las tarifas de transacción son recolectadas por el minero que mina el bloque que registra la transacción en la cadena de bloques.</p></div>
+<div class="paragraph"><p>Las tarifas de transacción son calculadas basadas en el tamaño de la transacción en kilobytes, no el valor de la transacción en bitcoins. En general las tarifas de transacción son establecidas basadas en fuerzas del mercado en la red bitcoin. Los mineros priorizan transacciones basados en distintos criterios, incluyendo tarifas y pueden hasta procesar transacciones sin tarifa bajo ciertas circunstancias. Las tarifas de transacción afectan la prioridad de procesado, lo cual significa que una transacción con tarifa suficiente será muy probnablemente incluída en el próximo bloque en ser minado, mientras que una transacción con una tarifa pequeña o sin tarifa puede ser demorada, procesada cuando sea posible luego de algunos bloques, o jamás procesada. Las tarifas de transacción no son obligatorias y las transacciones sin tarifa pueden resultar finalmente procesadas; sin embargo, incluir tarifas en transacciones incentiva al procesado prioritario.</p></div>
+<div class="paragraph"><p>Con el tiempo la forma en que las tarifas de transacción son calculadas y el efecto que tienen sobre la priorización ha ido evolucionando. Al principio las tarifas de transacción eran fijas y constante en toda la red. Gradualmente la estructura de tarifas ha sido relajada de forma que pueda ser influenciada por fuerzas del mercado, basadas en la capacidad de la red y el volumen de transacciones. La mínima tarifa de transacción actual está fijada en 0,0001 bitcoin, o una décima parte de un milibitcoin por kilobyte, recientemente reducida de un milibitcoin. La mayoría de las transacciones pesan menos de un kilobyte; sin embargo, aquellas con múltiples entradas o salidas pueden ser mayores. En próximas versiones del protocolo bitcoin se espera que las aplicaciones de cartera usen análisis estadístico para calcular la tarifa más adecuada para cada transacción basadas en promedios de tarifas de transacciones recientes.</p></div>
+<div class="paragraph"><p>El algoritmo actual utilizado por mineros para priorizar transacciones para inclusión en un bloque basados en sus tarifas es examinado en detalle en <a href="#ch8">[ch8]</a>. </p></div>
+</div>
+<div class="sect3">
+<h4 id="_añadiendo_comisiones_a_transacciones">Añadiendo Comisiones a Transacciones</h4>
+<div class="paragraph"><p>La estructura de datos de transacciones no posee un campo para tarifas. En cambio, las tarifas estan implícitas como la diferencia entre la suma de las entradas y la suma de las salidas. Cualquier monto que sobre luego de que las salidas han sido descontadas de todas las entradas será la tarifa recolectada por los mineros.</p></div>
+<div class="listingblock" id="tx_fee_equation">
+<div class="title">Las tarifas de transacción son implícitas como el excedente de entradas menos salidas:</div>
+<div class="content">
+<pre><tt>Tarifas = Suma(Entradas) - Suma(Salidas)</tt></pre>
+</div></div>
+<div class="paragraph"><p>Esto es un elemento un tanto confuso de las transacciones y un punto importante a entender, ya que si estás construyendo tus propias transacciones debes asegurarte de no incluir una tarifa muy grande por descuido al gastar las entradas de menos. Esto significa que debes tener en cuenta todas las entradas, de ser necesario creando cambio, ¡o terminarás dándole a los mineros una propina muy grande!</p></div>
+<div class="paragraph"><p>Por ejemplo, si consumes una UTXO de 20 bitcoins para hacer un pago de 1 bitcoin, debes incluir una salida de cambio de 19 bitcoins de regreso a tu cartera. De lo contrario, los 19 bitcoins "sobrantes" serán contados con la tarifa de transacción y serán recolectados por el minero que mine tu transacción en un bloque. Aunque recibirás procesado prioritario y harás muy feliz a un minero, esto probablemente no sea lo que planeabas hacer.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Si te olvidas de añadir una salida de cambio en una transacción construida manualmente terminarás pagando el cambio como tarifa de transacción. "¡Quédate el cambio!" puede no haber sido tu intención.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Veamos cómo funciona esto en la práctica usando de ejemplo la compra de café de Alice nuevamente. Alice quiere gastar 0,015 bitcoins para pagar por un café. Para asegurar que esta transacción sea procesada rápidamente ella querrá incluir una tarifa de transacción, digamos que 0,001. Esto significará que el costo total de la transacción será de 0,016 bitcoins o más y, de ser necesario, creará cambio. Digamos que su cartera tiene una UTXO de 0,2 bitcoins disponible. Por lo tanto necesitará consumir esta UTXO, crear una salida para el Café de Bob por 0,015, y una segunda salida con 0,184 bitcoins de cambio de regreso a su propia cartera, dejando 0,001 bitcoins sin distribuir, lo cual será la tarifa implícita para la transacción.</p></div>
+<div class="paragraph"><p>Ahora veamos un caso diferente. Eugenia, nuestra directora de la beneficencia para niños en las Filipinas ha completado una recaudación de fondos para adquirir libros para los niños. Ella ha recibido varios miles de pequeñas donaciones de personas alrededor del mundo, las cuales suman 50 bitcoins, por lo que su cartera está llena de pagos muy pequeños (UTXOs). Ahora ella quiere comprar cientos de libros escolares a una editorial local, pagando en bitcoins.</p></div>
+<div class="paragraph"><p>Ya que la aplicación de cartera de Eugenia intenta construir una única transacción de pago mayor, debe sacar de la reserva de UTXOs disponibles, la cual está compuesta de múltiples montos más pequeños. Esto significa que la transacción resultante usará de fuente más de cien UTXOs de pequeño valor como entradas y solo una salida, pagando a la editorial de libros. Una transacción con tantas entradas será más grande que un kilobyte, quizá resulte de 2 o 3 kilobytes en tamaño. Por lo tanto requerirá una tarifa de transacción mayor a la mínima tarifa de la red de 0,0001 bitcoins.</p></div>
+<div class="paragraph"><p>La aplicación de cartera de Eugenia calculará la tarifa adecuada midiendo el tamaño de la transacción y multiplicándolo por la tarifa por kilobyte. Muchas carteras pagan tarifas más altas de lo necesario para transacciones muy grandes para asegurarse de que la transacción sea procesada rápidamente. La tarifa elevada no es porque Eugenia esté gastando más dinero, sino porque su transacción es más compleja y grande en tamaño—la tarifa es independiente del valor en bitcoins de la transacción.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tx_chains">Encadenamiento de Transacciones y Transacciones Huérfanas</h3>
+<div class="paragraph"><p>Como hemos visto, las transacciones forman una cadena en la cual una transacción gasta las salidas de la transacción previa (conocida como madre) y crea salidas para una transacción subsecuente (conocida como hija). A veces una cadena entera de transacciones dependientes unas de otras—digamos una transacción madre, hija y nieta—son creadas al mismo tiempo para cumplir con un flujo de trabajo transaccional complejo que requiere que transacciones hijas válidas sean firmadas antes de que la transacción madre sea firmada. Por ejemplo, esta es una técnica usada en transacciones CoinJoin donde varios participantes unen transacciones para proteger su privacidad.</p></div>
+<div class="paragraph"><p>Cuando una cadena de transacciones es transmitida a través de la red, no siempre llegan en el mismo orden. A veces la transacción hija puede llegar antes que la madre. En ese caso, los nodos que ven la transacción hija primero pueden ver que se refiere a una transacción madre aun desconocida. En vez de rechazar a la hija, la colocan en una reserva temporaria para esperar el arribo de su transacción madre y propagarla a todos los demás nodos. La reserva de transacciones sin madres es conocida como la <em>reserva de transacciones huérfanas</em> (orphan transaction pool). Una vez que la transacción madre arriba, cualquier huérfana que referencie la UTXO creada por la madre será liberada de la reserva, revalidada recursivamente, y luego la cadena de transacciones entera puede ser incluida en la reserva de transacciones, lista para ser minada en un bloque. Las cadenas de transacciones pueden ser arbitrariamente largas, con cualquier número de generaciones transmitidas simultáneamente. El mecanismo de conservar huérfanas en la reserva de huérfanas asegura que transacciones que serían válidas de otra forma no sean rechazadas simplemente porque su madre ha sido demorada y que finalmente la cadena a la que pertenecen sea reconstruida en el orden correcto, independientemente del orden de llegada.</p></div>
+<div class="paragraph"><p>Existe un límite al número de transacciones huérfanas almacenadas en memoria para prevenir ataques de denegación de servicio (denial of service) contra los nodos bitcoin. El límite está definido como  <tt>MAX_ORPHAN_TRANSACTIONS</tt> en el código fuente del cliente de referencia bitcoin. Si el número de transacciones huérfanas en la reserva excede <tt>MAX_ORPHAN_TRANSACTIONS</tt>, uno o más transacciones huérfanas seleccionadas aleatoriamente serán removidas de la reserva hasta que el tamaño de la reserva regrese a los límites permitidos.</p></div>
+</div>
+<div class="sect2">
+<h3 id="tx_script">Scripts de Transacción y Lenguaje de Script</h3>
+<div class="paragraph"><p>Los clientes bitcoin validan transacciones ejecutando un script escrito en un lenguaje de scripting similar a Forth. Tanto el script de bloqueo (obstrucción) colocado sobre una UTXO como el script de desbloqueo que generalmente contiene una firma son escritos en este lenguaje de scripting. Cuando una transacción es validada, el script de desbloqueo en cada entrada es ejecutado junto con su correspondiente script de bloqueo para verificar que satisfaga la condición de gasto.</p></div>
+<div class="paragraph"><p>Hoy en día la mayoría de las transacciones procesadas a través de la red bitcoin tienen la forma de "Alice paga a Bob" y se basan en el mismo script llamado script de Pago-a-Hash-de-Clave-Pública (Pay-to-Public-Key-Hash script). Sin embargo, el uso de scripts para bloquear outputs y desbloquear inputs significa que mediante el uso del lenguaje de programación las transacciones pueden contener un número infinito de condiciones. Las transacciones bitcoin no se limitan a la forma y patrón de "Alica paga a Bob.</p></div>
+<div class="paragraph"><p>Esto es tan solo la punta del iceberg de posibilidades que pueden ser expresadas con este lenguaje de scripting. En esta sección haremos una demostración de los componentes del lenguaje de scripting de transacciones bitcoin y mostraremos cómo puede ser utilizado para expresar condiciones complejas para gastar y cómo esas condiciones pueden ser satisfechas por scripts de desbloqueo (unlocking scripts).</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>La validación de transacciones bitcoin no se basa en un patron estático, sino que es alcanzada a través de la ejecución de un lenguaje de scripting. Este lenguaje permite una variedad casi infinita de condiciones a ser expresadas. Así es cómo bitcoin adquiere el poder de "dinero programable".</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="_construcción_de_scripts_bloqueo_desbloqueo">Construcción de Scripts (Bloqueo + Desbloqueo)</h4>
+<div class="paragraph"><p>El motor de validación de transacciones de bitcoin depende de dos tipos de scripts para validar transacciones: un script de bloqueo (locking script) y un script de desbloqueo (unlocking script).</p></div>
+<div class="paragraph"><p>Un script de bloqueo (locking script) es una obstrucción colocada sobre una salida, el cual especifica las condiciones que deben cumplirse para gastar dicha salida en el futuro. Históricamente a los scripts de bloqueo se los llamaba un <em>scriptPubKey</em>, ya que usualmente contenían una clave pública o dirección bitcoin. En este libro nos referiremos a ellos como "script de bloqueo" para reconocer el mucho mayor espectro de posibilidades de esta teconología de scripting. En la mayoría de las aplicaciones bitcoin a lo que nos referimos como script de bloqueo aparecerá en el código fuente como <tt>scriptPubKey</tt>.</p></div>
+<div class="paragraph"><p>Un script de desbloqueo (unlocking script) es un script que "resuelve," o satisface, las condiciones establecidas por una salida y un script de bloqueo y permite que la salida sea gastada. Los scripts de desbloqueo son parte de cada entrada de transacción, y la mayoría de las veces contienen una firma digital producida por la cartera del usuario a partir de su clave privada. Históricamente el script de desbloqueo era llamado <em>scriptSig</em>, ya que usualmente contenía uan firma digital. En la mayoría de las aplicaciones bitcoin el código fuente se refiera al script de desbloqueo como <tt>scriptsig</tt>. En este libro nos referiremos a ellos como "script de desbloqueo" para reconocer el espectro mucho más amplio de requerimientos de scripts de bloqueo, ya que no todos los scripts de desbloqueo requieren firmas.</p></div>
+<div class="paragraph"><p>Todo cliente bitcoin debe validar transacciones ejecutando los scripts de bloqueo y desbloqueo en simultáneo. Para cada entrada de la transacción el software traerá primero la UTXO referenciada por la entrada. Esa UTXO contiene un script de bloqueo definiendo las condiciones requeridas para enviarla. El software de validación luego tomará el script de desbloqueo contenido en la entrada que está intentando gastar esta UTXO y ejecutará ambos scripts.</p></div>
+<div class="paragraph"><p>En el cliente bitcoin original, los scripts de bloqueo y desbloqueo eran concatenados y ejecutados en secuencia. Por razones de seguridad esto fue cambiado en 2010, debido a una vulnerabilidad que permitía que un script de desbloqueo malformado enviara datos a la pila y corrompiera el script de bloqueo. En la implementación actual los scripts son ejecutados en forma separada y la pila es transferida entre ejecuciones, como se describe a continuación.</p></div>
+<div class="paragraph"><p>Primero, el script de desbloqueo es ejecutado utilizando el motor de ejecución de pila. Si el script de desbloqueo es ejecutado sin errores (por ejemplo, no posee operadores sobrantes "colgando"), la pila principal (no la pila alternativa) es copiada y el script de bloqueo es ejecutado. Si el resultado de ejecutar el script de bloqueo con los datos de la pila copiados del script de desbloqueo es "VERDADERO", el script de desbloqueo ha sido exitoso en resolver las condiciones impuestas por el script de bloqueo y, por tanto, la entrada es una autorización válida para gastar la UTXO. Si cualquier resultado que no sea "VERDADERO" permanece luego de la ejecución del script combinado, la entrada es inválida porque ha fallado en satisfacer las condiciones de gastado colocadas sobre la UTXO. Nótese que la UTXO es registrada permanentemente en la cadena de bloques, y por ello es invariable y no se ve afectada por intentos fallidos de gastarla por referencia en una nueva transacción. Únicamente una nueva transacción que satisface las condiciones de la UTXO correctamente resulta en la UTXO siendo marcada como "gastada" y removida de la reserva de UTXOs disponibles (sin gastar).</p></div>
+<div class="paragraph"><p><a href="#scriptSig_and_scriptPubKey">[scriptSig_and_scriptPubKey]</a> es un ejemplo de los scripts de desbloqueo y bloqueo para el tipo más común de transacción bitcoin (un pago a un hash de clave pública), mostrando el script combinado que resulta de la concatenación de los scripts de desbloqueo y bloqueo previo a la validación por script.</p></div>
+<div class="imageblock" id="scriptSig_and_scriptPubKey">
+<div class="content">
+<img src="images/msbt_0501.png" alt="scriptSig_and_scriptPubKey" />
+</div>
+<div class="title">Figure 1. Combinando scriptSig y scriptPubKey para evaluar un script de transacción</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tx_script_language">Lenguaje de Scripting</h4>
+<div class="paragraph"><p>El lenguaje de scripts de transacción bitcoin, llamado <em>Script</em>, es un lenguaje de ejecución basada en pila con notación polaca inversa similar a Forth. Si eso no tiene sentido para tí, probablemente sea que no has estudiado lenguajes de programación de la década de 1960. Script es un lenguaje muy simple diseñado para ser limitado en alcance y ejecutable en un rango amplio de hardware, quizá hasta tan simple como un dispositivo embebido, tal como una calculadora de mano. Requiere procesamiento mínimo y no puede hacer muchas de las cosas sofisticadas que los lenguajes modernos sí pueden. En el caso del dinero programable, esto es una medida intencional de seguridad.</p></div>
+<div class="paragraph"><p>El lenguaje de scripting de bitcoin es llamado un lenguaje de ejecución basada en pila porque utiliza una estructura de datos llamada una <em>pila</em> (stack). Una pila es una estructura de datos muy simple, la cual puede ser visualizada como una pila de cartas. Una pila permite realizar dos operaciones: empujar y sacar. Empujar añade un elemento al tope de la pila. Sacar remueve el elemento en el tope de la pila.</p></div>
+<div class="paragraph"><p>El lenguaje de scripting ejecuta el script procesando cada item de izquierda a derecha. Los números (constantes de datos) son empujados a la pila. Los operadores empujan o sacan uno o más parámetros de la pila, actúan sobre ellos, y pueden empujar un resultado a la pila. Por ejemplo, <tt>OP_ADD</tt> sacará dos elementos de la pila, los sumará, y luego empujará la suma resultante a la pila.</p></div>
+<div class="paragraph"><p>Los operadores condicionales evalúan una condición, produciendo un resultado booleano de VERDADERO O FALSO. Por ejemplo, <tt>OP_EQUAL</tt> saca dos elementos de la pila y empuja VERDADERO (VERDADERO es representado por el número 1) si son iguales y FALSO (representado por cero) si no son iguales. Los scripts de transacción bitcoin usualmente contienen un operador condicional, de forma que puedan producir el valor VERDADERO que significa que la transacción es válida.</p></div>
+<div class="paragraph"><p>En <a href="#simplemath_script">[simplemath_script]</a>, el script <tt>2 3 OP_ADD 5 OP_EQUAL</tt> muestra el operador de adición aritmética <tt>OP_ADD</tt>, el cual suma dos números y coloca el resultado en la pila, seguido por el operador condicional <tt>OP_EQUAL</tt>, el cual verifica que el resultado de la suma sea igual a <tt>5</tt>. Para ser concisos, el prefijo <tt>OP_</tt> es omitido en el ejemplo paso-a-paso.</p></div>
+<div class="paragraph"><p>Lo que sigue es un script levemente más complejo, el cual calcula <tt>2 + 7 - 3 + 1</tt>. Nótese que cuando el script contiene varios operadores en hilera, la pila permite que los resultados de un operador sean utilizados por el siguiente operador:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 7 OP_ADD 3 OP_SUB 1 OP_ADD 7 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>Intenta validar el script previo tú mismo usando papel y lápiz. Cuando la ejecución del script acaba, deberías terminar con el valor VERDADERO en la pila.</p></div>
+<div class="paragraph"><p>Aunque la mayoría de los scripts de bloqueo se refieren a una dirección bitcoin o clave pública, y por lo tanto requiriendo prueba de pertenencia para gastar los fondos, el script no necesita ser tan complicado. Una combinación de scripts de bloqueo y desbloqueo que resulta en VERDADERO es válido. La aritmética simple que usamos como ejemplo del lenguaje de scripting es también un script de bloqueo válido que puede ser usado para bloquear una salida de transacción.</p></div>
+<div class="paragraph"><p>Usar parte del script de ejemplo aritmético como el script de bloqueo:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>3 OP_ADD 5 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>lo cu al puede ser satisfecho por una transacción que contenga una entrada con el script de desbloqueo:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2</tt></pre>
+</div></div>
+<div class="paragraph"><p>El software de validación combina los scripts de bloqueo y desbloqueo y el script resultante es:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 3 OP_ADD 5 OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>Como vimos en el ejemplo paso-a-paso en <a href="#simplemath_script">[simplemath_script]</a>, cuando el script es ejecutado, el resultado es <tt>OP_TRUE</tt>, haciendo a la transacción válida. No solo es esto un script de bloqueo de salida de transacción válido, sino que el UTXO resultante puede ser gastado por cualquiera con la habilidad aritmética para saber que el número 2 satisface el script.</p></div>
+<div class="imageblock" id="simplemath_script">
+<div class="content">
+<img src="images/msbt_0502.png" alt="TxScriptSimpleMathExample" />
+</div>
+<div class="title">Figure 2. El script de validación simple haciendo matemática simple</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Las transacciones son válidas si el resultado en el tope de la pila es VERDADERO (notado como <tt>&#x7b;0x01&#x7d;</tt>), cualquier valor distinto de cero o si la pila se encuentra vacía luego de la ejecución del script. Las transacciones son inválidas si el valor en el tope de la pila es FALSO (un valor vacío de longitud cero, notado como <tt>&#x7b;&#x7d;</tt>), o si la ejecución del script es detenida explícitamente por un operador, tal como OP_VERIFY, OP_RETURN, o un condicional terminante como OP_ENDIF. Ver <a href="#tx_script_opts">[tx_script_opts]</a> para más detalles.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_incompletitud_turing">Incompletitud Turing</h4>
+<div class="paragraph"><p>El lenguaje de script de transacciones bitcoin contiene muchos operadores, pero se encuentra deliberadamente limitado en una forma importante—no tiene la capacidad de realizar bucles ni controles de flujo complejos más allá de los controles de flujo condicionales. Esto asegura que el lenguaje no es <em>Turing Completo</em>, lo cual significa que los scripts tienen complejidad limitada y tiempos de ejecución predecibles. Script no es un lenguaje de propósito general. Estas limitaciones aseguran que el lenguaje no pueda ser usado para crear un bucle infinito u otras formas de "bombas lógicas" que pudieran ser embebidas en una transacción de forma que causara un  ataque de denegación de servicio contra la red bitcoin. Recuerda, cada transacción es validada por cada nodo completo en la red bitcoin. Un lenguaje limitado previene que el mecanismo de validación de transacciones sea usado como una vulnerabilidad.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_verificación_sin_estado">Verificación Sin Estado</h4>
+<div class="paragraph"><p>El lenguaje de script de transacciones bitcoin es carente de estado en el sentido en que no existe un estado previo a la ejecución del script, o un estado guardado luego de la ejecución del script. Por lo tanto, toda la información necesaria para ejecutar el script se encuentra contenida en el mismo script. Un script se ejecutará predeciblemente de la misma forma en cualquier sistema. Si tu sistema verifica un script, puedes estar seguro que cualquier otro sistema en la red bitcoin también verificará el script, lo cual significa que una transacción es válida para todos y todos saben esto. Esta predictibilidad de resultados es un beneficio esencial del sistema bitcoin.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="std_tx">Transacciones Estándar</h3>
+<div class="paragraph"><p>In los años iniciales del desarrollo de bitcoin, los desarrolladores introdujeron algunas limitaciones en los tipos de scripts que podían ser procesados por el cliente de referencia. Estas limitaciones se encuentran codificadas en una función llamada <tt>isStandard()</tt> (es estándar), la cual define cinco tipos de transacciones "estándar". Estas limitaciones son temporales y pueden encontrarse removidas para cuando leas esto. Hasta entonces, los cinco tipos de scripts de transacciones son los únicos aceptados por el cliente de referencia y la mayoría de los mineros que ejecutan el cliente de referencia. Aunque es posible crear transacciones no estándar que contengan un script que no es uno de los tipos estándar, debes encontrar un minero que no aplique estas limitaciones para minar esa transacción en un bloque.</p></div>
+<div class="paragraph"><p>Ve el código fuente del cliente Bitcoin Core (la implementación de referncia) para ver qué está permitido actualmente como script de transacción válido.</p></div>
+<div class="paragraph"><p>Los cinco tipos estándar de scripts de transacción son pago-a-hash-de-clave-pública (pay-to-public-key-hash, o P2PKH), clave-pública (public-key), multi-firma (multi-signature, limitado a 15 claves), pago-a-hash-de-script (pay-to-script-hash, o P2SH), y salida de datos (OP_RETURN), los cuales se describen en más detalle en las secciones siguientes.</p></div>
+<div class="sect3">
+<h4 id="p2pkh">Pago-a-Hash-de-Clave-Pública (P2PKH)</h4>
+<div class="paragraph"><p>La vasta mayoría de las transacciones procesadas en la red bitcoin son transascciones P2PKH. Estas contienen un script de bloqueo que solicita a la salida un hash de clave pública, más comúnmente conocido como una dirección bitcoin. Las transacciones que pagan a una dirección bitcoin contienen scripts P2PKH. Una salida bloqueada por un script P2PKH pueden ser desbloqueada (gastada) presentando una clave pública y una firma digital creada por la clave privada correspondiente.</p></div>
+<div class="paragraph"><p>Por ejemplo, veamos el pago de Alice al Café de Bob nuevamente. Alice hizo un pago de 0,015 bitcoins a la dirección bitcoin del café. Esa salida de transacción tendría un script de bloqueo del tipo:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_DUP OP_HASH160 &lt;Hash de Clave Pública del Café&gt; OP_EQUAL OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>El <tt>Hash de Clave Pública del Café</tt> es equivalente a la dirección bitcoin del café, sin la codificación Base58Check. La mayoría de las aplicaciones mostrarían el <em>hash de clave pública</em> en codificación hexadecimal y no el familiar formato Base58Check de la dirección bitcoin comenzado en "1".</p></div>
+<div class="paragraph"><p>El script de bloqueo anterior puede ser satisfecho con un script de desbloqueo de la forma:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Firma del Café&gt; &lt;Clave Pública del Café&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>Los dos scripts juntos formarían el siguiente script de validación combinado:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Firma del Café&gt; &lt;Clave Pública del Café&gt; OP_DUP OP_HASH160
+&lt;Hash de Clave Pública del Café&gt; OP_EQUAL OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>Cuando es ejecutado, este script combinado será evaluado a VERDADERO si, y solo si, el script de desbloqueo cumple las condiciones establecidas por el script de bloqueo. En otras palabras, el resultado será VERDADERO si el script de desbloqueo contiene una firma válida de la clave privada del café que corresponde al hash de clave pública establecido como obstrucción.</p></div>
+<div class="paragraph"><p>Las figuras <xref linkend="P2PubKHash1" xrefstyle="select: labelnumber"/> y <xref linkend="P2PubKHash2" xrefstyle="select: labelnumber"/> muestran (en dos partes) una ejecución paso a paso del script combinado, el cual demostrará que es una transacción válida.</p></div>
+<div class="imageblock" id="P2PubKHash1">
+<div class="content">
+<img src="images/msbt_0503.png" alt="Tx_Script_P2PubKeyHash_1" />
+</div>
+<div class="title">Figure 3. Evaluando un script para una transacción P2PKH (Parte 1 de 2)</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="p2pk">Pago-a-Clave-Pública</h4>
+<div class="paragraph"><p>Pago-a-clave-pública (pay-to-public-key) es una forma más simple de un pago bitcoin que pago-a-hash-de-clave-pública. Con esta forma de script la clave pública misma es almacenada en el script de bloqueo, en vez de un hash de clave pública como se vio en P2PKH anteriormente, lo cual resulta mucho más corto. El pago-a-hash-de-clave-pública fue inventado por Satoshi para hacer las direcciones de bitcoin más cortas, para facilidad de uso. Hoy en día el pago-a-clave-pública se ve principalmente en transacciones coinbase, generadas por software de minería más antiguo que no ha sido actualizado para utilizar P2PKH.</p></div>
+<div class="paragraph"><p>Un script de bloqueo de pago-a-clave-pública se ve así:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Clave Pública A&gt; OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>El script de desbloqueo correspondiente que debe estar presenta para desbloquear este tipo de salida es una simple firma, como esta:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Firma de Clave Pública A&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>El script combinado, el cual es validado por el software de validación de transacción, es:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Firma de Clave Pública A&gt; &lt;Clave Pública A&gt; OP_CHECKSIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>El script es una simple invocación del operador <tt>CHECKSIG</tt>, el cual valida la que la firma pertenezca a la clave correcta y devuelve VERDADERO en la pila.</p></div>
+<div class="imageblock" id="P2PubKHash2">
+<div class="content">
+<img src="images/msbt_0504.png" alt="Tx_Script_P2PubKeyHash_2" />
+</div>
+<div class="title">Figure 4. Evaluando un script para una transacción P2PKH (Parte 2 de 2)</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="multisig">Multi-Firma</h4>
+<div class="paragraph"><p>Los scripts multi-firma establecen una condición donde N claves públicas son registradas en el script y al menos M de esas deben proveer firmas para liberar la obstrucción. Esto se conoce también como un esquema M-de-N, donde N es el número total de claves y M es el umbral de firmas requeridas para la validación. Por ejemplo, una multi-firma 2-de-3 es una donde tres claves públicas son listadas como potenciales firmantes y al menos dos de ella deben ser usadas para crear firmas para una transacción válida para gastar los fondos. En este momento los scripts multi-firma se encuentran limitados a como máximo a 15 claves públicas listadas, lo cual significa que es posible hacer cualquier combinación multi-firma desde 1-de-1 hasta 15-de-15. La limitación de 15 claves listadas puede haber cambiado a fecha en que este libro sea publicado, así que examina la función <tt>isStandard()</tt> para ver qué es aceptado actualmente por la red.</p></div>
+<div class="paragraph"><p>La forma general de un script de bloqueo estableciendo una condición multi-firma M-de-N es:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>M &lt;Clave Pública 1&gt; &lt;Clave Pública 2&gt; ... &lt;Clave Pública N&gt; N OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>donde N es el número total de claves públicas listadas y M es el umbral de firmas requeridas para gastar la salida.</p></div>
+<div class="paragraph"><p>Un script de bloqueo estableciendo una condición multifirma 2-de-3 se ve así:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;Clave Pública A&gt; &lt;Clave Pública B&gt; &lt;Clave Pública C&gt; 3 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>El script de bloqueo anterior puede ser satisfecho con un script de desbloqueo conteniendo pares de firmas y claves públicas:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_0 &lt;Firma B&gt; &lt;Firma C&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>o cualquier combinación de dos firmas a partir de las claves privadas correspondientes a las tres claves públicas listadas.</p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph"><p>El prefijo <tt>OP_0</tt> es requerido por un error en la implementación original de <tt>CHECKMULTISIG</tt> por el cual se saca un item de más de la pila. Es ignorado por <tt>CHECKMULTISIG</tt> y es sencillamente un marcador de posición.</p></div>
+</div></div>
+<div class="paragraph"><p>Los dos scripts juntos formarían el script de validación combinado:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_0 &lt;Firma B&gt; &lt;Firma C&gt; 2 &lt;Clave Pública A&gt; &lt;Clave Pública B&gt; &lt;Clave Pública C&gt; 3 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>Cuando es ejecutado, el script combinado evaluará a VERDADERO si, y solo si, el script de desbloqueo cumple las condiciones establecidas por el script de bloqueo. En este caso, la condición es si el script de desbloqueo contiene una firma válida de las dos claves públicas que corresponden a dos de las tres claves públicas establecidas como obstrucciones.</p></div>
+</div>
+<div class="sect3">
+<h4 id="op_return">Salida de Datos (OP_RETURN)</h4>
+<div class="paragraph"><p>El libro contable bitcoin distribuido y con sellado de tiempo, la cadena de bloques, tiene muchos potenciales usos más allá de pagos. Varios desarrolladores han intentado usar el lenguaje de scripting de transacciones para tomar ventaja de la seguridad y resistencia del sistema para aplicaciones como servicios de escribanía digital, contratos inteligentes y certificado de acciones. Los primeros intentos de usar el lenguaje de script de bitcoin para estos propósitos involucraron crear salidas de transacciones que registraran datos en la cadena de bloques; por ejemplo, para registrar una huella digital de un archivo de forma que cualquiera pudiera establecer prueba de existencia de ese archivo en una fecha específica por referencia a dicha transacción.</p></div>
+<div class="paragraph"><p>El uso de la cadena de bloques de bitcoin para almacenar información sin relación a pagos bitcoin es un tema controvertido. Muchos desarrolladores lo consideran un abuso y prefieren desalentarlo. Otros lo ven como una demostración de las poderosas posibilidades de la tecnología de la cadena de bloques y prefieren alentar su experimentación. Quienes objetan a la inclusión de datos no relacionados a pagos argumentan que causa "hinchazón de la cadena de bloques", colocando una carga sobre quienes corren nodos bitcoin completos al tener que almacenar datos que la cadena de bloques no fue pensada para albergar. Adicionalmente, esas transacciones crean UTXOs que no pueden ser gastados, utilizando la dirección bitcoin de destino como un campo libre de 20 bytes. Ya que la dirección es utilizada para datos no corresponde a una clave privada y la UTXO resultante no puede ser gastada <em>jamás</em>; es un falso pago. Estas transacciones que no pueden ser gastadas no pueden ser removidas de la colección de UTXOs y provocan que el tamaño de la base de datos de UTXOs crezca o "se hinche" para siempre.</p></div>
+<div class="paragraph"><p>En la versión 0.9 del cliente Bitcoin Core se alcanzó un mutuo acuerdo con la introducción del operador <tt>OP_RETURN</tt>. <tt>OP_RETURN</tt> permite a los desarrolladores añadir 80 bytes de datos no relacionados a pagos a la salida de una transacción. Sin embargo, a diferencia del uso de UTXOs falsas, el operador <tt>OP_RETURN</tt> crea una salida <em>demostrablemente ingastable</em> explícitamente, la cual no necesita ser almacenada en la colección de UTXOs. Salidas del tipo <tt>OP_RETURN</tt> son registradas en la cadena de bloques, por lo que consumen espacio en disco y contribuyen al incremento de tamaño de la cadena de bloques, pero no son almacenadas en la colección de UTXOs y por ende no hinchan la reserva de memoria de UTXOs ni incomodan a los nodos completos con el costo de memoria RAM adicional.</p></div>
+<div class="paragraph"><p>Los scripts de <tt>OP_RETURN</tt> se ven así:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_RETURN &lt;datos&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>La porción de datos se limita a 80 bytes y frecuentemente representa un hash, tal como la salida del algoritmo SHA256 (32 bytes). Muchas aplicaciones colocan un prefijo en frente de los datos para ayudar a identificar la aplicación. Por ejemplo, el servicio de autorización bajo notario digital <a href="http://proofofexistence.com">Proof of Existence</a> usa el prefijo de 8 bytes "DOCPROOF," el cual es ASCII codificado como <tt>44f4350524f4f46</tt> en hexadecimal.</p></div>
+<div class="paragraph"><p>Ten en cuenta que no existe un "script de desbloqueo" que corresponda a un <tt>OP_RETURN</tt> que pudiera ser usado para "gastar" una salida <tt>OP_RETURN</tt>. El propósito de <tt>OP_RETURN</tt> es que no puedas gastar el dinero bloqueado en esa salida y por lo tanto no requiere ser conservado en la colección UTXO como potencialmente gastable—<tt>OP_RETURN</tt> es <em>demostrablemente ingastable</em>. <tt>OP_RETURN</tt> es generalmente una salida con un monto de cero bitcoins, ya que cualquier monto en bitcoins asignado a tal salida sería efectivamente perdido para siempre. Si un <tt>OP_RETURN</tt> es encontrado por el software de validación de scripts, resultaría en la detención inmediata de la ejecución del script de validación y marca de la transascción como inválida. Por este motivo, si accidentalmente referencias una salida <tt>OP_RETURN</tt> como entrada de una transacción, esa transascción será inválida.</p></div>
+<div class="paragraph"><p>Una transacción estándar (una que cumple con los chequeos de <tt>isStandard()</tt>) puede tener tan solo una salida <tt>OP_RETURN</tt>. Sin embargo, una salida <tt>OP_RETURN</tt> única puede ser combinada en una transacción con varias salidas de otros tipos.</p></div>
+<div class="paragraph"><p>Dos nuevas opciones de línea de comandos han sido añadidas en Bitcoin Core en su versión 0.10. La opción <tt>datacarrier</tt> controla la transmisión y minado de transacciones OP_RETURN, con el valor por defecto de "1" para permitirlas. La opción <tt>datacarriersize</tt> toma un argumento numérico especificando el tamaño máximo en bytes de los datos en OP_RETURN, con 40 bytes por defecto.</p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph"><p>OP_RETURN fue propuesto inicialmente con un límite de 80 bytes, pero el límite fue reducido a 40 bytes cuando la funcionalidad fue liberada. En febrero de 2015, en la versión 0.10 de Bitcoin Core, el límite fue elevado nuevamente a 80 bytes. Los nodos pueden optar por no transmitir o minar OP_RETURNs, o simplemente transmitir y minar OP_RETURNs que contengan menos de 80 bytes de datos.</p></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="p2sh">Pago-a-Hash-de-Script (P2SH)</h4>
+<div class="paragraph"><p>El pago-a-hash-de-script (P2SH) fue introducido en 2012 como un poderoso nuevo tipo de transacción que generalmente simplifica el uso de scripts de transacciones complejos. Para explicar la necesidad de P2SH, veamos un ejemplo práctico.</p></div>
+<div class="paragraph"><p>En <a href="#ch01_intro_what_is_bitcoin">[ch01_intro_what_is_bitcoin]</a> presentamos a Mohammed, un importador de productos electrónicos en Dubai. La compañia de Mohammed usa la funcionalidad multi-firma de bitcoin de forma exclusiva para sus cuentas corporativas. Los scripts multi-firma son uno de los usos más comunes de las capacidades avanzadas de scripting de bitcoin y son una funcionalidad muy potente. La compañía de Mohammed usa un script multi-firma para todos los pagos de clientes, conocidos en contabilidad como "cuentas por cobrar." Con el esquema multi-firma, cualquier pago hecho por clientes es bloqueado de forma que requieran al menos dos firmas para ser liberados, una de Mohammed y otra de sus socios o un abogado con una clave de backup. Un esquema multi-firma como ese ofrece a la gerencia corporativa controles y la protege de robo, malversación o pérdida.</p></div>
+<div class="paragraph"><p>El script resultante es bastante largo y se ve así:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;Clave Pública de Mohammed&gt; &lt;Clave Pública de Socio1&gt; &lt;Clave Pública de Socio2&gt; &lt;Clave Pública de Socio3&gt; &lt;Clave Pública de Abogado&gt; 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>Aunque los scripts multi-firma son una funcionalidad potente, son algo engorrosos de usar. Dado el script anterior, Mohammed tendría que comunicar este script a cada comprador antes de realizarse el pago. Cada cliente tendría que usar un software de cartera bitcoin especial con la habilidad de crear scripts de transacción personalizados, y cada cliente tendría que entender cómo crear una transacción utilizando scripts personalizados. Es más, la transacción resultante tendría que ser alrededor de cinco veces mayor que una transacción de pago común y corriente, ya que este script contiene claves públicas muy largas. La carga de esa transacción extra larga recaería sobre el cliente en forma de tarifas. Por último, un script de transacción grande como este terminaría en la colección de UTXOs en la RAM de cada nodo completo hasta ser gastado. Todos estos problemas hacen el uso de scripts de salida complejos difícil en la práctica.</p></div>
+<div class="paragraph"><p>Pago-a-hash-de-script (pay-to-script-hash, o P2SH) fue desarrollado para resolver estas dificultades prácticas y hacer el uso de scripts complejos tan fácil como un pago a una dirección bitcoin. Con pagos P2SH los scripts de bloqueo complejos son reemplazados con su huella digital, un hash criptográfico. Cuando una transacción que intenta gastar una UTXO es luego presentada, debe contener el script que concuerda con el hash, además del script de desbloqueo. En términos simples, P2SH significa "pagar a un script que concuerde con este hash, un script que será presentado más tarde cuando esta salida sea gastada."</p></div>
+<div class="paragraph"><p>En las transacciones P2SH, el script de bloqueo que es reemplazado por un hash es referenciado como el <em>script de liquidación</em> (redeem script), ya que es presentado al sistema al momento de liquidación en vez de como un script de bloqueo. <a href="#without_p2sh">[without_p2sh]</a> muiestra el script sin P2SH y <a href="#with_p2sh">[with_p2sh]</a> muestra el mismo script codificado con P2SH.</p></div>
+<div class="tableblock" id="without_p2sh">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 4. Script complejo sin P2SH</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Script de Bloqueo</p></td>
+<td align="left" valign="top"><p class="table">2 ClavePública1 ClavePública2 ClavePública3 ClavePública4 ClavePública5 5 OP_CHECKMULTISIG</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Script de Desbloqueo</p></td>
+<td align="left" valign="top"><p class="table">Firma1 Firma2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock" id="with_p2sh">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 5. Script complejo como P2SH</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Script de Liquidación</p></td>
+<td align="left" valign="top"><p class="table">2 ClavePública1 ClavePública2 ClavePública3 ClavePública4 ClavePública5 5 OP_CHECKMULTISIG</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Script de Bloqueo</p></td>
+<td align="left" valign="top"><p class="table">OP_HASH160 &lt;hash de 20 bytes del script de liquidación&gt; OP_EQUAL</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Script de Desbloqueo</p></td>
+<td align="left" valign="top"><p class="table">Firma1 Firma2 script de liquidación</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Como puedes ver de las tablas, con P2SH el script complejo que detalla las condiciones para gastar la salida (script de liquidación) no es presentado en el script de bloqueo. En cambio, solo su hash se encuentra en el script de bloqueo y el script de liquidación en sí es presentado luego, como parte del script de desbloqueo cuando la salida es gastada. Esto mueve la carga tarifaria y la complejidad del remitente al destinatario (gastador) de la transacción.</p></div>
+<div class="paragraph"><p>Observemos la compañia de Mohammed, el complejo script multi-firma, y los scripts P2SH resultantes.</p></div>
+<div class="paragraph"><p>Primero, el script multi-firma que usa la compañia de Mohammed para todos sus pagos de clientes entrantes:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2 &lt;Clave Pública de Mohammed&gt; &lt;Clave Pública de Socio1&gt; &lt;Clave Pública de Socio2&gt; &lt;Clave Pública de Socio3&gt; &lt;Clave Pública de Abogado&gt; 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>Si los marcadores de posición son reemplazados por claves públicas reales (mostradas aquí como números de 520 bits comenzados en 04) puedes observar que el script se vuelve muy largo:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>2
+04C16B8698A9ABF84250A7C3EA7EEDEF9897D1C8C6ADF47F06CF73370D74DCCA01CDCA79DCC5C395D7EEC6984D83F1F50C900A24DD47F569FD4193AF5DE762C58704A2192968D8655D6A935BEAF2CA23E3FB87A3495E7AF308EDF08DAC3C1FCBFC2C75B4B0F4D0B1B70CD2423657738C0C2B1D5CE65C97D78D0E34224858008E8B49047E63248B75DB7379BE9CDA8CE5751D16485F431E46117B9D0C1837C9D5737812F393DA7D4420D7E1A9162F0279CFC10F1E8E8F3020DECDBC3C0DD389D99779650421D65CBD7149B255382ED7F78E946580657EE6FDA162A187543A9D85BAAA93A4AB3A8F044DADA618D087227440645ABE8A35DA8C5B73997AD343BE5C2AFD94A5043752580AFA1ECED3C68D446BCAB69AC0BA7DF50D56231BE0AABF1FDEEC78A6A45E394BA29A1EDF518C022DD618DA774D207D137AAB59E0B000EB7ED238F4D800 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="paragraph"><p>La totalidad de este script puede ser en cambio reemplazado por un hash criptográfico de 20 bytes, aplicando primero el algoritmo de hashing SHA256 y luego el algoritmo RIPEMD160 sobre el resultado. El hash de 20 bytes del script anterior es:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>54c557e07dde5bb6cb791c7a540e0a4796f5e97e</tt></pre>
+</div></div>
+<div class="paragraph"><p>Una transacción P2SH bloquea la salida a este hash en vez del script más largo, usando el script de bloqueo:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>OP_HASH160 54c557e07dde5bb6cb791c7a540e0a4796f5e97e OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>el cual, como puedes ver, es mucho más breve. En vez de "pagar a este script multi-firma de 5 claves," la transacción P2SH equivalente es "pagar al script con este hash." Un cliente realizando un pago a la compañía de Mohammed solo necesita incluir este script de bloqueo mucho más corto en su pago. Cuando Mohammed desea gastar esta UTXO, debe presentar el script de liquidación original (cuyo hash bloqueó la UTXO) y las firmas necesarias para desbloquearla, así:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Firma1&gt; &lt;Firma2&gt; &lt;2 CP1 CP2 CP3 CP4 CP5 5 OP_CHECKMULTISIG&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ambos scripts son combinados en dos etapas. Primero, el script de liquidación es chequeado contra el script de bloqueo para asegurar que el hash concuerda:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;2 CP1 CP2 CP3 CP4 CP5 5 OP_CHECKMULTISIG&gt; OP_HASH160 &lt;hash de script de liquidación&gt; OP_EQUAL</tt></pre>
+</div></div>
+<div class="paragraph"><p>Si el hash del scritp de liquidación concuerda, el script de desbloqueo es ejecutado por su cuenta para desbloquear el script de liquidación:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;Firma1&gt; &lt;Firma2&gt; 2 CP1 CP2 CP3 CP4 CP5 5 OP_CHECKMULTISIG</tt></pre>
+</div></div>
+<div class="sect4">
+<h5 id="_direcciones_pago_a_hash_de_script">Direcciones pago-a-hash-de-script</h5>
+<div class="paragraph"><p>Otra parte importante de la funcionalidad de P2SH es la habilidad de codificar un hash de un script en una dirección, tal como se define en BIP0013. Las direcciones P2SH son codificaciones Base58Check del hash de 20 bytes de un script, tal como las direcciones bitcoin son codificaciones Base58Check del hash de una clave pública de 20 bytes. Las direcciones P2SH usan el prefijo de versión "5", que resulta en direcciones codificadas en Base58Check comenzadas en "3". Por ejemplo, el script complejo de Mohammed, hasheado y codificado en Base58Check como una dirección P2SH se convierte en <tt>39RF6JqABiHdYHkfChV6USGMe6Nsr66Gzw</tt>. Ahora Mohammed puede distribuir esta "dirección" a sus clientes y ellos pueden usar prácticamente cualquier cartera bitcoin para hacer un pago sencillo, como si fuera una dirección bitcoin. El prefijo 3 da un indicio de que este es un tipo especial de dirección, uno que corresponde a un script en vez de a una clave pública, pero funciona exactamente de la misma manera que un pago a una dirección bitcoin salvando esa diferencia.</p></div>
+<div class="paragraph"><p>Las direcciones P2SH esconden toda la complejidad de forma que la persona realizando el pago no vea el script.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_beneficios_del_pago_a_hash_de_script">Beneficios del pago-a-hash-de-script</h5>
+<div class="paragraph"><p>La funcionalidad de pago-a-hash-de-script ofrece los siguientes beneficios comparado al uso directo de scripts complejos en bloqueo de salidas:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Scripts complejos son reemplazados por huellas más cortas en la salida de transacción, reduciendo la transacción.
+</p>
+</li>
+<li>
+<p>
+Los scripts pueden ser codificados como una dirección, de forma que el remitente y la cartera del remitente no necesitan ingeniería compleja para implementar P2SH.
+</p>
+</li>
+<li>
+<p>
+P2SH desplaza la carga de construir el script al destinatario, no el remitente.
+</p>
+</li>
+<li>
+<p>
+P2SH mueve la carga en almacenamiento de datos para scripts largos de la salida (la cual se encuentra en la colección de UTXOs) a la entrada (almacenada en la cadena de bloques).
+</p>
+</li>
+<li>
+<p>
+P2SH mueve la carga en almacenamiento de datos para el script largo del tiempo presente (pago) a un tiempo futuro (cuando es gastado).
+</p>
+</li>
+<li>
+<p>
+P2SH mueve los costos de tarifas de transacción de un script largo del remitente al destinatario, quien debe incluir el largo script de liquidación para gastarlo.
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_script_de_liquidación_y_validación_isstandard">Script de liquidación y validación isStandard</h5>
+<div class="paragraph"><p>Antes de la versión 0.9.2 del cliente Bitcoin Core, el pago-a-hash-de-script se encontraba limitado a tipos de scripts de transacciones bitcoin estándar, validados por la función <tt>isStandard()</tt>. Eso significa que el script de liquidación presentado en la transacción de gasto podía ser tan solo uno de los tipos estándar: P2PK, P2PKH, o multi-firma, excluyendo <tt>OP_RETURN</tt> y P2SH mismo.</p></div>
+<div class="paragraph"><p>Hacia la versión 0.9.2 del cliente Bitcoin Core, las transacciones P2SH pueden contener cualquier script válido, haciendo al estándar P2SH mucho más flexible y permitiendo experimentación con muchos tipos de transacciones novedosos y complejos.</p></div>
+<div class="paragraph"><p>Nótese que no es posible poner un P2SH dentro de un script de liquidación P2SH ya que la especificación P2SH no es recursiva. Tampoco es posible aun utilizar <tt>OP_RETURN</tt> dentro de un script de liquidación ya que <tt>OP_RETURN</tt> no puede ser liquidado por definición.</p></div>
+<div class="paragraph"><p>Nótese que como el script de liquidación no se presenta a la red hasta el momento de gastar una salida P2SH, si bloqueas una salida con el hash de una transacción inválida será procesado de todos modos. Sin embargo, no podrás gastarlo ya que la transacción de gasto, la cual incluye el script de liquidación, no será aceptado ya que es un script inválido. Esto crea un riesgo, ya que puedes bloquear bitcoins en un P2SH que no puede ser gastado. La red aceptará la obstrucción P2SH aun si corresponde a un script de liquidación inválido, ya que el hash del script no da ninguna indicación de qué script representa.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Los scripts de bloqueo P2SH contienen el hash de un script de liquidación, el cual no da pistas acerca del contenido del script de liquidación mismo. La transacción P2SH será considerada válida y aceptada aun si el script de liquidación no lo es. Puedes bloquear bitcoins accidentalmente de forma que no puedan ser gastados luego.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:57:47 UTC
+</div>
+</div>
+</body>
+</html>

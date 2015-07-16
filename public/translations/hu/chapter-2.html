@@ -1,0 +1,1036 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch02_bitcoin_overview">A bitcoin működése</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_tranzakciók_blokkok_bányászat_és_a_blokklánc">Tranzakciók, blokkok, bányászat és a blokklánc</h3>
+<div class="paragraph"><p>A szokásos banki és pénzügyi rendszerektől eltérően a bitcoin a decentralizált bizalomra épül. A bitcoin esetében a bizalom nem egy központi szervezet révén jön létre, melyben mindenki megbízik, hanem a bizalom a rendszer különböző résztvevői közötti interakciók eredményeképpen előálló tulajdonság. Ebben a fejezetben oly módon szerzünk áttekintő képet a bitcoinról, hogy végigkövetjük egy tranzakciónak a rendszeren belüli útját, és megvizsgáljuk, hogy az elosztott közmegegyezés (konszenzus) módszere révén hogyan válik a tranzakció „megbízhatóvá”, és végül hogyan kerül rögzítésre az összes tranzakciót tartalmazó elosztott főkönyvben, vagyis a blokkláncban.</p></div>
+<div class="paragraph"><p>Mindegyik példa a bitcoin hálózat egy tényleges tranzakcióján alapul, és a felhasználók (Joe, Alice és Bob) közötti történéseket szimulálja oly módon, hogy az egyik pénztárcából a másikba küld pénzt. Miközben a bitcoin hálózatban és a blokkláncon végigkövetjük a tranzakciókat, az egyes lépések megjelenítésére egy <em>blockklánc explorert</em> fogjuk használni. A blokklánc explorer egy olyan web alkalmazás, amely egy bitcoinos keresőgépként funkcionál, és lehetővé teszi, hogy a segítségével címek, tranzakciók és blokkok után kutassunk, és megvizsgáljuk a közöttük lévő összefüggéseket.</p></div>
+<div class="paragraph"><p>Népszerű blokklánc explorer többek között: </p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://blockchain.info">Blockchain info</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://blockexplorer.com">Bitcoin Block Explorer</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://insight.bitpay.com">insight</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://blockr.io">blockr Block Reader</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Mindegyikben van egy kereső funkció, amelynek egy cím, egy tranzackió hash (zanza) vagy egy blokkszám adható meg, és amely megkeresi az ennek megfelelő adatot a bitcoin hálózatban és a blokkláncon. Mindegyik példában egy URL-t is szerepeltetni fogunk, amely közvetlenül a megfelelő bejegyzésre mutat, ami ily módon részletesen tanulmányozható.</p></div>
+<div class="sect3">
+<h4 id="_a_bitcoin_áttekintése">A bitcoin áttekintése</h4>
+<div class="paragraph"><p>A lenti <a href="#bitcoin-overview">[bitcoin-overview]</a> áttekintő ábrán láthatjuk, hogy a bitcoin rendszer a következőkből áll: az egyes felhasználókhoz tartozó, kulcsokat tartalmazó pénztárcákból, a hálózaton végigterjedő tranzakciókból, és bányászokból, akik a számításaik révén (egymással versenyezve) megteremtik a konszenzust a blokkláncon, amely az összes tranzakció hiteles tárháza. Ebben a fejezetben egy tranzakció útját kísérjük végig a hálózatban, és madártávlatból vizsgáljuk a bitcoin rendszer egyes részei közötti kölcsönhatásokat. A további fejezetek mélyebben belemennek a pénztárcák, a bányászat és a kereskedelmi rendszerek mögötti techonológiába.</p></div>
+<div class="imageblock" id="bitcoin-overview">
+<div class="content">
+<img src="images/msbt_0201.png" alt="Bitcoin Overview" />
+</div>
+<div class="title">Figure 1. A bitcoin áttekintése.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cup_of_coffee">Vegyünk egy csésze kávét</h4>
+<div class="paragraph"><p>Az előző fejezetben bemutatott új felhasználó, Alice, épp most tett szert az első bitcoinjára. Az <a href="#getting_first_bitcoin">[getting_first_bitcoin]</a> részben Alice találkozott a barátjával, Joe-val, hogy némi készpénzért bitcoint vásároljon tőle. A Joe által létrehozott tranzakció révén Alice pénztárcájába 0.10 BTC került. Alice első kiskereskedelmi tranzakciója az lesz, hogy vesz egy csésze kávét Bob Palo Alto-i kávézójában. Bob csak nemrég, elektronikus pénztárrendszerének modernizálása óta fogadja el a bitcoint. Bob kávézójában az árak a helyi pénznemben (US dollárban) vannak feltüntetve, de a kasszánál az ügyfeleknek lehetőségük van dollárral vagy bitcoinnal fizetni. Alice rendel egy csésze kávét, Bob pedig a kasszánál rögzíti a tranzakciót. A pénztárgép a végösszeget az aktuális árfolyam szerint US dollárról bitcoinra konvertálja, és mindkét pénznemben kijelzi az árat, továbbá megjelenít egy QR kódot, amely a tranzakcióhoz tartozó <em>fizetési kérést</em> tartalmazza  (lásd <a href="#payment-request-QR">[payment-request-QR]</a>):</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>Összeg:
+$1.50 USD
+0.015 BTC</tt></pre>
+</div></div>
+<div class="imageblock" id="payment-request-QR">
+<div class="content">
+<img src="images/msbt_0202.png" alt="payment-request" />
+</div>
+<div class="title">Figure 2. Fizetési kérést tartalmazó QR kód – próbálják meg bepásztázni!</div>
+</div>
+<div class="listingblock" id="payment-request-URL">
+<div class="title">A fizetési kérést tartalmazó fenti QR kód a BIP0021-ben definiált következő URL-t kódolja:</div>
+<div class="content">
+<pre><tt>bitcoin:1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA?
+amount=0.015&amp;
+label=Bob%27s%20Cafe&amp;
+message=Purchase%20at%20Bob%27s%20Cafe
+
+Az URL részei
+
+Egy bitcoin cím: "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
+A fizetendő összeg:  "0.015"
+A bitcoin címhez tartozó címke: "Bob's Cafe" (Bob kávézója)
+A fizetség leírása: "Purchase at Bob's Cafe" (Vásárlás Bob kávézójában)</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A „fizetési kérés” nem csupán egy bitcoin címet tartalmazó QR kód, hanem egy QR kóddal kódolt URL, amely egy címet, a fizetendő összeget és egy általános leírást tartalmaz, pl. „Bob kávézója”. A bitcoin pénztárca ennek segítségével tudja összeállítani a fizetség elküldéséhez szükséges adatokat, és egyidejűleg a felhasználó számára olvasható formában megjeleníteni azokat. Ha bepásztázzuk a fenti QR kódot, akkor mi is azt látjuk, amit Alice.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Bob azt mondja: „Ez egy dollár ötven, azaz tizenöt milliBit lesz”.</p></div>
+<div class="paragraph"><p>Alice az okostelefonjával bepásztázza a kijelzőn megjelenő QR kódot. A telefonon megjelenik a <tt>0.0150 BTC</tt> kifizetés <tt>Bob kávézójá+nak. Alice a +Küldés</tt> gombbal engedélyezi a kifizetést. Néhány másodpercen belül (körülbelül ugyanannyi idő alatt, mint amennyi egy hitelkártyás fizetéshez szükséges), Bob kasszáján megjelenik a tranzakció, és ezzel befejeződik a folyamat.</p></div>
+<div class="paragraph"><p>A következő részekben részletesebben meg fogjuk vizsgálni ezt a tranzakciót. Megnézzük, hogy Alice pénztárcája hogyan hozza létre a tranzakciót, hogyan továbbítódik a tranzakció a hálózaton keresztül, hogy kerül ellenőrzésre, és végül hogyan tudja Bob további tranzakciókban elkölteni ezt az összeget.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A bitcoin hálózat képes kezelni a bitcoin tört részeit is, a millibitcoinoktól (ami a bitcoin 1/1000 része) egészen a bitcoin 1/100 000 000 részéig, aminek Satoshi a neve. Ebben a könyvben az összeg nagyságától függetlenül a „bitcoin” szót fogjuk használni, a legkisebb egységtől (1 Satoshi) az összes, valaha kibányászásra kerülő (21&#8217;000&#8217;000) bitcoinig bezárólag.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bitcoin_tranzakciók">Bitcoin tranzakciók</h3>
+<div class="paragraph"><p>A tranzakció azt tudatja a hálózattal, hogy egy bitcoin tulajdonos engedélyezte bizonyos számú bitcoin átutalását egy másik tulajdonos számára. Ha az új tulajdonos el akarja költeni ezeket a bitcoinokat, akkor létrehoz egy újabb tranzakciót, amely engedélyezi az átutalást egy harmadik felhasználó számára, és így tovább, véges végig egy tulajdonosi láncban.</p></div>
+<div class="paragraph"><p>A tranzakciók olyanok, mint egy kettős könyvelés főkönyvének a sorai.  Minden egyes tranzakcióban egy vagy több „bemenet” van, ami terhelést jelent egy bitcoin számlával szemben. A tranzakció másik oldalán egy vagy több „kimenet” van, ami jóváírásként hozzáadódik egy bitcoin számlához. A bemenetek és kimenetek (terhelések és jóváírások) nem szükségszerűen ugyanazt a számot eredményezik, ha összeadjuk őket. A kimenetek összege kicsit kevesebb, mint a bemenetek összege, a különbség pedig egy hallgatólagos „tranzakciós díj”, vagyis egy kis fizetség, melyet az a bányász kap meg, amelyik a tranzakciót a főkönyvbe befoglalja. A <a href="#transaction-double-entry">[transaction-double-entry]</a> tranzakciónk a főkönyvi nyilvántartásban egy sorként jelenik meg.</p></div>
+<div class="paragraph"><p>A tranzakciók minen egyes átutalásra kerülő (bemeneti) bitcoin összegre vonatkozóan bizonyítékot tartalmaznak arra vonatkozóan, hogy a tulajdonos valóban birtokolja őket. Ez a bizonyíték a tulajdonos digitális aláírása, amelyet bárki ellenőrizni tud. A bitcoin szóhasználatával élve, „elkölteni” valamit azt jelenti, hogy aláírunk egy tranzakciót, amely egy előző tranzakcióból egy új tulajdonosnak továbbít értéket. Az új tulajdonost a bitcoin címe azonosítja.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="literalblock">
+<div class="content">
+<pre><tt>A _tranzakciók_ az értéket a _tranzakció bemeneteiből_ a _tranzakció kimeneteibe_ továbbítják. A bemenet azt adja meg, hogy honnan származik az érték: általában egy előző tranzakció kimenetéből. Egy tranzakció kimenete új tulajdonost rendel az értékhez oly módon, hogy az értéket egy kulccsal rendeli össze. A cél kulcs neve: _akadály_. Aláírási kötezettséget jelent annak a számára, aki az összeget jövőbeli tranzakciókban szeretné használni. Egy tranzakció kimenetei egy új tranzakció bemeneteiként használhatók. Ily módon egy tulajdonosi lánc jön létre, amin az érték címről címre vándorol (lásd &lt;&lt;blockchain-mnemonic&gt;&gt;).</tt></pre>
+</div></div>
+</td>
+</tr></table>
+</div>
+<div class="imageblock" id="transaction-double-entry">
+<div class="content">
+<img src="images/msbt_0203.png" alt="Transaction Double-Entry" />
+</div>
+<div class="title">Figure 3. Tranzakciók kettős könyvelésként ábrázolva</div>
+</div>
+<div class="imageblock" id="blockchain-mnemonic">
+<div class="content">
+<img src="images/msbt_0204.png" alt="Transaction chain" />
+</div>
+<div class="title">Figure 4. Egy tranzakciós lánc, ahol az egyik tranzakció kimenete alkotja a következő tranzakció bemenetét</div>
+</div>
+<div class="paragraph"><p>Alice a Bob kávéházának szóló fizetség során egy előző tranzakciót használ bemenetként. Az előző fejezetben Alice a barátjától, Joe-tól készpénzért vett bitoint. Ez a tranzakció bizonyos számú bitcoint kötött hozzá (akadállyal) Alice kulcsához. Alice a Bob kávéháza számára létrehozott új tranzakció bemeneteként erre az előző tranzakcióra hivatkozik, és új kimeneteket hoz létre, a kávéért történő fizetség és a visszajáró pénz számára. A tranzakciók egy láncot alkotnak, amelyben a legutolsó tranzakciók bemenetei megfelelnek az előző tranzakciók kimeneteinek. Alice kulcsa szolgáltatja azt az aláírást, amely felszabadítja az előző tranzakció kimeneteit, vagyis ily módon bizonyítja a bitcoin hálózat számára, hogy ő a pénzösszeg tulajdonosa. A kávéért történő fizetséget Bob címéhez rendeli hozzá, ezáltal „akadályt állít” ezen a kimeneten, azzal a követelménnyel, hogy Bob aláírására van szükség, ha Bob szeretné elkölteni ezt az összeget. Ez jelenti az érték továbbítást Alice és Bob között. Az Alice és Bob közötti tranzakciós láncot a <a href="#blockchain-mnemonic">[blockchain-mnemonic]</a> szemlélteti.</p></div>
+<div class="sect3">
+<h4 id="_a_leggyakrabban_előforduló_tranzakciók">A leggyakrabban előforduló tranzakciók</h4>
+<div class="paragraph"><p>A leggyakoribb tranzakció az egyik címről egy másik címre történő egyszerű fizetség, amely gyakran tartalmaz valamilyen „visszajáró” pénzt, melyet az eredeti tulajdonosnak juttatnak vissza. Ennek a tranzakciótípusnak egy bemenete és két kimenete van, amint azt a <a href="#transaction-common">[transaction-common]</a> mutatja:</p></div>
+<div class="imageblock" id="transaction-common">
+<div class="content">
+<img src="images/msbt_0205.png" alt="Common Transaction" />
+</div>
+<div class="title">Figure 5. A leggyakoribb tranzakció</div>
+</div>
+<div class="paragraph"><p>Egy másik, gyakori tranzakció több bemenetet egyetlen kimenetben összesít (lásd <a href="#transaction-aggregating">[transaction-aggregating]</a>). Ez annak felel meg, amikor a valós világban egy csomó érméért és bankjegyért egyetlen nagyobb bankjegyet kapunk. A pénztárca alkalmazások néha azért hoznak létre ilyen tranzakciókat, hogy a számos kisebb összeget, melyeik visszajáró pénzek voltak, kitakarítsák.</p></div>
+<div class="imageblock" id="transaction-aggregating">
+<div class="content">
+<img src="images/msbt_0206.png" alt="Aggregating Transaction" />
+</div>
+<div class="title">Figure 6. Összegeket egyesítő tranzakció</div>
+</div>
+<div class="paragraph"><p>Végül, a bitcoin főkönyv gyakori tranzakció típusa az is,  amely egyetlen bemenetet több kimenetté oszt fel, ahol a kimenetek különböző személyekhez tartoznak (lásd <a href="#transaction-distributing">[transaction-distributing]</a>). Ezt a tranzakciótípust az üzleti vállalkozások pénz elosztásra használják, pl. amikor egy fizetési lista alapján több alkalmazottnak küldenek fizetést.</p></div>
+<div class="imageblock" id="transaction-distributing">
+<div class="content">
+<img src="images/msbt_0207.png" alt="Distributing Transaction" />
+</div>
+<div class="title">Figure 7. Pénz elosztó tranzakció</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_egy_tranzakció_létrehozása">Egy tranzakció létrehozása</h3>
+<div class="paragraph"><p>Alice pénztárca programja a megfelelő bemenetek és kimenetek kiválasztásával az Alice előírásának megfelelő tranzakciót hozza létre. Alice-nak csak a célszemélyt és az összeget kell megadnia, a többit a pénztárca program automatikusan elvégzi anélkül, hogy Alice-nak törődnie kellene a részletekkel. Fontos, hogy egy pénztárca program még akkor is képes tranzakciók létrehozására, ha teljesen offline állapotú. Hasonlóan ahhoz, ahogy egy otthon megírt csekket is el lehet küldeni egy borítékban a banknak, egy tranzakció létrehozása és aláírása sem követeli meg, hogy a program kapcsolatban legyen a bitcoin hálózattal. A hálózatnak csak a legvégén kell a tranzakciót elküldeni, hogy megtörténhessen a végrehajtása.</p></div>
+<div class="sect3">
+<h4 id="_a_megfelelő_bemenetek_kiválasztása">A megfelelő bemenetek kiválasztása</h4>
+<div class="paragraph"><p>Alice pénztárca programjánaknak először olyan bemeneteket kell találnia, amelyekkel lehetséges a Bobnak küldendő összeg kifizetése. A legtöbb pénztárca program  egy kis adatbázist hoz létre az „el nem költött tranzakció kimenetek”-ből, melyek a pénztárca saját kulcsaival vannak zárolva („akadályoztatva”). Ennek megfelelően, Alice pénztárcájában ott lesz Joe tranzakciójából annak a kimenetnek a másolata, amely akkor jött létre, amikor Alice bitcoint vett Joe-tól (lásd <a href="#getting_first_bitcoin">[getting_first_bitcoin]</a>). Azoknak a bitcoin pénztárca alkalmazásoknak, melyek teljes kliensként futnak, másolatuk van a blokklánc összes tranzakciójának elköltetlen kimeneteiről. Ez lehetővé teszi, hogy a pénztárca program tranzakció bemeneteket hozzhasson létre, valamint hogy gyorsan elenőrizze, hogy a bejövő tranzakcióknak helyesek-e a bemenetei. Mivel egy teljes kliens sok diszk helyet foglal, a legtöbb felhasználó "pehelysúlyú" klienseket futtat. Ezek a kliensek csak a felhasználó saját el nem költött kimeneteit tartják nyilván.</p></div>
+<div class="paragraph"><p>Ha a pénztárca programban nincs meg az összes elköltötetlen tranzakciós kimenet másolata, akkor a program a bitcoin hálózatból le tudja kérdezni ezt az adatot, vagy úgy, hogy akár a különféle szolgáltatók API-jait használja, vagy egy teljes csomópont bitcoin JSON RPC API-n keresztüli lekérdezésével . Az <a href="#example_2-1">[example_2-1]</a> egy RESTful API kérési példát szemléltet, melyet egy adott URL-re kiadott HTTP GET kéréssel hoztunk létre. Az URL visszaadja, hogy egy adott címhez milyen az el nem költött tranzakciós kimenetek tartoznak, vagyis megadja azokat az adatokat, melyek egy alkalmazás számára szükségesek, ha az alkalmazás szeretné létrehozni a kimenetek elköltéséhez szükséges tranzakció bemeneteket. Egy parancssorból futtatható, egyszerű  <em>cURL</em> HTTP klienssel kapjuk meg a választ:</p></div>
+<div class="exampleblock" id="example_2-1">
+<div class="title">Example 1. Az Alice bitcoin címéhez tartozó el nem költött kimenetek megkeresése</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="exampleblock" id="example_2-2">
+<div class="title">Example 2. A keresésre kapott válasz</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>A választ az <a href="#example_2-2">[example_2-2]</a> mutatja. Eszerint a bitcoin hálózat egyetlen egy el nem költött kimenetről tud (amely még nem lett felhasználva), és ez Alice <tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt> címéhez tartozik. A válasz egy hivatkozást tartalmaz arra a tranzakcióra, amelyben ez az el nem költött kimenet (a Joe-tól érkező pénz) van. A kimenet értéke Satoshiban van megadva, a 10 millió Satoshi 0.10 bitcoinnak felel meg. Ezen információ birtokában Alice pénztárca alkalmazása létre tud hozni egy tranzakciót, amely ezt az értéket az új tulajdonosok címeire továbbítja.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Lásd <a href="http://bit.ly/1tAeeGr">Joe tranzakciója Alice számára</a>.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Mint látható, Alice pénztárcájában elegendő bitcoin van az egyetlen el nem költött kimenetben ahhoz, hogy kifizesse a kévéját. Ha nem ez lenne a helyzet, akkor a pénztárca programnak „végig kellene bogarásznia” egy halom kisebb el nem költött kimenetet, hasonlóan ahhoz, mint amikor valaki egy fizikai pénztárcából újabb és újabb pénzérméket vesz elő, hogy ki tudja fizetni a kávéját. Mindkét esetben szükség van a visszajáró pénz kezelésére. Ezt a következő részben fogjuk látni, amikor a pénztárca alkalmazás létrehozza a tranzakció kimeneteket (a kifizetéseket). (payments).</p></div>
+</div>
+<div class="sect3">
+<h4 id="_a_kimenetek_létrehozása">A kimenetek létrehozása</h4>
+<div class="paragraph"><p>A tranzakció kimenete egy script formájában jön létre. Ez a script akadályt hoz létre, és az összeg csak úgy használható fel, ha a scripthez valaki ismeri a megoldást. Egyszerűbb szavakkal, az Alice által létrehozott tranzakció kimenetében egy olyan script lesz, ami ezt mondja: „Ez a kimenet annak fizethető ki, aki be tud mutatni egy olyan aláírást, amely Bob nyilvános címéhez tartozó kulccsal történt.” Mivel az a kulcs, amely ehhez a címhez tartozik, csak Bob pénztárcájában van meg, ézért csak Bob pénztárcája képes ilyen aláírásra, és ily módon a kimenet elköltésére. Alice tehát azzal, hogy aláírást kér a Bobtól, „megakadályozza”, hogy más is elkölthesse a kimenet értékét.</p></div>
+<div class="paragraph"><p>A tranzakciónak lesz egy második kimenete is, mivel Alice pénze egy 0.10 BTC értékű kimenetben áll rendelkezésre, ami túl sok a 0.015 BTC-be kerülő kávéért. Alice-nak 0.085 BTC visszajár. A visszajáró pénzt Alice pénztárca programja kezeli, ugyanabban a tranzakcióban, amelyben a Bobnak történő kifizetést. Lényegében Alice pénztárcája a pénzt két kifizetésre bontja: egy Bobnak történő kifizetésre és egy saját magának történő visszafizetésre. Alice a visszajáró pénzhez tartozó kimenetet egy későbbi tranzakcióban tudja felhasználni, vagyis el tudja majd költeni.</p></div>
+<div class="paragraph"><p>Végül, ahhoz, hogy a hálózat gyorsan feldolgozza a tranzakciót, Alice pénztárca programja egy kis díjat alkalmaz. A díj a tranzakcióban nem jelenik meg explicit módon, hanem a bemenetek és kimenetek különbsége. Ha Alice a második kimenetben 0.085 helyett csak 0.0845 értéket ad meg, akkor 0.0005 BTC (fél millibitcoin) marad. A bemenet 0.10 BTC-jét a két kimenet nem költi el teljesen, mivel a kimenetek összege kisebb lesz, mint 0.10. Az így keletkező különbség a tranzakciós díj, amely azé a bányászé lesz, aki a tranzakciót blokkba foglaja és a blokkot a blokklánccal megvalósított főkönyvben tárolja.</p></div>
+<div class="paragraph"><p>A tranzakció a bitcoin blokkláncon a következő URL-lel iratható ki, amint azt a <a href="#transaction-alice">[transaction-alice]</a> mutatja:</p></div>
+<div class="imageblock" id="transaction-alice">
+<div class="content">
+<img src="images/msbt_0208.png" alt="Alice Coffee Transaction" />
+</div>
+<div class="title">Figure 8. Alice Bob kávézójával kapcsolatos tranzakciója</div>
+</div>
+<div class="admonitionblock" id="transaction-alice-url">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Alice Bob kávézójával kapcsolatos tranzakiója a következő hivatkozás segítségével érhető el: <a href="http://bit.ly/1u0FIGs">Alice tranzakciója Bob kávéháza számára</a>.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_tranzakció_hozzáadása_a_nyilvántartáshoz">A tranzakció hozzáadása a nyilvántartáshoz</h4>
+<div class="paragraph"><p>Alice pénztárca programja egy 258 bájt hosszú tranzakciót hozott létre. A tranzakció mindent tartalmaz, ami az összeg feletti tulajdonjog bizonyításához szükséges, és az összeget egy új tulajdonoshoz rendeli hozzá. Ez az a pont, amikor a tranzakciót el kell küldeni a bitcoin hálózatba, ahol az be fog épülni az elosztott nyilvántartásba, a blokkláncba. A következő részben látni fogjuk, hogyan válik egy tranzakció egy új blokk részévé, és hogyan történik az új blokk „kibányászása”. Végül látni fogjuk, hogy miután az új blokk a blokklánc részévé vált, hogyan lesz a blokk egyre megbízhatóbb, ahogyan a blokklánc egyre több blokkal bővül.</p></div>
+<div class="sect4">
+<h5 id="_a_tranzakció_elküldése">A tranzakció elküldése</h5>
+<div class="paragraph"><p>Mivel a tranzakció tartalmazza a feldolgozásához szükséges összes információt, nem számít, hogyan vagy honnan küldjük el a bitcoin hálózatba. A bitcoin hálózat egy egyenrangú csomópontokból álló, ún. peer-to-peer hálózat, amelyben az egyes bitcoin kliensek számos más bitcoin klienshez kapcsolódnak. A bitcoin hálózat célja az, hogy az összes résztvevőnek továbbítsa a tranzakciókat és a blokkokat.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_a_tranzakció_szétterjedése">A tranzakció szétterjedése</h5>
+<div class="paragraph"><p>Alice pénztárca programja az új tranzakciót bármelyik bitcoin kliensnek el tudja küldeni, ha azzal valamilyen Internet kapcsolata van. A kapcsolat lehet vezetékes, WiFi vagy mobil. Szükségtelen, hogy Alice bitcoin pénztárcája Bob bitcoin pénztárcájával közvetlen kapcsolatban legyen, vagy hogy a kávéházban lévő Internet kapcsolatot használja, bár mindkét dolog lehetséges. Egy tetszőleges bitcoin hálózati csomópont (vagyis egy másik kliens), amely egy előzőleg még nem látott érvényes tranzakcióval találkozik, azonnal továbbítja azt vele kapcsolatban lévő többi csomópontnak. Emiatt a peer-to-peer hálózatban a tranzakció gyorsan szétterjed, és a csomópontok nagy részéhez néhány másodpercen belül eljut.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_hogyan_látja_mindezt_bob">Hogyan látja mindezt Bob</h5>
+<div class="paragraph"><p>Ha Bob bitcoin pénztárca programja közvetlenül Alice pénztárca programjával van kapcsolatban, akkor Bob kliense lesz az első, amelyik a megkapja a tranzakciót. De ha Alice pénztárcája más csomópontokon keresztül küldi el a tranzakciót, a tranzakció akkor is néhány másodpercen belül eljut Bob pénztárcájához. Bob pénztárcája Alice tranzakcióját azonnal bejövő fizetésként fogja azonosítani, mivel olyan kimenetet tartalmaz, amely Bob kulcsaival elkölthető. Bob pénztárca programja azt is ellenőrizni tudja, hogy a tranzakció jól formált-e, előzőleg elköltetlen bemeneteket használ-e és kellő nagyságú tranzakciós díjat tartalmaz-e ahhoz, hogy a befoglalják a következő blokkba. Ezek után Bob viszonylag kis kockázattal feltételezheti, hogy a tranzakció blokkba foglalása és megerősítése hamarosan megtörténik.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="literalblock">
+<div class="content">
+<pre><tt>((("tranzakciók","elfogadása megerősítések nélkül")))A bitcoin tranzakciókkal kapcsolatban gyakori félreértés az, hogy 10 percet kell várni a tranzakció „megerősítéséhez”, vagyis amíg bele nem kerül egy új blokkba, vagy 60 percet 6 teljes megerősítéshez. Noha a megerősítés biztosítja, hogy a tranzakciót az egész hálózat ugyanolyannak lássa, az olyan kis értékű tételek esetén, mint egy pohár kávé, felesleges a várakozás. Egy érvényes, kis értékű tranzakció megerősítés nélküli elfogadása nem jelent nagyobb kockázatot, mint egy hitelkártyával történő fizetés azonosító okmány vagy aláírás nélküli elfogadása, márpedig ez gyakori manapság.(((range="endofrange", startref="ix_ch02-asciidoc4")))(((range="endofrange", startref="ix_ch02-asciidoc1")))</tt></pre>
+</div></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bitcoin_bányászat">Bitcoin bányászat</h3>
+<div class="paragraph"><p>A tranzakció tehát szétterjedt a bitcoin hálózatban. Addig azonban nem lesz az osztott főkönyv (a <em>blokklánc</em>) része, amíg egy <em>bányászatnak</em> nevezett folyamat le nem ellenőrzi és be nem foglalja egy blokkba. Részletesebb magyarázat a <a href="#ch8">[ch8]</a> részben található.</p></div>
+<div class="paragraph"><p>A bitcoin rendszer a bizalmat elvégzett számításokra alapozza. A tranzakciókat <em>blokkokba</em> rendezi, amihez rendkívül sok számításra van szükség, de a blokkok ellenőrzéséhez kevésre. Ez a folyamat a bányászat, és a bitcoin esetén két célra szolgál:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+A bányászat révén jönnek létre minden egyes blokkban az új bitcoinok, majdnem úgy, ahogy egy központi bank új pénzt nyomtat. A létrejövő bitcoinok mennyisége állandó, és idővel csökkenő.
+</p>
+</li>
+<li>
+<p>
+A bányászat hozza létre a bizalmat oly módon, hogy a tranzakciók csak akkor kerülnek megerősítésre, ha elég feldolgozó kapacitást fordítottak az őket tartalmazó blokkra. A több blokk több elvégzett számítást, vagyis nagyobb bizalmat jelent.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>A bányászat olyasféle dolog, mint egy hatalmas sudoku játék, melyet egymással párhuzamosan játszanak, és amely mindig újra indul, ha valaki talál egy megoldást. A játék nehézségét automatikusan úgy választják meg, hogy körülbelül 10 perc legyen a megoldáshoz szükséges idő. Képzeljünk el egy hatalmas sudoku rejtvényt, melyben néhány ezer a sorok és szolopok száma. Egy kész megoldás nagyon gyorsan ellenőrizhető. De ha a rejtvény még nincs kitöltve, akkor a megoldásához nagyon sok munkára van szükség! A sudoku bonyolultsága a méretének a módosításával szabályozható (mennyi legyen a sorok és az oszlopok száma), de még akkor is nagyon egyszerű az ellenőrzése, ha nagyon nagy. A bitcoinnál használt „rejtvény” a hash-képző titkosítási algoritmuson alapul, és hasonló jellemzőkkel rendelkezik: aszimmetrikusan nehéz a megoldása, de könnyű az ellenőrzése és a nehézsége állítható.</p></div>
+<div class="paragraph"><p>A <a href="#user-stories">[user-stories]</a>-nél bemutattuk Jinget, aki számítástechnikát tanul Sanghajban. Jing bányászként  működik közre a bitcoin hálózatban. Kb. 10 percenként Jing és sok ezer más bányász versenyez egymással, hogy megoldást találjanak egy tranzakciókból álló blokkhoz. Az ilyen megoldás neve: „munkabizonyíték”. A megoldáshoz másodpercenként több trillió hash (zanza) műveletet kell a teljes bitcoin hálózatban elvégezni. A „munkabizonyíték” algoritmusa abból áll, hogy a blokk fejéből és egy véletlen számból az SHA256 titkosítási algoritmussal egy hasht (zanzát) képez, és ezt mindeddig ismétli, amíg létre nem jön egy előre meghatározott minta. Az adott körben az a bányász nyeri meg a versenyt, aki elsőként talál egy ilyen megoldást, és publikálja a blokkot a blokkláncon.</p></div>
+<div class="paragraph"><p>Jing 2010-ben kezdett bányászni. Egy gyors asztali számítógéppel kereste az új blokkokhoz a megfelelő munkabizonyítékot. Ahogy egyre több bányász csatlakozott a bitcoin hálózathoz, a megoldandó probléma nehézsége gyorsan nőtt. Jingnek és a többi bányásznak hamarosan speciálisabb hardverekre kellett áttérnie, pl. a játékokban vagy a konzolokban használt grafikus kártyákra (GPU, Graphical Processing Unit). Ennek a könyvnek az írása idején a nehézség már olyan magas, hogy csak ASIC-ekkel (ASIC, Application Specific Integrated Circuit → BOÁK, Berendezés Orientált Integrált Áramkör) kifizetődő a bányászat. Az ASIC-okban sok száz hash-képző egység van hardverrel megvalósítva. Ezek egy szilicium morzsán, egymással párhuzamosan futnak. Jing csatlakozott egy „bányatársasághoz” is, ami egy lottózó közösséghez hasonlóan lehetővé teszi, hogy a résztvevők egyesítsék az erőforrásaikat és osztozzanak a jutalmon. Jing most napi 24 órában két, USB-vel rendelkező ASIC géppel bányászik. A villanyszámláját úgy fizeti, hogy eladja a bányászattal előállított bitcoinokat, és még némi nyereségre is szert tesz. A számítógépén a bitcoind referencia kliens egy példánya fut, ami a specializált bányász szoftver futtatásához szükséges.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_blokkok_létrehozása_a_tranzakciókból">Blokkok létrehozása a tranzakciókból</h3>
+<div class="paragraph"><p>A hálózatba elküldött tranzakció csak akkor kerül ellenőrzésre, ha bekerül a globális elosztott nyilvántartásba, a blokkláncba. A bányászok minden 10 percben egy új blokkot állítanak elő, amelyik az utolsó blokk óta előállt összes tranzakciót tartalmazza. A felhasználók pénztárcáiból és egyéb alkalmazásokból folyamatosan érkeznek a hálózatba az új tranzakciók. A bitcoin hálózat csomópontjai ezeket egy ellenőrizetlen tranzakciókból álló, átmeneti „pool”-ba (gyüjtőterületre) helyezik. A bányászok egy új blokk felépítésének a megkezdésekor az ellenőrizetlen tranzakciókat erről a területről egy új blokkhoz adják hozzá, majd megpróbálnak megoldani egy nagyon nehéz problémát (a munkabizonyítékot), hogy így bizonyítsák az új blokk érvényességét. A bányászat folyamatát részletesen a <a href="#mining">[mining]</a> rész ismerteti.</p></div>
+<div class="paragraph"><p>Azt, hogy mely tranzakciók kerülnek be a blokkba, a tranzakciós díj és néhány egyéb tényező befolyásolja. Mindegyik bányász egy új blokk bányászatához kezd, amint megkapja a hálózattól az előző blokkot, mivel ebből tudja, hogy elvesztette a verseny előző fordulóját. Mindegyik bányász azonnal egy új blokkot hoz létre, feltölti tranzakciókkal és az előző blokk ujjlenyomatával, majd megkezdi az új blokkhoz a munkabizonyíték kiszámításást. Mindegyik bányász egy speciális tranzakciót foglal bele a blokkba, amely jutalomként újonnan előállított bitcoinokat (ez jelenleg 25 BTC blokkonként) fizet ki a bányász saját bitcoin címére. Ha a bányász talál egy megoldást, amely a blokkot érvényessé teszi, akkor „megnyeri” ezt a jutalmat, mivel a sikeresen létrehozott blokk a a globális blokklánc részévé válik, és a blokkban lévő, jutalmat tartalmazó tranzakció elkölthetővé válik. Jing, aki egy bányatársaság tagja, úgy állította be a szoftverét, hogy egy új blokk létrehozásakor a jutalom a bányatársaság címére kerüljön. Innen a jutalom egy részét a bányatársaság Jingnek és a többi bányásznak osztja szét, azzal arányosan, hogy mennyi munkát végeztek az utolsó körben.</p></div>
+<div class="paragraph"><p>Alice tranzakcióját közvetítette a hálózat, és az bekerült az ellenőrizetlen tranzakciók pool-jába. Mivel a tranzakcióban elégséges tranzakciós díj volt, a tranzakció bekerült a Jing bányatársasága által létrehozott új blokkba. Kb. 5 perccel azt követően, hogy a tranzakciót Alice pénztárcája szétküldte, Jing ASIC bányagépe talált egy megoldást a blokkhoz, és a tranzakciót 419 másik tranzakcióval egyetemben a 277316. blokkban publikálta. A Jing által publikált új blokkot a többi bányász is ellenőrizte, majd egy újabb versenybe kezdett, hogy előállítsa a következő blokkot.</p></div>
+<div class="paragraph"><p>Az Alice trazakcióját tartalmazó blokk itt látható: <a href="https://blockchain.info/block-height/277316">Alice tranzakciója</a>.</p></div>
+<div class="paragraph"><p>Néhány perccel ezután egy másik bányász egy újabb blokkot állított elő, a 277317-ik blokkot. Mivel ez a blokk az előző (277316.) blokkon alapul, amely tartalmazta Alice tranzakcióját, a blokkban lévő számítások tovább erősítik az előző blokkban lévő tranzakciók iránti bizalmat. A tranzakciót tartalmazó blokk fölötti blokk „egy megerősítést” jelent a tranzakció számára. Amint a blokkok egymásra halmozódnak, exponenciálisan egyre nehezebb a tranzakció megfordítása, emiatt egyre megbízhatóbbá válik.</p></div>
+<div class="paragraph"><p>A lenti <a href="#block-alice1">[block-alice1]</a> ábrán a 277316. blokkot láthatjuk, amely Alice tranzakcióját tartalmazza. Alatta 277315 db blokk van, amely egy blokkláncként kapcsolódik egymáshoz, egészen a 0-ik blokkig visszamenőleg, amely az ún. <em>genezis blokk</em>. Idővel, ahogy a blokkok „magassága” egyre nő, úgy lesz a számítási nehézség az egyes blokkok és a lánc egésze szempontjából is egyre nagyobb. Azok a blokkok, melyeket az Alice tranzakcióját tartalmazó blokk után lettek kibányászva, további megerősítést jelentenek, mivel egy egyre hosszabb láncban egyre több és több számítást testesítenek meg. A tranzakciót tartalmazó blokk fölötti blokkok számítanak „megerősítésnek”. A 6-nál több megerősítéssel rendelkező blokkok visszavonhatatlannak tekinthetők, mivel 6 blokk érvénytelenítéséshez és újraszámításához hatalmas számítási kapacitásra lenne szükség. A bányászat folyamatát és szerepét a bizalom kialakulásában a <a href="#ch8">[ch8]</a> részben fogjuk részletesen megvizsgálni.</p></div>
+<div class="imageblock" id="block-alice1">
+<div class="content">
+<img src="images/msbt_0209.png" alt="Alice's transaction included in a block" />
+</div>
+<div class="title">Figure 9. Alice tranzakciója a 277316. blokkban található</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_tranzakció_elköltése">A tranzakció elköltése</h3>
+<div class="paragraph"><p>Most, hogy Alice tranzakciója egy blokk részeként be lett ágyazva a blokkláncba, része lett a bitcoin elosztott főkönyvének, és az összes bitcoin alkalmazás számára látható. Mindegyik bitcoin kliens külön-külön képes ellenőrizni, hogy a tranzakció érvényes és elkölthető-e. A teljes kliensek képesek nyomon követni a pénzmozgást attól a pillanattól kezdve, ahogy a bitcoinok először létrejöttek a blokkban, tranzakcióról, tranzakcióra, egészen addig, amíg el nem érnek Bob címéhez. A pehelysúlyú kliensek Egyszerűsített Fizetési Ellenőrzésre képesek (lásd [SPV], Simple Payment Verification), melynek során megállapítják, hogy a tranzakció része a blokkláncnak, és elég sok blokk lett-e már kibányászva utána, ami szavatolja, hogy a hálózat a tranzakciót érvényesnek tekinti (lásd <a href="#spv_nodes">[spv_nodes]</a>).</p></div>
+<div class="paragraph"><p>Bob úgy tudja elkölteni ennek a tranzakciónak és egyéb tranzakcióknak a kimenetét, hogy létrehoz egy saját tranzakciót, amelynek bemenete ezekre a kimenetekre hivatkozik, és egy új tulajdonoshoz rendeli hozzá őket. Például Bob egy beszállítót úgy tud kifizetni, hogy Alice kávéért történő fizetségét ennek az új tulajdonosnak utalja át. A legvalószínűbb eset az, hogy Bob bitcoin programja a sok kis fizetséget egy nagyobb fizetségben egyesíti, esetleg az egész napi bitcoin bevételt egyetlen egy tranzakcióba koncentrálja. A különféle befizetéseket ez a tranzakció egyetlen címre, a bolt általános „folyószámlájára” utalja. Az összesítő tranzakciók ábráját lásd az <a href="#transaction-aggregating">[transaction-aggregating]</a> résznél.</p></div>
+<div class="paragraph"><p>Amikor Bob elkölti az Alice-tól és a többi ügyféltől kapott fizetséget, akkor ezzel a tranzakciós láncot bővíti, a tranzakció pedig hozzáadódik a blokkláncból álló globális nyilvántartáshoz, melyet mindenki lát, és amelyben mindenki megbízik. Tegyük fel, hogy Bob a web tervezőnek, Gopeshnek fizet egy új weblapért. Ekkor a tranzakciós lánc a következőképpen fog kinézni:</p></div>
+<div class="imageblock" id="block-alice2">
+<div class="content">
+<img src="images/msbt_0210.png" alt="Alice's transaction as part of a transaction chain" />
+</div>
+<div class="title">Figure 10. Alice tranzakciója, mint a Joe-tól Gopeshig tartó tranzakciós lánc része</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:55:44 UTC
+</div>
+</div>
+</body>
+</html>

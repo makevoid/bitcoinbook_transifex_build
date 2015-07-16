@@ -1,0 +1,22 @@
+["Toewijding", role = "lof"]
+=== Lof voor 'Mastering Bitcoin'
+
+[Quote, Gavin Andresen, Chief Scientist Bitcoin Foundation]
+____
+"Wanneer ik over Bitcoin praat in openbare gelegenheden, wordt er wel is gevraagd: 'Maar hoe werkt het nu precies?' Nu heb ik daarvoor een passend antwoord. Wanneer iemand _Mastering Bitcoin_ leest, zal diegene begrijpen hoe het werkt en hoe diegene de nieuwe generatie cryptocurrency applicatie kan bouwen."
+____
+
+[Quote, Naval Ravikant, medeoprichter AngelList]
+____
+"Bitcoin en Blockchain technologieën worden fundamentele bouwblokken voor de next generation internet. Silicon Valley's beste en slimste mensen werken eraan. Anrdrea's boek helpt je met de software revolutie in de wereld van financiën."  
+____
+
+[Quote, Balaji S. Srinivasan (balajis), General Partner, Andreessen Horowitz]
+____
+"_Mastering Bitcoin_ is de beste technische referentie voor bitcoin vandaag de dag. En bitcoin zal later één van de meest belangrijke technologische ontwikkeling zijn. Daarom is dit boek een 'must-have' voor elke ontwikkelaar. In het bijzonder ontwikkelaars die voor bitcoin applicaties willen ontwikkelen."
+____
+
+[Quote, Roger Ver, Bitcoin Ondernemer en Investor]
+____
+"De Bitcoin Blockchain uitvinding representeert een totaal nieuw platform om op te bouwen. Een platform dat zo groot en divers is als het internet zelf. Andreas Antonopoulos is bij uitstek de perfecte man om dit boek te schrijven."
+____

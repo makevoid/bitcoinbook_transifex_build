@@ -1,0 +1,1030 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch02_bitcoin_overview">Bitcoinはどのように動作するのか</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_トランザクション_ブロック_マイニング_ブロックチェーン">トランザクション、ブロック、マイニング、ブロックチェーン</h3>
+<div class="paragraph"><p>今まであるような銀行サービスや支払いの方法と違って、Bitcoinは特定の機関に管理されないdecentrized-trustを基礎にしています。特定の機関による管理の代わりに、Bitcoinでは信用管理をBitcoinの仕組みに参加している個々の参加者同士の相互協力から生まれる創発特性によって作っています。この章では、Bitcoinの１つのトランザクションを追ってみることで、詳細にBitcoinの仕組みを説明したいと思います。また、分散された合意によるBitcoinの仕組みによってトランザクションが"信用"され受け入れられ、最後に全てのトランザクションの分散元帳であるブロックチェーンにトランザクションが記録されます。</p></div>
+<div class="paragraph"><p>以下に出てくる例を使って、実際に行われているトランザクションをシミュレートしてみましょう。この例の登場人物はジョー、アリス、ボブで、それぞれの間であるウォレットからあるウォレットへ資産を送ることというものです。Bitcoinネットワークのトランザクションやブロックチェーンを追うとき、個々の詳細なステップを可視化するために <em>blockchain explorer</em> sitesを使います。blockchain explorerはウェブアプリケーションで、Bitcoinアドレスやトランザクション、ブロックの変化を追うことができる検索エンジンのように使えます。</p></div>
+<div class="paragraph"><p>ポピュラーなblockchain explorerは以下です。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://blockchain.info">Blockchain info</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://blockexplorer.com">Bitcoin Block Explorer</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://insight.bitpay.com">insight</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://blockr.io">blockr Block Reader</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>それぞれのblockchain explorerではBitcoinアドレスやトランザクションハッシュ、ブロック番号を元に検索でき、Bitcoinネットワークやブロックチェーン上にあるデータと同じデータを探せます。また、それぞれの例には直接データが見れるようにURLを書いておきましたので、詳細はURLの先で確認してみてください。</p></div>
+<div class="sect3">
+<h4 id="_bitcoin概観">Bitcoin概観</h4>
+<div class="paragraph"><p><a href="#bitcoin-overview">[bitcoin-overview]</a>図にあるように、bitcoinの仕組みは秘密鍵を含むウォレットを持っているユーザやBitcoinネットワークを伝わるトランザクション、全てのトランザクションを保持している元帳であるブロックチェーンを作り出すマイナーで構成されていることが分かります。この章では、Bitcoinネットワークに沿って１つのトランザクションを追い、各ステップを説明します。では、ウォレット、マイニング、決済システムの背後にあるテクノロジーに入っていきましょう。</p></div>
+<div class="imageblock" id="bitcoin-overview">
+<div class="content">
+<img src="images/msbt_0201.png" alt="Bitcoin Overview" />
+</div>
+<div class="title">Figure 1. Bitcoin概観</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cup_of_coffee">コーヒー代金の支払い</h4>
+<div class="paragraph"><p>前の章に出てきたアリスは初めてbitcoinを手にしたところです。<a href="#getting_first_bitcoin">[getting_first_bitcoin]</a>でお分かりの通り、アリスは友達のジョーと会って、キャッシュをbitcoinと交換したのです。ジョーからアリス0.10BTCを受け取りました。アリスは今ちょうど最初のトランザクションを作成して、最近bitcoinでの支払いを始めたPalo Altoのボブのコーヒーショップでbitcoinでの支払いをするところです。ボブのコーヒーショップではアメリカドルの値段表示しかありませんが、支払いをするときにアメリカドルで払うのかbitcoinで払うのかを決められるのです。アリスはコーヒーを注文しボブはレジにこの注文を入力します。すると、POSシステムは直近のレートでアメリカドルでの代金をbitcoinでの代金に変換して、両方の金額を表示してくれます。このとき、図にあるようなQRコードも一緒に出してくれます。(<a href="#payment-request-QR">[payment-request-QR]</a>参照)</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>総額:
+$1.50 USD
+0.015 BTC</tt></pre>
+</div></div>
+<div class="imageblock" id="payment-request-QR">
+<div class="content">
+<img src="images/msbt_0202.png" alt="payment-request" />
+</div>
+<div class="title">Figure 2. 支払い要求QRコード(ヒント: スキャンしてみてください！)</div>
+</div>
+<div class="listingblock" id="payment-request-URL">
+<div class="title">この支払い要求QRコードはBIP0021にあるプロトコルに沿って次のようなURLに変換されます。</div>
+<div class="content">
+<pre><tt>bitcoin:1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA?
+amount=0.015&amp;
+label=Bob%27s%20Cafe&amp;
+message=Purchase%20at%20Bob%27s%20Cafe
+
+URLの構成要素
+
+Bitcoinアドレス: "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
+支払い総額: "0.015"
+支払い先アドレスのラベル: "Bob's Cafe"
+支払い説明文: "Purchase at Bob's Cafe"</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>送り先Bitcoinアドレスを単に含んでいるQRコードと違って、支払い要求は送り先Bitcoinアドレス、支払い総額、"Bob&#8217;s Cafe"のような一般的な説明文を含んでいるQRコードでエンコードされたURLです。これは、人間が読める説明をユーザに示している間に、Bitcoinウォレットが支払いを行うために使う情報をあらかじめ埋めておくようにするためです。あのQRコードをBitcoinウォレットでスキャンすると、アリスが見ているものを見ることができます。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>ボブは言いました。"15ドルです。bitcoinでの支払いであれば15mBTCです。"</p></div>
+<div class="paragraph"><p>アリスがスマートフォンを使って表示されているQRコードをスキャンすると、スマートフォンに <tt>0.0150BTC</tt> と表示され <tt>ボブのコーヒーショップ</tt> への支払いをするのに彼女は"送る"ボタンを押しました。数秒後レジにトランザクションが表示されボブはトランザクションの完了を確認しました(処理時間はクレジットカードでの承認に必要な時間と同じくらいです)。</p></div>
+<div class="paragraph"><p>この後の節では、もっと詳細にトランザクションの内容を説明し、アリスのウォレットがどのようにしてトランザクションを実行したのか、トランザクション情報はどのようにしてBitcoinネットワークに流れ、どのように検証されたのか、送られたbitcoinをボブは次回どのように使うことができるのか、を見ていきます。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoinネットワークは断片化した様々な額で取引ができます。例えば、ミリbitcoin (1/1000 bitcoin)からsatoshiとして知られている1/100,000,000 bitcoinまでです。この本を通して、最も小さい単位(1satoshi)から今後採掘される全てのbitcoinの総額(21,000,000)まで、Bitcoin通貨の量を表現するために“bitcoin”という用語を使っていきます。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bitcoinトランザクション">Bitcoinトランザクション</h3>
+<div class="paragraph"><p>シンプルに言って、トランザクションとはbitcoinの所有者が他の人にbitcoinを送ったことを認めたことをBitcoinネットワークに示すことです。このためそのbitcoinを受け取った新しい所有者が受け取ったbitcoinを使うには、新しい所有者が他の人にbitcoinを送ったことを認めたことを示す別のトランザクションを作らなければいけません。</p></div>
+<div class="paragraph"><p>トランザクションは複式簿記の個々の取引行のようなものです。簡単に言えば、それぞれのトランザクションは１個または複数の"インプット"を持っているため、トランザクションにはBitcoinアドレスの借り方にこの"インプット"が記載されています。また、それぞれのトランザクションは１個または複数の"アウトプット"を持っているため、トランザクションにはBitcoinアドレスの貸し方に"アウトプット"が記載されています。インプットとアウトプット(それぞれ借り方と貸し方)は同じ額になるようにならず、わずかにインプットのほうが大きいようになります。この差が取引手数料であり、元帳の中にあるトランザクションからマイナーがかき集めたものです。<a href="#transaction-double-entry">[transaction-double-entry]</a>図には、bitcoinトランザクションを簿記的に書いてあります。</p></div>
+<div class="paragraph"><p>トランザクションはそれぞれのトランザクションの所有権証明としての面も含んでいます。この所有権証明はデジタル署名の形になっており、このデジタル署名は所有者とは独立に誰か他の人によって検証されるようになっています。ビットコイン用語で、"bitcoinを使う"とはトランザクションに署名することです。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><em>トランザクション</em> は <em>トランザクションインプット</em> から <em>トランザクションアウトプット</em> に価値を移動します。インプットはどこからbitcoinが来たかを示し、通常前のトランザクションのアウトプットになります。トランザクションアウトプットは、このbitcoinを鍵と紐付けることで新しい所有者にこのbitcoinを割り当てます。この鍵は <em>解除条件</em> と呼ばれるものです。解除条件は、資金を将来のトランザクションで使用するときに必要とされる署名に対する必要条件になります。1つのトランザクションからのアウトプットは新しいトランザクションの中でインプットとして使用され、これにより価値があるアドレスから別のアドレスに移動するときに所有者の連鎖を作り出していくのです(<a href="#blockchain-mnemonic">[blockchain-mnemonic]</a>参照)。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="imageblock" id="transaction-double-entry">
+<div class="content">
+<img src="images/msbt_0203.png" alt="Transaction Double-Entry" />
+</div>
+<div class="title">Figure 3. 複式簿記としてのトランザクション</div>
+</div>
+<div class="imageblock" id="blockchain-mnemonic">
+<div class="content">
+<img src="images/msbt_0204.png" alt="Transaction chain" />
+</div>
+<div class="title">Figure 4. トランザクションの連鎖。１つのトランザクションのアウトプットは次のトランザクションのインプットになる。</div>
+</div>
+<div class="paragraph"><p>アリスがボブのコーヒーショップで支払いをするときは、ジョーからアリスへの前のトランザクションをこのトランザクションのインプットに使います。前の章で、アリスは現金と引き換えにジョーからbitcoinを受け取りました。このトランザクションはアリスの秘密鍵でロックされています。アリスからボブへの新しいトランザクションは、ジョーからアリスへの前のトランザクションの内容を参照することで新しいトランザクションのインプットを作り、コーヒー代の支払いとおつりの受け取りのトランザクションアウトプットを作成します。トランザクションはチェーンの形を取っていて、最新のトランザクションのインプットは前のトランザクションのアウトプットに対応しています。アリスの秘密鍵は前のトランザクションのアウトプットを解錠し、それによってこのアウトプットにある資金がアリスのものであるとBitcoinネットワークに示すのです。アリスはコーヒー代をボブのBitcoinアドレスへの新しいトランザクションアウトプットに付けます。ボブのBitcoinアドレスにひも付けることによって、このアウトプットを使うためにボブは署名を生成しなければならなくなり、このアウトプットが他者の使用から "守られる" ことになるのです。これによりこの価値の転送がアリスとボブの間のものであるということを証明しています。<a href="#blockchain-mnemonic">[blockchain-mnemonic]</a>図がこのトランザクションのチェーンを説明しています。</p></div>
+<div class="sect3">
+<h4 id="_よくあるトランザクション形式">よくあるトランザクション形式</h4>
+<div class="paragraph"><p>よくあるトランザクションの形式は１つのBitcoinアドレスからもう１つのBitcoinアドレスへという形式をしており、通常送り元に戻されるおつりも含まれます。このタイプのトランザクションは１つのインプットと２つのアウトプットを持っていて、<a href="#transaction-common">[transaction-common]</a>図のようなものになっています。</p></div>
+<div class="imageblock" id="transaction-common">
+<div class="content">
+<img src="images/msbt_0205.png" alt="Common Transaction" />
+</div>
+<div class="title">Figure 5. よくあるトランザクション</div>
+</div>
+<div class="paragraph"><p>別のトランザクション形式は、いくつかのインプットを集めて１つのアウトプットにまとめる形です(<a href="#transaction-aggregating">[transaction-aggregating]</a>参照)。これは現実にあるコインや紙幣をまとめて大きな紙幣にするトランザクションと同じです。これらのトランザクションはおつりとして受け取った小さな額をまとめるためにときどきウォレットで作られます。</p></div>
+<div class="imageblock" id="transaction-aggregating">
+<div class="content">
+<img src="images/msbt_0206.png" alt="Aggregating Transaction" />
+</div>
+<div class="title">Figure 6. 集約型トランザクション</div>
+</div>
+<div class="paragraph"><p>もう１つの別のトランザクションの形式は１つのインプットを複数のアウトプットに分けて複数の受取人に使う場合です(<a href="#transaction-distributing">[transaction-distributing]</a>参照)。このタイプのトランザクションは、企業内での給与の支払いでときどき使われます。</p></div>
+<div class="imageblock" id="transaction-distributing">
+<div class="content">
+<img src="images/msbt_0207.png" alt="Distributing Transaction" />
+</div>
+<div class="title">Figure 7. 分散型トランザクション</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_トランザクションの構築">トランザクションの構築</h3>
+<div class="paragraph"><p>アリスのウォレットで、適切なインプットとアウトプットを選ぶ処理はすでに実装されています。アリスが決めなければいけないのは、どこに送るかということと、いくら送るかということだけで、残りはウォレットが自動的に実行してくれます。重要なこととして、ウォレットはネットワークに繋がっていなくてもトランザクションを組むことができます。ちょうど小切手だけ家で書いておいてあとで銀行に送るように、Bitcoinネットワークに繋がっているときに作られたり署名されたりするわけではないのです。最終的に送られればいいだけです。</p></div>
+<div class="sect3">
+<h4 id="_正しいインプットをどのように得るか">正しいインプットをどのように得るか</h4>
+<div class="paragraph"><p>アリスのウォレットはインプットを最初に探します。というのは、ボブに送ることができる額がウォレットにあるかを確認しなければいけないためです。ほとんどのウォレットは未使用トランザクションアウトプットを保持するデータベースを持っていて、ウォレットの秘密鍵でロックされています。アリスのウォレットはジョーから送金された時のアウトプットのコピーを持っています(<a href="#getting_first_bitcoin">[getting_first_bitcoin]</a>参照)。full-indexを持っているBitcoinウォレットは、ブロックチェーンにある全てのトランザクションのアウトプットのコピーを実際持っています。これはウォレットがトランザクションインプットを作成するとともにすばやく支払える額の未使用アウトプットがあるかどうかを確認するためです。しかし、full-indexウォレットは多くのデータ容量を持っている必要があるため、ほとんどのウォレットは軽量ウォレットというウォレットの所有者の未使用アウトプットのみを保持しているものになっています。</p></div>
+<div class="paragraph"><p>もしウォレットが未使用アウトプットのコピーを保持していない場合、この情報を取得するためにBitcoinネットワークに聞きに行くことができます。この場合いろいろな種類のAPIを通して聞きに行ったり、full-indexを持っているノードにJSON RPC APIを通して聞きに行ったりということができます。<a href="#example_2-1">[example_2-1]</a>はRESTfull APIを使って聞きに行ったものです。RESTful APIというのは特定のURLに対してHTTP GETコマンドを発行して情報を得るための仕組みです。このURLは、あるBitcoinアドレスが持っている未使用トランザクションアウトプットを全て返します。そして、この情報を元にウォレットはトランザクションインプットを作成します。以下では、 <em>cURL</em> というRESTful APIを使うためのシンプルなコマンドを使っています。</p></div>
+<div class="exampleblock" id="example_2-1">
+<div class="title">Example 1. アリスのBitcoinアドレスに対する全未使用アウトプットの参照</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="exampleblock" id="example_2-2">
+<div class="title">Example 2. 参照URLからの返却</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p><a href="#example_2-2">[example_2-2]</a>にある通りRESTful APIから返ってきたresponseには１つの未使用アウトプットがあります。これは、アリスのBitcoinアドレス 1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK が所有しているものです。このresponseにはトランザクションの詳細が載っていて、未使用アウトプットがsatoshiという単位(1000万satoshiが0.10bitcoinと同価値)で書かれています。この情報を元に、アリスのウォレットは他のBitcoinアドレスに送るためのトランザクションを作ることができるのです。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><a href="http://bit.ly/1tAeeGr">ジョーからアリスへのトランザクション</a>を見てみましょう。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>今まで見てきたように、アリスのウォレットはコーヒーの代金を払うのに十分な１つの未使用アウトプットを持っていることが分かります。この場合は１つの未使用アウトプットでしたがそうでなければ、アリスのウォレットはもっと小さい未使用アウトプットをかき集めないといけないかもしれません。ちょうど財布の中からコインを１つずつ取り出してコーヒーの支払いができる額になるまでごそごそ探すように。いずれの場合でも、ウォレットがトランザクションアウトプットを作成するときにおつりをアリスに戻す必要があるかもしれません。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_アウトプットの作成">アウトプットの作成</h4>
+<div class="paragraph"><p>トランザクションアウトプットはscriptの形で作成されます。このscriptは資金を使用する際の制約条件であり、このscriptに対する解を導入することでの&gt;み解除されます。より簡単に言うと、このscriptは「このアウトプットはボブのpublicアドレスに対応した秘密鍵から作成された署名を送れる方ならどなたにでも支払いができます」というようなこと &gt;を言っています。ボブだけがボブのpublicアドレスに対応した秘密鍵を保持しているウォレットを持っているので、ボブのウォレットだけがこのアウトプットを復号するさきほどの署名を送れるのです&gt;。よって、アリスはアウトプットを復号しようとしてもボブの署名を要求されてしまい邪魔されてしまいます。</p></div>
+<div class="paragraph"><p>このトランザクションはまたおつりという２つ目のアウトプットも含んでいます。というのは、アリスの資産は0.10BTCになっていて、この金額はコーヒー一杯の金額0.015BTCよりも大きい金額だからです。このためアリスは、0.085BTCのおつりを受け取ることになります。アリスへのおつりの支払い処理は、アリスのウォレットによってボブへの支払い処理と一緒に作られます。アリスのウォレットは彼女の資産を２つの支払い処理に分けて行います。１つは、ボブへのもの、もう１つは彼女自身へのものです。彼女は次のトランザクションのときにおつりのアウトプットを使うことができます。のちほどこのアウトプットを使用することになります。</p></div>
+<div class="paragraph"><p>最終的に、Bitcoinネットワークでトランザクションが処理される直前に、アリスのウォレットは少ない手数料を加えます。これは支払いのときに明示的に表示されるのではなく、トランザクションでのインプットとアウトプットとの差額として暗に表示されます。おつりとして0.085BTCを得る代わりにアリスは0.0845BTCだけをおつりとしてアウトプットを得るとすると、0.0005BTC(1mBTCの半分)が残ることになります。インプットとしての0.10BTCは完全に２つのアウトプットに分けられるのではないのです。アウトプットを全て足したとき0.10BTCよりも小さいからです。この差額は、マイナーがブロックにトランザクションを含めて、ブロックチェーンにトランザクションを組み込むときに集められトランザクション手数料となります。</p></div>
+<div class="paragraph"><p>結果的に作られたトランザクションは、<a href="#transaction-alice">[transaction-alice]</a>にある通り、blockchain explorerを使って見ることができます。</p></div>
+<div class="imageblock" id="transaction-alice">
+<div class="content">
+<img src="images/msbt_0208.png" alt="Alice Coffee Transaction" />
+</div>
+<div class="title">Figure 8. ボブのコーヒーショップへのアリスのトランザクション</div>
+</div>
+<div class="admonitionblock" id="transaction-alice-url">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><a href="http://bit.ly/1u0FIGs">アリスからからボブのコーヒーショップへのトランザクション</a>を見てみましょう。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_トランザクションを元帳にどうやって取り込むか">トランザクションを元帳にどうやって取り込むか</h4>
+<div class="paragraph"><p>アリスのウォレットで作られるトランザクションは258バイトで、資産の所有者を確認し新しい所有者を割り当てるのに必要な全てがここに含まれています。今、トランザクションは分散元帳であるブロックチェーンの一部になるためにBitcoinネットワークに送信されなければいけません。この節では、どのようにトランザクションが新しいブロックの一部になるのか、どのようにブロックが "マイニング" されるのか、を確認していきます。そして、ブロックチェーンに加えられた新しいブロックの信用が、さらに多くのブロックがブロックチェーンに加えられることでどのようにますます大きくなっていくのかを見ていきます。</p></div>
+<div class="sect4">
+<h5 id="_トランザクションのbitcoinネットワークへの送信">トランザクションのBitcoinネットワークへの送信</h5>
+<div class="paragraph"><p>トランザクションはブロックチェーンに取り込まれるために必要な情報を全て持っているため、どのように、またどこでそれがBitcoinネットワークに送信されるかは問題ではありません。Bitcoinネットワークはpeer-to-peerネットワークであり、個々のBitcoinクライアントがいくつかの他のBitcoinクライアントとつながってBitcoinネットワークに参加しています。Bitcoinネットワークの目的は、トランザクションとブロックを全てのBitcoinクライアントに伝えて行くことなのです。</p></div>
+</div>
+<div class="sect4">
+<h5 id="_どのようにbitcoinネットワークを伝わって行くのか">どのようにBitcoinネットワークを伝わって行くのか</h5>
+<div class="paragraph"><p>アリスのウォレットは新しいトランザクションを、有線LANまたはWiFi、モバイルでインターネットに繋がっている任意の他のBitcoinクライアントに送信します。アリスのウォレットはボブのウォレットと直接繋がっている必要はなく、カフェが提供しているインターネットアクセスポイントを使う必要もないのです。有効なトランザクションを受け取ったBitcoinクライアントはすぐに繋がっている他のBitcoinクライアントにトランザクションを転送します。よって、このトランザクションは迅速にpeer-to-peerネットワークを伝わって行き、数秒以内にほとんどのBitcoinクライアントに到達します。</p></div>
+</div>
+<div class="sect4">
+<h5 id="_ボブの視点でみたときは">ボブの視点でみたときは</h5>
+<div class="paragraph"><p>ボブのウォレットが直接アリスのウォレットと繋がっている場合は、ボブのウォレットはトランザクションを一番最初に伝えられるBitcoinクライアントとなるかもしれません。しかし、たとえアリスのウォレットが他のBitcoinクライアントを通してトランザクションを送ったとしても、トランザクションは数秒以内にボブのウォレットに到達するでしょう。ボブのウォレットはすぐにアリスのトランザクションをボブへの支払いであると認識します。というのは、このトランザクションはボブの秘密鍵で復号できるアウトプットになっているからです。ボブのウォレットは他のBitcoinクライアントとは独立に、このトランザクションが正規の形式であるどうか、未使用インプットを使っているかどうか、次のブロックに入る十分なトランザクション手数料を含んでいるかどうか、を確認します。この時点では、ボブは小さなリスクとしてこのトランザクションがブロックに含められ検証された状態であると仮定しています。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoinトランザクションに関するよくある勘違いは、"検証"のために新しいブロックが生成されるまで10分間または完全な６回の検証のために60分間待たなければならないということです。検証はトランザクションがBitcoinネットワーク全体から受理されたことを保証しますが、このような遅延はコーヒー代のような少額の場合必要ではありません。確認がなくても、個人IDや署名がないクレジットカードよりリスクが小さいなら、店舗側は有効な少額トランザクションを受け入れるかもしれません。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bitcoinマイニング">Bitcoinマイニング</h3>
+<div class="paragraph"><p>今、トランザクションはBitcoinネットワークに伝えられました。しかし、マイニングと呼ばれるプロセスを通して検証されブロックに取り込まれるまで、共有されている元帳であるブロックチェーンの一部になることはできません。詳細については<a href="#ch8">[ch8]</a>を参照してください。</p></div>
+<div class="paragraph"><p>信用というBitcoinの仕組みは、計算によって成り立っています。トランザクションは <em>ブロック</em> の中に取り込まれますが、取り込まれるためには膨大な計算をしなければいけません。しかし、取り込まれていることを確認するするのにはわずかな計算しか必要ありません。このマイニングは、以下の２つのプロセスによって行われます。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+マイニングはそれぞれのブロックの中に新しいbitcoinを作り出します。これはあたかも中央銀行が新しいお金を印刷するようなものです。作り出されるbitcoinの量はブロックごとに決められており、時間とともに減少していきます。
+</p>
+</li>
+<li>
+<p>
+マイニングは、十分な計算量がブロックにつぎ込まれた場合のみトランザクションが検証されたことを保証し信用を作り出します。多くのブロックの信用のためには多くの計算が必要であり、この多くの計算が信用を意味します。
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>マイニングを表すいい方法として、巨大な数独を考えると分かりやすいです。この数独は、誰かが解法を見つけるごとにリセットされて、約10分間で解けるように難しさが自動的に調整されるようなものです。巨大な数独パズルを創造してみてください。数千の行と列を持つような巨大なものです。もし私があなたに完成したパズルを見せたら、完成しているかどうかを確認するのは短時間でできます。しかし、もしパズルがある部分だけ完成していて他が全て空欄であれば、解くためにとても多くの時間がかかってしまいます。数独の難しさは、行や列の数を増やしたり減らしたりすることで調整することができます。しかし、確認に関してはたとえ巨大な行と列を持った数独だったとしてもまだ短時間で完成しているかどうかを確認できます。Bitcoinで使っているこのようなパズルは、暗号化ハッシュをベースにしており、上記の数独と同じような特徴を持っています。同じような特徴とは、解法を見つけるのはとても大変なのに確認するのは簡単という非対称性と、難しさを調整できるという特徴です。</p></div>
+<div class="paragraph"><p><a href="#user-stories">[user-stories]</a>で、上海にいるコンピュータエンジニアリングをやっている学生であるジンを紹介しました。ジンはマイナーとしてBitcoinネットワークに参加しています。ジンは解法を見つけようとしている全世界にいる数千人のマイナーとともに10分毎くらいに解法を見つけています。"proof of work"とよく呼ばれるこのような解法を見つけることは、秒間数千兆回のハッシュの生成処理を必要とします。"proof of work"とは、前もって決められたパターンに合う解法が現れるまで反復的にブロックのヘッダとランダム値をSHA256暗号化アルゴリズムでハッシュ化することです。そのような解法を最初に見つけたマイナーがそのブロックの勝者となり、解法を見つけたブロックをブロックチェーンに組み込みます。</p></div>
+<div class="paragraph"><p>ジンが2010年にとても速いデスクトップコンピュータを使ってマイニングを始めました。さらに多くのマイナーがBitcoinネットワークに参加し始めるにつれて、解法を得る難しさはすごい速度で増していきました。すぐに、ジンとその他のマイナーはさらに特殊なハードウェア(ゲーム用デスクトップコンピュータで使われるハイエンドの専用グラフィック処理装置(GPU)など)にアップグレードしていきました。この記事を書いている時点で、ASICという数百のマイニングアルゴリズムをハードウェアで組んだものを複数使い、それらを平行に処理させなければ解けないほど難しさは大きくなってしまっています。ジンは"マイニングプール"もやっていました。このマイニングプールは、何人かの参加者で解法を見つける作業を分担することで、解法を見つけたときに得られる報酬を参加者みんなで分けて受け取るという宝くじの共同購入のようなものです。今ジンは24時間マイニングを行うために２つのUSBに接続できるASICマシンを使っています。彼は電気代をマイニングで得たbitcoinを売ることで支払いながら、収益をあげています。彼のコンピュータ上ではBitcoinクライアントの参照実装であるbitcoindのコピーを走らせており、特殊なマイニングソフトウェアのバックエンドとして使っています。</p></div>
+</div>
+<div class="sect2">
+<h3 id="_ブロック内のトランザクションのマイニング">ブロック内のトランザクションのマイニング</h3>
+<div class="paragraph"><p>Bitcoinネットワークを通して送信されたトランザクションは、グローバルに分散した元帳であるブロックチェーンの一部となるまで検証された状態にはなりません。平均10分毎にマイナーはまだブロックチェーンに取り込まれていないトランザクションを含むブロックを生成します。新しいトランザクションは一定の速度でウォレットやその他のソフトウェアからBitcoinネットワークに流れ込んでいき、各Bitcoinノードの中にあるまだ検証されていない一時的なトランザクションプールにどんどん加えられていきます。マイナーが新しいブロックを作り上げるとき、マイナーは新しいトランザクションをこのプールから引き出して新しいブロックに追加します。そして、新しいブロックの有効性を証明するのにとても難しいproof of workをやってみているのです。このマイニングプロセスの詳細は<a href="#mining">[mining]</a>で説明されています。</p></div>
+<div class="paragraph"><p>トランザクションは新しいブロックに追加されますが、この新しいブロックには処理される優先順位があり、トランザクション手数料が最も高いものであったり、他の２、３個の判断材料からこの優先順位は決定されます。それぞれのマイナーはBitcoinネットワークから前のブロックを受け取り、やっていた解法探索の競争に負けたことがわかるやいなや、新しいブロックのマイニングに取りかかります。マイナーはすぐに新しいブロックの箱を作り、それにトランザクションと前のブロックのフィンガープリントを入れて、新しいブロックに対してproof of workをし始めます。それぞれのマイナーは彼のブロックに特別なトランザクションを含めます。これは、彼のBitcoinアドレスに新たに作られたbitcoinの報酬を支払うトランザクションです(現在は１ブロックあたり25BTCです)。もし彼がブロックが有効であることを示す解法を見つけると、彼は報酬を勝ち取ります。彼が解法を見つけたブロックがグローバルなブロックチェーンに追加され、彼が報酬を得るために含めたトランザクションが利用可能になるからです。マイニングプールに参加しているジンは、ジンのソフトウェアに報酬としてのbitcoinを貯めておくBitcoinアドレスを登録しておき、そこから提供した計算量に比例して分けられた報酬がジンやその他のマイナーに配られます。</p></div>
+<div class="paragraph"><p>アリスのトランザクションはBitcoinネットワークによって取り上げられ、そして、まだ検証されていないトランザクションのプールに放り込まれました。そのトランザクションは十分な手数料を含んでいたため、ジンのマイニングプールによって作り出された新しいブロックに入ることになりました。アリスのウォレットがトランザクションを最初に送信してから約５分後に、ジンのASICマイナーがブロックの解法を見つけ、他の419個のトランザクションとともにブロック #277316に組み込まれました。ジンのASICマイナーはBitcoinネットワーク上に新しいブロックを放出し、そのBitcoinネットワークでは他のマイナーがそれを検証し次のブロックを作り出し始めるレースがスタートしました。</p></div>
+<div class="paragraph"><p><a href="https://blockchain.info/block-height/277316">Alice&#8217;s transaction</a>にこのブロックの情報を見に行くことができます。</p></div>
+<div class="paragraph"><p>数分後に、新しいブロック #277317 はもう１人のマイナーによって掘り出されました。この新しいブロックはアリスのトランザクションを含んだ前のブロック #277316 を元にしているため、新しいブロックはもっとたくさんの計算量をブロックの先頭に追加しました。これによって、トランザクションの信用が強化されるのです。アリスのトランザクションを含んでいるこの新しいブロックは、 "検証" １回とカウントされ、アリスのトランザクションが含まれるブロックの上に乗っかったそれぞれのブロックはさらに検証を積み増します。このブロックが積み重なるにつれて、指数関数的にトランザクションをやり直す反対取引が難しくなり、よってBitcoinネットワークによってさらに信用されることになるのです。</p></div>
+<div class="paragraph"><p><a href="#block-alice1">[block-alice1]</a>図にある通り、ブロック #277316 はアリスのトランザクションを含んでいることが分かります。ブロック #277316 の下には(#0を含めて)277316ブロックあり、起源ブロックとして知られる#0まで全てがブロックのチェーンとして互いに繋がっているのです。時間が経つにつれ、ブロックの"高さ"が増えるとそれぞれのブロックとチェーン全体に含まれる計算量は大きくなっていきます。アリスのトランザクションが含まれたブロックのあとに掘り出されたブロックはさらなる保証としてなり、チェーンが長くなればなるほどもっと計算量が積み重なることになります。慣習により、６回より多くの検証がされた任意のブロックは取り返しがつかないと考えられています。というのは、６個のブロックを無効化し再計算し直すためには膨大な計算量がかかるためです。マイニングのプロセスや信用を構築する方法を第８章でさらに詳しく説明します。</p></div>
+<div class="imageblock" id="block-alice1">
+<div class="content">
+<img src="images/msbt_0209.png" alt="Alice's transaction included in a block" />
+</div>
+<div class="title">Figure 9. ブロック #277316 に含まれているアリスのトランザクション</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_トランザクションの使用">トランザクションの使用</h3>
+<div class="paragraph"><p>今やアリスのトランザクションがブロックチェーンに埋め込まれたため、分散されたBitcoin元帳の一部になり全てのBitcoinアプリケーションから参照ができるようになりました。それぞれのBitcoinクライアントは独立にトランザクションが有効で使用可能かを確認できます。full-indexクライアントはアリスが支払ったbitcoinが最初にブロック内に生成された瞬間からアリスの資産の軌跡を追うことができ、トランザクションを１個ずつ追っていくことで最終的にボブのアドレスまでたどり着きます。軽量クライアントは"simplified payment verification"(<a href="#spv_nodes">[spv_nodes]</a>参照)と呼ばれるものを行うことができ、トランザクションがブロックチェーンの中にあり、ブロックチェーンに含まれたあとに掘り出されたいくつかのブロックがあることを確認しています。このようにして、Bitcoinネットワーク全体がトランザクションの有効性を把握していることを保証しているのです。</p></div>
+<div class="paragraph"><p>ボブは、得たトランザクションアウトプットをインプットとして取り出し、それらを新しい所有者に割り振ることで今アリスからの得たアウトプットやその他のアウトプットを使うことができます。例えば、ボブはアリスから支払われたコーヒーの代金を新しい所有者に送ることによって契約者や供給者に対して支払いができるのです。よくあることとして、ボブのBitcoinソフトウェアは多くの小さな額の支払いをより大きい額の支払いにまとめあげます。もしかしたら、一日ごとのbitcoin収入全てをまとめて１つのトランザクションに集約するかもしれません。これを使っていろいろな支払いを店舗の"会計"口座として使われている１つのBitcoinアドレスに移します。集約トランザクションの図は<a href="#transaction-aggregating">[transaction-aggregating]</a>を参照してみてください。</p></div>
+<div class="paragraph"><p>ボブがアリスや他のお客さんから受け取った支払いを使うにつれて、ボブはトランザクションのチェーンを拡げ、このトランザクションがブロックチェーンに順々に追加されていくのです。ボブは新しいウェブページを作るためにバンガロールにいるウェブデザイナー Gopeshに支払いをすると考えてみましょう。トランザクションのチェーンは<a href="#block-alice2">[block-alice2]</a>図のようになっています。</p></div>
+<div class="imageblock" id="block-alice2">
+<div class="content">
+<img src="images/msbt_0210.png" alt="Alice's transaction as part of a transaction chain" />
+</div>
+<div class="title">Figure 10. ジョーからGopeshへのトランザクション連鎖の一部になっているアリスのトランザクション</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:55:45 UTC
+</div>
+</div>
+</body>
+</html>

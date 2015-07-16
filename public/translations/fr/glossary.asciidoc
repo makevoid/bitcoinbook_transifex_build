@@ -1,0 +1,61 @@
+[preface]
+== Glossaire Succinct
+
+Ce glossaire succinct contient de nombreux termes liés au bitcoin. Ces termes sont utilisés tout au long du livre, il est donc conseillé de marquer cette page pour la retrouver facilement.
+
+adresse::
+    Une adresse bitcoin ressemble à +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. Elle consiste en une suite de chiffres et de lettres commençant par "1" (le chiffre un). De la même façon que vous demandez à quelqu'un de vous envoyer un email à votre adresse email, vous pouvez lui demander d'envoyer des bitcoins à votre adresse bitcoin.((("bitcoin address")))((("address", see="bitcoin address")))((("public key", see="bitcoin address")))
+
+bip::
+    Bitcoin Improvement Proposals (en français : Propositions d'Amélioration de Bitcoin). Un ensemble de propositions que les membres de la communauté ont émises pour améliorer bitcoin. Par exemple, BIP0021 est une proposition pour améliorer le schéma d'URI spécifique à bitcoin.((("bip"))) 
+
+bitcoin::
+    Le nom de l'unité de monnaie (la pièce), le réseau, et le logiciel.((("bitcoin"))) 
+
+block::
+    Un groupe de transactions, avec un horodatage et l'empreinte du bloc précédent. L'entête de bloc est hashé pour produire une preuve de travail, validant ainsi les transactions. Les blocs valides sont ajoutés à la blockchain principale par consensus distribué.((("block")))
+
+blockchain::
+	Une chaîne de bloc valides, chaque bloc étant relié à son prédécesseur jusqu'au premier bloc, appelé le genesis bloc.((("blockchain")))
+	
+confirmations::
+	Une fois qu'une transaction est incluse dans un bloc, elle a une confirmation. Dès qu'un _autre_ bloc est miné sur la même blockchain, la transaction a une deuxième confirmation, et ainsi de suite. Au bout six confirmations ou plus, on considère que la transaction est irréversible.((("confirmations")))
+
+difficulté::
+	Un réglage de l'ensemble du réseau qui contrôle la quantité de calcul requise pour fournir une preuve de travail.((("difficulty")))
+
+difficulté cible::
+ 	Une difficulté telle que le réseau pourra calculer un bloc toutes les 10 minutes environ.((("target difficulty")))
+
+reciblage de difficulté::
+	Un recalcul de la difficulté appliquée à l'ensemble du réseau qui a lieu une fois tous les 2106 bloques en prenant en considération la puissance de hachage des 2106 bloques précédents.((("difficulty retargeting")))
+	
+frais::
+	Celui qui envoie la transaction inclut souvent une commission pour que le réseau traite la transaction sollicitée. La plupart des transactions requièrent une commission minimum de 0,5 mBTC.((("fees")))
+
+hash::
+	L'empreinte numérique de données binaire.(("hash")))
+
+bloc genesis::
+	Le premier bloque de la chaîne de bloques, utilisé pour initialiser la crypto-monnaie.((("genesis block")))
+	
+mineur::
+Un noeud du réseau qui trouve une preuve de travail valide pour de nouveaux bloques, en effectuant des hachages répétés.((("miner")))
+
+réseau::
+Un réseau pair à pair qui propage les transactions et les bloques vers chaque noeud bitcoin du réseau.((("network")))
+	
+Preuve de Travail::
+	Une donnée qui requiert un travail significatif pour être calculée. Dans le cadre de bitcoin, les mineurs doivent trouver une solution numérique à l'algorithme SHA256, qui permet de remplir un objectif défini pour l'ensemble du réseau, appelé la difficulté. (((("proof-of-work")))
+
+récompense::
+Une somme incluse dans chaque nouveau bloc comme récompense pour le mineur qui a trouvé la solution de la Preuve de Travail. Elle s'élève actuellement à 25BTC par bloc.((("reward")))
+
+clé secrète (ou clé privée)::
+	Le numéro secret qui débloque les bitcoins à envoyer à l'adresse correspondante. Une clé secrète ressemble à +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("secret key")))((("private key", see="secret key")))
+	
+transaction::
+En termes simples, un transfert de bitcoins d'une adresse à une autre. Plus précisément, une transaction est une structure de données signée qui exprime une transfert de valeur. Les transactions sont transmises sur le réseau bitcoin, collectées par les mineurs, et incluses dans des bloques, de façon permanente dans la chaîne de bloques.((("transaction")))
+
+porte-monnaie::
+Logiciel qui contient toutes vos adresses bitcoin et clés privées. Utilisé pour envoyer, recevoir et stocker vos bitcoins.((("wallet"))) 

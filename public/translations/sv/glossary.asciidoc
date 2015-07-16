@@ -1,0 +1,61 @@
+[preface]
+== Snabb ordlista
+
+Den här ordlistan innehåller många bitcoinrelaterade termer. Dessa termer används genom hela boken så lägg ett bokmärke här för snabb åtkomst.
+
+adress::
+    En bitcoinadress ser ut som +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. Den består av en sträng bokstäver och siffror som börjar med "1" (siffran ett). Precis som när man ber andra att skicka e-post till sin e-postadress ber man andra att skicka bitcoin till sin bitcoinadress.((("bitcoin address")))((("address", see="bitcoin address")))((("public key", see="bitcoin address")))
+
+bip::
+    Förbättringsförslag för bitcoin (en förkortning av engelska "Bitcoin Improvement Proposals"). En uppsättning förslag som användare har lagt fram för att förbättra bitcoin. Exempelvis BIP0021 som är ett förslag för att förbättra bitcoins URI-hantering.((("bip"))) 
+
+bitcoin::
+    Namnet på valutaenheten (engelska "coin" betyder mynt), nätverket och mjukvaran.((("bitcoin"))) 
+
+block::
+    En grupp transaktioner tillsammans med en tidsstämpel och hashsumma från det föregående blocket. Blockets metadata hashas för att skapa ett arbetsbevis och bekräftar därmed transaktionerna. Giltiga block läggs till i blockkjedjan av nätverket genom konsensus.((("block")))
+
+blockkedja::
+	En lista av validerade block, alla länkade till sin föregångare hela vägen till ursprungsblocket.((("blockchain")))
+	
+bekräftelser::
+	När en transaktion inkluderas i ett block så har den en bekräftelse. När ett annat block läggs till på samma blockkjedja har den två bekräftelser osv. Sex eller fler bekräftelser anses tillräckligt säkert för att en transaktion inte skall kunna avbrytas.((("confirmations")))
+
+svårighet::
+	En gemensam nätverksinställning som styr hur mycket beräkningskraft som krävs för att ta fram ett arbetsbevis.((("difficulty")))
+
+svårighetsgrad::
+ 	En svårighetsgrad vid vilken den samlade datorkraften i nätverket löser block på 10 minuter i snitt.((("target difficulty")))
+
+svårighetsomställning::
+	En nätverkstäckande omberäkning av svårighetsgraden som sker var 2106:e block och utgår från den samlade processorkraften från dem tidigare 2106 blocken.((("difficulty retargeting")))
+	
+avgifter::
+	Avsändare av transaktioner inkluderar ofta en avgift till nätverket för hanteringen av transaktionen. De flesta transaktioner kräver en minsta avgift på 0.5 mBTC.((("fees")))
+
+hash::
+	Ett digital fingeravtryck av binär indata.((("hash")))
+
+ursprungsblocket
+	Det första blocket i blockkedjan, det som användes för att initiera kryptovalutan.((("genesis block")))
+	
+utvinnare::
+En nätverksnod som finner giltiga arbetsbevis för nya block genom upprepad hashning.((("miner")))
+
+nätverk::
+Ett P2P-nätverk som propagerar transaktioner och block till alla bitcoin-noder i nätverket.((("network")))
+	
+Arbetsbevis::
+	En bit data som kräver en betydande mängd processorkraft att hitta. I bitcoin måste utvinnare hitta en numerisk lösning på SHA256 algoritmen som är lägre än nätverkets valda svårighetsgrad.((("proof-of-work")))
+
+belöning::
+Ett belopp inkluderat i varje nytt block som en belöning från nätverket till den utvinnare som hittat arbetsbevislösningen. Den är för närvarande 25BTC per block.((("reward")))
+
+Hemlig nyckel (även kallad privat nyckel)::
+	Det hemliga nummer som ger tillgång till bitcoins som skickats till den motsvarande adressen. En hemlig nyckel har formatet +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("secret key")))((("private key", see="secret key")))
+	
+transaktion::
+Förenklat sett, en överföring av bitcoin från en adress till en annan. En transaktion är en signerad data struktur som avspeglar intentionen att överföra värde. Transaktioner skickas över bitcoin nätverket, samlas ihop av utvinnare och inkluderas i block som lagras permanent i blockkjedjan.((("transaction")))
+
+plånbok::
+Mjukvara som hanterar alla dina bitcoin-adresser och hemliga nycklar. Använd den för att skicka, ta emot och förvara dina bitcoin.((("wallet"))) 

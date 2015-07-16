@@ -1,0 +1,158 @@
+[序文]
+== 序文
+
+=== ビットコインの本を書く
+
+私は、最初２０１１年の中頃にビットコインでつまずいていた。私の最初の反応は、「あー！オタクの通貨だ。」それ以上でも以下でもなかった。そしてその後６ヶ月間、その重要性を理解することなく無視していた。これは、私の知る沢山の賢い人々の間で繰り返し見る反応だ。そしてそれを見て、私は少し癒やされた。私が２回目にメーリングリストでビットコインに出会った時、私はナカモト・サトシによって書かれたホワイトペーパーを読むことにした。正式な情報元から学んで、それが何であるのかを知るために。未だに９ページを読み終えた時のことを覚えている。ビットコインが単にデジタル通貨というだけでなく、信用のネットワークの基盤をも提供するものだ、とその時に理解したのだった。「これはお金ではない。これは、非中央集権化された信用ネットワークなのだ。」とわかってから４ヶ月の間、私は見つけられる限りのどんな細かいビットコインの情報をも貪り読み続けた。私は取り憑かれ、魅了された。そして、毎日１２時間以上私の出来る限りの時間、画面に食いつき、読み、書き、プログラムをし、学んだ。熱狂状態から戻って来た時には、まともに食事も取らなかったので、９キログラム以上も痩せていていたが、ビットコインに専念することに決めた。 
+
+２年後、ビットコイン関連のサービスやプロダクトを調べるための小さなスタートアップをいくつか作った後に、今が私にとっての最初の本を書く時だと決心した。ビットコインは、私を創造力の狂乱へ導き、頭の中を一杯に埋め尽くしたテーマだ。そして、ビットコインはインターネット以降に出会った中で最もエキサイティングなテクノロジーだ。より多くの人とこの素晴らしいテクノロジーへの情熱を共有する時だった。 
+
+=== 想定する読者
+
+この本は、主にプログラマー向けに書かれている。もしプログラム言語を使えるのであれば、どのように暗号による通貨が動くのか、どのように暗号通貨を利用するのか、どのように暗号通貨のソフトウェアを開発するのかがわかるでしょう。最初のいくつかの章は、ビットコインや暗号通貨の内部動作を理解したいプログラマでない方向けのビットコイン入門として最適でしょう。
+
+=== なぜ表紙に３匹の虫がいるのか？
+
+ハキリアリはコロニー超個体の中で高度に複雑な振る舞いを示している生物です。しかし、それぞれの個体としてのアリは社会的な相互作用や化学的な匂い(フェロモン)によって引き起こされる単純なルールの集まりに従って作業をしています。Wikipediaによると、"ハキリアリは地球上で最大規模で最も複雑な動物社会を形成しています"とあります。ハキリアリは実際に葉を食べるわけではありませんが、むしろこれら葉を菌の繁殖のために使っています。この菌というのは、コロニーの中心的な食料の原料なのです。分かりますか？これらのアリは農業を行っているのです！ 
+
+アリはカースト的な社会を構成し、子孫を作るために女王を持っています。アリのコロニーには中心的な権威やリーダーは存在しません。百万匹が暮らすコロニーで示される高度に知的で洗練された振る舞いは、社会的なネットワークの中で個々の相互作用から生まれる創発特性なのです。 
+
+Nature demonstrates that decentralized systems can be resilient and can produce emergent complexity and incredible sophistication without the need for a central authority, hierarchy, or complex parts.
+
+Bitcoin is a highly sophisticated decentralized trust network that can support a myriad of financial processes. Yet, each node in the bitcoin network follows a few simple mathematical rules. The interaction between many nodes is what leads to the emergence of the sophisticated behavior, not any inherent complexity or trust in any single node. Like an ant colony, the bitcoin network is a resilient network of simple nodes following simple rules that together can do amazing things without any central coordination.
+
+=== この本で使用される表記規約
+
+この本では以下の表記規約を使用します。
+
+_イタリック_:: 新しい用語、URL、Eメールアドレス、ファイル名、ファイル拡張子を表す
+
++等幅(Constant width)+:: プログラムを表示するときに使用され、また変数や関数名、データベース、データタイプ、環境変数、ステートメント、キーワードなどプログラムの一要素を表現するときにも使用される
+
+**`等幅太字(Constant width bold)`**:: ユーザに文字通り入力されるべきコマンドやその他テキストを表す
+
+_++等幅イタリック(Constant width italic)++_:: ユーザ側の環境や文脈によって変わる値によって置き換えられるべきテキストを表す
+
+
+[TIP]
+====
+このアイコンは、ヒントや提案、一般的な示唆を表します。
+====
+
+[WARNING]
+====
+このアイコンは、警告や注意を表します。
+====
+
+=== コード例
+
+例はPythonやC++で説明されており、LinuxまたはMac OS XのようなUnixライクなオペレーティングシステムのコマンドラインを使って実行できます。全てのコードスニペットは https://github.com/aantonop/bitcoinbook[GitHub repository] のメインリポジトリの _code_ ディレクトリにあります。この本にあるコードをフォークして、コード例を試してみてください。そして、修正点があればGitHub(のPullRequest)を通してご連絡をお願いします。 
+
+All the code snippets can be replicated on most operating systems with a minimal installation of compilers and interpreters for the corresponding languages. Where necessary, we provide basic installation instructions and step-by-step examples of the output of those instructions. 
+
+Some of the code snippets and code output have been reformatted for print. In all such cases, the lines have been split by a backslash (\) character, followed by a newline character. When transcribing the examples, remove those two characters and join the lines again and you should see identical results as shown in the example. 
+
+All the code snippets use real values and calculations where possible, so that you can build from example to example and see the same results in any code you write to calculate the same values. For example, the private keys and corresponding public keys and addresses are all real. The sample transactions, blocks, and blockchain references have all been introduced in the actual bitcoin blockchain and are part of the public ledger, so you can review them on any bitcoin system.
+
+=== Using Code Examples
+
+This book is here to help you get your job done. In general, if example code is offered with this book, you may use it in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. For example, writing a program that uses several chunks of code from this book does not require permission. Selling or distributing a CD-ROM of examples from O’Reilly books does require permission. Answering a question by citing this book and quoting example code does not require permission. Incorporating a significant amount of example code from this book into your product’s documentation does require permission.
+
+私たちは、出典の掲載について感謝しますが、要求はしていません。出典は通常、タイトル、著者、出版社、およびISBNを含みます（例：_Mastering Bitcoin_ by Andreas M. Antonopoulos (O’Reilly). Copyright 2015 Andreas M. Antonopoulos, 978-1-449-37404-4.）。
+
+Some editions of this book are offered under an open source license, such as CC-BY-NC (creativecommons.org), in which case the terms of that license apply.
+
+If you feel your use of code examples falls outside fair use or the permission given above, feel free to contact us at pass:[<email>permissions@oreilly.com</email>].
+
+=== Safari® Books Online
+
+[role = "safarienabled"]
+[NOTE]
+====
+pass:[<ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly">Safari Books Online</ulink>] はオンデマンドのデジタルライブラリであり、テクノロジーとビジネスの分野における、世界の先端を行く作者からのpass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/content">コンテンツ</ulink>]を、書籍とビデオの両方の形態で、専門家に届けている。
+====
+
+テクノロジーの専門家、ソフトウェア開発者、Webデザイナー、ビジネスやク​​リエイティブの専門家が、研究、問題解決、学習、資格習得のための主要なリソースとして、Safari Books Onlineを利用しています。
+
+Safari Books Online offers a range of pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/subscriptions">product mixes</ulink>] and pricing programs for pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/organizations-teams">organizations</ulink>], pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/government">government agencies</ulink>], and pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/individuals">individuals</ulink>]. Subscribers have access to thousands of books, training videos, and prepublication manuscripts in one fully searchable database from publishers like O’Reilly Media, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Focal Press, Cisco Press, John Wiley & Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett, Course Technology, and dozens pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/publishers">more</ulink>]. For more information about Safari Books Online, please visit us pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/">online</ulink>].
+
+=== 御連絡はこちら
+
+この本に関するコメントと質問を、出版者へお便り下さい。
+
+++++
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (in the United States or Canada)</member>
+<member>707-829-0515 (international or local)</member>
+<member>707-829-0104 (fax)</member>
+</simplelist>
+++++
+
+この本にはウェブページがあり、そこでは例えば幾つかの過ちや、例、そして追加の情報を掲載致します。そしてそのページへのリンクは$$http://bit.ly/mastering_bitcoin$$[]　です。
+
+
+この本に関するコメントや、技術的な質問がある場合には、[<email>bookquestions@oreilly.com</email>].までemailを下さい。
+
+より一層の詳しい私達の本、コース、会議、そしてニュースはウェブサイトのこちらのリンクを御覧下さい。:$$http://www.oreilly.com$$[].
+
+Facebookのリンクはこちら:$$http://facebook.com/oreilly$$[]
+
+Twitterのリンクはこちら:$$http://twitter.com/oreillymedia$$[]
+
+Youtubeのリンクはこちら: link:$$http://www.youtube.com/oreillymedia$$[]
+
+
+=== 謝辞
+
+この本は、多くの人の努力と献身によって出来ています。友人、同僚、そして全く知らないこの暗号通貨とビットコインについての技術的な本を書くことに務めて下さった方々に感謝しています。 
+
+Bitcoinのテクノロジーと、Bitcoinのコミュニティを切り分けて考えることは不可能です。そしてこの本はそのコミュニティによる本とでもあります。私のこの本を書くことの取り組みは、まさに本を書き終わる時まで、Bitcoinのコミュニティ全体から励まされ、応援され、支えられ、称賛を頂きました。これは何よりもかけがえのないことで、この本を書くことで私は2年間その素晴らしいコミュニティの一部でいられました。私は私を受け入れてくれたこのコミュニティに対して十分な御礼を言えていないほどに感謝しています。そして名前をあげるにはあまりにも多くの方々の支え、例えばカンファレンスやイベントや、セミナーや、ミートアップや、ピザを食べる集まりや、小さな個人的な集まりや、Twitterや、Redditや、bitcointalk.orgで私と交流して下さった方々がいらっしゃいます。あらゆるアイディアや、アナロジーや、質問や、回答や、そして貴方がこの本でご覧になった説明のいくつかの点は、私のコミュニティとの交流の中でインスパイアされ、検証され、改善されてきました。支えて下さった皆様有難うございます。あなた方無しにこの本は完成し得なかった。私の一生の喜びです。
+
+The journey to becoming an author starts long before the first book, of course. My first language (and schooling) was Greek, so I had to take a remedial English writing course in my first year of university. I owe thanks to Diana Kordas, my English writing teacher, who helped me build confidence and skills that year. Later, as a professional, I developed my technical writing skills on the topic of data centers, writing for _Network World_ magazine. I owe thanks to John Dix and John Gallant, who gave me my first writing job as a columnist at _Network World_ and to my editor Michael Cooney and my colleague Johna Till Johnson who edited my columns and made them fit for publication. Writing 500 words a week for four years gave me enough experience to eventually consider becoming an author. Thanks to Jean de Vera for her early encouragement to become an author and for always believing and insisting that I had a book in me.
+
+Thanks also to those who supported me when I submitted my book proposal to O'Reilly, by providing references and reviewing the proposal. Specifically, thanks to John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver, and Jon Matonis. Special thanks to Richard Kagan and Tymon Mattoszko, who reviewed early versions of the proposal and Matthew Owain Taylor, who copyedited the proposal.
+
+Thanks to Cricket Liu, author of the O'Reilly title _DNS and BIND_, who introduced me to O'Reilly. Thanks also to Michael Loukides and Allyson MacDonald at O'Reilly, who worked for months to help make this book happen. Allyson was especially patient when deadlines were missed and deliverables delayed as life intervened in our planned schedule. 
+
+The first few drafts of the first few chapters were the hardest, because bitcoin is a difficult subject to unravel. Every time I pulled on one thread of the bitcoin technology, I had to pull in the whole thing. I repeatedly got stuck and a bit despondent as I struggled to make the topic easy to understand and create a narrative around such a dense technical subject. Eventually, I decided to tell the story of bitcoin through the stories of the people using bitcoin and the whole book became a lot easier to write. I owe thanks to my friend and mentor, Richard Kagan, who helped me unravel the story and get past the moments of writer's block, and Pamela Morgan, who reviewed early drafts of each chapter and asked the hard questions to make them better. Also, thanks to the developers of the San Francisco Bitcoin Developers Meetup group and Taariq Lewis, the group's co-founder, for helping to test the early material.
+
+During the development of the book, I made early drafts available on GitHub and invited public comments. More than a hundred comments, suggestions, corrections, and contributions were submitted in response. Those contributions are explicitly acknowledged, with my thanks, in <<github_contrib>>. Special thanks to Minh T. Nguyen, who volunteered to manage the GitHub contributions and added many significant contributions himself. Thanks also to Andrew Naugler for infographic design. 
+
+Once the book was drafted, it went through several rounds of technical review. Thanks to Cricket Liu and Lorne Lantz for their thorough review, comments, and support.
+
+Several bitcoin developers contributed code samples, reviews, comments, and encouragement. Thanks to Amir Taaki and Eric Voskuil for example code snippets and many great comments; Vitalik Buterin and Richard Kiss for help with elliptic curve math and code contributions; Gavin Andresen for corrections, comments, and encouragement; Michalis Kargakis for comments, contributions, and btcd writeup; and Robin Inge for errata submissions improving the second print.
+
+I owe my love of words and books to my mother, Theresa, who raised me in a house with books lining every wall. My mother also bought me my first computer in 1982, despite being a self-described technophobe. My father, Menelaos, a civil engineer who just published his first book at 80 years old, was the one who taught me logical and analytical thinking and a love of science and engineering. 
+
+Thank you all for supporting me throughout this journey. 
+
+[[github_contrib]]
+=== 早くからのリリースの下書き（Github上での貢献）
+
+多くの貢献者の方々は、コメントや、訂正や、加筆をGithub 上の初期のリリースの下書きに対して寄せて下さいました。この本に貢献して下さった皆様有難うございます。下記がGithub上で多大な貢献をして下さった方々です。Github上のIDが両括弧で印されています。
+
+* Minh T. Nguyen, GitHub contribution editor (enderminh)
+* Ed Eykholt (edeykholt)
+* Michalis Kargakis (kargakis)
+* Erik Wahlström (erikwam)
+* Richard Kiss (richardkiss)
+* Eric Winchell (winchell)
+* Sergej Kotliar (ziggamon)
+* Nagaraj Hubli (nagarajhubli)
+* ethers
+* Alex Waters (alexwaters)
+* Mihail Russu (MihailRussu)
+* Ish Ot Jr. (ishotjr)
+* James Addison (jayaddison)
+* Nekomata (nekomata-3)
+* Simon de la Rouviere (simondlr)
+* Chapman Shoop (belovachap)
+* Holger Schinzel (schinzelh)
+* effectsToCause (vericoin)
+* Stephan Oeste (Emzy)
+* Joe Bauers (joebauers)
+* Jason Bisterfeldt (jbisterfeldt)
+* Ed Leafe (EdLeafe)

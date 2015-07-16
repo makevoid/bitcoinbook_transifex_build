@@ -1,0 +1,184 @@
+[[tx_script_ops]]
+[appendix]
+== トランザクションscript言語オペレータ、定数、シンボル
+
+((("Script language", id="ix_appdx-scriptops-asciidoc0", range="startofrange")))((("Script language","reserved operator codes", id="ix_appdx-scriptops-asciidoc1", range="startofrange")))<<tx_script_ops_table_pushdata>>では、値をスタックの上にpushするオペレータをリストアップしています。((("Script language","push operators")))
+
+[[tx_script_ops_table_pushdata]]
+.値をスタックの上にpushする
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| OP_0 または OP_FALSE | 0x00 | 空アレイがスタック上にpushされる
+| 1-75 | 0x01-0x4b | 次のNバイトをスタック上にpushする、Nは1から75バイト
+| OP_PUSHDATA1 | 0x4c | The next script byte contains N, push the following N bytes onto the stack
+| OP_PUSHDATA2 | 0x4d | The next two script bytes contain N, push the following N bytes onto the stack
+| OP_PUSHDATA4 | 0x4e | The next four script bytes contain N, push the following N bytes onto the stack
+| OP_1NEGATE | 0x4f | "-1"をスタック上にpush
+| OP_RESERVED | 0x50 | 停止 - まだ実行されていないOP_IF内でなければ不正なトランザクション
+| OP_1 or OP_TRUE| 0x51 | "1"をスタック上にpush
+| OP_2 to OP_16 | 0x52 to 0x60 |  OP_Nに対して値"N"をスタック上にpush、例えば OP_2 は"2"をpush
+|=======
+
+<<tx_script_ops_table_control>>では、条件分岐制御オペレータをリストアップしています。((("Script language","conditional flow operators")))
+
+[[tx_script_ops_table_control]]
+.条件分岐制御
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| OP_NOP | 0x61 | 何もしない
+| OP_VER | 0x62 | 停止 - まだ実行されていないOP_IF内でなければ不正なトランザクション
+| OP_IF | 0x63 | もしスタックの一番上に0がなければ次のステートメントを実行
+| OP_NOTIF | 0x64 | もしスタックの一番上に0があれば次のステートメントを実行
+| OP_VERIF | 0x65 | 停止 - 不正なトランザクション
+| OP_VERNOTIF | 0x66 | 停止 - 不正なトランザクション
+| OP_ELSE | 0x67 | 前のステートメントが実行されていない場合のみ実行
+| OP_ENDIF | 0x68 | OP_IF、OP_NOTIF、OP_ELSEブロックを終わらせる
+| OP_VERIFY | 0x69 | スタックの一番上をチェックし、真でなければ停止しトランザクションを無効化する
+| OP_RETURN | 0x6a | 停止しトランザクションを無効化する
+|=======
+
+<<tx_script_ops_table_stack>>では、スタックを操作するためのオペレータをリストアップしています。((("Script language","stack manipulation operators")))
+
+[[tx_script_ops_table_stack]]
+.スタックオペレータ
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| OP_TOALTSTACK | 0x6b | スタックから一番上のアイテムをpopし、代替のスタックにpush
+| OP_FROMALTSTACK | 0x6c | 代替のスタックから一番上のアイテムをpopし、スタックにpush
+| OP_2DROP | 0x6d | スタックの一番上から２つのアイテムをpop
+| OP_2DUP | 0x6e | スタックの一番上にある２つのアイテムを複製
+| OP_3DUP | 0x6f | スタックの一番上にある３つのアイテムを複製
+| OP_2OVER | 0x70 | スタックの中の一番上から３番目と４番目のアイテムをスタックの一番上にコピー
+| OP_2ROT | 0x71 | スタックの中の一番上から５番目と６番目のアイテムをスタックの一番上に移動
+| OP_2SWAP | 0x72 | スタックの一番上の２つのアイテムペアを交換
+| OP_IFDUP | 0x73 | もし0でなければ、スタックの中の一番上のアイテムを複製
+| OP_DEPTH | 0x74 | スタック上のアイテム数をカウントし、カウント数をpush
+| OP_DROP | 0x75 | スタックの中の一番上のアイテムをpop
+| OP_DUP | 0x76 | スタックの中の一番上のアイテムを複製
+| OP_NIP | 0x77 | スタックの中の二番目のアイテムをpop
+| OP_OVER | 0x78 | スタックの中の二番目のアイテムをコピーし、それをスタックの一番上にpush
+| OP_PICK | 0x79 | スタックの一番上から値Nをpopし、N番目のアイテムをスタックの一番上にコピー
+| OP_ROLL | 0x7a | スタックの一番上から値Nをpopし、N番目のアイテムをスタックの一番上に移動
+| OP_ROT | 0x7b | スタックの中の一番上の３つのアイテムを回転
+| OP_SWAP | 0x7c | スタックの中の一番上の３つのアイテムを交換
+| OP_TUCK | 0x7d | 一番上のアイテムをコピーし、一番上と二番目の間にそれを挿入
+|=======
+
+<<tx_script_ops_table_splice>>では、文字列オペレータをリストアップしています。((("Script language","string operators")))
+
+[[tx_script_ops_table_splice]]
+.文字列結合オペレータ
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| _OP_CAT_ | 0x7e | 使用不可(一番上の２つのアイテムを結合)
+| _OP_SUBSTR_ | 0x7f | 使用不可(部分文字列を返却)
+| _OP_LEFT_ | 0x80 | 使用不可(左側部分文字列を返却)
+| _OP_RIGHT_ | 0x81 | 使用不可(右側部分文字列を返却)
+| OP_SIZE | 0x82 | 一番上の文字列の長さを計算し、結果をpush 
+|=======
+
+<<tx_script_ops_table_binmath>>では、２進数算術およびブーリアン論理オペレータをリストアップしています。((("Script language","binary arithmetic operators")))((("Script language","boolean logic operators")))
+
+[[tx_script_ops_table_binmath]]
+.２進数算術と条件
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| _OP_INVERT_ | 0x83 | 使用不可(一番上のアイテムのbitを反転)
+| _OP_AND_ | 0x84 | 使用不可(一番上の２つのアイテムのANDをとる)
+| _OP_OR_ | 0x85 | 使用不可(一番上の２つのアイテムのORをとる)
+| _OP_XOR_ | 0x86 | 使用不可(一番上の２つのアイテムのXORをとる)
+| OP_EQUAL | 0x87 | もし一番上の２つのアイテムが完全に等しければ真 (1) をpushし、それ以外なら偽 (0) をpush
+| OP_EQUALVERIFY | 0x88 | OP_EQUALと同じですが、もし真でなければ停止のためあとでOP_VERIFYを実行
+| OP_RESERVED1 | 0x89 | 停止 - まだ実行されていないOP_IF内でなければ不正なトランザクション
+| OP_RESERVED2 | 0x8a | 停止 - まだ実行されていないOP_IF内でなければ不正なトランザクション
+|=======
+
+<<tx_script_ops_table_numbers>>では、数値的(算術的)オペレータをリストアップしています。((("Script language","numeric operators")))
+
+[[tx_script_ops_table_numbers]]
+.数値的オペレータ
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| OP_1ADD | 0x8b | 一番上のアイテムに1を足す   
+| OP_1SUB | 0x8c | 一番上のアイテムから1を引く
+| _OP_2MUL_ | 0x8d | 使用不可(一番上のアイテムに2を掛ける)
+| _OP_2DIV_ | 0x8e | 使用不可(一番上のアイテムを2で割る)
+| OP_NEGATE | 0x8f | 一番上のアイテムの符号を反転
+| OP_ABS | 0x90 | 一番上のアイテムの符号をプラスに変更
+| OP_NOT | 0x91 | もし一番上のアイテムが0または1ならブーリアンとして反転、それ以外なら0を返却
+| OP_0NOTEQUAL | 0x92 | もし一番上のアイテムが0なら0を返却、それ以外なら1を返却
+| OP_ADD | 0x93 | 一番上の２つのアイテムをpopし、２つを加え合わせた結果をpush
+| OP_SUB | 0x94 | 一番上の２つのアイテムをpopし、２番目から１番目を引いた結果をpush
+| OP_MUL | 0x95 | 使用不可(一番上の２つのアイテムを掛け合わせる)
+| OP_DIV | 0x96 | 使用不可(２番目のアイテムを１番目のアイテムで割る)
+| OP_MOD | 0x97 | 使用不可(２番目のアイテムを１番目のアイテムで割ったときの余り)
+| OP_LSHIFT | 0x98 | Disabled (shift second item left by first item number of bits)
+| OP_RSHIFT | 0x99 | Disabled (shift second item right by first item number of bits)
+| OP_BOOLAND | 0x9a | 一番上の２つのアイテムのANDをとる
+| OP_BOOLOR | 0x9b | 一番上の２つのアイテムのORをとる
+| OP_NUMEQUAL | 0x9c | 一番上の２つのアイテムが同じ数値であれば真を返却
+| OP_NUMEQUALVERIFY | 0x9d | NUMEQUALと同じだが、もし真でなければ停止のためにOP_VERIFYを実行
+| OP_NUMNOTEQUAL | 0x9e | 一番上の２つのアイテムが同じ数値でなければ真を返却
+| OP_LESSTHAN | 0x9f | ２番目のアイテムが１番目のアイテムよりも小さい場合真を返却
+| OP_GREATERTHAN | 0xa0 | もし２番目のアイテムが１番目のアイテムよりも大きい場合真を返却
+| OP_LESSTHANOREQUAL | 0xa1 | もし２番目のアイテムが１番目のアイテムよりも小さいか等しければ真を返却
+| OP_GREATERTHANOREQUAL | 0xa2 | もし２番目のアイテムが１番目のアイテムよりも大きいか等しければ真を返却
+| OP_MIN | 0xa3 | １番目と２番目のアイテムのうちより小さいアイテムを返却 
+| OP_MAX | 0xa4 | １番目と２番目のアイテムのうちより大きいアイテムを返却
+| OP_WITHIN | 0xa5 | もし３番目のアイテムが２番目と１番目の間(または等しい)であれば真を返却
+|=======
+
+<<tx_script_ops_table_crypto>>では、暗号学的関数オペレータをリストアップしています。((("Script language","cryptographic function operators")))
+
+[[tx_script_ops_table_crypto]]
+.暗号学的オペレータとハッシュ化オペレータ
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| OP_RIPEMD160 | 0xa6 | １番目のアイテムのRIPEMD160ハッシュを返却
+| OP_SHA1 | 0xa7 | １番目のアイテムのSHA1ハッシュを返却
+| OP_SHA256 | 0xa8 | １番目のアイテムのSHA256ハッシュを返却
+| OP_HASH160 | 0xa9 | １番目のアイテムのRIPEMD160(SHA256(x))ハッシュを返却
+| OP_HASH256 | 0xaa | １番目のアイテムのSHA256(SHA256(x))ハッシュを返却
+| OP_CODESEPARATOR | 0xab | Mark the beginning of signature-checked data
+| OP_CHECKSIG | 0xac | 公開鍵と署名をpopしたのち、トランザクションのハッシュ化データに対して署名が有効であるかを検証し、有効であれば真を返却
+| OP_CHECKSIGVERIFY | 0xad | CHECKSIGと同じだが、もし真でなければ停止のためにOP_VERIFYを実行
+| OP_CHECKMULTISIG | 0xae | 与えられたそれぞれの署名と公開鍵のペアに対してCHECKSIGを実行。結果は全て真でなければならない。この実装には余分な値をpopしてしまうというバグがあり、回避策としてOP_NOPをOP_CHECKMULTISIGの前に置く
+| OP_CHECKMULTISIGVERIFY | 0xaf | CHECKMULTISIGと同じだが、もし真でなければ停止のためにOP_VERIFYを実行
+|=======
+
+<<tx_script_ops_table_nop>>では、非オペレータシンボルをリストアップしています。((("Script language","symbols")))
+
+[[tx_script_ops_table_nop]]
+.非オペレータ
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| OP_NOP1-OP_NOP10 | 0xb0-0xb9 | 何もしない、無視される
+|=======
+
+
+++++
+<?hard-pagebreak?>
+++++
+
+<<tx_script_ops_table_internal>>では、内部scriptパーサによって使用されるために予約されているオペレータコードをリストアップしています。(((range="endofrange", startref="ix_appdx-scriptops-asciidoc1")))(((range="endofrange", startref="ix_appdx-scriptops-asciidoc0")))
+
+[[tx_script_ops_table_internal]]
+.scriptパーサの内部使用のために予約されているOPコード
+[options="header"]
+|=======
+| シンボル | 値(16進) | 説明
+| OP_SMALLDATA | 0xf9 | 小さいデータフィールドを表す 
+| OP_SMALLINTEGER | 0xfa | 小さい整数データフィールドを表す
+| OP_PUBKEYS | 0xfb | 公開鍵フィールド(複数)を表す
+| OP_PUBKEYHASH | 0xfd | 公開鍵ハッシュフィールドを表す
+| OP_PUBKEY | 0xfe | 公開鍵フィールドを表す
+| OP_INVALIDOPCODE | 0xff | 現在割り当てられていない任意のOPコードを表す
+|=======

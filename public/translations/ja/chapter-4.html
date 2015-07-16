@@ -1,0 +1,2114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch04_keys_addresses_wallets">キー、アドレス、ウォレット</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_イントロダクション">イントロダクション</h3>
+<div class="paragraph"><p>bitcoinの所有権は、 <em>デジタルキー</em> 、 <em>Bitcoinアドレス</em> 、 <em>デジタル署名</em> で規定されます。デジタルキーはBitcoinネットワークの中では保持されておらず、デジタルキーはユーザによって作成され個々のユーザのファイルの中、または <em>ウォレット</em> という簡単なデータベースの中に保持されます。ユーザのウォレットの中にあるデジタルキーは完全にBitcoinプロトコルとは独立しており、ブロックチェーンへの参照またはインターネットへのアクセスを必要とすることなくユーザのウォレットで生成および管理できるようになっています。このキーによってBitcoinの多くの興味深い性質を可能にしており、この性質には分散型信頼やコントロール、所有権の証明、暗号学的証明によるセキュリティモデルが含まれます。</p></div>
+<div class="paragraph"><p>全てのBitcoinトランザクションには、トランザクションをブロックチェーンに含めるための有効な署名が必須であり、有効な署名は有効なデジタルキーのみによって生成できます。よって、このデジタルキーのコピーを持つ人であればどんな人でも、このデジタルキーに紐づく口座にあるbitcoinをコントロールできます。銀行の口座番号と似た公開鍵と、銀行のPINコードに似た秘密鍵、また小切手への署名について考えてみましょう。これらのデジタルキーをごく稀にユーザが確認することがありますが、ほとんどの場合ウォレットのファイルの内部に格納されウォレットによって管理されるため見ることはありません。</p></div>
+<div class="paragraph"><p>In the payment portion of a bitcoin transaction, the recipient&#8217;s public key is represented by its digital fingerprint, called a <em>bitcoin address</em>, which is used in the same way as the beneficiary name on a check (i.e., "Pay to the order of"). In most cases, a bitcoin address is generated from and corresponds to a public key. However, not all bitcoin addresses represent public keys; they can also represent other beneficiaries such as scripts, as we will see later in this chapter. This way, bitcoin addresses abstract the recipient of funds, making transaction destinations flexible, similar to paper checks: a single payment instrument that can be used to pay into people&#8217;s accounts, pay into company accounts, pay for bills, or pay to cash. The bitcoin address is the only representation of the keys that users will routinely see, because this is the part they need to share with the world.</p></div>
+<div class="paragraph"><p>この章では、暗号学的キーを含むウォレットを紹介します。どのように鍵が生成され、格納され、管理されているのかを見ていき、秘密鍵や公開鍵、Bitcoinアドレス、scriptアドレスを表すいろいろなエンコード形式をレビューします。最後に、メッセージに署名したり所有権を証明したり文字列指定のあるBitcoinアドレスやペーパーウォレットを作成したりするためのキーの特別な使用方法を見ていきます。</p></div>
+<div class="sect3">
+<h4 id="_公開鍵暗号と暗号通貨">公開鍵暗号と暗号通貨</h4>
+<div class="paragraph"><p>公開鍵暗号は1970年代に発明され、計算機および情報セキュリティ分野の数学的基礎になっていました。</p></div>
+<div class="paragraph"><p>公開鍵暗号が発明されてから、いくつかの適した数学的関数が発見されていきました。この数学的関数は、  素数のべき乗や楕円曲線乗算などです。これらの数学的関数は現実な時間で考えると不可逆ものになっています。不可逆とは、一方向への計算は簡単でも、逆方向の計算は実行不可能なことを言います。これらの数学的関数に基づく暗号は、デジタル秘密や偽造不可能なデジタル署名の生成を可能にしています。Bitcoinは公開鍵暗号として楕円関数乗算を使っています。</p></div>
+<div class="paragraph"><p>Bitcoinでは、bitcoinへのアクセスコントロールをするキーペアを生成するために公開鍵暗号を使っています。このキーペアは秘密鍵とこの秘密鍵から一意に生成される公開鍵で構成されています。この公開鍵はbitcoinを受け取るために使われ、秘密鍵はbitcoinを使用するトランザクションに署名するのに使われます。</p></div>
+<div class="paragraph"><p>メッセージ上への署名生成に使われる秘密鍵と公開鍵の間には数学的な関係があります。この署名は秘密鍵を公開することなく公開鍵だけで検証できるようになっています。</p></div>
+<div class="paragraph"><p>bitcoinを使うとき、現在のbitcoin所有者は彼女の公開鍵と署名(生成するごとに異なるものになりますが、同じ秘密鍵から生成されるもの)をbitcoinを使うトランザクション内に提供します。この公開鍵と署名の提供を通して、Bitcoinネットワークの中の全ての人はこのトランザクションが有効なものであると検証でき、bitcoinを送った人が送る時点でこのbitcoinを所有しているかどうか確認できるのです。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>ほとんどのウォレット実装では、利便性のため秘密鍵と公開鍵が <em>キーペア</em> として一緒に保存されています。しかし、この公開鍵は秘密鍵から計算できるため、秘密鍵だけを保存しておくことも可能です。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="private_public_keys">秘密鍵と公開鍵</h4>
+<div class="paragraph"><p>Bitcoinウォレットにはキーペアのコレクションを持っており、それぞれのキーペアは秘密鍵と公開鍵で構成されています。秘密鍵(k)は数値で、通常ランダムに選ばれます。秘密鍵から不可逆関数である楕円曲線乗算を用いて公開鍵(K)を生成します。公開鍵(K)から不可逆ハッシュ関数を用いてBitcoinアドレス(A)を生成します。この節では、秘密鍵の生成から始めて、公開鍵の生成に使われる楕円曲線の数学を見ていき、最後にBitcoinアドレスを公開鍵から生成します。秘密鍵と公開鍵、Bitcoinアドレスの関係は<a href="#k_to_K_to_A">[k_to_K_to_A]</a>図に書かれています。</p></div>
+<div class="imageblock" id="k_to_K_to_A">
+<div class="content">
+<img src="images/msbt_0401.png" alt="privk_to_pubK_to_addressA" />
+</div>
+<div class="title">Figure 1. 公開鍵、秘密鍵、Bitcoinアドレス</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="private_keys">秘密鍵</h4>
+<div class="paragraph"><p>秘密鍵は単に数値で、ランダムに選ばれます。秘密鍵を通した所有権管理はBitcoinアドレスに結びついた全ての資金の根幹をなします。秘密鍵は署名を生成するときに使われ、この署名は資金を使うときに所有権の主張に必要となります。秘密鍵は何時でも極秘に保っておかなければいけません。これは、もし他者に秘密鍵が漏れると、秘密鍵に対応したBitcoinアドレスの資金のコントロールを他者に与えることになってしまうためです。秘密鍵はバックアップや偶発的な紛失からの保護もしておかなければいけません。というのは、もし秘密鍵をなくしてしまうと、秘密鍵を復元することはできず、秘密鍵によってセキュリティを担保していた資金も永遠に失ってしまいます。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoin秘密鍵は単なる数値です。あなたはコインや鉛筆、紙だけを使ってランダムに秘密鍵を選ぶことができます。例えば、コインを256回投げてBitcoinウォレットで使うランダムな秘密鍵の二進数を作り出すことができます。公開鍵はこの秘密鍵から生成することができます。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect4">
+<h5 id="_ランダムな数値からの秘密鍵の生成">ランダムな数値からの秘密鍵の生成</h5>
+<div class="paragraph"><p>キーを生成する上で重要かつ一番最初にしなればいけないことは、キー生成の安定的なエントロピー源、または十分なランダムさを確保することです。Bitcoinキーを作ることは、"1から 2<sup>256</sup> までの間の数字を選ぶ"ということと本質的に同じです。数字を選ぶ厳格な方法は、予測可能であったり再現可能性があったりしない方法です。Bitcoinソフトウェアは、256bitのエントロピー(ランダムさ)を作り出すOSのランダム値生成器を使っています。通常OSのランダム値生成器は人間を元にしたランダムさを使って初期化されます。数秒間だけマウスを小刻みに動かしてくださいとOSからお願いされたことがある方もいるかもしれないですが、それはこのランダム値生成が理由です。</p></div>
+<div class="paragraph"><p>さらに正確に言うと、秘密鍵は <tt>1</tt> と <tt>n - 1</tt> の間の任意の整数で、nはBitcoinで使われている楕円曲線の位数として定義されている定数です(n = 1.158 * 10<sup>77</sup>で2<sup>256</sup> よりわずかに小さい)(<a href="#elliptic_curve">[elliptic_curve]</a>図参照)。このようなキーを作るために、256bitの数値からランダムに数値を選び、選んだ数値が <tt>n - 1</tt> より小さいかをチェックしています。プログラミング用語で言うとこれは通常、暗号学的に安定なランダムさ源から集められた任意の長さを持ったより大きい文字列を取得し、256bitの数値を作る便利なSHA256ハッシュアルゴリズムに放り込むことで達成できます。もし結果が <tt>n - 1</tt> よりも小さかった場合、それが適切な秘密鍵です。もしそうでなければ、単にもう一度別のランダムな数値を取得してうまくいくまで同じことを繰り返します。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>自身でランダムな数値を作り出すコードを書いたり、使っているプログラミング言語が提供している"簡単な"ランダム数値生成器を使ったりしないでください。十分なエントロピー源からのシードを伴った暗号学的に安全な擬似乱数生成器(CSPRNG)を使ってください。あなたが選んだ乱数生成器ライブラリのドキュメントを勉強して暗号学的に安全かどうかを確認してください。CSPRNGの正しい実装はキーのセキュリティにとって決定的な部分になります。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>以下はランダムに生成された秘密鍵(k)で、16進数形式(それぞれ4bitずつ64個の16進数整数で表されている256bit整数)になっています。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoinの秘密鍵スペースのサイズは 2<sup>256</sup> であり、途方もなく大きな数字です。十進数で約 10<sup>77</sup> になります。この数字の比較として、観測可能な宇宙には 10<sup>80</sup> 個の原子があると見積もられています。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Bitcoin Coreクライアントで新しいキーを生成するために前に説明した  <tt>getnewaddress</tt> コマンドを使います(<a href="#ch03_bitcoin_client">[ch03_bitcoin_client]</a>図参照)。セキュリティのため、公開鍵だけを表示しており秘密鍵は表示していません。 bitcoindに秘密鍵を表示させるには、 <tt>dumpprivkey</tt> コマンドを使ってください。 <tt>dumpprivkey</tt> コマンドは <em>Wallet Import Format</em> (WIF) と呼ばれるBase58エンコード形式で秘密鍵を表示します。この詳細については<a href="#priv_formats">[priv_formats]</a>図で説明します。 <tt>getnewaddress</tt> コマンドと <tt>dumpprivkey</tt> コマンドを使った秘密鍵の生成例と表示例を以下に示します。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind getnewaddress
+1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy
+$ bitcoind dumpprivkey 1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy
+KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</tt></pre>
+</div></div>
+<div class="paragraph"><p><tt>dumpprivkey</tt> コマンドはウォレットを開き、さきほどの <tt>getnewaddress</tt> コマンドで生成された秘密鍵を抽出します。このウォレットに秘密鍵と公開鍵の両方が格納されていなければ、bitcoindが秘密鍵を公開鍵から知ることはできません。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>+dumpprivkey+コマンドは公開鍵から秘密鍵を生成しているわけではありません。これは不可能だからです。このコマンドは単にウォレットがすでに知っている秘密鍵を表示しているだけで、この秘密鍵はgetnewaddressコマンドで生成されたものです。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>また、秘密鍵を生成および表示するためにBitcoin Explorerコマンドラインツール(<a href="#libbitcoin">[libbitcoin]</a>図参照)の <tt>seed</tt> コマンド、 <tt>ec-new</tt> コマンド、 <tt>ec-to-wif</tt> コマンドを使うこともできます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx seed | bx ec-new | bx ec-to-wif
+5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pubkey">公開鍵</h4>
+<div class="paragraph"><p>公開鍵は楕円曲線上のスカラー倍算を使って秘密鍵から計算されるもので、この処理は不可逆な処理になっています。\(K = k * G\) 但し <em>k</em> は秘密鍵、 <em>G_　は _ベースポイント</em> と呼ばれる定点、 <em>K</em> は結果として出てくる公開鍵です。逆操作は、離散対数問題 - <em>K</em> を知っていたときに <em>k</em> を導出する問題 - として知られ、この難しさは <tt>k</tt> の全ての可能な値を総当たりで調べるのと同じくらい時間がかかる問題です。秘密鍵から公開鍵を生成する方法を説明する前に、楕円曲線暗号をもうちょっと細かく見てみましょう。</p></div>
+</div>
+<div class="sect3">
+<h4 id="elliptic_curve">楕円曲線暗号</h4>
+<div class="paragraph"><p>楕円曲線暗号は、楕円曲線上の点に対する加法とスカラー倍算で表現される離散対数問題をベースに作られた非対称型暗号方式または公開鍵暗号方式です。</p></div>
+<div class="paragraph"><p><a href="#ecc-curve">[ecc-curve]</a>図はBitcoinで使われているものと似ている楕円曲線の例です。</p></div>
+<div class="imageblock" id="ecc-curve">
+<div class="content">
+<img src="images/msbt_0402.png" alt="ecc-curve" />
+</div>
+<div class="title">Figure 2. 楕円曲線</div>
+</div>
+<div class="paragraph"><p>Bitcoinは特別な楕円曲線を使っており、 National Institute of Standards and Technology (NIST)で標準化された  <tt>secp256k1</tt> と呼ばれる集合を使っています。 <tt>secp256k1</tt> 曲線は次のような関数で定義されており、この関数は楕円曲線になっています。</p></div>
+<div class="mathblock">
+<div class="content">\begin{equation}
+{y^2 = (x^3 + 7)}~\text{over}~(\mathbb{F}_p)
+\end{equation}</div></div>
+<div class="paragraph"><p>または</p></div>
+<div class="mathblock">
+<div class="content">\begin{equation}
+{y^2 \mod p = (x^3 + 7) \mod p}
+\end{equation}</div></div>
+<div class="paragraph"><p><em>mod p</em> (素数pを法とした剰余)とは、この曲線が位数が素数_p_の有限体をなしていることを示しており、\(\mathbb{F}_p\) 但し p = 2<sup>256</sup> – 2<sup>32</sup> – 2<sup>9</sup> – 2<sup>8</sup> – 2<sup>7</sup> – 2<sup>6</sup> – 2<sup>4</sup> – 1(とても大きい素数) のようにも書かれます。</p></div>
+<div class="paragraph"><p>この曲線は実数ではなく素数位数の有限体をなしているため、二次元に散りばめられたドットパターンのように見えます。しかし、この数学は実数上に定義された楕円曲線の数学と同等です。例として&gt;、<a href="#ecc-over-F17-math">[ecc-over-F17-math]</a>図はより小さい位数17の有限体をなす楕円曲線を示していて、グリッド上のドットパターンになっています。 <tt>secp256k1</tt> Bitcoin楕円曲線は、底が知れないほど大きなグリッド上にもっと複雑に描かれたドットパターンと考えることができます。</p></div>
+<div class="imageblock" id="ecc-over-F17-math">
+<div class="content">
+<img src="images/msbt_0403.png" alt="ecc-over-F17-math" />
+</div>
+<div class="title">Figure 3. 楕円曲線暗号: p=17のときの楕円曲線F(p)を可視化したもの</div>
+</div>
+<div class="paragraph"><p>例えば、以下は <tt>secp256k1</tt> 曲線上の点Pです。これが <tt>secp256k1</tt> 曲線上にあることは以下のPythonコードを使ってあなた自身で確かめることができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>P = (55066263022277343669578718895168534326250603453777594175500187360389116729240, 32670510020758816978083085130507043184471273380659243275938904335757337482424)</tt></pre>
+</div></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>楕円曲線では、 "無限遠点"と呼ばれる点があります。この点は簡単に言って足し算での0に対応しています。コンピュータ上では、ときどき x = y = 0 と表現されます(これは楕円曲線方程式を満たしていませんが、簡単な特別な場合として確かめることができる解です)。</p></div>
+<div class="paragraph"><p> + 演算子は加法と呼ばれ、小学校で習う実数に対する加法と似たいくつかの性質を持ちます。楕円曲線上にある２つの点 P<sub>1</sub> と P<sub>2</sub> が与えられたとき、３つ目の点 P<sub>3</sub> = P<sub>1</sub> + P<sub>2</sub> があり楕円曲線上にあります。</p></div>
+<div class="paragraph"><p>幾何学的には、３つ目の点 P<sub>3</sub> は P<sub>1</sub> と P<sub>2</sub> を通る直線を描くことによって計算されます。この直線は必ず楕円曲線と別のところで交差します。この交差した点を P<sub>3</sub>' = (x, y) とすると、 P<sub>3</sub> はX軸に対して反転したところにある点 P<sub>3</sub> = (x, –y) になります。</p></div>
+<div class="paragraph"><p>無限遠点に関して２つ説明しなければいけない特別な場合があります。</p></div>
+<div class="paragraph"><p>もし P<sub>1</sub> と P<sub>2</sub> が同じ点だったとすると、 P<sub>1</sub> と P<sub>2</sub> を"通る"直線は P<sub>1</sub> で曲線に接する接線となるはずです。この接線は曲線と新しい点と必ず交わります。接線の傾きを決めるのに微積分のテクニックを使うことができます。奇妙にも、実数ではなく整数座標で構成される曲線にしたとしても微積分のテクニックはうまくいくのです！</p></div>
+<div class="paragraph"><p>いくつかの場合( P<sub>1</sub> と P<sub>2</sub> が同じX座標を持ちY座標が違う場合など)、接線は厳密に垂直となり P3 は無限遠点となります。</p></div>
+<div class="paragraph"><p>もし P<sub>1</sub> が無限遠点である場合、和は P<sub>1</sub> + P<sub>2</sub> = P<sub>2</sub> となります。同様に、もし P<sub>2</sub> が無限遠点である場合、P<sub>1</sub> + P<sub>2</sub> = P<sub>1</sub> となります。これが示していることは、無限遠点が0の役割をしているということです。</p></div>
+<div class="paragraph"><p>+ が (A + B) + C = A + (B + C) という結合則を満たすことがわかります。これは括弧をなくても何のあいまいさもなく A + B + C と書けることを意味します。</p></div>
+<div class="paragraph"><p>加法が定義されたので、加法を拡張する標準的な方法に沿ってスカラー倍算を定義できます。楕円曲線上の点Pに対して、もしkが整数だとすると、kP = P + P + P + &#8230; + P (k回)。この場合、紛らわしいことにkがときどきべき指数と呼ばれるのです。</p></div>
+</div>
+<div class="sect3">
+<h4 id="public_key_derivation">公開鍵の生成</h4>
+<div class="paragraph"><p>秘密鍵をランダムに生成された数値 <em>k</em> とすると、あらかじめ決められた  <em>ベースポイント</em> <em>G</em> を <em>k</em> に掛けることで楕円曲線上のもう１つの点を得ます。このもう１つの点は公開鍵 <em>K</em> に対応するものです。ベースポイントは <tt>secp256k1</tt> 標準で決められており、Bitcoinでの全ての公開鍵に対して常に同じです。</p></div>
+<div class="mathblock">
+<div class="content">\begin{equation}
+{K = k * G}
+\end{equation}</div></div>
+<div class="paragraph"><p>但し、kは秘密鍵、Gはベースポイント、Kは結果として出てくる公開鍵で楕円曲線上にある点です。ベースポイントはどのBitcoinユーザでの同じであるため、秘密鍵kが同じであれば公開鍵は同じになります。kとKの関係は固定されていますが、kからKという一方向でのみ計算できます。これは、(Kから得られる)Bitcoinアドレスがどの人にも共有され得るからで、Bitcoinアドレスから秘密鍵kを知ることはできません。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>秘密鍵は公開鍵に変換できますが、公開鍵は秘密鍵に戻すことはできません。これは秘密鍵から公開鍵への変換プロセスが一方向だけにしか使えないからです。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p> 楕円曲線上のスカラー倍算を実装すると、前に生成した秘密鍵kをベースポイントGに掛けることで公開鍵Kが得られます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD * G</tt></pre>
+</div></div>
+<div class="paragraph"><p>Public Key K is defined as a point <tt>K = (x,y)</tt>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>K = (x, y)
+
+但し
+
+x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB</tt></pre>
+</div></div>
+<div class="paragraph"><p>点への整数のスカラー倍算を可視化するために、数理的な構造が同じ実数に対する簡単な楕円曲線を使います。ゴールは、ベースポイントGで決められるkGを見つけることです。これは、GにG自身をk回足すことと同じです。楕円曲線で自分自身に足すとは、点に接する接線をを描きその接線がもう一度楕円曲線に交わる点、X軸に対して対称な点、を見つけることです。</p></div>
+<div class="paragraph"><p><a href="#ecc_illustrated">[ecc_illustrated]</a>図は、楕円曲線上で幾何学的な操作を繰り返すことでG, 2G, 4Gを導きだすプロセスを表しています。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>ほとんどのBitcoin実装では、 <a href="http://bit.ly/1ql7bn8">OpenSSL 暗号学的ライブラリ</a>を使って楕円曲線での数学の計算をしています。例えば、公開鍵を導出するために関数 <tt>EC_POINT_mul()</tt> が使われています。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="imageblock" id="ecc_illustrated">
+<div class="content">
+<img src="images/msbt_0404.png" alt="ecc_illustrated" />
+</div>
+<div class="title">Figure 4. 楕円曲線暗号: 楕円曲線上での整数 k によるベースポイント G へのスカラー倍算を可視化したもの</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bitcoinアドレス">Bitcoinアドレス</h3>
+<div class="paragraph"><p>Bitcoinアドレスは、あなたにお金を送りたい人誰にでも共有されえる、数値と文字で構成された文字列です。公開鍵から作られるBitcoinアドレスは数値と文字による文字列になっており、1からはじまるものです。以下はBitcoinアドレスの例です。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy</tt></pre>
+</div></div>
+<div class="paragraph"><p>Bitcoinアドレスは、資金の受取人としてトランザクションに共通に現れるものです。もし小切手とBitcoinトランザクションを比べたとすると、Bitcoinアドレスは"Pay to the order of"のあとに書かれる受益者名です。小切手上では、この受益者は時々銀行口座を持っている人の名前になりますが、または企業名や機関名、現金にさえなります。小切手では口座を特定する必要はないので、むしろ資金の受取人として口座を指す抽象名を使います。この抽象名は小切手での支払いを使いやすくしています。BitcoinトランザクションではBitcoinアドレスという似た抽象名を使い、Bitcoinトランザクションを使いやすいものにしています。Bitcoinアドレスは秘密鍵/公開鍵の所有者を表し、または<a href="#p2sh">[p2sh]</a>にある支払いscriptのような他の何かを表すものです。とりあえずBitcoinアドレスが公開鍵を表し、またBitcoinアドレスが公開鍵から生成される簡単な場合から説明していきましょう。</p></div>
+<div class="paragraph"><p>Bitcoinアドレスは一方向暗号学的ハッシュ化を使うことで公開鍵から生成されます。"ハッシュ化アルゴリズム"または簡単に"ハッシュアルゴリズム"は、フィンガープリントまたは任意のサイズの"ハッシュ"を作り出す一方向関数です。暗号学的ハッシュ関数は、Bitcoin、Bitcoinアドレス、scriptアドレス、proof-of-workマイニングアルゴリズムの中で使われます。公開鍵からBitcoinアドレスを作るときに使うアルゴリズムは、  Secure Hash Algorithm (SHA) と  RACE Integrity Primitives Evaluation Message Digest (RIPEMD) で、中でも  SHA256 と RIPEMD160 が使われます。</p></div>
+<div class="paragraph"><p>公開鍵KのSHA256ハッシュを計算し、さらにこの結果のRIPEMD160ハッシュを計算することで、160bit(20byte)の数字を作り出します。</p></div>
+<div class="mathblock">
+<div class="content">\begin{equation}
+{A = RIPEMD160(SHA256(K))}
+\end{equation}</div></div>
+<div class="paragraph"><p>但し、Kは公開鍵、Aは結果として出てきたBitcoinアドレスです。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoinアドレスは公開鍵と同じでは <em>ありません</em> 。Bitcoinアドレスは公開鍵から一方向関数を使って導出されるものです。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Bitcoinアドレスは、 "Base58Check" と呼ばれる形にエンコードされた状態でほぼ常に使われます(<a href="#base58">[base58]</a>参照)。"Base58Check"では、58個の文字(Base58)とチェックサムを使いますが、これは人間にとって読みやすくしたり、曖昧さを避けたり、転写時のエラーを防いだりするためです。Base58Checkはまた、Bitcoinで他の用途でも使われます。Bitcoinアドレス、秘密鍵、暗号化されたキー、scriptハッシュなど、ユーザが読む必要があったり、数字を正しく転写しなければいけなかったりするときはいつでもです。次の節では、Base58Checkのエンコード、デコードの仕組みと結果として出てくる表現を説明します。<a href="#pubkey_to_address">[pubkey_to_address]</a>図は公開鍵からBitcoinアドレスへの変換を説明しています。</p></div>
+<div class="imageblock" id="pubkey_to_address">
+<div class="content">
+<img src="images/msbt_0405.png" alt="pubkey_to_address" />
+</div>
+<div class="title">Figure 5. 公開鍵からBitcoinアドレスへ: 公開鍵をBitcoinアドレスに変換するプロセス</div>
+</div>
+<div class="sect3">
+<h4 id="base58">Base58とBase58Checkエンコード</h4>
+<div class="paragraph"><p>大きな数字をコンパクトに表すために、多くのコンピュータではいくつかの記号を使うことで10以上を基数とするアルファベットと数字を混ぜた表現を使っています。例えば、伝統的な１０進数では0から9までの10個の数字を使う一方、１６進数ではAからFの文字を使うことで16個の数字を使います。１６進数で表される数字は十進数で表すよりも短くなります。 Base-64 では、26個の小文字、26個の大文字、10個の数字、バイナリデータをemailのようなテキストベースの通信で送るための"+" や "/" のような２種類の文字を使います。Base-64 はemailにバイナリデータを添付するのによく使われます。Base58 はBitcoinで使うために開発されたテキストベースのエンコード形式で、他の暗号通貨でも使われています。これはコンパクトな表現、可読性、エラー発見および防止のためです。Base58はBase64の部分集合でアルファベットの大文字小文字、数字が使われます。しかし、あるフォントで表示したときに同じように見えて、よく間違えてしまういくつかの文字は省かれています。Base58はBase64から0(数字の0)、O(大文字o)、l(小文字L)、I(大文字i)、記号"\+"や"/"を除いたもの、つまり、(0, O, l, I)を除いたアルファベットの大文字小文字、数字の集合になっています。</p></div>
+<div class="exampleblock" id="base58alphabet">
+<div class="title">Example 1. BitcoinにおけるBase58のアルファベット</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz</tt></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>書き間違いや転写間違いをさらに防ぐため、Base58CheckはBase58エンコード形式になっていて、Base58エンコードはBitcoinでエラーチェックコードとして頻繁に使われています。チェックサムは、エンコードされようとしているデータの最後に追加される4byteです。このチェックサムはエンコードされたデータのハッシュから作られ、転写間違いやタイピング間違いを検出したり防いだりするのに使われます。Base58Checkでエンコードされたデータが与えられた場合、デコードソフトウェアはエンコードされようとしているデータのチェックサムを計算し、含まれているチェックサムと比較します。もし２つが一致しなかった場合、これはエラーが混入してしまったかBase58Checkデータが無効だということを示しています。これによって、例えば、ウォレットが有効な送り先だと判断して受け付けてしまった打ち間違いBitcoinアドレスを無効と判断し、資金を失ってしまうということを防ぐことができます。</p></div>
+<div class="paragraph"><p>数値データをBase58Check形式に変換するために、まずデータの先頭に"version byte"と呼ばれている文字を追加します。このversion byteは、簡単にエンコードされたデータの種類を特定できるように付加されています。例えば、Bitcoinアドレスの場合先頭はゼロ(１６進数で0x00)で、一方秘密鍵をエンコードするときは先頭は128(１６進数で0x80)です。共通に使われているversion byteのリストは<a href="#base58check_versions">[base58check_versions]</a>を参照してください。</p></div>
+<div class="paragraph"><p>次に、"double-SHA"チェックサムを計算してみましょう。これは、SHA256ハッシュアルゴリズムを前の結果(prefixとデータ)に２回適用するという意味です。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>checksum = SHA256(SHA256(prefix+data))</tt></pre>
+</div></div>
+<div class="paragraph"><p>結果として出てくる32byteハッシュ(ハッシュのハッシュ)から最初の4byteだけを取り出します。これら4byteをエラーチェックコードとして、または チェックサムとして使用されます。このチェックサムは最後に付加されます。</p></div>
+<div class="paragraph"><p>結果は３つの部分、prefix、データ、チェックサムによって構成されていて、前に書いたBase58のアルファベットを使ってエンコードされています。<a href="#base58check_encoding">[base58check_encoding]</a>図はBase58Checkエンコードのプロセスを説明しています。</p></div>
+<div class="imageblock" id="base58check_encoding">
+<div class="content">
+<img src="images/msbt_0406.png" alt="Base58CheckEncoding" />
+</div>
+<div class="title">Figure 6. Base58Checkエンコーディング: 曖昧さなくBitcoinデータをエンコードするために、version byte、チェックサム付加しBase58変換をしたフォーマット</div>
+</div>
+<div class="paragraph"><p>Bitcoinでは、データをコンパクトにするためや読みやすくするため、エラーを検知しやすくするために、ユーザに渡されるほとんどのデータをBase58Checkエンコードにしています。Base58Checkでのversion prefixは、簡単に形式を区別するために使われており、Base58でエンコードされるときにBase58Checkエンコードpayloadの最初に特定の文字を付けられています。これらの文字は、どんな種類のデータをエンコードしたのか、データをどう使うのかを人間が分かるようにしています。1から始まるものはBase58CheckエンコードされたBitcoinアドレス、5から始まるものはBase58Checkエンコードされた秘密鍵WIF形式です。</p></div>
+<?hard-pagebreak?>
+<div class="tableblock" id="base58check_versions">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. Base58Checkのversion prefixとエンコードされた結果の例</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Type</th>
+<th align="left" valign="top"> Version prefix (hex)</th>
+<th align="left" valign="top"> Base58 result prefix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Bitcoin Address</p></td>
+<td align="left" valign="top"><p class="table">0x00</p></td>
+<td align="left" valign="top"><p class="table">1</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Pay-to-Script-Hash Address</p></td>
+<td align="left" valign="top"><p class="table">0x05</p></td>
+<td align="left" valign="top"><p class="table">3</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Bitcoin Testnet Address</p></td>
+<td align="left" valign="top"><p class="table">0x6F</p></td>
+<td align="left" valign="top"><p class="table">m or n</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Private Key WIF</p></td>
+<td align="left" valign="top"><p class="table">0x80</p></td>
+<td align="left" valign="top"><p class="table">5, K or L</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">BIP38 Encrypted Private Key</p></td>
+<td align="left" valign="top"><p class="table">0x0142</p></td>
+<td align="left" valign="top"><p class="table">6P</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">BIP32 Extended Public Key</p></td>
+<td align="left" valign="top"><p class="table">0x0488B21E</p></td>
+<td align="left" valign="top"><p class="table">xpub</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Bitcoinアドレスを生成する完全な手順を見てみましょう。秘密鍵から始まって、公開鍵(楕円曲線上の点)を作り、二重ハッシュ化アドレスを作り、最後にBase58Checkエンコードします。<a href="#addr_example">[addr_example]</a>にあるC++コードは、秘密鍵からBase58Checkエンコード済みBitcoinアドレスまでの完全な逐一手順を示しています。このサンプルコードは、いくつかの補助関数のために<a href="#alt_libraries">[alt_libraries]</a>で紹介したlibbitcoinライブラリを使っています。</p></div>
+<div class="exampleblock" id="addr_example">
+<div class="title">Example 2. 秘密鍵からのBase58CheckエンコードされたBitcoinアドレスの作成</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>このコードは事前に決められた秘密鍵を使っており、動作させるたびに毎回同じBitcoinアドレスが生成されるようになっています。具体的な動かし方は<a href="#addr_example_run">[addr_example_run]</a>に示されている通りです。</p></div>
+<div class="exampleblock" id="addr_example_run">
+<div class="title">Example 3. このaddrコードのコンパイルと実行</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_キーフォーマット">キーフォーマット</h4>
+<div class="paragraph"><p>秘密鍵も公開鍵も多くの違った形式で表現されています。見た目が違っていたとしても、これらの表現は全て同じ数値にエンコードされます。これらの形式は基本的に人々が読みやすくなる、間違うことなく転写できるようになるために使われます。</p></div>
+<div class="sect4">
+<h5 id="priv_formats">秘密鍵フォーマット</h5>
+<div class="paragraph"><p>秘密鍵は多くの違った形式で表現されていて、これらは全て同じ256bitの数値に対応しています。<a href="#table_4-2">[table_4-2]</a>に秘密鍵を表現するために使われる３つの形式を示します。</p></div>
+<div class="tableblock" id="table_4-2">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. 秘密鍵の表現一覧(エンコーディングフォーマット</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">種類</th>
+<th align="left" valign="top">接頭語</th>
+<th align="left" valign="top">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">１６進数</p></td>
+<td align="left" valign="top"><p class="table">None</p></td>
+<td align="left" valign="top"><p class="table">64個の１６進数</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF</p></td>
+<td align="left" valign="top"><p class="table">5</p></td>
+<td align="left" valign="top"><p class="table">Base58Checkエンコーディング: 128のversion prefixと、32bitチェックサムを伴ったBase58</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">圧縮WIF</p></td>
+<td align="left" valign="top"><p class="table">K または L</p></td>
+<td align="left" valign="top"><p class="table">上にあるように、エンコード前にsuffix 0x01 が追加されています</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p><a href="#table_4-3">[table_4-3]</a>は、これら３つの形式で生成された秘密鍵を示しています。</p></div>
+<?hard-pagebreak?>
+<div class="tableblock" id="table_4-3">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 3. 例: 同じキーを違ったフォーマットで表現</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">フォーマット </th>
+<th align="left" valign="top"> 秘密鍵</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Hex</p></td>
+<td align="left" valign="top"><p class="table">1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF</p></td>
+<td align="left" valign="top"><p class="table">5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF-compressed</p></td>
+<td align="left" valign="top"><p class="table">KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>これら全ての表現は、同じ数値、同じ秘密鍵を表す違った形式になっています。ぱっと見は違っていますが、どれも他の形式に簡単に変換できます。</p></div>
+<div class="paragraph"><p>Bitcoin Explorer(<a href="#libbitcoin">[libbitcoin]</a>参照)の  <tt>wif-to-ec</tt> コマンドをを使うことでさきほどの両方のWIFキーが同じ秘密鍵を表すことを示すことができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx wif-to-ec 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd
+
+$ bx wif-to-ec KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
+1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="_base58checkからのデコード">Base58Checkからのデコード</h5>
+<div class="paragraph"><p>Bitcoin Explorerコマンド(<a href="#libbitcoin">[libbitcoin]</a>参照)は、Bitcoinキーやアドレス、トランザクションを操作するシェルスクリプトやコマンドラインの "パイプライン" を簡単に書けるようにするツールです。Bitcoin Explorerを使うとコマンドラインでBase58Checkをデコードできます。</p></div>
+<div class="paragraph"><p> <tt>base58check-decode</tt> コマンドを使うことで圧縮されていないキーをデコードできます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx base58check-decode 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+wrapper
+{
+    checksum 4286807748
+    payload 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd
+    version 128
+}</tt></pre>
+</div></div>
+<div class="paragraph"><p>出力された結果には、payloadとしてのキーとWallet Import Format (WIF)のversion prefix 128、チェックサムが含まれています。</p></div>
+<div class="paragraph"><p>圧縮されたキーの"payload"にはsuffix <tt>01</tt> が追加されており、出力された公開鍵が圧縮されたものであることを表しています。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx base58check-decode KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
+wrapper
+{
+    checksum 2339607926
+    payload 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd01
+    version 128
+}</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="_１６進数からbase58checkエンコード">１６進数からBase58Checkエンコード</h5>
+<div class="paragraph"><p>Base58Checkにエンコード(前のコマンドの逆)するために、Bitcoin Explorer の <tt>base58check-encode</tt> コマンド(<a href="#libbitcoin">[libbitcoin]</a>参照)に１６進数秘密鍵を与えると、 Wallet Import Format (WIF)のversion prefix 128が返ってきます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>bx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd --version 128
+5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="_１６進数_圧縮されたキー_からbase58checkへのエンコード">１６進数(圧縮されたキー)からBase58Checkへのエンコード</h5>
+<div class="paragraph"><p>"圧縮された"秘密鍵としてBase58Checkにエンコードする(<a href="#comp_priv">[comp_priv]</a>参照)ためには、１６進数キーの末尾に <tt>01</tt> を追加し上記のようにエンコードします。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd01 --version 128
+KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</tt></pre>
+</div></div>
+<div class="paragraph"><p>生成されたWIF圧縮形式は"K"から始まります。これは、元の秘密鍵の最後に"01"が付いていることを意味し、圧縮された公開鍵のみを生成するために使われます(<a href="#comp_pub">[comp_pub]</a>参照)。</p></div>
+</div>
+<div class="sect4">
+<h5 id="_公開鍵フォーマット">公開鍵フォーマット</h5>
+<div class="paragraph"><p>公開鍵もまた違った形で表現され、 <em>圧縮された</em> 公開鍵または <em>圧縮されていない</em> 公開鍵があります。</p></div>
+<div class="paragraph"><p>前に見たように、公開鍵は楕円曲線上の点であり、<tt>(x,y)</tt> というペアの形で構成されます。これは普通prefixに <tt>04</tt> が伴って表されます。この <tt>04</tt> のあとに256bitの２つの数字、１つは <em>x</em> 座標、もう１つは <em>y</em> 座標、が続きます。prefix <tt>04</tt> は圧縮されていない公開鍵を圧縮された公開鍵と区別するために使われます。圧縮された公開鍵は <tt>02</tt> 、<tt>03</tt> から始まります。</p></div>
+<div class="paragraph"><p>ここで、さきほど作った秘密鍵から公開鍵を生成してみましょう。以下に <tt>x</tt> 座標と <tt>y</tt> 座標を示します。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB</tt></pre>
+</div></div>
+<div class="paragraph"><p>以下は、520bitの数値(130桁の１６進数整数)として表したさきほどと同じ公開鍵です。これは <tt>04</tt> のprefixが付いており、そのあとに <tt>04 x y</tt> のように <tt>x</tt> 座標と <tt>y</tt> 座標が続きます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>K = 04F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A&lt;?pdf-cr?&gt;07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="comp_pub">圧縮された公開鍵</h5>
+<div class="paragraph"><p><?dbhtml orphans="4"?> 圧縮された公開鍵は、トランザクションのサイズの削減やブロックチェーンを保持しているBitcoinノード上のディスクスペースの保護のためにBitcoinに導入されました。ほとんどのトランザクションは、所有者の証明書を検証したりbitcoinを使うために公開鍵を含んでいます。それぞれの圧縮されていない公開鍵は520bit(prefix \+ x \+ y)を必要とするため、ブロックごとに数百トランザクション、１日に数万トランザクションというトランザクションを重ねると巨大なデータがブロックチェーンに追加されていくことになってしまいます。</p></div>
+<div class="paragraph"><p><a href="#pubkey">[pubkey]</a>で見てきたように、公開鍵は楕円曲線上の点 (x,y) です。楕円曲線は数学的な関数として表現されるため、楕円曲線上の点は<a href="#pubkey">[pubkey]</a>にある方程式の解であり、もし <em>x</em> 座標が分かるとすると <em>y</em> 座標は y<sup>2</sup> mod p = (x<sup>3</sup> + 7) mod p を解くことで計算できます。このため、公開鍵の点として単に <em>x</em> 座標だけを保持すればよく、 <em>y</em> 座標を省略してキーのサイズと256bitを保持するのに必要なスペースを削減することができます。これによりトランザクションのデータサイズにして50%弱の削減ができます。</p></div>
+<div class="paragraph"><p>圧縮されていない公開鍵が <tt>04</tt> から始まるのに対して、圧縮されている公開鍵は <tt>02</tt> または <tt>03</tt> から始まります。なぜ２つのprefixがあるのかというと、方程式の左側にはy<sup>2</sup>があるので、x座標からy座標を導こうとするとyの解は正負それぞれの符号を持った平方根になってしまい１つに決めることができません。イメージ的には、 <em>y</em> 座標がx軸の上側と下側の両方の値を取り得ることを意味します。<a href="#ecc-curve">[ecc-curve]</a>図にある楕円曲線から分かるように、楕円曲線はx軸に対して鏡のように折り返す操作に対して対称です。このため、 <em>y</em> 座標の絶対値は省略できてもy座標の <em>符号</em> は省略できず保存しておく必要があります。別のいい方をすると、これら符号はそれぞれ違った点、違った公開鍵を表すので、点がx軸の上にあったか下にあったかを覚えておかなければいけません。素数位数pの有限体上で二進数演算を用いて楕円曲線を計算すると、 <em>y</em> 座標は偶数または奇数になり、これらはさきほど説明した正/負に対応しています。よって、yの２つの可能な値を区別するには、 <tt>y</tt> が偶数なら <tt>02</tt> を圧縮された公開鍵の先頭に付与、 <tt>y</tt> が奇数なら+03+を先頭に付与するようにします。これによって、ソフトウェアは <em>y</em> 座標を <em>x</em> 座標から正しく導くことができ、公開鍵を圧縮することができるのです。公開鍵の圧縮は<a href="#pubkey_compression">[pubkey_compression]</a>図で説明されています。</p></div>
+<div class="imageblock" id="pubkey_compression">
+<div class="content">
+<img src="images/msbt_0407.png" alt="pubkey_compression" />
+</div>
+<div class="title">Figure 7. 公開鍵の圧縮</div>
+</div>
+<div class="paragraph"><p>前に生成した公開鍵と同じものを以下に示します。以下は、 <em>y</em> 座標が奇数であることを示している+03+をprefixとして持つ264bit(66桁の１６進数)の圧縮された公開鍵です。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>K = 03F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A</tt></pre>
+</div></div>
+<div class="paragraph"><p>圧縮されていない公開鍵と違うように見えますが、この圧縮された公開鍵は同じ秘密鍵から生成されたものです。重要なこととして、もし圧縮された公開鍵を二重ハッシュ化関数 (<tt>RIPEMD160(SHA256(K))</tt>) を使ってBitcoinアドレスに変換したとすると、<em>違った</em> Bitcoinアドレスが生成されるでしょう。これは１つの秘密鍵が２つの形式(圧縮と非圧縮)の公開鍵を生成し、それぞれの公開鍵を用いて別々のBitcoinアドレスを生成してしまうためですが、これは混乱させる元になってしまいます。</p></div>
+<div class="paragraph"><p>圧縮された公開鍵は次第にBitcoinクライアントでデフォルトになりつつあります。圧縮された公開鍵に対応することで、トランザクションのサイズおよびブロックチェーンのサイズを削減することに十分なインパクトがあるのです。しかし、全てのクライアントが圧縮された公開鍵に対応している訳ではありません。圧縮された公開鍵に対応している最近のクライアントは圧縮された公開鍵に対応していない古いクライアントから来たトランザクションを解釈しなければいけません。これはウォレットがもう１つのウォレットから秘密鍵をインポートするときに特に重要です。というのは、新しいウォレットがインポートされた秘密鍵に対応したトランザクションを見つけるためにブロックチェーンをスキャンしなければいけないためです。ウォレットはどのBitcoinアドレスをスキャンするべきでしょうか？圧縮されていない公開鍵から生成されたBitcoinアドレスでしょうか？それとも、圧縮された公開鍵から生成されたBitcoinアドレスでしょうか？両方とも有効なアドレスで、両方とも秘密鍵で署名されますが、これらは異なったBitcoinアドレスです！</p></div>
+<div class="paragraph"><p>この問題を解決するために、秘密鍵をウォレットからエクスポートする場合、今までと異なり最近のウォレットではWallet Import Formatで出力されます。Wallet Import Formatは、 <em>圧縮された</em> 公開鍵が秘密鍵から作られたということを示しており、Bitcoinアドレスは <em>圧縮された</em> ものということが分かるのです。これによって、インポートされる側のウォレットは古いウォレットから来た秘密鍵か新しいウォレットから来た秘密鍵かを区別でき、公開鍵が圧縮されていてもいなくても公開鍵に対応したBitcoinアドレスが含まれているトランザクションをブロックチェーンから探し出すことができます。次の節で、どのようにこれが動いているのか詳細を見てみましょう。</p></div>
+</div>
+<div class="sect4">
+<h5 id="comp_priv">圧縮された秘密鍵</h5>
+<div class="paragraph"><p>皮肉にも、"圧縮された秘密鍵"という言葉は誤解を与えてしまいます。というのは、秘密鍵がWIF圧縮形式でエクスポートされた場合、実際には"圧縮されていない"秘密鍵より１byte <em>長い</em> からです。これは、01を秘密鍵の最後に付加しているためで、01は秘密鍵が新しいウォレットから来たこと、秘密鍵から圧縮された公開鍵を生成すべきであることを意味しています。秘密鍵自体は圧縮されておらず、また圧縮することはできません。"圧縮された秘密鍵"という言葉は、本当は"圧縮された公開鍵を生成するために使うべき秘密鍵"という意味です。WIF圧縮形式やWIF形式をエクスポートをするときの形式という意味でのみ使うべきで、混乱を避けるために、"圧縮された"という言葉を秘密鍵に対して使うべきではないのです。</p></div>
+<div class="paragraph"><p>WIF圧縮形式とWIF形式は片方しか使えないということを覚えておいてください。圧縮された公開鍵を実装した新しいウォレットでは、秘密鍵はWIF圧縮形式(先頭がKまたはL)としてのみエクスポートされます。もしウォレットが古い実装のもので圧縮された公開鍵が使えないものであれば、秘密鍵はWIF形式(先頭が5)としてのみエクスポートされます。ここでのゴールは、圧縮された公開鍵またはBitcoinアドレスでブロックチェーンを探索しなければいけないか、圧縮されていないもので探索しなければいけないかをウォレットに教えることです。</p></div>
+<div class="paragraph"><p>もしウォレットが圧縮された公開鍵を実装していれば、全てのトランザクションで圧縮された方の方法を使うでしょう。秘密鍵は楕円曲線上の公開鍵点を導出し、この公開鍵は圧縮されます。圧縮された公開鍵はBitcoinアドレスを生成することに使われ、Bitcoinアドレスはトランザクションの中で使われます。圧縮された公開鍵を実装した新しいウォレットから秘密鍵をエクスポートするとき、Wallet Import Formatは秘密鍵の最後に1byteの <tt>01</tt> が付加される形に修正されます。結果として出力されるBase58Checkエンコード秘密鍵は"圧縮されたWIF形式"と呼ばれ、古いウォレットでのWIF形式(非圧縮)の場合の"5"の代わりにKまたはLから始まります。</p></div>
+<div class="paragraph"><p><a href="#table_4-4">[table_4-4]</a>は同じキーを表しており、WIF形式とWIF圧縮形式でエンコードされています。</p></div>
+<div class="tableblock" id="table_4-4">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 4. 例: 同じキーを違ったフォーマットで表現</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">フォーマット </th>
+<th align="left" valign="top"> 秘密鍵</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Hex</p></td>
+<td align="left" valign="top"><p class="table">1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF</p></td>
+<td align="left" valign="top"><p class="table">5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Hex-compressed</p></td>
+<td align="left" valign="top"><p class="table">1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD_01_</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">WIF-compressed</p></td>
+<td align="left" valign="top"><p class="table">KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>"圧縮された秘密鍵"は誤った名称です！これらは圧縮されていません。むしろ、WIF圧縮形式は圧縮された公開鍵やこれに対応したBitcoinアドレスを導出するためのみ使われるべきということを表しています。皮肉にも、"WIF圧縮形式"にエンコードされた秘密鍵は1byteだけ長いです。というのは、"圧縮されていない"秘密鍵と区別するために 01 接尾語が追加されているためです。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pythonでのキーとbitcoinアドレスの実装">PythonでのキーとBitcoinアドレスの実装</h3>
+<div class="paragraph"><p>Pythonで書かれた最も総合的なBitcoinライブラリは Vitalik Buterin によって書かれた <a href="https://github.com/vbuterin/pybitcointools">pybitcointools</a> です。<a href="#key-to-address_script">[key-to-address_script]</a>の中で、pybitcointoolsライブラリ("bitcoin"としてimportされています)を使ってキーとBitcoinアドレスをいろいろな形式で生成しています。</p></div>
+<div class="exampleblock" id="key-to-address_script">
+<div class="title">Example 4. pybitcointoolsライブラリを使った、キーとアドレスの生成と各フォーマット生成</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p><a href="#key-to-address_script_run">[key-to-address_script_run]</a>はこのコードを実行した結果を示しています。</p></div>
+<div class="exampleblock" id="key-to-address_script_run">
+<div class="title">Example 5. key-to-address-ecc-example.pyの実行</div>
+<div class="content">
+<screen>
+$ python key-to-address-ecc-example.py
+Private Key (hex) is:
+ 3aba4162c7251c891207b747840551a71939b0de081f85c4e44cf7c13e41daa6
+Private Key (decimal) is:
+ 26563230048437957592232553826663696440606756685920117476832299673293013768870
+Private Key (WIF) is:
+ 5JG9hT3beGTJuUAmCQEmNaxAuMacCTfXuw1R3FCXig23RQHMr4K
+Private Key Compressed (hex) is:
+ 3aba4162c7251c891207b747840551a71939b0de081f85c4e44cf7c13e41daa601
+Private Key (WIF-Compressed) is:
+ KyBsPXxTuVD82av65KZkrGrWi5qLMah5SdNq6uftawDbgKa2wv6S
+Public Key (x,y) coordinates is:
+ (41637322786646325214887832269588396900663353932545912953362782457239403430124L,
+ 16388935128781238405526710466724741593761085120864331449066658622400339362166L)
+Public Key (hex) is:
+ 045c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec<?pdf-cr?>243bcefdd4347074d44bd7356d6a53c495737dd96295e2a9374bf5f02ebfc176
+Compressed Public Key (hex) is:
+ 025c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec
+Bitcoin Address (b58check) is:
+ 1thMirt546nngXqyPEz532S8fLwbozud8
+Compressed Bitcoin Address (b58check) is:
+ 14cxpo3MBCYYWCgF74SWTdcmxipnGUsPw3
+</screen>
+</div></div>
+<div class="paragraph"><p><a href="#ec_math">[ec_math]</a>  はもう１つのコード例です。このコードでは、楕円曲線での計算にPython ECDSAライブラリを使い、いかなる特別なBitcoinライブラリも使っていません。</p></div>
+<div class="exampleblock" id="ec_math">
+<div class="title">Example 6. Bitcoinのキー生成に使われる楕円関数数学のデモスクリプト</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p><a href="#ec_math_run">[ec_math_run]</a>はこのコードを実行した結果を示しています。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>上記の例コードでは <tt>os.urandom</tt> を使用しており、これは裏で動作しているオペレーティングシステムによって提供されている暗号学的に安全な乱数生成器(CSRNG)の値を反映しています。LinuxのようなUNIX-likeなオペレーティングシステムの場合これは <tt>/dev/urandom</tt> から乱数を取得し、Windowsの場合 <tt>CryptGenRandom()</tt> を呼び出すことで乱数を取得します。もし適した乱数発生源がない場合、<tt>NotImplementedError</tt> が発生します。ここで使われている乱数生成器はデモ目的のものであり、十分なセキュリティを持ったように実装されていないので商用レベルのクオリティを持ったBitcoinキーを生成するには適切では <em>ありません</em> 。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="exampleblock" id="ec_math_run">
+<div class="title">Example 7. Python ECDSAライブラリのインストールとec_math.pyスクリプトの実行</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ # Install Python PIP package manager
+$ sudo apt-get install python-pip
+$ # Install the Python ECDSA library
+$ sudo pip install ecdsa
+$ # Run the script
+$ python ec-math.py
+Secret:  38090835015954358862481132628887443905906204995912378278060168703580660294000
+EC point: (70048853531867179489857750497606966272382583471322935454624595540007269312627, 105262206478686743191060800263479589329920209527285803935736021686045542353380)
+BTC public key: 029ade3effb0a67d5c8609850d797366af428f4a0d5194cb221d807770a1522873</tt></pre>
+</div></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_ウォレット">ウォレット</h3>
+<div class="paragraph"><p>ウォレットは秘密鍵のためのコンテナであり、通常構造化されたファイルまたは簡単なデータベースとして実装されています。
+キーを作るもう１つの方法は、 <em>決定性キー生成</em> です。ここでは、一方向ハッシュ関数を使って前に出てきた秘密鍵から順々に新しい秘密鍵を作ってみます。秘密鍵を再生成するために必要なのは最初のキー( <em>seed</em> または <em>master</em> keyとして知られているもの)だけです。この節では、キー生成の方法と決定性キーによって構築されたウォレットの構造を説明します。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoinウォレットはキーを保持していますが、bitcoinは保持していません。それぞれのユーザはbitcoinではなくキーを含むウォレットを持つことになります。ウォレット自体は本当に秘密鍵/公開鍵のペアを含む単なるキーホルダーなのです(<a href="#private_public_keys">[private_public_keys]</a>参照)。ユーザはトランザクションにキーを使って署名をし、トランザクションアウトプット(ユーザのbitcoin)を所有していることを証明します。このbitcoinはトランザクションアウトプット(よくvoutまたはtxoutと書かれます)の形でブロックチェーン上に保存されています。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="random_wallet">非決定性(ランダム)ウォレット</h4>
+<div class="paragraph"><p>最初のBitcoinクライアントでは、ウォレットは単にランダムに生成された秘密鍵の集まりでした。このタイプのウォレットを <em>Type-0 非決定性ウォレット</em> と呼びます。例えば、Bitcoin Coreクライアントは、初回起動のときにあらかじめ１００個のランダムな秘密鍵を作成し、個々のキーは一度しか使われないためその後必要に応じてさらにキーを作ります。このタイプのウォレットは"Just a Bunch Of Keys"またはJBOKというニックネームがついています。ランダムなキーの不利な点は、もし多く生成したとするとそれら全てのコピーも保持しなければいけなくなる点です。つまり、ウォレットは頻繁にバックアップされなければならないということです。それぞれのキーはバックアップされなければならず、さもなければウォレットがアクセス不可能になって管理資金が永久に失われてしまうのです。トランザクションごとに１回だけBitcoinアドレスを使うことによるBitcoinアドレス再利用回避方法は直接問題にぶつかってしまいます。Bitcoinアドレスの再利用は、Bitcoinアドレスが多くのトランザクションに結びつくことでプライバシーの低下に繋がります。特にBitcoinアドレスの再利用を避けたいのであれば、Type-0 非決定性ウォレットを選ぶことはやめたほうがよいでしょう。多くのキーを管理することを意味し、頻繁にバックアップを作る必要が生じてしまうからです。Bitcoin CoreクライアントはType-0 ウォレットを含んでいますが、このウォレットの使用はBitcoin Coreの開発者たちから反対されています。<a href="#Type0_wallet">[Type0_wallet]</a>は非決定性ウォレットを示しており、ランダムなキーの緩い集まりを表現しています。</p></div>
+</div>
+<div class="sect3">
+<h4 id="_決定性_seeded_ウォレット">決定性(Seeded)ウォレット</h4>
+<div class="paragraph"><p>決定性または"seeded"ウォレットは、全て共通のシードから生成される秘密鍵を持っているウォレットです。共通のシードからの生成は一方向ハッシュ関数を使います。このシードはランダムに生成される数値で、この数値は指数または"chain code"(<a href="#hd_wallets">[hd_wallets]</a>参照)のような秘密鍵を生成するためのその他のデータと結びついています。決定性ウォレットでは、このシードを使えば生成された全てのキーを復活できるため、このシードを生成した時点で一回バックアップを取っておけば十分です。このシードはまたウォレットのエクスポートやインポートでも重要で、異なったウォレットの間でのキーの移行を簡単にしてくれるのです。</p></div>
+<div class="imageblock" id="Type0_wallet">
+<div class="content">
+<img src="images/msbt_0408.png" alt="non-deterministic wallet" />
+</div>
+<div class="title">Figure 8. Type-0非決定性(ランダム)ウォレット: ランダムに生成されたキーのコレクション</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mnemonic_code_words">Mnemonic Code Words</h4>
+<div class="paragraph"><p>mnemonic codeは、決定性ウォレットのシードとして使われるランダムな数値を表す(エンコードする)英単語の配列です。この英単語配列は、シードを再生成するために使われ、このシードからウォレットと全てのキーを再生成します。mnemonic codeを伴った決定性ウォレットを実装したウォレットは、ウォレットの初期設定時にユーザに12から24個の英単語の配列を示します。この英単語配列はウォレットのバックアップであり、全てのキーを復活させるまたは再生成するのに使用できます。mnemonic codeによってユーザはウォレットのバックアップを取りやすくなります。なぜなら、ランダムな数字と比べてこの英単語配列は読みやすく、また正確に転写できるからです。</p></div>
+<div class="paragraph"><p>mnemonic codeは Bitcoin Improvement Proposal 39 (<a href="#bip0039">[bip0039]</a>参照)で定義されており、現在草案段階にあります。BIP0039は草案段階提案であり、まだ標準ではないことに注意してください。特にどの英単語群を使うかについて異なる標準があり、 ElectrumウォレットはBIP0039を元にして別の英単語群を使っています。BIP0039は Trezorウォレットやいくつかの他のウォレットでも使われていますが、Electrumの実装とは相容れないものになっています。</p></div>
+<div class="paragraph"><p>BIP0039は以下のようにmnemoni codeとシードの生成を定義しています。</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+128bitから256bitのランダムな配列(entropy)を生成
+</p>
+</li>
+<li>
+<p>
+ランダムな配列のSHA256ハッシュの先頭4bitを取得し、ランダムな配列のチェックサムを生成
+</p>
+</li>
+<li>
+<p>
+このチェックサムをランダムな配列の最後に付加
+</p>
+</li>
+<li>
+<p>
+2048個のあらかじめ決められた英単語の辞書のインデックスとして使うために、この配列を11bitずつの部分に分割
+</p>
+</li>
+<li>
+<p>
+mnemonic codeを表す12から24個の英単語を生成
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p><a href="#table_4-5">[table_4-5]</a>はentropyデータのサイズとmnemoni codeの単語数の関係を示しています。</p></div>
+<div class="tableblock" id="table_4-5">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 5. Mnemonic codes: エントロピーと単語長</caption>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<thead>
+<tr>
+<th align="left" valign="top">エントロピー (bits) </th>
+<th align="left" valign="top"> チェックサム (bits) </th>
+<th align="left" valign="top"> エントロピー+チェックサム </th>
+<th align="left" valign="top"> 単語数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">128</p></td>
+<td align="left" valign="top"><p class="table">4</p></td>
+<td align="left" valign="top"><p class="table">132</p></td>
+<td align="left" valign="top"><p class="table">12</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">160</p></td>
+<td align="left" valign="top"><p class="table">5</p></td>
+<td align="left" valign="top"><p class="table">165</p></td>
+<td align="left" valign="top"><p class="table">15</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">192</p></td>
+<td align="left" valign="top"><p class="table">6</p></td>
+<td align="left" valign="top"><p class="table">198</p></td>
+<td align="left" valign="top"><p class="table">18</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">224</p></td>
+<td align="left" valign="top"><p class="table">7</p></td>
+<td align="left" valign="top"><p class="table">231</p></td>
+<td align="left" valign="top"><p class="table">21</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">256</p></td>
+<td align="left" valign="top"><p class="table">8</p></td>
+<td align="left" valign="top"><p class="table">264</p></td>
+<td align="left" valign="top"><p class="table">24</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>mnemonic codeは128から256bitになっており、PBKDF2というキー拡張関数を使うことでmnemonic codeからより長いシード(512bit)が生成されます。結果として出てくるシードは決定性ウォレットと全てのキーを生成することに使われます。</p></div>
+<div class="paragraph"><p>表 <xref linkend="table_4-6" xrefstyle="select: labelnumber"/> と <xref linkend="table_4-7" xrefstyle="select: labelnumber"/> に、mnemonic codeとそれらが作り出したシードのいくつかの例を示します。</p></div>
+<div class="tableblock" id="table_4-6">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 6. 128bitエントロピーから得たmnemonic codeと出力されたシード</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Entropy input (128 bits)</strong></p></td>
+<td align="left" valign="top"><p class="table">0c1e24e5917779d297e14d45f14e1a1a</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Mnemonic (12 words)</strong></p></td>
+<td align="left" valign="top"><p class="table">army van defense carry jealous true garbage claim echo media make crunch</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Seed  (512 bits)</strong></p></td>
+<td align="left" valign="top"><p class="table">3338a6d2ee71c7f28eb5b882159634cd46a898463e9d2d0980f8e80dfbba5b0fa0291e5fb88
+8a599b44b93187be6ee3ab5fd3ead7dd646341b2cdb8d08d13bf7</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock" id="table_4-7">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 7. 256bitエントロピーから得たmnemonic codeと出力されたシード</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Entropy input (256 bits)</strong></p></td>
+<td align="left" valign="top"><p class="table">2041546864449caff939d32d574753fe684d3c947c3346713dd8423e74abcf8c</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Mnemonic (24 words)</strong></p></td>
+<td align="left" valign="top"><p class="table">cake apple borrow silk endorse fitness top denial coil riot stay wolf
+luggage oxygen faint major edit measure invite love trap field dilemma oblige</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Seed (512 bits)</strong></p></td>
+<td align="left" valign="top"><p class="table">3972e432e99040f75ebe13a660110c3e29d131a2c808c7ee5f1631d0a977fcf473bee22
+fce540af281bf7cdeade0dd2c1c795bd02f1e4049e205a0158906c343</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="hd_wallets">階層的決定性ウォレット(BIP0032/BIP0044)</h4>
+<div class="paragraph"><p>決定性ウォレットは１つの"シード"から多くのキーを生成しやすいようにするために開発されました。決定性ウォレットの最も進んだ形は、BIP0032で定義されている <em>階層的決定性ウォレット</em> または <em>HDウォレット</em> です。階層的決定性ウォレットはツリー構造をなしているキーを含んでいて、このツリー構造は親キーが子キー群を作り、それぞれの子キーが孫キー群を作り出すような感じに無限に続いていきます。<a href="#Type2_wallet">[Type2_wallet]</a>図でツリー構造を説明しています。</p></div>
+<div class="imageblock" id="Type2_wallet">
+<div class="content">
+<img src="images/msbt_0409.png" alt="HD wallet" />
+</div>
+<div class="title">Figure 9. Type-2階層的決定性ウォレット: １つのシードから生成されたキーツリー</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>もしBitcoinウォレットを実装するのであれば、BIP0032とBIP0044標準に従ったHDウォレットとして構築するべきです。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>HDウォレットは、ランダムな(非決定性)キーに比べて２つの主な利点があります。１つ目としては、ツリー構造は付加的な組織的意味を表すのに使うことができる点です。例えば、サブキーの特定のブランチを支払いを受け取ることに使う場合や、異なるブランチをおつりを受け取ることに使う場合です。キーのブランチはまた企業内の状況に合わせて使われます。例えば、部署ごと、課ごと、特定の機能集団ごと、口座種類ごとにブランチを割り当てるようなことです。</p></div>
+<div class="paragraph"><p>２つ目の利点としては、ユーザが秘密鍵に触れることなく公開鍵を生成できる点です。それぞれのトランザクションごとに異なる公開鍵を発行することで、安全でないサーバや受信用にしかしていないサーバも使うことができるのです。公開鍵をあらかじめこれらのサーバに置いておいたり先に生成しておいたりする必要はありませんが、これらのサーバは資金を使うときに必要な秘密鍵を持つことはできません。</p></div>
+<div class="sect4">
+<h5 id="_シードからのhdウォレット作成">シードからのHDウォレット作成</h5>
+<div class="paragraph"><p>HDウォレットは単一の <em>ルートシード</em> から作られ、ルートシードは128bit、256bit、512bitのランダムな数値です。HDウォレットにある他の全ては、決定性的にルートシードから導出され、このルートシードからHDウォレット全体を再生成できます。ルートシードだけを単にコピーすれば数千個、または数百万個のキーがあってもHDウォレットをバックアップ、リストア、エクスポートしやすくなるということです。ルートシードは前の節 <a href="#mnemonic_code_words">[mnemonic_code_words]</a> で書いたように_mnemonic word sequence_によってしばしば表現され、ルートシードを転写、保存をしやすくしています。</p></div>
+<div class="paragraph"><p>HDウォレットでマスターキーとマスターチェーンコードを生成するプロセスを<a href="#HDWalletFromSeed">[HDWalletFromSeed]</a>を示します。</p></div>
+<div class="imageblock" id="HDWalletFromSeed">
+<div class="content">
+<img src="images/msbt_0410.png" alt="HDWalletFromRootSeed" />
+</div>
+<div class="title">Figure 10. ルートシードからのmaster keyとchain codeの生成</div>
+</div>
+<div class="paragraph"><p>ルートシードはHMAC-SHA512アルゴリズムに対するインプットであり、結果として出力されたハッシュは <em>マスター秘密鍵</em> (m)と <em>マスターチェーンコード</em> を生成するために使われます。マスター秘密鍵(m)は対応したマスター公開鍵(M)を生成し、このときこの章の最初に見た標準的な楕円曲線上のスカラー倍算プロセス <tt>m * G</tt> が使われています。次の章で見るように、このチェーンコードは親キーから子キーを生成するプロセスの中でエントロピー(乱雑さ)を導入するために使われます。</p></div>
+</div>
+<div class="sect4">
+<h5 id="_プライベートchild_key_derivation">プライベートchild key derivation</h5>
+<div class="paragraph"><p>階層的決定性ウォレットは<em>child key derivation</em>(CKD)関数を使って親キーから子キーを生成します。</p></div>
+<div class="paragraph"><p>child key derivation関数は一方向ハッシュ関数をベースにしており、以下の組み合わせによって成っています。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+子秘密鍵または子公開鍵(ECDSA非圧縮キー)
+</p>
+</li>
+<li>
+<p>
+チェーンコード(256bit)と呼ばれるシード
+</p>
+</li>
+<li>
+<p>
+インデックス(32bit)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>チェーンコードは表面的にランダムなデータを導入するのに使われます。このため、チェーンコードなくインデックスだけではその他の子キーを生成することはできません。子キーを保持していたとしても、もしチェーンコードも持っていなければ他の子キーを見つけることはできないのです。最初のチェーンコードシード(ツリー構造のルート)はランダムなデータから作られ、次のチェーンコードはそれぞれの親チェーンコードから作られます。</p></div>
+<div class="paragraph"><p>以下のように、これらの３つの要素は組み合わされ子キーを生成するためにハッシュ化されます。</p></div>
+<div class="paragraph"><p>親公開鍵、チェーンコード、インデックスは組み合わされ、512bitハッシュを生成するためにHMAC-SHA512アルゴリズムでハッシュ化されます。出力されたハッシュは２つの部分に分けられます。右半分の256bitは子チェーンコードになり、左半分の256bitとインデックスは親秘密鍵となります。<a href="#CKDpriv">[CKDpriv]</a>図は、インデックスが0のときの0番目の子を作り出す状況を表しています。</p></div>
+<div class="imageblock" id="CKDpriv">
+<div class="content">
+<img src="images/msbt_0411.png" alt="ChildPrivateDerivation" />
+</div>
+<div class="title">Figure 11. 子秘密鍵を生成するための親秘密鍵拡張</div>
+</div>
+<div class="paragraph"><p>インデックスを変えることで、子0、子1、子2&#8230;と子を作り出していくことができ、それぞれの親キーは２０億個の子キーを持つことができます。</p></div>
+<div class="paragraph"><p>このプロセスを繰り返すことで、ツリー構造を無限に下っていくことができ、それぞれの子が次々に親となり自身の子供を作っていきます。</p></div>
+</div>
+<div class="sect4">
+<h5 id="_生成された子キーの使用">生成された子キーの使用</h5>
+<div class="paragraph"><p>それぞれ子秘密鍵たちは互いにどういう関係にあるかを知ることができません。HMAC-SHA512は一方向関数であるため、子キーは親キーを探すことができずまた、子キーは自分の兄弟を探すこともできません。もしn <sub>番目</sub> の子があったとしても、n-1番目の子やn+1番目の子、それ以外のいかなる子も探すことができません。ただ唯一親キーとチェーンコードだけが全ての子を作り出すことができます。もし子チェーンコードがないと、子キーは孫キーを作ることもできません。子秘密鍵と子チェーンコードの両方があって初めて孫を作り出すことができるのです。</p></div>
+<div class="paragraph"><p>子秘密鍵は何のために使われるのでしょうか？子秘密鍵は公開鍵とBitcoinアドレスを作ることに使われます。また、支払いに使われるトランザクションに署名をするときにも使われます。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>子秘密鍵、これに対応した公開鍵およびBitcoinアドレスは、HDウォレットではない全てランダムに生成されたキーやアドレスと見分けがつきません。これらが生成列の一部であるということは自分自身からは分からず、これらを生成するHDウォレットの関数の外側から見なければいけません。これらが一度生成されると、"普通"のキーと全く同じように使えます。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_拡張キー">拡張キー</h5>
+<div class="paragraph"><p>前に見たように、キー導出関数は子供を作ることに使われ、キー、チェーンコード、インデックスという３つのインプットに基づき計算されます。本質的に必要なインプットはキーとチェーンコードで、これらを組み合わせたものは <em>拡張キー</em> と呼ばれています。拡張キーという言葉はまた、"拡張可能キー"と呼ばれることもあります。なぜなら、このキーで子供を生成できるからです。</p></div>
+<div class="paragraph"><p>拡張キーは単に256bitのキーと256bitのチェーンコードを単にくっつけて512bitにしたものです。拡張キーには２つの種類があります。拡張秘密鍵は秘密鍵とチェーンコードの組み合わせで、子秘密鍵(そして、これから子公開鍵も)を生成することに使われます。拡張公開鍵は公開鍵とチェーンコードの組み合わせで、子公開鍵を生成することに使われます。詳細については<a href="#public_key_derivation">[public_key_derivation]</a>に記載しています。</p></div>
+<div class="paragraph"><p>張キーをツリー構造のブランチのルートと考えてみましょう。ブランチのルートを使って、ブランチの残りを生成することができます。拡張秘密鍵は完全なブランチを作ることができますが、一方拡張公開鍵は公開鍵のブランチしか作ることができません。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>拡張キーは秘密鍵または公開鍵、チェーンコードで構成されています。拡張キーは子供を生成し、ツリー構造の中に子供自身のブランチを作り出していくことができます。拡張キーを共有することで、ブランチ全体を参照することができます。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>拡張キーはBase58Checkでエンコードされ、BIP0032互換ウォレットの間でエクスポートとインポートを簡単に行うことができます。拡張キーのBase58Checkはprefixとして"xprv"と"xpub"という特別なversion byteを使います。拡張キーは512または513bitなので、前に見たBase58Checkエンコード文字列よりも長くなっています。</p></div>
+<div class="paragraph"><p>ここにBase58Checkでエンコードされた拡張秘密鍵の例を示します。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>xprv9tyUQV64JT5qs3RSTJkXCWKMyUgoQp7F3hA1xzG6ZGu6u6Q9VMNjGr67Lctvy5P8oyaYAL9CAWrUE9i6GoNMKUga5biW6Hx4tws2six3b9c</tt></pre>
+</div></div>
+<div class="paragraph"><p>以下はこの拡張秘密鍵に対応した拡張公開鍵です。これもBase58Checkでエンコードされています。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>xpub67xpozcx8pe95XVuZLHXZeG6XWXHpGq6Qv5cmNfi7cS5mtjJ2tgypeQbBs2UAR6KECeeMVKZBPLrtJunSDMstweyLXhRgPxdp14sk9tJPW9</tt></pre>
+</div></div>
+</div>
+<div class="sect4">
+<h5 id="public__child_key_derivation">パブリックchild key derivation</h5>
+<div class="paragraph"><p>前に書いたように、階層的決定性ウォレットには秘密鍵を使うこと <em>なく</em> 公開親キーから公開子キーを作り出せるというとても有用な特徴を持っています。この性質から、子公開鍵を作る方法に２種類あることが分かります。子公開鍵を子秘密鍵から作るか、親公開鍵から作るかです。</p></div>
+<div class="paragraph"><p>このため、拡張公開鍵は全ての <em>公開</em> 鍵(そして公開鍵のみ)を生成することができます。</p></div>
+<div class="paragraph"><p>これにより、拡張公開鍵のコピーだけを持ち全く秘密鍵を持たないサーバやアプリケーションで、とても安全な公開鍵のみの生成ができるようになります。この仕組みを使うと、制限なく公開鍵とBitcoinアドレスを作り出すことができますが、これらのBitcoinアドレスに送られるお金を使うことができません。一方、より安全なサーバでは拡張秘密鍵を使ってさきほどのBitcoinに対応した秘密鍵を生成でき、トランザクションに署名することでお金を使うことができます。</p></div>
+<div class="paragraph"><p>この応用として、Eコマースを提供するwebサーバに拡張公開鍵を置く場合が考えられます。webサーバは公開鍵の生成関数を使ってBitcoinアドレスをトランザクションごと(例えば顧客のショッピングカートごと)に新しいBitcoinアドレスを作ることができます。しかし、このwebサーバは盗難の攻撃を受けやすい秘密鍵を持っていません。HDウォレットを使わない場合、これを実行する唯一の方法は、切り離された安全なサーバで数千のBitcoinアドレスを生成し、あらかじめEコマースサーバ上にBitcoinアドレスを読み込んでおく方法です。この方法は扱いにくく、Bitcoinアドレスをあらかじめ読み込むために定期的なメンテナンスが必要となってしまいます。</p></div>
+<div class="paragraph"><p>別の応用としては、コールドストレージまたはハードウェアウォレットへの応用です。この応用では、拡張秘密鍵はペーパーウォレットまたはハードウェアデバイス(例えば、 Trezor hardware wallet)に保存されます。一方、拡張公開鍵はオンライン上に保持されます。ユーザは"受け取り用"のBitcoinアドレスを自由に作ることができますが、秘密鍵は安全にオフラインに保存されます。資金を使うには、ユーザはオフラインの署名用Bitcoinクライアント上で秘密鍵を使って行うか、ハードウェアウォレットデバイス上でトランザクションに署名するかをしなければいけません。<a href="#CKDpub">[CKDpub]</a>図は親公開鍵から子公開鍵を生成するメカニズムを説明しています。</p></div>
+<div class="imageblock" id="CKDpub">
+<div class="content">
+<img src="images/msbt_0412.png" alt="ChildPublicDerivation" />
+</div>
+<div class="title">Figure 12. 子公開鍵を生成するための親公開鍵拡張</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_強化child_key_derivation">強化child key derivation</h5>
+<div class="paragraph"><p>拡張公開鍵から公開鍵のブランチを生成する方法はとても有用ですが、潜在的リスクも持っています。拡張公開鍵にさわれても子秘密鍵にはさわれません。しかし、拡張公開鍵はチェーンコードを含んでいるため、もし子秘密鍵が知られているまたは漏洩してしまった場合、このチェーンコードを使ってその他全ての子秘密鍵を導けてしまうのです。親チェーンコードを伴った１つの子秘密鍵の漏洩により、全ての子供の秘密鍵が明らかになってしまいます。悪いことに、親チェーンコードを伴った子秘密鍵は親秘密鍵を推測することに使われえます。</p></div>
+<div class="paragraph"><p>このリスクへの解決策として、HDウォレットは <em>強化生成</em> と呼ばれるもう１つの生成関数を使っています。この関数は、親公開鍵と子チェーンコードの間の関係を"壊す"ものです。強化生成関数は親公開鍵の代わりに親秘密鍵を使って子チェーンコードを生成します。これは親秘密鍵または兄弟秘密鍵が漏洩しないようなチェーンコードを使って親と子の間に"ファイヤーウォール"を作ります。強化生成関数は通常のchild key derivationとほとんど同じように見えますが、<a href="#CKDprime">[CKDprime]</a>図に示すように親公開鍵の代わりに親秘密鍵がハッシュ関数のインプットとして使われる点が異なります。</p></div>
+<div class="imageblock" id="CKDprime">
+<div class="content">
+<img src="images/msbt_0413.png" alt="ChildHardPrivateDerivation" />
+</div>
+<div class="title">Figure 13. 子キーの強化生成: 親公開鍵の省略</div>
+</div>
+<div class="paragraph"><p>強化プライベート生成関数で出力される子秘密鍵とチェーンコードは、通常の生成関数から得られる結果とは完全に異なります。結果として出てくるキーの"ブランチ"は脆弱ではない拡張公開鍵を生成します。なぜなら、この拡張公開鍵に含まれているチェーンコードは、いかなる秘密鍵も攻撃できないようになっているからです。よって、強化生成は拡張公開鍵が使われる階層よりも上のツリーに行けないようにする"ギャップ"を作り出すのです。</p></div>
+<div class="paragraph"><p>簡単にいうと、もし拡張公開鍵の利便性を使いたくて、しかもチェーンコードの漏洩リスクを回避したいのであれば、通常の親ではなく強化された親から拡張公開鍵を生成すべきです。ベストプラクティスとしては、マスターキーの１階層目の子供を常に強化生成を通して生成されるようにしておくことがよいでしょう。</p></div>
+</div>
+<div class="sect4">
+<h5 id="_通常および強化生成のインデックス">通常および強化生成のインデックス</h5>
+<div class="paragraph"><p>生成関数で使われているインデックスは32bitの整数です。通常の生成関数を通して得られたキーと強化された生成関数を通して得られたキーを簡単に区別するために、このインデックスを２つの範囲に分けておきます。0から2<sup>31</sup>-1(0x0 から 0x7FFFFFFF)までのインデックスは通常の生成関数に <em>のみ</em> 使われます。2<sup>31</sup>から2<sup>32-1(0x80000000 から 0xFFFFFFFF)は強化生成関数に <em>のみ</em> 使われます。よって、もしインデックスが2</sup>31 より小さければ、子は通常の生成関数から生成されたもの、一方もしインデックスが2<sup>31</sup>と等しいかそれより上であれば、子は強化された生成関数から生成されたものです。</p></div>
+<div class="paragraph"><p>読んだり表示したりしやすいように、強化された子供に対するインデックスは0から始まるダッシュ付きの数字で表されます。最初の通常生成関数による子キーは0と表示され、一方最初の強化生成関数による子キー(インデックス 0x80000000)は<markup>0'</markup>と表示されます。次に、二番目の強化キーはインデックス 0x80000001 を持ち 1' を表示されます。HDウォレットのインデックス i' を見たときは、これは2<sup>31</sup>+iを表していると考えてください。</p></div>
+</div>
+<div class="sect4">
+<h5 id="_hdウォレットキー識別子_path">HDウォレットキー識別子(path)</h5>
+<div class="paragraph"><p>HDウォレットにあるキーは、"path"命名規則を使って一意に指定されます。このpath命名規則は、ツリーの階層をスラッシュ(/)で区切って表します(<a href="#table_4-8">[table_4-8]</a>参照)。マスター秘密鍵から得られた秘密鍵は"m"から始まります。マスター公開鍵から得られた公開鍵は"M"から始まります。このため、マスター秘密鍵の最初の子秘密鍵はm/0で、最初の子公開鍵はM/0、最初の子の二番目の孫はm/0/1などとなります。</p></div>
+<div class="paragraph"><p>キーの"先祖"をたどるには右から左に読み、それが得られたマスターキーに到達するまで読んでいきます。例えば、識別子 m/x/y/z はz番目の m/x/y の子キーを表し、また m/x/y は m/x のy番目の子キー、m/x は m のx番目の子キーを表します。</p></div>
+<div class="tableblock" id="table_4-8">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 8. HDウォレットのpath例</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">HD path </th>
+<th align="left" valign="top"> 説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">m/0</p></td>
+<td align="left" valign="top"><p class="table">マスター秘密鍵(m)から生成された最初(0)の子秘密鍵</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">m/0/0</p></td>
+<td align="left" valign="top"><p class="table">最初の子供(m/0)の最初の孫秘密鍵</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">m/0'/0</p></td>
+<td align="left" valign="top"><p class="table">最初の <em>強化された</em> 子供(m/0')の最初のノーマルな孫秘密鍵</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">m/1/0</p></td>
+<td align="left" valign="top"><p class="table">二番目の子供(m/1)の最初の孫秘密鍵</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">M/23/17/0/0</p></td>
+<td align="left" valign="top"><p class="table">24番目の子供の、18番目の孫の、最初の曽孫の、最初の玄孫公開鍵</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_hdウォレットツリー構造をたどってみよう">HDウォレットツリー構造をたどってみよう</h5>
+<div class="paragraph"><p>HDウォレットツリー構造は非常に大きな柔軟性を持っています。それぞれの親拡張キーは40億個の子供を持つことができます(20億個の通常の子供と20億個の強化された子供)。それぞれの子供は、もう１つ40億個の子供を持つことができ、これがどんどん続きます。ツリーは好きなだけ深くすることができ、制限なく世代を作っていくことができます。制限なく作っていくことはできますが、しかし、無限のツリーをたどろうとするととても時間がかかってしまします。特にHDウォレットを他のウォレットに移そうとするときとても大変です。</p></div>
+<div class="paragraph"><p>この複雑さを解決する２つのBitcoin Improvement Proposals (BIPs)が提案されています。１つ目のBIP0043は、ツリー構造の"目的"が明確化された特別な識別子を最初の拡張された子インデックスとして使うということを提案しています。BIP0043に基づけば、HDウォレットはツリーの１階層目に１つだけブランチを持ち、その他の階層は目的が定義された構造や名前空間を持つインデックスを伴うはずです。例えば、１階層目にm/i'/ のブランチだけを持っているHDウォレットは特定の目的に沿ったウォレットとして使われることを想定されており、この目的はインデックス "i" で指定される目的になります。</p></div>
+<div class="paragraph"><p>この提案を拡張することで、BIP0044はBIP0043の元での"目的"を表す数字 <tt>44'</tt> を定義しており、これは複数の口座を保持する目的を表すものです。ウォレットがBIP0044の構造に従っているかどうかは、１階層目が m/44'/だけになっていることから確認できます。</p></div>
+<div class="paragraph"><p>BIP0044では、以下のように５つの事前に定義された階層構造を提案しています。</p></div>
+<div class="paragraph"><p><tt>m / purpose' / coin_type' / account' / change / address_index</tt></p></div>
+<div class="paragraph"><p>最初の階層"purpose"は常に <tt>44'</tt> になります。第２階層"coin_type"は暗号通貨コインの種類を表し、個々の通貨が第２階層以下に独自のサブツリーを持つような複数の通貨を扱えるHDウォレットを作ることができるようになっています。現在は３つの通貨が定義されており、Bitcoinは m/44'/0'、Bitcoin Testnetは <markup>m/44'/1'</markup>、Litecoinは<markup>m/44'/2'</markup>になっています。</p></div>
+<div class="paragraph"><p>第３階層"account"は、ユーザが複数の口座を使えるようにし、会計や組織的な目的で使えるようにしています。例えば、HDウォレットは２つのBitcoin "口座" <markup>m/44'/0'/0'</markup>、<markup>m/44'/0'/1'</markup> を持つかもしれません。それぞれの口座はそれぞれ自身のサブツリーのルートになっています。</p></div>
+<div class="paragraph"><p>第４階層"charge"では、HDウォレットは２つのサブツリーを持つことができ、１つは受取用アドレスで１つはおつり用アドレスです。前の階層では強化生成が使われたのですが、この階層では通常の生成が使われています。これは、拡張公開鍵を安全ではない環境で使うようにするためです。使うことのできないアドレスが第４階層の子供としてHDウォレットから生成され、第５階層"address_index"を作ります。例えば、最初の口座の三番目のbitcoin受け取り用アドレスはM/44'/0'/0'/0/2になります。<a href="#table_4-9">[table_4-9]</a>にいくつかの例を示します。</p></div>
+<div class="tableblock" id="table_4-9">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 9. BIP0044のHDウォレット構造例</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">HD path </th>
+<th align="left" valign="top"> 説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">M/44'/0'/0'/0/2</p></td>
+<td align="left" valign="top"><p class="table">最初のBitcoin口座に対する三番目の受信公開鍵</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">M/44'/0'/3'/1/14</p></td>
+<td align="left" valign="top"><p class="table">４番目のBitcoin口座に対する１５番目のおつり用公開鍵</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">m/44'/2'/0'/0/1</p></td>
+<td align="left" valign="top"><p class="table">トランザクションに署名するための、Litecoinメイン口座の二番目の秘密鍵</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_bitcoin_explorerを使ったhdウォレットの実験">Bitcoin Explorerを使ったHDウォレットの実験</h5>
+<div class="paragraph"><p><a href="#ch03_bitcoin_client">[ch03_bitcoin_client]</a>で紹介したBitcoin Explorerコマンドラインツールを使うと、異なった形式での表現と同時にBIP0032決定性キーを生成したり拡張したりする実験をしてみることができます。: </p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_最近のキーとアドレスの進展">最近のキーとアドレスの進展</h3>
+<div class="paragraph"><p>次の節では、暗号化秘密鍵、scriptとマルチシグネチャーアドレス、文字列指定のあるBitcoinアドレス(vanity address)、ペーパーウォレットなどキーとアドレスの最近の進展を見ていきます。</p></div>
+<div class="sect3">
+<h4 id="_暗号化秘密鍵_bip0038">暗号化秘密鍵(BIP0038)</h4>
+<div class="paragraph"><p>秘密鍵は極秘にしておかなければいけません。ただ秘密鍵の <em>機密性</em> は、実用上達成することが大変難しいことはよく知られていることです。というのは、機密性といつでも安全に使えることの両立が難しいためです。秘密鍵を秘密に保つことは、秘密鍵のバックアップを保持し紛失を避けるようにするとさらに難しくなります。ウォレットにあるパスワードで暗号化された秘密鍵は安全かもしれませんが、ウォレットはバックアップしておかなければいけないのです。ときどき、例えばウォレットをアップグレードする、または別のウォレットに変えるために、ユーザはキーを１つのウォレットから別のウォレットに移動する必要が出てきます。秘密鍵のバックアップもまた紙(<a href="#paper_wallets">[paper_wallets]</a>参照)、またはUSBフラッシュメモリのような外部ストレージに保存されるかもしれません。しかし、バックアップそのもが盗まれたり紛失してしまったらどうなるでしょうか？これらの両立が難しいセキュリティ問題を解決するために、持ち出し可能で便利な暗号化秘密鍵が考案されました。この暗号化秘密鍵は、多くのウォレットやBitcoinクライアントに実装されており、Bitcoin Improvement Proposal 38またはBIP0038(<a href="#bip0038">[bip0038]</a>参照)で標準化されています。</p></div>
+<div class="paragraph"><p>BIP0038は、安全なバックアップメディアへの保存およびウォレット間の転送ができるように、またキーが晒される可能性のある状況にも対応できるように、パスフレーズで秘密鍵を暗号化しさらにBase58Checkでエンコードする標準規格を提案しています。この暗号化基準は、 Advanced Encryption Standard (AES)を採用しています。AESはNational Institute of Standards and Technology (NIST)によって開発され、商用または軍用アプリケーションの暗号化実装に広く使われているものです。</p></div>
+<div class="paragraph"><p>BIP0038暗号化スキームでは、インプットとしてBitcoin秘密鍵を取り、通常prefix "5" を伴ったBase58Checkを使いWallet Import Format (WIF)にエンコードされます。さらにBIP0038暗号化スキームでは、アルファベットと数字が混ざった複雑な文字列で構成されるパスコードという長いパスワードを使います。BIP0038暗号化スキームの結果として、 <tt>6P</tt> から始まるBase58Checkでエンコードされた暗号化秘密鍵が得られます。もしキーが <tt>6P</tt> から始まっていれば、それは暗号化されており、どのウォレットでも使えるWIF形式秘密鍵( <tt>5</tt> から始まる)に戻すためにはパスフレーズが必要だということが分かります。現在多くのウォレットはBIP0038暗号化秘密鍵を実装しており、キーをインポートし復号化するときにパスフレーズを求められるでしょう。非常に使いやすいブラウザベースの <a href="http://bitaddress.org">Bit Address</a> (Wallet Details tab) などのサードパーティーのアプリケーションでもBIP0038キーを復号化することができます。</p></div>
+<div class="paragraph"><p>BIP0038暗号化キーの最も多くの利用用途は、秘密鍵を紙にバックアップするときです。ユーザが協力なパスフレーズを選んでいる限りBIP0038暗号化秘密鍵を伴ったペーパーウォレットは非常に安全で、オフラインBitcoinストレージ("コールドウォレット"と呼ばれてもいます)を作るための最高の方法です。</p></div>
+<div class="paragraph"><p>パスフレーズを入れることでどのように復号化されたキーを得るかを理解するために  bitaddress.org を使って<a href="#table_4-10">[table_4-10]</a>にある暗号化されたキーをテストしてみてください。</p></div>
+<div class="tableblock" id="table_4-10">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 10. BIP0038暗号化秘密鍵の例</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Private Key (WIF)</strong></p></td>
+<td align="left" valign="top"><p class="table">5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Passphrase</strong></p></td>
+<td align="left" valign="top"><p class="table">MyTestPassphrase</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Encrypted Key (BIP0038)</strong></p></td>
+<td align="left" valign="top"><p class="table">6PRTHL6mWa48xSopbU1cKrVjpKbBZxcLRRCdctLJ3z5yxE87MobKoXdTsJ</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="p2sh_addresses">Pay-to-Script Hash (P2SH) とマルチシグネチャーアドレス</h4>
+<div class="paragraph"><p>知っての通り、初期から使われているBitcoinアドレスは“1”から始まり、秘密鍵から得られた公開鍵から得られます。誰もがbitcoinを“1”から始まるBitcoinアドレスに送れますが、このbitcoinは対応する秘密鍵署名と公開鍵ハッシュを使うことでのみ使用できます。</p></div>
+<div class="paragraph"><p>“3”から始まるBitcoinアドレスはpay-to-script hash (P2SH)アドレスであり、ときどき間違ってマルチシグネチャーアドレスまたはマルチシグアドレスと呼ばれます。これらではBitcoinトランザクションの受取人を、公開鍵の所有者の代わりにscriptのハッシュを使って指定します。この特徴は、2012年にBitcoin Improvement Proposal 16または BIP0016 (<a href="#bip0016">[bip0016]</a>参照)で導入され、幅広く採用されています。というのは、この特徴により、アドレス自体に機能を追加することができるようになったためです。“1”から始まるBitcoinアドレスに資金を“送る”トランザクション(((("BIP0016"))) pay-to-public-key-hash (P2PKH)とも呼ばれる)と違って、“3”で始まるBitcoinアドレスに送った資金のトランザクションでは、公開鍵ハッシュと秘密鍵署名以外の別のものも要求されます。要求されるものはBitcoinアドレスを作ったときにscriptの中で指定され、このBitcoinアドレスへの全てのインプットでそれらが要求されます。</p></div>
+<div class="paragraph"><p>pay-to-scriptハッシュアドレスはトランザクションscriptから生成され、トランザクションアウトプットを誰が使えるかということを定義しています(詳細については<a href="#p2sh">[p2sh]</a>参照)。pay-to-scriptハッシュアドレスのエンコードはBitcoinアドレスを生成するときに使われる二重ハッシュ関数と同じ関数を使って行われ、公開鍵の代わりにscriptにのみ適用されます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>script hash = RIPEMD160(SHA256(script))</tt></pre>
+</div></div>
+<div class="paragraph"><p>出力された"script hash"はversion prefix 5でBase58Checkエンコーディングされ、これは <tt>3</tt> から始まるものになっています。P2SHアドレスの例は、<tt>32M8ednmuyZ2zVbes4puqe44NZumgG92sM</tt> で、これはBitcoin Explorerコマンド <tt>script-encode</tt> 、  <tt>sha256</tt> 、  <tt>ripemd160</tt> 、  <tt>base58check-encode</tt> (<a href="#libbitcoin">[libbitcoin]</a>参照) を使って生成することができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ echo dup hash160 [ 89abcdefabbaabbaabbaabbaabbaabbaabbaabba ] equalverify checksig &gt; script
+$ bx script-encode &lt; script | bx sha256 | bx ripemd160 | bx base58check-encode --version 5
+3F6i6kwkevjR7AsAd4te2YB2zZyASEm1HM</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>P2SHはマルチシグネチャーの標準トランザクションというわけでありません。P2SHアドレスは <em>ほぼ常に</em> マルチシグネチャーscriptを表しますが、他のトランザクションタイプのscriptを表す可能性もあるのです。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="sect4">
+<h5 id="_マルチシグネチャーアドレスとp2sh">マルチシグネチャーアドレスとP2SH</h5>
+<div class="paragraph"><p>現在、P2SHの最も一般的な実装は、マルチシグネチャーアドレスscriptです。この名前が示しているように、scriptは所有権を証明し資金を利用するために１つ以上の署名を要求します。Bitcoinマルチシグネチャーは、N個のキーから作られるM個の署名(“threshold”とも呼ばれます)を要求し、これはM-of-N multi-sigと呼ばれています。ここで、MはNと等しいか小さい数です。例えば、<a href="#ch01_intro_what_is_bitcoin">[ch01_intro_what_is_bitcoin]</a>に出てきたコーヒーショップのオーナーのボブは、彼のキーと彼の奥さんのキーから作られる1-of-2 シグネチャーを要求するマルチシグネチャーアドレスを使うことができ、このアドレスに紐づいたトランザクションアウトプットを使うには彼または奥さんのどちらか一方のキーで署名すればよいのです。Gopesh(ボブのウェブサイトを作ったウェブデザイナ)がビジネス用に2-of-3マルチシグネチャーアドレスを持っていたとすると、少なくともビジネスパートナーの２人がトランザクションに署名しなければこのアドレスに紐づく資金を使うことができません。</p></div>
+<div class="paragraph"><p><a href="#transactions">[transactions]</a>で、P2SH(とマルチシグネチャー)でのトランザクションの作成方法について説明します。</p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vanity_addresses">Vanity Addresses</h4>
+<div class="paragraph"><p>文字列指定のあるBitcoinアドレス(Vanity Address)は人間が読むことができるメッセージを含んだBitcoinアドレスです。例えば、<tt>1LoveBPzzD72PUXLzCkYAtGFYmK5vYNR33</tt> には、最初の四文字に"Love"という単語が含まれています。Vanity addressでは、Bitcoinアドレスに望んだパターンが出るまで何回も秘密鍵を生成しチェックしなければいけません。vanity addressを生成するいくつかの効率的な方法があるものの、基本的に秘密鍵をランダムに生成して公開鍵、Bitcoinアドレスを導出、vanityパターンに合っているかチェックするということを数十億回繰り返す必要があります。</p></div>
+<div class="paragraph"><p>一度望んだパターンを含むvanity addressが見つかると、それを導出した秘密鍵はvanity address以外のときと全く同じ方法でbitcoinの使用に使われます。vanity addressの安全性は他のアドレスと全く変わりません。vanity address以外のときと同じように安全性はElliptic Curve Cryptography (ECC)とSecure Hash Algorithm (SHA)に依っています。vanity addressはこれ以外のアドレスよりも作ることが難しいのです。</p></div>
+<div class="paragraph"><p><a href="#ch01_intro_what_is_bitcoin">[ch01_intro_what_is_bitcoin]</a>でフィリピンで子供たちのチャリティー活動を行っているEugeniaを紹介しました。Eugeniaがbitcoinによる寄付を募るためにvanity addressを作りたいと考えているとしましょう。Eugeniaは"1Kids"から始まるvanity addressを作ることにしました。どのようにvanity addressが作られ、Eugeniaのチャリティー活動のセキュリティにどう影響するか見ていきましょう。</p></div>
+<div class="sect4">
+<h5 id="_vanity_addressの生成">vanity addressの生成</h5>
+<div class="paragraph"><p>BitcoinアドレスはBase58文字で表されている数字であるため、"1Kids"のようなパターンの探索は、 <tt>1Kids11111111111111111111111111111</tt> から <tt>1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz</tt> の範囲に入るアドレスを探すことになります。近似的に58<sup>29</sup>(約1.4 * 10<sup>51</sup>)個のアドレスがこの範囲にあり、全て"1Kids"から始まっています。<a href="#table_4-11">[table_4-11]</a>は1Kidsから始まるアドレスの範囲を示しています。</p></div>
+<div class="tableblock" id="table_4-11">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 11. "1Kids"から始まるvanityアドレスの範囲</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>From</strong></p></td>
+<td align="left" valign="top"><p class="table"><tt>1Kids11111111111111111111111111111</tt></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"></p></td>
+<td align="left" valign="top"><p class="table"><tt>1Kids11111111111111111111111111112</tt></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"></p></td>
+<td align="left" valign="top"><p class="table"><tt>1Kids11111111111111111111111111113</tt></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"></p></td>
+<td align="left" valign="top"><p class="table"><tt>&#8230;</tt></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>To</strong></p></td>
+<td align="left" valign="top"><p class="table"><tt>1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>特別なハードウェアではなく一般的なデスクトップパソコンでだいたい秒間100,000個のキーを探すことができると想定すると、どれくらいの時間で望んだパターンを含むBitcoinアドレスが現れるでしょうか(<a href="#table_4-12">[table_4-12]</a>参照)。</p></div>
+<div class="tableblock" id="table_4-12">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 12. vanityパターン(1KidsCharity)の出現頻度と、デスクトップPCでの平均探索時間</caption>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<thead>
+<tr>
+<th align="left" valign="top"> Length </th>
+<th align="left" valign="top"> Pattern </th>
+<th align="left" valign="top"> Frequency </th>
+<th align="left" valign="top"> Average search time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">1</p></td>
+<td align="left" valign="top"><p class="table">1K</p></td>
+<td align="left" valign="top"><p class="table">1 in 58 keys</p></td>
+<td align="left" valign="top"><p class="table">&lt; 1 milliseconds</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">2</p></td>
+<td align="left" valign="top"><p class="table">1Ki</p></td>
+<td align="left" valign="top"><p class="table">1 in 3,364</p></td>
+<td align="left" valign="top"><p class="table">50 milliseconds</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">3</p></td>
+<td align="left" valign="top"><p class="table">1Kid</p></td>
+<td align="left" valign="top"><p class="table">1 in 195,000</p></td>
+<td align="left" valign="top"><p class="table">&lt; 2 seconds</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4</p></td>
+<td align="left" valign="top"><p class="table">1Kids</p></td>
+<td align="left" valign="top"><p class="table">1 in 11 million</p></td>
+<td align="left" valign="top"><p class="table">1 minute</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">5</p></td>
+<td align="left" valign="top"><p class="table">1KidsC</p></td>
+<td align="left" valign="top"><p class="table">1 in 656 million</p></td>
+<td align="left" valign="top"><p class="table">1 hour</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">6</p></td>
+<td align="left" valign="top"><p class="table">1KidsCh</p></td>
+<td align="left" valign="top"><p class="table">1 in 38 billion</p></td>
+<td align="left" valign="top"><p class="table">2 days</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">7</p></td>
+<td align="left" valign="top"><p class="table">1KidsCha</p></td>
+<td align="left" valign="top"><p class="table">1 in 2.2 trillion</p></td>
+<td align="left" valign="top"><p class="table">3–4 months</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">8</p></td>
+<td align="left" valign="top"><p class="table">1KidsChar</p></td>
+<td align="left" valign="top"><p class="table">1 in 128 trillion</p></td>
+<td align="left" valign="top"><p class="table">13–18 years</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">9</p></td>
+<td align="left" valign="top"><p class="table">1KidsChari</p></td>
+<td align="left" valign="top"><p class="table">1 in 7 quadrillion</p></td>
+<td align="left" valign="top"><p class="table">800 years</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">10</p></td>
+<td align="left" valign="top"><p class="table">1KidsCharit</p></td>
+<td align="left" valign="top"><p class="table">1 in 400 quadrillion</p></td>
+<td align="left" valign="top"><p class="table">46,000 years</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">11</p></td>
+<td align="left" valign="top"><p class="table">1KidsCharity</p></td>
+<td align="left" valign="top"><p class="table">1 in 23 quintillion</p></td>
+<td align="left" valign="top"><p class="table">2.5 million years</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>このように、たとえ数千台のコンピュータが使えたとしてもEugeniaは"1KidsCharity"を含むvanity addressをすぐに作ることはできないでしょう。望むパターンの文字数が１個増えると見つける難しさは58倍になります。７文字より多いパターンだと通常特別に設計されたハードウェアが必要になり、複数の graphical processing units (GPUs)を積んだカスタムデスクトップが必要になります。特別に設計されたハードウェアとして、Bitcoinマイニングではもう利益を生まなくなったBitcoin mining "rigs"をvanity address生成に転用することがよくあります。GPUで組まれたものを使うと、汎用CPUに比べてはるかに速く計算できるのです。</p></div>
+<div class="paragraph"><p>vanity addressを見つけるもう１つの方法は、vanityマイナープールに依頼することです。例えば、<a href="http://vanitypool.appspot.com">Vanity Pool</a> です。これはGPUハードウェアを使ってvanity addressを見つけ出すことで儲けを出そうとしている集団です。少ない費用(0.01bitcoin、この執筆段階では約$5)でEugeniaは７文字のパターンを持つvanity addressの探索を外注に出すことができ、数時間後に結果を得ることができるようになります。</p></div>
+<div class="paragraph"><p>vanity addressの生成は、１つずつを確認していく総当たり方式です。１個１個ランダムにキーを作ってみて、望んだパターンに合っているか確認します。<a href="#vanity_miner_code">[vanity_miner_code]</a> は"vanityマイナー"の例で、C++で書かれたvanity addressを探すプログラムです。例では<a href="#alt_libraries">[alt_libraries]</a>で紹介した libbitcoinライブラリを使っています。</p></div>
+<div class="exampleblock" id="vanity_miner_code">
+<div class="title">Example 8. vanityアドレスマイナー</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>上記の例コードでは <tt>std::random_device</tt> を使用しており、これは裏で動作しているオペレーティングシステムによって提供されている暗号学的に安全な乱数生成器(CSRNG)の値を反映しています。LinuxのようなUNIX-likeなオペレーティングシステムの場合だとこれは <tt>/dev/urandom</tt> から乱数を取得しています。ここで使われている乱数生成器はデモ目的のものであり、十分なセキュリティを持ったように実装されていないので商用レベルのクオリティを持ったBitcoinキーを生成するには適切では <em>ありません</em> 。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>この例コードでは、C<tt>コンパイラとlibbitcoinライブラリを使ってコンパイルする必要があります。例コードを動作させるには、 </tt>vanity-miner++ 実行ファイルを引数なしで実行(<a href="#vanity_miner_run">[vanity_miner_run]</a>参照)し、実行すると"1kid"から始まるvanity addressを見つけ始めます。</p></div>
+<div class="exampleblock" id="vanity_miner_run">
+<div class="title">Example 9. vanity-minerコード例のコンパイルと実行</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>例コードは３文字のパターン"kid"と合うBitcoinアドレスを探すのに数秒かかります。これはUnixコマンド <tt>time</tt> で計測したものです。ソースコードの中にある <tt>search</tt> パターンを変えて、４文字または５文字パターンにするとどれくらい処理に時間がかかるようになるかやってみてください！</p></div>
+</div>
+<div class="sect4">
+<h5 id="_vanity_addressのセキュリティ">Vanity addressのセキュリティ</h5>
+<div class="paragraph"><p>vanity addressはセキュリティを増す方向に <em>も</em> 下げる方向にも働きます。まさに諸刃の剣なのです。セキュリティを改善する方向に使われるとすると、特色があり見て分かりやすいアドレスであるため、悪意ある者があなたのお客さんをだまし自身のアドレスに支払いをさせることが難しくなります。他方セキュリティを下げる方向に使われるとすると、vanity addressでは誰でも似たアドレスを作ることができるため、似たアドレスを使ってお客さんをだますこともできてしまいます。</p></div>
+<div class="paragraph"><p>Eugeniaは、ランダムに生成されたBitcoinアドレス(例えば、<tt>1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy</tt>)を使って寄付を募ることもできます。また、1Kidsから始まるvanity addressを作って、区別しやすいアドレスにすることもできます。</p></div>
+<div class="paragraph"><p>どちらの場合でも、１つだけのアドレス(寄付者ごとに区分けされたアドレスではなく)を使うことのリスクの１つは、侵入者があなたのウェブサイトに侵入しBitcoinアドレスを侵入者のBitcoinアドレスに置き換えてしまうことです。もし寄付用のBitcoinアドレスをすでに多くの場所に貼り出しているとしたら、寄付者は寄付をする前に、前にウェブサイトやメール、チラシで見たBitcoinアドレスと同じであるかを確認するかもしれません。+1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy+のようなランダムなBitcoinアドレスを使っている場合、大方の人はおそらく最初の数文字、"1J7mdg" だけを見てBitcoinアドレスが合っているか判断するでしょう。vanity addressを使っていると、見た目が似ているBitcoinアドレスですりかえようとしている誰かが、最初の数文字だけ合っているBitcoinアドレスをすばやく作ることができてしまいます。</p></div>
+<div class="tableblock" id="table_4-13">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 13. ランダムなアドレスに先頭が一致するvanityアドレスの生成</caption>
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Original Random Address</strong></p></td>
+<td align="left" valign="top"><p class="table">1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Vanity (4 character match)</strong></p></td>
+<td align="left" valign="top"><p class="table">1J7md1QqU4LpctBetHS2ZoyLV5d6dShhEy</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Vanity (5 character match)</strong></p></td>
+<td align="left" valign="top"><p class="table">1J7mdgYqyNd4ya3UEcq31Q7sqRMXw2XZ6n</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>Vanity (6 character match)</strong></p></td>
+<td align="left" valign="top"><p class="table">1J7mdg5WxGENmwyJP9xuGhG5KRzu99BBCX</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>vanity addressはセキュリティを向上させるのでしょうか？Eugeniaがvanity address <tt>1Kids33q44erFfpeXrmDSz7zEqG2FesZEN</tt> を作ったとすると、人々はvanityパターンの単語 <em>と次の数文字</em> だけを見て正しいかどうかを見ます。例えば、"1Kids33"だけです。悪意ある者は最初の６文字か８文字だけ合っているvanity addressを作りますが、２文字多く一致しているvanity addressを生成する労力はEugeniaが4文字のvanity addressを作るために使った労力の3,364倍(58 &#x00D7; 58)です。本質的に、Eugeniaがつぎ込んだ(またはvanityプールにアドレス生成を頼んだ)労力が多ければ、この悪意ある者はさらに長いvanityパターンの作成を"強いられる"ことになります。もしEugeniaが8文字のvanity addressの生成を頼んでいたとすると、この悪意ある者は10文字のvanity addressを作らなければ いけません。これはパーソナルコンピュータ上では実行できずカスタマイズされたvanity-mining rigやvanityプールでさえ高価になってしまいます。特にもし詐欺を行うことで悪意ある者が得られる報酬がvanity addressの生成コストをカバーするほど高くないなら、Eugeniaには入手可能なアドレスでもこの攻撃者には入手不可能になります。</p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="paper_wallets">ペーパーウォレット</h4>
+<div class="paragraph"><p>ペーパーウォレットは秘密鍵を紙の上に印刷したものです。よくペーパーウォレットは利便性のため秘密鍵に対応するBitcoinアドレスも含んでいます。しかし、Bitcoinアドレスは秘密鍵から導出できるためこれは必須ではありません。ペーパーウォレットはバックアップやオフラインBitcoinストレージを作るとても効率的な方法で、"コールドストレージ"とも呼ばれています。ペーパーウォレットはハードドライブの破損、盗難、また間違ってデータを削除してしまった場合などによるキーの紛失に対するバックアップとして機能します。もしペーパーウォレットのキーがオフラインで生成されてコンピュータ上に保存されていないとすると、ペーパーウォレットはハッカーやキーロガー、その他のオンライン上の脅威などに対する安全性が増す"コールドストレージ"として機能します。</p></div>
+<div class="paragraph"><p>ペーパーウォレットにはいろいろな形、大きさ、デザインがありますが、基本的に秘密鍵とBitcoinアドレスが紙に印刷されているだけのものです。<a href="#table_4-14">[table_4-14]</a>は最も簡単なペーパーウォレットを示しています。</p></div>
+<div class="tableblock" id="table_4-14">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 14. ペーパーウォレットの最もシンプルな形-Bitcoinアドレスと秘密鍵の印刷</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Public Address</th>
+<th align="left" valign="top">Private Key (WIF)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">1424C2F4bC9JidNjjTUZCbUxv6Sa1Mt62x</p></td>
+<td align="left" valign="top"><p class="table">5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>ペーパーウォレットは <em>bitaddress.org</em> でのクライアント側JavaScriptツールなどを使って簡単に作ることができます。このページには、インターネットに接続していなくてもペーパーウォレットが作れるコードが含まれています。それを使うために、HTMLページをローカルドライブ、または外部USBフラッシュドライブに保存してください。インターネットから切り離された状態で、ブラウザで保存したHTMLページを開いてみてください。より最適な状況を作り出すためには、CD-ROMで起動できるLinux OSのようなもっと簡素なオペレーティングシステムを使って起動し直してください。ツールを使って生成したどんなキーでもUSBケーブル(無線ではなく)で繋がれたローカルプリンタで印刷することができます。これにより、オンラインから切り離されたペーパーウォレットを作ることができます。これらのペーパーウォレットを耐火金庫に入れ、bitcoinをペーパーウォレット上のBitcoinアドレスに"送り"ます。ペーパーウォレットはとてもシンプルですが、極めて効果的な"コールドストレージ"です。</p></div>
+<div class="imageblock" id="paper_wallet_simple">
+<div class="content">
+<img src="images/msbt_0414.png" alt="images/msbt_0414.png" />
+</div>
+<div class="title">Figure 14. bitaddress.orgから持ってきたシンプルなペーパーウォレットの例</div>
+</div>
+<div class="paragraph"><p>簡単なペーパーウォレットの不利な点は、盗難される可能性があることです。盗難者は紙を盗む、またはペーパーウォレットの写真を撮ることでこれらのキーに紐づいているbitcoinをコントロールできるようになります。より洗練されたペーパーウォレットストレージはBIP0038暗号化秘密鍵を使う方法です。ペーパーウォレットに印刷されたキーは、所有者が記憶しているパスフレーズによって守られています。パスフレーズなしでは、暗号化されたキーを使うことはできません。暗号化秘密鍵を使ったペーパーウォレットは単なるパスフレーズで保護されたウォレットよりも安全です。というのは、オンラインに晒されることがないということと、金庫またはその他の安全なストレージから物理的に取り出さなければいけないということがあるためです。<a href="#paper_wallet_encrypted">[paper_wallet_encrypted]</a>図はbitaddress.org上で作られた暗号化秘密鍵(BIP0038)によるペーパーウォレットを示しています。</p></div>
+<div class="imageblock" id="paper_wallet_encrypted">
+<div class="content">
+<img src="images/msbt_0415.png" alt="images/msbt_0415.png" />
+</div>
+<div class="title">Figure 15. bitaddress.org.から持ってきた暗号化されたペーパーウォレットの例。パスフレーズは"test"。</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>何回かペーパーウォレットに資金を預けることはできますが、ペーパーウォレットから引き出すときは全ての資金を一度に引き出すべきです。これは、資金のロックを解除して使用するプロセスでいくつかのウォレットはおつり用のアドレスを生成するかもしれないからです。さらに、もしトランザクションに署名するために使ったコンピュータに脆弱性があった場合、秘密鍵が漏洩してしまうかもしれません。ペーパーウォレットの残高全てを一度に使うことによってキーが漏洩してしまうリスクを減らすことになります。もし小さい額だけ必要なのであれば、同じトランザクション内で新しいペーパーウォレットに残りの資金を送ってください。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>ペーパーウォレットは多くのデザイン、大きさがあり、また多くの異なる特徴をそれぞれ持っています。いくつかはギフトとして使われることを想定したものであり、クリスマスや新年など季節ごとのテーマを持ったデザインが施されています。また、他のいくつかは銀行の格納庫、または金庫に置くことを想定されたもの、削るスクラッチがついたものなどがあります。図 <xref linkend="paper_wallet_bpw" xrefstyle="select: labelnumber"/> から 図 <xref linkend="paper_wallet_spw" xrefstyle="select: labelnumber"/> はいろいろな種類のペーパーウォレットを紹介しています。</p></div>
+<div class="imageblock" id="paper_wallet_bpw">
+<div class="content">
+<img src="images/msbt_0416.png" alt="images/msbt_0416.png" />
+</div>
+<div class="title">Figure 16. 折りたたみ部分に秘密鍵が置かれた bitcoinpaperwallet.com ペーパーウォレット例</div>
+</div>
+<div class="imageblock" id="paper_wallet_bpw_folded">
+<div class="content">
+<img src="images/msbt_0417.png" alt="images/msbt_0417.png" />
+</div>
+<div class="title">Figure 17. 秘密鍵部分が覆われて見えないようになっている bitcoinpaperwallet.com ペーパーウォレット</div>
+</div>
+<div class="paragraph"><p>他のデザインでは、チケットのように切り離し可能になっていて、火事や洪水など自然災害があってもいいようにキーとBitcoinアドレスの複数のコピーが持てるようになっているものもあります。</p></div>
+<div class="imageblock" id="paper_wallet_spw">
+<div class="content">
+<img src="images/msbt_0418.png" alt="images/msbt_0418.png" />
+</div>
+<div class="title">Figure 18. バックアップ用の"切り離し部分"にキーのコピーがあるペーパーウォレットの例</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:56:51 UTC
+</div>
+</div>
+</body>
+</html>

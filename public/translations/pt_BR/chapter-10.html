@@ -1,0 +1,814 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch10">A Segurança do Bitcoin</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Manter bitcoins de maneira segura é desafiador porque o bitcoin não é a referência abstrata de um valor, da mesma forma que é o saldo em uma conta bancária. Em sua essência, o Bitcoin é como dinheiro digital ou o ouro. Você provavelmente já escutou o ditado "A posse é 90% da lei". Bem, no mundo do bitcoin, a posse é 100% da lei. A posse das chaves para desbloquear o bitcoin é equivalente a posse de notas de dinheiro ou de uma barra de um metal precioso. Você pode perdê-las, esquecer onde as guardou, ser roubado ou dar acidentalmente uma quantia errada para outra pessoa. Em cada uma dessas situações, da mesma maneira como se tivessem deixado cair notas de dinheiro na calçada, os usuários não tem a quem recorrer.</p></div>
+<div class="paragraph"><p>Entretanto, o bitcoin possui capacidades que o dinheiro, o ouro e as contas bancárias não têm. Como qualquer arquivo de computador, pode-se realizar um backup (cópia de segurança) de uma carteira de bitcoin contendo suas chaves. Ela pode ser armazenada em múltiplas cópias, e até mesmo impressa em papel para fazer um backup offline não-digital. Você não pode fazer um backup das suas notas de dinheiro, de ouro ou de suas contas bancárias. O bitcoin é tão diferente de tudo que já existiu, que também precisamos encarar sua segurança de uma maneira diferente daquela que já estamos acostumados.</p></div>
+<div class="sect2">
+<h3 id="_princípios_de_segurança">Princípios de Segurança</h3>
+<div class="paragraph"><p>O princípio fundamental do bitcoin é a descentralização e isso traz implicações importantes para a sua segurança. Um modelo centralizado - como o dos bancos tradicionais e da redes de pagamento - depende de controles de acesso e comprovações de segurança para manter o sistema livre de criminosos. Em comparação, um sistema descentralizado como o bitcoin atribui a responsabilidade e o controle aos usuários. Como a rede é baseada em prova de trabalho - e não em controle de acesso - a rede pode ser aberta, não exigindo criptografia para o tráfego de bitcoins.</p></div>
+<div class="paragraph"><p>Em uma rede de pagamentos tradicional, como o sistema de cartões de crédito, o pagamento é open-ended porque o sistema já contém o identificador privado do usuário (o número do cartão de crédito). Dessa forma, após a cobrança inicial, qualquer pessoa com acesso ao identificador pode repetidamente sacar fundos e fazer cobranças ao dono do cartão. Logo, a rede de pagamento deve ser criptografada em toda sua extensão (end-to-end) e deve garantir que nenhum bisbilhoteiro ou intermediários possam comprometer o tráfego de pagamento, quando em trânsito ou quando estiver armazenado. Se um criminoso burlar o controle de acesso ao sistema, ele pode comprometer as transações atuais <em>e</em> os tokens de pagamentos - que podem ser usados para criar novas transações. Ou, pior ainda, quando os dados dos consumidores são comprometidos, os consumidores são expostos a roubo de identidade e devem tomar medidas para prevenir o uso fraudulento de suas contas comprometidas.</p></div>
+<div class="paragraph"><p>Com o bitcoin, a história é completamente diferente. Uma transação bitcoin autoriza somente um valor específico e somente para um destinatário específico, além de não poder ser forjada ou modificada. Ela não revela nenhuma informação privada - como as identidades dos usuários - e não pode ser utilizada para autorizar pagamentos adicionais. Dessa forma, uma rede de pagamentos bitcoin não precisa ser encriptada ou protegida de bisbilhoteiros. De fato, você pode transmitir transações em bitcoin usando um canal público aberto, como redes WiFi sem senha ou Bluetooth - sem comprometer a segurança da transação.</p></div>
+<div class="paragraph"><p>O modelo de segurança descentralizado do bitcoin coloca muito poder nas mãos dos usuários. E com esse poder, vem a responsabilidade de manter o sigilo das chaves. Para a maioria dos usuários isso não é uma tarefa fácil, especialmente em dispositivos comuns como smartphones ou laptops conectados a internet. Embora o modelo descentralizado do bitcoin impeça o tipo de comprometimento em massa observado com os cartões de crédito, muitos usuários não são capazes de guardar suas chaves com a devida segurança e, um a um, acabam sendo hackeados.</p></div>
+<div class="sect3">
+<h4 id="_desenvolvendo_sistemas_bitcoin_de_maneira_segura">Desenvolvendo Sistemas Bitcoin de Maneira Segura</h4>
+<div class="paragraph"><p>O princípio mais importante para os desenvolvedores em bitcoin é a descentralização. A maioria dos desenvolvedores são acostumados com modelos de segurança centralizados e podem ter a tentação de aplicar estes modelos em seus aplicativos bitcoin, com resultados desastrosos.</p></div>
+<div class="paragraph"><p>A segurança do Bitcoin depende do controle descentralizado das chaves e da validação independente das transações - uma atribuição dos mineradores. Se você quiser alavancar a segurança do Bitcoin, precisa se assegurar que permaneça dentro do modelo de segurança do Bitcoin. Em termos simples: não retire dos usuários o controle de suas chaves e não realize transações fora da blockchain.</p></div>
+<div class="paragraph"><p>Por exemplo, muitas das primeiras exchanges de bitcoin concentravam todos os bitcoins dos usuários em uma única carteira "quente" que tinha as chaves armazenadas em um único servidor. Esse tipo de design retira o controle dos usuários e centraliza o controle das chaves em um único sistema. Muitos destes sistemas foram hackeados, com consequências desastrosas para seus consumidores.</p></div>
+<div class="paragraph"><p>Outro erro comum é o de realizar transações fora da blockchain, numa tentativa desastrada de reduzir taxas de transação ou de acelerar o processamento das transações. Um sistema "fora da blockchain" geralmente grava as transações em um ledger interno, centralizado e somente ocasionalmente realiza uma sincronização com a blockchain do bitcoin. Essa prática, novamente, substitui a segurança descentralizada do bitcoin por uma abordagem proprietária e centralizada. Quando as transações são realizadas fora da blockchain, os ledgers centralizados com pouca segurança podem ser falsificados, possibilitando que intrusos possam, sem chamar a atenção, desviar fundos e esvaziar reservas.</p></div>
+<div class="paragraph"><p>A menos que você esteja preparado para investir pesado em segurança operacional, múltiplas camadas de controle de acesso e auditorias (como os bancos tradicionais fazem), você deveria pensar com muito cuidado antes de retirar os fundos do contexto de segurança descentralizada do Bitcoin. Mesmo que você tenha condições e disciplina para implementar um modelo de segurança robusto, este tipo de modelo apenas replica a fragilidade das redes financeiras tradicionais - infestadas por roubo de identidade, corrupção e fraude. Para aproveitar o modelo único de segurança descentralizada do Bitcoin, você deve evitar a tentação das arquiteturas centralizadas pois, apesar de serem familiares, acabam por fim subvertendo a segurança do Bitcoin.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_a_raiz_de_confiança">A Raiz de Confiança</h4>
+<div class="paragraph"><p>A arquitetura de segurança tradicional é baseada em um conceito conhecido como a <em>raiz de confiança</em>, que é um núcleo de confiança usado como base para a segurança de todo o sistema ou aplicação. A arquitetura de segurança é desenvolvida ao redor da raiz de confiança através de uma série de círculos concêntricos, como as camadas de uma cebola, estendendo a confiança do centro para a periferia. Cada camada usa como suporte a camada interna de maior confiança, usando controles de acesso, assinaturas digitais, criptografia e outros elementos de segurança. Conforme os sistemas de software se tornam mais complexos, aumenta a chance de eles possuírem bugs, que podem torná-los vulneráveis à falhas de segurança. Como resultado, quanto mais complexo se torna um sistema de software, mais difícil se torna a tarefa de mantê-lo seguro. O conceito da raiz de confiança garante que a maior parte da confiança seja depositada na parte menos complexa do sistema, ou seja, nas partes menos vulneráveis do sistema, enquanto o software mais complexo é desenvolvido ao redor. Essa arquitetura de segurança é repetida em diferentes escalas, primeiro estabelecendo uma raiz de confiança no interior do hardware de um sistema único, para depois estender essa raiz de confiança no sistema operacional para serviços de maior nível e, finalmente, através de múltiplos servidores dispostos em camadas de círculos concêntricos com diminuição progressiva da confiança.</p></div>
+<div class="paragraph"><p>A arquitetura de segurança do Bitcoin é diferente. No Bitcoin, o sistema de consenso cria um ledger público de confiança que é completamente descentralizado. Uma blockchain corretamente validada usa o bloco gênese como a raiz de confiança, construindo uma corrente de confiança a partir deste bloco até o mais atual. Os sistemas Bitcoin podem e devem usar a blockchain como sua raiz de confiança. Ao projetar uma aplicação bitcoin complexa que consiste em serviços em diversos sistemas diferentes, você deve examinar cuidadosamente a arquitetura de segurança de maneira a se assegurar do local onde a confiança está sendo depositada. Em última análise, o único elemento que deve ser considerado explicitamente como confiável é uma blockchain validada em sua totalidade. Se a sua aplicação deposita confiança em qualquer elemento que não seja a blockchain, isso deveria ser motivo de preocupação, pois abre as portas para a vulnerabilidade. Um bom método para avaliar a segurança da arquitetura de sua aplicação é considerar cada componente individual e avaliar um cenário hipotético no qual este componente está completamente comprometido e sob o controle de um usuário mal intencionado. Considere cada componente de sua aplicação, um a um, e avalie os impactos na segurança geral se este componente for comprometido. Se a sua aplicação não for mais segura com o comprometimento de um desses componentes, isso demonstra que você depositou equivocadamente a confiança nestes componentes. Uma aplicação bitcoin sem vulnerabilidades deveria ser vulnerável somente a um comprometimento do mecanismo de consenso do bitcoin, significando que a sua raiz de confiança é baseada no elemento mais forte da arquitetura de segurança do bitcoin.</p></div>
+<div class="paragraph"><p>Os numerosos exemplos de bolsas de bitcoins que foram hackeadas servem de exemplo para enfatizar esse ponto, pois, mesmo com uma simples análise superficial, identificaríamos que o projeto e arquitetura de segurança destes serviços eram falhos. Estes serviços usaram implementações centralizadas que depositaram confiança em múltiplos componentes fora da blockchain do bitcoin, como carteiras quentes, bancos de dados de ledger centralizados, chaves de criptografia vulneráveis e esquemas similares.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_melhores_práticas_na_segurança_do_usuário">Melhores Práticas na Segurança do Usuário</h3>
+<div class="paragraph"><p>Por milhares de anos, os seres humanos têm feito uso de  sistemas físicos de controle de segurança. Em comparação, a segurança digital tem sido usada há menos de 50 anos. Os sistemas operacionais modernos usados para atividades gerais não são muito seguros e não são adequados para o armazenamento de dinheiro digital. Por estarem sempre conectados à internet, nossos computadores estão constantemente expostos a ameaças externas. Eles rodam milhares de componentes de softwares desenvolvidos por centenas de programadores diferentes, os quais frequentemente possuem acesso irrestrito aos arquivos do usuário. Um único bug ou código malicioso em um único software, entre os milhares instalados em seu computador, pode ser suficiente para comprometer a segurança do que você digita em seu teclado e de todos os seus arquivos, permitindo que criminosos roubem seus bitcoins armazenados em aplicativos de carteiras. Para complicar, o nível de manutenção necessária para manter o computador livre de vírus e trojans é uma tarefa difícil para a grande maioria dos usuários de computador.</p></div>
+<div class="paragraph"><p>Apesar de décadas de pesquisas e avanços na segurança da informação, os ativos digitais lamentavelmente ainda são vulneráveis à um adversário determinado. Mesmo os sistemas mais restritos e protegidos, utilizados em companhias de serviços financeiros, agências de inteligência e de defesa, são frequentemente burlados. O Bitcoin cria ativos digitais que possuem valor intrínseco, que podem ser roubados e transferidos para usuários criminosos de maneira instantânea e irreversível. Essa possibilidade criou um forte incentivo para a ação de hackers. Até recentemente, após terem acesso a contas bancárias/cartões de crédito, os hackers tinham que sacar, transferir ou lavar o dinheiro roubado. E, apesar da dificuldade crescente de se realizar estas atividades, elas continuam ocorrendo cada vez mais. O Bitcoin traz um novo aspecto a ser considerado nesse problema, pois agora o dinheiro roubado não precisa mais ser lavado; é um valor intrínseco contido em um ativo digital.</p></div>
+<div class="paragraph"><p>Felizmente, o bitcoin também criou incentivos para o aperfeiçoamento da segurança dos computadores. Se antigamente o risco de um computador ser comprometido era vago e indireto, com o bitcoin esse risco se torna claro é óbvio. O fato de manter bitcoins em um computador aumenta a conscientização dos usuários em manterem seus computadores mais seguros. Como resultado direto da proliferação e maior adoção do bitcoin e outras moedas digitais, tem se observado uma evolução nas técnicas de hacking e nas soluções de segurança. Em termos simples, agora os hackers tem um alvo muito tentador, enquanto os usuários têm um bom motivo para se defenderem.</p></div>
+<div class="paragraph"><p>Ao longo dos últimos três anos, como resultado direto da adoção ao bitcoin, temos observado grandes inovações na área da segurança da informação, na forma de criptografia em hardware, armazenamento de chaves e carteiras de hardware, tecnologia de múltiplas assinaturas e custódias (escrow) digitais. Nas próximas seções nós iremos examinar as melhores práticas para a segurança do usuário.</p></div>
+<div class="sect3">
+<h4 id="_armazenamento_físico_de_bitcoins">Armazenamento Físico de Bitcoins</h4>
+<div class="paragraph"><p>Como a maior parte dos usuários ficam muito mais confortáveis com segurança física do que com segurança da informação, um método muito efetivo para proteger bitcoins é convertê-los para uma forma física. As chaves de bitcoins nada mais são do que longos números. Isso significa que elas podem ser armazenadas em uma forma física, como, por exemplo, impressas em um papel ou gravadas em uma moeda de metal. Dessa maneira, manter a segurança das chaves torna-se tão simples quanto manter seguro um papel com chaves de bitcoin impressas. Um conjunto de chaves de bitcoin impressas em papel é chamado de "carteira em papel" (paper wallet), e existem muitas ferramentas gratuitas que podem ser usadas para criá-las. Eu pessoalmente mantenho a grande maioria dos meus bitcoins (99% ou mais) armazenados em carteiras de papel, criptografadas com BIP0038, com múltiplas cópias trancadas em cofres. Manter bitcoins offline é conhecido como <em>armazenamento frio</em> (cold storage) e é uma das técnicas de segurança mais efetivas. Em um sistema de armazenamento frio, as chaves são geradas e armazenadas de maneira offline (sem nunca se conectar à internet). As chaves são armazenadas em papel (impressas) ou em uma mídia digital, como um pendrive.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_carteiras_em_hardware">Carteiras em Hardware</h4>
+<div class="paragraph"><p>Em longo prazo, a segurança do bitcoin terá cada vez mais a forma de carteiras em hardware à prova de falsificação. Diferente dos smartphones ou computadores de mesa, a carteira de bitcoin em hardware possuem apenas um único propósito: armazenar bitcoins de forma segura. Com interfaces limitadas e sem o risco de comprometimento por softwares de múltiplos propósitos, essas carteiras podem fornecer um nível altíssimo de segurança para os usuários comuns, não especialistas. Eu espero ver as carteiras de hardware se tornando o principal método de armazenamento de bitcoins. Para conhecer um exemplo deste tipo de carteira, pesquise sobre a carteira  <a href="http://www.bitcointrezor.com/">Trezor</a>.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_balanceando_o_risco">Balanceando o Risco</h4>
+<div class="paragraph"><p>Embora a maioria dos usuários se preocupe, com razão, em evitar que seus bitcoins sejam roubados, existe um risco ainda maior. Arquivos de computador são constantemente perdidos. Se eles contiverem bitcoins, a perda será muito mais dolorosa. Ao usar medidas de segurança para suas carteiras de bitcoin, os usuários devem ter muito cuidado para não exagerarem na proteção e acabarem perdendo suas moedas. Em julho de 2011, uma conhecida organização, responsável por um projeto de divulgação do bitcoin, perdeu quase 7.000 bitcoins. Ao tentar prevenir roubos, os donos da organização implementaram múltiplos backups (cópias de segurança) criptografados. Infelizmente, as chaves da criptografia acabaram sendo perdidas, inutilizando os backups e, assim, perdendo uma fortuna. Da mesma forma que enterrar dinheiro no meio do deserto, proteger demais seus bitcoins pode fazer com que você nunca mais consiga achá-los.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_diversificando_o_risco">Diversificando o Risco</h4>
+<div class="paragraph"><p>Você carregaria todas as suas economias em notas de dinheiro guardadas na sua carteira? A maioria das pessoas consideraria isso imprudente, no entanto os usuários de bitcoin frequentemente mantêm todos os seus bitcoins em uma única carteira. Ao invés disso, os usuários deveriam distribuir o risco de perdê-los entre múltiplas carteiras de bitcoin, de diferentes tipos. Usuários prudentes mantém somente uma pequena porção de seus bitcoins, talvez menos de 5%, em uma carteira online ou de smartphone, para usá-los nas compras do dia-a-dia, como "trocados no bolso." O resto deveria ser dividido em diferentes formas de armazenamento, como em uma carteira em desktop e offline (armazenamento frio).</p></div>
+</div>
+<div class="sect3">
+<h4 id="_múltiplas_assinaturas_e_governança">Múltiplas Assinaturas e Governança</h4>
+<div class="paragraph"><p>Sempre que uma empresa ou pessoa armazena grandes quantidades de bitcoin, a opção de usar endereços com múltiplas assinaturas deveria ser considerada. Esse endereços multi-sig são mais seguros porque exigem mais de uma assinatura para que um pagamento seja realizado. Idealmente, as chaves usadas nas assinaturas devem ser armazenadas em diferentes locais e sob o controle de diferentes pessoas. Em um ambiente corporativo, por exemplo, as chaves deveriam ser geradas independentemente e guardadas por diferentes executivos da empresa, garantindo que nenhuma pessoa sozinha consiga comprometer as economias da empresa. Os endereços com múltiplas assinaturas também podem oferecer redundância, quando uma pessoa sozinha possuir múltiplas chaves que são armazenadas em diferentes locais.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_legado">Legado</h4>
+<div class="paragraph"><p>Uma importante consideração sobre segurança, frequentemente ignorada é a disponibilidade - especialmente no contexto de incapacidade, doença ou morte da pessoa que possui as chaves. Para evitar roubos, os usuários de bitcoin frequentemente são orientados a usar senhas complexas e a manterem suas chaves em segurança, longe do alcance de terceiros. Infelizmente, essa prática torna quase impossível a recuperação dos bitcoins pela família do usuário. Na maioria dos casos, as famílias dos usuários podem nem saber da existência de poupanças feitas em moeda digital.</p></div>
+<div class="paragraph"><p>Se você tiver uma grande quantidade de bitcoins, você deveria considerar a ideia de compartilhar detalhes de acesso com um familiar de confiança ou com um advogado. Uma estratégia mais complexa para o seu legado pode ser obtida utilizando endereços de múltiplas assinaturas ou através de um planejamento de herança com um advogado especializado em ativos digitais.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conclusão">Conclusão</h3>
+<div class="paragraph"><p>O bitcoin é uma tecnologia nova, complexa e sem precedentes. Com o passar do tempo, iremos desenvolver melhores ferramentas de segurança, bem como práticas que serão mais fáceis de serem utilizadas por pessoas comuns, não especialistas. Enquanto isso, os usuários de bitcoin podem usar muitas das dicas discutidas nesse capítulo para aproveitarem uma experiência com bitcoins segura e livre de problemas.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:55:26 UTC
+</div>
+</div>
+</body>
+</html>

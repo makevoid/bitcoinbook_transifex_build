@@ -1,0 +1,206 @@
+[[Ch01_intro_what_is_bitcoin]]
+== Introducció
+
+=== Què és Bitcoin?
+
+((("bitcoin", id = "ix_ch01-asciidoc0", rang = "startofrange"))) ((("bitcoin", "definit"))) Bitcoin és un conjunt de conceptes i tecnologies que constitueixen la base d'un ecosistema de diners digital. Les unitats de la moneda anomenades bitcoins s'utilitzen per emmagatzemar i transmetre valor entre els participants en la xarxa Bitcoin. Els usuaris de bitcoin es comuniquen entre sí usant el protocol bitcoin principalment a través d'Internet, encara que també es poden utilitzar altres xarxes de transport. La pila del protocol bitcoin, disponible com a programari de codi obert, es pot executar en una àmplia gamma de dispositius informàtics, incloent ordinadors portàtils i telèfons intel·ligents, fent que la tecnologia sigui fàcilment accessible.
+
+Els usuaris poden transferir bitcoins a través de la xarxa per fer gairebé qualsevol cosa que es podria fer amb les monedes convencionals, incloent la compra i venda de béns, enviar diners a persones o organitzacions, o ampliar crèdit. Els bitcoins es poden comprar, vendre, i intercanviar per altres monedes en els canvis de divises especialitzats. És podria dir que bitcoin és la forma perfecta de diners per Internet, ja que és ràpid, segur i sense fronteres.
+
+A diferència de les monedes tradicionals, els bitcoins són totalment virtuals. No hi ha monedes físiques o fins i tot monedes digitals literalment parlant. Les monedes participen d'operacions que transfereixen valor de l'emissor al receptor. Els usuaris de Bitcoin posseeixen claus que els permeten demostrar la propietat de les transaccions a la xarxa bitcoin, podent desbloquejar valor per gastar-lo i transferir-lo a un nou destinatari. Aquestes claus sovint s'emmagatzemen en una cartera digital a l'ordinador de cada usuari. La possessió de la clau que desbloqueja una transacció és l'únic requisit previ per gastar bitcoins, posant tot el control en les mans de cada usuari.
+
+Bitcoin és un sistema distribuït punt a punt. Com a tal no hi ha un servidor o punt de control "central". Els bitcoins són creats a través d'un procés anomenat "mineria", el que implica una carrera per trobar solucions a un problema matemàtic mentres es processen les transaccions de bitcoin. Qualsevol participant a la xarxa Bitcoin (és a dir, qualsevol persona que utilitzi un dispositiu que executa la pila completa del protocol bitcoin) pot operar com a miner, usant la potència de càlcul del seu ordinador per verificar i registrar les transaccions. Cada 10 minuts de mitjana, algú aconsegueix validar les transaccions dels últims 10 minuts i és recompensat amb bitcoins totalment nous. En essència, la mineria bitcoin descentralitza les tasques d'emissió de moneda i liquidació d'un banc central i fa innecessària la figura d'un banc central amb aquesta carrera global. 
+ 
+((("mineria", "algoritmes de regulació"))) El protocol bitcoin inclou algoritmes que regulen la funció de la mineria a tota la xarxa. La dificultat de la tasca de computació que els miners han de realitzar—per gravar amb èxit un bloc de transaccions per a la xarxa bitcoin—s'ajusta dinàmicament de manera que, de mitjana, algú té èxit cada 10 minuts independentment del nombre de miners (i CPUs) que estiguin treballant en la tasca en qualsevol moment. ((("bitcoin", "ritme d'emissió"))) El protocol també redueix a la meitat el ritme al qual els nous bitcoins es creen cada quatre anys, i limita el nombre total de bitcoins que es crearà a un total fix de 21 milions de monedes. El resultat és que el nombre de bitcoins en circulació s'acosta molt a una corba fàcilment predictible que arriba als 21 milions a l'any 2140. A causa de la disminució del ritme de creació de bitcoins, a llarg termini, la moneda bitcoin és deflacionista. A més a més, bitcoin no pot ser inflat artificialment amb la "impressió" de moneda nova per sobre del ritme d'emissió esperat.
+
+En la part més tècnica, bitcoin és també el nom del protocol, una xarxa i una innovació en computació distribuïda. La moneda bitcoin és realment només la primera aplicació d'aquesta invenció. Com a desenvolupador, veig bitcoin com si fos l'Internet dels diners, una xarxa per a la propagació de valor i per assegurar la propietat d'actius digitals a través de computació distribuïda. Hi ha molt més en bitcoin del que es veu a ull nu. 
+
+En aquest capítol començarem per explicar alguns dels principals conceptes i termes, aconseguir el programari necessari, i l'ús de bitcoin per transaccions simples. En els capítols següents començarem a desembolicar les capes de tecnologia que fan possible bitcoin i examinarem el funcionament intern de la xarxa bitcoin i el protocol. 
+
+.Monedes digitals abans de bitcoin
+****
+
+((("bitcoin", "precursors a"))) L'aparició de diner digital viable està estretament lligada a l'evolució de la criptografia. Això no és sorprenent si tenim en compte els reptes fonamentals involucrats en l'ús de bits per representar valor que es pot canviar per béns i serveis. Dues preguntes bàsiques per a tothom que accepti diner digital són:
+
+1. Puc confiar en que els diners són autèntics i no una falsificació?
+2. Puc estar segur que ningú més pot reclamar que aquests diners els pertany a ells i no a mi? (També conegut com el ((("problema de doble despesa"))) problema de "doble despesa".)
+ 
+((("falsificant"))) ((("cripto-moneda", "falsificant"))) Els emissors de bitllets estan constantment lluitant contra el problema de la falsificació utilitzant materials i tecnologia d'impressió cada vegada més sofisticats. El diner físic aborda el problema de la doble despesa se forma senzilla ja que el mateix paper no pot estar a dos llocs alhora. Naturalment, el diner convencional sovint també s'emmagatzema i s'envia digitalment. En aquests casos, els problemes de falsificació i doble despesa es controlen de forma que totes les transaccions electròniques passen a través d'autoritats centrals que tenen una visió global de la moneda en circulació. En el cas de diners digitals, en que no es pot fer ús de tintes esotèriques o enganxines hologràfiques, ((("criptografia"))) la criptografia constitueix la base que et permet confiar en la legitimitat de la reivindicació d'un usuari sobre un cert valor. En concret, les signatures digitals criptogràfiques permeten a l'usuari signar un actiu digital o transacció per demostrar-ne la propietat. Amb l'arquitectura adequada, les signatures digitals també es poden utilitzar per abordar la qüestió de doble despesa.
+
+Quan la criptografia va començar a ser més àmpliament assequible i entesa a finals dels 1980, molts investigadors van començar a provar d'usar la criptografia per construir monedes digitals. Aquests primers projectes de moneda digital produïen diners digitals, normalment amb el suport d'una moneda nacional o metalls preciosos com l'or.
+
+Tot i que aquestes monedes digitals anteriors varen funcionar, eren centralitzades i, com a resultat, eren fàcils d'atacar pels governs i els pirates informàtics. Les monedes digitals primerenques utilitzaven una entitat central per liquidar totes les transaccions a intervals regulars, igual que un sistema bancari tradicional. Per desgràcia, en la majoria dels casos aquestes monedes digitals naixents van ser blanc de governs preocupats i, finalment, es van erradicar per mitjans legals. Algunes van fracassar en accidents espectaculars quan l'empresa matriu feu fallida abruptament. Per ser robust davant la intervenció d'antagonistes, tant davant de governs legítims com ens criminals, calia una moneda digital descentralitzada que evitaria un únic punt d'atac. Bitcoin és un sistema d'aquest tipus, completament descentralitzat per disseny, i lliure de qualsevol autoritat central o punt de control que pot ser atacat o corromput.
+
+Bitcoin representa la culminació de dècades de recerca en criptografia i sistemes distribuïts i inclou quatre innovacions clau reunides en una combinació única i poderosa. Bitcoin es compon de:
+ 
+* Una xarxa punt a punt descentralitzada (el protocol bitcoin)
+* Un llibre de comptes de transaccions públic (la cadena de blocs)
+* Una emissió descentralitzada matemàtica i determinista de moneda (mineria distribuïda)
+* Un sistema de verificació de transaccions descentralitzat (guió de transacció)
+
+****
+
+=== Història de bitcoin
+
+((("bitcoin", "desenvolupament de"))) ((("Nakamoto, Satoshi"))) Bitcoin va ser inventat el 2008 amb la publicació d'un article titulat ((("Bitcoin: A Peer-to-Peer Electronic Cash System. (Nakamoto)")))" Bitcoin: A Peer-to-Peer Electronic Cash System", escrit sota el pseudònim de Satoshi Nakamoto. Nakamoto combina diverses invencions anteriors, com ara ((("b-money"))) ((("Hashcash"))) b-money i Hashcash per crear un sistema de diner electrònic totalment descentralitzat que no depèn d'una autoritat central per a l'emissió de moneda o la liquidació i validació de les transaccions. La innovació clau va ser l'ús d'un sistema de computació distribuïda (anomenat ((("algorisme de prova de treball"))) algorisme de "prova de treball") per dur a terme una "votació" global cada 10 minuts, el que permet a la xarxa descentralitzada arribar a un _consens_ sobre l'estat de les transaccions. Això resol amb elegància el problema de la doble despesa on una mateixa unitat monetària pot ser gastada dues vegades. Anteriorment, el problema de la doble despesa era una debilitat de les monedes digitals i es resolia amb la liquidació de totes les transaccions a través d'una casa de liquidacions central. 
+
+((("xarxa bitcoin", "origen de"))) La xarxa bitcoin va començar el 2009, basada en una implementació de referència publicada per Nakamoto i des de llavors revisada per molts altres programadors. La computació distribuïda que proporciona seguretat i resistència a bitcoin ha augmentat de manera exponencial, i ara supera la capacitat de processament combinada dels millors superordinadors del món. El valor de mercat total de Bitcoin s'estima entre 5 mil milions i 10 mil milions de dòlars, depenent del tipus de canvi de bitcoin-a-dòlar. La major transacció processada fins ara per la xarxa va ser de 150 milions de dòlars, de transmissió instantània i processada sense taxes.
+
+Satoshi Nakamoto es va retirar del públic a l'abril de 2011, deixant la responsabilitat de desenvolupar el codi i la xarxa a un grup pròsper de voluntaris. La identitat de la persona o les persones darrere de bitcoin és encara desconeguda. No obstant això, ni Satoshi Nakamoto ni ningú altre exerceix cap control sobre el sistema bitcoin, que funciona basat en principis matemàtics totalment transparents. La invenció en si és innovadora i que ja ha donat lloc a nova ciència en el camp de la computació distribuïda, economia i econometria. 
+
+
+.Una solució a un problema de computació distribuïda
+****
+((("Problema dels generals Bizantins"))) La invenció de Satoshi Nakamoto és també una solució pràctica a un problema existent no resolt en computació distribuïda, conegut com el "problema dels generals bizantins." En poques paraules, el problema consisteix a tractar de posar-se d'acord sobre un pla d'acció mitjançant l'intercanvi d'informació a través d'una xarxa poc fiable i potencialment perillosa. La solució de Satoshi Nakamoto, que utilitza el concepte de prova de treball per aconseguir consens sense una autoritat central de confiança, representa un gran avenç en la ciència de computació distribuïda i té àmplia aplicabilitat més enllà de la moneda. Es pot utilitzar per aconseguir consens en xarxes descentralitzades per demostrar la imparcialitat d'eleccions, loteries, registres d'actius, notaritzacions digitals i més. 
+****
+
+
+[[user-stories]]
+=== Usos de bitcoin, usuaris i les seves històries
+
+Bitcoin is a technology, but it expresses money that is fundamentally a language for exchanging value between people. Let's look at the people who are using bitcoin and some of the most common uses of the currency and protocol through their stories. We will reuse these stories throughout the book to illustrate the real-life uses of digital money and how they are made possible by the various technologies that are part of bitcoin. 
+
+Minorista nord-americà de valor baix::
+L'Alice viu a l'àrea de la badia del nord de Califòrnia. Ha sentit parlar els seus amics tecnòfils de bitcoin i vol començar a usar-lo. Seguirem la seva història a mesura que aprèn sobre bitcoin, n'adquireix alguns, i després gasta alguns dels seus bitcoin per comprar una tassa de cafè al Bob Cafe a Palo Alto. Aquesta història ens introduirà en el programari, els mercats de canvi, i transaccions bàsiques des de la perspectiva d'un consumidor final.
+
+Minorista nord-americà de valor alt::
+Carol és una galerista d'art a San Francisco. Ven pintures cares a canvi de bitcoin. Aquesta història introduirà els riscos d'un atac del "51%" de consens per als minoristes d'articles d'alt valor. 
+
+Contractar serveis fora del país::
+Bob, el propietari del cafè a Palo Alto, està construïnt un nou lloc web. Ha contractat un desenvolupador web de l'Índia, Gopesh, que viu a Bangalore, Índia. Gopesh s'ha compromès a pagar en Bitcoin. Aquesta història s'examinarà l'ús de Bitcoin per a la contractació de personal extern, serveis objecte del contracte, i transferències bancàries internacionals. 
+
+Donacions benèfiques ::
+Eugenia is the director of a children's charity in the Philippines. Recently she has discovered bitcoin and wants to use it to reach a whole new group of foreign and domestic donors to fundraise for her charity. She's also investigating ways to use bitcoin to distribute funds quickly to areas of need. This story will show the use of bitcoin for global fundraising across currencies and borders and the use of an open ledger for transparency in charitable organizations.
+
+Importacions/exportacions ::
+Mohammed is an electronics importer in Dubai. He's trying to use bitcoin to buy electronics from the US and China for import into the UAE to accelerate the process of payments for imports. This story will show how bitcoin can be used for large business-to-business international payments tied to physical goods.
+
+Mineria de bitcoin ::
+Jing és un estudiant d'enginyeria informàtica a Xangai. Ha construït una plataforma de "mineria" per minar bitcoins, usant les seves habilitats d'enginyeria per complementar els seus ingressos. Aquesta història examinarà la base "industrial" de bitcoin: l'equip especialitzat que s'utilitza per assegurar la xarxa Bitcoin i emetre nova moneda.
+
+Cadascuna d'aquestes històries està basada en persones reals i indústries reals que estan utilitzant actualment bitcoin per crear nous mercats, noves indústries i solucions innovadores a problemes econòmics mundials. 
+
+=== Com començar
+
+((("bitcoin","formes de")))Per unir-se a la xarxa bitcoin i començar a utilitzar la moneda, tot el que l'usuari ha de fer és descarregar una aplicació o utilizar una aplicació web. Com que bitcoin és un estandard, hi ha moltes implementacions dels clients de software de bitcoin. També hi ha una implementació de referència coneguda com a Client Satoshi, la qual és gestionada com a projecte de codi obert per un equip de desenvolupadors i és una derivació de la implementació original de Satoshi Nakamoto. 
+
+Els tres tipus principals de clients bitcoin són:
+
+Full client:: ((("full nodes")))A full client, or "full node," is a client that stores the entire history of bitcoin transactions (every transaction by every user, ever), manages the users' wallets, and can initiate transactions directly on the bitcoin network. This is similar to a standalone email server, in that it handles all aspects of the protocol without relying on any other servers or third-party services.
+
+Client lleuger::(((client lleuger")))Un client lleuger enmagatzema el moneder de l'usuari pero es basa en servidors propietat de terceres parts  per accedir a les transaccions de la xarxa bitcoin. El client lleuger no enmagatzema una copia completa de les transaccions, per tant ha de creure en la validació per part dels servidors de terceres parts.  És semblant a un client de correu electronic independent que per accedir a l'esafata d'entrada necessita de serivdors de tercers. 
+
+Web client:: ((("web clients")))Web clients are accessed through a web browser and store the user's wallet on a server owned by a third party. This is similar to webmail in that it relies entirely on a third-party server. 
+
+.Mobile Bitcoin
+****
+((("mobile clients")))((("smartphones, bitcoin clients for")))Mobile clients for smartphones, such as those based on the Android system, can either operate as full clients, lightweight clients, or web clients. Some mobile clients are synchronized with a web or desktop client, providing a multiplatform wallet across multiple devices but with a common source of funds.
+****
+
+The choice of bitcoin client depends on how much control the user wants over funds. A full client will offer the highest level of control and independence for the user, but in turn puts the burden of backups and security on the user. On the other end of the range of choices, a web client is the easiest to set up and use, but the trade-off with a web client is that counterparty risk is introduced because security and control is shared with the user and the owner of the web service. If a web-wallet service is compromised, as many have been, the users can lose all their funds. Conversely, if users have a full client without adequate backups, they might lose their funds through a computer mishap. 
+
+For the purposes of this book, we will be demonstrating the use of a variety of downloadable bitcoin clients, from the reference implementation (the Satoshi client) to web wallets. Some of the examples will require the use of the reference client, which, in addition to being a full client, also exposes APIs to the wallet, network, and transaction services. If you are planning to explore the programmatic interfaces into the bitcoin system, you will need the reference client.
+
+==== Inici ràpid
+
+((("bitcoin","wallet setup")))((("wallets","setting up")))Alice, who we introduced in <<user-stories>>, is not a technical user and only recently heard about bitcoin from a friend. She starts her journey by visiting the((("bitcoin.org"))) official website http://www.bitcoin.org[bitcoin.org], where she finds a broad selection of bitcoin clients. Following the advice on the bitcoin.org site, she chooses the lightweight bitcoin client((("Multibit client"))) Multibit. 
+
+L'Alícia segueix un enllaç des del lloc bitcoin.org per descarregar i instal·lar Multibit en el seu ordinador de sobretaula. Multibit està disponible per als sistemes Windows, Mac OS i Linux.
+
+[WARNING]
+====
+((("wallets","security of")))A bitcoin wallet must be protected by a password or passphrase. There are many bad actors attempting to break weak passwords, so take care to select one that cannot be easily broken. Use a combination of upper and lowercase characters, numbers, and symbols. Avoid personal information such as birth dates or names of sports teams. Avoid any words commonly found in dictionaries, in any language. If you can, use a password generator to create a completely random password that is at least 12 characters in length. Remember: bitcoin is money and can be instantly moved anywhere in the world. If it is not well protected, it can be easily stolen.
+====
+
+Once Alice has downloaded and installed the Multibit application, she runs it and is greeted by a Welcome screen, as shown in <<multibit-welcome>>.
+
+[[multibit-welcome]]
+.Pantalla de benvinguda del client bitcoin Multibit.
+image::images/msbt_0101.png["MultibitWelcome"]
+
+((("addresses, bitcoin","created by Multibit")))Multibit automatically creates a wallet and a new bitcoin address for Alice, which Alice can see by clicking the Request tab shown in <<multibit-request>>.
+[[multibit-request]]
+.Nova adreça bitcoin de l'Alice, a la pestanya de sol·licitud del client Multibit
+image::images/msbt_0102.png["MultibitReceive"]
+
+The most important part of this screen is Alice's _bitcoin address_. Like an email address, Alice can share this address and anyone can use it to send money directly to her new wallet. On the screen it appears as a long string of letters and numbers: +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+. Next to the wallet's bitcoin address is a QR code, a form of barcode that contains the same information in a format that can be scanned by a smartphone camera. The QR code is the black-and-white square on the right side of the window. Alice can copy the bitcoin address or the QR code onto her clipboard by clicking the copy button adjacent to each of them. Clicking the QR code itself will magnify it, so that it can be easily scanned by a smartphone camera. 
+
+L'Alice també pot imprimir el codi QR com una forma de donar fàcilment la seva adreça als altres sense que hagin d'escriure la llarga cadena de lletres i números. 
+
+[TIP]
+====
+((("addresses, bitcoin","sharing")))Bitcoin addresses start with the digit 1 or 3. Like email addresses, they can be shared with other bitcoin users who can use them to send bitcoin directly to your wallet. Unlike email addresses, you can create new addresses as often as you like, all of which will direct funds to your wallet. A wallet is simply a collection of addresses and the keys that unlock the funds within. You can increase your privacy by using a different address for every transaction. There is practically no limit to the number of addresses a user can create.
+====
+
+L'Alice ja està a punt per començar a utilitzar el seu nou moneder bitcoin. 
+
+[[getting_first_bitcoin]]
+==== Com aconseguir els teus primers bitcoins
+
+((("bitcoin","acquiring")))((("currency markets")))It is not possible to buy bitcoins at a bank or foreign exchange kiosks at this time. As of 2014, it is still quite difficult to acquire bitcoins in most countries. There are a number of specialized currency exchanges where you can buy and sell bitcoin in exchange for a local currency. These operate as web-based currency markets and include:
+
+http://bitstamp.net[Bitstamp]:: A European currency market that supports several currencies including euros (EUR) and US dollars (USD) via wire transfer.((("Bitstamp currency market")))
+http://www.coinbase.com[Coinbase]:: A US-based bitcoin wallet and platform where merchants and consumers can transact in bitcoin. Coinbase makes it easy to buy and sell bitcoin, allowing users to connect to US checking accounts via the ACH system.((("Coinbase.com")))
+
+Cryptocurrency exchanges such as these operate at the intersection of national currencies and cryptocurrencies. As such, they are subject to national and international regulations, and are often specific to a single country or economic area and specialize in the national currencies of that area. Your choice of currency exchange will be specific to the national currency you use and limited to the exchanges that operate within the legal jurisdiction of your country.  Similar to opening a bank account, it takes several days or weeks to set up the necessary accounts with these services because they require various forms of identification to comply with((("AML (Anti-Money Laundering) banking regulations")))((("banking regulations and bitcoin")))((("KYC (Know Your Customer) banking regulations"))) KYC (know your customer) and AML (anti-money laundering) banking regulations. Once you have an account on a bitcoin exchange, you can then buy or sell bitcoins quickly just as you could with foreign currency with a brokerage account.
+
+You can find a more complete list at http://bitcoincharts.com/markets[bitcoin charts], a site that offers price quotes and other market data across many dozens of currency exchanges. 
+
+Hi ha quatre mètodes addicionals per obtenir bitcoins com un nou usuari:
+
+* Find((("bitcoins, buying for cash"))) a friend who has bitcoins and buy some from him directly. Many bitcoin users start this way. 
+* Utilitza un servei classificat com ara localbitcoins.com per trobar un venedor allí mateix on visquis per comprar bitcoins a canvi de diners en efectiu amb una transacció en persona. 
+* Vendre un producte o servei a canvi de bitcoin. Si ets un programador, ven les teves habilitats de programació. 
+* Use((("ATMs, bitcoin")))((("bitcoin ATMs"))) a bitcoin ATM in your city.  Find a bitcoin ATM close to you using an online map from http://www.coindesk.com/bitcoin-atm-map/[CoinDesk].
+
+Alice was introduced to bitcoin by a friend and so she has an easy way of getting her first bitcoins while she waits for her account on a California currency market to be verified and activated. 
+
+[[sending_receiving]]
+==== Enviament i rebuda de bitcoins
+
+((("bitcoin","sending/receiving", id="ix_ch01-asciidoc1", range="startofrange")))Alice has created her bitcoin wallet and she is now ready to receive funds. Her wallet application randomly generated a private key (described in more detail in <<private_keys>>) together with its corresponding bitcoin address. At this point, her bitcoin address is not known to the bitcoin network or "registered" with any part of the bitcoin system. Her bitcoin address is simply a number that corresponds to a key that she can use to control access to the funds. There is no account or association between that address and an account. Until the moment this address is referenced as the recipient of value in a transaction posted on the bitcoin ledger (the blockchain), it is simply part of the vast number of possible addresses that are "valid" in bitcoin. Once it has been associated with a transaction, it becomes part of the known addresses in the network and Alice can check its balance on the public ledger. 
+
+Alice meets her friend Joe, who introduced her to bitcoin, at a local restaurant so they can exchange some US dollars and put some bitcoins into her account. She has brought a printout of her address and the QR code as displayed in her bitcoin wallet. There is nothing sensitive, from a security perspective, about the bitcoin address. It can be posted anywhere without risking the security of her account. 
+
+Alice wants to convert just 10 US dollars into bitcoin, so as not to risk too much money on this new technology. She gives Joe a $10 bill and the printout of her address so that Joe can send her the equivalent amount of bitcoin. 
+
+((("exchange rate, finding")))Next, Joe has to figure out the exchange rate so that he can give the correct amount of bitcoin to Alice. There are hundreds of applications and websites that can provide the current market rate. Here are some of the most popular:
+	
+http://bitcoincharts.com[Bitcoin Charts]:: ((("bitcoincharts.com")))A market data listing service that shows the market rate of bitcoin across many exchanges around the globe, denominated in different local currencies
+http://bitcoinaverage.com/[Bitcoin Average]:: ((("bitcoinaverage.com")))A site that provides a simple view of the volume-weighted-average for each currency 
+http://www.zeroblock.com/[ZeroBlock]:: ((("ZeroBlock")))A free Android and iOS application that can display a bitcoin price from different exchanges (see <<zeroblock-android>>)
+http://www.bitcoinwisdom.com/[Bitcoin Wisdom]:: ((("bitcoinwisdom.com")))Another market data listing service
+	
+[[zeroblock-android]]
+.ZeroBlock, una aplicació amb preus de mercat de bitcoin per Android i iOS
+image::images/msbt_0103.png["zeroblock screenshot"]
+	
+Using one of the applications or websites just listed, Joe determines the price of bitcoin to be approximately 100 US dollars per bitcoin. At that rate he should give Alice 0.10 bitcoin, also known as 100 millibits, in return for the 10 US dollars she gave him. 
+
+Once Joe has established a fair exchange price, he opens his mobile wallet application and selects to "send" bitcoin. For example, if using the Blockchain mobile wallet on an Android phone, he would see a screen requesting two inputs, as shown in <<blockchain-mobile-send>>.
+
+* L'adreça bitcoin de destí de la transacció
+* La quantitat de bitcoin a enviar
+
+
+In the input field for the bitcoin address, there is a small icon that looks like a QR code. This allows Joe to scan the barcode with his smartphone camera so that he doesn't have to type in Alice's bitcoin address (+1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+), which is quite long and difficult to type. Joe taps the QR code icon and activates the smartphone camera, scanning the QR code from Alice's printed wallet that she brought with her. The mobile wallet application fills in the bitcoin address and Joe can check that it scanned correctly by comparing a few digits from the address with the address printed by Alice. 
+
+[[blockchain-mobile-send]]
+.Blockchain mobile wallet's bitcoin send screen
+image::images/msbt_0104.png["blockchain mobile send screen"]
+
+Joe then enters the bitcoin value for the transaction, 0.10 bitcoin. He carefully checks to make sure he has entered the correct amount, because he is about to transmit money and any mistake could be costly. Finally, he presses Send to transmit the transaction. Joe's mobile bitcoin wallet constructs a transaction that assigns 0.10 bitcoin to the address provided by Alice, sourcing the funds from Joe's wallet and signing the transaction with Joe's private keys. This tells the bitcoin network that Joe has authorized a transfer of value from one of his addresses to Alice's new address. As the transaction is transmitted via the peer-to-peer protocol, it quickly propagates across the bitcoin network. In less than a second, most of the well-connected nodes in the network receive the transaction and see Alice's address for the first time. 
+
+If Alice has a smartphone or laptop with her, she will also be able to see the transaction. The bitcoin ledger—a constantly growing file that records every bitcoin transaction that has ever occurred—is public, meaning that all she has to do is look up her own address and see if any funds have been sent to it. She can do this quite easily at the((("blockchain.info website"))) blockchain.info website by entering her address in the search box. The website will show her a http://bit.ly/1u0FFKL[page] listing all the transactions to and from that address. If Alice is watching that page, it will update to show a new transaction transferring 0.10 bitcoin to her balance soon after Joe hits Send. 
+
+++++
+<?hard-pagebreak?>
+++++
+
+.Confirmacions
+****
+((("confirmation of transactions")))At first, Alice's address will show the transaction from Joe as "Unconfirmed." This means that the transaction has been propagated to the network but has not yet been included in the bitcoin transaction ledger, known as the blockchain. To be included, the transaction must be "picked up" by a miner and included in a block of transactions. Once a new block is created, in approximately 10 minutes, the transactions within the block will be accepted as "confirmed" by the network and can be spent. The transaction is seen by all instantly, but it is only "trusted" by all when it is included in a newly mined block.
+****
+
+Alice is now the proud owner of 0.10 bitcoin that she can spend. In the next chapter we will look at her first purchase with bitcoin, and examine the underlying transaction and propagation technologies in more detail.(((range="endofrange", startref="ix_ch01-asciidoc1")))(((range="endofrange", startref="ix_ch01-asciidoc0")))
+

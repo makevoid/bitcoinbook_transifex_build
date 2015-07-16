@@ -1,0 +1,1001 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_ビットコインの本を書く">ビットコインの本を書く</h3>
+<div class="paragraph"><p>私は、最初２０１１年の中頃にビットコインでつまずいていた。私の最初の反応は、「あー！オタクの通貨だ。」それ以上でも以下でもなかった。そしてその後６ヶ月間、その重要性を理解することなく無視していた。これは、私の知る沢山の賢い人々の間で繰り返し見る反応だ。そしてそれを見て、私は少し癒やされた。私が２回目にメーリングリストでビットコインに出会った時、私はナカモト・サトシによって書かれたホワイトペーパーを読むことにした。正式な情報元から学んで、それが何であるのかを知るために。未だに９ページを読み終えた時のことを覚えている。ビットコインが単にデジタル通貨というだけでなく、信用のネットワークの基盤をも提供するものだ、とその時に理解したのだった。「これはお金ではない。これは、非中央集権化された信用ネットワークなのだ。」とわかってから４ヶ月の間、私は見つけられる限りのどんな細かいビットコインの情報をも貪り読み続けた。私は取り憑かれ、魅了された。そして、毎日１２時間以上私の出来る限りの時間、画面に食いつき、読み、書き、プログラムをし、学んだ。熱狂状態から戻って来た時には、まともに食事も取らなかったので、９キログラム以上も痩せていていたが、ビットコインに専念することに決めた。</p></div>
+<div class="paragraph"><p>２年後、ビットコイン関連のサービスやプロダクトを調べるための小さなスタートアップをいくつか作った後に、今が私にとっての最初の本を書く時だと決心した。ビットコインは、私を創造力の狂乱へ導き、頭の中を一杯に埋め尽くしたテーマだ。そして、ビットコインはインターネット以降に出会った中で最もエキサイティングなテクノロジーだ。より多くの人とこの素晴らしいテクノロジーへの情熱を共有する時だった。</p></div>
+</div>
+<div class="sect2">
+<h3 id="_想定する読者">想定する読者</h3>
+<div class="paragraph"><p>この本は、主にプログラマー向けに書かれている。もしプログラム言語を使えるのであれば、どのように暗号による通貨が動くのか、どのように暗号通貨を利用するのか、どのように暗号通貨のソフトウェアを開発するのかがわかるでしょう。最初のいくつかの章は、ビットコインや暗号通貨の内部動作を理解したいプログラマでない方向けのビットコイン入門として最適でしょう。</p></div>
+</div>
+<div class="sect2">
+<h3 id="_なぜ表紙に３匹の虫がいるのか">なぜ表紙に３匹の虫がいるのか？</h3>
+<div class="paragraph"><p>ハキリアリはコロニー超個体の中で高度に複雑な振る舞いを示している生物です。しかし、それぞれの個体としてのアリは社会的な相互作用や化学的な匂い(フェロモン)によって引き起こされる単純なルールの集まりに従って作業をしています。Wikipediaによると、"ハキリアリは地球上で最大規模で最も複雑な動物社会を形成しています"とあります。ハキリアリは実際に葉を食べるわけではありませんが、むしろこれら葉を菌の繁殖のために使っています。この菌というのは、コロニーの中心的な食料の原料なのです。分かりますか？これらのアリは農業を行っているのです！</p></div>
+<div class="paragraph"><p>アリはカースト的な社会を構成し、子孫を作るために女王を持っています。アリのコロニーには中心的な権威やリーダーは存在しません。百万匹が暮らすコロニーで示される高度に知的で洗練された振る舞いは、社会的なネットワークの中で個々の相互作用から生まれる創発特性なのです。</p></div>
+<div class="paragraph"><p>Nature demonstrates that decentralized systems can be resilient and can produce emergent complexity and incredible sophistication without the need for a central authority, hierarchy, or complex parts.</p></div>
+<div class="paragraph"><p>Bitcoin is a highly sophisticated decentralized trust network that can support a myriad of financial processes. Yet, each node in the bitcoin network follows a few simple mathematical rules. The interaction between many nodes is what leads to the emergence of the sophisticated behavior, not any inherent complexity or trust in any single node. Like an ant colony, the bitcoin network is a resilient network of simple nodes following simple rules that together can do amazing things without any central coordination.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_この本で使用される表記規約">この本で使用される表記規約</h3>
+<div class="paragraph"><p>この本では以下の表記規約を使用します。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>イタリック</em>
+</dt>
+<dd>
+<p>
+新しい用語、URL、Eメールアドレス、ファイル名、ファイル拡張子を表す
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>等幅(Constant width)</tt>
+</dt>
+<dd>
+<p>
+プログラムを表示するときに使用され、また変数や関数名、データベース、データタイプ、環境変数、ステートメント、キーワードなどプログラムの一要素を表現するときにも使用される
+</p>
+</dd>
+<dt class="hdlist1">
+<strong><tt>等幅太字(Constant width bold)</tt></strong>
+</dt>
+<dd>
+<p>
+ユーザに文字通り入力されるべきコマンドやその他テキストを表す
+</p>
+</dd>
+<dt class="hdlist1">
+<em><tt>等幅イタリック(Constant width italic)</tt></em>
+</dt>
+<dd>
+<p>
+ユーザ側の環境や文脈によって変わる値によって置き換えられるべきテキストを表す
+</p>
+</dd>
+</dl></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>このアイコンは、ヒントや提案、一般的な示唆を表します。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>このアイコンは、警告や注意を表します。</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_コード例">コード例</h3>
+<div class="paragraph"><p>例はPythonやC++で説明されており、LinuxまたはMac OS XのようなUnixライクなオペレーティングシステムのコマンドラインを使って実行できます。全てのコードスニペットは <a href="https://github.com/aantonop/bitcoinbook">GitHub repository</a> のメインリポジトリの <em>code</em> ディレクトリにあります。この本にあるコードをフォークして、コード例を試してみてください。そして、修正点があればGitHub(のPullRequest)を通してご連絡をお願いします。</p></div>
+<div class="paragraph"><p>All the code snippets can be replicated on most operating systems with a minimal installation of compilers and interpreters for the corresponding languages. Where necessary, we provide basic installation instructions and step-by-step examples of the output of those instructions.</p></div>
+<div class="paragraph"><p>Some of the code snippets and code output have been reformatted for print. In all such cases, the lines have been split by a backslash (\) character, followed by a newline character. When transcribing the examples, remove those two characters and join the lines again and you should see identical results as shown in the example.</p></div>
+<div class="paragraph"><p>All the code snippets use real values and calculations where possible, so that you can build from example to example and see the same results in any code you write to calculate the same values. For example, the private keys and corresponding public keys and addresses are all real. The sample transactions, blocks, and blockchain references have all been introduced in the actual bitcoin blockchain and are part of the public ledger, so you can review them on any bitcoin system.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_using_code_examples">Using Code Examples</h3>
+<div class="paragraph"><p>This book is here to help you get your job done. In general, if example code is offered with this book, you may use it in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. For example, writing a program that uses several chunks of code from this book does not require permission. Selling or distributing a CD-ROM of examples from O’Reilly books does require permission. Answering a question by citing this book and quoting example code does not require permission. Incorporating a significant amount of example code from this book into your product’s documentation does require permission.</p></div>
+<div class="paragraph"><p>私たちは、出典の掲載について感謝しますが、要求はしていません。出典は通常、タイトル、著者、出版社、およびISBNを含みます（例：<em>Mastering Bitcoin</em> by Andreas M. Antonopoulos (O’Reilly). Copyright 2015 Andreas M. Antonopoulos, 978-1-449-37404-4.）。</p></div>
+<div class="paragraph"><p>Some editions of this book are offered under an open source license, such as CC-BY-NC (creativecommons.org), in which case the terms of that license apply.</p></div>
+<div class="paragraph"><p>If you feel your use of code examples falls outside fair use or the permission given above, feel free to contact us at <email>permissions@oreilly.com</email>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_safari_books_online">Safari® Books Online</h3>
+<div class="admonitionblock safarienabled">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly">Safari Books Online</ulink> はオンデマンドのデジタルライブラリであり、テクノロジーとビジネスの分野における、世界の先端を行く作者からの<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/content">コンテンツ</ulink>を、書籍とビデオの両方の形態で、専門家に届けている。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>テクノロジーの専門家、ソフトウェア開発者、Webデザイナー、ビジネスやク​​リエイティブの専門家が、研究、問題解決、学習、資格習得のための主要なリソースとして、Safari Books Onlineを利用しています。</p></div>
+<div class="paragraph"><p>Safari Books Online offers a range of <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/subscriptions">product mixes</ulink> and pricing programs for <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/organizations-teams">organizations</ulink>, <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/government">government agencies</ulink>, and <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/individuals">individuals</ulink>. Subscribers have access to thousands of books, training videos, and prepublication manuscripts in one fully searchable database from publishers like O’Reilly Media, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Focal Press, Cisco Press, John Wiley &amp; Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones &amp; Bartlett, Course Technology, and dozens <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/publishers">more</ulink>. For more information about Safari Books Online, please visit us <ulink role="orm:hideurl" url="http://www.safaribooksonline.com/">online</ulink>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_御連絡はこちら">御連絡はこちら</h3>
+<div class="paragraph"><p>この本に関するコメントと質問を、出版者へお便り下さい。</p></div>
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (in the United States or Canada)</member>
+<member>707-829-0515 (international or local)</member>
+<member>707-829-0104 (fax)</member>
+</simplelist>
+<div class="paragraph"><p>この本にはウェブページがあり、そこでは例えば幾つかの過ちや、例、そして追加の情報を掲載致します。そしてそのページへのリンクはhttp://bit.ly/mastering_bitcoin[]　です。</p></div>
+<div class="paragraph"><p>この本に関するコメントや、技術的な質問がある場合には、[&lt;email&gt;<a href="mailto:bookquestions@oreilly.com">bookquestions@oreilly.com</a>&lt;/email&gt;].までemailを下さい。</p></div>
+<div class="paragraph"><p>より一層の詳しい私達の本、コース、会議、そしてニュースはウェブサイトのこちらのリンクを御覧下さい。:http://www.oreilly.com[].</p></div>
+<div class="paragraph"><p>Facebookのリンクはこちら:http://facebook.com/oreilly[]</p></div>
+<div class="paragraph"><p>Twitterのリンクはこちら:http://twitter.com/oreillymedia[]</p></div>
+<div class="paragraph"><p>Youtubeのリンクはこちら: <a href="http://www.youtube.com/oreillymedia">http://www.youtube.com/oreillymedia</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_謝辞">謝辞</h3>
+<div class="paragraph"><p>この本は、多くの人の努力と献身によって出来ています。友人、同僚、そして全く知らないこの暗号通貨とビットコインについての技術的な本を書くことに務めて下さった方々に感謝しています。</p></div>
+<div class="paragraph"><p>Bitcoinのテクノロジーと、Bitcoinのコミュニティを切り分けて考えることは不可能です。そしてこの本はそのコミュニティによる本とでもあります。私のこの本を書くことの取り組みは、まさに本を書き終わる時まで、Bitcoinのコミュニティ全体から励まされ、応援され、支えられ、称賛を頂きました。これは何よりもかけがえのないことで、この本を書くことで私は2年間その素晴らしいコミュニティの一部でいられました。私は私を受け入れてくれたこのコミュニティに対して十分な御礼を言えていないほどに感謝しています。そして名前をあげるにはあまりにも多くの方々の支え、例えばカンファレンスやイベントや、セミナーや、ミートアップや、ピザを食べる集まりや、小さな個人的な集まりや、Twitterや、Redditや、bitcointalk.orgで私と交流して下さった方々がいらっしゃいます。あらゆるアイディアや、アナロジーや、質問や、回答や、そして貴方がこの本でご覧になった説明のいくつかの点は、私のコミュニティとの交流の中でインスパイアされ、検証され、改善されてきました。支えて下さった皆様有難うございます。あなた方無しにこの本は完成し得なかった。私の一生の喜びです。</p></div>
+<div class="paragraph"><p>The journey to becoming an author starts long before the first book, of course. My first language (and schooling) was Greek, so I had to take a remedial English writing course in my first year of university. I owe thanks to Diana Kordas, my English writing teacher, who helped me build confidence and skills that year. Later, as a professional, I developed my technical writing skills on the topic of data centers, writing for <em>Network World</em> magazine. I owe thanks to John Dix and John Gallant, who gave me my first writing job as a columnist at <em>Network World</em> and to my editor Michael Cooney and my colleague Johna Till Johnson who edited my columns and made them fit for publication. Writing 500 words a week for four years gave me enough experience to eventually consider becoming an author. Thanks to Jean de Vera for her early encouragement to become an author and for always believing and insisting that I had a book in me.</p></div>
+<div class="paragraph"><p>Thanks also to those who supported me when I submitted my book proposal to O&#8217;Reilly, by providing references and reviewing the proposal. Specifically, thanks to John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver, and Jon Matonis. Special thanks to Richard Kagan and Tymon Mattoszko, who reviewed early versions of the proposal and Matthew Owain Taylor, who copyedited the proposal.</p></div>
+<div class="paragraph"><p>Thanks to Cricket Liu, author of the O&#8217;Reilly title <em>DNS and BIND</em>, who introduced me to O&#8217;Reilly. Thanks also to Michael Loukides and Allyson MacDonald at O&#8217;Reilly, who worked for months to help make this book happen. Allyson was especially patient when deadlines were missed and deliverables delayed as life intervened in our planned schedule.</p></div>
+<div class="paragraph"><p>The first few drafts of the first few chapters were the hardest, because bitcoin is a difficult subject to unravel. Every time I pulled on one thread of the bitcoin technology, I had to pull in the whole thing. I repeatedly got stuck and a bit despondent as I struggled to make the topic easy to understand and create a narrative around such a dense technical subject. Eventually, I decided to tell the story of bitcoin through the stories of the people using bitcoin and the whole book became a lot easier to write. I owe thanks to my friend and mentor, Richard Kagan, who helped me unravel the story and get past the moments of writer&#8217;s block, and Pamela Morgan, who reviewed early drafts of each chapter and asked the hard questions to make them better. Also, thanks to the developers of the San Francisco Bitcoin Developers Meetup group and Taariq Lewis, the group&#8217;s co-founder, for helping to test the early material.</p></div>
+<div class="paragraph"><p>During the development of the book, I made early drafts available on GitHub and invited public comments. More than a hundred comments, suggestions, corrections, and contributions were submitted in response. Those contributions are explicitly acknowledged, with my thanks, in <a href="#github_contrib">[github_contrib]</a>. Special thanks to Minh T. Nguyen, who volunteered to manage the GitHub contributions and added many significant contributions himself. Thanks also to Andrew Naugler for infographic design.</p></div>
+<div class="paragraph"><p>Once the book was drafted, it went through several rounds of technical review. Thanks to Cricket Liu and Lorne Lantz for their thorough review, comments, and support.</p></div>
+<div class="paragraph"><p>Several bitcoin developers contributed code samples, reviews, comments, and encouragement. Thanks to Amir Taaki and Eric Voskuil for example code snippets and many great comments; Vitalik Buterin and Richard Kiss for help with elliptic curve math and code contributions; Gavin Andresen for corrections, comments, and encouragement; Michalis Kargakis for comments, contributions, and btcd writeup; and Robin Inge for errata submissions improving the second print.</p></div>
+<div class="paragraph"><p>I owe my love of words and books to my mother, Theresa, who raised me in a house with books lining every wall. My mother also bought me my first computer in 1982, despite being a self-described technophobe. My father, Menelaos, a civil engineer who just published his first book at 80 years old, was the one who taught me logical and analytical thinking and a love of science and engineering.</p></div>
+<div class="paragraph"><p>Thank you all for supporting me throughout this journey.</p></div>
+</div>
+<div class="sect2">
+<h3 id="github_contrib">早くからのリリースの下書き（Github上での貢献）</h3>
+<div class="paragraph"><p>多くの貢献者の方々は、コメントや、訂正や、加筆をGithub 上の初期のリリースの下書きに対して寄せて下さいました。この本に貢献して下さった皆様有難うございます。下記がGithub上で多大な貢献をして下さった方々です。Github上のIDが両括弧で印されています。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Minh T. Nguyen, GitHub contribution editor (enderminh)
+</p>
+</li>
+<li>
+<p>
+Ed Eykholt (edeykholt)
+</p>
+</li>
+<li>
+<p>
+Michalis Kargakis (kargakis)
+</p>
+</li>
+<li>
+<p>
+Erik Wahlström (erikwam)
+</p>
+</li>
+<li>
+<p>
+Richard Kiss (richardkiss)
+</p>
+</li>
+<li>
+<p>
+Eric Winchell (winchell)
+</p>
+</li>
+<li>
+<p>
+Sergej Kotliar (ziggamon)
+</p>
+</li>
+<li>
+<p>
+Nagaraj Hubli (nagarajhubli)
+</p>
+</li>
+<li>
+<p>
+ethers
+</p>
+</li>
+<li>
+<p>
+Alex Waters (alexwaters)
+</p>
+</li>
+<li>
+<p>
+Mihail Russu (MihailRussu)
+</p>
+</li>
+<li>
+<p>
+Ish Ot Jr. (ishotjr)
+</p>
+</li>
+<li>
+<p>
+James Addison (jayaddison)
+</p>
+</li>
+<li>
+<p>
+Nekomata (nekomata-3)
+</p>
+</li>
+<li>
+<p>
+Simon de la Rouviere (simondlr)
+</p>
+</li>
+<li>
+<p>
+Chapman Shoop (belovachap)
+</p>
+</li>
+<li>
+<p>
+Holger Schinzel (schinzelh)
+</p>
+</li>
+<li>
+<p>
+effectsToCause (vericoin)
+</p>
+</li>
+<li>
+<p>
+Stephan Oeste (Emzy)
+</p>
+</li>
+<li>
+<p>
+Joe Bauers (joebauers)
+</p>
+</li>
+<li>
+<p>
+Jason Bisterfeldt (jbisterfeldt)
+</p>
+</li>
+<li>
+<p>
+Ed Leafe (EdLeafe)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 17:01:24 UTC
+</div>
+</div>
+</body>
+</html>

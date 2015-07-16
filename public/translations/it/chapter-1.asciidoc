@@ -1,0 +1,206 @@
+[[ch01_intro_what_is_bitcoin]]
+== Introduzione
+
+=== Cos’è Bitcoin?
+
+((("bitcoin", id="ix_ch01-asciidoc0", range="startofrange")))((("bitcoin","defined")))Bitcoin è una collezione di concetti e tecnologie che formano le basi per un ecosistema di monete digitali. Unità di moneta chiamati bitcoins vengono utilizzati per immagazzinare e trasferire valore tra i partecipanti del network bitcoin. Gli utenti Bitcoin comunicano tra loro utilizzando il protocollo bitcoin principalmente attraverso internet, anche se sono possibili altri network di trasporto. L'intero protocollo bitcoin, disponibile come software open source, può essere utilizzato su un'ampia gamma di dispositivi digitali, inclusi laptops e cellulari, rendendo questa tecnologia facilmente accessibile.
+
+Gli utenti possono trasferire bitcoin sulla rete per fare qualunque cosa sia possibile fare con le valute tradizionali, incluso comprare e vendere beni, mandare soldi a persone o organizzazioni, oppure fare credito. I bitcoin possono essere comprati, venduti, e scambiati con altre valute su specifici mercati di cambio. Bitcoin rappresenta in un certo senso la forma di denaro perfetta per Internet perché è veloce, sicuro e senza frontiere. 
+
+A differenza delle monete tradizionali, i bitcoin sono completamente virtuali. Non c'è moneta fisica e neanche monete digitali in se per se. La moneta è sottintesa nelle transazioni che trasferiscono valuta dal mittente al ricevente. Gli utenti di bitcoin utilizzano le proprie chiavi che permettono loro di avere la prova di essere i proprietari delle transazioni nel network bitcoin, sbloccando la valuta da spendere e trasferendola al nuovo ricevente. Queste chiavi sono generalmente contenute in portafogli (wallet) digitali nei computer di ciascun utente. Il possesso delle chiavi che sbloccano una transazione è il solo prerequisito per spendere i bitcoin, mettendo il controllo dei propri bitcoin interamente nelle mani di ogni utente.
+
+Bitcoin è un sistema distribuito e peer-to-peer. In quanto tale non ha alcun server "centrale", o centro di controllo. I bitcoin sono creati tramite un processo chiamato "mining", che comporta una competizione per cercare le soluzioni di un complesso problema matematico mentre vengono processate le transazioni. Ogni partecipante al network bitcoin (cioè chiunque stia usando un dispositivo che esegue un'istanza completa del protocollo) può operare come "minatore", usando la potenza di calcolo del proprio computer per verificare e registrare le transazioni. In media ogni 10 minuti, qualcuno è in grado di validare le transazioni dei 10 minuti precedenti ed è ricompensato con bitcoin nuovi di zecca. Essenzialmente, il mining di bitcoin decentralizza le funzioni di emissione di valuta e di compensazione attualmente tipiche di una banca centrale, e rimpiazza la necessità di qualunque banca centrale con questa competizione globale. 
+ 
+((("mining","algorithms regulating")))The bitcoin protocol includes built-in algorithms that regulate the mining function across the network.  The difficulty of the processing task that miners must perform—to successfully record a block of transactions for the bitcoin network—is adjusted dynamically so that, on average, someone succeeds every 10 minutes regardless of how many miners (and CPUs) are working on the task at any moment.  ((("bitcoin","rate of issuance")))The protocol also halves the rate at which new bitcoins are created every four years, and limits the total number of bitcoins that will be created to a fixed total of 21 million coins. The result is that the number of bitcoins in circulation closely follows an easily predictable curve that reaches 21 million by the year 2140.  Due to bitcoin's diminishing rate of issuance, over the long term, the bitcoin currency is deflationary. Furthermore, bitcoin cannot be inflated by "printing" new money above and beyond the expected issuance rate.
+
+Dietro le quinte bitcoin è anche il nome del protocollo, del network e dell'innovazione informatica distribuita. La valuta bitcoin è davvero solo la prima applicazione di questa invenzione. Come programmatore, vedo bitcoin come qualcosa di simile all'Internet del denaro, un network per trasportare valore e assicurare la proprietà di asset digitali tramite computazione distribuita. Bitcoin è molto di più di ciò che appare a prima vista. 
+
+In questo capitolo inizieremo a spiegare alcuni dei principali concetti e termini, come ottenere il software necessario, e l'uso di bitcoin per effettuare semplici transazioni. Nei capitoli seguenti inizieremo a scoprire i vari livelli della tecnologia che rendono bitcoin possibile e esamineremo i funzionamenti interni della rete bitcoin e del protocollo.   
+
+.Valute Digitali Pre-Bitcoin
+****
+
+((("bitcoin","precursors to")))The emergence of viable digital money is closely linked to developments in cryptography. This is not surprising when one considers the fundamental challenges involved with using bits to represent value that can be exchanged for goods and services. Two basic questions for anyone accepting digital money are:
+
+1.     Posso fidarmi che i soldi siano autentici e non contraffati?
+2.     Posso essere sicuro che nessun'altro possa reclamare che i fondi appartengono a loro e non a me?  (Aka il((("problema del double-spend"))) problema del “double-spend”.)
+ 
+((("counterfeiting")))((("crypto-currency","counterfeiting")))Issuers of paper money are constantly battling the counterfeiting problem by using increasingly sophisticated papers and printing technology.  Physical money addresses the double-spend issue easily because the same paper note cannot be in two places at once. Of course, conventional money is also often stored and transmitted digitally. In these cases, the counterfeiting and double-spend issues are handled by clearing all electronic transactions through central authorities that have a global view of the currency in circulation. For digital money, which cannot take advantage of esoteric inks or holographic strips,((("cryptography"))) cryptography provides the basis for trusting the legitimacy of a user’s claim to value.  Specifically, cryptographic digital signatures enable a user to sign a digital asset or transaction proving the ownership of that asset. With the appropriate architecture, digital signatures also can be used to address the double-spend issue.
+
+Quando la crittografia è iniziata a diventare sempre più disponibile e compresa alla fine degli anni '80, molti ricercatori hanno iniziato a provare a usare la crittografia per realizzare monete digitali. Questi primi progetti di monete digitali emettevano valuta digitale, generalmente sostenuta da una moneta nazionale o da metalli preziosi come l'oro.
+
+Nonostante queste prime valute digitali funzionassero, erano centralizzate e quindi, di conseguenza, facili prede di attacchi da parte di governi e hacker. Le prime valute digitali usavano una camera di compensazione centrale per gestire le transazioni a intervalli regolari, proprio come un sistema bancario tradizionale. Sfortunatamente, in molti casi queste neonate valute digitali furono prese di mira da governi preoccupati e con il tempo sommerse di contenziosi fino alla loro scomparsa. Alcune fallirono i crolli spettacolari quando la compagnia di emissione andò improvvisamente in liquidazione. Per essere resistenti agli attacchi di enti antagonisti, che si trattasse di istituzioni legali o di criminali, era necessaria una valuta decentralizzata priva di un singolo punto di rottura. Bitcoin è questo sistema, disegnato per essere completamente decentralizzato, e libero da qualunque autorità centrale o centro di controllo che possa essere attaccato o compromesso.
+
+Bitcoin rappresenta il culmine di decenni di ricerca nei campi della crittografia e dei sistemi distribuiti e comprende quattro diverse innovazioni-chiave, portate insieme in un'unica e potente combinazione. Bitcoin consiste in:
+ 
+* Un network peer-to-peer decentralizzato (il protocollo bitcoin)
+* Un libro-mastro di transazioni pubblico (la blockchain)
+* Un'emissione della moneta decentralizzata, matematica e deterministica (mining distribuito)
+* Un sistema decentralizzato di verifica delle transazioni (lo script delle transazioni)
+
+****
+
+=== Storia di Bitcoin
+
+((("bitcoin","development of")))((("Nakamoto, Satoshi")))Bitcoin was invented in 2008 with the publication of a paper titled((("Bitcoin: A Peer-to-Peer Electronic Cash System. (Nakamoto)"))) "Bitcoin: A Peer-to-Peer Electronic Cash System," written under the alias of Satoshi Nakamoto. Nakamoto combined several prior inventions such as((("b-money")))((("HashCash"))) b-money and HashCash to create a completely decentralized electronic cash system that does not rely on a central authority for currency issuance or settlement and validation of transactions. The key innovation was to use a distributed computation system (called a((("proof-of-work algorithm"))) "proof-of-work" algorithm) to conduct a global "election" every 10 minutes, allowing the decentralized network to arrive at _consensus_ about the state of transactions. This elegantly solves the issue of double-spend where a single currency unit can be spent twice. Previously, the double-spend problem was a weakness of digital currency and was addressed by clearing all transactions through a central clearinghouse. 
+
+((("bitcoin network","origin of")))The bitcoin network started in 2009, based on a reference implementation published by Nakamoto and since revised by many other programmers. The distributed computation that provides security and resilience for bitcoin has increased exponentially, and now exceeds that combined processing capacity of the world's top super-computers. Bitcoin's total market value is estimated at between 5 billion and 10 billion US dollars, depending on the bitcoin-to-dollar exchange rate. The largest transaction processed so far by the network was 150 million US dollars, transmitted instantly and processed without any fees.
+
+Satoshi Nakamoto si ritirò dalla scena pubblica nell'Aprile del 2011, lasciando la responsabilità dello sviluppo del codice e del network a una fiorente comunità di volontari. L'identità della persona o del gruppo dietro bitcoin è ancora un mistero. Ad ogni modo, né Satoshi Nakamoto né chiunque altro può esercitare alcun controllo sul sistema bitcoin, che opera sulla base di principi matematici completamente trasparenti. L'invenzione è di per sé rivoluzionaria e ha già generato nuovi traguardi scientifici nei campi dell'informatica distribuita, dell'economia e dell'econometria. 
+
+
+.Una Soluzione a un Problema Computazionale Distribuito
+****
+((("Byzantine Generals Problem")))Satoshi Nakamoto's invention is also a practical solution to a previously unsolved problem in distributed computing, known as the "Byzantine Generals' Problem." Briefly, the problem consists of trying to agree on a course of action by exchanging information over an unreliable and potentially compromised network. Satoshi Nakamoto's solution, which uses the concept of proof-of-work to achieve consensus without a central trusted authority, represents a breakthrough in distributed computing science and has wide applicability beyond currency. It can be used to achieve consensus on decentralized networks to prove the fairness of elections, lotteries, asset registries, digital notarization, and more. 
+****
+
+
+[[user-stories]]
+=== I vari Utilizzi di Bitcoin, gli Utenti e le loro Storie
+
+Bitcoin è una tecnologia, ma serve a gestire il denaro che è fondamentalmente un linguaggio per scambiare valore tra le persone. Andiamo ad esaminare le tipologie di persona che utilizzano attualmente bitcoin e, attraverso le loro storie, gli usi più comuni della valuta e del protocollo. Utilizzeremo nuovamente queste storie nel corso del libro per illustrare le modalità concrete di utilizzo del denaro digitale ed il modo con cui sono rese possibili dalle diverse tecnologie che costituiscono bitcoin. 
+
+Negozio Nord Americano di prodotti comuni::
+Alice vive nella Bay Area, nel nord della California. Ha sentito parlare di bitcoin dai suoi amici appassionati di tecnologia e vuole cominciare ad utilizzarlo. Seguiremo la sua storia mentre impara cos'è bitcoin, acquista un po' di valuta e ne spende una parte per comprare un caffè al Bob's Cafe di Palo Alto. Questa storia ci introdurrà al software di base, agli exchange e alle transazioni più semplici dal punto di vista di un consumatore finale.
+
+Negozio di cose di valore Nord Americano::
+Carol è proprietaria di una galleria d'arte in San Francisco. Vende quadri costosi in cambio di bitcoin. Questa storia introdurrà il rischio di un "attacco 51%" per venditori di oggetti di valore.  
+
+Servizi di liberi professionisti esteri::
+Bob, il proprietario del caffè a Palo Alto, sta creando un nuovo sito internet. Ha assunto un web-developer indiano, Gopesh, che vive a Bangalore, in India. Gopesh ha accettato di essere pagato in bitcoin. Questa storia illustrerà l'uso di bitcoin per l'outsourcing, i lavori a contratto e i trasferimenti internazionali di denaro. 
+
+Donazioni::
+Eugenia è la direttrice di un ente di beneficenza focalizzato sui bambini nelle Filippine. Recentemente ha scoperto bitcoin e vuole utilizzarlo per raggiungere un settore totalmente nuovo di donatori stranieri e domestici per finanziare il suo ente benefico. Sta anche investigando la possibilità di usare bitcoin per distribuire velocemente le risorse alle aree di necessità. Questa storia mostrerà l'uso di bitcoin per la raccolta di fondi globale attraverso frontiere e valute differenti, e l'utilizzo di un registro pubblico ai fini di trasparenza in organizzazioni filantropiche.
+
+Import/export::
+Mohammed è un importatore di elettronica a Dubai. Sta cercando di usare bitcoin per comprare ed importare negli Emirati Arabi Uniti componenti elettroniche provenienti dagli USA e dalla Cina, sperando di accelerare il processo di dei pagamenti nella fase di importazione. Questa storia mostrerà come bitcoin può essere utilizzato per importanti pagamenti internazionali da azienda ad azienda relativi a beni fisici.
+
+Bitcoin Mining::
+Jing è uno studente di ingegneria informatica a Shanghai. Ha costruito una "mining rig" per fare mining di bitcoin, utilizza le sue abilità da informatico per avere un reddito supplementare. Questa storia esaminerà la base "industriale" di bitcoin: l'attrezzatura specializzata usata per proteggere il network bitcoin da attacchi informatici e per emettere nuova moneta. 
+
+Ognuna di queste storie è basata su personi reali e su settori commerciali reali che stanno correntemente usando bitcoin per creare nuovi mercati, nuovi settori e soluzioni innovative a problemi economici globali. 
+
+=== Per Iniziare
+
+((("bitcoin","forms of")))To join the bitcoin network and start using the currency, all a user has to do is download an application or use a web application. Because bitcoin is a standard, there are many implementations of the bitcoin client software. There is also a reference implementation, also known as the Satoshi client, which is managed as an open source project by a team of developers and is derived from the original implementation written by Satoshi Nakamoto. 
+
+Le tre forme principali di client bitcoin sono:
+
+Full client:: ((("full nodes")))A full client, or "full node," is a client that stores the entire history of bitcoin transactions (every transaction by every user, ever), manages the users' wallets, and can initiate transactions directly on the bitcoin network. This is similar to a standalone email server, in that it handles all aspects of the protocol without relying on any other servers or third-party services.
+
+Lightweight client:: ((("lightweight client")))A lightweight client stores the user's wallet but relies on third-party–owned servers for access to the bitcoin transactions and network. The light client does not store a full copy of all transactions and therefore must trust the third-party servers for transaction validation. This is similar to a standalone email client that connects to a mail server for access to a mailbox, in that it relies on a third party for interactions with the network. 
+
+Web client:: ((("web clients")))Web clients are accessed through a web browser and store the user's wallet on a server owned by a third party. This is similar to webmail in that it relies entirely on a third-party server. 
+
+.Bitcoin su Cellulari
+****
+((("mobile clients")))((("smartphones, bitcoin clients for")))Mobile clients for smartphones, such as those based on the Android system, can either operate as full clients, lightweight clients, or web clients. Some mobile clients are synchronized with a web or desktop client, providing a multiplatform wallet across multiple devices but with a common source of funds.
+****
+
+La scelta del client bitcoin dipende da quanto controllo l'utente vuole avere sui propri fondi. Un client completo offrirà all'utente il livello più alto di controllo e di indipendenza, ma lascerà il peso di backup e sicurezza interamente sulle sue spalle. All'altro estremo dello spettro di scelte, un client web è il più facile da impostare ed utilizzare, ma il lato negativo di una simile soluzione è l'introduzione di un rischio di controparte, perché la sicurezza e il controllo sui fondi sono condivisi tra utente e gestore del servizio. Se un servizio di wallet su web è compromesso, come è successo in molti casi, gli utenti possono perdere tutti i loro fondi. Viceversa, se un utente utilizza un client indipendente senza adeguate strategie di backup, potrebbe perdere i suoi fondi a causa di una disavventura informatica. 
+
+For the purposes of this book, we will be demonstrating the use of a variety of downloadable bitcoin clients, from the reference implementation (the Satoshi client) to web wallets. Some of the examples will require the use of the reference client, which, in addition to being a full client, also exposes APIs to the wallet, network, and transaction services. If you are planning to explore the programmatic interfaces into the bitcoin system, you will need the reference client.
+
+==== Quick Start
+
+((("bitcoin","wallet setup")))((("wallets","setting up")))Alice, who we introduced in <<user-stories>>, is not a technical user and only recently heard about bitcoin from a friend. She starts her journey by visiting the((("bitcoin.org"))) official website http://www.bitcoin.org[bitcoin.org], where she finds a broad selection of bitcoin clients. Following the advice on the bitcoin.org site, she chooses the lightweight bitcoin client((("Multibit client"))) Multibit. 
+
+Alice segue un link dal sito di bitcoin.org per scaricare e installare Multibit sul suo computer fisso. Multibit è disponibile per computer fissi con Windows, Mac OS, e Linux.
+
+[ATTENZIONE]
+====
+((("wallets","security of")))A bitcoin wallet must be protected by a password or passphrase. There are many bad actors attempting to break weak passwords, so take care to select one that cannot be easily broken. Use a combination of upper and lowercase characters, numbers, and symbols. Avoid personal information such as birth dates or names of sports teams. Avoid any words commonly found in dictionaries, in any language. If you can, use a password generator to create a completely random password that is at least 12 characters in length. Remember: bitcoin is money and can be instantly moved anywhere in the world. If it is not well protected, it can be easily stolen.
+====
+
+Una volta che Alice ha scaricato e installato l'applicazione Multibit, la lancia ed è accolta da una schermata di benvenuto, mostrata nel <<multibit-welcome>>.
+
+[[multibit-welcome]]
+.La schermata iniziale del client bitcoin Multibit
+image::images/msbt_0101.png["MultibitWelcome"]
+
+((("addresses, bitcoin","created by Multibit")))Multibit automatically creates a wallet and a new bitcoin address for Alice, which Alice can see by clicking the Request tab shown in <<multibit-request>>.
+[[multibit-request]]
+.Il nuovo indirizzo bitcoin di Alice, nella tab Request del client Multibit
+image::images/msbt_0102.png["MultibitReceive"]
+
+The most important part of this screen is Alice's _bitcoin address_. Like an email address, Alice can share this address and anyone can use it to send money directly to her new wallet. On the screen it appears as a long string of letters and numbers: +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+. Next to the wallet's bitcoin address is a QR code, a form of barcode that contains the same information in a format that can be scanned by a smartphone camera. The QR code is the black-and-white square on the right side of the window. Alice can copy the bitcoin address or the QR code onto her clipboard by clicking the copy button adjacent to each of them. Clicking the QR code itself will magnify it, so that it can be easily scanned by a smartphone camera. 
+
+Alice può anche stampare il codice QR come mezzo per dare ad altri il proprio indirizzo in modo semplice, senza obbligarli a digitare una lunga stringa di lettere e numeri. 
+
+[TIP]
+====
+((("addresses, bitcoin","sharing")))Bitcoin addresses start with the digit 1 or 3. Like email addresses, they can be shared with other bitcoin users who can use them to send bitcoin directly to your wallet. Unlike email addresses, you can create new addresses as often as you like, all of which will direct funds to your wallet. A wallet is simply a collection of addresses and the keys that unlock the funds within. You can increase your privacy by using a different address for every transaction. There is practically no limit to the number of addresses a user can create.
+====
+
+Alice è ora pronta a usare il suo nuovo wallet bitcoin. 
+
+[[getting_first_bitcoin]]
+==== Ottenere I Tuoi Primi Bitcoin
+
+((("bitcoin","acquiring")))((("currency markets")))It is not possible to buy bitcoins at a bank or foreign exchange kiosks at this time. As of 2014, it is still quite difficult to acquire bitcoins in most countries. There are a number of specialized currency exchanges where you can buy and sell bitcoin in exchange for a local currency. These operate as web-based currency markets and include:
+
+http://bitstamp.net[Bitstamp]:: A European currency market that supports several currencies including euros (EUR) and US dollars (USD) via wire transfer.((("Bitstamp currency market")))
+http://www.coinbase.com[Coinbase]:: A US-based bitcoin wallet and platform where merchants and consumers can transact in bitcoin. Coinbase makes it easy to buy and sell bitcoin, allowing users to connect to US checking accounts via the ACH system.((("Coinbase.com")))
+
+Cryptocurrency exchanges such as these operate at the intersection of national currencies and cryptocurrencies. As such, they are subject to national and international regulations, and are often specific to a single country or economic area and specialize in the national currencies of that area. Your choice of currency exchange will be specific to the national currency you use and limited to the exchanges that operate within the legal jurisdiction of your country.  Similar to opening a bank account, it takes several days or weeks to set up the necessary accounts with these services because they require various forms of identification to comply with((("AML (Anti-Money Laundering) banking regulations")))((("banking regulations and bitcoin")))((("KYC (Know Your Customer) banking regulations"))) KYC (know your customer) and AML (anti-money laundering) banking regulations. Once you have an account on a bitcoin exchange, you can then buy or sell bitcoins quickly just as you could with foreign currency with a brokerage account.
+
+Puoi trovare una lista più completa su http://bitcoincharts.com/markets[bitcoin charts], un sito che offre quotazioni di prezzo e altri dati di mercato di molte decine di currency exchanges. 
+
+Ci sono quattro altri metodi per ottenere bitcoin come nuovo utente:
+
+* Find((("bitcoins, buying for cash"))) a friend who has bitcoins and buy some from him directly. Many bitcoin users start this way. 
+* Utilizzare un servizio privato come localbitcoins.com per trovare un venditore nella vostra zona per comprare bitcoin per contanti con una transazione di persona 
+* Vendi un prodotto o offri un servizio in cambio di bitcoin. Se sei un programmatore, offri le tue conoscenze in programmazione. 
+* Use((("ATMs, bitcoin")))((("bitcoin ATMs"))) a bitcoin ATM in your city.  Find a bitcoin ATM close to you using an online map from http://www.coindesk.com/bitcoin-atm-map/[CoinDesk].
+
+Alice è venuta in contatto con bitcoin tramite un amico e di conseguenza ha un canale facilitato per ottenere i suoi primi bitcoin intanto che aspetta la verifica e l'attivazione del proprio account su un mercato dei cambi californiano. 
+
+[[sending_receiving]]
+==== Inviare e Ricevere Bitcoin
+
+((("bitcoin","sending/receiving", id="ix_ch01-asciidoc1", range="startofrange")))Alice has created her bitcoin wallet and she is now ready to receive funds. Her wallet application randomly generated a private key (described in more detail in <<private_keys>>) together with its corresponding bitcoin address. At this point, her bitcoin address is not known to the bitcoin network or "registered" with any part of the bitcoin system. Her bitcoin address is simply a number that corresponds to a key that she can use to control access to the funds. There is no account or association between that address and an account. Until the moment this address is referenced as the recipient of value in a transaction posted on the bitcoin ledger (the blockchain), it is simply part of the vast number of possible addresses that are "valid" in bitcoin. Once it has been associated with a transaction, it becomes part of the known addresses in the network and Alice can check its balance on the public ledger. 
+
+Alice incontra il suo amico Joe, che le aveva parlato di bitcoin, in un ristorante locale, così da poter scambiare qualche dollaro americano e mettere qualche bitcoin nel suo conto. Lei ha portato una stampa del suo indirizzo e del relativo codice QR, così come visualizzato nel suo wallet. L'indirizzo bitcoin non rappresenta un dato sensibile, dal punto di vista della sicurezza. Può essere lasciato in vista ovunque senza alcun rischio per la sicurezza del suo conto. 
+
+Alice vuole convertire 10 dollari in bitcoin, non correndo il rischio di perdere troppi soldi in questa nuova tecnologia. Alice da una banconota di 10$ a Joe e un foglio stampato con scritto scritto il proprio indirizzo di modo che Joe possa inviarle la somma equivalente di bitcoin.  
+
+((("exchange rate, finding")))Next, Joe has to figure out the exchange rate so that he can give the correct amount of bitcoin to Alice. There are hundreds of applications and websites that can provide the current market rate. Here are some of the most popular:
+	
+http://bitcoincharts.com[Bitcoin Charts]:: ((("bitcoincharts.com")))A market data listing service that shows the market rate of bitcoin across many exchanges around the globe, denominated in different local currencies
+http://bitcoinaverage.com/[Bitcoin Average]:: ((("bitcoinaverage.com")))A site that provides a simple view of the volume-weighted-average for each currency 
+http://www.zeroblock.com/[ZeroBlock]:: ((("ZeroBlock")))Un'applicazione gratuita per Android e iOS che può mostrare il prezzo del bitcoin da diverse exchange (vedi <<zeroblock-android>>)
+http://www.bitcoinwisdom.com/[Bitcoin Wisdom]:: ((("bitcoinwisdom.com")))Un altro servizio di quotazione
+	
+[[zeroblock-android]]
+.ZeroBlock, a bitcoin market-rate application for Android and iOS
+image::images/msbt_0103.png["zeroblock screenshot"]
+	
+Using one of the applications or websites just listed, Joe determines the price of bitcoin to be approximately 100 US dollars per bitcoin. At that rate he should give Alice 0.10 bitcoin, also known as 100 millibits, in return for the 10 US dollars she gave him. 
+
+Once Joe has established a fair exchange price, he opens his mobile wallet application and selects to "send" bitcoin. For example, if using the Blockchain mobile wallet on an Android phone, he would see a screen requesting two inputs, as shown in <<blockchain-mobile-send>>.
+
+* The destination bitcoin address for the transaction
+* La somma di bitcoin da inviare
+
+
+In the input field for the bitcoin address, there is a small icon that looks like a QR code. This allows Joe to scan the barcode with his smartphone camera so that he doesn't have to type in Alice's bitcoin address (+1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+), which is quite long and difficult to type. Joe taps the QR code icon and activates the smartphone camera, scanning the QR code from Alice's printed wallet that she brought with her. The mobile wallet application fills in the bitcoin address and Joe can check that it scanned correctly by comparing a few digits from the address with the address printed by Alice. 
+
+[[blockchain-mobile-send]]
+.Blockchain mobile wallet's bitcoin send screen
+image::images/msbt_0104.png["blockchain mobile send screen"]
+
+Joe then enters the bitcoin value for the transaction, 0.10 bitcoin. He carefully checks to make sure he has entered the correct amount, because he is about to transmit money and any mistake could be costly. Finally, he presses Send to transmit the transaction. Joe's mobile bitcoin wallet constructs a transaction that assigns 0.10 bitcoin to the address provided by Alice, sourcing the funds from Joe's wallet and signing the transaction with Joe's private keys. This tells the bitcoin network that Joe has authorized a transfer of value from one of his addresses to Alice's new address. As the transaction is transmitted via the peer-to-peer protocol, it quickly propagates across the bitcoin network. In less than a second, most of the well-connected nodes in the network receive the transaction and see Alice's address for the first time. 
+
+If Alice has a smartphone or laptop with her, she will also be able to see the transaction. The bitcoin ledger—a constantly growing file that records every bitcoin transaction that has ever occurred—is public, meaning that all she has to do is look up her own address and see if any funds have been sent to it. She can do this quite easily at the((("blockchain.info website"))) blockchain.info website by entering her address in the search box. The website will show her a http://bit.ly/1u0FFKL[page] listing all the transactions to and from that address. If Alice is watching that page, it will update to show a new transaction transferring 0.10 bitcoin to her balance soon after Joe hits Send. 
+
+++++
+<?hard-pagebreak?>
+++++
+
+.Confierme
+****
+((("confirmation of transactions")))At first, Alice's address will show the transaction from Joe as "Unconfirmed." This means that the transaction has been propagated to the network but has not yet been included in the bitcoin transaction ledger, known as the blockchain. To be included, the transaction must be "picked up" by a miner and included in a block of transactions. Once a new block is created, in approximately 10 minutes, the transactions within the block will be accepted as "confirmed" by the network and can be spent. The transaction is seen by all instantly, but it is only "trusted" by all when it is included in a newly mined block.
+****
+
+Alice is now the proud owner of 0.10 bitcoin that she can spend. In the next chapter we will look at her first purchase with bitcoin, and examine the underlying transaction and propagation technologies in more detail.(((range="endofrange", startref="ix_ch01-asciidoc1")))(((range="endofrange", startref="ix_ch01-asciidoc0")))
+

@@ -1,0 +1,61 @@
+[preface]
+Glosario rápido
+
+Este glosario rápido contiene varios términos usados en relación con bitcoin. Estos términos son usados en el libro, agregue una marca para una rápida referencia.
+
+dirección:
+    Una dirección de Bitcoin se parece a: 1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV. Consiste de una cadena de letras y núneros e inicia con un "1" (número uno). Tal como pide a otros que le envien un email a su dirección de email, usted pediría a otros que le envien bitcoin a su dirección de bitcoin.  ((("bitcoin address")))((("address", see="bitcoin address")))((("public key", see="bitcoin address")))
+
+bip:
+    Propuestas de Mejora de Bitcoin: Un grupo de propuestas que los miembros de la comunidad bitcoin han enviado para mejorar bitcoin. Por ejemplo, BIP0021 es una propuesta para mejorar el esquema Identificador de Fuentes Uniforme (URI).((("bip"))) 
+
+bitcoin::
+    El nombre de la unidad de moneda (la moneda), la red, y el software. ((("bitcoin"))) 
+
+bloque::
+    Una agrupación de transacciónes, marcadas con un sello de tiempo, y una huella digital del bloque previo. La cabecera de bloque es hasheada para producir una prueba de trabajo, y con ello validar las transacciones. Los bloques válidos son añadidos a la cadena de bloques principal por consenso de la red.(("block")))
+
+cadena de bloques::
+	Una lista de bloques validados, cada uno conectado con su precedente hasta el bloque génesis.((("cadena de bloques")))
+	
+confirmaciones::
+	Una vez que la transacción es incluída en un bloque, tiene una confirmación. Tan pronto como -otro- bloque se mina en la misma cadena, la transacción tiene dos confirmaciones, y así sigue. Se considera suficiente prueba de que la transacción no será revocada con seis o más confirmaciones.((("confirmaciones")))
+
+dificultad::
+	Una configuración de toda la red que controla cuanta capacidad de computación se requiere para producir la prueba de trabajo.((("dificultad")))
+
+objetivo de dificultad::
+ 	La dificultad en que toda la red de computación encontrará bloques aproximadamente cada 10 minutos.((("objetivo de dificultad")))
+
+recalculación de dificultad::
+	Recalculación de la red de la dificultad que ocurre cada 2.106 bloques y el poder de hasheo de los anteriores 2.106 bloques.((("recalculación de dificultad")))
+	
+comisiones::
+	El emisor de una transacción a menudo incluye una tasa para la red por procesar la transacción solicitada. La mayoría de transacciones requieren una tasa mínima de 0,5 mBTC.((("tasas")))
+
+hash::
+	Una huella digital de alguna entrada binaria.((("hash")))
+
+bloque génesis::
+	El primer bloque de la cadena de bloques, utilizado para inicializar la criptodivisa.((("bloque génesis")))
+	
+minero::
+Un nodo de la red que encuentra pruebas de trabajo válidas para los nuevos boques, mediante hashes reiterados.((("miner")))
+
+red::
+Una red peer-to-peer (de para a par) que propaga las transacciones y bloques a cada nodo de bitcoin en la red.((("red")))
+	
+Prueba de trabajo::
+	Una porción de datos que requiere bastante capacidad de cómputo para ser encontrado. En Bitcoin, los mineros deben encontrar una solución numérica a el algoritmo SHA256 que satisfaga el objetivo de la red, el objetivo de dificultad.((("prueba de trabajo")))
+
+recompensa::
+Una cantidad incluída en cada nuevo bloque como recompensa de la red al minero que encontró la solución a la prueba de trabajo. Actualmente es de 25BTC por bloque.((("recompensa")))
+
+clave secreta (alias clave privada)
+	El número secreto que desbloquea los bitcoins enviados a la dirección correspondiente. Una clave secreta se asemeja a +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("clave secreta")))((("clave privada", see="clave secreta")))
+	
+transacción::
+En términos simples, una transferencia de bitcoins de una dirección a otra. Concretamente, una transacción es una estructura de datos firmada expresando una transferencia de valor. Las transacciones se transmiten a través de la red bitcoin, son recogidas por los mineros e incluidas en bloques que se mantienen permanentes en la blockchain. ((("transacción")))
+
+cartera/monedero::
+El software que guarda todos tus direcciones bitcoin y claves privadas. Úsala para enviar, recibir y guardar tus bitcoin.((("cartera"))) 

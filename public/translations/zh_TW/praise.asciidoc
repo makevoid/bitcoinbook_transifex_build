@@ -1,0 +1,22 @@
+["dedication", role="praise"]
+==「掌握比特幣」的讚美
+
+[quote, Gavin Andresen, Chief Scientist Bitcoin Foundation]
+____
+“當我一般觀眾談到比特幣，我有時會問 "它是如何真正的運作？” 現在對這個問題我有一個很好的答案，因為任何人讀過 _Mastering Bitcoin_ 都會對比特幣是如何運作有更深刻的理解，而且具有更多知識來撰寫下一代的驚人加密貨幣應用程序。“
+____
+
+[quote, Naval Ravikant, Co-founder AngelList]
+____
+“Bitcoin and blockchain technologies are becoming fundamental building blocks for the next generation internet. Silicon Valley's best and brightest are working on it. Andreas' book will help you join the software revolution in the world of finance.” 
+____
+
+[quote, Balaji S. Srinivasan (@balajis), General Partner&#x2c; Andreessen Horowitz]
+____
+“_Mastering Bitcoin_ is the best technical reference available on bitcoin today. And bitcoin is likely to be seen in retrospect as the most important technology of this decade. As such, this book is an absolute must-have for any developer, especially those interested in building applications with the bitcoin protocol. Highly recommended.”
+____
+
+[quote, Roger Ver, Bitcoin Entrepreneur and Investor]
+____
+“The invention of the Bitcoin Blockchain represents an entirely new platform to build upon, one that will enable an ecosystem as wide and diverse as the Internet itself. As one of the preeminent thought leaders, Andreas Antonopoulos is the perfect choice to write this book.”
+____

@@ -1,0 +1,22 @@
+["dedication", role="praise"]
+== Elogio a 'Mastering Bitcoin'
+
+[citazione, Gavin Andresen, Chief Scientist della Bitcoin Foundation]
+____
+"Quando parlo di bitcoin a un pubblico generico, mi chiedono qualche volta 'ma come funziona in sostanza?' Ora ho un'ottima risposta a quella domanda, perchè chiunche legga _Mastering Bitcoin_ avrà una profonda conoscenza di come funziona e sarà ben equipaggiato per scrivere la prossima generazione di sorprendenti applicazioni sulle cryptovalute."
+____
+
+[cit. Naval Ravikant, Co-founder AngelList]
+____
+"Bitcoin e le tecnologie blockchain stanno diventando i mattoni per l'internet di nuova generazione. I migliori e i più brillanti della Silicon Valley stanno lavorando su di esse. Il libro di Andreas vi aiuterà a partecipare nella rivoluzione software che stà avvenendo nel mondo della finanza" 
+____
+
+[cit. Balaji S. Srinivasan (@balajis), General Partner&#x2c; Andreessen Horowitz]
+____
+“_Mastering Bitcoin_ è la migliore referenza tecnica disponibile ad oggi su bitcoin. E bitcoin diventerà presto, molto probabilmente, la più importante tecnologia di questa decade. Come tale, questo libro è assolutamente da avere per ogni programmatore e sviluppatore software, specialmente quelli interessati nel creare applicazioni con il protocollo bitcoin. Assolutamente consigliato."
+____
+
+[cit. Roger Ver, Bitcoin Entrepreneur and Investor]
+____
+“L'invenzione della Blockchain Bitcoin rappresenta una piattaforma completamente nuova su cui costruire, una che abiliterà un'ecosistema così ampio e diversificato come internet stesso. Come uno dei più preminenti leader del pensiero che sta attorno a bitcoin, Andreas Antonopolous è la scelta perfetta per un libro del genere."
+____

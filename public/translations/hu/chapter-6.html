@@ -1,0 +1,1043 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="bitcoin_network_ch06">A bitcoin hálózat</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_peer_to_peer_hálózati_felépítés">Peer-to-peer hálózati felépítés</h3>
+<div class="paragraph"><p>A bitcoin az Internetre épülő peer-to-peer hálózati felépítéssel rendelkezik. A peer-to-peer kifejezés azt jelenti, hogy a hálózatban részt vevő csomópontok egyenrangúak, vagyis nincsenek „különleges” csomópontok, és mindegyik csomópont kiveszi a részét abból a teherből, amit a hálózati szolgáltatások nyújtása jelent. A hálózat csomópontjai „egyforma” topológiájú hálózatban kapcsolódnak egymáshoz, nincsenek „szerverek”, központosított szolgáltatások, és a hálózaton belül nincs alá- és fölérendeltség. A peer-to-peer hálózatok csomópontjai egyszerre szolgáltatók és fogyasztók, ahol a kölcsönösség a részvétel egyik ösztönzője. A peer-to-peer hálózatok nagyon ellenállóak, decentralizáltak és nyitottak. A P2P hálózati architektúrára kiváló példát jelentett maga a korai Internet, ahol az IP hálózat csomópontjai egyenlőek voltak. Manapság az Internet felépítése hierarchikusabb, de az Internet Protokoll még mindig őrzi az egynemű topológia lényegét. A bitcoinon kívül a P2P technológia legnagyobb és legsikeresebb alkalmazása a file megosztás: itt a Napster volt az architektúra úttörője, és a bittorrent a legutóbbi fejleménye.</p></div>
+<div class="paragraph"><p>A Bitcoin P2P hálózati felépítése sokkal több, mint topológia kérdése. A bitcoin egy peer-to-peer digitális pénzügyi rendszerként lett megtervezve, és a hálózat felépítése ennek az alapjellemzőnek a tükröződése és a megtestesülése. Az irányítás decentralizálása tervezési alapelv. Ez az alapelv csak egy hierarchia nélküli, decentralizált P2P konszenzus révén valósítható meg és tartható fönn.</p></div>
+<div class="paragraph"><p>A „bitcoin hálózat” kifejezés a bitcoin P2P protokollt futtató csomópontok halmazát jelenti. A bitcoinban a P2P protokollon túlmenően egyéb protokollok is vannak, pl. a Stratum, melyet a bányászatnál vagy pehelysúlyú mobil pénztárcáknál alkalmaznak. Ezeket a további protokollokat a bitcoin hálózathoz kapcsolódó gateway router szolgáltatások biztosítják, melyek a P2P protokollon keresztül kapcsolódnak a bitcoin hálózathoz, és a hálózatot az egyéb protokollokat futtató csomópontok irányában terjesztik ki. Például a Stratum szerverek a bányászatot végző Stratum csomópontokat kapcsolják össze a Stratum protokoll segítségével a fő bitcoin hálózattal, vagyis a Stratum protokollt a bitcoin P2P protokolljával kötik össze. A bitcoin P2P protokolljára, a bányatársaságok protokolljaira, a Stratum protokollra és a bitcoin rendszer részeit összekötő egyéb protokollokra együtt a „kiterjesztett bitcoin hálózat” kifejezéssel hivatkozunk.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_csomópont_típusok_és_szerepek">Csomópont típusok és szerepek</h3>
+<div class="paragraph"><p>Noha a bitcoin P2P hálózatában lévő csomópontok egyenértékűek, de attól függően, hogy milyen működési módokat támogatnak, különböző „szerepeket” játszhatnak. Egy bitcoin csomópont a következő funkciókat valósíthatja meg: routing, blokklánc adatbázis, bányászat, pénztárca szolgáltatások. Lent a <a href="#full_node_reference">[full_node_reference]</a> ábrán egy teljes csomópont látható, mely mind a négy funkciót támogatja:</p></div>
+<div class="olist arabic" id="full_node_reference"><ol class="arabic">
+<li>
+<p>
+Egy bitcoin hálózati csomópont, amely mind a négy funkcióval rendelkezik: hálózati router, blokklánc adatbázis, bányászat és pénztárca (pénztárca, bányász, teljes blokklánc, hálózati router csomópont)
+<span class="image">
+<img src=":images/msbt_0601.png" alt="FullNodeReferenceClient_Small" />
+</span>
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>A hálózat összes csomópontja tartalmazza a router funkciót, hogy a csomópont részt vehessen a hálózatban. A csomópontok egyéb funkciókat is tartalmazhatnak. Valamennyi csomópont ellenőrzi és továbbítja a tranzakciókat és blokkokat, valamint összeköttetéseket hoz létre és tart fönn a többi hálózati csomóponttal. A fenti <a href="#full_node_reference">[full_node_reference]</a> teljes csomópont esetében a router funkciót egy „Hálózati router csomópont” feliratú sárga kör jelzi.</p></div>
+<div class="paragraph"><p>Vannak olyan csomópontok – ezeket teljes csomópontoknak hívjuk – melyek teljes és naprakész másolatot tartanak fönn a blokkláncról. A teljes csomópontok külső hivatkozás nélkül, önállóan és hitelesen képesek bármely tranzakció ellenőrzésére. Némelyik csomópont csak a blokklánc egy részhalmazát kezeli, és a tranzakciókat az ún. Egyszerűsített Fizetési Ellenőrzés módszerével ellenőrzi (SPV, Simplified Payment Verification). Ezek a csomópontok a SPV vagy másképpen pehelysúlyú csomópontok. A fenti teljes csomópont esetében a blokklánc adatbázis funkciót egy „Teljes blokklánc” feliratú kék kör jelzi.</p></div>
+<div class="paragraph"><p>A bányász csomópontok új blokkokat hoznak létre oly módon, hogy célhardvert használnak a munkabizonyíték (proof-of –work) algoritmus megoldására. Némelyik bányász csomópont egyúttal teljes csomópont is, míg a többiek pehelysúlyú csomópontok, melyek társult bányászatban (pooled mining) vesznek részt, és egy szerverre bízzák a teljes csomópont kezelését. A bányász funkciót a fenti teljes csomópont esetén a „Bányász” feliratú fekete kör jelzi.</p></div>
+<div class="paragraph"><p>A teljes csomópontok pénztárcát is tartalmazhatnak. Az asztali bitcoin kliensek esetében általában ez a helyzet. Egyre több pénztárca, különösen azok, melyek erőforrásokban korlátozott eszközökön, pl. okostelefonokon futnak, SPV csomópontok. A pénztárca funkciót fent egy „Pénztárca” feliratű zöld kör mutatja.</p></div>
+<div class="paragraph"><p>A bitcoin P2P protokollhoz tartozó leggyakoribb csomópont típusokon kívül vannak olyan szerverek és csomópontok, melyek egyéb protokollokat futtatnak, pl. specializált bányász-protokollokat és pehelysúlyú kliens elérési protokollokat.</p></div>
+<div class="paragraph"><p>A <a href="#node_type_ledgend">[node_type_ledgend]</a> kitejesztett bitcoin hálózat különféle csomópont-típusai (Referencia kliens (Bitcoin Core): pénztárcát, bányászt, teljes blokklánc adatbázist és hálózati router csomópontot tartalmaz a bitcoin P2P hálózatban. | Teljes blokklánc csomópont: teljes blokklánc adatbázist és hálózati router csomópontot tartalmaz a a bitcoin P2P hálózatban. | Magányos bányász: bányász fuknciókat valamint a teljes blokklánc adatbázist és egy a bitcoin P2P hálózati csomópontot tartalmaz. | Pehelysúlyú (SPV) pénztárca: egy pénztárcát és a bitcoin P2P protokollon alapúló hálózati csomópontot tartalmaz, blokklánc nélkül. | Bányatársasági szerverek: gateway routerek, melyek a bitcoin P2P hálózatot más protokollokat futtató csomópontokkal kapcsolják össze, pl. bányatársaságot alkotó csomópontokkal vagy Stratum csomópontokkal | Bányász csomópontok: bányászati funkciókat tartalmaznak, blokklánc nélkül, a Stratum (S) protokoll csomóponttal vagy más bányatársasági (pool, P) protokollal együtt. | Pehelysúlyú (SPV) Stratum pénztárca: egy pénztárcát és egy hálózati csomópontot tartalmaz, amely a Stratum protokollra épül. Blokkláncot nem tartalmaz.)</p></div>
+</div>
+<div class="sect2">
+<h3 id="_a_kiterjesztett_bitcoin_hálózat">A kiterjesztett bitcoin hálózat</h3>
+<div class="paragraph"><p>A P2P protokollt futtató fő bitcoin hálózat kb. 7000 és 10&#8217;000 közötti csomópontból áll. A csomópontok a bitcoin referencia kliens (Bitcoin Core) különféle változatait futtatják. Néhány száz további csomópont a bitcoin P2P protokoll különféle egyéb megvalósításait futtatja, ilyen pl. a BitcoinJ, a Libbitcoin és a btcd. A bitcoin P2P hálózat csomópontjainak kis százaláka bányászatot is végez, vagyis egymással versenyezve részt vesz a bányászatban, ellenőrzi a tranzakciókat és új blokkokat hoz létre. Számos nagy cég úgy teremt kapcsolatot a bitcoin hálózattal, hogy a Bitcoin Core kliensen alapuló teljes csomópontokat futtat, amelyekben szerepel a blokklánc és a hálózat kezelés, de hiányzik belőlük a bányászati és pénztárca funkció. Ezek a csomópontok a hálózat határán lévő routerekként használhatók, és különféle egyéb szolgáltatások ráépítését teszik lehetővé (pénzváltók, pénztárcák, blokk explorer-ek, fizetés feldolgozás).</p></div>
+<div class="paragraph"><p>A kiterjesztett bitcoin hálózat tartalmazza a fent leírt, bitcoin P2P protokollt futtató hálózati csomópontokat, valamint a specializált protokollokat futtató csomópontokat egyaránt. A bitcoin P2P hálózathoz számos bányatársaság szervere kapcsolódik, valamint olyan protokoll gateway-ek, melyek a csomópontokat az egyéb protokollokat futtató csomópontokkal kötik össze, többnyire bányász csomópontokkal (lásd a <a href="#ch8">[ch8]</a> részt), vagy pehelysúlyú kliensekkel, melyek nem tartalmazzák a blokklánc teljes másolatát.</p></div>
+<div class="paragraph"><p>A &lt;&lt;bitcoin_network&gt; a különféle csomópont típusokat, gateway-eket, routereket, pénztárcákat, valamint a közöttük kapcsolatot teremtő protokollokat mutatja.</p></div>
+<div class="imageblock" id="node_type_ledgend">
+<div class="content">
+<img src="images/msbt_0602.png" alt="BitcoinNodeTypes" />
+</div>
+<div class="title">Figure 1. Különféle csomópont típusok a <a href="#bitcoin_network">[bitcoin_network]</a> kiterjesztett bitcoin hálózaton. (Balról jobbra, felülről lefelé: teljes csomópont, szingli bányászok, Bitcoin Core kliens, Stratum hálózat, Stratum bányászat, pehelysúlyú pénztárcák, bányatársaság bányászai, bányatársaság, teljes csomópont, Edge routerek, SPV pénztárca)</div>
+</div>
+<div class="imageblock" id="bitcoin_network">
+<div class="content">
+<img src="images/msbt_0603.png" alt="BitcoinNetwork" />
+</div>
+<div class="title">Figure 2. A különféle csomópont típusokat, gateway-eket és protokollokat tartalmazó kiterjesztett bitcoin hálózat. (Balról jobbra, felülről lefelé: teljes csomópont, szingli bányászok, Bitcoin Core kliens, Stratum hálózat, Stratum bányászat, pehelysúlyú pénztárcák, bányatársaság bányászai, bányatársaság, teljes csomópont, Edge routerek, SPV pénztárca)</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hálózat_felderítés">Hálózat felderítés</h3>
+<div class="paragraph"><p>Ahhoz, hogy egy új csomópont részt tudjon venni a hálózatban, a csomópontnak az indulásakor fel kell derítenie, hogy milyen más csomópontok vannak a hálózatban. A folyamat beindításához az új csomópontnak fel kell derítenie a hálózat legalább egy létező csomópontját, és kapcsolódnia kell hozzá. A csomópontok földrajzi elhelyezkedése lényegtelen, a bitcoin hálózat topológiáját nem a földrajzi hely határozza meg. Ezért a csomópont véletlenszerűen, bármelyik létező bitcoin csomópontot választhatja.</p></div>
+<div class="paragraph"><p>A csomópontok egy ismert peer-hez TCP összeköttetéssel kapcsolódnak, általában a 8333-as porton (amely a bitcoin „jól ismert” portja), vagy egy alternatív porton, ha megadtak ilyet. Az összeköttetés létrejötte után a csomópont a version (verzió) üzenet elküldésével egy „kézfogást” indít, lásd a <a href="#network_handshake">[network_handshake]</a> ábrát. A <tt>version</tt> üzenet azonosító adatokat tartalmaz. Ezek a következők:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<tt>PROTOCOL_VERSION</tt>:: a kliens által „beszélt” protokoll verzióját definiáló konstans (pl. 70002)
+</p>
+</li>
+<li>
+<p>
+<tt>nLocalServices</tt>::, a csomópont által támogatott helyi szolgáltatások listája, jelenleg csupán a <tt>NODE_NETWORK</tt> (hálózati csomópont) az egyetlen eleme
+</p>
+</li>
+<li>
+<p>
+<tt>nTime</tt>::, az aktuális idő
+</p>
+</li>
+<li>
+<p>
+<tt>addrYou</tt>::, a távoli csomópont IP címe, ahogyan azt a csomópont látja
+</p>
+</li>
+<li>
+<p>
+<tt>addrMe</tt>::, a helyi csomópont IP címe, ahogyan azt a helyi csomópont látja
+</p>
+</li>
+<li>
+<p>
+<tt>subver</tt>::, az al-verzió, amely a csomóponton futó szoftver típusát mutatja (pl. "/Satoshi:0.9.2.1/“)
+</p>
+</li>
+<li>
+<p>
+<tt>BestHeight</tt>::, a csomópont blokkláncának a magassága
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>(A <tt>version</tt> hálózati üzenetre a <a href="http://bit.ly/1qlsC7w">GitHub</a> web helyen látható példa.)</p></div>
+<div class="paragraph"><p>A peer csomópont egy <tt>verack</tt> üzenettel válaszol, és opcionálisan elküldi a saját <tt>version</tt> üzenetét, ha szeretné viszonozni a kapcsolatot, és szeretne ő is peerként kapcsolódni.</p></div>
+<div class="paragraph"><p>Hogyan találja meg egy új csomópont a peer-eket? Az első módszert a DNS-ek lekérdezése jelenti bizonyos "DNS magok" használatával, melyek olyan DNS szerverek, melyek bitcoin csomópontok IP címeinek a listáját adják vissza. A DNS magok némelyike stabil bitcoin csomópontok statikus listáját adja vissza. Vannak olyan DNS magok is, melyek a BIND (Berkeley Internet Name Daemon) egyedi megvalósításai, és bitcoin csomópontok véletlen részhalmazának a címeit adják vissza. Ezek a címek egy crawler-ből vagy egy hosszú ideje futó bitcoin csomópontról származnak. A Bitcoin Core kliens öt különböző DNS mag nevét tartalmazza. A DNS magok tulajdonosainak és megvalósításainak a változatos volta biztosítja a kezdeti bootstap folyamat magas szintű megbízhatóságát.  A Bitcoin Core kliensben a <tt>-dnsseed</tt> kapcsoló szabályozza, hogy a kliens használja-e a DNS magokat, és alapértelemben 1 az értéke.</p></div>
+<div class="paragraph"><p>Ha viszont az induló csomópont semmit sem tud a hálózatról, akkor legalább egy bitcoin csomópont IP címét meg kell adni neki, és ezután már további bemutatkozások révén a többi csomóponttal is kapcsolatba tud lépni. A <tt>-seednode</tt> parancssori argumentum azt jelzi, hogy a megadott csomóponthoz csak a bemutatkozás kedvéért szeretnénk hozzzákapcsolódni, és szeretnénk magként használni. Muután a kezdeti mag csomópont segítségével megtörténtek a bemutatkozások, a kliens lekapcsolódik róla, és az újonnan felfedezett peer-eket fogja használni.</p></div>
+<div class="imageblock" id="network_handshake">
+<div class="content">
+<img src="images/msbt_0604.png" alt="NetworkHandshake" />
+</div>
+<div class="title">Figure 3. A peer-ek közötti kezdeti kézfogás</div>
+</div>
+<div class="paragraph"><p>Miután már létrejött egy vagy több kapcsolat, az új csomópont egy <tt>addr</tt> üzenetet fog küldeni a szomszédainak, amely tartalmazza a saját IP címét. A szomszédok az <tt>addr</tt> üzenetet tovább küldik a saját szomszédaiknak, biztosítván ezáltal, hogy a kapcsolódó csomópontok jól ismertek és jobban kapcsolódók legyenek. Az újonnan kapcsolódó csomópont ezen kívül egy <tt>getaddr</tt> üzenetet is küldhet a szomszédainak, amivel azt kéri tőlük, hogy küldjék el neki a többi peer IP címeit. Ily módon a csomópont meg tudja keresni, mely csomópontokhoz kapcsolódhat, valamint hírt tud adni a saját létéről a hálózaton a célból, hogy a többi csomópont is képes legyen őt megtalálni. Az <a href="#address_propagation">[address_propagation]</a> ábrán a cím felderítési protokoll látható.</p></div>
+<div class="imageblock" id="address_propagation">
+<div class="content">
+<img src="images/msbt_0605.png" alt="AddressPropagation" />
+</div>
+<div class="title">Figure 4. Címterjedés és hálózat felderítés</div>
+</div>
+<div class="paragraph"><p>Egy csomópontnak kapcsolódnia kell pár darab különböző csomóponthoz, hogy különféle útvonalakon kapcsolódhasson a bitcoin hálózathoz. Az útvonalak nem megbízhatóak, csomópontok jönnek és mennek, emiatt a csomópontnak folytatnia kell az új csomópontok felderítését, mivel a régi kapcsolatai bármikor megszűnhetnek, és emellett segítenie kell a többi csomópont elindulását. Az induláshoz csak egyetlen összeköttetés szükséges, mivel az első csomópont képes bemutatkozásokat felajánlani a peer csomópontoknak, ezek a peer-ek pedig képesek további bemutatkozásokat felajánlani. A hálózati erőforrások szempontjából szükségtelen és egyúttal pazarló, ha a csomópont pár darab csomópontnál több csomóponthoz kapcsolódik . Az indulás után a csomópont emlékszik a legutolsó sikeres peer kapcsolataira, emiatt újraindítás után az előző peer hálózattal ismét gyorsan létre tudja hozni a kapcsolatait. Ha az előző peer-ek egyike sem válaszol a kapcsolódási kérésére, akkor a csomópont a mag csomópontokat használja az újrainduláskor.</p></div>
+<div class="paragraph"><p>A Bitcoin Core klienst futtató csomóponton a peer kapcsolatok a  <tt>getpeerinfo</tt> paranccsal listázhatók ki:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>A felhasználók egy IP címekből álló lista megadásával, a <tt>-connect=&lt;IP cím&gt;</tt> opcióval tudják felülbírálni a peer-ek automatikus kezelését. Ennek az opciónak a használatakor a csomópont csak a megadott IP címekhez fog kapcsolódni, és nem fogja automatikusan felderíteni és karbantartani a peer kapcsolatokat.</p></div>
+<div class="paragraph"><p>Ha egy kapcsolaton nincs forgalom, akkor a kapcsolat fenntartása érdekében a csomópont periodikus üzenetküldést végez rajta. Ha a csomópont egy kapcsolata már több mint 90 perce nem volt használva, akkor a csomópont a kapcsolatot szétkapcsolt állapotúnak tekinti, és egy új peer keresésébe kezd. Ily módon a hálózat dinamikusan alkalmazkodni képes a tranziens csomópontokhoz, a hálózati problémákhoz, és központi irányítás nélkül, organikusan képes nőni vagy csökkenni.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_teljes_csomópontok">Teljes csomópontok</h3>
+<div class="paragraph"><p>A teljes csomópontok olyan csomópontok, melyek az összes tranzakciót tartalmazó, teljes blokkláncot kezelik. Ezeket a csomópontokat pontosabban „a teljes blokkláncot kezeló csomópontok”-nak kellene hívni. A bitcoin korai éveiben az összes csomópoont teljes csomópont volt, jelenleg a Bitcoin Core kliens kezeli a teljes blokkláncot. Az utóbbi két évben azonban a bitcoin kliensek új fajtái jöttek létre, melyek nem kezelik a teljes blokkláncot, hanem pihesúlyú kliensként futnak. Ezeket a következő részben fogjuk részletesebben megvizsgálni.</p></div>
+<div class="paragraph"><p>A teljes blokkláncot kezelő csomópontok a bitcoin blokklánc egy teljes és naprakész másolatát kezelik, melyben az összes tranzakció megtalálható. A blokkláncot egymástól függetlenül építik föl és ellenőrzik, az első blokktól (a genezis blokktól) kezdve, egészen a hálózatban ismert legutolsó blokkig bezárólag. Egy teljes blokkláncot kezelő csomópont önmaga képes hiteles módon bármelyik tranzakció ellenőrzésére, anélkül, hogy ehhez valamilyen másik csomópontot vagy információs forrást kellene igénybe vennie.A teljes csomópont a hálózatra támaszkodva kapja az új tranzakciós blokkokról az értesítéseket. Ezeket ellenőrzi, makj beépíti a saját, lokális blokkláncába.</p></div>
+<div class="paragraph"><p>Teljes csomópont futtatásával érezhetjük igazán, milyen a bitcoin: az összes tranzakció függetlenül ellenőrizhető, és ehhez semmilyen más rendszerre sem kell támaszkodnunk, és  semmilyen más rendszerben nem kell megbíznunk. Könnyű megmondani, hogy teljes csomópontot futtatunk-e, mert több, mint 20 Gbájt háttértárra (diszk területre) van szükség a teljes blokklánc tárolásához. Ha a kliens sok diszk területet fogyaszt és 2-3 napra van szüksége, hogy „szinkronizálja” magát a hálózattal, akkor teljes csomópontot kezelő kliensről van szó. A központi szervezetektől való teljes függetlenségnek és szabadságnak ez az ára.</p></div>
+<div class="paragraph"><p>A teljes blokkláncot kezelő klienseknek van néhány alternatív megvalósítása, melyek a Bitcoin Core klienstől eltérő programozási nyelvet vagy szoftver architektúrát használnak. De a  Bitcoin Core kliens, másképpen a Satoshi kliens referencia implementáció fordul elő a leggyakrabban. A bitcoin hálózat csomópontjainak több, mint 90 %-a a Bitcoin Core különféle változatait futtatja. A <tt>version</tt> üzenetben a „Satoshi” al-verzió string azonosítja őket, a <tt>getpeerinfo</tt> parancsban pedig pl. a <tt>/Satoshi:0.8.6/</tt>, amint azt korábban láttuk.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_leltár_egyeztetés">„Leltár” egyeztetés</h3>
+<div class="paragraph"><p>Miután a csomópont hozzákapcsolódott a peer-jeihez, elsőként egy teljes blokkláncot próbál létrehozni. Ha egy vadonatúj csomópontról van szó, amelynek egyáltalán nincs még blokklánca, akkor csak egyetlen blokkot ismer (a genezis blokkot) , amely statikusan be van ágyazva a kliens szoftverbe. A 0-ik blokktól, a genezis blokktól kezdve az új csomópontnak blokkot százezreit kell letöltenie ahhoz, hogy szinkronizálhassa magát a hálózattal és újraépíthesse a teljes blokkláncot.</p></div>
+<div class="paragraph"><p>A „szinkronizálás” folyamata a <tt>version</tt> üzenettel kezdődik, amely tartalmazza a <tt>BestHeight</tt>-et, a csomópont aktuális blokkláncának a magasságát (a blokkok számát). A csomópont a peer-jeitől kapott <tt>version</tt> üzenetből látja, hogy a peer-eknek hány blokkjuk van, és össze tudja hasonlítani azzal, hogy neki hány blokkja van a saját blokkláncán. A peer csomópontok egy <tt>getblocks</tt> üzenetet váltanak egymással, amely tartalmazza a lokális blokkláncuk legfelső blokkjának hash-ét (ujjlenyomatát). A kapott hash az egyik peerben egy olyan blokkhoz fog tartozni, amely nem a legfelső blokk, hanem egy régebbi blokk, ebből a peer arra következtet, hogy a saját lokális blokklánca hosszabb, mint a többi peer-é.</p></div>
+<div class="paragraph"><p>Az a peer, amelynek hosszabb a blokklánca, több blokkot tartalmaz, mint a többi csomópont, és meg tudja állapítani, hogy a többi csomópontnak mely blokkokra van szüksége ahhoz, hogy „felzárkózzanak”. Megállapítja, hogy melyik az első 500 megosztandó blokk, és egy <tt>inv</tt> (inventory, leltár) üzenettel elküldi a blokkok hash értékeit. Az a csomópont, amelyben hiányoznak ezek a blokkok, úgy tudja beszerezni őket, hogy <tt>getdata</tt> üzenetek sorozatát adja ki. Egy <tt>getdata</tt> üzenet elkéri a teljes adatblokkot, és a kért blokkot az <tt>inv</tt> üzenetből származó hash-sel azonosítja.</p></div>
+<div class="paragraph"><p>Tegyük fel például, hogy a csomópont csak a genezis blokkot tartalmazza. A peer-jeitől egy <tt>inv</tt> üzenetet fog kapni, amely lánc következő 500 blokkjának a hash-eit tartalmazza. Megkezdi a vele kapcsolatban lévő peer-ektől a blokkkok lekérését oly módon, hogy elosztja a terhelést, nehogy bármelyik peer-t túlterhelje a kéréseivel. Számon tartja, hogy minden egyes peer kapcsolatnál hány darab blokk van „úton”, vagyis hány darab blokk van, melyet lekért, de még nem kapott meg, és ellenőrzi, hogy a számuk nehogy egy határnál  (<tt>MAX_BLOCKS_IN_TRANSIT_PER_PEER</tt>) nagyobb legyen. Ily módon ha a csomópontnak sok blokkra van szüksége, csak akkor kér újabbakat, ha az előző kérései már teljesültek, ami lehetővé teszi, hogy a peer-ek szabályozhassák a küldés ütemét és a hálózat ne terhelődjön túl. A blokkok megérkezésekor a csomópont hozzáadja a blokkokat a blokklánchoz, amint azt a  <a href="#blockchain">[blockchain]</a> című fejezetben látni fogjuk. Amint a lokális blokklánc fokozatosan felépül, a csomópont további blokkokat kér és kap. A folyamat addig folytatódik, amíg a csomópont be nem éri a hálózat többi részét.</p></div>
+<div class="paragraph"><p>A lokális blokklánc és a peer-ek blokkláncainak összehasonlítása, valamint a hiányzó blokkok lekérése akkor megy végbe, ha egy csomópont egy időre offline állapotba került. Függetlenül attól, hogy a csomópont csak néhány percig volt offline, és csak pár blokkja hiányzik, vagy hónapokig, és néhány ezer blokkja hiányzik, a folyamat a <tt>getbloks</tt> küldésével kezdődik, válaszként egy <tt>inv</tt> érkezik, majd megtörténik a hiányzó blokkok letöltése. Az  <a href="#inventory_synchronization">[inventory_synchronization]</a> a leltár és blokk terjedési protokollt mutatja.</p></div>
+</div>
+<div class="sect2">
+<h3 id="spv_nodes">Egyszerűsített fizetés ellenőrzést használó csomópontok (SPV csomópontok)</h3>
+<div class="paragraph"><p>Nem minden csomópont tudja a teljes blokkláncot tárolni. Sok bitcoin kliens olyan eszközökön fut, pl. okostelefonokon, tablet-eken vagy beágyazott rendszereken, amelyeknek a hely- és teljesítmény korlátai vannak. Az ilyen eszközök egyszerűsített fizetés ellenőrzési módszert (SPV) használnak, amely lehetővé teszi a teljes blokklánc tárolása nélküli működést. Ezeket a klienseket SPV klienseknek vagy pehelysúlyú klienseknek nevezzük. Ahogy a bitcoin egyre elterjedtebbé vált, az SPV csomópontok lettek a leggyakrabban előforduló bitcoin csomópontok, különösen a bitcoin pénztárcák esetén.</p></div>
+<div class="paragraph"><p>Az SPV csomópontok csak a blokkok blokkfejeit töltik le, az egyes blokkokba befoglalt tranzakciókat nem. Az így kapott, tranzakciók nélküli blokklánc 1000-szer kisebb a teljes blokkláncnál. Az SPV csomópontok nem tudnak teljes képet alkotni az összes elkölthető UTXO-ról, mivel nem tudnak a hálózatban lévő tranzakciókról. Az SPV csomópontok a tranzakciókat egy kicsit eltérő módon ellenőrzik, és ehhez olyan peer-eket használnak, melyek kívánság esetén a blokklánc releváns részeiről részleges képet szolgáltatnak.</p></div>
+<div class="imageblock" id="inventory_synchronization">
+<div class="content">
+<img src="images/msbt_0606.png" alt="InventorySynchronization" />
+</div>
+<div class="title">Figure 5. Blokklánc szinkronizálás a a peer blokkjainak a letöltésével</div>
+</div>
+<div class="paragraph"><p>Hasonlatképpen: a teljes csomópont olyan, mint egy idegen városban lévő turista, akinek részletes térképe van mindegyik utcáról és címről. Ezzel szemben az SPV csomópont olyan, mint egy idegen városban lévő turista, aki véletlenszerűen idegeneket kérdez meg, hogy merre kell mennie, és csak a főutcát ismeri. Mindkét turista ellenőrizni tudja egy utca meglétét, ha odamegy, de a térkép nélküli turista nem tudja, hogy mi van a mellékutcákban és nem tudja, hogy milyen egyéb utcák léteznek. Ha a térkép nélküli turista a Kossuth út 23-as szám előtt áll, nem tudhatja, hogy vannak-e a városban egyéb „Kossuth út 23” címek, és hogy ez a cím a helyes cím-e. A térkép nélküli turista akkor jár a legjobban, ha megkérdez sok embert, és reménykedik abban, hogy a többségük nem vágja át.</p></div>
+<div class="paragraph"><p>Az egyszerűsített fizetés ellenőrzés a tranzakciókat a blokkláncokon belüli <em>mélységük</em> alapján ellenőrzi, nem pedig a <em>magasságuk</em> alapján. Míg egy teljes blokkláncot tartalmazó csomópont képes a blokkok és tranzakciók ezreiből álló,  időben egészen a genezis blokkig visszanyúló, teljesen ellenőrzött láncok létrehozására, egy SPV csomópont csupán a blokkfejek láncát fogja ellenőrizni, de a tranzakciókét nem, és a blokkfejeket fogja kapcsolatba hozni a kérdéses tranzakcióval.</p></div>
+<div class="paragraph"><p>Például, ha a 300&#8217;000-ik blokkban lévő egyik tranzakcióról van szó, egy teljes csomópont a 300&#8217;000-ik blokktól egészen a genezis blokkig visszamenően elvégzi az elemzést, és az UTXO-król egy teljes adatbázist épít, vagyis az UTXO elköltetlenségének ellenőrzése révén állapítja meg, hogy a tranzakció érvényes-e vagy sem. Egy SPV csomópont ezzel szemben a tranzakció és az őt tartalmazó blokk közötti kapcsolatot egy <em>Merkle út</em> használatával teremti meg (lásd a <a href="#merkle_trees">[merkle_trees]</a> részt). Ezután az SPV csomópont vár mindaddig, amíg a tranzakciót tartalmazó 300&#8217;000-ik blokk tetejére további hat blokk nem kerül, és a tranzakciót úgy ellenőrzi, hogy a 300&#8217;006 és 300&#8217;001 blokkok között megállapítja a tranzakció mélységét. Abból, hogy a hálózat többi csomópontja elfogadta a 300&#8217;000-ik blokkot, és azután a megfelelő munkavégzéssel további 6 blokkot hozott létre a 300&#8217;000-ik blokk tetején, implicit módon következik, hogy a tranzakció nem kettős költésből származik.</p></div>
+<div class="paragraph"><p>Egy SPV csomóponttal nem lehet elhitetni, hogy egy blokkban létezik egy tranzakció, ha az valójában nem létezik. Az SPV csomópont úgy ellenőrzi egy tranzakció meglétét, hogy lekéri a tranzakció Merkle útját, és ellenőrzi a blokkláncban lévő munkabizonyítékokat. De egy tranzakció „rejtve” is maradhat egy SPV csomópont számára. Egy SPV csomópont pontosan meg tudja állíptani, hogy létezik-e egy tranzakció, de azt nem tudja ellenőrizni, hogy nem létezik olyan tranzakció, amely ugyanezt az UTXO-t próbálja duplán elkölteni, mert nem rendelkezik az összes tranzakcióval. Az SPV csomópontok ellen ily módon DoS (denial of service, szolgáltatás megtagadási) támadás vagy kettős költési támadás indítható. Ahhoz, hogy ezt ki lehessen védeni, az SPV csomópontnak számos csomóponttal kell véletlenszerűen kapcsolatba lépnie, így növelni tudja annak a valószínűségét, hogy legalább egy becsületes csomópont van közöttük. Az SPV csomópontok emiattt sérülékenyek a hálózat szétszakadási támadásokkal vagy Sybil támadásokkal szemben, amelyeknél hamis csomópontokra vagy hamis hálózatokra kapcsolódnak, és nem tudják elérni a becsületes csomópontokat vagy a valódi bitcoin hálózatot.</p></div>
+<div class="paragraph"><p>Gyakorlati szempontból a hálózattal szoros kapcsolatban lévő SPV csomópontok elég biztonságosak, és jó kompromisszumot jelentenek az erőforrás felhasználás, a kényelem és a biztonság között. Azoknak, akiknek valóban fontos a biztonság, semmi sem pótólhatja egy teljes blokkláncból álló csomópont üzemeltetését.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A teljes blokkláncból álló csomópont úgy ellenőriz egy tranzakciót, hogy a tranzakció alatti blokkok ezreiből álló lánc vizsgálata révén megbizonyosodik róla, hogy az UTXO valóban elköltetlen, míg az SPV csomópont a blokk fölött lévő néhány blokk segítségével azt ellenőrzi, hogy milyen mélyen van eltemetve a blokk.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>A blokkfejeket az SPV csomópontok a nem a <tt>getblocks</tt>, hanem a <tt>getheaders</tt> üzenetekkel kérdezik le. Az a peer, amelyik válaszol, max. 2000 blokkfejet küld el egyetlen headers üzenetben. A folyamat egyébként ugyanolyan, mint amit a teljes csomópontok használnak a teljes blokkok lekérésére. Az SPV csomópontok egy szűrőt is beállítanak a peer-ekkel létesített kapcsolataiknál, melyek kiszűrik a jövőbeli blokkokat és a peer-ek által küldött tranzakciókat. Az SPV csomópontok a számukra érdekes tranzakciókat a <tt>getdata</tt> kéréssel kérdezik le. A peer válaszként egy <tt>tx</tt> üzenetet hoz létre, amely a tranzakciót tartalmazza. Az <a href="#spv_synchronization">[spv_synchronization]</a> ábrán a blokkfejlécek szinkronizálása látható.</p></div>
+<div class="imageblock" id="spv_synchronization">
+<div class="content">
+<img src="images/msbt_0607.png" alt="SPVSynchronization" />
+</div>
+<div class="title">Figure 6. A blokkfejlécek szinkronizálása SPV csomópontok esetén</div>
+</div>
+<div class="paragraph"><p>Mivel az SPV csomópontoknak külön le kell kérdezniük az egyes tranzakciókat ahhoz, hogy ellenőrizni tudják őket, ez veszélyeztetheti a titkosságot. A teljes blokkláncot tartalmazó csomópontokkal szemben (melyek a blokkokban lévő összes tranzakciót tartalmazzák), az SPV csomópontok egyedi adatlekérdezései akaratlanul is felfedhetik, hogy milyen bitcoin címek vannak a pénztárcáikban. Például egy harmadik fél által üzemeltetett megfigyelő hálózat nyilván tudja tartani az SPV pénztárca által kiadott összes kérést, és így kapcsolatba tudja hozni a kérésekben szereplő bitcoin címeket a felhasználó pénztárcájával, ami a privát szféra sérülésével jár.</p></div>
+<div class="paragraph"><p>Az SPV/pehelysúlyú csomópontok bevezetése után nem sokkal a bitcoin fejlesztők az ún. <em>Bloom szűrőkkel</em> kívánták megoldani az SPV csomópontok által jelentett adatvédelmi kockázatot. A Bloom szűrők egy valószínűségi szűrőmechanizmus révén lehetővé teszik, hogy az SPV csomópontok csupán a tranzakciók egy részhalmazát fogadják, anélkül, hogy pontosan felfednék, mely címekre kíváncsiak.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_bloom_szűrők">Bloom szűrők</h3>
+<div class="paragraph"><p>A Bloom szűrő egy olyan, valószínűségi kereső szűrő, amellyel egy kívánt minta anélkül írható le, hogy pontosan megadnánk. A Bloom szűrőkkel hatékony módon lehet kifejezni a keresési mintákat, ugyanakkor meg lehet védeni a privát szférát. A Bloom szűrőket az SPV csomópontok arra használják, hogy a peer-jeiktől egy adott mintának megfelelő tranzakciókat kérdezzenek le, de anélkül, hogy pontosan meg kellene adniuk, mely címek érdeklik őket.</p></div>
+<div class="paragraph"><p>Az előző hasonlatunkban a térkép nélküli turista egy adott cím, pl a „Kossuth út 23” felől érdeklődik. Ha a járókelőktől azt kérdezi, hogy lehet eljutni erre a címre, akaratlanul is elárulja, hogy hová szeretne eljutni. A Bloom szűrő olyan, mint ha azt kérdezné, hogy „Vannak a közelben olyan utcák, melyek neve h-ra végződik?” Egy ilyen kérdés kevesebbet árul el arról, hogy hová szeretne menni, mint a „Kossuth út 23” utáni tudakozódás. Ezzel a módszerrel a turista részletesebben is meg tudja adni a címet, pl. „u-t-h-ra végződik”, vagy kevésbé részletesen, pl. „h-re végződik”. A keresés pontosságának a szabályozása révén a turista több vagy kevesebb információt fed fel, de ennek az az ára, hogy több vagy kevesebb eredményhez jut. Ha egy kevésbé részletes minta után tudakozódik, akkor több lehetséges címet fog kapni és javul az adatvédelem, de az eredmények legtöbbje lényegtelen lesz a számára. Ha egy jobban rögzített minta után tudakozódik, akkor kevesebb eredményt fog kapni, de sérül az adtvédelem.</p></div>
+<div class="paragraph"><p>A Bloom szűrők úgy töltik be ezt a funkciójukat, hogy lehetővé teszik az SPV csomópontok számára, hogy az egyes tranzakcióknál megadott keresési minták a pontosság vagy az adatvédelem irányába mozduljanak el. Egy jobban specifikált Bloom szűrő pontos eredményeket ad, de azon az áron, hogy felfedi a felhasználó pénztárcájában lévő címeket. Egy kevésbé pontos Bloom szűrő eredményként több tranzakciót fog visszaadni, melyek közül sok lényegtelen a csomópont számára, de a csomópont jobb adatvédelmet tud megvalósítani.</p></div>
+<div class="paragraph"><p>Az SPV csomópont a Bloom szűrőt egy „üres” mintával inicializálja. Ebben az állapotában a Bloom szűrő egyetlen egy mintát sem ismer föl. Az SPV csomópont ezután egy listát készít a pénztárcájában lévő címekől, és egy olyan keresési mintát készít, amely megfelel a tranzakciós kimenetekben lévő címeknek. A keresési minta általában egy  P2PKH (Pay-to-Public-Key-Hash) zároló script, amely minden olyan tranzakcióban jelen lesz, amely a publikus-kulcs-hashnek (címnek) fizet. Ha az SPV csomópont nyomon követi egy P2SH cím egyenlegét, akkor a keresési minta egy P2SH (Pay-to-Script-Hash) cím lesz. Az SPV csomópont ezután mindegyik keresési mintát megadja a Bloom szűrőnek azzal a céllal, hogy a Bloom szűrő felismerhesse az adott keresési mintázatot, ha az jelen van a tranzakióban. Végül, a Bloom szűrőt elküldi a peer-nek, és a peer a szűrő segítségével megállapítja, hogy mely tranzakciókat kell elküldenie az SPV csomópontnak.</p></div>
+<div class="paragraph"><p>A Bloom szűrők megvalósítása egy N bites álló változó méretű tömbbel, és M db hash függvénnyel történik. A hash fügvényeket olyanok, hogy a kimenetük mindig 1 és N között van, vagyis a kimenet a bitek tömbjének megfelelő . A hash függvényeket determinisztikus módon hozzák létre, ezért egy Bloom szűrőt megvalósító csomópont mindig ugyanazokat a hash függvényeket használja, és egy adott bemenet esetén mindig ugyanazt az eredményt adja. Különböző hosszúságú (N) Bloom szűrő és különböző számú (M) hash függvény választásával a Bloom szűrő különféle pontosságra állítható be, vagyis szabályozható az adatvédelem.</p></div>
+<div class="paragraph"><p>A lenti <a href="#bloom1">[bloom1]</a> példában a Bloom szűrők működésének bemutatására egy 16 bites, nagyon kicsi tömböt és 3 hash függvényt használunk.</p></div>
+<div class="imageblock" id="bloom1">
+<div class="content">
+<img src="images/msbt_0608.png" alt="Bloom1" />
+</div>
+<div class="title">Figure 7. Egy egyszerű Bloom szűrő, egy 16 bites mezővel és 3 hash függvénnyel (3 hash függvény, hash függvény kimenetek 1-től 16-ig, üres Bloom szűrő, 16 bites tömb)</div>
+</div>
+<div class="paragraph"><p>A Bloom szűrő úgy van inicializálva, hogy a tömb összes bitje nulla. Ha szeretnénk hozzáadni egy mintát a Bloom szűrőhöz, a mintát minden egyes hash függvénnyel össze hash-eljük. Az első hash függvény a bemenetből egy 1 és N közötti számot állít elő. Az eredménynek megfelelő bitet a tömbben (melynek indexei 1 és N közöttiek) 1-be állítjuk, így rögzítve a hash függvény kimenetét. Ezután a következő hash függvénnyel beállítunk egy másik bitet, és így tovább. Az összes M db hash függvény alkalmazása után egy keresési minta áll elő a Bloom szűrőben, mivel M bitet <tt>0</tt>-ről <tt>1</tt>-be állítottunk.</p></div>
+<div class="paragraph"><p>Például, a <a href="#bloom2">[bloom2]</a> páldában a fenti egyszerű <a href="#bloom1">[bloom1]</a> Bloom szűrőhöz az „A” keresési mintát adjuk hozzá:</p></div>
+<div class="paragraph"><p>Egy második minta hozzáadása egyszerűen a folyamat megismétlésével lehetséges. A mintát minden egyes hash függvénnyel egymás után össze-hasheljük, és az eredményeket a bitek <tt>1</tt>-be állításával rögzítjük. Ahogy a Bloom szűrőt egyre több mintával töltjük föl, valamelyik hash függvény eredménye egybeeshet egy már <tt>1</tt>-be állított bittel, ebben az esetben a bitet nem változtatjuk meg. Lényegében, ahogy egyre több mintát rögzítünk ugyanazokban a bitekben, a Bloom szűrő telítetté válik, mert egyre több bitje lesz <tt>1</tt>-be állítva, és a szűrő pontossága csökken. A szűrő emiatt tekinthető valószínűségi adatszerkezetnek – egyre több minta hozzáadásakor egyre kevésbé lesz pontos. A pontosság függ a hozzáadott minták számától, a bit tömb méretétől (N), illetve a hash függvények számától (M). Egy nagyobb bit tömbbel és több hash függvénnyel nagyobb pontossággal több minta rögzíthető. Egy kisebb bit tömbbel vagy kevesebb hash függvénnyel kevesebb minta rögzíthető, és kisebb pontosságot kapunk.</p></div>
+<div class="imageblock" id="bloom2">
+<div class="content">
+<img src="images/msbt_0609.png" alt="Bloom2" />
+</div>
+<div class="title">Figure 8. Az „A” keresési minta hozzáadása az egyszerű Bloom szűrőnkhöz</div>
+</div>
+<div class="paragraph"><p>A <a href="#bloom3">[bloom3]</a> példában az egyszerű Bloom szűrőnkhöz egy második keresési mintát adunk, a „B”-t.</p></div>
+<div class="imageblock" id="bloom3">
+<div class="content">
+<img src="images/msbt_0610.png" alt="Bloom3" />
+</div>
+<div class="title">Figure 9. Egy második keresési minta, a „B” hozzáadása az egyszerű Bloom szűrőnkhöz</div>
+</div>
+<div class="paragraph"><p>Ha szeretnénk leellenőrizni, hogy egy minta benne van-e a Bloom szűrőben, akkor hash-eljük össze minden egyes hash függvénnyel a mintát, és hasonlítsuk össze az így kapott bit mintát a bit tömbbel. Ha a hash függvények által indexelt összes bit <tt>1</tt>-ben van, akkor a mintát <em>valószínűleg</em> tartalmazza a Bloom szűrő. Mivel a bitek a különféle minták átfedése miatt is beállításra kerülhetnek, a válasz nem biztos, inkább valószínű. Egyszerűen a Bloom szűrőnél a pozitív egyezés azt jelenti, hogy „talán igen”.</p></div>
+<div class="paragraph"><p>Alább a <a href="#bloom4">[bloom4]</a> példában azt ellenőrizzük, hogy az egyszerű Bloom szűrő tartalmazza-e az „X” mintát. A megfelelő bitek <tt>1</tt>-ben vannak, emiatt a minta valószínűleg egyezik:</p></div>
+<div class="olist arabic" id="bloom4"><ol class="arabic">
+<li>
+<p>
+Az „X” minta meglétének ellenőrzése a Bloom szűrőben. Az eredmény pozitív egyezés, ami azt jelenti, hogy „talán”
+<span class="image">
+<img src=":images/msbt_0611.png" alt="Bloom4" />
+</span>
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>Ezzel szemben, ha ellenőrizünk egy mintát a Bloom szűrőben, és bármelyik ellenőrzött bit <tt>0</tt>, akkor ez azt mutatja, hogy a minta nem volt rögzítve a Bloom szűrőben. A negatív eredmény nem valószínűség, hanem bizonyosság. Egyszerűen szólva, a Bloom szűrőnél a negatív egyezés azt jelenti, hogy „biztosan nem”.</p></div>
+<div class="paragraph"><p>A <a href="#bloom5">[bloom5]</a> példában azt ellenőrizzük, hogy az „Y” minta létezik-e az egyszerű Bloom szűrőben. Az egyik szóban forgó bit <tt>0</tt>, emiatt a minta biztosan nem illeszkedik:</p></div>
+<div class="imageblock" id="bloom5">
+<div class="content">
+<img src="images/msbt_0612.png" alt="images/msbt_0612.png" />
+</div>
+<div class="title">Figure 10. Az „Y” minta létezésének ellenőrzése a Bloom szűrőben. Az eredmény határozott negatív egyezés, ami azt jelenti, hogy „biztosan nem”</div>
+</div>
+<div class="paragraph"><p>A bitcoinban megvalósított Bloom szűrőket a 37. Bitcoin Módosítási Javaslat (Bitcoin Improvement Proposal 37, BIP0037) írja le. Lásd a <a href="#appdxbitcoinimpproposals">[appdxbitcoinimpproposals]</a> részt, vagy a <a href="http://bit.ly/1x6qCiO">GitHub</a> webhelyet.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_a_bloom_szűrők_és_a_leltár_frissítések">A Bloom szűrők és a leltár frissítések</h3>
+<div class="paragraph"><p>A peer-ektől kapott tranzakciók (és az őket tartalmazó blokkok) szűrésére az SPV csomópontok Bloom szűrőket használnak. Az SPV csomópontok egy olyan szűrőt hoznak létre, amely az SPV csomópont pénztárcájában lévő címeknek felel meg. Az SPV csomópont ezután egy <tt>filterload</tt> üzenettel elküldi a kapcsolattartás során használandó Bloom szűrőt a peer-nek. A szűrő létrejötte után a peer minden egyes tranzakció kimenetét teszteli a Bloom szűrővel. Csak azokat a tranzakciókat küldi el a csomópontnak, amelyeknél a szűrő szerint valamelyik kimenet megfelel a szűrőnek.</p></div>
+<div class="paragraph"><p>A node-tól kapott <tt>getdata</tt> üzenetre a peer-ek egy <tt>merkleblock</tt> üzenettel válaszolnak, melyek minden egyes tranzakcióra vonatkozóan csak a filterhez illeszkedő blokkok blokkfejeit tartalmazzák (lásd <a href="#merkle_trees">[merkle_trees]</a>). A peer-ek ezt követően <tt>tx</tt> üzeneteket is küldenek, melyek a filterhez illeszkedő tranzakciókat tartalmazzák.</p></div>
+<div class="paragraph"><p>A Bloom szűrőt beállító csomópont menet közben további mintákkal bővítheti a szűrőt, ehhez a <tt>filteradd</tt> üzenetet kell elküldenie. Mivel a Bloom szűrőből nem lehet mintát eltávolítani, ezért ha valamelyik mintára már nincs szükség, akkor a csomópontnak először egy <tt>filterclear</tt> üzenettel törölnie kell a Bloom szűrőt, majd egy újabb Bloom szűrőt kell küldenie.</p></div>
+</div>
+<div class="sect2">
+<h3 id="transaction_pools">Tranzakció pool-ok</h3>
+<div class="paragraph"><p>((("megerősítetlen tranzakciók"))A megerősítetlen tranzakciókból a bitcoin hálózat majdnem minden csomópontja egy listát képez, az ún. <em>memory pool</em>-t vagy <em>tranzakció pool</em>-t. A csomópontok ennek az alapján követik nyomon azokat a tranzakciókat, melyeket a hálózat már ismer, de még nincsenek a blokkláncba foglalva. Például egy olyan csomópont, amelyik pénztárcát is tartalmaz, a tranzakció pool-t arra használja, hogy nyomon kövesse a hálózaton át a a pénztárcába érkező, de még megerősítetlen befizetéseket.</p></div>
+<div class="paragraph"><p>Az tranzakciókat a csomópont a beérkezésük és ellenőrzésük után a tranzakció pool-ba helyezi, majd a hálózati szétterjedés érdekében a szomszédos csomópontoknak továbbítja.</p></div>
+<div class="paragraph"><p>Némelyik implementációjában egy külön lista szolgál az elárvult tranzakciók nyilvántartására. Ha a tranzakció bemenetei olyan tranzakcióra hivatkoznak, amely még nem ismert, pl. hiányzik a szülő, akkor az elárvult tranzakció átmenetileg az elárvult tranzakciók pool-jában tárolódik, amíg meg nem érkezik a szülő tranzakció.</p></div>
+<div class="paragraph"><p>Ha a tranzakció pool-ba bekerül egy tranzakció, akkor a csomópont ellenőrzi az elárvult tranzakciók között, hogy nem hivatkozik-e valamelyik árva tranzakció a most bekerült tranzació valamelyik kimenetére (nem gyereke-e ennek a tranzakciónak), majd ellenőrzi az illeszkedő árva tranzakciókat. Ha a tranzakció érvényes, akkor eltávolítja az elárvult tranzakciók közül, és hozzáadja a tranzakciók pool-jához, vagyis kiegészíti a szülő tranzakcióval elkezdett láncot. Az újonnan hozzáadott, már nem árva tranzakcióra vonatkozóan, a folyamatot rekurzív módon megismétli, és további leszármazottakat keres, amíg vannak további leszármazottak. Ennek a folyamatnak a révén egy szülő tranzakció beérkezése a tőle függő tranzakciók egész láncának rekonstruálását váltja ki, és az árva tranzakciókat ismét egyesíti a szüleikkel.</p></div>
+<div class="paragraph"><p>Sem a tranzakciók, sem az árva tranzakciók pool-ját (ha van ilyen) nem tárolják diszken, hanem csak a helyi memóriában léteznek, és dinamikusan, a bejövő hálózati üzenetek alapján kerülnek feltöltésre. Egy csomópont elindulásakor mindkét pool üres, és fokozatosan, az új tranzakciók beérkezésekor kerül feltöltésre.</p></div>
+<div class="paragraph"><p>A bitcoin kliens némelyik implementációja egy UTXO adatbázist vagy UTXO pool-t is tartalmaz, amely a blokkláncban lévő elköltetlen kimenetek halmazának felel meg. Noha az „UTXO pool” hasonlónak tűnik a tranzakció pool-hoz, de más adathalmazt jelent. A tranzakciók és az elárvult tranzakciók pool-jával szemben az UTXO pool nem üresen indul, hanem elköltetlen tranzakció kimenetek millióit tartalmazza, melyek 2009-ig nyúlnak vissza. Az UTXO pool vagy a helyi tárban van, vagy a háttértár egy indexelt adatbázis táblája alkotja.</p></div>
+<div class="paragraph"><p>Míg a tranzakciók és árva tranzakciók pool-ja a helyi csomóponttól függ, és csomópontról csomópontra jelentősen változhat, attól függően, hogy a csomópont mikor indult vagy mikor indult újra, az UTXO pool a hálózatban kialakult konszenzusnak felel meg, és emiatt csak nagyon kicsiny eltérések lehetségesek az egyes csomópontok között. Ezen túlmenően a tranzakciók és árva tranzakciók pooljában csak megerősítetlen tranzakciók lehetnek, míg az UTXO pool csak megerősített kimeneteket tartalmazhat.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_figyelmeztető_üzenetek">Figyelmeztető üzenetek</h3>
+<div class="paragraph"><p>A figyelmeztető üzenetek ritkán használatosak, de a funkció a legtöbb csomópontban mégis meg van valósítva. A figyelmeztető üzenetek jelentik a bitcoin „vészjelző rendszerét”, mellyel a bitcoin fejlesztők vészhelyzetben szöveges üzenetet tudnak az összes bitcoin csomópontnak küldeni. Ezt a jellemző azért lett megvalósítva, hogy a bitcoin core klienst fejlesztő csapat az összes bitcoin felhasználót értesíteni tudja a bitcoin hálózatban felmerült súlyos problémákról, például egy kritikus hibáról, amely felhasználói beavatkozást igényel. A jelzőrendszert csak néhányszor használták, ezek közül a legnevezetesebb eset 2013-ban volt, mikor egy kritikus adatbázis hiba miatt elágazás történt a bitcoin blokkláncban.</p></div>
+<div class="paragraph"><p>A figyelmeztető üzeneteket az <tt>alert</tt> üzenettel lehet továbbítani. A figyelmeztető üzenetnek számos mezője van. Ezek a következők:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+ID
+</dt>
+<dd>
+<p>
+A figyelmeztető üzenet azonosítója, amivel elkerülhető a figyelmeztetés megkettőződése
+</p>
+</dd>
+<dt class="hdlist1">
+Expiration
+</dt>
+<dd>
+<p>
+a figyelmeztetés lejárati ideje
+</p>
+</dd>
+<dt class="hdlist1">
+RelayUntil
+</dt>
+<dd>
+<p>
+A figyelmeztetés relézési ideje, ami után már nem szabad továbbadni
+</p>
+</dd>
+<dt class="hdlist1">
+MinVer, MaxVer
+</dt>
+<dd>
+<p>
+Azoknak a bitcoin protokoll változatoknak a tartománya, amelyekre ez a figyelmeztetés vonatkozik
+</p>
+</dd>
+<dt class="hdlist1">
+subVer
+</dt>
+<dd>
+<p>
+Az a kliens szoftver alverzió, amelyre ez a figyelmeztetés vonatkozik
+</p>
+</dd>
+<dt class="hdlist1">
+Priority
+</dt>
+<dd>
+<p>
+A figyelmeztetés prioritási szintje, jelenleg nem használt
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>A figyelmeztetések egy publikus kulccsal vannak aláírva. A publikus kulcshoz tartozó privát kulcsot a fejlesztő csapat néhány kiválasztott tagja birtokolja. A digitális aláírás biztosítja, hogy a hálózat ne továbbíthasson hamis figyelmeztetéseket.</p></div>
+<div class="paragraph"><p>Ha egy csomópontra figyelmeztető üzenet érkezik, akkor a csomópont ellenőrzi az üzenetet, többek között a lejárati időt, és továbbítja az összes peer-jének, így biztosítván az egész hálózatban az üzenet gyors szétterjedését. A csomópontok a figyelmeztetés továbbításán túlmenően rendelkezhetnek egy felhasználói interfész funkcióval, amely az üzenetet megjeleníti a felhasználó számára.</p></div>
+<div class="paragraph"><p>A Bitcoin Core kliensben a figyelmeztetéshez az <tt>-alertnotify</tt> parancssori opció tartozik. Ezzel lehet megadni, hogy milyen parancs fusson le, ha figyelmeztető üzenetet kapunk. A figyelmeztető üzenet paraméterként van megadva az <tt>alertnotify</tt> parancsban. Az <tt>alertnotify</tt> parancsot a leggyakrabban úgy állítják be, hogy a figyelmeztető üzenetet tartalmát egy email üzenetetben küldje el a csomópont adminisztrátorának. A figyelmeztetés a grafikus felhasználói felületen (bitcoin-Qt) egy felugró ablak formájában is megjelenik, ha fut a kliens.</p></div>
+<div class="paragraph"><p>A bitcoin protokoll egyéb implementációiban a figyelmeztetés kezelése eltérő módon történhet. Sok hardverbe integrált bányász rendszer a figyelmeztető üzenet funkciót nem valósítja meg, mivel ezeknek a rendszereknek nincs felhasználói felületük. Erősen javallott, hogy az ilyen bányász rendszereket futtató bányászok a bányatársaság üzemeltetőjénél „fizessenek elő” a figyelmeztetésekre, vagy csak a figyelmeztetések miatt futtassanak egy pehelysúlyú csomópontot.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:58:20 UTC
+</div>
+</div>
+</body>
+</html>

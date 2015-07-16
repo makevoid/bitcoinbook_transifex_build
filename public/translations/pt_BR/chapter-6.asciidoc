@@ -1,0 +1,300 @@
+[[bitcoin_network_ch06]]
+== A Rede Bitcoin
+
+=== A Arquitetura de Rede Ponto-a-Ponto
+
+((("bitcoin network", id="ix_ch06-asciidoc0", range="startofrange")))((("bitcoin network","architecture of")))((("peer-to-peer networks")))O Bitcoin é estruturado como uma arquitetura de rede ponto-a-ponto em cima da Internet. O termo ponto-a-ponto, ou P2P (do inglês peer-to-peer), significa que os computadores que participam da rede são pontos uns para os outros, que eles são todos iguais, que não há nodos "especiais" e que todos os nodos compartilham o trabalho de fornecer serviços na rede. Os nodos da rede se interconectam em uma rede mesh com uma topologia "plana". Não há nenhum servidor, nenhum serviço centralizado ou hierarquia na rede. Os nodos em uma rede ponto-a-ponto tanto fornecem quanto consomem serviços ao mesmo tempo com a reciprocidade atuando como o incentivo para a participação. Redes ponto-a-ponto são inerentemente resilientes, descentralizadas e abertas. O exemplo proeminente de uma arquitetura de rede P2P foi a Internet em seu início, onde os nodos na rede IP eram iguais. A arquitetura de Internet hoje é mais hierárquica, mas o Protocolo da Internet ainda mantém sua essência de topologia plana. Além do bitcoin, a aplicação mais difundida e de maior sucesso das tecnologias P2P é o compartilhamento de arquivos, com o Napster sendo o pioneiro e o BitTorrent como a evolução mais recente da arquitetura.
+
+A arquitetura de rede P2P do Bitcoin é muito mais do que uma escolha de topologia. O bitcoin é projetado como um sistema de dinheiro digital ponto-a-ponto, e a arquitetura da rede é tanto um reflexo e uma base fundamental dessa característica chave. Descentralização do controle é um princípio chave do projeto e ela só pode ser obtida e mantida através de uma rede de consenso P2P descentralizada. 
+
+((("bitcoin network","defined")))O termo "rede bitcoin" refere-se à coleção de nodos executando o protocolo ponto-a-ponto (P2P) bitcoin. Além do protocolo P2P bitcoin, existem outros protocolos como o((("Stratum (STM) mining protocol"))) Stratum, que são usados para mineração e carteiras leves ou móveis. Esses protocolos adicionais são fornecidos por servidores de roteamento de gateway que acessam a rede bitcoin usando o protocolo P2P bitcoin, e então estendem essa rede aos nodos executando outros protocolos. Por exemplo, os servidores Stratum se conectam os nodos mineradores Stratum através do protocolo Stratum à rede bitcoin principal e fazem um bridge do protocolo Statum com o protocolo P2P bitcoin. Nós usamos o termo "rede bitcoin estendida" para referirmos à rede geral que inclui o protocolo P2P bitcoin, protocolos de mineração-pool, o protocolo Stratum e qualquer outros protocolos relacionados que conectem os componentes do sistema bitcoin. 
+
+=== Tipos e Papéis dos Nodos
+
+((("bitcoin network","nodes")))((("nodes","roles of")))((("nodes","types of")))Embora os nodos na rede P2P do bitcoin são iguais, eles podem assumir diferentes papéis dependendo da funcionalidade que eles estejam suportando. Um nodo bitocin é uma coleção de funções: roteamento, o banco de dados da blockchain, mineração e serviços de carteira. Um nodo completo com todas essas quatro funções é demonstrado em <<full_node_reference>>.
+
+[[full_node_reference]]
+.Um nodo da rede Bitcoin com todas as quatro funções: carteira, minerador, banco de dados completo da blockchain e roteador da rede
+image::images/msbt_0601.png["FullNodeReferenceClient_Small"]
+
+Todos os nodos incluem a função de roteamento para participar  na rede e podem incluir outras funcionalidades. Todos os nodos validam e propagam as transações e blocos, e descobrem e mantém conexões com os pontos. No exemplo do nodo completo em <<full_node_reference>>, a função de roteamento é indicada por um círculo laranja chamado de "Nodo de Roteamento de Rede." 
+
+Some nodes, called full nodes, also maintain a complete and up-to-date copy of the blockchain. Full nodes can autonomously and authoritatively verify any transaction without external reference. Some nodes maintain only a subset of the blockchain and verify transactions using a method called((("simplified payment verification (SPV) nodes","defined"))) _simplified payment verification_, or SPV. These nodes are known as SPV or lightweight nodes. In the full-node example in the figure, the full-node blockchain database function is indicated by a blue circle named "Full Blockchain." In <<bitcoin_network>>, SPV nodes are drawn without the blue circle, showing that they do not have a full copy of the blockchain. 
+
+Os nodos de mineração competem para criar novos blocos ao utilizarem hardware especializado para resolver os algoritmos de prova-de-trabalho. Alguns nodos de mineração também são nodos completos, mantendo uma cópia completa da blockchain, enquanto outros são nodos peso leve (lightweight) que participam de um pool de mineração e dependem de um servidor de pool para manter um nodo completo. A função de mineração é demonstrada no nodo completo como um círculo preto chamado de "Minerador."
+
+As carteiras de usuários podem fazer parte de um nodo completo, que é o que geralmente ocorre em clientes desktop do bitcoin. Cada vez mais as carteiras de usuário são nodos VSP, especialmente aquelas sendo executadas em dispositivos com poucos recursos como smartphones. A função carteira é demonstrada <<full_node_reference>> em como um círculo verde chamado de "Carteira"
+
+Além dos tipos de nodos principais no protocolo P2P bitcoin, existem servidores e nodos executando outros protocolos, como protocolos especializados em mineração-pool e protocolos de acesso de clientes com aplicativos leves (lightweight). 
+
+<<node_type_ledgend>> mostra os tipos mais comuns de nodos na rede bitcoin estendida.
+
+=== A Rede Bitcoin Estendida
+
+((("bitcoin network","extended")))((("extended bitcoin network")))The main bitcoin network, running the bitcoin P2P protocol, consists of between 7,000 and 10,000 listening nodes running various versions of the bitcoin reference client (Bitcoin Core) and a few hundred nodes running various other implementations of the bitcoin P2P protocol, such as((("BitcoinJ library")))((("btcd")))((("libbitcoin library"))) BitcoinJ, Libbitcoin, and btcd. A small percentage of the nodes on the bitcoin P2P network are also mining nodes, competing in the mining process, validating transactions, and creating new blocks. Various large companies interface with the bitcoin network by running full-node clients based on the Bitcoin Core client, with full copies of the blockchain and a network node, but without mining or wallet functions. These nodes act as network edge routers, allowing various other services (exchanges, wallets, block explorers, merchant payment processing) to be built on top. 
+
+A rede bitcoin estendida inclui a rede executando o protocolo P2P bitcoin, descrita anteriormente, assim como nodos executando protocolos especializados. Ligados a essa rede P2P bitcoin principal existem vários((("mining pools","on the bitcoin network"))) servidores pool e gateways de protocolo que conectam nodos executando outros protocolos. Esses nodos usando outros protocolos são em sua maioria nodos de pool de mineração  (ver <<ch8>>)e clientes de carteira leves (lightweight), que não carregam uma cópia completa de blockchain. 
+
+<<bitcoin_network>> demonstra a rede bitcoin estendida com os vários tipos de nodos, servidores gateway, roteadores edge e clientes de carteira, além dos vários protocolos que eles usam para conectar-se uns com os outros. 
+
+[[node_type_ledgend]]
+.Diferentes tipos de nodos na rede bitcoin estendida
+image::images/msbt_0602.png["BitcoinNodeTypes"]
+
+[[bitcoin_network]]
+.A rede bitcoin estendida mostrando vários tipos de nodos, gateways e protocolos
+image::images/msbt_0603.png["BitcoinNetwork"]
+
+=== Descoberta da Rede
+
+((("bitcoin network","discovery", id="ix_ch06-asciidoc1", range="startofrange")))((("network discovery", id="ix_ch06-asciidoc2", range="startofrange")))((("nodes","network discovery and", id="ix_ch06-asciidoc3", range="startofrange")))((("peer-to-peer networks","discovery by new nodes", id="ix_ch06-asciidoc4", range="startofrange")))Quando um novo nodo é ligado, ele deve descobrir outros nodos bitoins na rede para que possa participar. Para iniciar esse processo, um nodo novo deve descobrir pelo menos um nodo existente na rede para conectar-se a ele. A localização geográfica dos outros nodos é irrelevante; a topologia da rede bitcoin não é definida geograficamente. Logo, qualquer nodo bitcoin existente pode ser selecionado aleatoriamente. 
+
+((("peer-to-peer networks","connections")))Para se conectar a um ponto conhecido, os nodos estabelecem uma conexão TCP, geralmente na porta 8333 (a porta geralmente conhecida como uma das usadas pelo bitcoin), ou a uma porta alternativa caso tenha sido fornecida. Ao estabelecer a conexão, o nodo iniciará um "aperto de mão" (ver <<network_handshake>>) ao transmitir uma((("version message"))) mensagem de +versão+, que contém basicamente informações de identificação, incluindo:
+
++PROTOCOL_VERSION+:: Uma constante que define a versão do protocolo P2P do bitcoin através da qual o cliente se "comunica" (ex: 70002)
++nLocalServices+:: Uma lista dos serviços locais suportados pelo nodo, atualmente apenas +NODE_NETWORK+
++nTime+:: A hora atual
++addrYou+:: O endereço IP do nodo remoto da maneira que é visto por esse nodo
++addrMe+:: O endereço IP do nodo local, da maneira que é descoberto pelo nodo local
++subver+:: Uma sub-versão mostrando o tipo de software sendo executado nesse nodo (ex: "/Satoshi:0.9.2.1/")+
++BestHeight+:: A altura dos blocos da blockchain deste nodo
+
+(Veja http://bit.ly/1qlsC7w[GitHub] para um exemplo da mensagem de rede +version+.)
+
+O nodo ponto responde com +verack+ para reconhecer e estabelecer uma conexão, e opcionalmente envia sua própria mensagem +versão+ caso ele desejar estabelecer uma conexão recíproca e se conectar como um ponto. 
+
+How does a new node find peers? The first method is to query DNS using a number of ((("nodes","seed")))((("DNS seed")))"DNS seeds," which are DNS servers that provide a list of IP addresses of bitcoin nodes. Some of those DNS seeds provide a static list of IP addresses of stable bitcoin listening nodes. Some of the DNS seeds are custom implementations of BIND (Berkeley Internet Name Daemon) that return a random subset from a list of bitcoin node addresses collected by a crawler or a long-running bitcoin node.  The Bitcoin Core client contains the names of five different DNS seeds. The diversity of ownership and diversity of implementation of the different DNS seeds offers a high level or reliability for the initial bootstrapping process. In the Bitcoin Core client, the option to use the DNS seeds is controlled by the option switch +-dnsseed+ (set to 1 by default, to use the DNS seed).
+
+De maneira alternativa, um nodo bootstrapping que não saiba nada da rede deve receber o endereço IP de pelo menos um nodo bitcoin, a partir do qual ele poderá estabelecer conexões através de novas introduções. O argumento de linha de comando +-seednode+ pode ser usado para conectar a um nodo somente para introduções, utilizando-o como uma semente (seed). Após o nodo semente inicial ser usado para formar as introduções, o cliente irá se desconectar dele e usará os novos pontos recém-descobertos. 
+
+[[network_handshake]]
+.O aperto de mãos inicial entre os pontos
+image::images/msbt_0604.png["NetworkHandshake"]
+
+Assim que uma ou mais conexões são estabelecidas, o novo nodo irá enviar uma mensagem +addr+ contendo seu próprio endereço IP para seus vizinhos. Seus vizinhos irão, por sua vez, retransmitir a mensagem +addr+ para seus vizinhos, garantindo que os novos nodos conectados se tornem bem conhecidos e melhor conectados. Adicionalmente, o novo nodo conectado pode enviar +getaddr+ para os vizinhos, solictando-os que retornem uma lista de endereços IP de seus pontos. Dessa maneira, um nodo pode encontrar pontos para conectar-se e divulgar sua existência na rede para que outros nodos o encontrem. <<address_propagation>> demonstra o protocolo de descoberta de endereço. 
+
+
+[[address_propagation]]
+.Propagação e descoberta do endereço
+image::images/msbt_0605.png["AddressPropagation"]
+
+A node must connect to a few different peers in order to establish diverse paths into the bitcoin network. Paths are not reliable—nodes come and go—and so the node must continue to discover new nodes as it loses old connections as well as assist other nodes when they bootstrap. Only one connection is needed to bootstrap, because the first node can offer introductions to its peer nodes and those peers can offer further introductions. It's also unnecessary and wasteful of network resources to connect to more than a handful of nodes. After bootstrapping, a node will remember its most recent successful peer connections, so that if it is rebooted it can quickly reestablish connections with its former peer network. If none of the former peers respond to its connection request, the node can use the seed nodes to bootstrap again. 
+
+Em um nodo executando o cliente Bitcoin Core, você pode listar as conexões com os peers através do comando((("getpeerinfo command"))) +getpeerinfo+:
+
+[source,bash]
+----
+$ bitcoin-cli getpeerinfo
+----
+[source,json]
+----
+[
+    {
+        "addr" : "85.213.199.39:8333",
+        "services" : "00000001",
+        "lastsend" : 1405634126,
+        "lastrecv" : 1405634127,
+        "bytessent" : 23487651,
+        "bytesrecv" : 138679099,
+        "conntime" : 1405021768,
+        "pingtime" : 0.00000000,
+        "version" : 70002,
+        "subver" : "/Satoshi:0.9.2.1/",
+        "inbound" : false,
+        "startingheight" : 310131,
+        "banscore" : 0,
+        "syncnode" : true
+    },
+    {
+        "addr" : "58.23.244.20:8333",
+        "services" : "00000001",
+        "lastsend" : 1405634127,
+        "lastrecv" : 1405634124,
+        "bytessent" : 4460918,
+        "bytesrecv" : 8903575,
+        "conntime" : 1405559628,
+        "pingtime" : 0.00000000,
+        "version" : 70001,
+        "subver" : "/Satoshi:0.8.6/",
+        "inbound" : false,
+        "startingheight" : 311074,
+        "banscore" : 0,
+        "syncnode" : false
+    }
+]
+----
+
+((("peer-to-peer networks","automatic management, overriding")))Para desativar a administração automática dos pontos e especificar uma lista de endereços IP, os usuários podem usar a opção +-connect=<EndereçoIP>+ e especificar um ou mais endereços IP. Se essa opção for utilizada, o nodo irá conectar-se somente aos endereços IP selecionados, ao invés de automaticamente descobrir e manter conexões com pontos. 
+
+Se não houver tráfico em uma conexão, os nodos irão periodicamente enviar uma mensagem para manter a conexão. Se um nodo não se comunicar em uma conexão por mais de 90 minutos, assume-se que ele esteja desconectado e um novo ponto será procurado. Logo, a rede dinamicamente ajusta-se aos nodos transitórios e aos problemas da rede, e pode crescer e diminuir organicamente conforme necessário, sem a necessidade de um controle central. (((range="endofrange", startref="ix_ch06-asciidoc4")))(((range="endofrange", startref="ix_ch06-asciidoc3")))(((range="endofrange", startref="ix_ch06-asciidoc2")))(((range="endofrange", startref="ix_ch06-asciidoc1")))
+
+=== Nodos completos
+
+((("blockchains","full nodes and")))((("full nodes")))((("nodes","full")))Os nodos completos são nodos que mantém uma blockchain completa com todas as transações. Mais precisamente, eles provavelmente deveriam ser chamados de "nodos com a blockchain completa". Nos anos iniciais do bitcoin, todos os nodos eram nodos completos e atualmente o cliente Bitcoin Core é um nodo com a blockchain completa. Nos últimos dois anos, no entanto, novas formas de clientes bitcoins foram introduzidas que não precisam manter uma blockchain completa, mas são executandos como clientes leves ("lightweight"). Nós examinaremos esses clientes em mais detalhes na próxima seção. 
+
+((("blockchains","on full nodes")))Os nodos com a blockchain completa mantém uma cópia completa e atualizada da blockchain do bitcoin com todas as transações, a qual eles independentemente construiram e verificaram, iniciando desde o primeiro bloco (bloco gênese) e adicionando até o último bloco conhecido da rede. O nodo com a blockchain completa pode verificar independentemente e com autoridade qualquer transação sem depender de qualquer outro nodo ou fonte de informação. O nodo completo depende da rede para receber atualizações sobre novos blocos de transações, as quais ele verifica e incorpora em sua cópia local da blockchain. 
+
+Executar um nodo com a blockchain completa proporciona a experiência bitcoin pura: verificação independente de todas as transações, sem a necessidade de dependência ou confiança em qualquer outro sistema. É fácil dizer se você está executando um nodo completo porque ele requer mais de 20 gigabytes de armazenamento persistente (espaço em diasco) para armazenar a blockchain completa. Se você precisa de muito espaço e ele leva dois a três dias para sincronizar com a rede, você está executando um nodo completo. Esse é o preço que se paga para uma liberdade completa e total independência de uma autoridade central. 
+
+Existem algumas poucas implementações alternativas dos clientes de bitcoin com a blockchain completa, construídas usando-se diferentes linguagens de programação e arquiteturas de software. No entanto, a implementação mais comum é o cliente de referência ((("Bitcoin Core client","and full nodes")))Bitcoin Core, também conhecido como o cliente Satoshi. Mais de 90% dos noso na rede bitcoin executam várias versões do Bitcoin Core. Ele é identificado como "Satoshi" na string sub-version enviada na mensagem +version+ e é mostrado pelo comando +getpeerinfo+ como nós vimos anteriormente; por exemplo, +/Satoshi:0.8.6/+.
+
+=== Exchanging "Inventory"
+
+((("blockchains","creating on nodes")))((("blockchains","on new nodes")))((("blocks","on new nodes")))((("full nodes","creating full blockchains on")))A primeira coisa que um nodo completo fará assim que se conectar aos pontos é tentar construir uma blockchain completa. Se ele for um nodo recém criado que não tenha nenhuma parte da blockchain, ele só terá um bloco, o bloco gênese, que é incluído estaticamente no software do cliente. Iniciando com o bloco #0 (o bloco gênese), o novo nodo terá que fazer o download de centenas de milhares de blocos para sincronizar-se com a rede e re-estabelecer a blockchain completa. 
+
+((("syncing the blockchain")))O processo de sincronização da blockchain é iniciado a partir da mensagem +version+, pois ela contém o +BestHeight+, a altura atual (número de blocos) da blockchain de um nodo. Ao ver a mensagem +version+ de seus pontos, um nodo saberá quantos blocos cada um deles tem, e será capaz de comparar com o número de blocos que existem em sua própria blockchain. Os nodos pareados irão trocar uma mensagem +getblocks+, a qual contém o hash (impressão digital) do bloco mais alto de suas blockchains locais. A seguir, um ponto será capaz de identificar que o hash recebido pertence ao bloco que não está no topo, mas que pertence a um bloco antigo, logo deduzindo que sua blockchain local é mais comprida do que a de seus pontos. 
+
+O ponto que tem a blockchain mais longa possui mais blocos que o outro nodo e pode identificar quais blocos o outro nodo precisa para ficar "em dia". Ele irá identificar os primeiros 500 blocos para compartilhar e transmitirá seus hashes usando uma mensagem ((("inv messages"))) +inv+ (inventory) . O nodo que estiver com esses blocos faltando irá então recebê-los ao emitir uma série de mensagens +getdata+ solicitando os dados completos dos blocos e identificando os blocos solicitados usando os hashes da mensagem +inv+.
+
+Let's assume, for example, that a node only has the genesis block. It will then receive an +inv+ message from its peers containing the hashes of the next 500 blocks in the chain. It will start requesting blocks from all of its connected peers, spreading the load and ensuring that it doesn't overwhelm any peer with requests. The node keeps track of how many blocks are "in transit" per peer connection, meaning blocks that it has requested but not received, checking that it does not exceed a limit((("MAX_BLOCKS_IN_TRANSIT_PER_PEER constant"))) (+MAX_BLOCKS_IN_TRANSIT_PER_PEER+). This way, if it needs a lot of blocks, it will only request new ones as previous requests are fulfilled, allowing the peers to control the pace of updates and not overwhelming the network. As each block is received, it is added to the blockchain, as we will see in <<blockchain>>. As the local blockchain is gradually built up, more blocks are requested and received, and the process continues until the node catches up to the rest of the network. 
+
+Esse processo de comparar a blockchain local com os pontos e adquirir quaisquer blocos em falta acontece sempre que um bloco fica offline por algum período de tempo. Tenha um nodo ficado offline por alguns minutos e esteja com alguns pouco blocos em falta, ou tenha ficado um mês offeline e esteja com milhares de blocos em falta, ele começa ao enviar +getblocks+, recebeuma resposta +inv+ e inicia baixando os blocos remanescentes. <<inventory_synchronization>>  demonstra o inventário e o protocolo de propagação dos blocos. 
+
+
+[[spv_nodes]]
+=== Nodos de Verificação Simplificada de Pagamento (VSP)
+
+((("nodes","SPV", id="ix_ch06-asciidoc5", range="startofrange")))((("nodes","lightweight", id="ix_ch06-asciidoc5a", range="startofrange")))((("simplified payment verification (SPV) nodes", id="ix_ch06-asciidoc6", range="startofrange")))Nem todos os nodos tem a habilidade de armazenar a blockchain completa. Muitos clientes bitcoin são projetados para serem executados em dispositivos com limitações de armazenamento e energia, como smartphones, tablets ou sistemas embutidos. Para esses dispositivos, um método de _verificação simplificada de pagamento_ é usado para permití-los que operem sem terem que armazenar a blockchain completa. Esses tipos de clientes são chamados clientes VSP (em inglês, SPV) ou clientes leves. Conforme a adoação do bitcoin aumenta, o nodo VSP está se tornando a forma mais comum de nodo bitcoin, especialmente para carteiras bitcoin.
+
+((("blockchains","on SPV nodes")))Os nodos VSP baixam apenas os cabeçalhos dos blocos e não baixam as transações incluídas em cada bloco. A cadeia de blocos resultante, sem as transações, é 1.000 vezes menor do que a blockchain completa. Os nodos VSP não podem construir um figura completa de todas as UTXOs que estão disponíveis para serem gastas porque eles não conhecem todas as transações da rede. Os nodos VSP verificam as transações usando uma metodologia levemente diferente, a qual se baseia nos pontos que fornecem, sob demanda, consultas de apenas algumas partes relevantes da blockchain.
+
+[[inventory_synchronization]]
+.Nodo sincronizando a blockchain ao adquirir blocos de um ponto
+image::images/msbt_0606.png["InventorySynchronization"]
+
+As an analogy, a full node is like a tourist in a strange city, equipped with a detailed map of every street and every address. By comparison, an SPV node is like a tourist in a strange city asking random strangers for turn-by-turn directions while knowing only one main avenue. Although both tourists can verify the existence of a street by visiting it, the tourist without a map doesn't know what lies down any of the side streets and doesn't know what other streets exist. Positioned in front of 23 Church Street, the tourist without a map cannot know if there are a dozen other "23 Church Street" addresses in the city and whether this is the right one. The mapless tourist's best chance is to ask enough people and hope some of them are not trying to mug him.
+
+A verificação simplificada de pagamento verifica as transações através de referências às suas _profundidades_ na blockchain, ao invés de sua _altura_. Enquanto um nodo com a blockchain completa irá construir uma cadeia completamente verificada de milhares de blocos e transações que siga pela blockchain (retrospectivamente no tempo) até o bloco gênese, um nodo de VSP irá verificar a cadeia de todos os blocos (mas não todas as transações) e irá ligar essa cadeia à transação de interesse. 
+
+For example, when examining a transaction in block 300,000, a full node links all 300,000 blocks down to the genesis block and builds a full database of UTXO, establishing the validity of the transaction by confirming that the UTXO remains unspent. An SPV node cannot validate whether the UTXO is unspent. Instead, the SPV node will establish a link between the transaction and the block that contains it, using a((("merkle trees","SPV and"))) _merkle path_ (see <<merkle_trees>>). Then, the SPV node waits until it sees the six blocks 300,001 through 300,006 piled on top of the block containing the transaction and verifies it by establishing its depth under blocks 300,006 to 300,001. The fact that other nodes on the network accepted block 300,000 and then did the necessary work to produce six more blocks on top of it is proof, by proxy, that the transaction was not a double-spend.
+
+An SPV node cannot be persuaded that a transaction exists in a block when the transaction does not in fact exist. The SPV node establishes the existence of a transaction in a block by requesting a merkle path proof and by validating the proof of work in the chain of blocks. However, a transaction's existence can be "hidden" from an SPV node. An SPV node can definitely prove that a transaction exists but cannot verify that a transaction, such as a double-spend of the same UTXO, doesn't exist because it doesn't have a record of all transactions. This vulnerability can be used in a denial-of-service attack or for a double-spending attack against SPV nodes. To defend against this, an SPV node needs to connect randomly to several nodes, to increase the probability that it is in contact with at least one honest node. This need to randomly connect means that SPV nodes also are vulnerable to network partitioning attacks or Sybil attacks, where they are connected to fake nodes or fake networks and do not have access to honest nodes or the real bitcoin network.
+
+Para a maioria das funções práticas, os nodos VPS bem-conectados são seguros o suficiente, demonstrando um equilíbrio ideal entre necessidade de recursos, praticidade e segurança. Para segurança infalívil, no entanto, nada é superior do que executar um nodo com a blockchain completa. 
+
+[TIP]
+====
+((("simplified payment verification (SPV) nodes","verification")))Um nodo que tem a blockchain completa verifica a transação ao fazer uma pesquisa em sua cadeia inteira de milhares de blocos, para se certificar de que a UTXO já não foi gasta previamente, enquanto um nodo VSP verifica ao pesquisar quão profundo o bloco está "enterrado" sob os vários blocos acima dele. 
+====
+
+((("block headers","getting on SPV nodes")))To get the block headers, SPV nodes use a((("getheaders message"))) +getheaders+ message instead of +getblocks+. The responding peer will send up to 2,000 block headers using a single +headers+ message. The process is otherwise the same as that used by a full node to retrieve full blocks. SPV nodes also set a filter on the connection to peers, to filter the stream of future blocks and transactions sent by the peers. Any transactions of interest are retrieved using a +getdata+ request. The peer generates a((("tx messages"))) +tx+ message containing the transactions, in response. <<spv_synchronization>> shows the synchronization of block headers.
+
+[[spv_synchronization]]
+.Nodo SPV sincronizando os cabeçalhos dos blocos
+image::images/msbt_0607.png["SPVSynchronization"]
+
+Because SPV nodes need to retrieve specific transactions in order to selectively verify them, they also create a privacy risk. Unlike full blockchain nodes, which collect all transactions within each block, the SPV node's requests for specific data can inadvertently reveal the addresses in their wallet. For example, a third party monitoring a network could keep track of all the transactions requested by a wallet on an SPV node and use those to associate bitcoin addresses with the user of that wallet, destroying the user's privacy. 
+
+Logo após a introdução dos nodos VSP/peso leve, os desenvolvedores bitcoin adicionaram uma funcionalidade chamada _filtros bloom_ para resolver os riscos de privacidade dos nodos VSP. Os filtros bloom permitem que os nodos VSP recebam um conjunto de transações sem que revelem precisamente quais endereços eles estão interessados, através de um mecanismo de filtros que utiliza probabilidades ao invés de padrões fixos.(((range="endofrange", startref="ix_ch06-asciidoc6")))(((range="endofrange", startref="ix_ch06-asciidoc5a")))(((range="endofrange", startref="ix_ch06-asciidoc5"))) 
+
+=== Filtros Bloom
+
+((("bitcoin network","bloom filters and", id="ix_ch06-asciidoc7", range="startofrange")))((("bloom filters", id="ix_ch06-asciidoc8", range="startofrange")))((("Simplified Payment Verification (SPV) nodes","bloom filters and", id="ix_ch06-asciidoc9", range="startofrange")))Um filtro bloom é um filtro de busca probabilístico, uma maneira de descrever um padrão desejado sem especificá-lo exatamente. Os filtros bloom oferecem uma maneira eficiente de expressar um padrão de brusca enquanto protegem a privacidade. Eles são usados pelos nodos VSP para requisitar seus pontos por transações coincidindo com um padrão específico, sem revelar exatamente quais endereços eles estão procurando. 
+
+In our previous analogy, a tourist without a map is asking for directions to a specific address, "23 Church St." If she asks strangers for directions to this street, she inadvertently reveals her destination. A bloom filter is like asking, "Are there any streets in this neighborhood whose name ends in R-C-H?" A question like that reveals slightly less about the desired destination than asking for "23 Church St." Using this technique, a tourist could specify the desired address in more detail as "ending in U-R-C-H" or less detail as "ending in H." By varying the precision of the search, the tourist reveals more or less information, at the expense of getting more or less specific results. If she asks a less specific pattern, she gets a lot more possible addresses and better privacy, but many of the results are irrelevant. If she asks for a very specific pattern, she gets fewer results but loses privacy. 
+
+Os filtros bloom servem essa função ao permitir que um nodo VSP especifique um padrão de busca para transações que possa ser refinado de acordo com precisão ou privacidade. Um filtro bloom mais específico irá produzir resultados precisos, mas às custas de revelar quais endereços são usados na carteira do usuário. Um filtro bloom menos específico irá produzir mais dados sobre mais transações, muitas irrelevantes para o nodo, mas permitirá ao nodo que mantenha uma privacidade maior. 
+
+An SPV node will initialize a bloom filter as "empty" and in that state the bloom filter will not match any patterns. The SPV node will then make a list of all the addresses in its wallet and create a search pattern matching the transaction output that corresponds to each address. Usually, the search pattern is a((("pay-to-public-key-hash (P2PKH)","bloom filters and"))) pay-to-public-key-hash script that is the expected locking script that will be present in any transaction paying to the public-key-hash (address). If the SPV node is tracking the balance of a((("pay-to-script-hash (P2SH)","bloom filters and"))) P2SH address, the search pattern will be a pay-to-script-hash script, instead. The SPV node then adds each of the search patterns to the bloom filter, so that the bloom filter can recognize the search pattern if it is present in a transaction. Finally, the bloom filter is sent to the peer and the peer uses it to match transactions for transmission to the SPV node. 
+
+Bloom filters are implemented as a variable-size array of N binary digits (a bit field) and a variable number of M hash functions. The hash functions are designed to always produce an output that is between 1 and N, corresponding to the array of binary digits. The hash functions are generated deterministically, so that any node implementing a bloom filter will always use the same hash functions and get the same results for a specific input. By choosing different length (N) bloom filters and a different number (M) of hash functions, the bloom filter can be tuned, varying the level of accuracy and therefore privacy. 
+
+In <<bloom1>>, we use a very small array of 16 bits and a set of three hash functions to demonstrate how bloom filters work. 
+
+[[bloom1]]
+.Um exemplo de um filtro bloom simplístico, com um campo de 16-bit e três funções hash
+image::images/msbt_0608.png["Bloom1"]
+
+The bloom filter is initialized so that the array of bits is all zeros. To add a pattern to the bloom filter, the pattern is hashed by each hash function in turn. Applying the first hash function to the input results in a number between 1 and N. The corresponding bit in the array (indexed from 1 to N) is found and set to +1+, thereby recording the output of the hash function. Then, the next hash function is used to set another bit and so on. Once all M hash functions have been applied, the search pattern will be "recorded" in the bloom filter as M bits that have been changed from +0+ to +1+. 
+
+<<bloom2>> é um exemplo da adição de um padrão "A" para o filtro bloom simples mostrado em <<bloom1>>.
+
+
+Adding a second pattern is as simple as repeating this process. The pattern is hashed by each hash function in turn and the result is recorded by setting the bits to +1+. Note that as a bloom filter is filled with more patterns, a hash function result might coincide with a bit that is already set to +1+, in which case the bit is not changed. In essence, as more patterns record on overlapping bits, the bloom filter starts to become saturated with more bits set to +1+ and the accuracy of the filter decreases. This is why the filter is a probabilistic data structure—it gets less accurate as more patterns are added. The accuracy depends on the number of patterns added versus the size of the bit array (N) and number of hash functions (M). A larger bit array and more hash functions can record more patterns with higher accuracy. A smaller bit array or fewer hash functions will record fewer patterns and produce less accuracy. 
+
+[[bloom2]]
+.Adicionando um padrão "A" para o nosso filtro bloom simples
+image::images/msbt_0609.png["Bloom2"]
+
+<<bloom3>> é um exemplo da adição de um segundo padrão "B" para o filtro bloom simples.
+
+[[bloom3]]
+.Adicionando um segundo padrão "B" para o nosso filtro bloom simples
+image::images/msbt_0610.png["Bloom3"]
+
+Para testar se um padrão faz parte de um filtro bloom, o padrão é "hashado" por cada função hash e o padrão bit resultante é testado contra a bit array. Se todos os bits indexados pelas funções hash são definidas para +1+, então o padrão é _provavelmente_ registrado no filtro bloom. Como os bits podem ser definidos devido a sobreposição de múltiplos padrões, a resposta não é certa, ao invés disso, ela é probabilística. Em termos simples, uma correspondência positiva em filtro bloom é um "Talvez, Sim." 
+
+<<bloom4>> é um exemplo de teste da existência do padrão "X" no filtro bloom simples. Os bits correspondentes estão definidos como +1+, então o padrõa é provavelmente uma correspondência.
+
+[[bloom4]]
+.Testando a existência de um padrão "X" no filtro bloom. O resultado é uma correspondência positiva probabilística, significando "Talvez."
+image::images/msbt_0611.png["Bloom4"]
+
+Por outro lado, se um padrão for testado contra um filtro bloom e qualquer um dos bits estiver definido como +0+, isso prova que o padrão não foi registrado no filtro bloom. O resultado negativo não é uma probabilidade, ele é uma certeza. Em termos simples, uma correspondência negativa em um filtro bloom é um "Definitivamente Não!" 
+
+<<bloom5>> é um exemplo de um teste da existência do padrão "Y" em um filtro bloom simples. Um dos bits correspondentes está definido como +0+, então o padrão definitivamente não é uma correspondência.
+
+[[bloom5]]
+.Testando a existência do padrão "Y" no filtro bloom. O resultado é uma correspondência negativa definitica, significando "Definitivamente Não!"
+image::images/msbt_0612.png[]
+
+A implementação de filtros bloom do Bitcoin é descrita em Bitcoin Improvement Proposal 37 (BIP0037). Veja <<appdxbitcoinimpproposals>> ou acesse o http://bit.ly/1x6qCiO[GitHub].
+
+=== Bloom Filters and Inventory Updates
+
+((("inventory updates, bloom filters and")))Filtros Bloom são usados para filtrar as transações (e os blocos que as contém) que um nodo VPS recebe de seus pontos. Os nodos VPS irão criar um filtro que corresponde somente aos endereços contidos na carteira do nodo VPS. O nodo VPS irá então enviar uma mensagem((("filterload message"))) +filterload+ para o ponto, contendo o filtro bloom para ser usado na conexão. Após um filtro ser estabelecido, o ponto irá então etestar cada output da transação contra o filtro bloom. Somente as transações que correspondem ao filtro serão enviadas para o nodo. 
+
+Em resposta a uma mensagem +getdata+ vindo do nodo, os pontos irão enviar uma mensagem +merkleblock+ que contém somente os cabeçalhos de bloco para os blocos correspondentes ao filtro e um caminho merkle (ver <<merkle_trees>>) para cada transação correspondente. O ponto também enviará mensagens +tx+ contendo as transações que correspondem ao filtro.
+
+O nodo definindo o filtro bloom pode adicionar padrões ao filtro de maneira interativa ao enviar uma mensagem((("filteradd message"))) +filteradd+. Para limpar o filtro bloom, o nodo pode enviar uma mensagem((("filterclear message")))  +filterclear+. Como não é possível remover um padrão de um filtro bloom, um nodo tem que limpar e reenviar um novo filtro bloom se um padrão não é mais desejado.(((range="endofrange", startref="ix_ch06-asciidoc9")))(((range="endofrange", startref="ix_ch06-asciidoc8")))(((range="endofrange", startref="ix_ch06-asciidoc7"))) 
+
+[[transaction_pools]]
+=== Pools de Transações
+
+((("bitcoin network","transaction pools")))((("transaction pools")))((("memory pool")))((("mempool")))((("transactions","unconfirmed, pools of")))((("unconfirmed transactions")))Quase todo nodo na rede bitcoin mantém uma lista temporária de transações não-confirmadas chamada de _pool de memória_, _mempool_ ou _pool de transações_. Os nodos usam esse pool para manter um acompanhamento das transações que são conhecidas pela rede mas que ainda não foram incluídas na blockchain. Por exemplo, um nodo contendo uma carteira de usuário utilizará um pool de transação para acompanhar os pagamentos para essa carteira que foram recebidos na rede, mas que ainda não foram confirmados. 
+
+As transações são recebidas e verificadas, sendo adicionadas ao pool de transações e transmitidas aos nodos vizinhos para serem propagadas para a rede.
+
+((("orphan transaction pool")))Algumas implementações de nodos também mantém um pool separado de transações órfãs. Caso um input de transação referir-se a uma transação que ainda não é conhecida, como um pai desconhecido, a transação órfã será armazenada temporariamente no pool órfão até que a transação pai chegue. 
+
+When a transaction is added to the transaction pool, the orphan pool is checked for any orphans that reference this transaction's outputs (its children). Any matching orphans are then validated. If valid, they are removed from the orphan pool and added to the transaction pool, completing the chain that started with the parent transaction. In light of the newly added transaction, which is no longer an orphan, the process is repeated recursively looking for any further descendants, until no more descendants are found. Through this process, the arrival of a parent transaction triggers a cascade reconstruction of an entire chain of interdependent transactions by re-uniting the orphans with their parents all the way down the chain. 
+
+((("orphan transaction pool","storage")))((("transaction pools","storage"))) Tanto o pool de transação quanto o pool de órfãs (quando implementado) são armazenados na memória local e não são salvos em um armazenamento persistente; ao invés disso, eles são populados dinamicamente a partir das mensagens de rede que chegam. Quando um nodo é iniciado, ambas as pools são esvaziadas e são gradualmente populadas com as novas transações recebidas na rede.
+
+Some implementations of the bitcoin client also maintain a UTXO database or UTXO pool, which is the set of all unspent outputs on the blockchain. Although the name "UTXO pool" sounds similar to the transaction pool, it represents a different set of data. Unlike the transaction and orphan pools, the UTXO pool is not initialized empty but instead contains millions of entries of unspent transaction outputs, including some dating back to 2009. The UTXO pool may be housed in local memory or as an indexed database table on persistent storage. 
+
+Whereas the transaction and orphan pools represent a single node's local perspective and might vary significantly from node to node depending upon when the node was started or restarted, the UTXO pool represents the emergent consensus of the network and therefore will vary little between nodes. Furthermore, the transaction and orphan pools only contain unconfirmed transactions, while the UTXO pool only contains confirmed outputs.
+
+=== Mensagens de Alerta
+
+((("alert messages")))((("bitcoin network","alert messages")))As mensagens de alerta são uma função raramente utilizada, mas mesmo assim são implementadas na maioria dos nodos. As mensagens de alerta são um "sistema de alerta de emergências" do bitcoin, um meio através do qual os desenvolvedores do bitcoin core podem enviar uma mensagem de texto de emergência para todos os nodos bitcoin. Essa funcionalidade foi implementada para permitir que a equipe de desenvolvedores do core possa notificar todos os usuários bitcoin de problemas graves na rede bitcoin, como um bug crítico que exija a ação do usuário para ser corrigido. O sistema de alerta só foi utilizado poucas vazes, mais notavelmente no início de 2013, quando um bug crítico de banco de dados causou uma bifurcação de múltiplos blocos na blockchain do bitcoin. 
+
+As mensagens de alerta são propagadas pela mensagem +alert+. A mensagem de alerta contém vários campos, incluindo:
+
+ID::
+Um identificação do alerta, de maneira que alertas duplicados possam ser detectados
+
+Expiration::
+Uma hora a partir da qual o alerta expira
+
+RelayUntil::
+Uma hora após a qual o alerta não deve mais ser transmitido
+
+MinVer, MaxVer::
+A faixa de versões do protocolo bitcoin a qual esse alerta se aplica
+
+subVer::
+A versão do software de cliente a qual esse alerta se aplica
+
+Priority::
+Um nível de prioridade para o alerta, atualmente não sendo utilizado
+
+Os alertas são assinados criptograficamente por uma chave pública. A chave privada correspondente é controlada por alguns membros selecionados do time de desenvolvimento do core. A assinatura digital garante que alertas falsos não sejam propagados na rede.
+
+Cada nodo que receber essa mensagem de alerta irá verificá-la, checar pela expiração e propagá-la para todos os seus pontos, dessa maneira garantindo a rápida propagação através de toda a rede. Além de propagar o alerta, os nodos podem implementar uma função de interface de usuário para apresentar o alerta para o usuário. 
+
+((("Bitcoin Core client","alerts, configuring")))No cliente Bitcoin Core, o alerta é configurado com a opção da linha de comando +-alertnotify+, que especifica um comando para ser executado quando um alerta for recebido. A mensagem de alerta é passada como um parâmetro para o comando +alertnotify+. Mais comumente, o comando +alertnotify+ é definido para gerar uma mensagem de e-mail para o administrador do nodo, contendo a mensagem de alerta. O alerta também é exibido como uma caixa de diálogo pop-up na interface gráfica do usuário (bitcoin-Qt), caso ela esteja sendo executada. 
+
+Other implementations of the bitcoin protocol might handle the alert in different ways. ((("mining","hardware, alerts and")))Many hardware-embedded bitcoin mining systems do not implement the alert message function because they have no user interface. It is strongly recommended that miners running such mining systems subscribe to alerts via a mining pool operator or by running a lightweight node just for alert purposes.(((range="endofrange", startref="ix_ch06-asciidoc0"))) 
+
+

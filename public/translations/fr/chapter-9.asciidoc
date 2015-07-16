@@ -1,0 +1,357 @@
+[[ch9]]
+== Chaînes alternatives, Monnaies, pass:[<phrase role="keep-together"> et Applications</phrase>]
+
+Bitcoin est le résultat de 20 années de recherche dans le domaine des systèmes distribués et des monnaies, et a mis au jour une technologie révolutionnaire : un mécanisme de consensus décentralisé fondé sur une preuve de travail. Cette invention au coeur de bitcoin a donné naissance à une vague d'innovations dans la monnaie, les services financiers, les sciences économiques, les systèmes distribués, les systèmes de vote, la gouvernance d'entreprise, et la gestion des contrats. 
+
+Dans ce chapitre, nous allons examiner les nombreuses conséquences de l'invention du bitcoin et de la blockchain : les chaînes alternatives, les monnaies, et des applications développées depuis l'avènement de cette technologie en 2009. Nous nous concentrerons essentiellement sur les monnaies alternatives, ou _altcoins_, qui sont des monnaies numériques implémentées sur le même modèle que bitcoin, mais avec une blockchain et un réseau totalement indépendant. 
+
+Pour chaque altcoin cité dans ce chapitre, 50 ou plus seront passés sous silence, suscitant colère et fureur auprès de leurs créateurs et fans. Le but de ce chapitre n'est pas d'évaluer ou de classer les altcoins, ou même de ne mentionner que les plus significatifs sur la base de quelque critère subjectif. Au lieu de cela, nous allons mettre en exergue certains exemples qui montrent l'ampleur et la variété de l'écosystème, en relevant la première occurrence de chaque innovation ou différenciation significative. Certains des exemples les plus intéressants d'altcoins sont en fait des échecs complets d'un point de vue monétaire. Ceci les rend peut-être encore plus intéressants à étudier, et souligne le fait que ce chapitre ne doit pas être utilisé comme un guide pour l'investissement. 
+
+Avec de nouvelles altcoins apparaissant tous les jours, il serait impossible de ne pas rater certaines d'entre elles, peut-être celle qui changera l'histoire. Le rythme de l'innovation est ce qui fait que cet environnement est si excitant ; il garantit que ce chapitre sera incomplet et périmé dès sa publication.
+
+=== Une Classification des Monnaies et Chaînes alternatives
+
+((("chains, alternative")))((("currencies, alternative")))Bitcoin est un projet open source, et son code a été utilisé comme base pour de nombreux autres projets logiciels. La forme la plus commune de logiciel dérivé du code source de bitcoin est la création de monnaies décentralisées alternatives, ou _altcoins_, qui utilisent les même briques de base pour implémenter des monnaies numériques. 
+
+Il y a plusieurs couches de protocole implémentées au-dessus de la blockchain bitcoin. Ces ((("blockchain apps")))((("meta chains")))((("meta coin platforms"))) _metacoins_, _metachaînes_, ou _applications blockchain_ utilisent la blockchain comme une platforme applicative ou étendent le protocole bitcoin en lui ajoutant des couches supplémentaires. Parmi les exemples, on trouve les Colored Coins, Mastercoin, NXT et Counterparty. 
+
+Dans ce paragraphe nous allons examiner quelques altcoins notables, comme Litecoin, Dogecoin, Freicoin, Primecoin, Peercoin, Darkcoin, et Zerocoin. Ces altcoins sont notables pour des raisons historiques ou parce qu'elles constituent un bon exemple d'un type particulier d'innovation, pas parce qu'elles ont la plus grande valeur ou qu'elles sont les "meilleures" altcoins. 
+
+Outre les altcoins, il existe également un certain nombre d'implémentations alternatives de blockchain qui ne sont pas réellement des "coins", et que j'appelle des((("alt chains"))) _altchains_. Ces altchains implémentent un algorithme de consensus ainsi qu'un livre de compte distribué comme plateforme pour des contrats, systèmes d'enregistrement de noms ou d'autres applications. Les altchains se basent sur les mêmes briques élémentaires, et utilisent parfois aussi une monnaie ou autre token comme mécanisme de paiement, mais leur objectif principal n'est pas d'être une monnaie. Nous étudierons Namecoin et Ethereum comme exemple de ces altchains. 
+
+Enfin, un certain nombre de concurrents de bitcoin proposent une monnaie numérique ou un réseau de paiement, sans utiliser un livre de compte partagé ou un mécanisme de consensus basé sur une preuve de travail ; c'est le cas de Ripple et consorts. Ces technologies, n'étant pas basées sur la blockchain, sortent du cadre de ce livre et ne seront donc pas abordées dans ce chapitre.
+
+=== Plateformes Meta Coin 
+
+((("meta coin platforms", id="ix_ch09-asciidoc0", range="startofrange")))Les meta coins et meta chaînes sont des couches logicielles implémentées au dessus de bitcoin, que ce soit pour implémenter une monnaie-dans-la-monnaie ou une surcouche à la plateforme/protocole à l'intérieur du système bitcoin. Ces couches fonctionnelles étendent le coeur du protocole bitcoin et ajoutent des fonctionnalités en codant des données supplémentaires à l'intérieur des transactions et adresses bitcoin. Les premières implémentations de meta coins utilisaient différents hacks pour ajouter des métadonnées dans la blockchain, comme le fait d'utiliser des adresses pour encoder des données, ou encore des champs inutilisés des transactions (par exemple le champ sequence). Depuis l'introduction de l'opcode +OP_RETURN+ dans les scripts de transaction, les meta coins ont eu la possibilité d'enregistrer des métadonnées directement dans la blockchain, et la plupart sont en train de migrer en ce sens. 
+
+==== Colored Coins
+
+((("colored coins")))((("meta coin platforms","colored coins")))Les _Colored coins_ sont un meta protocole qui encapsule des informations sur de petites quantités de bitcoin. une coin "colorée" est une somme de bitcoin réassignée pour représenter un actif différent. ((("stock certificates","colored coins as")))Imaginez, par exemple, prendre un billet de 1 dollar, et mettre un coup de tampon dessus indiquant, "Ce billet constitue 1 action de la société Acme Inc." Maintenant, le billet peut servir à deux choses : c'est un billet de banque et aussi un certificat d'action. Parce que sa valeur en tant qu'action est supérieure, vous ne voudriez pas vous en servir pour acheter des bonbons, donc il ne sera en pratique plus utilisé comme unité de monnaie. Les colored coins fonctionnent de manière similaire, en convertissant une certaine valeur, faible, de bitcoin en un certificat représentant un autre actif. Le terme "coloré" fait référence à l'idée de donner une signification spéciale à travers un attribut particulier comme une couleur — c'est une métaphore : il n'y a pas de couleurs dans les colored coins. 
+
+((("wallets","for colored coins")))Les colored coins sont gérés par des porte-monnaie spécialisés qui enregistrent et interprètent les métadonnées associées aux bitcoin colorés. En utilisant un tel wallet, l'utilisateur va colorer une somme de bitcoins en leur ajoutant un label doté d'une signification spéciale. Par exemple, un label pourrait représenter des certificats d'action, des obligations, des propriétés immobilières, des matières premières, ou des articles de collection. Les utilisateurs de colored coins sont totalement libres de l'attribution et l'interprétation de la "couleur" associée à des bitcoins. Pour colorer des pièces, l'utilisateur définit une métadonnée associée, comme par exemple un mode d'émission, le fait de pouvoir ou non les subdiviser, un symbole et une description, ainsi que d'autres informations. Une fois colorées, les pièces peuvent être achetées et vendues, subdivisées, agrégées, et peuvent faire l'objet de dividendes. Les colored coins peuvent aussi être "décolorées" en leur retirant leur attribut spécial, et peuvent être rachetées pour leur valeur faciale en bitcoin. 
+
+Pour montrer un exemple d'utilisation des colored coins, nous avons créé un ensemble de 20 colored coins portant le symbole "MasterBTC", qui représentent un bon pour un exemplaire gratuit de ce livre, comme le montre la figure <<example_9-1>>. Chaque unité de MasterBTC représentée par ces colored coins peut maintenant être vendue ou donnée à n'importe quel utilisateur doté d'un wallet compatible avec les colored coins ; ce dernier pourra à son tour les transférer à d'autres, ou bien les échanger auprès de l'émetteur contre un exemplaire du livre. Cet exemple peut être vu https://cpr.sm/FoykwrH6UY[ici].
+
+[[example_9-1]]
+.Le profil de métadonnées des colored coins, configuré comme bon pour un exemplaire gratuit du livre
+====
+[source,json]
+----
+{
+  "source_addresses": [
+    "3NpZmvSPLmN2cVFw1pY7gxEAVPCVfnWfVD"
+  ],
+  "contract_url": "https://www.coinprism.info/asset/3NpZmvSPLmN2cVFw1pY7gxEAVPCVfnWfVD",
+  "name_short": "MasterBTC",
+  "name": "Free copy of \"Mastering Bitcoin\"",
+  "issuer": "Andreas M. Antonopoulos",
+  "description": "This token is redeemable for a free copy of the book \"Mastering Bitcoin\"",
+  "description_mime": "text/x-markdown; charset=UTF-8",
+  "type": "Other",
+  "divisibility": 0,
+  "link_to_website": false,
+  "icon_url": null,
+  "image_url": null,
+  "version": "1.0"
+}
+----
+====
+
+==== Mastercoin
+
+((("meta-coin platforms","mastercoin protocol")))Mastercoin est une couche de protocole se superposant à bitcoin, et qui constitue une plateforme pour une variété d'applications étendant le système bitcoin. Mastercoin utilise la devise MST pour l'établissement de transactions, mais elles n'a pas pour but principal d'être une monnaie. Il s'agit plutôt d'une plateforme pour construire d'autres choses, comme une monnaie personnalisée, des tokens de "propriété intelligente", des places de marché d'actifs décentralisés, et des contrats. Dites vous que Mastercoin est un protocole applicatif superposé à la couche de transport de transactions financières qu'est bitcoin, tout comme HTTP est situé au-dessus de TCP. 
+
+Mastercoin fonctionne principalement par le biais de transactions envoyées et reçues vers et depuis des adresses bitcoin spéciales appelées ((("exodus addresses"))) adresses "exodus" (+1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P+), exactement comme HTTP utilise un port TCP spécifique (port 80) pour se différencier du reste du traffic TCP. Le protocole Mastercoin est en train d'évoluer progressivement, de l'utilisation de ces adresses exodus avec multi-signatures à celle de l'opérateur OP_RETURN pour encoder les métadonnées de transaction.
+
+==== Counterparty
+
+((("meta coin platforms","counterparty protocol")))Counterparty est une autre couche de protocole implémentée au-dessus de bitcoin. Counterparty permet le développement de monnaies personnalisées, de tokens échangeables, d'instruments financiers, de places de marché d'actifs décentralisés, et davantage. Counterparty est implémenté principalement via l'opérateur +op_RETURN+ dans le langage de script bitcoin, pour encoder les métadonnées qui étendent la signification des transactions bitcoin. Counterparty utilise la devise XCP comme token pour effectuer des transactions.(((range="endofrange", startref="ix_ch09-asciidoc0"))) 
+
+=== Les Alt Coins 
+
+((("alt coins", id="ix_ch09-asciidoc1", range="startofrange")))((("currencies, alternative", id="ix_ch09-asciidoc2", range="startofrange")))La grande majorité des altcoins sont dérivées du code source de bitcoin, c'est ce qu'on appelle des "forks". Certaines sont implémentées "depuis zéro", en se basant sur le modèle de la blockchain, mais sans utiliser le code source de bitcoin. Les altcoins et altchains (cf. chapitre suivant) sont toutes les deux des implémentations distinctes de la technologie blockchain, et les deux utilisent leur propre blockchain. La dénomination différente sert à indiquer que les altcoins servent principalement de monnaie, alors que les altchains sont utilisées à d'autres fins. 
+
+Pour être précis, le premier fork alternatif majeur du code de bitcoin n'était pas un altcoin, mais l'altchain _Namecoin_, que nous étudierons dans un prochain paragraphe. 
+
+Sur la base de la date de son annonce, le premier altcoin résultant d'un fork de bitcoin est apparu en Août 2011 ; il s'appelait _IXCoin_. IXCoin modifiait quelques un des paramètres originaux de bitcoin, en particulier il accélérait la création monétaire en fixant la récompense à 96 coins par bloc.
+
+En Septembre 2011, __Tenebrix_ fut lancé. Tenebrix était la première cryptomonnaie à implémenter un algorithme de preuve de travail alternatif, nommé ((("proof-of-work algorithm","alternative")))((("scrypt algorithm"))) _scrypt_, conçu à l'origine pour l'extension de mot de passe (résistance à la force brute). L'objectif affiché de Tenebrix était de faire une monnaie résistante au minage sur GPU et ASIC, en utilisant un algorithme gourmand en mémoire vive. Tenebrix échoua comme monnaie, mais servit de base pour Litecoin, qui a connu un un grand succès et à donner lieu à des centaines de clones. 
+
+_Litecoin_, en plus d'utiliser scrypt comme algorithme de preuve de travail, implémenta également un temps de génération de bloc plus rapide, en ciblant 2.5 minutes contre 10 minutes pour bitcoin. La monnaie résultante est vendue comme étant à bitcoin ce que l'argent est à l'or, et est destinée à être une monnaie alternative légère. Grâce au temps de confirmation plus rapide et à la limite totale de 84 millions, beaucoup d'adhérents de Litecoin pensent qu'il est plus adapté aux transactions dans les commerces que bitcoin. 
+
+Les altcoins ont continué à proliférer en 2011 et 2012, qu'ils soient basés sur bitcoin ou sur Litecoin. Au début de 2013, il y avait 20 altcoins s'affrontant pour se faire une place sur le marché. Avant la fin de 2013, ce nombre avait explosé pour atteindre 200, 2013 devenant rapidement "l'année des altcoins". La croissance des altcoins à continué en 2014, avec plus de 500 altcoins en existence à au moment d'écrire ce livre. Plus de la moitié des altcoins aujourd'hui sont des clones de Litecoin. 
+
+Créer un altcoin est facile, c'est pourquoi il en existe maintenant plus de 500. La plupart des altcoins diffèrent peu de bitcoin et n'offrent rien qui vaille la peine de les étudier. Beaucoup sont en fait des tentatives pour enrichir leurs créateurs. Parmi ces copies et les fraudes de type "pump-and-dump", il y a toutefois quelques exceptions notables et des innovations très importantes. Ces altcoins prennent des approches radicalement différentes, ou ajoutent une innovation significative au modèle de conception de bitcoin. Il y a trois  domaines principaux dans lesquels ces altcoins se différencient de bitcoin :
+
+* Une politique monétaire différente
+* Un mécanisme de preuve de travail ou de consensus différent
+* Des fonctionnalités spécifiques, telles qu'une anonymat fort
+
+Pour plus d'information, référez-vous à ce http://mapofcoins.com[frise chronologique des altcoins et altchains].((("alt chains","timeline of")))((("alt coins","timeline of")))
+
+==== Évaluer un altcoin
+
+((("alt coins","evaluating")))((("currencies, alternative","evaluating")))Avec tant d'altcoins en circulation, comment décide-t-on lesquels sont dignes d'attention ? Certains altcoins visent à se propager largement et être utilisées comme monnaie. D'autres sont des laboratoires pour expérimenter différentes fonctionnalités et modèles monétaires. D'autres sont justes des arnaques pour enrichir rapidement leurs créateurs. Pour évaluer les altcoins, je regarde leur caractéristiques principales et leurs métriques marché.
+
+Voici quelques questions à se poser pour évaluer à quel point un altcoin se différencie de bitcoin :
+
+* L'altcoin introduit-il une innovation significative ?
+* Y a-t-il une différence suffisamment intéressante pour attirer des utilisateurs de bitcoin ?
+* L'altcoin s'adresse-t-il à un marché de niche ou une application intéressants ?
+* L'altcoin peut-il attirer suffisamment de mineurs pour être protégé contre les attaques de consensus ?
+
+Voici certaines des métriques financières et marché les plus importantes à considérer :
+
+* Quelle est la capitalisation totale de l'altcoin ?
+* Quelle est l'estimation du nombre d'utilisateurs/wallets de l'altcoin ?
+* Combien de marchands acceptent l'altcoin ?
+* Combien de transactions journalières (en volume) sont exécutées sur l'altcoin ?
+* Quelle valeur est négociée quotidiennement ?
+
+Dans ce chapitre, nous allons nous concentrer principalement sur les caractéristiques techniques et le potentiel d'innovation des altcoins représentées par la première série de questions.
+
+==== Paramètres Monétaires Alternatifs : Litecoin, Dogecoin, Freicoin
+
+((("alt coins","monetary parameter alternatives")))((("currencies, alternative","monetary parameter alternatives")))((("monetary parameter alternatives")))Bitcoin est doté de paramètres monétaires lui conférant les caractéristiques particulières d'une monnaie déflationniste à émission plafonnée. Elle est limitée à 21 millions d'unités de monnaie majeures (ou 21 billiards d'unités mineures), son taux d'émission diminue de façon géométrique, et un nouveau bloc est créé toutes les 10 minutes, ce qui contrôle la vitesse de confirmation des transactions et la génération de monnaie. Beaucoup d'altcoins ont modifié ces paramètres principaux pour aboutir à une politique monétaire différente. Les exemples suivants sont certains des plus notables parmi les centaines d'altcoins qui existent.
+
+===== Litecoin
+
+Apparu en 2011, Litecoin est un des premiers altcoins, et la deuxième monnaie numérique après bitcoin. Ses innovations principales étaient l'utilisation de _scrypt_ comme algorithme de preuve de travail (hérité de Tenebrix), et ces paramètres monétaires plus légers et rapides.
+
+* Temps de génération de bloc : 2.5 minutes
+* Masse monétaire totale : 84 millions de pièces d'ici 2140
+* Algorithme de consensus : Preuve de travail Scryppt
+* Capitalisation totale : 260 millions de dollars à la mi-2014
+
+===== Dogecoin
+
+Dogecoin est sorti en Décembre 2013, et est basé sur un fork de Litecoin. Dogecoin est remarquable en ce qu'il possède une politique d'émission rapide, et une masse monétaire très élevée, afin d'encourager le fait de dépenser et donner des pourboires. Dogecoin est également notable parce qu'il a débuté comme une plaisanterie mais est devenu assez populaire, avec une communauté importante et active, avant de décliner rapidement en 2014. 
+
+* Temps de génération de bloc : 60 secondes
+* Masse monétaire totale : 100 000 000 000 (100 milliards) de Doge d'ici 2015
+* Algorithme de consensus : Preuve de travail Scryppt
+* Capitalisation totale : 12 millions de dollars à la mi-2014.
+
+===== Freicoin
+
+Freicoin est apparu en Juillet 2012. C'est une ((("demurrage currency"))) _monnaie fondante_, ce qui signifie que son taux d'intérêt est négatif pour la monnaie stockée. Un TAEG de 4.5% est associé à la valeur stockée dans Freicoin, afin d'encourager la consommation et décourager l'accumulation d'argent. Freicoin est notable en ce qu'il implémente une politique monétaire à l'exact opposé de la déflation propre à Bitcoin. Freicoin n'a pas eu de succès en tant que monnaie, mais est un exemple intéressant de la variété de politiques monétaires qui peuvent être mises en oeuvre par les altcoins.
+
+* Temps de génération de bloc : 10 minutes
+* Masse monétaire totale : 100 millions de pièces en 2140
+* Algorithme de consensus : Preuve de travail SHA256
+* Capitalisation totale : 130 000 dollars à la mi-2014
+
+==== Innovation dans l'algorithme de consensus : Peercoin, Myriad, Blackcoin, Vericoin, NXYT
+
+((("alt coins","consensus innovation")))((("consensus","innovation")))Le mécanisme de consensus de Bitcoin est basé sur une preuve de travail qui utilise l'algorithme SHA256. Les premiers altcoins ont introduit scrypt comme algorithme de preuve de travail alternatif, permettant au minage d'être davantage tourné vers les CPU, et moins susceptible d'être centralisés avec des ASICs. Depuis lors, les innovations dans le mécanisme de consensus ont continué à un rythme effréné. Plusieurs altcoins ont adopté un ensemble d'algoithmes tels que scrypt, ,((("Blake algorithm")))((("Groestl algorithm")))((("scrypt-N algorithm")))((("SHA3 algorithm")))((("Skein algorithm"))) scrypt-N, Skein, Groestl, SHA3, X11, Blake, et d'autres. Certains altcoins ont combiné plusieurs algorithmes de preuve de travail. En 2013, nous avons vu l'invention d'une alternative à la preuve de travail, appelée((("proof of stake"))) _preuve de participation_, qui est à la base de beaucoup d'altcoins modernes. 
+
+La preuve de participation est un système par lequel les détenteurs d'une monnaie peuvent mettre en jeu de la monnaie comme collatéral associé à un intérêt. Un peu à la façon d'un certificat de dépôt, les participants peuvent mettre en réserve une portion de leurs fonds, et voir leur investissement rémunéré sous la forme d'émission de monnaie (par le biais de taux d'intérêts), et de commissions de transactions. 
+
+===== Peercoin
+
+Peercoin est apparu en Août 2012, et est la première altcoin à utiliser une hybridation de preuve de travail et de preuve de participation pour émettre de la monnaie. 
+
+* Temps de génération de bloc : 10 minutes
+* Masse monétaire totale : Illimitée
+* Algorithme de consensus : (Hybride) preuve de participation avec une preuve de travail initiale.
+* Capitalisation totale : 14 millions de dollars à la mi-2014
+
+===== Myriad
+
+Myriad est sorti en Février 2014 et est notable pour avoir utilisé cinq algorithmes de preuve de travail différents (SHA256d, Scrypt, Qubit, Skein, ou Myriad-Groestl) simultanément, avec une difficulté variant pour chaque algorithme en fonction de la participation au minage. Le but est d'immuniser Myriad contre le minage par ASIC la centralisation, et de le rendre beaucoup plus résistant face à une attaque de consensus, parce que de multiples algorithmes devraient être attaqués simultanément.
+
+* Temps de génération de bloc : 30 secondes en moyenne (cible de 2.5 minutes par algorithme de minage)
+* Masse monétaire totale : 2 milliard d'ici 2024
+* Algorithme de consensus : Preuve de travail multi-algorithmique
+* Capitalisation totale : 120 000 dollars à la mi-2014
+
+===== Blackcoin
+
+Blackcoin fut présenté en Février 2014 et utilise un algorithme de consensus par preuve de participation. Il est également notable pour introduire des "multipools", un type de pool de minage pouvant choisir entre différents altcoins automatiquement en fonction de la profitabilité. 
+
+* Temps de génération de bloc : 1 minute
+* Masse monétaire totale : Illimitée
+* Algorithme de consensus : Preuve de participation
+* Capitalisation totale : 3.7 million de dollars à la mi-2014
+
+===== VeriCoin
+
+VeriCoin a été lancé en Mai 2014. Il utilise un algorithme de consensus par preuve de participation avec un taux d'intérêt variable qui s'ajuste dynamiquement en fonction du poids relatif de l'offre et de la demande sur le marché. Il est également le premier altcoin à proposer un échange automatisé vers bitcoin lors d'un paiement en bitcoin via le wallet.
+
+* Temps de génération de bloc : 1 minute
+* Masse monétaire totale : Illimitée
+* Algorithme de consensus : Preuve de participation
+* Capitalisation totale : 1.1 million de dollars à la mi 2014
+
+===== NXT
+
+NXT (prononcé "Next") est un altcoin en preuve de participation "pure", en ce qu'il n'utilise pas de minage par preuve de travail. NXT est une implémentation depuis zéro d'une cryptomonnaie, pas un fork de bitcoin ou d'un autre altcoin. NXT implémente de nombreuses fonctionnalités avancées, dont un registre de nom (similaire à((("Namecoin"))) Namecoin), une place de marché d'actifs décentralisée (similaire au Colored Coins), une messagerie intégrée décentralisée et sécurisée (similaire à((("Bitmessage"))) Bitmessage), et une délégation de participation (pour déléguer une preuve de participation à un tiers). Pour ses partisans, NXT est la "génération suivante" de cryptomonnaie, ou cryptomonnaie 2.0. 
+
+* Temps de génération de bloc : 1 minute
+* Masse monétaire totale : Illimitée
+* Algorithme de consensus : Preuve de participation
+* Capitalisation totale : 30 millions de dollars à la mi-2014
+
+
+==== Innovation du minage à double-emploi : Primecoin, Curecoin, Gridcoin
+
+((("dual-purpose mining")))((("mining","dual-purpose")))L'algorithme de preuve de travail de Bitcoin n'a qu'un seul objectif : sécuriser le réseau bitcoin. Par comparaison à la sécurité des systèmes de paiement traditionnels, le coût du minage n'est pas très élevé. Cependant, il a été critiqué par beaucoup comme étant un "gâchis". La génération d'altcoin suivante tente de résoudre ce problème. Les algorithmes de preuve de travail à double-emploi résolvent un problème "utile" spécifique, tout en produisant une preuve de travail pour sécuriser le réseau. Le risque d'ajouter un rôle externe à la sécurité de la monnaie est que cela ajoute également une influence sur la courbe offre/demande. 
+
+===== Primecoin
+
+Primecoin a été annoncée en Juillet 2013. Son algorithme de preuve de travail recherche des nombres premiers, en calculant ((("bi-twin prime chains")))((("Cunningham prime chains"))) chaînes de Cunningham et de nombres premiers jumeaux. Les nombres premiers sont utiles dans un certain nombre de disciplines scientifiques. La blockchain Primecoin contient les nombres premiers découverts, constituant ainsi une archive publique de découverte scientifique en parallèle du livre public des transactions. 
+
+* Temps de génération de bloc : 1 minute
+* Masse monétaire totale : Illimitée
+* Algorithme de consensus : Preuve de travail par calcul de chaîne de nombres premiers
+* Capitalisation totale : 1.3 millions de dollars à la mi-2014
+
+===== Curecoin
+
+((("protein folding algorithms")))Curecoin a été annoncé en Mai 2013. Il combine un algorithme de preuve de travail par SHA256 avec une recherche de repliement de protéine à travers le projet Folding@Home. Le repliement de protéine est une simulation des interactions biochimiques des protéines, gourmande en puissance de calcul, utilisée pour mettre au point de nouveaux médicaments. 
+
+* Temps de génération de bloc : 10 minutes
+* Masse monétaire totale : Illimitée
+* Algorithme de consensus : Preuve de travail avec recherche de repliement de protéine
+* Capitalisation totale : 58 000 dollars à la mi-2014
+
+===== Gridcoin
+
+Gridcoin est apparu en Octobre 2013. En complément d'une preuve de travail basée sur scrypt, les mineurs participent aussi à la grille de calcul distribuée((("BOINC open grid computing"))) BOINC. BOINC — Berkeley Open Infrastructure for Network Computing — est un protocole ouvert pour les grilles de calcul de recherche scientifique, qui permet aux participants de mettre à disposition la puissance de calcul non utilisée, à destination d'un large éventail de recherche académique en informatique. Gridcoin utilise BOINC comme une plateforme de calcul générique, plutôt que de résoudre des problèmes scientifiques spécifiques comme les nombres premiers ou le repliement de protéines. 
+
+* Temps de génération de bloc : 150 secondes
+* Masse monétaire totale : Illimitée
+* Algorithme de consensys : Preuve de travail avec participation à la grille de calcul BOINC
+* Capitalisation totale : 122 000 dollars à la mi-2014
+
+==== Altcoins orientées anonymat : CryptoNote, Bytecoin, Monero, Zerocash/Zerocoin, Darkcoin
+
+((("alt coins","anonymity focused", id="ix_ch09-asciidoc3", range="startofrange")))((("currencies, alternative","anonymity focused", id="ix_ch09-asciidoc4", range="startofrange")))Bitcoin est souvent décrit à tort comme une monnaie "anonyme". En fait, il est relativement facile de relier des identités à des adresses bitcoin et, en utilisant l'analyse big-data, de relier ces adresses entre elles pour réaliser un schéma complet du profil de dépenses de quelqu'un. Plusieurs altcoins vise à résoudre ce problème directement en se concentrant sur un anonymat fort. La première tentative de ce genre est très certainement _Zerocoin_, un protocole meta-coin au dessus de bitcoin permettant de préserver l'anonymat, introduit par un papier présenté au Symposium de l'IEEE sur la Sécurité et la Vie privée en 2013. Zerocoin sera implémenté comme un altcoin complètement séparé appelé Zerocash, en développement au moment d'écrire ce livre. Une approche alternative à l'anonymat a été lancée avec _CryptoNote_ dans un papier publié en Octobre 2013. CryptoNote est une brique technologique qui est implémentée par un certain nombre d'altcoins forkés, étudiés ci-après. En plus de Zerocash et CryptoNotes, il y a plusieurs monnaies anonymes indépendantes, comme Darkcoin, qui utilise des adresses camouflées et un mélange des transactions pour garantir l'anonymat.
+
+===== Zerocoin/Zerocash
+
+Zerocoin constitue une approche théorique de l'anonymat en matière de monnaies numériques, introduit en 2013 par des chercheurs à l'Université Johns Hopkins. Zerocash en est une implémentation de type altcoin, qui est en développement et n'est pas encore sortie. 
+
+===== CryptoNote
+
+CryptoNote est un altcoin, implémentation de référence apportant les bases d'un cash numérique anonyme. Il a été présenté en Octobre 2013. Il est conçu pour être forké vers différentes implémentations, et a un mécanisme de remise à zéro périodique intégré le rendant lui-même inutilisable comme monnaie. Plusieurs altcoins sont nées de CryptoNote, comme Bytecoin (BCN), Aeon (AEON), Boolberry (BBR), duckNote (DUCK), Fantomcoin (FCN), Monero (XMR), MonetaVerde (MCN), Quazarcoin (QCN). CryptoNote est aussi notable pour être une implémentation depuis zéro d'une monnaie numérique, et pas un fork de bitcoin. 
+
+===== Bytecoin
+
+((("Graphical Processing Units (GPUs)")))Bytecoin a été la première implémentation partant de CryptoNote, offrant une monnaie anonyme viable basée sur la technologie CryptoNote. Bytecoin a été lancée en Juillet 2012. Notez qu'il existait auparavant un altcoin nommé Bytecoin avec le symbole monétaire BTE, alors que le Bytecoin dérivé de CryptoNote possède le symbole BCN. Bytecoin utilise l'algorithme de preuve de travail Cryptonight, qui requiert un accès à un minimum 2MB de RAM par instance, ce qui exclut le mining GPU ou ASIC. Via CryptoNote, Bytecoin hérite des signatures circulaires, des transactions intraçables et d'un anonymat résistant à l'analyse de blockchain.
+
+* Temps de génération de blloc : 2 minutes
+* Masse monétaire totale : 184 milliards de BCN
+* Algorithme de consensus : Preuve de travail Cryptonight
+* Capitalisation totale : 3 millions de dollards à la mi-2014
+
+===== Monero
+
+Monero est une autre implémentation de CryptoNote. Sa courbe d'émission est légèrement plus plate que celle de Bytecoin, 80% de la monnaie étant générée dans les quatre premières années. Il offre les mêmes propriétés d'anonymat héritées de CryptoNote.
+
+* Temps de génération de bloc : 1 minute
+* Masse monétaire totale : 18.4 millions de XMR
+* Algorithme de consensus : Preuve de travail Cryptonight
+* Capitalisation totale : 5 millions de dollars à la mi-2014
+
+===== Darkcoin
+
+Darkcoin a été lancé en Janvier 2014. Darkcoin implémente une monnaie anonyme via un protocole de re-mélange pour toutes les transactions, apppelé DarkSend. Darkcoin est également notable pour utiliser 11 passes de fonctions de hash différentes((("proof-of-work algorithm","for Darkcoin"))) (blake, bmw, groestl, jh, keccak, skein, luffa, cubehash, shavite, simd, echo) pour l'algorithme de preuve de travail.
+
+* Temps de génération de bloc : 2.5 minutes
+* Masse monétaire totale : Maximum 22 million de DRK
+* Algorithme de consensus : Preuve de travail multi-algorithme à plusieurs passes
+* Capitalisation totale : 19 millions de dollars à la mi-2014(((range="endofrange", startref="ix_ch09-asciidoc4")))(((range="endofrange", startref="ix_ch09-asciidoc3")))(((range="endofrange", startref="ix_ch09-asciidoc2")))(((range="endofrange", startref="ix_ch09-asciidoc1")))
+
+=== Altchains  à vocation non monétaires
+
+((("chains, alternative","noncurrency", id="ix_ch09-asciidoc5", range="startofrange")))((("non-currency alt chains", id="ix_ch09-asciidoc6", range="startofrange")))Les altchains sont des implémentations alternatives du design pattern de la blockchain, qui ne sont pas utilisées principalement comme monnaie. Beaucoup incluent une monnaie, mais cette dernière est utilisée comme un jeton pour allouer quelque chose d'autre, comme une ressource ou un contrat. La monnaie, en d'autres termes, n'est pas l'objet principal de la plateforme ; elle en est une propriété secondaire.  
+
+==== Namecoin
+
+Namecoin a été le premier fork du noeud bitcoin. Namecoin est une plateforme décentralisée clé-valeur d'enregistrement et de transfert qui utilise la blockchain. Elle propose un registre global de nom de domaine similaire au systèmes des noms de domaine sur Internet. Namecoin est actuellement utilisé comme un((("domain name service (DNS)"))) service de nom de domaine (DNS) alternatif pour le nom de domaine racine +.bit+. Namecoin peut aussi être utilisé pour enregistrer des noms et des paires clé-valeur dans d'autres espaces de noms, comme des adresses emails, des clés de cryptage, des certificats SSL, des signatures de fichiers, des systèmes de vote, des certificats d'action, et une multitude d'autres applications. 
+
+Le système Namecoin inclue la monnaie Namecoin (symbole NMC), utilisée pour payer les commissions de transactions associées à l'enregistrement et au transfert des noms. Au prix actuel, la commission pour enregistrer un nom est de 0.01 NMC, soit approximativement 1 cent US. Comme dans bitcoin, les commissions sont prélevées par les mineurs namecoin.
+
+Les paramètres de base de Namecoin sont les mêmes que ceux de bitcoin.  
+
+* Temps de génération de bloc : 10 minutes
+* Masse monétaire totale : 21 millions de NMC d'ici 2140
+* Algorithme de consensus : Preuve de travail SHA256
+* Capitalisation totale : 10 millions de dollars à la mi-2014
+
+Les espaces de nom de Namecoin ne sont pas limités, et n'importe qui peut utiliser le namespace qu'il souhaite, de la façon où il l'entend. Toutefois, certains namespaces ont une spécification bien définie, de telle sorte que quand ils les lisent depuis la blockchain, les logiciels savent comment les lire et les interpréter S'ils sont malformés, alors le logiciel que vous utilisez vous renverra une erreur. Les namespaces les plus populaires sont :
+
+* +d/+ est l'espace de nom pour les domaines +.bit+
++ +id/+ est le namespace pour stocker des identifiants de personne, tels que des adresses email, des clés PGP, etc.
+* +u/+ est une spécification supplémentaire plus structurée pour stocker des identités (basée sur openspecs)
+
+((("blockchains","Namecoin")))Le client Namecoin est très semblable à Bitcoin Core, car il dérive du même code source. Après installation, le client va télécharger la copie complète de la blockchain Namecoin et sera alors prêt à effectuer des requêtes ou enregistrer des noms. Il y a trois commandes principales :((("Namecoin","commands"))) 
+
++name_new+:: Teste l'existence ou pré-enregistre un nom
++name_firstupdate+:: Enregistre un nom et publie l'enregistrement
++name_update+:: Modifie ou met à jour un enregistrement de nom.
+
+Par exemple, pour enregistrer un domaine +mastering-bitcoin.bit+, nous utilisons la commande +name_new+ comme suit :
+
+[source,bash]
+----
+$ namecoind name_new d/mastering-bitcoin
+----
+[source,json]
+----
+[
+    "21cbab5b1241c6d1a6ad70a2416b3124eb883ac38e423e5ff591d1968eb6664a",
+    "a05555e0fc56c023"
+]
+----
+
+La commande +name_new+ permet de réserver le nom en créant un hash du nom avec un clé aléatoire. Les deux chaînes retournées par +name_new+ sont le hash et la clé aléatoire (+a05555e0fc56c023+ dans l'exemple qui précède), et sont utilisées pour publier l'enregistrement. Une fois que la demande de réservation a été enregistrée dans la blockchain Namecoin elle peut être convertie en enregistrement public avec la commande +name_firstupdate+, en fournissant la clé aléatoire :
+
+----
+$ namecoind name_firstupdate d/mastering-bitcoin a05555e0fc56c023 "{"map": {"www": {"ip":"1.2.3.4"}}}}"
+b7a2e59c0a26e5e2664948946ebeca1260985c2f616ba579e6bc7f35ec234b01
+----
+
+Cet exemple va associer le nom de domaine +www.mastering-bitcoin.bit+ à l'adresse IP 1.2.3.4. Le hash retourné est l'ID de transaction qui peut être utilisé pour suivre l'enregistrement. Vous pouvez voir quels noms vous sont attribués en exécutant la commande +name_list+ :
+
+----
+$ namecoind name_list
+----
+====
+[source,json]
+----
+[
+    {
+        "name" : "d/mastering-bitcoin",
+        "value" : "{map: {www: {ip:1.2.3.4}}}}",
+        "address" : "NCccBXrRUahAGrisBA1BLPWQfSrups8Geh",
+        "expires_in" : 35929
+    }
+]
+----
+====
+
+Les enregistrements Namecoin doivent être mis à jour tous les 36 000 blocs (approximativement 200 à 250 jours). La commande +name_update+ n'a pas de commission, d'où il résulte que renouveler un domaine Namecoin est gratuit. Des tierces parties peuvent prendre en charge l'enregistrement, le renouvellement automatique, la mise à jour par interface web, en échange d'une faible commission. Avec un fournisseur tiers, vous éviter de devoir faire tourner un client Namecoin, mais vous perdez l'indépendance qu'offre ce système d'enregistrement de nom décentralisé . 
+
+==== Ethereum
+
+((("contracts, in Ethereum")))Ethereum est un processeur de contrat Turing-complet, et une plateforme d'exécution basée sur un registre de type blockchain. Ce n'est pas un clone de Bitcoin, mais une conception et une implémentation complètement indépendante. Ehtereum possède une monnaie intégrée, appelée _ether_, qu'il est nécessaire de payer exécuter un contrat. La blockchain Ethereum enregistre des _contrats_, qui sont exprimés dans un langage Turing-complet bas niveau, ressemblant à du byte code.  Globalement, un contrat est un programme qui tourne sur tous les noeuds du système Ethereum. Les contrats Ethereum peuvent stocker des données, envoyer et recevoir des paiements en ether, stocker de l'ether, et exécuter un éventail infini d'opérations (d'où le caractère Turing-complet), tels des agents logiciels autonomes et décentralisés.
+
+Ethereum peut implémenter des systèmes relativement complexes, qui sont ailleurs implémentés par des altchains dédiées. Par exemple, ce qui suit est un contrat d'enregistrement de nom similaire à Namecoin, écrit en Ethereum (ou plus précisément, écrit dans un langage de haut-niveau compilable en code Ethereum) :(((range="endofrange", startref="ix_ch09-asciidoc6")))(((range="endofrange", startref="ix_ch09-asciidoc5")))
+
+[source,python]
+----
+if !contract.storage[msg.data[0]]: # Is the key not yet taken?
+    # Then take it!
+    contract.storage[msg.data[0]] = msg.data[1]
+    return(1)
+else:
+
+    return(0) // Otherwise do nothing
+----
+
+=== Futur des Monnaies
+
+Le futur des monnaies cryptographiques, de façon générale, est encore plus prometteur que celui de bitcoin. Bitcoin a introduit une nouvelle forme d'organisation décentralisée et de consensus qui a engendré des centaines d'innovations incroyables. Ces inventions vont probablement affecter des pans entiers de l'économie, depuis la science des systèmes distribués jusqu'à la finance, les monnaies, les banques centrales, et la gestion des entreprises. Beaucoup d'activités humaines, qui jusqu'alors nécessitaient des organisations ou institutions centralisées servant de point de contrôle ou de confiance, peuvent maintenant être décentralisées. L'invention de la blockchain et du système de consensus va réduire significativement le coût de l'organisation et de la coordination des systèmes fonctionnant à grande échelle, tout en supprimant les possibilités de concentration de pouvoir, corruption, et capture règlementaire. 

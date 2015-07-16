@@ -1,0 +1,61 @@
+[preface]
+== Krótki słownik
+
+Ten słownik zawiera wiele z używanych w odniesieniu do bitcoina pojęć. Słownictwo to będzie powtarzało się w książce, więc zaznacz tę stronę, bo będzie ona przydatna.
+
+adres::
+    Adres bitcoinowy wygląda mniej więcej tak: +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. Składa się z linijki liter i numerów, a zaczyna się "1"(cyfrą jeden). Dokładnie tak jak prosisz innych, aby wysłali tobie maila na twój adres email, tak samo prosiłbyś innych aby wysłali tobie bitcoiny na twój adres bitcoinowy.((("bitcoin address")))((("address", see="bitcoin address")))((("public key", see="bitcoin address")))
+
+bip::
+    Propozycje Ulepszenia Bitcoina(Bitcoin Improvement Proposals). Zbiór zgłoszonych przez członków wspólnoty bitcoina propozycji, aby usprawnić bitcoina. Np. BIP0021  jest propozycją usprawnienia schematu bitcoinowego standardu rozpoznawania zasobów(URI - z ang. Uniform Resource Identifier).((("bip"))) 
+
+bitcoin::
+    Nazwa jednostki walutowej(moneta - z ang. coin), sieci oraz oprogramowania.((("bitcoin"))) 
+
+blok::
+    Grupa transakcji, oznaczona znacznikiem czasu i identyfikacją("odciskiem palca") poprzedniego bloku. Nagłówek bloku jest zakodowany, aby stworzyć potwierdzenie pracy  zatwierdzający transakcje. Obowiązujące bloki są dodawane do głównego łańcucha("blockchain") poprzez konsensus sieci.((("block")))
+
+łańcuch bloków::
+	Lista sprawdzonych bloków, w przypadku których każdy łączy się z poprzednikiem aż do bloku początku.((("blockchain")))
+	
+potwierdzenia::
+	W momencie kiedy transakcja zostaje zawarta w nowym bloku, posiada ona jedno potwierdzenie. Z momentem znalezienia w tym samym łańcuchu następnego bloku, transakcja posiada dwa potwierdzenia i tak dalej, i tak dalej. Sześć lub więcej potwierdzeń jest uważane za wystarczający dowód, że transakcja nie może zostać anulowana.((("confirmations")))
+
+poziom trudności::
+	Rozproszone po całej sieci ustawienia kontrolujące jak dużo mocy obliczeniowej aktualnie potrzeba do wytworzenia potwierdzenia pracy.((("difficulty")))
+
+trudność docelowa::
+ 	Poziom trudności, przy którym moc obliczeniowa całej sieci znajdzie następne bloki mniej więcej co 10 minut.((("target difficulty")))
+
+zmiana trudności::
+	Ogólnosieciowe przeliczenie poziomu trudności wykonywane co 2106 bloków. Uwzględnia ono wydajność mieszania poprzednich 2106 bloków.((("difficulty retargeting")))
+	
+prowizje::
+	Nadawca transakcji często załącza prowizję dla sieci za przetworzenie jego transakcji. Większość transakcji wymaga minimalnej prowizji wysokości 0.5 mBTC.((("fees")))
+
+hasz::
+	Cyfrowa forma identyfikacji("odcisk palca") binarnego ciągu danych.
+
+blok początek::
+	Pierwszy blok w łańcuchu bloków, użyty do zopoczątkowania kryptowaluty.((("genesis block")))
+	
+kopacz::
+Węzeł sieciowy wyszukujący prawidłowe potwierdzenia pracy nowych bloków poprzez powtarzane stosowanie funkcji mieszającej.((("miner")))
+
+sieć::
+Równoległa sieć("rówieśnicza") sieć, która rozpowszechnia transakcje do każdego węzła/uczestnika w sieci.((("network")))
+	
+Potwierdzenie pracy::
+	Element danych, który do znalezienia, wymaga dużych mocy obliczeniowych. W przypadku bitcoinów kopacz musi znaleźć rozwiązanie liczbowe algorytmu SHA256 zgodne z ogólnosieciowym elementem docelowym - cel trudności. ((("proof-of-work")))
+
+nagroda::
+Kwota zawarta w każdym nowym bloku jako nagroda zapewniana przez sieć kopaczowi, który znalazł rozwiązanie potwierdzenia pracy. Aktualnie wynosi ona 25 BTC za blok.((("reward")))
+
+tajny klucz (klucz prywatny)::
+	Tajny numer odblokowujący bitcoiny przesłane na dany adres. Przykładowy tajny klucz: +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("secret key")))((("private key", see="secret key")))
+	
+transakcja::
+W prostych słowach, transfer bitcoinów z jednego adresu na drugi. Bardziej dokładnie: transakcja to podpisany elektronicznie układ danych przedstawiający przeniesienie wartości. Transakcje są emitowane poprzez sieć bitcoina, następnie zbierane przez kopaczy, którzy zawierają je w tworzonych blokach, zapewniając im niezacieralny zapis w łańcuchu bloków.((("transaction")))
+
+portfel::
+Program przechowujący wszystkie twoje adresy i klucze prywatne. Używaj go aby wysyłać, otrzymywać oraz przechowywać twoje bitcoiny.((("wallet"))) 

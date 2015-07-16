@@ -1,0 +1,22 @@
+["dedication", role="praise"]
+== Premiu pentru 'Mastering Bitcoin"
+
+[quote, Gavin Andresen, Chief Scientist Bitcoin Foundation]
+____
+"Cand vorbesc oamenilor despre bitcoin, sunt uneori intrebat 'dar cum functioneaza de fapt?' Am acum un raspuns bun pentru aceasta intrebare, deoarece oricine citeste _Mastering Bitcoin_ va avea o intelegere profunda despre cum functioneaza si va fi bine echipat pentru a scrie generatia urmatoare de aplicatii extraordinare pentru monede virtuale.
+____
+
+[quote, Naval Ravikant, Co-founder AngelList]
+____
+"Bitcoin și tehnologia blockchain devin blocurile de temelie pentru urmatoarea generație a internetului. Cei mai buni și mai renumiti specialisti din Silicon Valley lucreaza la aceste proiecte. Cartea lui Andreas va va ajuta să va alăturati revoluției software din lumea finanțelor. " 
+____
+
+[quote, Balaji S. Srinivasan (@balajis), General Partner&#x2c; Andreessen Horowitz]
+____
+"_Mastering Bitcoin_ este cea mai bună referință tehnică disponibila in prezent referitoare la Bitcoin. Și Bitcoin este probabil să fi văzut în retrospectivă ca cea mai importantă tehnologie a acestui deceniu. Ca atare, această carte este un absolut must-have pentru orice dezvoltator, mai ales pentru cei interesați de programarea aplicațiilor care folosesc protocolul Bitcoin. Foarte recomandată. "
+____
+
+[quote, Roger Ver, Bitcoin Entrepreneur and Investor]
+____
+"Invenția Bitcoin Blockchain reprezintă o platformă complet nouă peste care se poate construi, una care va da nastere unui ecosistem atât de larg și divers ca internetul în sine. Fiind unul dintre liderii ideologici, Andreas Antonopoulos este alegerea perfecta pentru a scrie această carte. "
+____

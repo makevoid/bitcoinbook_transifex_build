@@ -1,0 +1,1077 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch01_intro_what_is_bitcoin">はじめに</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ビットコインとは">ビットコインとは</h3>
+<div class="paragraph"><p>ビットコインは電子マネーエコシステムの基礎となるコンセプトと技術の集合体です。ビットコイン・ネットワークの参加者の間で、価値の保有と輸送がビットコインという名の通貨で行われます。ユーザー間の通信はビットコイン・プロトコルに基づいて、主にインターネットを通じて行われます。ビットコインのプロトコルスタックはオープンソースとして利用可能であり、ノートパソコンからスマートフォンまで、様々なデバイス上で動作します。</p></div>
+<div class="paragraph"><p>ユーザーはネットワークを通じてビットコインをやり取りすることで、従来の通貨で行うほぼ全てのこと、つまり物品の売買から個人や組織への送金、融資まで行うことが可能になります。ビットコイン自体も売買が可能であり、専門の両替機関で他の通貨とも両替することも可能です。ビットコインは高速かつ安全であり、国境を越えて取引が可能であることから、ある意味で通貨の理想形ともいえます。</p></div>
+<div class="paragraph"><p>伝統的な通貨と異なりビットコインは完全に仮想的なものです。物理的なコインは存在せず、またデジタルのコイン自体が存在するわけでもありません。コインは「送信者から受信者へある一定量の額面を移動させる」という取引（トランザクション）の中で暗に示されるものです。 ビットコインのユーザーはトランザクションの所有権を証明する鍵を所有し、そのトランザクションの中に記載された額面を使用したり新しい所有者に送金することができます。 この鍵はそれぞれの利用者のPC上の電子財布（ウォレット）に保持されます。 この鍵の保有がビットコインを使用する唯一の条件であり、そのコントロールは各ユーザーにゆだねられています。</p></div>
+<div class="paragraph"><p>ビットコインは分散されたピアツーピアのシステムであり、何らかの中央サーバや管理者が存在するものではありません。ビットコインは取引の過程で行われるマイニング（採掘）と呼ばれる数学的な解を見つけ出す競争により新たに生み出されます。どの（フルプロトコルスタックを動作させている）ビットコインネットワーク参加者も、自身のコンピューターリソースを用いて取引の記録と認証処理を行うことでマイナー（採掘者）となることができます。平均して10分に１回の頻度で誰かが数学的な解を見つけることで取引が認証され、その解の発見者にはビットコインが新たに与えられます。つまるところビットコインの採掘とは、中央銀行が行う必要があった通貨の発行と決済の機能を、世界的な競争で代替したものなのです。</p></div>
+<div class="paragraph"><p>ビットコイン・プロトコルには採掘の機能を規定するアルゴリズムが組み込まれています。採掘者が行わなければならないタスクの難易度は、採掘者の数（またはCPUの数）が変動しても平均的に10分に一回ほど解が見つかるように自動的に調整されます。またプロトコルではビットコインが新たに発行される頻度は４年毎に半減されるように規定されており、またビットコインの数は2100万を超えないように規定されています。結果、ビットコインの流通数は容易に予想可能で2140年に2100万に到達するカーブを描くことになります。長期的にビットコインの発行レートが減少していくため、ビットコインはデフレーション傾向となります。予期された通貨発行レートよりも多く通貨が発行されることがないため、インフレーション状態になることはありません。</p></div>
+<div class="paragraph"><p>ビットコインはプロトコル名でもありネットワーク名でもあり、さらには分散コンピューティングのイノベーションの名称でもあります。通貨としてのビットコインはこのイノベーションの単なる最初の応用であるだけです。私は開発者の視点から、ビットコインを通貨のインターネット、つまり分散コンピューティングによって価値やデジタル資産の所有権のセキュアなやりとりを行うためのネットワーク基盤と考えています。ビットコインは見た目よりも大きな可能性にあふれているのです。</p></div>
+<div class="paragraph"><p>この章では主な概念と用語を説明することから始め、必要なソフトを用意し、単純な取引の中でビットコインを使ってみます。その後の章でビットコインが動作する技術的な部分を明らかにし、ビットコインネットワークとプロトコルの仕組みを見ていきます。</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">ビットコイン以前のデジタル通貨</div>
+<div class="paragraph"><p>持続可能な電子マネーの出現には暗号技術の発展が欠かせません。これはデジタル情報を、モノやサービスと交換可能な価値を持つものとして扱う際の課題を考えると理解できます。電子マネーを使おうとする人は次の２つの基本的な疑問を持つでしょう：</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+この電子マネーは本物か？偽物ではないのか？
+</p>
+</li>
+<li>
+<p>
+自身が所有する電子マネーは自身だけのものか？他者が同時にその電子マネーを所有していることはないか？（ ２重支払問題として知られる）
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>紙幣の発行者は、紙と印刷技術をより高度にすることで偽造問題に対処しています。また物理的なお金は、同じものが２か所に存在することもないため二重支払問題とは無縁です。もちろん伝統的なお金の貯蓄や送金などが電子的に処理されることもあります。この場合、世界のすべての電子取引を管理する中央機関が決済することにより偽造問題や二重支払問題に対処しています。特殊なインクやホログラフのストライプを利用することができない電子マネーにとって、 暗号技術はユーザーに価値正当性を担保する基本となります。特に、ユーザーは電子資産や電子取引データに、暗号によるデジタル署名を施すことでその所有権を保障することができます。 また適切なシステム設計を行えばデジタル署名を用いることで２重支払問題も対処可能です。</p></div>
+<div class="paragraph"><p>1980年代に暗号技術の理解が進みより広く利用されるようになった際、多くの研究者が暗号技術を利用したデジタル通貨の開発を試みました。これらの初期の電子通貨プロジェクトは国の通貨やゴールドのような貴金属を裏付けに電子マネーが発行されるというものでした。</p></div>
+<div class="paragraph"><p>これらの初期の電子通貨は機能したものの中央管理されたものであり、その結果、政府やハッカー達に容易に攻撃されるものでした。これらの通貨は伝統的な銀行システムと同様に、中央手形交換所を導入し定期的に取引を決済する仕組みをとっていました。残念ながらこのような黎明期の電子通貨は、政府による訴訟の末ほとんどの場合で廃止に至りました。また親会社の突然の破たんにより劇的に消滅したものもケースもあります。正当な政府であれ犯罪分子であれ、何らかの敵対者の介入に対して、より強固な通貨であるためには、単一攻撃点の無い分散化された仕組みが必要となります。ビットコインはまさにそのようなシステムであり、完全に分散化され、単一攻撃点として狙われたり破綻する可能性のあるような中央機関も持たずに動作するよう、デザインされています。</p></div>
+<div class="paragraph"><p>ビットコインは何十年にも渡る暗号技術や分散システムの研究の集大成であると共に、次の４つのカギとなるイノベーションを独創的かつパワフル組み合わせにより成り立っています。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+分散化されたピアツーピアネットワーク（ビットコインプロトコル）
+</p>
+</li>
+<li>
+<p>
+公開取引元帳（ブロックチェーン）
+</p>
+</li>
+<li>
+<p>
+数学的かつ決定論的な通貨発行（分散採掘）
+</p>
+</li>
+<li>
+<p>
+分散取引認証システム（トランザクションスクリプト）
+</p>
+</li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_ビットコインの歴史">ビットコインの歴史</h3>
+<div class="paragraph"><p>ビットコインは 「ビットコイン: P2P電子マネーシステム」というナカモトサトシ名義による論文の発表と共に、2008年に発明されました。ナカモトはb-moneyやハッシュキャッシュといった先行の発明を組み合わせることで、完全に分散され、いかなる中央機関を持たずに取引の合意と認証を行える電子通貨システムを作り出しました。最も重要なイノベーションは、分散ネットワークの中で取引状態の「合意」を形成するために10分毎に世界的な「選出」を実行していく「プルーフ・オブ・ワーク」と呼ばれる分散計算システムを取り入れたことです。これにより、これまで中央手形交換所を通じて決済する方法でしか解決できなかった、一つのお金を２か所で使用するという電子通貨の弱点である二重支払問題が巧みに解決されました。</p></div>
+<div class="paragraph"><p>ビットコイン・ネットワークはナカモトがリリースした参照実装をベースに2009年にスタートし、その以降、多くのプログラマーにより改良され続けています。ビットコインにセキュリティと回復性を与える源となる分散コンピューターの規模は増大し続け、現在では世界トップのスーパーコンピューターの処理能力を超えます。ビットコインの市場価格はその交換レートにもよるが50億～100億米ドルの見積もられ、ビットコインネットワークで行われたこれまでで最大の取引は1億5000万米ドルであり、これが一瞬に手数料もかかわらず送金されました。</p></div>
+<div class="paragraph"><p>ナカモトサトシは2011年の4月頃から、開発の責任を活発なボランティアグループの一つに引き渡し、公共の場から身を引きました。ナカモトが個人なのかグループなのかも含めて現在までその正体は不明です。ただし、ビットコインのシステムは、ナカモトや特定のグループが運営しているわけではなく完全に透明な数学的な原則に則って動作しています。この発明自体が極めて革新的なものであり、既に分散コンピューティング学、経済学、計量経済学などの分野に派生して新たな研究が始まっています。</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">分散コンピューティングにおける難問への解</div>
+<div class="paragraph"><p>ナカモトサトシの発明は、「ビザンチン将軍問題」と呼ばれる分散コンピューティングの分野での難問に対して、初めて現実的な解を示したものです。この問題は、潜在的に信用できない危ういネットワークの中で、ネットワーク全体の行動指針について各ノードの情報交換によりどのように合意をとるのか？というものです。プルーフ・オブ・ワークというコンセプトを導入することで、いかなる中央機関も必要とせず合意形成を可能とするナカモトの発明は、分散コンピューティングの世界で革命的なものであり通貨という枠にとどまらない応用が予想されます。例えば選挙、宝くじ、資産登記、デジタル公証などの正当性の証明などに応用されていくでしょう。</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="user-stories">ビットコインは誰がどのように使うのか</h3>
+<div class="paragraph"><p>ビットコイン自体はテクノロジーでもあり、人々の間で価値を交換するための言葉、つまり「お金」でもあります。ここで、ビットコインを利用する人の例をいくつか挙げ、彼らがどのような用途で使うのかを見ていきましょう。今後本書の中でここで示した例を用いて、実世界の中でのビットコインの利用用途とそれを実現するテクノロジーがどのように動作しているのかを見ていきます。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+北アメリカでの少額物品の販売
+</dt>
+<dd>
+<p>
+北カリフォルニアのベイエリアに住んでいるAliceは、エンジニアの友達からビットコインについて聞きそれを使ってみたいと思っています。我々は彼女がビットコインについて学び、それを入手し、パロ・アルトにあるBobのカフェでそれを使ってコーヒーを買う例を見ていきます。この例を用いて、ビットコインのソフトや両替について、また消費者側の視点でどのようにビットコインがやり取りされるのかを紹介します。
+</p>
+</dd>
+<dt class="hdlist1">
+北アメリカでの高額物品の販売
+</dt>
+<dd>
+<p>
+Carolはサンフランシスコで画廊を経営しており、高額な絵画をビットコインで販売しています。この例を用いて、51%合意攻撃というものが高額商品を扱う業者にとってどのようなリスクとなるのかを紹介します。
+</p>
+</dd>
+<dt class="hdlist1">
+海外請負サービス
+</dt>
+<dd>
+<p>
+パロアルトでカフェを経営しているBobは新しいウェブサイトを作ろうと考えています。彼はインドのバンガロールに住むウェブサイト開発者のGopeshと契約し、ビットコインで開発料を支払うことにしました。この例を用いてビットコインを用いたアウトソーシングや請負サービスと国際電信送金を紹介します。
+</p>
+</dd>
+<dt class="hdlist1">
+チャリティー募金
+</dt>
+<dd>
+<p>
+Eugeniaはフィリピンで児童へのチャリティ活動を行っています。彼女は最近ビットコインについて知り、これを用いて新たな国内外のグループに寄付金を募集したいと考えています。またビットコインを用いて寄付金を必要な地域に素早く分配したいと考えています。この例で、ビットコインを用いた国境や通貨を超えた世界的な資金調達や、オープンな元帳を用いたチャリティ活動の透明性の向上の方法を紹介します。
+</p>
+</dd>
+<dt class="hdlist1">
+輸出入
+</dt>
+<dd>
+<p>
+Mohammedはドバイで電化製品の輸入業を営んでおり、アメリカや中国からUAEへ電化製品を輸入する際の支払処理をより速やかに進めるためにビットコインを利用しています。この例を用いて、大規模なBtoBビジネスでの物品の国際売買で、どのようにビットコインが利用できるのかを紹介します。
+</p>
+</dd>
+<dt class="hdlist1">
+ビットコインの採掘
+</dt>
+<dd>
+<p>
+Jingは上海に住むコンピューターエンジニアを目指す学生で、副収入を得るためにビットコイン採掘用のシステムを構築しています。この例でビットコインの産業基盤であり、ビットコイン・ネットワークを堅牢にし通貨の発行を担う、専用のシステムを見ていきます。
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>ここに示したそれぞれの例は、新たな市場や産業、またはグローバル経済問題に対する革新的なソリューションを創造するためにビットコインを利用している、実際の人々や産業をベースにしました。</p></div>
+</div>
+<div class="sect2">
+<h3 id="_ビットコインをはじめよう">ビットコインをはじめよう</h3>
+<div class="paragraph"><p>専用のアプリケーションをダウンロードするかウェブアプリケーションを利用することで、ビットコイン・ネットワークに参加しビットコインが利用可能になります。ビットコイン自体は規格であり、その規格に準拠するクライアントソフトウェアは数多く存在します。その中には、ナカモトサトシのオリジナルの実装から派生しオープンソースプロジェクトとして開発チームが管理している、サトシ・クライアントと呼ばれるリファレンス実装もあります。</p></div>
+<div class="paragraph"><p>ビットコイン・クライアントには主に次の３つのタイプがあります。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+フルクライアント
+</dt>
+<dd>
+<p>
+「フルクライアント」または「フルノード」と呼ばれるタイプのクライアントはビットコインが開始されて以来の全てのユーザーの全ての取引情報の保持します。またユーザーのウォレットの管理も行い、initiate transactions directly on the bitcoin networkします。これは、他のサーバや第三者のサービスに依存することなくEメールの送受信全般を管理することが可能なスタンドアロンのメールサーバに似ているといえるでしょう。
+</p>
+</dd>
+<dt class="hdlist1">
+軽量クライアント
+</dt>
+<dd>
+<p>
+軽量クライアントと呼ばれるクライアントはユーザーのウォレットは保持しますが、ビットコインの取引情報やビットコイン・ネットワークへのアクセスは第三者が管理するサーバを介して行います。フルクライアントのように全トランザクション情報を保持しないため、取引の正当性の認証は第三者サーバを信用したうえでそれらに依存することになります。これは、メールサーバにあるメールボックスを介してEメールを送受信するメールクライアントに似ています。
+</p>
+</dd>
+<dt class="hdlist1">
+ウェブクライアント
+</dt>
+<dd>
+<p>
+ウェブクライアントと呼ばれるクライアントはウェブブラウザから第三者が保持しているウォレットにアクセスする形態のものです。これは全メールのデータを第三者のサーバ内で管理しているウェブメールに似ているといえるでしょう。
+</p>
+</dd>
+</dl></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">モバイルでのビットコイン</div>
+<div class="paragraph"><p>アンドロイド端末のようなスマートフォン上で動作するクライアントあり、やはりフルクライアント、軽量クライアント、ウェブクライアントのどれかの形体をとります。いくつかのクライアントでは、ウェブまたはデスクトップのクライアントと同期し、同じウォレットにある資金を複数のデバイスに跨って使用することが可能になっています。</p></div>
+</div></div>
+<div class="paragraph"><p>どのタイプのクライアントを選ぶかは、ユーザーが自分の資金の管理やコントロールをどの程度自分で行いたいかによります。フルクライアントを利用することでユーザーは最大限コントロールと独立性を確保できますが。一方でバックアップやセキュリティ確保を自身で行う必要があります。対極にあるのがウェブクライアントです。セットアップも利用も最も簡単ですが、セキュリティやコントロールはサービス提供者の提供するものとなるため相手方リスクが避けられません。これまで幾度となくあったように、万が一ウェブ・ウォレットサービスに不正アクセスが発生した場合には、そのサービスを利用するユーザーは全資金を失う可能性もあります。ただ、逆に言えばフルクライアントを利用しているユーザーも、自分自身で適切な運用が行われていなければ、自身の全資金を失うリスクがあります。</p></div>
+<div class="paragraph"><p>本書の中で、リファレンス実装（サトシ・クライアント）からウェブ・ウォレットまで、幾つかのタイプの実際のクライアントについてその使用例をデモンストレーションしていきます。ビットコインのシステムインターフェースを見ていく中で、リファレンス実装のクライアントが必要になる例も出てきます。これはリファレンス実装が、フルクライアントであることに加え、ウォレットやネットワーク、取引サービスに対してAPIを公開しているからです。</p></div>
+<div class="sect3">
+<h4 id="_クイックスタート">クイックスタート</h4>
+<div class="paragraph"><p><a href="#user-stories">[user-stories]</a>の節の中で紹介したAliceについて見ていきましょう。彼女は技術者でなく、最近友達からビットコインについて聞きビットコインを知りました。彼女は ビットコインの公式サイトである  <a href="http://www.bitcoin.org">bitcoin.org</a>に訪問し、数種類のビットコインのクライアントがあることを知ります。そこで彼女はサイトのアドバイスに従い、軽量クライアントである Multibitを選びました。</p></div>
+<div class="paragraph"><p>Aliceは bitcoin.org サイトからリンクをたどりMultibitをダウンロードし彼女のデスクトップPCにインストールします。MultibitはWindows、MAC OS、LinuxのデスクトップPCで利用可能なクライアントです。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>ビットコイン・ウォレットは必ずパスワードまたはパスフレーズで保護されていなければなりません。多数の悪意ある人間が脆弱なパスワードの解読を試みており、簡単には破れないパスワードを利用するべきです。大文字・小文字・数字・記号の組み合わせでパスワードを生成し、誕生日や名前、スポーツチームのようなものは避け、言語に関わらず辞書に載っている一般的な単語は避けてください。可能であれば、完全にランダムなパスワードを生成するパスワードジェネレーターのようなものを利用し、12文字以上のパスワードにするべきです。ビットコインがお金であること、そして世界のどこにでも一瞬のうちに移動させることができること、適切に守られていなければ簡単に盗まれてしまうことを是非とも忘れないでください。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>AliceがMultibitクライアントをダウンロードしインストールした後、アプリケーションを起動すると<a href="#multibit-welcome">[multibit-welcome]</a>のようなウェルカム画面が表示されます。</p></div>
+<div class="imageblock" id="multibit-welcome">
+<div class="content">
+<img src="images/msbt_0101.png" alt="MultibitWelcome" />
+</div>
+<div class="title">Figure 1. Multibitクライアントのウェルカム画面</div>
+</div>
+<div class="paragraph"><p>Multibitは自動的にアリスのためにビットコイン・アドレスとウォレットを生成し、そのアドレスは<a href="#multibit-request">[multibit-request]</a>図に示されたように「Request」タブに表示されます。</p></div>
+<div class="paragraph" id="multibit-request"><p>「Request」タブに表示されたAliceのビットコイン・アドレス
+<span class="image">
+<img src=":images/msbt_0102.png" alt="MultibitReceive" />
+</span></p></div>
+<div class="paragraph"><p>この画面で最も重要なのはAliceの <em>ビットコイン・アドレス</em> です。Eメールのアドレスと同様、他者とこのアドレスを共有することで、その人が彼女のウォレットに直接お金を送信することが可能になります。アドレスはスクリーン上に <tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt> という数字とアルファベットで構成された文字列として表示されています。ビットコインアドレスの横にはQRコードが表示されます。これはスマートフォンのカメラで読み取り可能なように白黒の四角形で表されるバーコードの形式にビットコインアドレスを変換したものです。ビットコイン・アドレス、またはそのQRコードをそれぞれの横にあるコピーボタンをクリックすることでクリップボードにコピーできます。QRコード自体をクリックすることで、スマートフォンで容易に読み取れるように拡大表示することも可能です。</p></div>
+<div class="paragraph"><p>また、他の人が長い文字と数字の列を打ち込む必要が無いようにQRコードを印刷することも可能です。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>ビットコイン・アドレスは数字の1か3で始まります。Eメールアドレスと同様に、他者にこのビットコイン・アドレスを教えてあなたのウォレットにビットコインを送金してもらうことが可能です。一方で、Eメールアドレスとは異なり、ビットコイン・アドレスは無制限に作ることができ、それらをあなたのウォレットに紐づけることができます。ウォレットは単にビットコイン・アドレスとそのアドレスの持つビットコインを使うためのキーの集合です。例えば、取引の度にアドレスを生成することも可能で、そうすればよりあなたのプライバシーがより守られるでしょう。</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>さぁ、アリスは新しいビットコイン・ウォレットを使う準備ができました。</p></div>
+</div>
+<div class="sect3">
+<h4 id="getting_first_bitcoin">最初のビットコインを手に入れる。</h4>
+<div class="paragraph"><p>現在のところ、ビットコインは銀行や外貨両替所で買うことは出来ず、2014年時点ではまだかなりの国でビットコインを手に入れることは難しい状態です。ただ、例えば以下のような各国の通貨でビットコインが売買可能なウェブサービスは数多く存在します。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="http://bitstamp.net">Bitstamp</a>
+</dt>
+<dd>
+<p>
+電信送金により、ユーロ（EUR）や米ドル（USD）を含む幾つかの通貨をサポートするヨーロッパのビットコイン市場です。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.coinbase.com">Coinbase</a>
+</dt>
+<dd>
+<p>
+米国に拠点がある、ビットコインで商品が売買可能なプラットフォームを持つビットコイン・ウォレットです。ACHシステムを通じた当座預金口座にアクセスを可能にすることでビットコインの売買が容易になっています。
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>これらの暗号通貨両替所は国の通貨と暗号通貨の両替を行います。この場合、国または国際的な規制に従う必要があるため、これらのサービスは、しばしば特定の国または地域のみを専門に扱います。 通貨取引所はあなたの国の司法権が及ぶ範囲の通貨に限定されます。Your choice of currency exchange will be specific to the national currency you use and limited to the exchanges that operate within the legal jurisdiction of your country. 銀行で口座を開設のと同様、これらのサービスに口座を解説するのは、KYC (know your customer) and AML (anti-money laundering) というような規制に従い、様々な本人確認を行う必要があるため、数日から数週間ほどの時間がかかります。ただし、ビットコイン取引所口座の開設が完了すると、外貨取引口座での外貨取引同様、ビットコインを素早く売買することが可能になります。</p></div>
+<div class="paragraph"><p>より詳細な取引所のリストは<a href="http://bitcoincharts.com/markets">bitcoin charts</a>を参照するとよいでしょう。ここでは様々なビットコイン通貨取引所での相場情報・マーケット情報が掲載されています。</p></div>
+<div class="paragraph"><p>その他にもビットコインを入手する方法が４つあります。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+ ビットコインを持つ友人から直接ビットコインを買う。多くのユーザーはこの方法から始めます。
+</p>
+</li>
+<li>
+<p>
+localbitcoins.comのようにあなたの住む地域でビットコインを売ってくれる人を探すサービスを利用する。
+</p>
+</li>
+<li>
+<p>
+商品やサービスをビットコインで売る。例えばあなたがプログラマーであれば、あなたのプログラミングスキルを売ることもできます。
+</p>
+</li>
+<li>
+<p>
+ ビットコインATMを利用する。あなたの住む町のATMは<a href="http://www.coindesk.com/bitcoin-atm-map/">CoinDesk</a> のような地図サービスを利用することで見つけることもできます。
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Aliceはカリフォルニアの通貨市場に自分の口座を開設されるのを待つまでの間、ビットコインを紹介してくれた友人から最初のビットコインを手に入れることにします。</p></div>
+</div>
+<div class="sect3">
+<h4 id="sending_receiving">ビットコインを送る／受け取る</h4>
+<div class="paragraph"><p>Aliceはビットコイン・ウォレットを既に作成しており、ビットコインを受け取る準備は整っています。ウォレット・アプリケーションはビットコイン・アドレスと秘密鍵（詳細は<a href="#private_keys">[private_keys]</a>節を参照）をランダムに生成しました。この時点では彼女のビットコインアドレスはビットコイン・ネットワークに伝えられていないし何らかの登録が行われたわけでもありません。アドレスとそのアドレスに紐づく資金をコントロールするためのキーが単に存在するだけです。受け手としてこのアドレスが指定されたビットコイン・トランザクションが公開元帳（ブロックチェーン）に書き込まれるまでは、ビットコイン・ネットワークにとってこのアドレスは単なるビットコイン上で有効なアドレスの「候補」であるだけです。トランザクションが公開元帳に書き込まれるとネットワークはそのアドレスを認知し、Aliceもそのアドレスの資金の残高を元帳から参照できるようになります。</p></div>
+<div class="paragraph"><p>Aliceは米ドルとビットコインを交換するために、ビットコインを紹介してくれたJoeにレストランで会います。彼女はアドレスとそのQRコードをプリントアウトして持参しました。ビットコイン・アドレスを他人に見せることはセキュリティ面で懸念することはありません。ビットコイン・アドレスをどこに書き込んでも特にリスクはありません。</p></div>
+<div class="paragraph"><p>Aliceは、この新しいテクノロジーに多くのリスクをかけることを避けるため10ドルだけビットコインに替えたいと思っています。彼女は10ドル相当のビットコインを送ってもらうよう、Joeに10ドルと彼女のアドレスを渡します。</p></div>
+<div class="paragraph"><p>次にJoeは適切な額のビットコインをAliceに送るために交換レートを確認します。アプリケーションやWebサイトなどで市場の交換レート情報を提供するサービスは数多く存在し、例えば下記のものが有名です。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="http://bitcoincharts.com">Bitcoin Charts</a>
+</dt>
+<dd>
+<p>
+ビットコイン市場の情報サイト。世界各国の取引所における各国通貨との交換レート情報を提供。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://bitcoinaverage.com/">Bitcoin Average</a>
+</dt>
+<dd>
+<p>
+各国通貨に対してのビットコインの売買高加重平均価格をシンプルに表示してくれるサイト。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.zeroblock.com/">ZeroBlock</a>
+</dt>
+<dd>
+<p>
+幾つかの取引所でのビットコイン価格を表示してくれるフリーのAndorid/iOSアプリ。 (詳細は <a href="#zeroblock-android">[zeroblock-android]</a>項を参照。)
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.bitcoinwisdom.com/">Bitcoin Wisdom</a>
+</dt>
+<dd>
+<p>
+市場情報サイト。
+</p>
+</dd>
+</dl></div>
+<div class="imageblock" id="zeroblock-android">
+<div class="content">
+<img src="images/msbt_0103.png" alt="zeroblockの一画面" />
+</div>
+<div class="title">Figure 2. ZeroBlock：ビットコインの市場情報を提供してくれるAndoroid/iOSアプリ</div>
+</div>
+<div class="paragraph"><p>上記に挙げたアプリやWebサイトをチェックしてJoeは交換レートを、1 bitcoin辺り100ドルと決めます。このレートの場合、Aliceから渡された10ドルは0.10 bitocoin（100 millibitともいう）に相当します。</p></div>
+<div class="paragraph"><p>適切な交換価格を決定した後、Joeはモバイルのウォレット・アプリケーションを起動しビットコインを「送信」メニューを選択します。例えば彼がアンドロイドの「Blockchain mobile wallet」アプリを使用していたとしたら、彼は<a href="#blockchain-mobile-send">[blockchain-mobile-send]</a>に示されたような２つの入力を求める画面が表示されます。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+今回のトランザクションでのビットコイン送信先アドレス
+</p>
+</li>
+<li>
+<p>
+送信するビットコインの量
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>ビットコイン・アドレスを入力する欄には、QRコードのアイコンがあります。長くて入力しづらいAliceのビットコイン・アドレス(<tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>)を直接入力せず、カメラでQRコードを読み取ることでアドレスが入力可能です。JoeはQRコードのアイコンをタップし、スマートフォンのカメラを起動してAliceが印刷したQRコードを読み取ります。Joeは読み込まれて自動で入力されたアドレスの文字列の幾つかの部分をAliceが印刷したアドレスと比較して、正しくアドレスが読み込まれていることを確認します。</p></div>
+<div class="imageblock" id="blockchain-mobile-send">
+<div class="content">
+<img src="images/msbt_0104.png" alt="Blockchain mobile walletの送信画面" />
+</div>
+<div class="title">Figure 3. Blockchain mobile walletの送信画面</div>
+</div>
+<div class="paragraph"><p>Joeは今回のトランザクションで送信するビットコインの量、つまり0.10 bitcoinを入力します。ビットコインはお金のため、送信先や量を間違える訳にはいきません。そのため、Joeは入力が正しいことを入念に確認した後、Sendボタンを押してトランザクションを送信します。Joeのアプリケーションは、Joeのアドレスが持つ資金から0.10 bitcoinをAliceのアドレスに渡すという取引情報に、Joeの秘密鍵から生成される署名を付加してトランザクションを生成し送信します。これによりネットワークはこのトランザクションはJoeの承認がある正当なものとして認知することが可能になります。ピアツーピアプロトコルにより、このトランザクションの情報がビットコイン・ネットワーク上に素早く伝搬されます。１秒以内に、ネットワーク上で密につながったノードのほとんどが、このトランザクション情報を受信し、またAliceのアドレスを初めて認知します。</p></div>
+<div class="paragraph"><p>Alice側でもスマートフォンやノートパソコンから、このトランザクションを確認することができます。ビットコインが始まって以来発生した全てのトランザクションの情報を記録し続けている公開元帳は文字通り「公開」されており、Aliceもこの元帳で自分のアドレスを検索し、ビットコインを受け取ったかを調べることができます。これは blockchain.info というサイトで検索ボックスに自分のアドレスを入力することで簡単に行うことができます。<a href="http://bit.ly/1u0FFKL">このページ</a> では、Aliceのアドレスから送信された、またはそのアドレスに送られた全てのトランザクションが表示されます。Aliceがこのページを見ていると、Joeがビットコインを送信した後すぐに0.10 bitcoinが送信されたトランザクションが新しく表示されます。</p></div>
+<?hard-pagebreak?>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">トランザクションの確認</div>
+<div class="paragraph"><p>表示されたJoeからのトランザクションは最初、「未確認」と記載されます。これはトランザクションの情報がネットワーク上に伝搬したがブロックチェーンと呼ばれる公開元帳にまだ記載されていないことを示しています。採掘者がこのトランザクションを拾い上げブロックチェーンに記載します。トランザクションは、おおよそ10分毎に生成されるブロックに記載されて初めてネットワーク上で「確認済み」として受け入れられ、Aliceは受け取ったビットコインを使用することができるようになります。つまりトランザクション自体は一瞬で閲覧可能になりますが、新しいブロックに記載されて初めて「信用ある」取引として認められるということです。</p></div>
+</div></div>
+<div class="paragraph"><p>これで、アリスは晴れて0.10 bitcoin の所有者となりました。次の章ではAliceがビットコインを使って初めて商品を購入するところ見ていき、その中でトランザクションとその伝搬を担う技術を詳しく解説します。</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:54:59 UTC
+</div>
+</div>
+</body>
+</html>

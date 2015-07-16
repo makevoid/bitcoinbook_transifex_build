@@ -1,0 +1,181 @@
+[[appdx_bx]]
+[appendix]
+
+== Comenzi Bitcoin Explorer (bx)
+
+((("Comenzi Bitcoin Explorer","commands in", id="ix_appdx-bx-asciidoc0", range="startofrange")))
+
+----
+Exemplu: bx COMMAND [--help]
+
+Info: The bx commands are:
+
+address-decode
+address-embed
+address-encode
+address-validate
+base16-decode
+base16-encode
+base58-decode
+base58-encode
+base58check-decode
+base58check-encode
+base64-decode
+base64-encode
+bitcoin160
+bitcoin256
+btc-to-satoshi
+ec-add
+ec-add-secrets
+ec-multiply
+ec-multiply-secrets
+ec-new
+ec-to-address
+ec-to-public
+ec-to-wif
+fetch-balance
+fetch-header
+fetch-height
+fetch-history
+fetch-stealth
+fetch-tx
+fetch-tx-index
+hd-new
+hd-private
+hd-public
+hd-to-address
+hd-to-ec
+hd-to-public
+hd-to-wif
+help
+input-set
+input-sign
+input-validate
+message-sign
+message-validate
+mnemonic-decode
+mnemonic-encode
+ripemd160
+satoshi-to-btc
+script-decode
+script-encode
+script-to-address
+seed
+send-tx
+send-tx-node
+send-tx-p2p
+settings
+sha160
+sha256
+sha512
+stealth-decode
+stealth-encode
+stealth-public
+stealth-secret
+stealth-shared
+tx-decode
+tx-encode
+uri-decode
+uri-encode
+validate-tx
+watch-address
+wif-to-ec
+wif-to-public
+wrap-decode
+wrap-encode
+----
+
+Pentru mai multe informații, consultați pagina https://github.com/libbitcoin/libbitcoin-explorer[Bitcoin Explorer home page] și https://github.com/libbitcoin/libbitcoin-explorer/wiki[Bitcoin Explorer user documentation].
+
+=== Exemple de utilizare comandă bx
+
+Să ne uităm la câteva exemple de utilizare a comenzilor Bitcoin Explorer pentru a experimenta cu chei si adrese:
+
+Generează o valoare aleatoare "seed" folosind comanda((("Bitcoin Explorer","seed command")))((("seed command (bx)"))) +seed+, care utilizează generatorul de numere aleatorii al sistemului de operare. Transferați seed-ul catre comanda((("Bitcoin Explorer", "ec-new command")))((("ec-new command (bx)"))) +ec-new+ pentru a genera o nouă cheie privată. Salvăm iesirea standard în fișierul _private_key_:
+
+----
+$ bx seed | bx ec-new > private_key
+$ cat private_key 
+73096ed11ab9f1db6135857958ece7d73ea7c30862145bcc4bbc7649075de474
+----
+
+Acum, generează cheia publică din cheia privată folosind comanda ((("Bitcoin Explorer", "ec-to-public command")))((("ec-to-public command (bx)"))) +ec-to-public+. Trecem fișierul _private_key_ în intrarea standard și salvăm ieșirea standard a comenzii într-un nou fișier _public_key_:
+
+----
+$ bx ec-to-public < private_key > public_key
+$ cat public_key 
+02fca46a6006a62dfdd2dbb2149359d0d97a04f430f12a7626dd409256c12be500
+----
+
+Putem reformata +public_key+ ca o adresă folosind comanda ((("Bitcoin Explorer", "ec-to-address command")))((("ec-to-address command (bx)"))) +ec-to-address+. Trecem _public_key_ în intrarea standard:
+
+----
+$ bx ec-to-address < public_key 
+17re1S4Q8ZHyCP8Kw7xQad1Lr6XUzWUnkG
+----
+
+Cheile generate în acest mod produc un tip 0 de portofel nedeterminist. Asta înseamnă că fiecare cheie este generată de un seed independent. Comenzile Bitcoin Explorer pot genera, de asemenea, chei deterministe, în conformitate cu BIP0032. În acest caz, o cheie "master", este creat dintr-un seed și apoi extinsă deterministic pentru a produce un arbore de subchei, rezultând într-un portofel determinist de tip 2.
+
+La început, folosim comanda ((("Bitcoin Explorer","seed command")))((("seed command (bx)"))) +seed+ si comanda((("Bitcoin Explorer","hd-new command")))((("hd-new command (bx)"))) +hd-new+ pentru a genera cheia master ce va fi florist ca bază pentru deriver ierarhiei de chei.
+
+----
+$ bx seed > seed
+$ cat seed
+eb68ee9f3df6bd4441a9feadec179ff1
+
+$ bx hd-new < seed > master
+$ cat master
+xprv9s21ZrQH143K2BEhMYpNQoUvAgiEjArAVaZaCTgsaGe6LsAnwubeiTcDzd23mAoyizm9cApe51gNfLMkBqkYoWWMCRwzfuJk8RwF1SVEpAQ
+----
+
+Folosim acum comanda ((("Bitcoin Explorer","hd-private command")))((("hd-private command (bx)"))) +hd-private+ pentru a genera o cheie puternică pentru un "account" și o secvență de două chei private.
+
+----
+$ bx hd-private --hard < master > account
+$ cat account
+xprv9vkDLt81dTKjwHB8fsVB5QK8cGnzveChzSrtCfvu3aMWvQaThp59ueufuyQ8Qi3qpjk4aKsbmbfxwcgS8PYbgoR2NWHeLyvg4DhoEE68A1n
+
+$ bx hd-private --index 0 < account
+xprv9xHfb6w1vX9xgZyPNXVgAhPxSsEkeRcPHEUV5iJcVEsuUEACvR3NRY3fpGhcnBiDbvG4LgndirDsia1e9F3DWPkX7Tp1V1u97HKG1FJwUpU
+
+$ bx hd-private --index 1 < account
+xprv9xHfb6w1vX9xjc8XbN4GN86jzNAZ6xHEqYxzbLB4fzHFd6VqCLPGRZFsdjsuMVERadbgDbziCRJru9n6tzEWrASVpEdrZrFidt1RDfn4yA3
+----
+
+Apoi folosim comanda((("Bitcoin Explorer","hd-public command")))((("hd-public command (bx)"))) +hd-public+ pentru a genera secvența corespunzătoare de două chei publice.
+
+----
+$ bx hd-public --index 0 < account
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+$ bx hd-public --index 1 < account
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+----
+
+Cheile publice poat fi obținute și din cheile private corespunzătoare folosind comanda ((("Bitcoin Explorer","hd-to-public command")))((("hd-to-public command (bx)"))) +hd-to-public+.
+
+----
+$ bx hd-private --index 0 < account | bx hd-to-public
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+$ bx hd-private --index 1 < account | bx hd-to-public
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+----
+
+Putem genera un număr practic nelimitat de chei într-un lanț deterministic, toate derivate dintr-un singur seed. Această tehnică este utilizată în multe aplicații portofel pentru a genera chei care pot fi salvate și restaurate cu o singură valoare seed. Astfel este mai ușor decât să  facem copii de siguranță pentru portofel cu toate cheile sale generate aleatoriu de fiecare dată când o nouă cheie este creată.
+
+Seed-ulpoate fi criptat folosind comanda((("Bitcoin Explorer","mnemonic-encode command")))((("mnemonic-encode command (bx)"))) +mnemonic-encode+.
+
+----
+$ bx hd-mnemonic < seed > words
+ATTENTION 
+----
+
+Seed-ul poate fi decriptat folosind comanda((("Bitcoin Explorer","mnemonic-decode command")))((("mnemonic-decode command (bx)"))) +mnemonic-decode+.
+
+----
+$ bx mnemonic-decode < words
+eb68ee9f3df6bd4441a9feadec179ff1
+----
+
+Criptarea mnemonică poate face seed-ul mai ușor de memorat și chiar de reamintit.(((range="endofrange", startref="ix_appdx-bx-asciidoc0")))

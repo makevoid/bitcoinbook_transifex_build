@@ -1,0 +1,300 @@
+[[bitcoin_network_ch06]]
+== La Red Bitcoin
+
+=== Arquitectura de Red Entre Pares (P2P)
+
+((("bitcoin network", id="ix_ch06-asciidoc0", range="startofrange")))((("bitcoin network","architecture of")))((("peer-to-peer networks")))Bitcoin se estructura como una arquitectura de red P2P superpuesta a internet. El términto de igual a igual, o P2P, significa que las computadoras que participan en la red son semejantes, que son todas iguales, que no hay nodos "especiales", y que todos los nodos comparten la carga de proveer servicios a la red. Los nodos de la red se interconectan en una malla de redes con una topología "plana". No hay servidor, no ha servicio centralizado, ni jerarquía dentro de la red. Los nodos en una red P2P proveen tanto como consumen servicios al mismo tiempo con reciprocidad actuando como el incentivo para participar. Las redes P2P son inherentemente resilientes, decentralidzadas y abiertas. El ejemplo preeminente de una red P2P fue la Internet temprana misma, donde los nodos de la red IP eran iguales. La estructura del internet actual es más jerárquica, pero el Protocolo de Internet  mantiene la esencia de topología plana. Más allá de bitcoin, la más grande y exitosa aplicación de tecnologías P2P es la compartición de archivos con Napster como pionera y la red BitTorrent como la más reciente evolución de la arquitectura.
+
+La arquitectura de red entre pares (P2P) de bitcoin es mucho más que una elección topológica. Bitcoin es un sistema de dinero digital entre pares por diseño, y la arquitectura de red es tanto una reflexión y un fundamento de esa característica base. La descentralización del control es un principio de diseño base y eso solo puede ser alcanzado y mantenido por una red de consenso entre pares plana y descentralizada. 
+
+((("Red bitcoin", "definido"))) El término "red bitcoin" se refiere a la colección de nodos que ejecutan el protocolo p2p bitcoin. Además del protocolo P2P bitcoin, hay otros protocolos tales como ((("Stratum (STM) protocolo de mineria"))) Stratum, que se utilizan para la minería y carteras ligeras o móviles. Estos protocolos adicionales son proporcionados por servidores de enrutamiento de puerta de enlace que acceden a la red Bitcoin utilizando el protocolo P2P bitcoin, y que luego se extienden por esa red de nodos que ejecutan otros protocolos. Por ejemplo, los servidores Stratum conectan los nodos de minería Stratum través del protocolo Stratum a la red bitcoin principal y puente del protocolo Stratum al protocolo P2P bitcoin. Utilizamos el término "red bitcoin extendida" para referirse a la red global que incluye los protocolos protocolo p2p bitcoin, al pool de la minería, el protocolo de Stratum, y cualesquiera otros protocolos relacionados que conectan los componentes del sistema de Bitcoin. 
+
+=== Tipos de Nodos y Roles
+
+((("red bitcoin","nodos")))((("nodos","roles de")))((("nodos","tipos de")))Aunque los nodos en la red entre pares bitcoin son iguales puede que asuman roles distintos dependiendo de la funcionalidad que soporten. Un nodo bitcoin es una colección de funciones: enrutamiento, la base de datos de la cadena de bloques, minado y servicios de cartera. Una nodo completo con todas estas funciones se detalla en <<full_node_reference>>.
+
+[[full_node_reference]]
+.Un nodo de la red bitcoin con todas sus cuatro funciones: cartera, minero, base de datos de cadena de bloques completa, y enrutamiento de red
+image::images/msbt_0601.png["FullNodeReferenceClient_Small"]
+
+Todos los nodos incluyen la función de enrutamiento para participar en la red y pueden incluir otras funcionalidades. Todos los nodos validan y propagan las transacciones y bloques, y descubren y mantienen conexiones con sus compañeros. En el ejemplo de nodo completo <<full_node_reference>>, La función de enrutamiento se indica mediante un círculo de color naranja llamado "Network Node Routing". 
+
+Algunos nodos, denominados nodos completos, también mantienen una completa y actualizada copia de la blockchain. Los nodos completos tienen forma autónoma y con autoridad, para verificar cualquier transacción sin referencia externa. Algunos nodos mantienen sólo un subconjunto de la blockchain y verifican las transacciones utilizando un método llamado ((("nodos de verificación de pago simplificado (SPV)", "definidos"))) nodos de _verificación de pago simplificado_ o SPV. Estos nodos son conocidos como SPV o nodos de peso ligero. En la figura de ejemplo de nodo completo, el nodo completo blockchain hace la función de base de datos y se indica mediante un círculo azul llamado "Full Blockchain." En la <<bitcoin_red>>, los nodos SPV se dibujan sin el círculo azul, que demuestra que no tienen una copia completa de la blockchain. 
+
+Los nodos de Minería compiten para crear nuevos bloques ejecutando hardware especializado para resolver el algoritmo de prueba de trabajo. Algunos nodos de minería son también nodos completos, manteniendo una copia completa del blockchain, mientras que otros son nodos ligeros que participan en el pool de la minería y en función de un servidor de grupo para mantener un nodo completo. La función de la minería se muestra en el nodo completo como un círculo negro llamado "Miner".
+
+Carteras de usuario podrían formar parte de un nodo completo, como suele ser el caso con los clientes Bitcoin escritorio. Cada vez más, muchas carteras de los usuarios, en especial los que se ejecuta en dispositivos con recursos limitados, tales como teléfonos inteligentes, son nodos SPV. La función de la cartera se muestra en la <<full_node_reference>> como un círculo verde llamado "Monedero".
+
+Además de los principales tipos de nodos en el protocolo P2P bitcoin, hay servidores y nodos que ejecutan otros protocolos, como los protocolos de pool de minera especializados y protocolos de cliente de acceso ligeros. 
+
+<<node_type_ledgend>> muestra los tipos de nodos más comunes en la red bitcoin extendida.
+
+=== La Red Bitcoin Extendida
+
+((("Red bitcoin", "extendido"))) ((("red bitcoin extendido"))) La red bitcoin principal, ejecuta el protocolo P2P bitcoin, consta de entre 7.000 y 10.000 nodos de escucha que ejecutan diferentes versiones del bitcoin cliente de referencia (Bitcoin Core) y unos pocos cientos de nodos que ejecutan varias otras implementaciones del protocolo P2P bitcoin, tales como ((("biblioteca BitcoinJ"))) ((("btcd"))) ((("biblioteca libbitcoin") )) BitcoinJ, Libbitcoin, y btcd. Un pequeño porcentaje de los nodos de la red P2P bitcoin también están minando los nodos, que compiten en el proceso de minería, la validación de las transacciones, y la creación de nuevos bloques. Varios interfaz de grandes empresas con la red bitcoin ejecutando clientes de nodo completo basado en el cliente Bitcoin Core, con copias completas de la blockchain y un nodo de la red, pero sin la minería o las funciones de monedero. Estos nodos actúan como routers de borde de la red, permitiendo que varios otros servicios (casas de cambio, carteras, exploradores bloque, procesamiento de pagos de comerciantes) que se construirán en la parte superior. 
+
+La red bitcoin extendida incluye la red que ejecute el protocolo P2P bitcoin, descrito anteriormente, así como nodos que ejecutan protocolos especializados. Adjuntos a la red P2P bitcoin principal hay una serie de ((("pools mineras", "en la red bitcoin"))) servidores de pool y pasarelas de protocolo que conectan los nodos que ejecutan otros protocolos. Estos otros nodos de protocolo son en su mayoría los nodos de minería del pool (ver <<ch8>>) y los clientes de carteras ligeros, que no llevan una copia completa de la blockchain. 
+
+<<bitcoin_network>> muestra la red bitcoin extendida con los distintos tipos de nodos, servidores de puerta de enlace, los routers de borde, y los clientes de cartera y los distintos protocolos que utilizan para conectarse entre sí. 
+
+[[node_type_ledgend]]
+.Diferentes tipos de nodos sobre la red bitcoin extendida
+image::images/msbt_0602.png["BitcoinNodeTypes"]
+
+[[bitcoin_network]]
+.La red bitcoin extendida muestra varios tipos de nodos, puertas de enlace y protocolos
+image::images/msbt_0603.png["BitcoinNetwork"]
+
+=== Descubrimiento de Red
+
+((("Red bitcoin", "descubrimiento", id = "ix_ch06-asciidoc1", rango = "startofrange"))) ((("detección de redes", id = "ix_ch06-asciidoc2", rango = "startofrange") )) ((("nodos", "descubrimiento de la red y" id = "ix_ch06-asciidoc3", rango = "startofrange"))) ((("peer-to-peer", "descubrimiento de nuevos nodos", id = "ix_ch06-asciidoc4", rango = "startofrange"))) Cuando un nodo nuevo aparece, debe descubrir otros nodos en la red Bitcoin para poder participar. Para iniciar este proceso, un nuevo nodo debe descubrir al menos un nodo existente en la red y conectarse a él. La ubicación geográfica de los otros nodos es irrelevante; la topología de la red Bitcoin no está definida geográficamente. Por lo tanto, cualquier nodo Bitcoin existentes pueden ser seleccionados al azar. 
+
+((("Peer-to-peer", "conexiones"))) Para conectarse a un compañero conocido, los nodos establecen una conexión TCP, por lo general en el puerto 8333 (puerto conocido generalmente como el utilizado por bitcoin), o un puerto alternativo si se proporciona. Al establecer una conexión, el nodo se iniciará un "apretón de manos" (ver <<network_handshake> >) mediante la transmisión de un ((("mensaje de versión"))) +versión+ de mensaje, que contiene información básica de identificación, incluyendo:
+
++PROTOCOL_VERSION+:: Una constante que define la versión del protocolo P2P bitcoin que el cliente "habla" (por ejemplo, 70002)
++nLocalServices+:: Una lista de los servicios locales soportados por el nodo, actualmente solo +NODE_NETWORK+
++nTime+:: La fecha y hora actuales
++AddrYou+:: La dirección IP del nodo remoto como se ve desde este nodo
++AddrMe+:: La dirección IP del nodo local, tal como se ve desde el otro nodo local
++Subver+:: Una sub-versión que muestra el tipo de software que se ejecuta en este nodo (por ejemplo, "/Satoshi:0.9.2.1/")+
++BestHeight+:: La altura de bloque de la cadena de bloques de este nodo
+
+(Ver http://bit.ly/1qlsC7w[GitHub] para un ejemplo de la +versión+ del mensaje de red).
+
+El nodo de pares responde con +verack+ para reconocer y establecer una conexión, y envía opcionalmente su propia +versión+ mensaje si quiere corresponder a la conexión y conectar de nuevo como un igual. 
+
+¿Cómo funciona un nuevo nodo para encontrar compañeros? El primer método consiste en consultar DNS utilizando una serie de ((("nodos", "semilla"))) ((("semilla DNS"))) "semillas de DNS", que son los servidores DNS que proporcionan una lista de direcciones IP de nodos Bitcoin. Algunas de esas semillas DNS proporcionan una lista estática de direcciones IP de los nodos Bitcoin escuchar estables. Algunas de las semillas de DNS son implementaciones personalizadas de BIND (Berkeley Internet Name Daemon) que devuelven un subconjunto aleatorio de una lista de direcciones de nodo Bitcoin recogidos por un rastreador o un nodo bitcoin de larga duración. El cliente Bitcoin Core contiene los nombres de cinco semillas DNS diferentes. La diversidad de la propiedad y la diversidad de la aplicación de las diferentes semillas DNS ofrece un alto nivel o la fiabilidad del proceso de bootstrapping inicial. En el cliente Bitcoin Core, la opción de utilizar las semillas de DNS es controlado por la  opción +-dnsseed+ (ajustado a 1 por defecto, para usar la semilla DNS).
+
+Alternativamente, un nodo nuevo que no sabe nada de la red debe tener la dirección IP de al menos un nodo bitcoin, después de lo cual se puede establecer conexiones a través de nuevas introducciones. El argumento de línea de comandos + -seednode + se puede utilizar para conectarse a un nodo sólo para introducciones, usándolo como una semilla. Después de que el nodo de semilla inicial se utiliza para formar las introducciones, el cliente se desconecta de ella y utilizar los compañeros recién descubiertos. 
+
+[[network_handshake]]
+.El apretón de manos inicial entre pares
+image::images/msbt_0604.png["NetworkHandshake"]
+
+Una vez que se establecen una o más conexiones, el nuevo nodo enviará un ((("mensaje addr"))) +addr+ mensaje que contiene su propia dirección IP para sus vecinos. Los vecinos, a su vez, remitirá el addr +mensaje+ a sus vecinos, lo que garantiza que el nodo recién conectado se convierte en bien conocida y mejor conectados. Además, el nodo recién conectado puede enviar +getaddr+ para los vecinos, pidiéndoles que se devolverá una lista de direcciones IP de otros compañeros. De esa manera, un nodo puede encontrar compañeros para conectarse y anunciar su existencia en la red para otros nodos para encontrarlo. <<address_propagation>> mMuestra el protocolo de descubrimiento de direcciones. 
+
+
+[[address_propagation]]
+.Descubrimiento y propagación de la dirección
+image::images/msbt_0605.png["AddressPropagation"]
+
+Un nodo debe conectarse a un par de compañeros diferentes a fin de establecer diversos caminos en la red Bitcoin. Los caminos no son fiables -nodos que van y vienen- , y por lo que el nodo deben seguir descubriendo nuevos nodos, ya que pierde conexiones antiguas, así como ayudar a otros nodos cuando iniciarse. Sólo se necesita una conexión para arrancar, ya que el primer nodo puede ofrecer introducciones a sus nodos pares y los pares puede ofrecer nuevas introducciones. También es innecesario y derrochador de recursos de red para conectarse a más de un puñado de nodos. Después de iniciarse, un nodo se acordará de sus conexiones entre pares de éxito más recientes, por lo que si se reinicia puede restablecer rápidamente las conexiones con su antigua red de pares. Si ninguno de los pares anteriores responder a su solicitud de conexión, el nodo puede utilizar los nodos de semillas al realizar el arranque de nuevo. 
+
+En un nodo que ejecuta el cliente Bitcoin Core, puede listar las conexiones entre pares con el comando ((("comando getpeerinfo"))) +getpeerinfo+:
+
+[source,bash]
+----
+$ bitcoin-cli getpeerinfo
+----
+[source,json]
+----
+[
+    {
+        "addr" : "85.213.199.39:8333",
+        "services" : "00000001",
+        "lastsend" : 1405634126,
+        "lastrecv" : 1405634127,
+        "bytessent" : 23487651,
+        "bytesrecv" : 138679099,
+        "conntime" : 1405021768,
+        "pingtime" : 0.00000000,
+        "version" : 70002,
+        "subver" : "/Satoshi:0.9.2.1/",
+        "inbound" : false,
+        "startingheight" : 310131,
+        "banscore" : 0,
+        "syncnode" : true
+    },
+    {
+        "addr" : "58.23.244.20:8333",
+        "services" : "00000001",
+        "lastsend" : 1405634127,
+        "lastrecv" : 1405634124,
+        "bytessent" : 4460918,
+        "bytesrecv" : 8903575,
+        "conntime" : 1405559628,
+        "pingtime" : 0.00000000,
+        "version" : 70001,
+        "subver" : "/Satoshi:0.8.6/",
+        "inbound" : false,
+        "startingheight" : 311074,
+        "banscore" : 0,
+        "syncnode" : false
+    }
+]
+----
+
+((("Peer-to-peer", "gestión automática, anulando"))) Para anular la gestión automática de pares y para especificar una lista de direcciones IP, los usuarios pueden proporcionar la opción +-connect=<IPAddress>+ y especificar una o más direcciones IP. Si se utiliza esta opción, el nodo sólo se conectará a las direcciones IP seleccionados, en lugar de descubrir y mantener las conexiones entre pares automáticamente. 
+
+Si no hay tráfico en una conexión, los nodos se envían periódicamente un mensaje para mantener la conexión. Si un nodo no se ha comunicado en una conexión por más de 90 minutos, se supone que está desconectado y se buscará un nuevo par. De este modo, la red se ajusta dinámicamente a los nodos transitorios y problemas de la red, y puede crecer y encogerse según sea necesario sin ningún tipo de control central orgánicamente. (((Rango = "endofrange", startref = "ix_ch06-asciidoc4"))) (((rango = "endofrange", startref = "ix_ch06-asciidoc3"))) (((rango = "endofrange", startref = "ix_ch06-asciidoc2"))) (((rango = "endofrange", startref = "ix_ch06-asciidoc1") ))
+
+=== Nodos Completos
+
+((("blockchains", "nodos completos y"))) ((("nodos completos"))) ((("nodos", "completo"))) Los nodos completos son nodos que mantienen un blockchain completo con todas las transacciones. Más exactamente, probablemente deberían ser llamados "nodos blockchain completos." En los primeros años del bitcoin, todos los nodos eran nodos completos y actualmente el cliente Bitcoin Core es un nodo blockchain completo. En los últimos dos años, sin embargo, las nuevas formas de clientes Bitcoin que se han introducido no mantienen una blockchain completa, pero corren como clientes ligeros. Examinaremos estos con más detalle en la siguiente sección. 
+
+((("Blockchains", "en los nodos completos"))) Los nodos completos blockchain mantienen una copia completa y actualizada de la blockchain bitcoin con todas las transacciones, que se construyen de forma independiente y verifican, empezando por el primer bloque (bloque de génesis) y la construcción hasta el último bloque conocido en la red. Un nodo blockchain completo puede de forma independiente y con autoridad verificar cualquier transacción sin recurrir o depender de cualquier otro nodo o fuente de información. El nodo blockchain completo se basa en la red para recibir actualizaciones sobre nuevos bloques de transacciones, que posteriormente verifica e incorpora en su copia local de la blockchain. 
+
+Ejecución de un nodo blockchain completo le da la pura experiencia bitcoin: la verificación independiente de todas las transacciones sin la necesidad de depender de cualquier otro sistema, o de confianza. Es fácil saber si se está ejecutando un nodo completo, ya que requiere más de 20 gigabytes de almacenamiento persistente (espacio en disco) para almacenar el blockchain completa. Si usted necesita una gran cantidad de espacio en disco y se tarda dos o tres días para sincronizar a la red, está ejecutando un nodo completo. Ese es el precio de la completa independencia y libertad de la autoridad central. 
+
+Hay algunas implementaciones alternativas en los clientes bitcoin blockchain completos, construidas utilizando diferentes lenguajes de programación y arquitecturas de software. Sin embargo, la aplicación más común es el cliente de referencia ((("cliente Bitcoin Core", "y los nodos completos"))) Bitcoin Core, también conocido como el cliente Satoshi. Más de 90% de los nodos en la red bitcoin ejecutar varias versiones de Bitcoin Core. Se identifica como "Satoshi" en la cadena de sub-versión enviada en el mensaje +versión+y muestra mediante el comando +getpeerinfo+ como vimos anteriormente; por ejemplo, +/Satoshi:0.8.6/+.
+
+=== Intercambiando "Inventario"
+
+((("Blockchains", "creación de nodos"))) ((("blockchains", "sobre nuevos nodos"))) ((("bloques", "en nuevos nodos"))) ((("lleno nodos "," creando blockchains completos sobre "))) La primera cosa que un nodo completo hará una vez que se conecta a los compañeros es tratar de construir un blockchain completo. Si es un nodo nuevo y no tiene blockchain en absoluto, que sólo conoce un bloque, el bloque de génesis, que está integrado de forma estática en el software de cliente. Comenzando con el bloque # 0 (el bloque génesis), el nuevo nodo tendrá que descargar cientos de miles de bloques para sincronizar con la red y volver a establecer la blockchain completa. 
+
+((("Sincronizar el blockchain"))) El proceso de sincronización de la blockchain comienza con el mensaje +versión+, porque contiene la +BestHeight+, la altura blockchain actual de un nodo (número de bloques). Un nodo verá los mensajes +versión+ de sus compañeros, para saber cuántos bloques tiene cada uno, y ser capaz de comparar a cuántos bloques que tiene en su propia blockchain. Los Nodos intercambiarán el mensage +getblocks+ que contiene el hash (huella digital) del bloque de la parte superior de su blockchain local. Uno de los compañeros será capaz de identificar el hash recibido como perteneciente a un bloque que no está en la cima, sino que pertenece a un bloque mayor, deduciendo de esta manera que su propia blockchain local es más alta que su par. 
+
+El par que tiene el blockchain con más bloques que el otro nodo y puede identificar que bloques de los otros necesitan los nodos con el fin de "ponerse al día". Identificará los primeros 500 bloques para compartir y transmitir sus valores hash utilizando una ((("mensajes inv"))) + message inv + (inventario). All nodo que le falten estos bloques podrá luego recuperarlos, mediante la emisión de una serie de mensajes +getdata+ solicitando los datos de bloque completo y la identificación de los bloques solicitados utilizando los hashes de la +inv+ mensaje.
+
+Supongamos, por ejemplo, que un nodo sólo tiene el bloque de génesis. A continuación, recibirá un mensaje +inv+ de sus pares que contienen los hashes de los próximos 500 bloques en la cadena. Se iniciará solicitando bloques de todos sus pares conectados, repartir la carga y asegurar que no abrume a cualquier punto con peticiones. El nodo mantiene un registro de cuántos bloques están "en tránsito" por conexión de pares, bloquea lo que significa que se ha solicitado pero no lo recibido, comprobando que no exceda un límite ((("MAX_BLOCKS_IN_TRANSIT_PER_PEER constante"))) (+ MAX_BLOCKS_IN_TRANSIT_PER_PEER +). De esta manera, si se necesita una gran cantidad de bloques ,sólo se solicitarán otros nuevos que se cumplan las solicitudes anteriores, permitiendo a los compañeros controlar el ritmo de cambios y no sobrecargar la red. Como se recibe cada bloque, como se agrega a la blockchain, lo veremos en <<blockchain>>. Como el blockchain local está construido gradualmente, se solicitan más bloques y se recibirán, y el proceso continúa hasta que el nodo se pone al día con el resto de la red. 
+
+Este proceso de comparar el blockchain local con los compañeros y la recuperación de todos los bloques que faltan sucede cada vez que un nodo se desconecta por cualquier período de tiempo. Ya sea un nodo que ha estado desconectado durante unos minutos y faltan pocos bloques, o un mes y faltan unos pocos miles de bloques, se inicia mediante el envío de +getblocks+, recibe un +inv+ de respuesta, y comienza la descarga de los bloques que faltan. <<inventory_synchronization>> muestra el protocolo de inventario y la propagación de bloque. 
+
+
+[[spv_nodes]]
+=== Nodos de Verificaicón de Pago Simplificada (SPV)
+
+((("Nodos", "SPV", id = "ix_ch06-asciidoc5", rango = "startofrange"))) ((("nodos", "ligero", id = "ix_ch06-asciidoc5a", rango = "startofrange "))) (((" verificación del pago simplificado (SPV) nodos ", id =" ix_ch06-asciidoc6 ", rango =" startofrange "))) No todos los nodos tienen la capacidad de almacenar la blockchain completa. Muchos clientes Bitcoin están diseñados para funcionar en dispositivos con restricciones de espacio y  de energía, tales como teléfonos inteligentes, tabletas o sistemas embebidos. Para tales dispositivos, se utiliza un método de _pago de verificacion simplificado_ (SPV)  para permitir operar sin almacenar el blockchain completo. Este tipo de clientes se llaman clientes SPV o clientes ligeros. Con la oleada de adopción de bitcoin, el nodo SPV se está convirtiendo en la forma más común de nodo bitcoin, especialmente para carteras Bitcoin.
+
+((("Blockchains", "en los nodos SPV"))) Los nodos SPV descargan sólo los encabezados de bloque y no descarga las transacciones incluidas en cada bloque. La cadena resultante de bloques, sin transacciones, es 1000 veces menor que el blockchain completo. Los nodos SPV no pueden construir una imagen completa de todos los UTXOs que están disponibles para el gasto, ya que no saben acerca de todas las transacciones en la red. Los nodos SPV verifican las transacciones utilizando una metodología ligeramente diferente que se basa en pares para proporcionar vistas parciales de las partes pertinentes del blockchain bajo demanda.
+
+[[inventory_synchronization]]
+.Nodo sincronizando la cadena de bloques pidiendo bloques a un par
+image::images/msbt_0606.png["InventorySynchronization"]
+
+Como analogía, un nodo completo es como un turista en una ciudad extraña, equipado con un mapa detallado de cada calle y cada dirección. En comparación, un nodo SPV es como un turista en una ciudad extraña preguntando a extraños al azar indicaciones giro a giro a sabiendas sólo de una avenida principal. Aunque tanto los turistas pueden verificar la existencia de una calle por visitarla, el turista sin un mapa no sabe lo que se hay en cualquiera de las calles laterales y no sabe lo que existen otras calles. Situado frente a 23 Church Street, el turista sin un mapa no puede saber si hay una docena de otras direcciones a "23 Church Street" en la ciudad y si este es el correcto. La mejor oportunidad del turismo sin mapas es preguntar a bastante gente y esperando que algunos de ellos no esté tratando de robarle.
+
+La verificación del pago simplificado verifica las transacciones en función de su _profuncidad_ en el blockchain lugar de su _altura_. Considerando que un nodo blockchain completo construirá una cadena completamente verificada de miles de bloques y transacciones que llegan hasta la blockchain (atrás en el tiempo) todo el camino hasta el bloque de génesis, un nodo de SPV verificará la cadena de todos los bloques (pero no todas las transacciones) y vinculalrá esa cadena a la transacción de intereses. 
+
+Por ejemplo, al examinar una transacción en el bloque 300 000, un nodo total con todas las conexiónes de los 300.000 bloques descargados desde el génesis y construída una base de datos completa de UTXO, establece la validez de la transacción mediante la confirmación de que el UTXO permanece sin gastar. Un nodo SPV no puede validar si el UTXO es no gastado. En su lugar, el nodo SPV establecerá un vínculo entre el comercio y el bloque que lo contiene, usando ((("árboles de Merkle", "SPV y"))) _merkle direccion_ (ver <<merkle_trees>>). A continuación, el nodo SPV espera hasta que ve los seis bloques 300001 través 300.006 apilados uno encima del bloque que contiene la transacción y verifica mediante el establecimiento de su profundidad bajo bloques de 300.006 a 300.001. El hecho de que otros nodos de la red aceptan bloque 300000 y luego hicieron el trabajo necesario para producir seis bloques más en la parte superior de la misma es la prueba, por poder, que la operación no fue un doble gasto.
+
+Un nodo SPV no puede ser persuadido de que existe una transacción en un bloque cuando la transacción en realidad no existe. El nodo SPV establece la existencia de una transacción en un bloque mediante la solicitud de un camino merkle prueba y validación de la prueba de trabajo en la cadena de bloques. Sin embargo, la existencia de una transacción puede estar "oculto" de un nodo SPV. Un nodo SPV puede definitivamente probar que existe una transacción, pero no puede verificar que una transacción, como un doble gasto de la misma UTXO, no existe, ya que no tiene un registro de todas las transacciones. Esta vulnerabilidad se puede utilizar en un ataque de denegación de servicio o de un ataque contra el doble gasto de nodos SPV. Para defenderse de esto, un nodo de SPV necesita conectarse al azar a varios nodos, para aumentar la probabilidad de que está en contacto con al menos un nodo honesto. Esta necesidad de conectar al azar significa que los nodos SPV también son vulnerables a los ataques de la red de particionado o ataques Sybil, donde están conectados a los nodos falsos o redes falsas y no tienen acceso a los nodos honestos o la red bitcoin real.
+
+Para efectos prácticos, los nodos SPV bien conectados son lo suficientemente seguros, encontrar el equilibrio adecuado entre las necesidades de recursos, practicidad y seguridad. Para mayor seguridad infalible, sin embargo, no hay nada mejor que ejecutar un nodo blockchain completo. 
+
+[TIP]
+====
+((("Verificación del pago simplificado (SPV) nodos", "verificación"))) Un nodo blockchain completo verifica una transacción por el control de toda la cadena de miles de bloques por debajo de ella con el fin de garantizar que el UTXO no esté gastado, mientras que un nodo SPV una chequea lo profundo del bloque que está enterrado solo por un puñado de bloques por encima de ella. 
+====
+
+((("Cabeceras de bloques", "conseguir en nodos SPV"))) Para obtener los encabezados de bloque, los nodos SPV utilizan un mesaje ((("mensaje getHeaders"))) +getHeaders+ en lugar de +getblocks+. El par que responde enviará hasta 2.000 cabeceras de bloques utilizando un único mensaje de +cabeceras+. El proceso es de lo contrario la misma que la utilizada por un nodo completo para recuperar bloques completos. Los nodos SPV también establecen un filtro en la conexión con sus compañeros, para filtrar el flujo de bloques y futuras transacciones enviadas por los compañeros. Cualquier transacción de interés se recuperan mediante una petición +getdata+. El par genera un mensaje +tx+ ((("mensajes tx"))) que contiene las transacciones, en respuesta. <<spv_synchronization>> muestra la sincronización de las cabeceras de bloque.
+
+[[spv_synchronization]]
+.Nodo SPV sincronizando los encabezados de bloque
+image::images/msbt_0607.png["SPVSynchronization"]
+
+Debido a que los nodos SPV necesitan para recuperar transacciones específicas con el fin de verificar selectivamente ellos, sino que también crean un riesgo para la privacidad. A diferencia de los nodos blockchain completos, que recogen todas las transacciones dentro de cada bloque, las solicitudes del nodo SPV para los datos específicos pueden revelar inadvertidamente las direcciones en su billetera. Por ejemplo, un tercero monitorear una red podría llevar un registro de todas las transacciones solicitadas por una billetera en un nodo SPV y utilizar las asociaciones de direcciones bitcoin con el usuario de esa cartera, destruyendo de la privacidad del usuario. 
+
+Poco después de la introducción de los SPV / nodos ligeros, los desarrolladores de Bitcoin añaden una característica llamada _bloom filters_ para abordar los riesgos de privacidad de nodos SPV. Los filtros Bloom permiten a los nodos SPV recibir un subconjunto de las transacciones sin revelar con precisión qué se dirige a ellos les interesa, a través de un mecanismo de filtrado que utiliza probabilidades en lugar de patrones fijos. (((Rango = "endofrange", startref = "ix_ch06-asciidoc6" ))) (((rango = "endofrange", startref = "ix_ch06-asciidoc5a"))) (((rango = "endofrange", startref = "ix_ch06-asciidoc5"))) 
+
+=== Filtros de Bloom
+
+((("Red bitcoin", "filtros floración y" id = "ix_ch06-asciidoc7", rango = "startofrange"))) ((("filtros Bloom", id = "ix_ch06-asciidoc8", rango = "startofrange "))) (((" simplificado Verificación de Pago (SPV) nodos "," filtros floración y ", id =" ix_ch06-asciidoc9 ", rango =" startofrange "))) Un filtro Bloom es un filtro de búsqueda probabilística, de manera que describe un patrón deseado sin especificar exactamente. Los filtros Bloom ofrecen una forma eficiente para expresar un patrón de búsqueda al mismo tiempo protegen la privacidad. Son utilizados por los nodos SPV para pedir a sus compañeros las transacciones que coincidan con un patrón específico, sin revelar exactamente qué direcciones están buscando. 
+
+En nuestra analogía anterior, un turista sin un mapa está pidiendo direcciones a una dirección específica, "23 Iglesia de San" Si la pide a extraños para las direcciones a esta calle, ella inadvertidamente revela su destino. Un filtro de bloom es como preguntar: "¿Hay calles en este barrio cuyo nombre termina en RCH?" Una pregunta como que revela un poco menos sobre el destino deseado de pedir "23 Iglesia de San" Usando esta técnica, un turista puede especificar la dirección deseada con mayor detalle como "termina en urch" o menos detalle "que termina en H." Mediante la variación de la precisión de la búsqueda, el turista revela más o menos información, a expensas de obtener resultados más o menos específicos. Si ella le pide un patrón menos específica, se pone mucho más direcciones posibles y una mejor privacidad, pero muchos de los resultados son irrelevantes. Si ella pide un patrón muy específico, se pone menos resultados, pero pierde la privacidad. 
+
+Filtros Bloom sirven para esta función al permitir que un nodo SPV especifique un patrón de búsqueda de transacciones que se pueden sintonizar hacia precisión o privacidad. Un filtro de bloom más específico producirá resultados precisos, pero a expensas de revelar las direcciones que se utilizan en la billetera del usuario. Un filtro de bloom menos específico producirá más datos sobre más transacciones, muchos irrelevantes para el nodo, pero permitirá que el nodo pueda mantener mejor la privacidad. 
+
+Un nodo SPV inicializará un filtro de bloom como "vacío" y en ese estado del filtro de bloom coincidirá con cualquier patrón. El nodo SPV entonces hace una lista de todas las direcciones en su cartera y crea un patrón de búsqueda que coincida con el de salida de transacción que corresponde a cada dirección. Por lo general, el patrón de búsqueda de pago es una ((("pay-to de clave pública-hash (P2PKH)", "filtros bloom y"))) clave pública-hash de script que es la secuencia de comandos de cierre esperado que estará presente en cualquier transacción pagar al-hash de clave pública (dirección). Si el nodo SPV está rastreando el saldo de un ((("pay-to-guión-hash (P2SH)", "filtros bloom y"))) dirección P2SH, el patrón de búsqueda será un pay-to-guión-hash de escritura, en su lugar. El nodo SPV luego añade cada uno de los patrones de búsqueda al filtro de bloom, de manera que el filtro de bloom puede reconocer el patrón de búsqueda si está presente en una transacción. Finalmente, el filtro de bloom se envía a los pares y los pares utiliza para que coincida con las transacciones para la transmisión al nodo de SPV. 
+
+Los filtros Bloom se implementan como una matriz de tamaño variable de los n dígitos binarios (un campo de bit) y un número variable de funciones hash M. Las funciones de hash están diseñados para producir siempre una salida que es entre 1 y N, que corresponde a la serie de dígitos binarios. Las funciones hash se generan de manera determinista, de modo que cualquier nodo de la aplicación de un filtro de Bloom siempre utilizará las mismas funciones hash y obtendrá los mismos resultados para una entrada específica. Al elegir diferentes longitud (N) Filtros Bloom y un número diferente (M) de las funciones de hash, el filtro de la floración puede ser sintonizado, variando el nivel de precisión y por lo tanto la privacidad. 
+
+En <<bloom1>>, usamos una pequeña serie de 16 bits y un conjunto de tres funciones hash para demostrar cómo funcionan los filtros de Bloom. 
+
+[[bloom1]]
+.Un Ejemplo de un filtro de Bloom simplista, con un campo de 16 bits y tres funciones hash
+image::images/msbt_0608.png["Bloom1"]
+
+El filtro de Bloom se inicializa para que la matriz de bits sea todo ceros. Para agregar un patrón para el filtro de Bloom, el patrón se hace hash por cada función de hash a su vez. La aplicación de la primera función de hash a los resultados de entrada en un número entre 1 y N. El bit correspondiente en la matriz (indexadas de 1 a N) se encuentra y se pone a +1+, registrando así la salida de la función hash. Entonces, la siguiente función hash se utiliza para establecer otro bit y así sucesivamente. Una vez que todas las funciones de hash M se han aplicado, el patrón de búsqueda se "registra" en el filtro de Bloom como M bits que se han cambiado de +0+ a +1+. 
+
+<<bloom2>> Es un ejemplo de la adición de un patrón "A" para el filtro Bloom sencillo mostrado en la <<bloom1>>.
+
+
+Añadir un segundo patrón es tan simple como la repetición de este proceso. El patrón se le hace hash por cada función hash a su vez y el resultado se registra mediante el establecimiento de los bits a +1+. Tenga en cuenta que como un filtro de Bloom se llena con más patrones, un resultado de la función de hash podría coincidir con uno  que ya está ajustado a +1+, en cuyo caso no se cambia el bit. En esencia, lo más patrones son superpuestos, el filtro de la floración comienza a saturarse con más bits establecidos en +1+ y la precisión del filtro disminuye. Por ello, el filtro es un dato probabilístico y su estructura se vuelve menos precisa a medida que se agregan más patrones. La precisión depende del número de los patrones de agregados en comparación con el tamaño de la matriz de bits (N) y el número de funciones hash (M). Una matriz de poco más grande y más funciones hash pueden grabar más patrones con mayor precisión. Una matriz de bits más pequeño o menos funciones hash registrarán menos patrones y producirá menos precisión. 
+
+[[bloom2]]
+.Añadiendo un patrón "A" a nuestro filtro de Bloom simple
+image::images/msbt_0609.png["Bloom2"]
+
+<<bloom3>> Es un ejemplo de añadir un segundo patrón "B" para el filtro Bloom simple.
+
+[[bloom3]]
+.Añadiendo un segundo patrón "B" a nuestro filtro de Bloom simple
+image::images/msbt_0610.png["Bloom3"]
+
+Para probar si un patrón es parte de un filtro de Bloom, el patrón se hace hash por cada función hash y el patrón de bits resultante se prueba contra la matriz de bits. Si todos los bits indexados por las funciones de hash se establecen en +1+, entonces el patrón es _probablemente_ registrado en el filtro de Bloom. Debido a que los bits se pueden establecer debido a la superposición de múltiples patrones, la respuesta no es cierta, sino que es probabilística. En términos simples, un resultado positivo de filtro de Bloom es un "Tal vez, sí." 
+
+<<bloom4>> es un ejemplo de pruebas de la existencia de "X" en el filtro de Bloom simple. Los bits correspondientes se establecen en +1+, por lo que el patrón es probablemente una coincidencia.
+
+[[bloom4]]
+.Testing La existencia de "X" en el filtro de Bloom. El resultado es coincidencia positiva probabilístico, es decir, "Tal vez."
+image::images/msbt_0611.png["Bloom4"]
+
+Por el contrario, si un patrón se prueba contra el filtro de Bloom y uno cualquiera de los bits se establece en +0+, esto demuestra que el patrón no se registró en el filtro de Bloom. Un resultado negativo no es una probabilidad, es una certeza. En términos simples, un resultado negativo en un filtro de la floración es un "Definitivamente no!" 
+
+<<bloom5>> Es un ejemplo para probar la existencia del patrón "Y" en el filtro Bloom simple. Uno de los bits correspondientes se establece en +0+, por lo que el patrón no es definitivamente un resultado.
+
+[[bloom5]]
+..Testeando la existencia del patrón "Y" en el filtro de Bloom. El resultado es una combinación negativa definitiva, que significa "Definitivamente no!"
+image::images/msbt_0612.png[]
+
+La aplicación de filtros de floración en Bitcoin se describe en la Propuesta de Mejora Bitcoin 37 (BIP0037). Consulte <<appdxbitcoinimpproposals>> O visite http://bit.ly/1x6qCiO[GitHub].
+
+=== Filtros Bloom y actualizaciones de inventario
+
+((("Actualizaciones de inventario, filtros de floración y"))) Los filtros Bloom se utilizan para filtrar las transacciones (y bloques que los contienen) que un nodo SPV recibe de sus compañeros. Los nodos SPV crearán un filtro que coinciden sólo las direcciones mantenidas en la cartera del nodo SPV. El nodo SPV le enviará un mensaje de filtro de carga ((("mensaje filterload"))) a los pares, que contiene el filtro de Bloom para usar en la conexión. Después de establecer un filtro, el peer entonces probará las salidas de cada transacción contra el filtro de Bloom. Sólo las operaciones que coincidan con el filtro se envían al nodo. 
+
+En respuesta a un mensaje +getdata+ desde el nodo, los compañeros enviará un mensaje +merkleblock+ que contiene sólo los encabezados de bloques para los bloques que emparejan el filtro y un camino merkle (ver <<merkle_trees>>) para cada transacción correspondiente. El par entonces también enviará mensajes +tx+ que contienen las operaciones coincidentes por el filtro.
+
+La configuración del nodo filtro Bloom puede añadir de forma interactiva los patrones al filtro mediante el envío de un mensaje ((()) "mensaje filteradd") +filteradd+. Para borrar el filtro de Bloom, el nodo puede enviar un mensaje ((("mensaje filterclear"))) +filterclear+. Debido a que no es posible eliminar un patrón de un filtro de Bloom, un nodo tiene que borrar y volver a enviar un nuevo filtro de Bloom si ya no se desea un patrón. (((Rango = "endofrange", startref = "ix_ch06-asciidoc9") )) (((rango = "endofrange", startref = "ix_ch06-asciidoc8"))) (((rango = "endofrange", startref = "ix_ch06-asciidoc7"))) 
+
+[[transaction_pools]]
+=== Reservas de Transacciones
+
+((("Red bitcoin", "pools de transacción"))) ((("pools de transacción"))) ((("pool de memoria"))) ((("mempool"))) ((("transacciones" , "no confirmados, pools de"))) ((("transacciones sin confirmar"))) Casi todos los nodos en la red bitcoin mantiene una lista temporal de las transacciones no confirmadas llamadas _memory pool_, _mempool_, o _transaction pool_. Los nodos utilizan esta pool para mantener un registro de las transacciones que se sabe que la red, pero aún no están incluidas en el blockchain. Por ejemplo, un nodo que tiene la cartera de un usuario utilizará la pool de transacción para rastrear los pagos entrantes a la cartera del usuario que se han recibido en la red, pero aún no han se confirmado. 
+
+Cuando se reciben y se verifican las transacciones, se añaden a la pool de transacción y se retransmiten a los nodos vecinos para propagar en la red.
+
+((("Pool de transacciones huérfanas"))) Algunas implementaciones de nodo también mantienen una pool separada de las operaciones que han quedado huérfanas. Si las entradas de una transacción se refieren a una transacción que aún no se conoce, tal como un padre que falta, la transacción huérfana será almacenada temporalmente en la pool huérfana hasta que llegue la transacción padre. 
+
+Cuando se añade una transacción a la pool de transacción, la pool huérfana se comprueba para cualquier huérfanos que hacen referencia a las salidas de esta transacción (sus hijos). Cualquier huérfanos que coincidan se validan. Si es válida, se retiran de la pool huérfana y se añaden a la pool de transacción, completando la cadena que comenzó con la transacción padre. A la luz de la operación que se acaba de agregar, que ya no es un huérfana, el proceso se repite recursivamente en busca de cualquier descendientes más, hasta que no se encuentran más descendientes. A través de este proceso, la llegada de una transacción padre desencadena una reconstrucción en cascada de toda una cadena de transacciones interdependientes por volver a unir a los huérfanos con sus padres hasta el final de la cadena. 
+
+((("Pool huérfano transacción", "almacenamiento"))) ((("pool de transacción", "almacenamiento"))) Tanto la pool de transacción y la pool huérfana (donde implementó) se almacenan en la memoria local y no se guardan en almacenamiento persistente; más bien, son dinámicamente pobladas de mensajes entrantes de la red. Cuando se inicia un nodo, las dos pools están vacías y son progresivamente ocupados con nuevas transacciones recibidas en la red.
+
+Algunas implementaciones del cliente bitcoin también mantienen una base de datos UTXO o pool UTXO, que es el conjunto de todas las salidas no utilizadas en la blockchain. Aunque el nombre "pool UTXO" suena similar a la pool de transacción, representa un conjunto diferente de datos. A diferencia de las pools de transacción y huérfanas, la pool UTXO no se ha inicializado vacío sino que contiene millones de entradas de salidas de transacción no utilizadas, incluyendo algunos que datan de 2009. La piscina UTXO pueden ser alojados en la memoria local o como una tabla de base de datos indexada en almacenamiento persistente . 
+
+Mientras que la transacción y las pools huérfanas representan perspectiva local de un solo nodo y pueden variar significativamente de un nodo a otro, dependiendo de cuando se inicia o reinicia el nodo, la piscina UTXO representa el consenso emergente de la red y por lo tanto va a variar poco entre los nodos. Además, las pools de transacciones y huérfanas sólo contienen transacciones no confirmadas, mientras que la pool UTXO sólo contiene salidas confirmadas.
+
+=== Mensajes de Alerta
+
+((("Mensajes de alerta"))) ((("red bitcoin", "mensajes de alerta"))) Los mensajes de alerta son una función rara vez utilizados, pero no obstante se aplican en la mayoría de los nodos. Los mensajes de alerta de Bitcoin "sistema de transmisión de emergencia" es un medio por el cual el núcleo bitcoin de desarrolladores pueden enviar un mensaje de texto de emergencia a todos los nodos Bitcoin. Esta función se lleva a cabo para permitir que el equipo de desarrollo del núcleo pueda notificar a todos los usuarios de Bitcoin por un grave problema en la red bitcoin, como un error crítico que requiere la intervención del usuario. El sistema de alerta sólo se ha utilizado un puñado de veces, sobre todo a principios de 2013, cuando un error de base de datos críticos causó un fork multibloque que ocurrió en la cadena de bloques de bitcoin. 
+
+Los mensajes de alerta se propagan por el mensaje +alert+. El mensaje de alerta contiene varios campos, incluyendo:
+
+ID::
+Un identificador de alerta de modo que las alertas duplicados puede ser detectadas
+
+Vencimiento ::
+Un tiempo después de que expire la alerta
+
+ParadaHasta::
+Un tiempo después de que la alerta no debe ser transmitida
+
+MinVer, MaxVer::
+El rango de versiones de protocolo Bitcoin a los cuales se aplica esta alerta
+
+subVer::
+La versión del software de cliente que se aplica a esta alerta
+
+Prioridad ::
+Un nivel de prioridad de alerta, actualmente no se utiliza
+
+Las alertas son criptográficamente firmados por una clave pública. La clave privada correspondiente está en manos de unos pocos miembros selectos del equipo de desarrollo del núcleo. La firma digital asegura que falsas alertas no se propagarán en la red.
+
+Cada nodo de recibir este mensaje de alerta debe verificarlo, compruebar el vencimiento y propagarlo a todos sus compañeros, garantizando así la propagación rápida en toda la red. Además de la propagación de la alerta, los nodos pueden implementar una función de interfaz de usuario para presentar la alerta al usuario. 
+
+((("Cliente Bitcoin Core", "alerta, configurar"))) En el cliente Bitcoin Core, la alerta está configurado con la opción de línea de comandos +-alertnotify +, que especifica un comando a ejecutar cuando se recibe una alerta. El mensaje de alerta se pasa como un parámetro al comando +alertnotify+. Por lo general, el comando +alertnotify+ se establece para generar un mensaje de correo electrónico al administrador del nodo, que contiene el mensaje de alerta. La alerta también se muestra como un cuadro de diálogo emergente en la interfaz gráfica de usuario (bitcoin-Qt) si se está ejecutando. 
+
+Otras implementaciones del protocolo bitcoin pueden manejar la alerta de diferentes maneras. ((("Mineras", "hardware, alertas y"))) Muchos sistemas de minería bitcoin hardware embebido pueden no aplicar la función de mensajes de alerta porque no tienen interfaz de usuario. Se recomienda encarecidamente que los mineros que ejecutan estos sistemas mineras suscribirse a las alertas a través de un operador de la pool minera o ejecutando un nodo ligera sólo para fines de alerta. (((Rango = "endofrange", startref = "ix_ch06-asciidoc0"))) 
+
+

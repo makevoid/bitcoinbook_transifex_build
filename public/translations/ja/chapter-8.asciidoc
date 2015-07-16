@@ -1,0 +1,891 @@
+[[ch8]]
+== マイニングと合意形成
+
+[[mining]]
+=== イントロダクション
+
+((("consensus", id="ix_ch08-asciidoc0", range="startofrange")))((("mining", id="ix_ch08-asciidoc1", range="startofrange")))((("miners")))マイニングとは貨幣供給において新しいビットコインが追加される処理のことです。マイニングはまた、不正なトランザクションまたはダブルスペンド（二重使用）と呼ばれる同じ量のビットコインが二度使用されるような不正からビットコインのシステムを保護します。マイナーはビットコインを報酬として受け取れる可能性と引き換えに、ビットコインのネットワークに処理能力を提供します。 
+
+マイナーは新しいトランザクションを検証し、これらをグローバルな元帳に記録します。一番最後のブロック以降に生じたトランザクションを含む新しいブロックは10分ごとに"採掘"され、ブロックチェーンにこれらのトランザクションが追加されます。ブロックチェーンに追加された、またはブロックの一部になったトランザクションは"確認済"となり、これらのトランザクションで送付されたbitcoinを新しい所有者が使用することができるようになります。 
+
+マイナーは二種類のマイニングに対する報酬を受け取ります。１つはそれぞれの新しいブロックを作ったことに対する新しいbitcoin、もう１つはブロックに含まれている全トランザクションから得られるトランザクション手数料です。これらの報酬を得るために、マイナーたちは暗号学的ハッシュアルゴリズムに基づいた難解な数学的な問題を競って解決しなければいけません。proof of workと呼ばれるこの問題への解法は新しいブロックに含められ、マイナーが十分なコンピュータリソースを注ぎ込んだことの証明として機能することになります。報酬を稼ぐためのproof-of-workアルゴリズムの解法とトランザクションをブロックチェーンに記録する権利をマイナーたちが競争するという仕組みは、Bitcoinのセキュリティモデルの基礎をなしています。 
+
+((("new coin generation")))新しいbitcoinの生成プロセスはマイニングと呼ばれています。なぜなら、貴金属を採掘するように報酬が減っていくように設計されているからです。Bitcoinの供給はマイニングを通して行われ、これはあたかも紙幣を刷ることで新しいお金を発行している中央銀行のようなものです。((("bitcoin","rate of issuance")))マイニングを通して新たに作られるbitcoinの量はおおよそ４年ごと(正確には210,000ブロックごとに)減っていきます。2009年1月の時点で１ブロックあたり50bitcoinから始まり、2012年11月には半分の１ブロックあたり25bitcoinになりました。次は2016年のどこかで１ブロックあたり12.5bitcoinと半分になるだろうと考えられています。この公式に当てはめると、Bitcoinマイニングの報酬は全てのbitcoin(20.99999998 million)が発行され終わるおおよそ2140年まで指数関数的に減少していきます。2140年以降はもう新しいbitcoinが発行されることはありません。
+
+((("fees, transaction")))((("transactions","fees")))Bitcoinマイナーはまたトランザクションから手数料を得ます。全てのトランザクションにはトランザクション手数料が含まれている可能性があり、トランザクションインプットとトランザクションアウトプットの差として与えられます。マイニング競争に勝ったマイナーは???? 今日、この手数料はBitcoinマイナーの収入の0.5%以下であり、主な収入は新しくマイニングされたbitcoinになっています。しかし、時間が経つごとにこの報酬は減っていき１ブロックに含まれるトランザクション数が増えていくと、Bitcoinマイニング収入の多くの部分はトランザクション手数料からになるでしょう。2140年以降になると、全てのBitcoinマイナーの収入はトランザクション手数料の形で得られるようになります。
+
+"マイニング"という言葉は、ちょっと紛らわしい言葉です。貴金属を採掘するという意味で、マイニングに対する報酬に注意が行ってしまいます。マイニングはこの報酬がインセンティブとなりますが、元々のマイニングの目的は新しいbitcoinを生成することによる報酬ではないのです。もしマイニングをbitcoinを作り出すプロセスだと思っているのであれば、このプロセスの意味を取り違えています。マイニングは分散的な手形交換所であり、マイニングによってトランザクションが検証されます。マイニングはBitcoinシステムを安全なものにし、またマイニングがあることで中央当局なしにネットワーク上での合意形成が可能になったのです。 
+
+マイニングはBitcoinを特別なものにしている発明であり、peer-to-peerのデジタルキャッシュを基礎とした分散的セキュリティ機構です。新たなbitcoinやトランザクション手数料という報酬は、マイナーたちにBitcoinネットワークのセキュリティを守らせるインセンティブの枠組みであり、また一方では同時に通貨供給の目的も果たしているのです。 
+
+この章では、最初に通貨供給メカニズムとしてのマイニングを説明し、その後マイニングの最も重要な性質でありBitcoinセキュリティの土台であるdecentralized emergent consensusについて説明します。
+
+==== Bitcoin経済と通貨の発行
+
+((("currency creation", id="ix_ch08-asciidoc2", range="startofrange")))((("mining","currency creation", id="ix_ch08-asciidoc3", range="startofrange")))bitcoinは１ブロックごとのbitcoin発行量の公式に基づきブロックごとに鋳造されます。この新たなbitcoinはおおよそ10分ごとに生成されるブロックに含まれ何もないところから生成されます。210,000ブロックごとに、または約４年ごとに、通貨発行量は半分に減ります。Bitcoinネットワークが稼働を始めてからの最初の４年間はそれぞれのブロックが50bitcoinを発行していました。 
+
+2012年11月に新しいbitcoin発行量は１ブロックごとに25bitcoinに減り、420,000ブロックがマイニングされる2016年のどこかで更に12.5bitcoinに減ります。この１ブロックあたりの発行量は指数関数的に減少し、64回の半減を繰り返して13,230,000ブロック(おおよそ2137年にマイニングされるはずのブロック)まで減少していきます。これ以降はbitcoinの最小通貨単位である1satoshiを下回ってしまうため新しくbitcoinを発行できなくなり、最終的には2140年あたりに1344万ブロック(13.44Mブロック)でほぼ2100万bitcoin(2,099,999,997,690,000satoshi)が発行されることになります。この後、ブロックには新しいbitcoinが含まれなくなり、マイナーは単にトランザクション手数料を通して報酬を得るようになります。<<bitcoin_money_supply>>図は通貨発行量が減るにつれて時間ともにbitcoin総量がどのように増えていくかを示しています。
+
+[[bitcoin_money_supply]]
+.幾何級数的に減少していく発行率に基づく、時間経過ごとのbitcoin通貨発行量
+image::images/msbt_0801.png["BitcoinMoneySupply"]
+
+[NOTE]
+====
+The maximum number of coins mined is the _upper limit_ of possible mining rewards for bitcoin. In practice, a miner may intentionally mine a block taking less than the full reward. Such blocks have already been mined and more may be mined in the future, resulting in a lower total issuance of the currency.
+====
+
+<<max_money>>図にある例コードで将来発行されるbitcoin総量を計算しています。
+
+[[max_money]]
+.支払いに総額いくらのbitcoinが必要となるかを計算するためのスクリプト
+====
+[source, python]
+----
+include::code/max_money.py[]
+----
+====
+
+<<max_money_run>>図にはこのスクリプトによって出力される結果を示しています。
+
+[[max_money_run]]
+.max_money.pyスクリプトの実行
+====
+[source,bash]
+----
+$ python max_money.py 
+Total BTC to ever be created: 2099999997690000 Satoshis
+----
+====
+
+((("inflation, resisting")))１ブロックあたりの通貨発行量を減少させbitcoinの総量を有限にすることでインフレを防ぐことができます。中央銀行によって無限に発行可能な法定通貨と違い、bitcoinは通貨発行によってインフレが起きることは決してありません。
+
+.Deflationary Money
+****
+((("deflationary money")))とても重要なこととして、bitcoin総量が有限であるためこの通貨は本質的に _デフレ_ 傾向が生じることになります。デフレは通貨価格(または通貨交換レート)をつり上げようとする需要側と供給側のミスマッチのために生じる適正価格の調整現象です。インフレと逆に、通貨価格のデフレはお金の購買力が相対的に上がるということを意味します。
+
+多くのエコノミストたちはデフレ経済はどんなに費用をかけてでも回避すべき災害なのかを議論しています。というのは、急劇なデフレが生じると人々はお金を使わず蓄積しようとし、より物価が下落することを望むようになってしまうためです。このような需要がなくなってしまうデフレスパイラルに突入すると、日本の"失われた１０年"ような現象が生じるようになります。 
+
+Bitcoinの専門家たちはデフレそれ自体は悪いものではないと話しています。むしろ、需要がなくなることに伴いデフレが生じるということは、デフレを学習する上での単なる例でしかないと考えています。無限に発行可能な法定通貨の場合、完全に需要がなくなり、かつ追加の通貨発行をしないようにしなければデフレスパイラルが簡単には生じません。Bitcoinでのデフレは需要がなくなることによって起こるものではなく、あらかじめ決めておくことができる制限された供給側によって引き起こされるものです。 
+
+In practice, it has become evident that the hoarding instinct caused by a deflationary currency can be overcome by discounting from vendors, until the discount overcomes the hoarding instinct of the buyer. Because the seller is also motivated to hoard, the discount becomes the equilibrium price at which the two hoarding instincts are matched. With discounts of 30% on the bitcoin price, most bitcoin retailers are not experiencing difficulty overcoming the hoarding instinct and generating revenue. It remains to be seen whether the deflationary aspect of the currency is really a problem when it is not driven by rapid economic retraction.(((range="endofrange", startref="ix_ch08-asciidoc3")))(((range="endofrange", startref="ix_ch08-asciidoc2")))
+****
+
+=== 分散化された合意形成
+
+((("consensus","decentralized")))((("decentralized consensus")))前の章でブロックチェーンというグローバルな公的な元帳を説明しました。これは、Bitcoinネットワークに参加している人全員が所有権の権威レコードとして認めているものです。 
+
+But how can everyone in the network agree on a single universal "truth" about who owns what, without having to trust anyone? All traditional payment systems depend on a trust model that has a central authority providing a clearinghouse service, basically verifying and clearing all transactions. Bitcoin has no central authority, yet somehow every full node has a complete copy of a public ledger that it can trust as the authoritative record. The blockchain is not created by a central authority, but is assembled independently by every node in the network. Somehow, every node in the network, acting on information transmitted across insecure network connections, can arrive at the same conclusion and assemble a copy of the same public ledger as everyone else. This chapter examines the process by which the bitcoin network achieves global consensus without central authority.
+
+((("Nakamoto, Satoshi")))Satoshi Nakamotoの主要な発明は((("emergent consensus")))_emergent consensus(結果的に作られた同意)_ に対する分散メカニズムです。emergentというのは、選挙や同意したときに起きる決められた行動による明示的な同意ではないという意味です。ここでの同意は数千の独立したノードの非同期的相互作用の結果として生まれた人工物で、全ノードは次のシンプルなルールに従っています。通貨、トランザクション、支払い、および中央権力や信頼に依存しないセキュリティモデルといったBitcoinの全ての特徴はこの発明から導かれます。 
+
+Bitcoinの分散化された合意形成は、Bitcoinネットワークを通して独立的に各ノードで起こる以下４つのプロセスの相互作用から生じてきます。 
+
+* 独立したトランザクション検証(全てのfull nodeによるcomprehensiveな判断条件リストに基づく検証)
+* 独立したトランザクション集積(proof-of-workアルゴリズムを通して実行された計算と結びつけられた、マイニングノードによるトランザクションのブロックへの集積)
+* 独立した新規ブロック検証とブロックチェーンへの埋め込み(全てのノードによって新しいブロックが検証され、このブロックがブロックチェーンに取り込まれる)
+* 独立したブロックチェーン選択(proof of workを通して証明された最も多くの累積計算量を持っているブロックチェーンが全てのノードで選ばれる)
+
+次のいくつかの節で、これらのプロセスについて説明し、どのようにしてノードが相互作用をしてBitcoinネットワーク全体のemergentな合意形成をしているのかを説明します。
+
+[[tx_verification]]
+=== 独立したトランザクション検証
+
+((("consensus","transactions independent verification")))((("transactions","independent verification of")))<<transactions>>では、どのようにしてウォレットがUTXOを集めてトランザクションを作り、適切なunlocking scriptを付与して新しい所有者に割り当てられた新しいアウトプットを作るかを見ました。結果的に作られたトランザクションはBitcoinネットワーク全体に伝搬できるようにBitcoinネットワーク内の隣接ノードに送られます。 
+
+しかし、隣接ノードにトランザクションが転送される前に、トランザクションを受け取った全てのBitcoinノードは最初にトランザクションを検証します。これによって有効なトランザクションだけがBitcoinネットワーク内を伝搬することを保証しており、無効なトランザクションは最初にこのトランザクションに会ったノードによって破棄されます。 
+
+((("emergent consensus","criteria for")))((("transactions","verification criteria for")))それぞれのノードは全てのトランザクションを以下の長いチェックリストを判断基準として検証します。
+
+* トランザクションの文法またはデータ構造は正しいか
+* インプットとアウトプットのいずれも空でないか
+* バイト単位のトランザクションデータサイズが +MAX_BLOCK_SIZE+ よりも小さいか
+* それぞれのアウトプットvalueおよびtotal valueは許されている値の範囲内(0より大きく、2100万bitcoinよりも小さい)にあるか
+* インプットのいずれもhash=0, N=-1でないか(coinbaseトランザクションはリレーされていくべきでない)
+* +nLockTime+ は +INT_MAX+ より小さいかまたは等しいか
+* バイト単位でのトランザクションデータサイズは100より大きいかまたは等しいか
+* トランザクションに含まれている署名オペレーション数は、署名オペレーション回数上限よりも小さいか
+* unlocking script( +scriptSig+ )はスタックに数字をpushすることだけでき、locking script( +scriptPubkey+ )は +isStandard+ 形式に合っているか(これにより"非標準"トランザクションとして >拒否されます)
+* トランザクションプールの中かメインブランチブロックチェーンの中のブロックに、同じトランザクションがあるか
+* それぞれのインプットに対して、もしこのインプットが参照しているアウトプットをトランザクションプールの他のトランザクションも参照していた場合、このトランザクションを拒否する
+* それぞれのインプットに対して、メインブランチブロックチェーンの中かトランザクションプールの中にインプットが参照しているトランザクションアウトプットが見つかるかを確認する。もし参照しているアウトプットが見つからなければ、これはorphanトランザクションです。orphanトランザクションプールにまだこのトランザクションがなければ、orphanトランザクションプールにこのトランザクションを追加する
+* それぞれのインプットに対して、もしインプットが参照しているアウトプットがcoinbaseアウトプットだった場合、+COINBASE_MATURITY+ (100) 検証数を少なくとも持っているか 
+* それぞれのインプットに対して、参照しているアウトプットがすでに使用されて使用不可になっていないか
+* 参照しているアウトプットを使って、それぞれのインプットvalueとその総和が許されている値の範囲内(0より大きく、2100万bitcoinよりも小さい)にあるか
+* もしインプットvalueの総和がアウトプットvalueの総和よりも小さければ拒否する
+* もしトランザクション手数料が少なすぎて空ブロックに入れることができない場合は拒否する
+* それぞれのインプットにあるunlocking scriptは、対応したアウトプットのlocking scriptを解除できるか
+
+これらの条件はBitcoin Referenceクライアントにある +AcceptToMemoryPool+ 、 +CheckTransaction+ 、 +CheckInputs+ 関数を見ることで詳細を確認できます。この条件は、新しい種類のDOS攻撃に対応したり、またさらにトランザクションの種類を増やすためにときどき緩めたりと、時間とともに変わっていくことに注意してください。 
+
+トランザクションを受け取ったときや他のノードに伝搬させたりする前に独立にそれぞれのトランザクションを検証することによって、全てのノードが _トランザクションプール_ 、 _メモリプール_ >または _mempool_ と呼ばれるプールを構築します。
+
+=== マイニングノード
+
+((("mining","nodes")))((("nodes","mining")))いくつかのBitcoinノードは _マイナー_ よ呼ばれる特別なBitcoinノードです。<<ch01_intro_what_is_bitcoin>>で、上海にいるコンピュータエンジニアの学生でBitcoinマイナーであるジンを紹介しました。ジンは、bitcoinをマイニングするために作られた特別なコンピュータ ((("mining rigs"))) "mining rig" を走らせてbitcoinを稼いでいます。ジンの特別なマイニングハードウェアはfull Bitcoin nodeが走っているサーバに接続されています。ジンと違い、いくつかのマイナーは<<mining_pools>>で見るようにfull nodeを使うことなくマイニングをしています。
+    
+ジンのBitcoinノードは、全てのBitcoinノードがするように、Bitcoinネットワーク上を伝搬している新しいブロックを待っています。しかし、新しいブロックが来ることはマイニングノードにとって特別な意味を持ちます。新しいブロックが伝搬してくるということは事実上マイナー同士の競争が終わったということです。この伝搬は競争の勝者を伝えることになるからです。マイナーに新しいブロックが届くということは他の誰かが競争に勝ちそれ以外の人は負けたということを意味します。しかし、このラウンドの終わりは次のラウンドの始まりです。新しいブロックはレースの終わりを示す単なるチェッカーフラッグではなく、次のブロックに対するスターティングピストルでもあります。
+
+=== ブロックへのトランザクション集約
+
+((("blockchains","assembling blocks into")))((("blocks","assembling")))((("blocks","candidate, aggregating")))((("candidate blocks","aggregating")))((("mining","aggregating transactions and")))((("transaction pools","adding blocks to")))((("transactions","aggregating into blocks")))トランザクションを検証した後、Bitcoinノードは ((("memory pool"))) _メモリプール_ または _トランザクションプール_ にそれらのトランザクションを追加します。このプールにあるトランザクションはブロックに含められる(マイニングされる)までこのプールで待機しています。ジンのBitcoinノードは他のBitcoinノードと同じようにトランザクションを集め検証し新しいトランザクションをリレーします。しかし、他のBitcoinノードと違うのは、ジンのBitcoinノードはこれらのトランザクションを _候補ブロック_ に集めておくことです。
+
+アリスがボブのコーヒーショップでコーヒー代を払ったときに作られたブロックを追ってみましょう(<<cup_of_coffee>>参照)。アリスのトランザクションはブロック277,316に含まれていました。この章でやりたいことを説明しやすくするために、このブロックがジンのマイニングシステムによって採掘され、アリスのトランザクションがこの新しいブロックの一部になっているとしましょう。
+
+ジンのマイニングBitcoinノードはブロックチェーンのローカルコピーを保持しており、このブロックチェーンには2009年にBitcoinシステムが稼働を始めてから作られた全てのブロックが含まれています。アリスがコーヒー代を支払った頃にジンのBitcoinノードはブロック277,314までブロックチェーンを組み立てました。ジンのBitcoinノードはトランザクションを待っていたり、新しいブロックをマイニングしたり、または他のBitcoinノードが発見したブロックを待っていたりしています。ジンのBitcoinノードがマイニングしているときにBitcoinネットワークからブロック277,315を受け取りました。このブロックの到着したということは、ブロック277,315の競争が終わり、ブロック277,316を作る競争が始まったということを意味します。  
+
+ブロック277,315が到着する前の10分間、ジンのBitcoinノードはブロック277,315に対する解を探しながら、同時に次のブロックの準備のためトランザクションを集めていました。現在まで数百個のトランザクションをメモリプールに集めました。ブロック277,315を受け取り検証するとすぐに、ジンのBitcoinノードはメモリプールにある全てのトランザクションをチェックしブロック277,315に含まれていたトランザクションをメモリプールから削除していきます。 
+
+ジンのBitcoinノードはすぐにブロック277,316の候補となる新しい空ブロックの構築を始めました。このブロックはまだ有効なブロックになっていないので候補ブロックと呼ばれています。このブロックは候補ブロックと呼ばれており、有効なproof of workが含まれていないまだ有効になっていないブロックです。このブロックは、マイナーがproof-of-workアルゴリズムへの解を見つけるときにのみ有効になるのです。
+
+==== トランザクション年齢、トランザクション手数料、トランザクション優先度
+
+((("candidate blocks","age of transactions", id="ix_ch08-asciidoc4", range="startofrange")))((("candidate blocks","priority of transactions", id="ix_ch08-asciidoc5", range="startofrange")))((("candidate blocks","transaction fees", id="ix_ch08-asciidoc6", range="startofrange")))((("fees, transaction", id="ix_ch08-asciidoc7", range="startofrange")))((("transactions","age of", id="ix_ch08-asciidoc8", range="startofrange")))((("transactions","priority of", id="ix_ch08-asciidoc9", range="startofrange")))候補ブロックを構築するために、ジンのBitcoinノードはメモリプールからトランザクションを選びます。この選び方はそれぞれのトランザクションごとに優先度を計算し、最も優先度が高いものから先に選びます。トランザクション優先度は未使用トランザクションであるUTXOの"年齢"に基づき計算され、新しくより小さいvalueインプットを持つトランザクションよりも古く大きなvalueインプットを持つトランザクションが優先されます。優先されたトランザクションは、もしこのブロックに十分なスペースがあればトランザクション手数料がないトランザクションも送られます。 
+
+トランザクションの優先度は、インプットのvalueと年齢の積の総和をトランザクションの総データサイズで割ったもので計算しています。
+
+----
+Priority = Sum (Value of input * Input Age) / Transaction Size
+----
+
+この方程式にあるインプットのvalueはsatoshi単位(bitcoinの１億分の１)で計られます。UTXOの年齢はUTXOがブロックチェーンに記録されてから積み重ねられたブロック数で、このUTXOが含まれているブロックがブロックチェーンのトップから何ブロック"深いか"で計ります。トランザクションのデータサイズはバイト単位で計られます。
+
+トランザクションが"優先度が高い"と判断されるようになるためには、優先度が57,600,000よりも大きくなければいけません。これは、インプットのvalueが1bitcoin(１億satoshi)、年齢が１日(144ブロック)、トランザクションのデータサイズが250バイトに相当します。
+
+----
+High Priority > 100,000,000 satoshis * 144 blocks / 250 bytes = 57,600,000
+----
+
+ブロック内のトランザクションスペースの最初の50KBは、優先度が高いトランザクションのために取ってあります。このため、ジンのBitcoinノードは、トランザクション手数料に関わらず、最初の50KBを最も優先度が高いトランザクションで埋めます。優先度が高いトランザクションはトランザクション手数料がゼロであっても処理されます。
+
+その後、ジンのマイニングBitcoinノードはブロックの残りをブロックサイズの最大値(コード内の +MAX_BLOCK_SIZE+ )までトランザクションで埋めます。ここで埋められるトランザクションは、最低トランザクション手数料以上を持ち、かつ最も高いトランザクション手数料をトランザクションのデータサイズ(KB単位)で割った値による優先度が高いトランザクションです。
+
+もしブロックにまだスペースがあれば、ジンのマイニングBitcoinノードはトランザクション手数料がないトランザクションを残りブロックスペースに埋めることを選択するかもしれません。いくつかのマイナーは最善努力としてトランザクション手数料をマイニングすることを選びますが、他のマイナーはトランザクション手数料がないトランザクションは無視するかもしれません。 
+
+このブロックが全て埋められた後、メモリプールに残されたトランザクションは次のブロックに含めるためにメモリプールに残されます。トランザクションがメモリプールに残る時間が長くなるにつれて、このトランザクションインプットの年齢はどんどん上がっていきます。これは、新しいブロックがブロックチェーンの上にどんどん追加されるためです。トランザクションの優先度はこのトランザクションのインプットの年齢に依るので、メモリプールに残ったままになっているトランザクションは古くなり優先度が上がっていきます。結局トランザクション手数料を持たないトランザクションは十分に高い優先度になり無料でブロックに取り込まれます。 
+
+((("transactions","expiration, lack of")))Bitcoinトランザクションに期限はありません。今有効なトランザクションは永遠に有効です。しかし、もしトランザクションがBitcoinネットワーク内を一度しか伝搬されないとすると、このトランザクションはマイニングBitcoinノードのメモリプールに保持されている間だけしか存在することはできません。マイニングBitcoinノードが再起動されたとき、そのメモリプールは初期化されデータが削除されます。というのは、メモリプールが一時的なストレージであるためです。有効なトランザクションはBitcoinネットワークを通じて伝搬されるかもしれませんが、結局もし伝搬されなければ長期間メモリプールに居続けることはできないことになります。ウォレットには、そのようなトランザクションを再送信したり、また適度な時間以内でうまく処理されないようであればより高いトランザクション手数料を設定してトランザクションを再構築するようなことが期待されています。
+
+ジンのBitcoinノードはメモリプールから全てのトランザクションを集め、新しい候補ブロックは総トランザクション手数料が0.09094928bitcoinになる418個のトランザクションを持つようになりました。<<block277316>>に示しているように、Bitcoin Coreクライアントのコマンドラインインターフェイスを使うことで、ブロックチェーン内のこのブロックを確認することができます。(((range="endofrange", startref="ix_ch08-asciidoc9")))(((range="endofrange", startref="ix_ch08-asciidoc8")))(((range="endofrange", startref="ix_ch08-asciidoc7")))(((range="endofrange", startref="ix_ch08-asciidoc6")))(((range="endofrange", startref="ix_ch08-asciidoc5")))(((range="endofrange", startref="ix_ch08-asciidoc4")))
+====
+[source,bash]
+----
+$ bitcoin-cli getblockhash 2773160000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4
+
+$ bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4
+----
+====
+[[block277316]]
+.ブロック277,316
+====
+[source,json]
+----
+{
+    "hash" : "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4",
+    "confirmations" : 35561,
+    "size" : 218629,
+    "height" : 277316,
+    "version" : 2,
+    "merkleroot" : "c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e",
+    "tx" : [
+        "d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
+        "b268b45c59b39d759614757718b9918caf0ba9d97c56f3b91956ff877c503fbe",
+
+        ... 417個のトランザクション
+
+       ],
+    "time" : 1388185914,
+    "nonce" : 924591752,
+    "bits" : "1903a30c",
+    "difficulty" : 1180923195.25802612,
+    "chainwork" : "000000000000000000000000000000000000000000000934695e92aaf53afa1a",
+    "previousblockhash" : "0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569",
+    "nextblockhash" : "000000000000000010236c269dd6ed714dd5db39d36b33959079d78dfd431ba7"
+}
+----
+====
+
+==== Generationトランザクション
+
+((("coinbase transaction", id="ix_ch08-asciidoc10", range="startofrange")))ブロックに最初の追加されたトランザクションは特別なトランザクションで、 _generationトランザクション_ または _coinbaseトランザクション_ と呼ばれています。このトランザクションはジンのBitcoinノードによって構築され、マイニング労力に対する彼の報酬になります。ジンのBitcoinノードは彼自身のウォレットへの支払いとしてgenerationトランザクションを作ります。具体的には "ジンのBitcoinアドレスに25.09094928bitcoinを支払う" のようなものです。ジンがブロックをマイニングしたことに対する報酬総額は、coinbase報酬(新規の25bitcoin)と、ブロックに含まれている全てのトランザクションから得られたトランザクション手数料(0.09094928bitcoin)の和になります。これは、 <<generation_tx_example>> に示されています。 
+
+
+====
+----
+$ bitcoin-cli getrawtransaction d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f 1
+----
+====
+
+[[generation_tx_example]]
+.generationトランザクション
+====
+[source,json]
+----
+{
+    "hex" : "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0f03443b0403858402062f503253482fffffffff0110c08d9500000000232102aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21ac00000000",
+    "txid" : "d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "coinbase" : "03443b0403858402062f503253482f",
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 25.09094928,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "02aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21OP_CHECKSIG",
+                "hex" : "2102aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21ac",
+                "reqSigs" : 1,
+                "type" : "pubkey",
+                "addresses" : [
+                    "1MxTkeEP2PmHSMze5tUZ1hAV3YTKu2Gh1N"
+                ]
+            }
+        }
+    ],
+    "blockhash" : "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4",
+    "confirmations" : 35566,
+    "time" : 1388185914,
+    "blocktime" : 1388185914
+}
+----
+====
+
+通常のトランザクションと違って、generationトランザクションはインプットとしてUTXOを持ちません。その代わり、 _coinbase_ と呼ばれるたった１つのインプットを持ち、これが何もないところからbitcoinを生み出すことになります。generationトランザクションは１つのアウトプットを持ち、これはマイナー自身のBitcoinアドレスへの支払いになっています。このため、上記のgenerationトランザクションのアウトプットは、マイナーのBitcoinアドレスである +1MxTkeEP2PmHSMze5tUZ1hAV3YTKu2Gh1N+ に25.09094928bitcoinを送ることになります。 
+
+==== coinbase報酬と手数料
+
+((("coinbase data","fees and")))((("coinbase reward, calculating")))((("fees, transaction","calculating")))((("fees, transaction","generation transactions and")))((("generation transaction","coinbase rewards and")))((("generation transaction","fees and")))generationトランザクションを構築するために、ジンのBitcoinノードは最初にトランザクション手数料の総額を計算します。この総額は、ブロックに追加された418個のトランザクションのインプットとアウトプットから計算され、トランザクション手数料は以下のようになります。
+
+----
+Total Fees = Sum(Inputs) - Sum(Outputs)
+----
+
+ブロック277,316にあるトランザクション手数料の総額は0.09094928bitcoinです。 
+
+次に、ジンのBitcoinノードは新しいブロックに対する正規の報酬を計算します。この報酬はブロック高に基づいて計算され、最初は１ブロックあたり50bitcoinから始まり210,000ブロックごとに半分に減っていきます。このブロックのブロック高は277,316であるため、正規の報酬は25bitcoinです。 
+
+この計算は<<getblockvalue_source>>にあるようにBitcoin Coreクライアントにある +GetBlockValue+ 関数で確認できます。
+
+[[getblockvalue_source]]
+.ブロックの報酬を計算する関数GetBlockValue(Bitcoin Coreクライアントのmain.cpp 1305行目)
+====
+[source, cpp]
+----
+int64_t GetBlockValue(int nHeight, int64_t nFees)
+{
+    int64_t nSubsidy = 50 * COIN;
+    int halvings = nHeight / Params().SubsidyHalvingInterval();
+
+    // Force block reward to zero when right shift is undefined.
+    if (halvings >= 64)
+        return nFees;
+
+    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
+    nSubsidy >>= halvings;
+
+    return nSubsidy + nFees;
+}
+----
+====
+
+初期報酬は、 +COIN+ 定数(100,000,000satoshi)に50を掛けてsatoshi単位で表したものになっています。これによって初期報酬( +nSubsidy+ )が50億satoshiになっています。 
+
+((("halvings, calculating")))次に、この関数は半減ブロック数( +SubsidyHalvingInterval+ )で現在のブロック高を割るごとに起こった半減数 +halvings+ を計算しています。ブロック277,316の場合、半減ブロック数が210,000ブロックごとであるため結果は1回の半減数となります。 
+
+許されている半減数の最大値は64回で、もし64回の半減数を越えるとこのコードでは新しいブロックに対する報酬が0になります(単にトランザクション手数料のみが返る)。
+
+次に、この関数は２進数右シフト演算子を使って報酬(+nSubsidy+)を半減ごとに２で割っています。ブロック277,316の場合、これは50億satoshiの報酬を１回だけ２進数右シフト演算(１回半減)を行い報酬は25億satoshi(2.5 billion satoshi)となります。２進数右シフト演算子は、整数または浮動小数点での割り算よりもより効果的に２で割ることができるために使われています。 
+
+最終的に、coinbase報酬( +nSubsidy+ )にはトランザクション手数料( +nFees+ )が加えられ、この和が返されます。 
+
+==== generationトランザクションの構造
+
+((("generation transaction","structure of")))これらの計算を行うことで、ジンのBitcoinノードは彼自身に25.09094928bitcoinを支払うためにgenerationトランザクションを構築します。
+
+<<generation_tx_example>>を見ると分かるように、generationトランザクションは特別なフォーマットをしています。使用する前のUTXOを特定するトランザクションインプットと違って、これは"coinbase"インプットを持っています。<<tx_in_structure>>の中でトランザクションインプットを説明しました。ここでは、通常のトランザクションインプットとgenerationトランザクションインプットを比較してみましょう。<<table_8-1>>は通常のトランザクションの構造を示していて、<<table_8-2>>はgenerationトランザクションインプットの構造を示しています。
+
+[[table_8-1]]
+."通常"のトランザクションインプットの構造
+[options="header"]
+|=======
+|サイズ| フィールド名 | 説明
+| 32 bytes | Transaction Hash | 使われるUTXOを含むトランザクションハッシュ
+| 4 bytes | Output Index | 使われるUTXOのトランザクション内インデックス、一番最初のアウトプットの場合は0
+| 1-9 bytes (VarInt) | Unlocking-Script Size | unlocking-scriptのバイト長
+| Variable | Unlocking-Script | UTXOのlocking scriptを満たすscript
+| 4 bytes | Sequence Number | Currently disabled Tx-replacement feature, set to 0xFFFFFFFF
+|=======
+
+[[table_8-2]]
+.generationトランザクションインプットの構造
+[options="header"]
+|=======
+|サイズ| フィールド名 | 説明
+| 32 bytes | トランザクションハッシュ | 全てのbitが０: トランザクションハッシュ参照ではない
+| 4 bytes | Output Index | 全てのbitが１: 0xFFFFFFFF
+| 1-9 bytes (VarInt) | coinbaseデータサイズ | coinbaseデータサイズの長さ(2から100byte)
+| Variable | Coinbase Data | Arbitrary data used for extra nonce and mining tags
+in v2 blocks, must begin with block height
+| 4 bytes | Sequence Number | Set to 0xFFFFFFFF
+|=======
+
+gerationトランザクションでは、最初の２つのフィールドはUTXOへの参照を表現していない値が設定されています。通常のトランザクションの"Transaction Hash"の代わりに、最初のフィールドは全てが0の32バイトで埋められています。"Output Index"は全てが0xFF(１０進数で255)に設定された4バイトで埋められています。"Unlocking Script"はcoinbaseデータで置き換えられており、マイナーによって使われる任意のデータを入れられるフィールドになっています。 
+
+==== Coinbaseデータ
+
+((("coinbase data", id="ix_ch08-asciidoc11", range="startofrange")))((("generation transaction","coinbase data", id="ix_ch08-asciidoc12", range="startofrange")))((("unlocking scripts","generation transactions and")))generationトランザクションはunlocking scriptフィールド(a.k.a, +scriptSig+ )を持っていません。その代わりに、このフィールドはcoinbaseデータで置き換えられています。このフィールドに入るデータは2バイトから100バイトの間のデータになっていなければいけません。 
+
+例えば起源ブロックのcoinbaseデータに、Satoshi Nakamotoは日付と"The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"というテキストを加えました。Satoshi Nakamotoはこれを日付の証明と伝えたいメッセージのために使用しています。以下の節で見るように、現在マイナーはcoinbaseデータを余分なnonce valueやマイニングプールを特定する文字列を含めることに使っています。 
+
+coinbaseデータの最初の数バイトは任意に使われていましたが、現在はもはやこのようにはなっていません。Bitcoin Improvement Proposal 34 (BIP0034)により、version-2 ブロック(ブロックのversionフィールドが2)は、scriptの"push"オペレーションとしてブロック高をcoinbaseフィールドの最初に含めなければいけません。 
+
+ブロック277,316では、このcoinbase(<<generation_tx_example>>参照)のトランザクションインプットにある"Unlocking script"または +scriptSig+ に +03443b0403858402062f503253482f+ という１６進数が含まれています。これをデコードしてみましょう。 
+
+最初の１バイト +03+ はscript実行エンジンに次の３バイトをscriptスタックにpushするということを教えています(<<tx_script_ops_table_pushdata>>参照)。次の３バイト +0x443b04+ は、リトルエンディアン(逆読み、最下位バイトが最初に来る)でエンコードされたブロック高です。バイトの順番を逆にして +0x043b44+ にし、これを１０進数で読むと277,316になります。 
+
+次の数個の１６進数(+03858402062+)は、proof of work適切解を探すための余分な _nonce_ (<<extra_nonce>>参照)、またはランダムな値をエンコードするために使われます。
+
+The final part of the coinbase data (+2f503253482f+) is the ASCII-encoded string +/P2SH/+, which indicates that the mining node that mined this block supports the((("pay-to-script-hash (P2SH)","coinbase data and"))) pay-to-script-hash (P2SH) improvement defined in BIP0016. The introduction of the P2SH capability required a "vote" by miners to endorse either BIP0016 or BIP0017. Those endorsing the BIP0016 implementation were to include +/P2SH/+ in their coinbase data. Those endorsing the BIP0017 implementation of P2SH were to include the string +p2sh/CHV+ in their coinbase data. The BIP0016 was elected as the winner, and many miners continued including the string +/P2SH/+ in their coinbase to indicate support for this feature.
+
+<<satoshi_words>>は<<alt_libraries>>で紹介したlibbitcoinライブラリを使っており、起源ブロックからcoinbaseデータを抽出してSatoshiのメッセージを表示するものです。libbitcoinライブラリは起源ブロックの静的なコピーを持っており、この例コードではこのライブラリから直接起源ブロックを取得することができます。 
+
+[[satoshi_words]]
+.起源ブロックからのcoinbaseデータの抽出
+====
+[source, cpp]
+----
+include::code/satoshi-words.cpp[]
+----
+====
+
+<<satoshi_words_run>>では、このコードをGNU C++ コンパイラでコンパイルし、出力される実行ファイルを実行しています。(((range="endofrange", startref="ix_ch08-asciidoc12")))(((range="endofrange", startref="ix_ch08-asciidoc11")))(((range="endofrange", startref="ix_ch08-asciidoc10")))
+
+[[satoshi_words_run]]
+.satoshi-words例コードのコンパイルと実行
+====
+[source,bash]
+----
+$ # Compile the code
+$  g++ -o satoshi-words satoshi-words.cpp $(pkg-config --cflags --libs libbitcoin)
+$ # Run the executable
+$ ./satoshi-words
+^D��<GS>^A^DEThe Times 03/Jan/2009 Chancellor on brink of second bailout for banks
+----
+====
+
+=== ブロックヘッダの構築
+
+((("block headers","constructing")))ブロックヘッダを構築するために、このマイニングBitcoinノードは<<block_header_structure_ch08>>にリストアップしてある６つのフィールドを埋める必要が>あります。
+
+[[block_header_structure_ch08]]
+.ブロックヘッダの構造
+[options="header"]
+|=======
+|サイズ| フィールド名 | 説明
+| 4バイト | Version | ソフトウェア/プロトコル バージョン番号
+| 32 bytes | Previous Block Hash | 親ブロックのハッシュ値
+| 32バイト| Merkle Root | 本ブロック内の全トランザクションに関するマークル木のルートハッシュ
+| 4バイト| Timestamp | 本ブロックの生成時刻（Unix時間）
+| 4バイト| Difficulty Target | 本ブロック生成時のプルーフ・オブ・ワークの難易度値
+| 4バイト| Nonce | プルーフ・オブ・ワークで用いたノンス値
+|=======
+
+ブロック277,316が採掘された時点でこのブロック構造を記述しているversionは2で、このブロックには4byteをリトルエンディアンでエンコードした +0x02000000+ が入っています。 
+
+次に、このマイニングBitcoinノードは((("Previous Block Hash"))) "１つ前のブロックハッシュ"を追加する必要があります。これはブロック277,315のブロックヘッダのハッシュです。このBitcoinネットワークから受け取った１つ前のハッシュは、ジンのBitcoinノードが受理し、候補ブロック277,316の親として選んだブロックです。ブロック277,315のブロックヘッダハッシュは以下です。
+
+----
+0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569
+----
+
+((("merkle trees","constructing block headers with")))次のステップは、merkle rootをブロックヘッダに加えるために、全てのトランザクションをmerkle treeにまとめることです。generationトランザクションはブロックの最初のトランザクションになっています。418個のトランザクションはこのgenerationトランザクションのあとに追加され、全部で419個のトランザクションがブロックの中にあることになります。<<merkle_trees>>で見たように、merkle treeは偶数個の"葉"ノードを持たなければいけません。このため、最後のトランザクションは重複することになり、420個の葉ノードが作られます。それぞれ葉ノードはトランザクションのハッシュを保持しています。トランザクションハッシュはペアを組んで結びつけられ、merkle treeの階層を作っていき、全てのトランザクションがmerkle treeの"root"に１つの葉ノードが作られるまで続きます。merkle treeのrootは全てのトランザクションを１つの32バイトの値にまとめ、この値は<<block277316>>にある"merkle root"を見ることで確認でき、その値は以下になっています。 
+
+----
+c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e
+----
+    
+((("timestamping blocks")))マイニングBitcoinノードはこのときUnixの"Epoch"タイムスタンプのようにエンコードされた4バイトのタイムスタンプを追加します。Unixの"Epoch"タイムスタンプは、1970年1月1日 深夜0:00 UTC/GMTから経過した秒数に基づいています。時刻 +1388185914+ は2013年12月27日金曜日 23:11:54 UTC/GMTと同じです。
+
+((("difficulty target","constructing block headers and")))この後このBitcoinノードはdiffifulty targetを埋めます。これはこのブロックを有効なブロックにするために必要とされるproof-of-work difficultyを定義しています。このdifficultyはブロック内に"difficulty bits"として保存されていて、指数表記の形でエンコードされています。このエンコーディングは1バイトの指数部、3バイトの仮数部(係数)を持っています。例えばブロック277,316の場合、difficulty bitsの値は +0x1903a30c+ です。最初の部分 +0x19+ は１６進数指数部で、次の部分 +0x03a30c+ は係数です。difficulty targetのコンセプトについては <<difficulty_target>> で説明し、"difficulty bits"表現については <<difficulty_bits>> で説明します。
+
+((("nonce,","initializing in block header")))最後のフィールドはnonceで、初期値は0です。 
+
+全ての他のフィールドを埋めると、ブロックヘッダは完全なものとなりマイニングプロセスを始めることができます。このゴールはdifficulty targetよりも小さいブロックヘッダハッシュになるnonceに対する値を見つけることです。このマイニングBitcoinノードは必要条件を満たすようなnonceを見つける前に１０億個または１兆個のnonceの値を調べてみる必要があるのです。
+
+=== ブロックのマイニング
+
+((("blocks","mining", id="ix_ch08-asciidoc13", range="startofrange")))((("mining","blocks", id="ix_ch08-asciidoc14", range="startofrange")))今や候補ブロックはジンのBitcoinノードによって構築され、ジンのハードウェアmining rigがブロックを"採掘"し、ブロックを有効にするproof-of-workアルゴリズムに対する解を見つけるときです。この本を通して、Bitcoinシステムのいろいろな面で暗号学的ハッシュ関数を使い学んできました。ハッシュ関数SHA256はBitcoinのマイニングプロセスの中で使われる暗号学的ハッシュ関数です。 
+
+最もシンプルに言うと、マイニングとは１つのパラメータを変えながらブロックヘッダを繰り返しハッシュ化するプロセスで、出力されるハッシュが特別なターゲットに一致するまで行われます。ハッシュ関数の結果は、先に立って決めることはできず、また特別なハッシュ値を作り出すためのパターンを作り出すこともできません。このハッシュ関数の特徴は次のことを意味しています。特別な条件に合うハッシュを作り出すただ１つの方法は、入力をランダムに修正しながら偶然に欲しいハッシュが現れるまで試行を繰り返し繰り返し行うことです。 
+
+==== Proof-Of-Workアルゴリズム
+
+((("mining","proof-of-work algorithm and", id="ix_ch08-asciidoc15", range="startofrange")))((("Proof-Of-Work algorithm", id="ix_ch08-asciidoc16", range="startofrange")))ハッシュアルゴリズムは任意の長さのデータ入力を取り、このデータ入力のデジタルフィンガープリントとして固定長の決定性を持った結果を作り出します。どんな特別な入力に対しても、出力されるハッシュは常に同じで、たやすく計算でき、同じハッシュアルゴリズムを実装している人は誰でも検証できます。暗号学的ハッシュアルゴリズムのキーとなる特徴は、同じフィンガープリントを作り出す２つの違った入力を探すことは至難の業であることです。これからの自然の帰結として、ランダムな入力を試すよりも簡単に欲しいフィンガープリントを作り出すような入力を選ぶこともまた至難の技なのです。
+
+SHA256だと出力結果は常に256bitの長さになり、これは入力のデータサイズに関わらず決まります。<<sha256_example1>>では、Pythonインタプリタを使ってフレーズ "I am Satoshi Nakamoto." のSHA256ハッシュを計算しています。 
+
+[[sha256_example1]]
+.SHA256での例
+====
+[source,bash]
+----
+$ python
+----
+[source,pycon]
+----
+Python 2.7.1
+>>> import hashlib
+>>> print hashlib.sha256("I am Satoshi Nakamoto").hexdigest()
+5d7c7ba21cbbcd75d14800b100252d5b428e5b1213d27c385bc141ca6b47989e
+----
+====
+
+<<sha256_example1>>は +"I am Satoshi Nakamoto"+ のハッシュ +5d7c7ba21cbbcd75d14800b100252d5b428e5b1213d27c385bc141ca6b47989e+ を計算した結果を示しています。この256bitの数字はこのフレーズの _ハッシュ_ または _ダイジェスト_ であり、このフレーズの全ての部分に依っています。１個の文字、句読点、または他のいかなる文字でも追加すると異なるハッシュが生成されます。
+
+今、もしこのフレーズを変えると完全に違ったハッシュが生成されるはずです。フレーズの最後に数字を追加して作った新しいフレーズのハッシュが全く違うハッシュになることを試してみましょう。ハッシュ生成には <<sha256_example_generator>> にあるシンプルなPythonスクリプトを使います。
+
+[[sha256_example_generator]]
+.nonce生成を繰り返すことで多くのSHA256ハッシュを生成するスクリプト
+====
+[source, python]
+----
+include::code/hash_example.py[]
+----
+====
+
+これを実行すると、テキストの最後に数字を追加して違った形に作られたいくつかのフレーズのハッシュが生成されます。<<sha256_example_generator_output>>に示している通り、数字を１つずつ増やしていくと違ったハッシュを得ることができます。
+
+((("nonce")))
+[[sha256_example_generator_output]]
+.nonce生成を繰り返すことで多くのSHA256ハッシュを生成するスクリプト実行出力
+====
+[source,bash]
+----
+$ python hash_example.py
+----
+
+----
+I am Satoshi Nakamoto0 => a80a81401765c8eddee25df36728d732...
+I am Satoshi Nakamoto1 => f7bc9a6304a4647bb41241a677b5345f...
+I am Satoshi Nakamoto2 => ea758a8134b115298a1583ffb80ae629...
+I am Satoshi Nakamoto3 => bfa9779618ff072c903d773de30c99bd...
+I am Satoshi Nakamoto4 => bce8564de9a83c18c31944a66bde992f...
+I am Satoshi Nakamoto5 => eb362c3cf3479be0a97a20163589038e...
+I am Satoshi Nakamoto6 => 4a2fd48e3be420d0d28e202360cfbaba...
+I am Satoshi Nakamoto7 => 790b5a1349a5f2b909bf74d0d166b17a...
+I am Satoshi Nakamoto8 => 702c45e5b15aa54b625d68dd947f1597...
+I am Satoshi Nakamoto9 => 7007cf7dd40f5e933cd89fff5b791ff0...
+I am Satoshi Nakamoto10 => c2f38c81992f4614206a21537bd634a...
+I am Satoshi Nakamoto11 => 7045da6ed8a914690f087690e1e8d66...
+I am Satoshi Nakamoto12 => 60f01db30c1a0d4cbce2b4b22e88b9b...
+I am Satoshi Nakamoto13 => 0ebc56d59a34f5082aaef3d66b37a66...
+I am Satoshi Nakamoto14 => 27ead1ca85da66981fd9da01a8c6816...
+I am Satoshi Nakamoto15 => 394809fb809c5f83ce97ab554a2812c...
+I am Satoshi Nakamoto16 => 8fa4992219df33f50834465d3047429...
+I am Satoshi Nakamoto17 => dca9b8b4f8d8e1521fa4eaa46f4f0cd...
+I am Satoshi Nakamoto18 => 9989a401b2a3a318b01e9ca9a22b0f3...
+I am Satoshi Nakamoto19 => cda56022ecb5b67b2bc93a2d764e75f...
+----
+====
+
+それぞれのフレーズは完全に違ったハッシュを生成します。これらは完全にランダムであるように見えますが、Pythonがインストールされているどんなコンピュータでもこの例にある結果を厳密に再生成でき、全く同じハッシュを見ることができます。 
+
+このシナリオの中で変数として使われている数字は _nonce_ と呼ばれています。このnonceは暗号学的関数の出力を変えるために使われ、この例の場合フレーズのSHA256フィンガープリントを変えるために使われています。 
+
+((("difficulty target","defined")))このアルゴリズムで課題を作るために任意のターゲットを設定しましょう。"0から始まる１６進数ハッシュを生成するフレーズを探しなさい"。幸運なことに、これは難しくありません！ <<sha256_example_generator_output>>が示すように、フレーズ "I am Satoshi Nakamoto13" はハッシュ +0ebc56d59a34f5082aaef3d66b37a661696c2b618e62432727216ba9531041a5+ を生成しており、これはさきほどのターゲットに合っているものです。これを見つけるために１３回の試行を行いました。確率論的に言うと、もしハッシュ関数の出力が均等に分布しているのだとすると、16ハッシュごとに１回１６進数のハッシュの最初が0になる結果が見つかるでしょう(0からFまでの１６個の１６進数のうちの１つ)。数値的に言うと、これは +0x1000000000000000000000000000000000000000000000000000000000000000+ よりも小さいハッシュ値を探すということを意味します。我々はこの閾値を _ターゲット_ と呼ぶことにし、これを使ってゴールは数値的に _targetよりも小さい_ ハッシュを見つけることになります。もしターゲットを小さくすれば、ターゲットより小さいハッシュを見つけることはさらに難しくなります。 
+ 
+簡単な類推をするためにプレイヤーが２つのサイコロを繰り返し投げ、特定のターゲットよりも和が小さくなるようにするゲームを想像してみましょう。最初のラウンドでは、ターゲットは12です。２つの６を出さなければ、あなたの勝ちです。次のラウンドではターゲットを11にしましょう。プレイヤーは10かそれより小さくしなければいけませんが、これも簡単です。数回のラウンドの後ターゲットを5に下げてみましょう。今、サイコロを投げたうち半分以上が5よりも大きくなってしまいました。ターゲットがより低くなればなるほど、勝つために投げるサイコロの回数は指数関数的に大きくなっていきます。結局、ターゲットが2(可能な限り小さい)では、36回サイコロを投げるうちたった１回、つまり全体の2%だけがゲームに勝つ結果を生成することになります。 
+
+<<sha256_example_generator_output>>では、勝利 "nonce" は13で、この結果は誰でも独立に確認することができます。誰でも数値13をさきほどのフレーズ "I am Satoshi Nakamoto" の最後に追加し、ハッシュを計算し、ターゲットより小さいことを検証することができます。この上出来な結果はproof of workでもあります。というのは、これがあのnonceを見つける仕事をしたことの証明だからです。検証するためにはたった１回のハッシュ計算でよい一方、うまくいくnonceを見つけるためには13回のハッシュ計算が必要になります。もしより低いターゲット(より高いdifficulty)を使ったとすると、適したnonceを探すためにさらにたくさんのハッシュ計算が必要になるのですが、検証をするには誰でも１回のハッシュ計算で済みます。さらに、ターゲットを知ることによって、統計を使って誰でもdifficultyの見積もりをすることができ、よってどれだけの仕事がそのようなnonceを見つけるために必要だったかを知ることができるのです。
+
+Bitcoinのproof of workは<<sha256_example_generator_output>>に示した課題ととても似ています。まずマイナーはトランザクションで埋められた候補ブロックを構築します。次に、ブロックのヘッダのハッシュを計算し、現在の _ターゲット_ より小さいかどうかを確認します。もしそのハッシュがターゲットよりも小さくなければ、マイナーはnonceを修正し(通常は１つ増加させるだけです)、再びハッシュを計算します。現在のBitcoinネットワークでのdifficultyは、ブロックヘッダハッシュが十分小さくなるnonceを見つける前にマイナーは1000兆回ハッシュを計算する必要があります。
+
+とても簡単化されたproof-of-workアルゴリズムは<<pow_example1>>にPythonで実装されています。((("proof of work")))
+
+[[pow_example1]]
+.簡略化されたproof-of-work実装
+====
+[source, python]
+----
+include::code/proof-of-work-example.py[]
+----
+====
+
+このコードを実行すると、欲しいdifficultyを設定でき(difficultyはbit単位。左から数えた桁が何桁0でなければいけないか)、あなたのコンピュータが解を探すためにどれくらい時間がかかるかを見ることができます。<<pow_example_outputs>>では、平均的なノートパソコンでどのように動作するかを見ることができます。
+
+[[pow_example_outputs]]
+.いろいろなdifficultyに対するproof of work例コードの実行
+====
+[source, bash]
+----
+$ python proof-of-work-example.py*
+----
+
+----
+Difficulty: 1 (0 bits)
+
+[...]
+
+Difficulty: 8 (3 bits)
+Starting search...
+Success with nonce 9
+Hash is 1c1c105e65b47142f028a8f93ddf3dabb9260491bc64474738133ce5256cb3c1
+Elapsed Time: 0.0004 seconds
+Hashing Power: 25065 hashes per second
+Difficulty: 16 (4 bits)
+Starting search...
+Success with nonce 25
+Hash is 0f7becfd3bcd1a82e06663c97176add89e7cae0268de46f94e7e11bc3863e148
+Elapsed Time: 0.0005 seconds
+Hashing Power: 52507 hashes per second
+Difficulty: 32 (5 bits)
+Starting search...
+Success with nonce 36
+Hash is 029ae6e5004302a120630adcbb808452346ab1cf0b94c5189ba8bac1d47e7903
+Elapsed Time: 0.0006 seconds
+Hashing Power: 58164 hashes per second
+
+[...]
+
+Difficulty: 4194304 (22 bits)
+Starting search...
+Success with nonce 1759164
+Hash is 0000008bb8f0e731f0496b8e530da984e85fb3cd2bd81882fe8ba3610b6cefc3
+Elapsed Time: 13.3201 seconds
+Hashing Power: 132068 hashes per second
+Difficulty: 8388608 (23 bits)
+Starting search...
+Success with nonce 14214729
+Hash is 000001408cf12dbd20fcba6372a223e098d58786c6ff93488a9f74f5df4df0a3
+Elapsed Time: 110.1507 seconds
+Hashing Power: 129048 hashes per second
+Difficulty: 16777216 (24 bits)
+Starting search...
+Success with nonce 24586379
+Hash is 0000002c3d6b370fccd699708d1b7cb4a94388595171366b944d68b2acce8b95
+Elapsed Time: 195.2991 seconds
+Hashing Power: 125890 hashes per second
+
+[...]
+
+Difficulty: 67108864 (26 bits)
+Starting search...
+Success with nonce 84561291
+Hash is 0000001f0ea21e676b6dde5ad429b9d131a9f2b000802ab2f169cbca22b1e21a
+Elapsed Time: 665.0949 seconds
+Hashing Power: 127141 hashes per second
+----
+====
+
+見て分かるように、difficultyが1bit増えると解を見つけるためにかかる時間が指数関数的に大きくなります。もし256bitの数値空間全体を考えてみると、さらに1bitだけ0にしなければいけない制約が増えるとたびに解となる空間が半分になってしまうのです。<<pow_example_outputs>>では、左から26bitまでが0になっているようなハッシュを作り出すnonceを見つけるために、8400万回の試行が必要になります。仮に１秒間に12万回以上ハッシュ計算ができたとしても、この解を見つけるために普通のノートパソコンでは10分間もかかってしまいます。 
+
+執筆している時点で、Bitcoinネットワークは +000000000000004c296e6376db3a241271f43fd3f5de7ba18986e517a243baa7+ より小さいヘッダハッシュを持つブロックが試行されています。見て分かるように、ハッシュの最初に多くの0があります。これは、許容されるハッシュ範囲がとても小さくなっているということを意味し、よって有効なハッシュを見つけることがより難しくなっているということになります。次のブロックをBitcoinネットワークが発見するために平均的に秒間15京回(150 quadrillion hash)以上のハッシュ計算が必要になっています。これは不可能なことに見えますが、幸運なことにBitcoinネットワークは秒間100ペタハッシュ(PH/sec、1ペタは1000兆)の演算処理能力を提供しており、これにより平均的に約10分間ごとにブロックを見つけることができます。(((range="endofrange", startref="ix_ch08-asciidoc16")))(((range="endofrange", startref="ix_ch08-asciidoc15"))) 
+
+[[difficulty_bits]]
+==== Difficulty表現
+
+((("difficulty target")))((("mining","difficulty bits")))((("mining","difficulty targets")))<<block277316>>では、ブロックが"difficulty bits"または単に"bits"と呼ばれる記法で書かれたdifficulty targetを含んでいることを確認しました。ブロック277,316では+0x1903a30c+という値がdifficulty bitsに入っています。この記法はdifficulty targetを係数部/指数部形式で表すもので、最初の２桁の１６進数が指数部、次の６桁の１６進数が係数です。このブロックでは、指数部が +0x19+ 、係数が +0x03a30c+ となっています。
+    
+この記法からdifficulty targetを計算する数式は以下になります。
+
+----
+target = coefficient * 2^(8 * (exponent – 3))
+----
+
+この数式を使うとdifficulty bits 0x1903a30cは、
+
+----
+target = 0x03a30c * 2^(0x08 * (0x19 - 0x03))^ 
+
+=> target = 0x03a30c * 2^(0x08 * 0x16)^
+
+=> target = 0x03a30c * 2^0xB0^
+----
+
+１０進数で表現すると、
+
+----
+=> target = 238,348 * 2^176^
+
+=> target = 22,829,202,948,393,929,850,749,706,076,701,368,331,072,452,018,388,575,715,328
+----
+
+これを１６進数で表すと以下になります。
+
+----
+=> target = 0x0000000000000003A30C00000000000000000000000000000000000000000000
+----
+
+これは、ブロック277,316を有効にするにはこのtargetよりも小さいブロックヘッダハッシュを持たなければならないということを意味します。２進数で言うと、この数字は最初の60bit以上が0になっています。このレベルのdifficultyは、秒間10億個のハッシュ(秒間1テラハッシュ、または1TH/sec)を生成できるマイナーだと平均的に8,496ブロックに１回解が見つかるだけ、または59日に１回解が見つかるだけということになります。 
+
+[[difficulty_target]]
+==== Difficulty TargetとRetargeting
+
+((("difficulty target","retargeting", id="ix_ch08-asciidoc17", range="startofrange")))これまでに見てきたように、targetはdifficultyを決定し、よってproof-of-workアルゴリズムへの解を見つけることにかかる時間がどれくらい長くなるかに影響します。ここから自然な疑問点が出てきます。"なぜdifficultyは調整可能なのか、誰が調整しているのか、どのように調整しているのか"
+
+((("difficulty retargeting")))((("difficulty target","block generation rate and")))Bitcoinのブロックは平均的に10分毎に生成されています。これはBitcoinの鼓動であり、通貨発行頻度の土台であり、トランザクションが安定にいたる時間です。これは短すぎず、また数十年ほど長すぎず一定に保たれる必要があります。時間とともに、コンピュータの処理速度は急速に速くなっていくと予想され、またマイニングに参加する人とコンピュータの数も変わっていきます。ブロックの生成時間を10分に保つためには、difficultyはこれらの変化に合わせて調整されなければいけません。事実、difficultyは動的に変わるパラメータであり、10分毎のブロック生成を満たすためにたびたび調整されてきました。簡単に言うと、difficulty targetはどんなにマイニング速度が変わっても10分毎にブロック生成が起こるように設定されているのです。 
+
+完全な分散ネットワークでどのようにしてこの調整が行われているのでしょうか。difficultyのretargetingは自動的に全てのfull nodeで行われます。2,016ブロック毎に全てのBitcoinノードはproof-of-workのdifficultyをretargetします。retargetingを行う時は、最後の2,016ブロックが生成されたのにかかった時間を測定し、予想される時間20,160分(10分間でブロック生成が起きたとするとこれは約2週間に相当)と比較します。実際にかかった時間と求められる時間との比が計算され、適した調整(difficultyを上げるまたは下げる)が行われます。簡単に言って、もしBitcoinネットワークが10分毎よりも速くブロックを見つけていればdifficultyは上がります。もしブロックの発見が予想よりも遅ければ、difficultyは下がります。 
+
+この関係式は以下のようにまとめられます。
+
+----
+New Difficulty = Old Difficulty * (Actual Time of Last 2016 Blocks / 20160 minutes)
+----
+
+<<retarget_difficulty_code>>はBitcoin Coreクライアントのなかで使われているコードを示しています。
+
+[[retarget_difficulty_code]]
+.proof-of-workのdifficulty retargeting(Bitcoin Coreクライアントのpow.cpp 43行目にあるGetNextWorkRequired())
+====
+[source,cpp]
+----
+
+// Go back by what we want to be 14 days worth of blocks
+const CBlockIndex* pindexFirst = pindexLast;
+for (int i = 0; pindexFirst && i < Params().Interval()-1; i++)
+    pindexFirst = pindexFirst->pprev;
+assert(pindexFirst);
+
+// Limit adjustment step
+int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
+LogPrintf("  nActualTimespan = %d  before bounds\n", nActualTimespan);
+if (nActualTimespan < Params().TargetTimespan()/4)
+    nActualTimespan = Params().TargetTimespan()/4;
+if (nActualTimespan > Params().TargetTimespan()*4)
+    nActualTimespan = Params().TargetTimespan()*4;
+
+// Retarget
+uint256 bnNew;
+uint256 bnOld;
+bnNew.SetCompact(pindexLast->nBits);
+bnOld = bnNew;
+bnNew *= nActualTimespan;
+bnNew /= Params().TargetTimespan();
+
+if (bnNew > Params().ProofOfWorkLimit())
+    bnNew = Params().ProofOfWorkLimit();
+
+----
+====
+
+[NOTE]
+====
+difficultyの調整は2016ブロックに１回起きます。オリジナルのBitcoin Coreクライアントにあるoff-by-oneエラーのため、difficultyの調整は前の2015ブロックの総時間に基づいています(本来すべき2016ブロックの総時間ではなく)。この結果、difficultyは0.05%だけ高くなるようなretargetingバイアスが生じています。
+====
+
+
+Interval(2,016ブロック)とTargetTimespan(2週間、1,209,600秒)は _chainparams.cpp_ に定義されています。
+
+difficultyが極端に動きすぎないように、retargetingは調整ごとに４倍または1/4以内になるようになっています。つまり、もし必要なdifficultyの調整が4倍よりも大きいまたは1/4よりも小さい場合は、最大でも4倍、最小でも1/4になりそれを超えたものにはなりません。不均衡が次の2,016ブロックの間続いてしまうため、さらなる調整は次のretargetingのときに行われます。このため、ハッシュ生成速度とdifficultyの大きな食い違いは数回のretargetingを経て均衡するようになると思われます。 
+
+[TIP]
+====
+The difficulty of finding a bitcoin block is approximately '10 minutes of processing' for the entire network, based on the time it took to find the previous 2,016 blocks, adjusted every 2,016 blocks.
+====
+
+difficulty targetはトランザクションの数やトランザクションに含まれる資金には依存しないことを注意しておきます。これは、ハッシュ生成速度、つまりはBitcoinをセキュアに保つために費やされる電気代もまたトランザクションの数に全く依存しないということです。これにより、今日のハッシュ生成速度が増加しなかったとしても、Bitcoinはより広く採用されスケールアップすることができ、セキュアに保たれるということです。ハッシュ生成速度が大きくなるということは、マーケットに参入した新しいマイナーに厳しい報酬競争を強いることになります。十分なハッシュ生成速度が率直に報酬を狙うマイナーによってコントロールされている限り、"買収(takeover)"攻撃を防ぎBitcoinを安全に保つことができるのです。 
+
+((("difficulty target","electricity cost and")))((("electricity cost and target difficulty")))difficulty targetは電気代およびbitcoinと電気代を払うための通貨の交換レートに密接に関係しています。ハイパフォーマンスなマイニングシステムは最近のシリコン製造技術を用いて可能な限り効率化されており、電気をできる限り最高のレートでハッシュ生成計算に転換しています。マイニングマーケット上の主要な影響は1KW/hあたり何bitcoinかかるかです。なぜなら、これがマイニングの収益を決定しマイニングマーケットに参入するか撤退するかを決めるからです。(((range="endofrange", startref="ix_ch08-asciidoc17")))(((range="endofrange", startref="ix_ch08-asciidoc14")))(((range="endofrange", startref="ix_ch08-asciidoc13")))
+
+=== うまくいったブロックの採掘
+
+((("consensus","mining blocks successfully")))前に見たように、ジンのBitcoinノードは候補ブロックを構築しマイニングの準備が整いました。ジンは((("Application Specific Integrated Circuit (ASIC)","mining with"))) ASIC(application-specific integrated circuits)で作られた幾つかのハードウェアのmining rigsを持っています。ASICは数十万個の集積回路で並行してSHA256アルゴリズムを計算するもので、信じられないほどのハッシュ生成速度を出します。これらの特別なマシンは彼のマイニングノードにUSBを通して接続されています。次に、ジンのデスクトップで動いているマイニングノードはブロックヘッダをマイニングハードウェアに送信し、ここから秒間10億回ものnonceの試行が始まります。 
+
+ブロック277,316の採掘を初めてから11分後くらいに１つのハードウェアマイニングマシンが解を見つけ、マイニングノードにそれを送り返しました。ブロックヘッダにそれを入れてみると、nonce 4,215,469,401が以下のブロックハッシュを生成しました。
+
+----
+0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569
+----
+
+これは以下のtargetよりも小さいものです。
+
+----
+0000000000000003A30C00000000000000000000000000000000000000000000
+----
+
+すぐに、ジンのマイニングノードはブロックを全てのピアに送信しました。彼らはこのブロックを受け取り、検証し、この新しいブロックを次に伝搬します。このブロックがBitcoinネットワークを波紋のように伝搬していくときに、それぞれのBitcoinノードはこのブロックを自身のブロックチェーンのコピーに追加しブロック高を277,316に増やします。マイニングノードがこのブロックを受け取り検証したとき、マイニングノードは同じブロック高のブロックの発見を諦め、すぐに次のブロックの計算を始めます。 
+
+次の節では、ブロックを検証し最も長いブロックチェーンを選び分散されたブロックチェーンで形成される合意形成を作るプロセスを見ていきます。
+
+=== 新しいブロックの検証
+
+((("blocks","validating new")))((("consensus","validating new blocks")))((("mining","validating new blocks")))Bitcoinの合意形成メカニズムの３つ目のステップは、独立した全てのBitcoinノードによる新しいブロック検証です。新しく解決されたブロックがBitcoinネットワークを移動する時、それぞれのBitcoinノードはブロックをピアに送信する前に有効なブロックかどうかを確認するテストを実行します。これは、有効なブロックだけがBitcoinネットワークを伝搬するようにするためです。また、独立した検証は、信頼できるマイナーがそれらのブロックをブロックチェーンに合体させ報酬を稼ぐことを保証しています。信頼できないマイナーが作ったブロックがあった場合他のBitcoinノードから拒否されてしまうため報酬が得られないだけでなくproof-of-workで費やした努力を無駄にし何の埋め合わせもなく電気代を負うことになります。 
+
+Bitcoinノードが新しいブロックを受け取った時、全てのブロックが満たすべき長い条件リストに照らし合わせてチェックされ検証されます。もし条件を満たさなければブロックは拒否されます。これらの条件はBitcoin Coreクライアントの中の ((("CheckBlock function (Bitcoin Core client)")))((("CheckBlockHeader function (Bitcoin Core client)"))) +CheckBlock+ 関数や +CheckBlockHeader+ 関数で確認でき、以下の条件を含んでいます。
+
+* ブロックのデータ構造が構文的に有効であること
+* ブロックヘッダハッシュがdifficulty targetよりも小さいこと(proof of workを強制する)
+* ブロックのタイムスタンプが２時間後よりも小さいこと(時刻エラーのある程度の許容)
+* ブロックサイズが受け入れられる制限内であること
+* 最初のトランザクション(そして、最初のトランザクションのみ)がcoinbase generationトランザクションであること
+* ブロックに含まれる全てのトランザクションが<<tx_verification>>で説明したチェックリストを満たすこと
+
+全てのBitcoinノードによって独立に行われる検証によって、マイナーがごまかして不正をできないようになっています。前の節で、どのようにマイナーが新しいbitcoinをマイナーに与えるトランザクションをブロック内に書き、トランザクション手数料を要求するのかを確認しました。なぜマイナーは正しい報酬の代わりに彼ら自身で数千bitcoinを自身に与えるトランザクションを書かないのでしょうか。これは、全てのBitcoinノードが同じルールに従ってブロックを検証しているからです。不正なcoinbaseトランザクションがあった場合ブロック全体が無効になってしまい、結局このブロックは拒否されブロックチェーンの一部にはならないことになってしまいます。マイナーは全てのBitcoinノードが従っている共有ルールに基づく完全なブロックを構築する必要があり、しかもproof of workの正しい解を伴った形で採掘しなければいけません。これを行うために、マイニングに多大な電気を使います。もし彼らが不正を行えば、全ての電気と努力は無駄になってしまいます。これが独立した検証が分散された合意形成のキーポイントである理由なのです。
+
+=== ブロックのチェーン組み立てと選択
+
+((("blockchains","assembling", id="ix_ch08-asciidoc18", range="startofrange")))((("blockchains","selecting", id="ix_ch08-asciidoc19", range="startofrange")))((("blocks","assembling chains of", id="ix_ch08-asciidoc20", range="startofrange")))((("blocks","selecting chains of", id="ix_ch08-asciidoc21", range="startofrange")))Bitcoinの分散された合意形成メカニズムの最後のステップは、ブロックをチェーンに組み込むことと、最も多くのproof of workを含むチェーンの選択です。一度Bitcoinノードが新しいブロックが有効であると確認すると、このブロックを持っているブロックチェーンに結びつけチェーンを形成しようとします。 
+
+((("nodes","sets of blocks maintained by")))Bitcoinノードは３種類のブロックセットを持っています。１つはメインのブロックチェーンにひも付けられたブロック。１つはメインのブロックチェーンから枝分かれしたブロック((("secondary chains"))) (セカンダリーチェーン)。もう1つは知っているチェーンに親がないブロック((("orphan blocks"))) (orphans)です。無効なブロックは検証条件を満たさなかった時点ですぐに拒否されるためどのチェーンにも含まれません。 
+
+((("blockchains","main")))((("main blockchain")))"メインチェーン"はどんなときでも、チェーンにひもづいた累積difficultyを最も多く持っているチェーンになります。同じ長さのチェーンがあり片方の方がより多くのproof of workを持っている場合を除き、ほとんどの状況下でこれは最も多くのブロックを持っているチェーンでもあります。((("sibling chains (to main chain)")))メインチェーンは、メインチェーンのブロックに繋がった"sibling"ブロックのブランチを持つこともあります。これらのブロックは有効ですがメインチェーンの一部ではありません。これらがほじされているのは、将来これらのチェーンのうちの１つがメインチェーンをdifficultyで上回り拡張された場合に参照できるようにするためです。次の節(<<forks>>)では、ほとんど同時に同じブロック高を持つブロックが採掘された結果としてどのようにセカンダリーチェーンが生じるかを説明します。 
+    
+新しいブロックを受け取った時、Bitcoinノードはすでにあるブロックチェーンにブロックを入れようとします。このBitcoinノードはブロックの"previous block hash"フィールドを確認します。previous block hashフィールドは新しいブロックの親を参照しています。このBitcoinノードは対応した親を探そうとします。ほとんどの場合、親はメインチェーンの"先頭"にあり、これが意味することはメインチェーンが新しいブロックで拡張されるということです。例えば、新しいブロック 277,316 が親ブロック 277,315 のブロックハッシュを参照しているような場合です。ブロック 277,316 を受け取ったほとんどのBitcoinノードはすでにメインチェーンの戦闘ブロックとしてブロック 277,315 を持っており、よって新しいブロックを連結しメインチェーンを拡張することになるのです。 
+
+<<forks>>で見るように、時々新しいブロックがメインチェーン以外のチェーンを拡張するときがあります。この場合、Bitcoinノードは新しいブロックをセカンダリーチェーンにくっつけ、セカンダリーチェーンとメインチェーンのdifficultyを比較します。もしセカンダリーチェーンの累積difficultyがメインチェーンの累積difficultyを上回っていれば、Bitcoinノードはセカンダリーチェーンに _中心を移し_ ます。このことは、セカンダリーチェーンを新しいメインチェーンとして選び、古いメインチェーンをセカンダリーチェーンにするということを意味しています。もしこのBitcoinノードがマイナーであれば、この新しくより長いチェーンを拡張していくブロックを構築することになります。
+
+もし有効なブロックを受け取っても存在するチェーンに親が見つからなかった場合、このブロックは"orphan"とみなされます。orphanブロックは、これらの親を受け取るまでorphanブロックプールに保持されます。この親を受け取り存在するチェーンに連結されると、orphanブロックはorphanプールからから取り出されてこの親に連結され、チェーンの一部となります。orphanブロックは、ほぼ同時に採掘された２つのブロックを逆順(親より前に子)で受け取ったときに通常生じるものです。 
+
+最も大きいdifficultyを持つチェーンを選ぶことで、全てのBitcoinノードは結局ネットワーク全体の合意形成に到達し、一時的なチェーン同士の不一致はより多くのproof of workが追加されるにつれて結局は解決されます。マイニングノードはどのチェーンが拡張されていくかを選ぶことでマイニングパワーを(チェーンに)"投票"していることになります。このマイニングノードが新しいブロックを採掘しチェーンを拡張するとき、新しいブロックそのものがマイニングノードの投票を表すのです。 
+
+次の節では、最も長いdifficultyチェーンを独立に選ぶことでどのようにしてチェーン同士(フォーク)の競争による不一致を解決しているかを見ていきます。
+
+[[forks]]
+==== Blockchainフォーク
+
+((("blockchains","forks", id="ix_ch08-asciidoc22", range="startofrange")))ブロックチェーンは分散化されているため、異なったコピーは常に一致しているわけではありません。ブロックが異なったBitcoinノードに別々のタイミングで到着するかもしれず、ノードごとにブロックチェーンの状態は変わってしまうのです。これを解決するために、それぞれのBitcoinノードは常に最も多くのproof of workを持っているブロックのチェーンを選び拡張しようとしています。このブロックのチェーンは最長チェーンまたは最大累積difficultyチェーンとも呼ばれています。チェーンの各ブロックに記録されているdifficultyを足し合わせることで、Bitcoinノードはこのチェーンを作るために使われたproof of workの総量を計算できます。全てのBitcoinノードが最大累積difficultyチェーンを選んでいる限り、グローバルなBitcoinネットワークは結果的に矛盾のない状態に収束します。フォークはブロックチェーンの異なるバージョン間での一時的な不一致によって生じますが、多くのブロックがフォークのうちの一つに追加されることで結果的に不一致が解消されるようになります。
+
+次のいくつかの図を使って、Bitcoinネットワークを通してどのように"フォーク"が生じるのかを見ていきます。これらの図はグローバルに広がるBitcoinの簡略した表現です。実際には、Bitcoinネットワークのトポロジーは地理的に組織されているわけではなく、むしろBitcoinノード間のメッシュネットワークとして構成されており、ネットワーク的に近くても地理的にはとても離れているかもしれません。地理的トポロジーの表現はフォークを図解する目的に対して用いられている簡略化なのです。実際のBitcoinネットワークではBitcoinノード間の"距離"をノードからノードへの"ホップ数"によって測っており、物理的な距離ではないです。図解の目的のため、異なったブロックは異なった色で表され、異なったブロックがBitcoinネットワークを通して広がり通過していったコネクションはブロックの色と同じ色に塗られています。
+
+In the first diagram (<<fork1>>), the network has a unified perspective of the blockchain, with the blue block as the tip of the main chain. 
+
+[[fork1]]
+.ブロックチェーンのフォークが生じる過程の可視化 - フォークが生じる前
+image::images/msbt_0802.png["globalfork1"]
+
+"フォーク"は競争している２つの候補ブロックがあればいつでも生じる可能性があり、通常2人のマイナーが互いにほぼ同時刻にproof-of-workの解を見つけると起こります。両方のマイナーがそれぞれの候補ブロックに対する解を見つけると、彼らは直ちに自身の"勝ち取った"ブロックを近接ノードにブロードキャストし、近接ノードはこのブロックを次々にBitcoinネットワークに伝搬させていきます。有効なブロックを受け取ったBitcoinノードはこのブロックをローカルのブロックチェーンに追加し、１ブロックだけブロックチェーンを拡張します。もしこのBitcoinノードが同じ親を持つ別の候補ブロックをのちに見つけた場合は、セカンダリーチェーンに後から来た候補ブロックをつなげます。結果として、いくつかのBitcoinノードは最初の候補ブロックを"見て"、他のBitcoinノードは別の候補ブロックを見ることになるため、互いにぶつかる２つのブロックチェーンが生じることになるのです。 
+
+<<fork2>>では、ほぼ同時に異なったブロックを採掘した２人のマイナーを表しています。これらのブロックは両方とも青色のブロックの子供で、青色のブロックの上に追加しチェーンを拡張します。ブロックを追跡しやすくするために、カナダで作られたブロックは赤色、オーストラリアで作られたブロックは緑色にしてあります。 
+
+例として、カナダのマイナーが"赤色"のブロックに対するproof-of-workの解を見つけたとします。ほぼ同時に、オーストラリアのマイナーは"緑色"のブロックに対する解を見つけました。この時点で、２つの可能なブロックがあり、カナダで作られた方を"赤色"、オーストラリアで作られた方を"緑色"と呼ぶことにします。両方のブロックが有効であり、proof-of-workに対する有効な解を持っており、また同じ親ブロックを拡張するブロックとなっています。両方のブロックがおそらく大方同じトランザクションを持っており、違いとしてはトランザクションの順番くらいです。 
+
+[[fork2]]
+.ブロックチェーンのフォークが生じる過程の可視化 - ２つのブロックが同時に見つかった 
+image::images/msbt_0803.png["globalfork2"]
+
+２つのブロックが伝搬するときに、いくつかのBitcoinノードは"赤色"のブロックを最初に受け取り、いくつかのBitcoinノードは"緑色"のブロックを最初に受け取ります。<<fork3>>に示しているように、Bitcoinネットワークは２つのブロックチェーンに分かれてしまい、片側は赤色のブロックが先端にあり、もう１つは緑色のブロックが先端にあるようになっています。 
+
+[[fork3]]
+.ブロックチェーンのフォークが生じる過程の可視化 - ２つのブロックが伝搬しBitcoinネットワークを２つに分割している
+image::images/msbt_0804.png["globalfork3"]
+
+その瞬間から、カナダのBitcoinノードに(地理的ではなくトポロジー的に)最も近いBitcoinノードは最初に"赤色"のブロックを受け取り、ブロックチェーンの最新のブロックとして"赤色"のブロックを持った新しいブロックチェーン(最も大きい累積difficultyを保持)を生成します(例えば、青-赤と繋がるブロックチェーン)。そして、少し後に届いた"緑色"の候補ブロックは無視することになります。一方、オーストラリアのBitcoinノードに近いBitcoinノードはオーストラリアのBitcoinノードが発見したブロックを受け取り、最新のブロックとして"緑色"のブロックを付ける形でブロックチェーンを拡張します(例えば、青-緑と繋がるブロックチェーン)。そして、数秒あとに届いた"赤色"のブロックは無視することになります。"赤色"のブロックを最初に見たどんなマイナーもすぐに親として"赤色 "のブロックを参照する候補ブロックを構築し、これらの候補ブロックに対するproof of workを解き始めます。一方、"緑色"のブロックを受け入れたマイナーは"緑色"のブロックを頂点とするブロックチェーンを構築しこのブロックチェーンを拡張し始めます。 
+
+フォークはほとんど常に１ブロック以内で解決されます。"赤色"のブロックを親とする  一部のBitcoinネットワークのハッシングパワーが"赤色"を親とするブロックチェーンの構築に投じられ、また別のBitcoinネットワークのハッシングパワーは"緑色"を親とするブロックチェーンの構築に投じられます。たとえハッシングパワーがほぼ均等に分割されてしまったとしても、あるマイナーが解を見つけ他の解を見つけたマイナーよりも前にそれを伝搬することになります。例えば、"緑色"のブロックを頂点に持つブロックチェーンを構築しているマイナーが"ピンク色"の新しいブロックを見つけてブロックチェーンを拡張する(例えば、青-緑-ピンクと繋がるブロックチェーン)と考えてみましょう。彼らはすぐにこの新しいブロックを伝搬し、<<fork4>>にあるようにBitcoinネットワーク全体がこのブロックを有効な解として確認するようになります。 
+
+[[fork4]]
+.ブロックチェーンのフォークが生じる過程の可視化 - 新しいブロックが１つのフォークを拡張
+image::images/msbt_0805.png["globalfork4"]
+
+前のラウンドで"緑色"のブロックの勝者として選んだ全てのBitcoinノードは、単にさらに１個ブロックをブロックチェーンに拡張していくだけです。しかし、"赤色"のブロックを勝者として選んだBitcoinノードは２つのブロックチェーンを見ることになります。青-緑-ピンクのブロックチェーンと、青-赤のブロックチェーンです。今では青-緑-ピンクのブロックチェーンは青-赤のブロックチェーンよりも長くなっています(より多くの累積difficultyを持っている)。<<fork5>>にあるように、結果として、これらのBitcoinノードは青-緑-ピンクのブロックチェーンをメインチェーンとして選び、青-赤のブロックチェーンをセカンダリーチェーンに変更します。これがブロックチェーンの再収縮で、より長いブロックチェーンの新しい情報を吸収するためにこれらのBitcoinノードがブロックチェーンの見方を変更することを強制されることで起こります。青-赤のブロックチェーンを拡張しようとしているどんなマイナーもこの拡張をやめます。というのは、彼らの候補ブロックの親がもはや最長ブロックチェーン上にはなく、この候補ブロックが"孤児"になってしまったためです。"赤色"ブロックの中にあったトランザクションは次のブロックの中で処理されるために再度マイニング対象になります。 "赤色"ブロックはもはやメインチェーンにはないのです。Bitcoinネットワーク全体が青-緑-ピンクの1つのブロックチェーンに再収縮すると、"ピンク色"のブロックがブロックチェーンの最新ブロックとなります。青-緑-ピンクのブロックチェーンを拡張するために、全てのマイナーがすぐに"ピンク色"のブロックを親として参照している候補ブロックで作業を開始するのです。
+
+[[fork5]]
+.ブロックチェーンのフォークが生じる過程の可視化 - Bitcoinネットワークが新しい最長ブロックチェーンに再収縮する
+image::images/msbt_0806.png["globalfork5"]
+
+もし２つのブロックがほぼ同時にフォークの"両方の端"で見つかれば、理論的にはフォークが２ブロック分拡張することは可能です。しかし、これが生じる可能性はとても低いです。１ブロックのフォークは毎週起こりえますが、２ブロックのフォークは極めて稀です。
+
+10分間というBitcoinのブロック間隔は、確認までにかかる時間(トランザクションの確定)とフォークが生じる確率の間の妥協点なのです。ブロック間隔をより短くすればトランザクションをより早く確定できますが、ブロックチェーンのフォークがより頻繁に起こってしまうことになります。一方、ブロック間隔を長くすればフォークの数は減りますが、トランザクションの確定に時間がかかることになります。(((range="endofrange", startref="ix_ch08-asciidoc22")))(((range="endofrange", startref="ix_ch08-asciidoc21")))(((range="endofrange", startref="ix_ch08-asciidoc20")))(((range="endofrange", startref="ix_ch08-asciidoc19")))(((range="endofrange", startref="ix_ch08-asciidoc18"))) 
+
+=== マイニングとハッシュ化競争
+
+((("hashing race", id="ix_ch08-asciidoc23", range="startofrange")))((("mining","hashing race and", id="ix_ch08-asciidoc24", range="startofrange")))((("processing power and hash racing", id="ix_ch08-asciidoc25", range="startofrange")))Bitcoinマイニングは極度に競争が激しい業界です。ハッシングパワーはBitcoinが現れてから毎年指数関数的に増加してきています。ここ数年の成長はテクノロジーの進化を反映しており、例えば2010年、2011年は多くのマイナーがCPUマイニングから ((("graphical processing units (GPUs)","processing power of"))) GPUマイニングと ((("field programmable gate array (FPGA)"))) フィールドプログラマブルゲートアレイ(FGPA)マイニングに変えたためです。2013年は ((("Application Specific Integrated Circuit (ASIC)"))) ASICマイニングが始まり、もう一つのマイニングパワーの急激な上昇が起こりました。ASICマイニングは、SHA256関数を直接にシリコンチップ上に記述することでマイニングに特化させた方法です。そのような最初のチップは、2010年時点のBitcoinネットワーク全体よりもマイニングパワーを提供することができました。????
+
+以下のリストは最初の５年間におけるBitcoinネットワークの総ハッシングパワーを表しています。
+
+2009:: 0.5 MH/sec–8 MH/sec (16&#x00D7; 成長)
+2010:: 8 MH/sec–116 GH/sec (14,500&#x00D7; 成長)
+2011:: 16 GH/sec–9 TH/sec (562&#x00D7; 成長)
+2012:: 9 TH/sec–23 TH/sec (2.5&#x00D7; 成長)
+2013:: 23 TH/sec–10 PH/sec (450&#x00D7; 成長)
+2014:: 10 PH/sec–150 PH/sec in August (15&#x00D7; 成長)
+
+<<network_hashing_power>>のチャートにある通り、Bitcoinネットワークのハッシングパワーは過去２年間で増加しています。見てわかるように、マイナーとBitcoinの成長の間の競争によってハッシングパワー(Bitcoinネットワーク全体の秒間総生成ハッシュ数)が指数関数的に増加してきています。
+
+[[network_hashing_power]]
+.総ハッシングパワー(GHash/秒、過去2年間)
+image::images/msbt_0807.png["NetworkHashingRate"]
+
+((("difficulty target","hashing power and")))マイニングに注ぎ込まれるハッシングパワーの量が爆発的に増えてきたため、difficultyもそれに合わせて上昇してきました。<<bitcoin_difficulty>>に示されているチャートにあるdifficultyの数値は、現在のdifficultyを最小difficulty(最初のブロックのdifficulty)で割った率で計算されています。
+
+[[bitcoin_difficulty]]
+.過去２年間のBitcoinのマイニングdifficulty推移
+image::images/msbt_0808.png["BitcoinDifficulty"]
+
+最近の２年間は、ASICマイニングチップがより高密度になってきており、シリコン製作における22ナノメートル(nm)の加工寸法(分解能)限界値に近づいてきています。現在、ASICメーカーは汎用CPUチップメーカーを追い越そうとしており、16nm加工寸法チップを設計しています。マイニングの収益性が高いため汎用計算機よりも一層強くこの業界を引っ張っているのです。ただBitcoinマイニングに関してさらなる急激な上昇は残されていません。というのは、18ヶ月毎に半導体の集積密度が約２倍になるという ((("Moore's Law"))) ムーアの法則の先端にまで達してしまっているためです。より高密度なチップが ((("data centers, mining with"))) 数千チップを配置できるより高密度なデータセンターに求められているので、まだBitcoinネットワークのマイニングパワーは指数関数的なペースで進化し続けていっています。???? もはや１つのチップでどれだけのマイニングができるかではなく、熱をうまく散らして十分なパワーを提供しつついくつのチップをどれだけデータセンターに詰め込むことができるかになってきています。
+
+[[extra_nonce]]
+==== extra nonceによる方法
+
+((("block headers","computing power and")))((("difficulty target","computing power and")))((("difficulty target","extra nonce solution and")))((("nonce","extra")))((("extra nonce solution to increasing difficulty targets")))((("hashing race","extra nonce solutions")))2012年からBitcoinマイニングはブロックヘッダ構造にある制限を解決しながら発展してきました。Bitcoinの初期、difficulty targetが低くnonceを使って解を得られるまではマイナーはnonceを繰り返し使うことでブロックを発見できました。difficultyが大きくなっていくにつれて、マイナーはブロックを発見することなくnonceの４億通り全てを使ってしまうことが頻繁に起きるようになっていました。しかし、これはマイニング経過時間を把握するためのブロックのタイムスタンプを更新することで簡単に解決されました。このタイムスタンプはヘッダの一部であるため、タイムスタンプが変わることでマイナーはnonceの値を繰り返し使い、異なるハッシュ値を得ることができるのです。しかし、一度マイニングハードウェアの処理速度が4GH/秒を超えると、この方法は難しくなってきました。というのは、nonceが１秒以内使い尽くされてしまうからです。ASICマイニングが始まるとハッシュレートはTH/秒を超え、マイニングソフトウェアは有効なブロックを見つけるためにより広いnonceスペースが必要になってきました。タイムスタンプを少し引き延ばすことはできましたが、タイムスタンプを将来に移動することはブロックを無効にしてしまうことになります。???? ブロックヘッダの中のどこかに"変更"が必要になってきました。これに対する解はcoinbaseトランザクションにextra nonceを入れるというものです。coinbaseスクリプトは2byteから100byteのデータを記録できるため、マイナーはこのスペースをextra nonceとして使い始め、より大きいブロックヘッダの範囲を探索してブロックを見つけることができるようになりました。coinbaseトランザクションはmerkle treeに含められているため、coinbaseスクリプトにあるどんな変更もmerkle rootを変化させることになります。8byte extra nonceと"標準"の4byte nonceを使って、マイナーはタイムスタンプを変えることなく _秒間_ 2^96^ 個(8のあとに28個の0が続く数)の探索ができるようになりました。もし将来マイナーがこれら全ての可能性を調べ尽くせるようになれば、タイムスタンプを修正してマイニングをするようになるでしょう。また、将来のextra nonceスペースの拡張のためcoinbaseスクリプトにはさらに大きいスペースがあります。
+
+[[mining_pools]]
+==== マイニングプール
+
+((("hashing race","mining pools", id="ix_ch08-asciidoc26", range="startofrange")))((("mining pools", id="ix_ch08-asciidoc27", range="startofrange")))この激しい競争環境の中で、 ((("solo miners"))) 一人でやっている個人のマイナー(ソロマイナーと呼ばれています)は勝ち目がありません。ブロックを見つけて電気やハードウェアのコストを相殺しようとすることの見込みは低すぎて、宝くじを買うようなギャンブルになってしまいます。速い消費者向けASICマイニングでさえ、水力発電所の近くの巨大な倉庫に数万個のチップを積み重ねて作った商用システムには追いつきません。今ではマイナーはマイニングプールを作って協力するようになっており、マイニングプールでは個々のマイナーのハッシングパワーを貯め、報酬を数千人の参加者と分けるということをしています。マイニングプールに参加することで、マイナーは総報酬の小さな一部だけを得ることになりますが、毎日平均的に報酬を得ることができるようになり、不確実性を減らすことができます。
+
+具体的な例を見てみましょう。マイナーが秒間6000ギガハッシュ(GH/s) または 6TH/sの総ハッシングレートを持つマイニングハードウェアを購入したとします。2014年の８月時点で、この装置は約10000ドルします。このハードウェアは動作時に3キロワット(kW)の電力を消費し、1日に72kW時、金額にして1日平均7ドルか8ドルかかります。現在のBitcoin difficultyでは、マイナーは平均的に155日毎(5ヶ月)に一回ブロックを１人で採掘できます。もしマイナーがこの時間間隔で一つのブロックを見つけたとすると、25bitcoinの支払い(1bitcoinあたり約600ドル)は一回あたり15000ドルになり、ハードウェアやこの期間に消費した電気代のコスト全体を差し引くと約3000ドルの正味利益が残ります。しかし、５ヶ月間に１ブロックを見つけるかどうかはマイナーの運にかかっています。５ヶ月間に２ブロックを見つけて大きな利益を得るかもしれません。さもなければ、１０ヶ月間ブロックを見つけることができず経済的なロスを受けてしまうかもしれません。さらに悪いことに、Bitcoinのproof-of-workアルゴリズムのdifficultyはおそらく時間が経つにつれて現在のハッシングパワーの成長率に従って著しく上がっていくだろうと考えられます。このことは、ハードウェアが実質的に時代遅れになる６ヶ月より前に、さらにパワフルなマイニングハードウェアで置き替えなければならないということを意味します。もしこのマイナーが５ヶ月に１回の棚ぼた的な15000ドルを待っている代わりにマイニングプールに参加していれば、一週間に約500ドルから750ドルを稼ぐことができるでしょう。マイニングプールからの定期的な支払いを使うことで大きなリスクを負うことなくハードウェアや電気代のコストの償却ができます。ハードウェアは６ヶ月から９ヶ月後に時代遅れになるためリスクはまだ高いですが、少なくとも収入はこの期間の間確実に定期的に入ることになるのです。
+
+マイニングプールは特別なプールマイニングプロトコルを通して数十万人ものマイナーを束ねています。個々のマイナーはマイニングプールにアカウントを作成した後、マイニング機器をプールサーバに接続するように設定します。マイニングハードウェアはマイニングの最中このプールサーバに接続されたままになっており、他のマイナーとマイニング結果を同期しています。このため、マイニングプールマイナーはブロックを採掘した結果を共有し、これによって得られた報酬を分配します。 
+
+採掘に成功したブロックの報酬はプールサーバのBitcoinアドレスに支払われます。個々のマイナーではありません。報酬の分配総額がある閾値に達したら、プールサーバは繰り返しマイナーのBitcoinアドレスに支払いを行います。典型的に、プールマイニングサービスを提供するためプールサーバは報酬の一定パーセントを手数料として徴収しています。
+
+マイニングプールに参加しているマイナーたちは候補ブロックに対する解を探す仕事を分割し、マイニングに対する寄与によって"分配"を稼ぎます。マイニングプールは分配を稼ぐためにより低いdifficulty targetを設定します。典型的に、Bitcoinネットワークのdifficultyの1000分の1以下のdifficultyになっています。マイニングプールの誰かがブロックを採掘するとまずこの報酬はプールによって受け取られ、寄与した仕事量に比例した分の分配が全てのマイナーに配られます。 
+
+マイニングプールは全てのマイナーに対して公開されています。大きい、小さい、プロ、アマチュアは関係ありません。このため、マイニングプールには単一の小さなマイニングマシンを持った参加者もいれば、ハイエンドマイニングハードウェアをガレージにいっぱい入れてマイニングをしている参加者もいます。一部の参加者は数十KWの電気代を使ってマイニングをしており、また別の参加者は1メガワットを消費してデータセンターを運用している参加者もいます。どのようにしてマイニングプールは個々の寄与を測定し、いかさまができないようにしながら平等に報酬を配っているのでしょうか？答えは、プールマイナーの個々の寄与を測るためにBitcoinのproof-of-workアルゴリズムを使うことです。ただし、最も小さいプールマイナーでさえも頻繁に分配を受けられ、やりがいを感じられるようにより低いdifficultyに設定しておきます。分配金を稼ぐために低いdifficultyに設定することで、マイニングプールはそれぞれのマイナーによって完了した仕事の量を測定します。プールマイナーがマイニングプールが設定したdifficultyよりも低いdifficultyのブロックヘッダハッシュを見つけるたびに、プールマイナーはハッシュ化作業を行ったことを証明することになるのです。さらに重要なこととして、Bitcoinネットワーク全体のdifficulty targetよりも低いdifficultyのハッシュを見つける努力に対する貢献度を、proof of workを通して統計的に測定可能な方法で割り振ります。低いdifficultyのハッシュを見つけようとしている数千のマイナーが偶然Bitcoinネットワークのdifficulty targetを満たすハッシュを見つけることになるのです。 
+
+前に書いたサイコロゲームとの類似性に戻ってみましょう。もし４よりも小さい値(Bitcoinネットワーク全体のdifficulty)をサイコロを投げて出そうとするなら、プールはより簡単なtargetを設定し、何回プールプレイヤーが８よりも小さい値をサイコロを投げて出したかをカウントします。プールプレイヤーが８よりも小さい値(マイニングプールでの共有difficulty)を出したとき、プールプレイヤーは分配量を得ますがゲームには勝っていません。なぜなら(４より小さい値を出すという)ゲームの水準に達していないからです。ゲームに勝てる水準のdifficulty targetに達しなかったとしても、プールプレイヤーはより簡単なdifficulty targetをより頻繁に満たすことで、定期的に分配量が彼らに割り振られるようにします。ときどきプールプレイヤーのうちの一人が二つのサイコロの目を足して４より小さい値にした場合、このプールが勝ちます。このとき、このときの報酬はプールプレイヤーが得た分配量に基づいてプールプレイヤーに分配されます。８かそれより小さい値を出すという水準がゲームに勝つようなものではなかったとしても、これはプールプレイヤーがサイコロを振ったということを測る公平な方法であり、時折４よりも小さい値を出すことがあるのです。 
+
+同様に、マイニングプールは個々のプールマイナーがプールのdifficultyよりも低いdifficultyのブロックヘッダハッシュをとても頻繁に発見することができるようにプールのdifficultyを設定します。ときどきこれらの試行のうちの一つがBitcoinネットワークでのdifficulty targetよりも低いブロックヘッダハッシュを作り出し、有効なブロックを作りプール全体が勝つことになります。(((range="endofrange", startref="ix_ch08-asciidoc27")))(((range="endofrange", startref="ix_ch08-asciidoc26"))) 
+
+===== マネージドプール
+
+((("managed pools")))((("mining pools","managed pools")))ほとんどのマイニングプールは"管理された"もので、プールサーバを動かしている会社か個人がいます。このプールサーバの所有者は ((("pool operator of mining pools"))) _プールオペレータ_ と呼ばれており、プールマイナーの稼ぎのうちの一定パーセントを手数料としプールマイナーに課しています。 
+
+プールサーバでは、特別なソフトウェアやプールマイナーの活動を調整するプールマイニングプロトコルを動作させています。プールサーバはまた、一つまたは複数のフルBitcoinノードとコネクションを張り、ブロックチェーンデータベースの完全なコピーに直接アクセスできるようになっています。これによって、プールサーバはプールマイナーのためにブロックやトランザクションの検証をすることができ、プールマイナーがフルノードを動かす負荷を軽減しています。プールマイナーにとって、これは重要なことです。なぜなら、フルノードには少なくとも15GBから20GBの永続的なストレージ(ディスク)と2GBのメモリ(RAM)を持っている専用コンピュータが必要になるからです。さらに、フルノードで動作しているBitcoinソフトウェアを監視し、メンテナンスし、頻繁にアップグレードをする必要があります。メンテナンスの欠如、またはリソースの欠如によって生じたどんなダウンタイムもマイナーの利益を減らしてしまいます。多くのマイナーにとって、フルノードを動作させることなく採掘ができるということは、マネージドプールに参加するもう一つの大きな利点なのです。 
+
+プールマイナーは ((("Stratum (STM) mining protocol"))) Stratum (STM) や ((("GetBlockTemplate (GBT) mining protocol"))) GetBlockTemplate (GBT) のようなマイニングプロトコルを使ってプールサーバに接続しています。少し前の標準的なプロトコルであった ((("GetWork (GWK) mining protocol"))) GetWork (GWK) は2012年の終わりからほぼ時代遅れになっています。というのは、4GH/sよりも大きいハッシュレートでのマイニングをサポートしていないからです。STMもGBTも候補ブロックヘッダのテンプレートを含む ((("block templates"))) ブロック _テンプレート_ を作ります。プールサーバはトランザクションを集めることで候補ブロックを構築し、coinbaseトランザクション(extra nonceスペースを含む)を追加し、merkle rootを計算し、前のブロックハッシュに連結します。候補ブロックのヘッダはこのときテンプレートとしてプールマイナーそれぞれに送られます。それぞれのプールマイナーはブロックテンプレートを使ってBitcoinネットワークのdifficultyよりも低いdifficultyで採掘をし、どんな成功した結果もプールサーバに送り返し分配量を稼ぐことになります。 
+
+===== P2Pool
+
+((("mining pools","P2Pool")))((("P2Pool")))マネージドプールではプールオペレータによってイカサマをされる可能性があります。プールオペレータはプールに対する労力を二重使用トランザクションやブロックの無効化(<<consensus_attacks>>参照)に仕向けるかもしれません。さらに、中央化されたプールサーバが単一障害点になることがあります。もしDOS攻撃でプールサーバがダウンしたり遅延したりした場合、プールマイナーは採掘ができません。2011年に、これらの中央化の問題点を解決するために、新しいプールマイニング方法が提案され実装されました。P2Poolはpeer-to-peerのマイニングプールで、中心的なオペレータがいません。 
+    
+P2Pool works by decentralizing the functions of the pool server, implementing a parallel blockchain-like system called a((("share chains"))) _share chain_. A share chain is a blockchain running at a lower difficulty than the bitcoin blockchain. The share chain allows pool miners to collaborate in a decentralized pool, by mining shares on the share chain at a rate of one share block every 30 seconds. Each of the blocks on the share chain records a proportionate share reward for the pool miners who contribute work, carrying the shares forward from the previous share block. When one of the share blocks also achieves the difficulty target of the bitcoin network, it is propagated and included on the bitcoin blockchain, rewarding all the pool miners who contributed to all the shares that preceded the winning share block. Essentially, instead of a pool server keeping track of pool miner shares and rewards, the share chain allows all pool miners to keep track of all shares using a decentralized consensus mechanism like bitcoin's blockchain consensus mechanism. 
+
+P2Poolマイニングはプールマイニングよりも複雑です。なぜなら、フルBitcoinノードとP2Poolノードソフトウェアをサポートするための十分なディスクスペース、メモリ、インターネット帯域を持った専用コンピュータをプールマイナーが動作させる必要があるためです。P2Poolマイナーは自身のマイニングハードウェアをローカルのP2Poolノードに接続し、このローカルP2Poolがマイニングハードウェアにブロックテンプレートを送るプールサーバの機能を真似ることになります。P2Pool上では、個々のプールマイナーが自身で候補ブロックを構築しソロマイナーのようにトランザクションを集めますが、このときシェアチェーン上で共同で採掘をします。P2Poolはソロマイニングより粒子が小さい支払いができるという有利な点がありつつ、マネージドプールのようなプールオペレータにとても大きなコントロールを与えることがないというハイブリッドなアプローチになっています。 
+
+Recently, participation in P2Pool has increased significantly as mining concentration in mining pools has approached levels that create concerns of a((("51% attacks"))) 51% attack (see <<consensus_attacks>>). Further development of the P2Pool protocol continues with the expectation of removing the need for running a full node and therefore making decentralized mining even easier to use.(((range="endofrange", startref="ix_ch08-asciidoc25")))(((range="endofrange", startref="ix_ch08-asciidoc24")))(((range="endofrange", startref="ix_ch08-asciidoc23"))) 
+
+P2Poolがマイニングプールオペレータによるパワーの集中を削減することはありますが、おそらくシェアチェーンそのものに対する51%攻撃の脆弱性はありえます。P2Poolがとても広く採用されてもBitcoinそのものに対する51%攻撃の解決はしないのです。むしろ、マイニングエコシステムを多様化させる一部分としてP2PoolはBitcoinを全体的により堅牢にすることになります。 
+
+[[consensus_attacks]]
+=== コンセンサス攻撃
+
+((("consensus","attacks", id="ix_ch08-asciidoc28", range="startofrange")))((("security","consensus attacks", id="ix_ch08-asciidoc29", range="startofrange")))Bitcoinのコンセンサスメカニズムは、少なくとも理論的には、ハッシングパワーを使って不正なまたは破壊的な方向に持って行こうとするマイナー(またはマイニングプール)による攻撃に対して脆弱です。今まで見たように、コンセンサスメカニズムは自己の興味に対して正直に行動するマイナーが大多数いるということに依存しています。しかし、もしマイナーやマイナーの集団がマイニングパワーの十分なシェアを取り得たとすると、彼らはBitcoinネットワークのセキュリティや有用性を破壊するようにコンセンサスメカニズムを攻撃できるのです。 
+
+コンセンサス攻撃は将来の合意形成に影響を与えることができるだけで、過去に対してはせいぜい少し過去(１０ブロック前)に影響を与えられるくらいです。このことはとても重要なことなのです。Bitcoinの元帳は時間が過ぎれば過ぎるほど、どんどん不変になっていきます。理論上フォークしたブロックチェーンはどんな深さにでも達することができますが、実際にはとても深いフォークを作るには古いブロックを変更できないようにしておく必要があるため莫大な計算量が必要です。コンセンサス攻撃はまた秘密鍵や署名アルゴリズム(ECDSA)のセキュリティに全く影響を与えません。コンセンサス攻撃はbitcoinを盗むことも、署名なしにbitcoinを使うことも、bitcoinの支払先を書き換えることも、過去のトランザクションや記録の所有者を変えることもできません。コンセンサス攻撃は単に直近のブロックに影響を与え、将来のブロック生成に対してDOS攻撃による破壊を引き起こすだけなのです。 
+
+((("51% attacks")))((("consensus attacks","51% attacks")))コンセンサスメカニズムに対する一つの攻撃シナリオは"51%攻撃"と呼ばれています。このシナリオでは、全Bitcoinネットワークのハッシングパワーの大多数(51%)をコントロールしているマイナーのグループが共謀してBitcoinへの攻撃をするというものです。ブロックの大部分を採掘する能力を持つことで、攻撃マイナーはブロックチェーンに故意の"フォーク"を作り出し、トランザクションを二重に使用したり、DOS攻撃を特定のトランザクションまたはアドレスに対して実行したりできます。((("double-spend attack")))((("fork attack"))) フォーク/二重使用攻撃では、攻撃者が事前にある確認済みブロックよりも下をフォークすることでこの確認済みブロックを無効化し、攻撃者が作った代わりのチェーンにブロックチェーンを再収縮させます。十分なハッシングパワーを持っていれば、攻撃者は６つまたはそれ以上のブロックを無効化でき、変更不可能だと考えられている(6回の確認が行われた)トランザクションを無効化できます。二重使用は攻撃者自身のトランザクションのみに対して行われるため、攻撃者は有効な署名をしたトランザクションを作り出すことができます。???? もしトランザクションを無効化することで支払いなしに攻撃者が不可逆な為替支払いや商品を取得できるなら、攻撃者自身のトランザクションの二重使用は有益なものになるのです。 
+
+51%攻撃を具体的な例で説明してみましょう。第1章で、一杯のコーヒー代の支払いに使われたアリスとボブの間のトランザクションをみました。カフェのオーナーであるボブは確認(ブロックの採掘)を待つことなくコーヒー代を喜んで受け入れています。なぜなら、コーヒー代の二重使用のリスクは、素早い顧客サービスを提供することの利便性と比べると低いからです。これは25ドル以下の支払いに対して署名なくクレジットカードの支払いを受け付けるコーヒーショップと同様で、署名のために生じる取引の遅延コストの方がクレジットカードの請求取り消しのリスクより比較的大きいからです。反対に、bitcoinでもっと高額な商品を売る場合は二重使用攻撃の大きなリスクがあります。購入者は競合するトランザクション(販売者への支払いに使ったトランザクションインプット(UTXO)を使って、販売者への支払いをキャンセルするトランザクション)をブロードキャストします。二重使用攻撃は二つの場合に生じ得ます。一つは、トランザクションが確認される前、もう一つはもし攻撃者がいくつかのブロックを元に戻せるような優位性を持っている場合です。51%攻撃によって、攻撃者は自身で新しく作ったブロックチェーン上で自身のトランザクションを二重使用をすることができるようになり、よって古いブロックチェーン上にある対応した販売者への支払いトランザクションを元に戻し、販売者への支払いをなかったことにできるのです。 
+
+例として、悪意ある攻撃者マロリーがキャロルの画廊に行き、プロメテウスとしてSatoshi Nakamotoを描いた美しい三連祭壇画を購入することを考えてみましょう。キャロルは"The Great Fire"の絵画を250,000ドルでマロリーにbitcoinで売ります。???? トランザクションの６回またはそれ以上の確認を待たずに、キャロルはたった１回の確認後に絵画をラッピングしてマロリーに手渡しました。マロリーは共犯者ポールとともに共謀しており、ポールは巨大なマイニングプールを運用しています。この共犯者ポールはマロリーのトランザクションがブロックに取り込まれるとすぐに51%攻撃を実行しました。ポールはマイニングプールを操ってマロリーのトランザクションを含んでいるブロックと同じブロック高を再採掘し、マロリーからキャロルへの支払いトランザクションを、マロリーが支払いに使ったインプットと同じインプットを二重使用するトランザクションで置き換えます。この二重使用トランザクションは同じUTXOを消費し、キャロルへの支払いの代わりにマロリーのウォレットに支払い戻すようにし、本質的にマロリーはbitcoinを使わずに保ったままな状態にできるのです。このときポールはマイニングプールを操りもう一つのブロックをマイニングし、元々のブロックチェーンよりも長い二重使用トランザクションを含んだブロックチェーンを作るようにします(マロリーからキャロルへの支払いトランザクションが含まれたブロックより下のブロックが同じようなフォークを作り出します)。新しい(元々のブロックチェーンより長い)ブロックチェーンが選ばれることでブロックチェーンのフォークが解消されると、二重使用トランザクションはキャロルへの元々の支払いトランザクションを置き換えることになります。キャロルは三つの絵画を失い、しかもbitcoinが支払われていないのです。この全ての行動に関して、ポールのマイニングプールに参加している参加者は幸せなことに二重使用トランザクションが行われたことに気づかないままでいるかもしれません。というのは、彼らは自動化されたマイナーでマイニングを行っており、全てのトランザクションまたはブロックを追跡することはできないからです。
+
+このタイプの攻撃を防ぐには、大きな額の商品を売る販売者は購入者に商品を渡す前に少なくとも６回の確認を待たなければいけません。もしくは、販売者はエスクロー((("multi-signature account"))) マルチシグネチャーアカウントを使うべきで、この場合でも同じようにエスクローアカウントに資金が入った後に数回の確認を待たなければいけません。確認が多くされればされるほど、51%攻撃に伴うトランザクションの無効化はより難しくなります。高額な商品に対してはたとえ購入者に商品が届くまで24時間待たなければいけない(144回の確認を保証)としても、bitcoinによる支払いはまだ利便性があり効果的なのです。 
+
+((("consensus attacks","denial of service attack")))((("denial of service attack")))二重使用以外のコンセンサス攻撃のシナリオは、特定のBitcoin参加者(特定のBitcoinアドレス)に対するサービスを拒否するようにしてしまうことです。マイニングパワーの大多数を占める攻撃者は単に特定のトランザクションを無視することができます。もしこれらのトランザクションが他のマイナーによって採掘されたブロックを含められた場合、攻撃者はわざとフォークをしてこのブロックを再採掘することができ、再び特定のトランザクションを除外することができるのです。攻撃者がマイニングパワーの大多数をコントロールできる限り、このタイプの攻撃によって特定のBitcoinアドレスまたはBitcoinアドレスの集合に対して持続的DOS攻撃を引き起こすことができます。 
+
+この名前にも関わらず、51%攻撃シナリオは実際にハッシングパワーの51%が必要というわけではありません。事実、このような攻撃はハッシングパワーの51%より小さい割合でも起こすことができます。51%という閾値は、単にこのくらいの割合にならないとそのような攻撃がほとんど成功しないという意味です。コンセンサス攻撃は本質的に次のブロックに対する主導権争いであり、"より強い"グループがより勝ちやすいのです。ハッシングパワーがより少なければ成功確率はさがります。というのは、他のマイナーの"信頼できる"ハッシングパワーによって同じブロックの生成がコントロールされるからです。もう一つの側面として、より多くのハッシングパワーを攻撃者が持っていれば持っているほど、攻撃者はわざとより長いフォークを作ることができ、攻撃者が無効化できる直近のブロック数、または攻撃者がコントロールできる将来のブロック数も多くなります。セキュリティ研究グループは、統計学的モデリングを使って30%程度のハッシングパワーの占有率でいろいろなタイプのコンセンサス攻撃が可能になるということを主張しています。 
+
+総ハッシングパワーの大幅な増加によって、Bitcoinに対する単一マイナーによる攻撃はおそらく実行しにくくなっています。ソロマイナーが総マイニングパワーの大多数をコントロールすることは不可能なのです。しかし、マイニングプールによるハッシングパワーの中央コントロールによって、マイニングプールオペレータによる営利目的攻撃を引き起こすリスクが生じてきています。マネージドプールのマイニングプールオペレータは候補ブロックの構築をコントロールし、またどのトランザクションをブロックに含めるかをもコントロールします。これによって、トランザクションを除外するまたは二重使用トランザクションを含められるパワーをマイニングプールオペレータに与えることになるのです。もしパワーのこのような悪用が制限された形または微妙な形で実行されれば、おそらく気づかれることなくマイニングプールオペレータはコンセンサス攻撃から利益を上げることができるでしょう。
+
+しかし、全ての攻撃者が利益に動機づけられているわけではありません。一つのありえる攻撃シナリオとして、攻撃者がBitcoinネットワークを破壊するつもりで攻撃を行うこともあります。このような破壊から利益を上げられる可能性がなかったとしても。Bitcoinに大きな損害を与えることを目指している悪意ある攻撃には莫大な投資や密かな計画が必要です。しかし、おそらく州が支援しているような資金が十分にある攻撃者によって開始されるはずです。???? あるいは、資金が十分にある攻撃者であれば、マイニングハードウェアを大量に集め、マイニングプールオペレータに歩み寄って他のマイニングプールに対してDOS攻撃を仕掛けることでBitcoinのコンセンサスメカニズムを攻撃するはずです。???? これらのシナリオは全て理論的には可能ですが、Bitcoinネットワークの全体的なハッシングパワーが指数関数的に成長し続けているためだんだんと非実用的になっています。 
+
+確かに、深刻なコンセンサス攻撃は短期間にBitcoinに対する信頼を腐食し、もしかすると深刻な価格衰退を招くかもしれません。しかし、Bitcoinネットワークとソフトウェアは一定速度で発展しており、コンセンサス攻撃に対してすぐにBitcoinコミュニティーによって対応策が取られ、Bitcoinは今までより、より強力に、より匿名性が高く、より頑強になっていくことでしょう。(((range="endofrange", startref="ix_ch08-asciidoc29")))(((range="endofrange", startref="ix_ch08-asciidoc28")))(((range="endofrange", startref="ix_ch08-asciidoc1")))(((range="endofrange", startref="ix_ch08-asciidoc0")))
+

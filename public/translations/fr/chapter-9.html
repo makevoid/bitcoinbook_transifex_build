@@ -1,0 +1,1377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch9">Chaînes alternatives, Monnaies, <phrase role="keep-together"> et Applications</phrase></h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Bitcoin est le résultat de 20 années de recherche dans le domaine des systèmes distribués et des monnaies, et a mis au jour une technologie révolutionnaire : un mécanisme de consensus décentralisé fondé sur une preuve de travail. Cette invention au coeur de bitcoin a donné naissance à une vague d&#8217;innovations dans la monnaie, les services financiers, les sciences économiques, les systèmes distribués, les systèmes de vote, la gouvernance d&#8217;entreprise, et la gestion des contrats.</p></div>
+<div class="paragraph"><p>Dans ce chapitre, nous allons examiner les nombreuses conséquences de l&#8217;invention du bitcoin et de la blockchain : les chaînes alternatives, les monnaies, et des applications développées depuis l&#8217;avènement de cette technologie en 2009. Nous nous concentrerons essentiellement sur les monnaies alternatives, ou <em>altcoins</em>, qui sont des monnaies numériques implémentées sur le même modèle que bitcoin, mais avec une blockchain et un réseau totalement indépendant.</p></div>
+<div class="paragraph"><p>Pour chaque altcoin cité dans ce chapitre, 50 ou plus seront passés sous silence, suscitant colère et fureur auprès de leurs créateurs et fans. Le but de ce chapitre n&#8217;est pas d'évaluer ou de classer les altcoins, ou même de ne mentionner que les plus significatifs sur la base de quelque critère subjectif. Au lieu de cela, nous allons mettre en exergue certains exemples qui montrent l&#8217;ampleur et la variété de l'écosystème, en relevant la première occurrence de chaque innovation ou différenciation significative. Certains des exemples les plus intéressants d&#8217;altcoins sont en fait des échecs complets d&#8217;un point de vue monétaire. Ceci les rend peut-être encore plus intéressants à étudier, et souligne le fait que ce chapitre ne doit pas être utilisé comme un guide pour l&#8217;investissement.</p></div>
+<div class="paragraph"><p>Avec de nouvelles altcoins apparaissant tous les jours, il serait impossible de ne pas rater certaines d&#8217;entre elles, peut-être celle qui changera l&#8217;histoire. Le rythme de l&#8217;innovation est ce qui fait que cet environnement est si excitant ; il garantit que ce chapitre sera incomplet et périmé dès sa publication.</p></div>
+<div class="sect2">
+<h3 id="_une_classification_des_monnaies_et_chaînes_alternatives">Une Classification des Monnaies et Chaînes alternatives</h3>
+<div class="paragraph"><p>Bitcoin est un projet open source, et son code a été utilisé comme base pour de nombreux autres projets logiciels. La forme la plus commune de logiciel dérivé du code source de bitcoin est la création de monnaies décentralisées alternatives, ou <em>altcoins</em>, qui utilisent les même briques de base pour implémenter des monnaies numériques.</p></div>
+<div class="paragraph"><p>Il y a plusieurs couches de protocole implémentées au-dessus de la blockchain bitcoin. Ces  <em>metacoins</em>, <em>metachaînes</em>, ou <em>applications blockchain</em> utilisent la blockchain comme une platforme applicative ou étendent le protocole bitcoin en lui ajoutant des couches supplémentaires. Parmi les exemples, on trouve les Colored Coins, Mastercoin, NXT et Counterparty.</p></div>
+<div class="paragraph"><p>Dans ce paragraphe nous allons examiner quelques altcoins notables, comme Litecoin, Dogecoin, Freicoin, Primecoin, Peercoin, Darkcoin, et Zerocoin. Ces altcoins sont notables pour des raisons historiques ou parce qu&#8217;elles constituent un bon exemple d&#8217;un type particulier d&#8217;innovation, pas parce qu&#8217;elles ont la plus grande valeur ou qu&#8217;elles sont les "meilleures" altcoins.</p></div>
+<div class="paragraph"><p>Outre les altcoins, il existe également un certain nombre d&#8217;implémentations alternatives de blockchain qui ne sont pas réellement des "coins", et que j&#8217;appelle des <em>altchains</em>. Ces altchains implémentent un algorithme de consensus ainsi qu&#8217;un livre de compte distribué comme plateforme pour des contrats, systèmes d&#8217;enregistrement de noms ou d&#8217;autres applications. Les altchains se basent sur les mêmes briques élémentaires, et utilisent parfois aussi une monnaie ou autre token comme mécanisme de paiement, mais leur objectif principal n&#8217;est pas d'être une monnaie. Nous étudierons Namecoin et Ethereum comme exemple de ces altchains.</p></div>
+<div class="paragraph"><p>Enfin, un certain nombre de concurrents de bitcoin proposent une monnaie numérique ou un réseau de paiement, sans utiliser un livre de compte partagé ou un mécanisme de consensus basé sur une preuve de travail ; c&#8217;est le cas de Ripple et consorts. Ces technologies, n'étant pas basées sur la blockchain, sortent du cadre de ce livre et ne seront donc pas abordées dans ce chapitre.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_plateformes_meta_coin">Plateformes Meta Coin</h3>
+<div class="paragraph"><p>Les meta coins et meta chaînes sont des couches logicielles implémentées au dessus de bitcoin, que ce soit pour implémenter une monnaie-dans-la-monnaie ou une surcouche à la plateforme/protocole à l&#8217;intérieur du système bitcoin. Ces couches fonctionnelles étendent le coeur du protocole bitcoin et ajoutent des fonctionnalités en codant des données supplémentaires à l&#8217;intérieur des transactions et adresses bitcoin. Les premières implémentations de meta coins utilisaient différents hacks pour ajouter des métadonnées dans la blockchain, comme le fait d&#8217;utiliser des adresses pour encoder des données, ou encore des champs inutilisés des transactions (par exemple le champ sequence). Depuis l&#8217;introduction de l&#8217;opcode <tt>OP_RETURN</tt> dans les scripts de transaction, les meta coins ont eu la possibilité d&#8217;enregistrer des métadonnées directement dans la blockchain, et la plupart sont en train de migrer en ce sens.</p></div>
+<div class="sect3">
+<h4 id="_colored_coins">Colored Coins</h4>
+<div class="paragraph"><p>Les <em>Colored coins</em> sont un meta protocole qui encapsule des informations sur de petites quantités de bitcoin. une coin "colorée" est une somme de bitcoin réassignée pour représenter un actif différent. Imaginez, par exemple, prendre un billet de 1 dollar, et mettre un coup de tampon dessus indiquant, "Ce billet constitue 1 action de la société Acme Inc." Maintenant, le billet peut servir à deux choses : c&#8217;est un billet de banque et aussi un certificat d&#8217;action. Parce que sa valeur en tant qu&#8217;action est supérieure, vous ne voudriez pas vous en servir pour acheter des bonbons, donc il ne sera en pratique plus utilisé comme unité de monnaie. Les colored coins fonctionnent de manière similaire, en convertissant une certaine valeur, faible, de bitcoin en un certificat représentant un autre actif. Le terme "coloré" fait référence à l&#8217;idée de donner une signification spéciale à travers un attribut particulier comme une couleur — c&#8217;est une métaphore : il n&#8217;y a pas de couleurs dans les colored coins.</p></div>
+<div class="paragraph"><p>Les colored coins sont gérés par des porte-monnaie spécialisés qui enregistrent et interprètent les métadonnées associées aux bitcoin colorés. En utilisant un tel wallet, l&#8217;utilisateur va colorer une somme de bitcoins en leur ajoutant un label doté d&#8217;une signification spéciale. Par exemple, un label pourrait représenter des certificats d&#8217;action, des obligations, des propriétés immobilières, des matières premières, ou des articles de collection. Les utilisateurs de colored coins sont totalement libres de l&#8217;attribution et l&#8217;interprétation de la "couleur" associée à des bitcoins. Pour colorer des pièces, l&#8217;utilisateur définit une métadonnée associée, comme par exemple un mode d'émission, le fait de pouvoir ou non les subdiviser, un symbole et une description, ainsi que d&#8217;autres informations. Une fois colorées, les pièces peuvent être achetées et vendues, subdivisées, agrégées, et peuvent faire l&#8217;objet de dividendes. Les colored coins peuvent aussi être "décolorées" en leur retirant leur attribut spécial, et peuvent être rachetées pour leur valeur faciale en bitcoin.</p></div>
+<div class="paragraph"><p>Pour montrer un exemple d&#8217;utilisation des colored coins, nous avons créé un ensemble de 20 colored coins portant le symbole "MasterBTC", qui représentent un bon pour un exemplaire gratuit de ce livre, comme le montre la figure <a href="#example_9-1">[example_9-1]</a>. Chaque unité de MasterBTC représentée par ces colored coins peut maintenant être vendue ou donnée à n&#8217;importe quel utilisateur doté d&#8217;un wallet compatible avec les colored coins ; ce dernier pourra à son tour les transférer à d&#8217;autres, ou bien les échanger auprès de l'émetteur contre un exemplaire du livre. Cet exemple peut être vu <a href="https://cpr.sm/FoykwrH6UY">ici</a>.</p></div>
+<div class="exampleblock" id="example_9-1">
+<div class="title">Example 1. Le profil de métadonnées des colored coins, configuré comme bon pour un exemplaire gratuit du livre</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_mastercoin">Mastercoin</h4>
+<div class="paragraph"><p>Mastercoin est une couche de protocole se superposant à bitcoin, et qui constitue une plateforme pour une variété d&#8217;applications étendant le système bitcoin. Mastercoin utilise la devise MST pour l'établissement de transactions, mais elles n&#8217;a pas pour but principal d'être une monnaie. Il s&#8217;agit plutôt d&#8217;une plateforme pour construire d&#8217;autres choses, comme une monnaie personnalisée, des tokens de "propriété intelligente", des places de marché d&#8217;actifs décentralisés, et des contrats. Dites vous que Mastercoin est un protocole applicatif superposé à la couche de transport de transactions financières qu&#8217;est bitcoin, tout comme HTTP est situé au-dessus de TCP.</p></div>
+<div class="paragraph"><p>Mastercoin fonctionne principalement par le biais de transactions envoyées et reçues vers et depuis des adresses bitcoin spéciales appelées  adresses "exodus" (<tt>1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P</tt>), exactement comme HTTP utilise un port TCP spécifique (port 80) pour se différencier du reste du traffic TCP. Le protocole Mastercoin est en train d'évoluer progressivement, de l&#8217;utilisation de ces adresses exodus avec multi-signatures à celle de l&#8217;opérateur OP_RETURN pour encoder les métadonnées de transaction.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_counterparty">Counterparty</h4>
+<div class="paragraph"><p>Counterparty est une autre couche de protocole implémentée au-dessus de bitcoin. Counterparty permet le développement de monnaies personnalisées, de tokens échangeables, d&#8217;instruments financiers, de places de marché d&#8217;actifs décentralisés, et davantage. Counterparty est implémenté principalement via l&#8217;opérateur <tt>op_RETURN</tt> dans le langage de script bitcoin, pour encoder les métadonnées qui étendent la signification des transactions bitcoin. Counterparty utilise la devise XCP comme token pour effectuer des transactions.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_les_alt_coins">Les Alt Coins</h3>
+<div class="paragraph"><p>La grande majorité des altcoins sont dérivées du code source de bitcoin, c&#8217;est ce qu&#8217;on appelle des "forks". Certaines sont implémentées "depuis zéro", en se basant sur le modèle de la blockchain, mais sans utiliser le code source de bitcoin. Les altcoins et altchains (cf. chapitre suivant) sont toutes les deux des implémentations distinctes de la technologie blockchain, et les deux utilisent leur propre blockchain. La dénomination différente sert à indiquer que les altcoins servent principalement de monnaie, alors que les altchains sont utilisées à d&#8217;autres fins.</p></div>
+<div class="paragraph"><p>Pour être précis, le premier fork alternatif majeur du code de bitcoin n'était pas un altcoin, mais l&#8217;altchain <em>Namecoin</em>, que nous étudierons dans un prochain paragraphe.</p></div>
+<div class="paragraph"><p>Sur la base de la date de son annonce, le premier altcoin résultant d&#8217;un fork de bitcoin est apparu en Août 2011 ; il s&#8217;appelait <em>IXCoin</em>. IXCoin modifiait quelques un des paramètres originaux de bitcoin, en particulier il accélérait la création monétaire en fixant la récompense à 96 coins par bloc.</p></div>
+<div class="paragraph"><p>En Septembre 2011, <em>_Tenebrix</em> fut lancé. Tenebrix était la première cryptomonnaie à implémenter un algorithme de preuve de travail alternatif, nommé  <em>scrypt</em>, conçu à l&#8217;origine pour l&#8217;extension de mot de passe (résistance à la force brute). L&#8217;objectif affiché de Tenebrix était de faire une monnaie résistante au minage sur GPU et ASIC, en utilisant un algorithme gourmand en mémoire vive. Tenebrix échoua comme monnaie, mais servit de base pour Litecoin, qui a connu un un grand succès et à donner lieu à des centaines de clones.</p></div>
+<div class="paragraph"><p><em>Litecoin</em>, en plus d&#8217;utiliser scrypt comme algorithme de preuve de travail, implémenta également un temps de génération de bloc plus rapide, en ciblant 2.5 minutes contre 10 minutes pour bitcoin. La monnaie résultante est vendue comme étant à bitcoin ce que l&#8217;argent est à l&#8217;or, et est destinée à être une monnaie alternative légère. Grâce au temps de confirmation plus rapide et à la limite totale de 84 millions, beaucoup d&#8217;adhérents de Litecoin pensent qu&#8217;il est plus adapté aux transactions dans les commerces que bitcoin.</p></div>
+<div class="paragraph"><p>Les altcoins ont continué à proliférer en 2011 et 2012, qu&#8217;ils soient basés sur bitcoin ou sur Litecoin. Au début de 2013, il y avait 20 altcoins s&#8217;affrontant pour se faire une place sur le marché. Avant la fin de 2013, ce nombre avait explosé pour atteindre 200, 2013 devenant rapidement "l&#8217;année des altcoins". La croissance des altcoins à continué en 2014, avec plus de 500 altcoins en existence à au moment d'écrire ce livre. Plus de la moitié des altcoins aujourd&#8217;hui sont des clones de Litecoin.</p></div>
+<div class="paragraph"><p>Créer un altcoin est facile, c&#8217;est pourquoi il en existe maintenant plus de 500. La plupart des altcoins diffèrent peu de bitcoin et n&#8217;offrent rien qui vaille la peine de les étudier. Beaucoup sont en fait des tentatives pour enrichir leurs créateurs. Parmi ces copies et les fraudes de type "pump-and-dump", il y a toutefois quelques exceptions notables et des innovations très importantes. Ces altcoins prennent des approches radicalement différentes, ou ajoutent une innovation significative au modèle de conception de bitcoin. Il y a trois  domaines principaux dans lesquels ces altcoins se différencient de bitcoin :</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Une politique monétaire différente
+</p>
+</li>
+<li>
+<p>
+Un mécanisme de preuve de travail ou de consensus différent
+</p>
+</li>
+<li>
+<p>
+Des fonctionnalités spécifiques, telles qu&#8217;une anonymat fort
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Pour plus d&#8217;information, référez-vous à ce <a href="http://mapofcoins.com">frise chronologique des altcoins et altchains</a>.</p></div>
+<div class="sect3">
+<h4 id="_évaluer_un_altcoin">Évaluer un altcoin</h4>
+<div class="paragraph"><p>Avec tant d&#8217;altcoins en circulation, comment décide-t-on lesquels sont dignes d&#8217;attention ? Certains altcoins visent à se propager largement et être utilisées comme monnaie. D&#8217;autres sont des laboratoires pour expérimenter différentes fonctionnalités et modèles monétaires. D&#8217;autres sont justes des arnaques pour enrichir rapidement leurs créateurs. Pour évaluer les altcoins, je regarde leur caractéristiques principales et leurs métriques marché.</p></div>
+<div class="paragraph"><p>Voici quelques questions à se poser pour évaluer à quel point un altcoin se différencie de bitcoin :</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+L&#8217;altcoin introduit-il une innovation significative ?
+</p>
+</li>
+<li>
+<p>
+Y a-t-il une différence suffisamment intéressante pour attirer des utilisateurs de bitcoin ?
+</p>
+</li>
+<li>
+<p>
+L&#8217;altcoin s&#8217;adresse-t-il à un marché de niche ou une application intéressants ?
+</p>
+</li>
+<li>
+<p>
+L&#8217;altcoin peut-il attirer suffisamment de mineurs pour être protégé contre les attaques de consensus ?
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Voici certaines des métriques financières et marché les plus importantes à considérer :</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Quelle est la capitalisation totale de l&#8217;altcoin ?
+</p>
+</li>
+<li>
+<p>
+Quelle est l&#8217;estimation du nombre d&#8217;utilisateurs/wallets de l&#8217;altcoin ?
+</p>
+</li>
+<li>
+<p>
+Combien de marchands acceptent l&#8217;altcoin ?
+</p>
+</li>
+<li>
+<p>
+Combien de transactions journalières (en volume) sont exécutées sur l&#8217;altcoin ?
+</p>
+</li>
+<li>
+<p>
+Quelle valeur est négociée quotidiennement ?
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Dans ce chapitre, nous allons nous concentrer principalement sur les caractéristiques techniques et le potentiel d&#8217;innovation des altcoins représentées par la première série de questions.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_paramètres_monétaires_alternatifs_litecoin_dogecoin_freicoin">Paramètres Monétaires Alternatifs : Litecoin, Dogecoin, Freicoin</h4>
+<div class="paragraph"><p>Bitcoin est doté de paramètres monétaires lui conférant les caractéristiques particulières d&#8217;une monnaie déflationniste à émission plafonnée. Elle est limitée à 21 millions d&#8217;unités de monnaie majeures (ou 21 billiards d&#8217;unités mineures), son taux d'émission diminue de façon géométrique, et un nouveau bloc est créé toutes les 10 minutes, ce qui contrôle la vitesse de confirmation des transactions et la génération de monnaie. Beaucoup d&#8217;altcoins ont modifié ces paramètres principaux pour aboutir à une politique monétaire différente. Les exemples suivants sont certains des plus notables parmi les centaines d&#8217;altcoins qui existent.</p></div>
+<div class="sect4">
+<h5 id="_litecoin">Litecoin</h5>
+<div class="paragraph"><p>Apparu en 2011, Litecoin est un des premiers altcoins, et la deuxième monnaie numérique après bitcoin. Ses innovations principales étaient l&#8217;utilisation de <em>scrypt</em> comme algorithme de preuve de travail (hérité de Tenebrix), et ces paramètres monétaires plus légers et rapides.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 2.5 minutes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : 84 millions de pièces d&#8217;ici 2140
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail Scryppt
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 260 millions de dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_dogecoin">Dogecoin</h5>
+<div class="paragraph"><p>Dogecoin est sorti en Décembre 2013, et est basé sur un fork de Litecoin. Dogecoin est remarquable en ce qu&#8217;il possède une politique d'émission rapide, et une masse monétaire très élevée, afin d&#8217;encourager le fait de dépenser et donner des pourboires. Dogecoin est également notable parce qu&#8217;il a débuté comme une plaisanterie mais est devenu assez populaire, avec une communauté importante et active, avant de décliner rapidement en 2014.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 60 secondes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : 100 000 000 000 (100 milliards) de Doge d&#8217;ici 2015
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail Scryppt
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 12 millions de dollars à la mi-2014.
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_freicoin">Freicoin</h5>
+<div class="paragraph"><p>Freicoin est apparu en Juillet 2012. C&#8217;est une  <em>monnaie fondante</em>, ce qui signifie que son taux d&#8217;intérêt est négatif pour la monnaie stockée. Un TAEG de 4.5% est associé à la valeur stockée dans Freicoin, afin d&#8217;encourager la consommation et décourager l&#8217;accumulation d&#8217;argent. Freicoin est notable en ce qu&#8217;il implémente une politique monétaire à l&#8217;exact opposé de la déflation propre à Bitcoin. Freicoin n&#8217;a pas eu de succès en tant que monnaie, mais est un exemple intéressant de la variété de politiques monétaires qui peuvent être mises en oeuvre par les altcoins.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 10 minutes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : 100 millions de pièces en 2140
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail SHA256
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 130 000 dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_innovation_dans_l_8217_algorithme_de_consensus_peercoin_myriad_blackcoin_vericoin_nxyt">Innovation dans l&#8217;algorithme de consensus : Peercoin, Myriad, Blackcoin, Vericoin, NXYT</h4>
+<div class="paragraph"><p>Le mécanisme de consensus de Bitcoin est basé sur une preuve de travail qui utilise l&#8217;algorithme SHA256. Les premiers altcoins ont introduit scrypt comme algorithme de preuve de travail alternatif, permettant au minage d'être davantage tourné vers les CPU, et moins susceptible d'être centralisés avec des ASICs. Depuis lors, les innovations dans le mécanisme de consensus ont continué à un rythme effréné. Plusieurs altcoins ont adopté un ensemble d&#8217;algoithmes tels que scrypt, , scrypt-N, Skein, Groestl, SHA3, X11, Blake, et d&#8217;autres. Certains altcoins ont combiné plusieurs algorithmes de preuve de travail. En 2013, nous avons vu l&#8217;invention d&#8217;une alternative à la preuve de travail, appelée <em>preuve de participation</em>, qui est à la base de beaucoup d&#8217;altcoins modernes.</p></div>
+<div class="paragraph"><p>La preuve de participation est un système par lequel les détenteurs d&#8217;une monnaie peuvent mettre en jeu de la monnaie comme collatéral associé à un intérêt. Un peu à la façon d&#8217;un certificat de dépôt, les participants peuvent mettre en réserve une portion de leurs fonds, et voir leur investissement rémunéré sous la forme d'émission de monnaie (par le biais de taux d&#8217;intérêts), et de commissions de transactions.</p></div>
+<div class="sect4">
+<h5 id="_peercoin">Peercoin</h5>
+<div class="paragraph"><p>Peercoin est apparu en Août 2012, et est la première altcoin à utiliser une hybridation de preuve de travail et de preuve de participation pour émettre de la monnaie.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 10 minutes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : Illimitée
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : (Hybride) preuve de participation avec une preuve de travail initiale.
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 14 millions de dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_myriad">Myriad</h5>
+<div class="paragraph"><p>Myriad est sorti en Février 2014 et est notable pour avoir utilisé cinq algorithmes de preuve de travail différents (SHA256d, Scrypt, Qubit, Skein, ou Myriad-Groestl) simultanément, avec une difficulté variant pour chaque algorithme en fonction de la participation au minage. Le but est d&#8217;immuniser Myriad contre le minage par ASIC la centralisation, et de le rendre beaucoup plus résistant face à une attaque de consensus, parce que de multiples algorithmes devraient être attaqués simultanément.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 30 secondes en moyenne (cible de 2.5 minutes par algorithme de minage)
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : 2 milliard d&#8217;ici 2024
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail multi-algorithmique
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 120 000 dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_blackcoin">Blackcoin</h5>
+<div class="paragraph"><p>Blackcoin fut présenté en Février 2014 et utilise un algorithme de consensus par preuve de participation. Il est également notable pour introduire des "multipools", un type de pool de minage pouvant choisir entre différents altcoins automatiquement en fonction de la profitabilité.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 1 minute
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : Illimitée
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de participation
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 3.7 million de dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_vericoin">VeriCoin</h5>
+<div class="paragraph"><p>VeriCoin a été lancé en Mai 2014. Il utilise un algorithme de consensus par preuve de participation avec un taux d&#8217;intérêt variable qui s&#8217;ajuste dynamiquement en fonction du poids relatif de l&#8217;offre et de la demande sur le marché. Il est également le premier altcoin à proposer un échange automatisé vers bitcoin lors d&#8217;un paiement en bitcoin via le wallet.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 1 minute
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : Illimitée
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de participation
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 1.1 million de dollars à la mi 2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_nxt">NXT</h5>
+<div class="paragraph"><p>NXT (prononcé "Next") est un altcoin en preuve de participation "pure", en ce qu&#8217;il n&#8217;utilise pas de minage par preuve de travail. NXT est une implémentation depuis zéro d&#8217;une cryptomonnaie, pas un fork de bitcoin ou d&#8217;un autre altcoin. NXT implémente de nombreuses fonctionnalités avancées, dont un registre de nom (similaire à Namecoin), une place de marché d&#8217;actifs décentralisée (similaire au Colored Coins), une messagerie intégrée décentralisée et sécurisée (similaire à Bitmessage), et une délégation de participation (pour déléguer une preuve de participation à un tiers). Pour ses partisans, NXT est la "génération suivante" de cryptomonnaie, ou cryptomonnaie 2.0.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 1 minute
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : Illimitée
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de participation
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 30 millions de dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_innovation_du_minage_à_double_emploi_primecoin_curecoin_gridcoin">Innovation du minage à double-emploi : Primecoin, Curecoin, Gridcoin</h4>
+<div class="paragraph"><p>L&#8217;algorithme de preuve de travail de Bitcoin n&#8217;a qu&#8217;un seul objectif : sécuriser le réseau bitcoin. Par comparaison à la sécurité des systèmes de paiement traditionnels, le coût du minage n&#8217;est pas très élevé. Cependant, il a été critiqué par beaucoup comme étant un "gâchis". La génération d&#8217;altcoin suivante tente de résoudre ce problème. Les algorithmes de preuve de travail à double-emploi résolvent un problème "utile" spécifique, tout en produisant une preuve de travail pour sécuriser le réseau. Le risque d&#8217;ajouter un rôle externe à la sécurité de la monnaie est que cela ajoute également une influence sur la courbe offre/demande.</p></div>
+<div class="sect4">
+<h5 id="_primecoin">Primecoin</h5>
+<div class="paragraph"><p>Primecoin a été annoncée en Juillet 2013. Son algorithme de preuve de travail recherche des nombres premiers, en calculant  chaînes de Cunningham et de nombres premiers jumeaux. Les nombres premiers sont utiles dans un certain nombre de disciplines scientifiques. La blockchain Primecoin contient les nombres premiers découverts, constituant ainsi une archive publique de découverte scientifique en parallèle du livre public des transactions.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 1 minute
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : Illimitée
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail par calcul de chaîne de nombres premiers
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 1.3 millions de dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_curecoin">Curecoin</h5>
+<div class="paragraph"><p>Curecoin a été annoncé en Mai 2013. Il combine un algorithme de preuve de travail par SHA256 avec une recherche de repliement de protéine à travers le projet <a href="mailto:Folding@Home">Folding@Home</a>. Le repliement de protéine est une simulation des interactions biochimiques des protéines, gourmande en puissance de calcul, utilisée pour mettre au point de nouveaux médicaments.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 10 minutes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : Illimitée
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail avec recherche de repliement de protéine
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 58 000 dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_gridcoin">Gridcoin</h5>
+<div class="paragraph"><p>Gridcoin est apparu en Octobre 2013. En complément d&#8217;une preuve de travail basée sur scrypt, les mineurs participent aussi à la grille de calcul distribuée BOINC. BOINC — Berkeley Open Infrastructure for Network Computing — est un protocole ouvert pour les grilles de calcul de recherche scientifique, qui permet aux participants de mettre à disposition la puissance de calcul non utilisée, à destination d&#8217;un large éventail de recherche académique en informatique. Gridcoin utilise BOINC comme une plateforme de calcul générique, plutôt que de résoudre des problèmes scientifiques spécifiques comme les nombres premiers ou le repliement de protéines.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 150 secondes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : Illimitée
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensys : Preuve de travail avec participation à la grille de calcul BOINC
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 122 000 dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_altcoins_orientées_anonymat_cryptonote_bytecoin_monero_zerocash_zerocoin_darkcoin">Altcoins orientées anonymat : CryptoNote, Bytecoin, Monero, Zerocash/Zerocoin, Darkcoin</h4>
+<div class="paragraph"><p>Bitcoin est souvent décrit à tort comme une monnaie "anonyme". En fait, il est relativement facile de relier des identités à des adresses bitcoin et, en utilisant l&#8217;analyse big-data, de relier ces adresses entre elles pour réaliser un schéma complet du profil de dépenses de quelqu&#8217;un. Plusieurs altcoins vise à résoudre ce problème directement en se concentrant sur un anonymat fort. La première tentative de ce genre est très certainement <em>Zerocoin</em>, un protocole meta-coin au dessus de bitcoin permettant de préserver l&#8217;anonymat, introduit par un papier présenté au Symposium de l&#8217;IEEE sur la Sécurité et la Vie privée en 2013. Zerocoin sera implémenté comme un altcoin complètement séparé appelé Zerocash, en développement au moment d'écrire ce livre. Une approche alternative à l&#8217;anonymat a été lancée avec <em>CryptoNote</em> dans un papier publié en Octobre 2013. CryptoNote est une brique technologique qui est implémentée par un certain nombre d&#8217;altcoins forkés, étudiés ci-après. En plus de Zerocash et CryptoNotes, il y a plusieurs monnaies anonymes indépendantes, comme Darkcoin, qui utilise des adresses camouflées et un mélange des transactions pour garantir l&#8217;anonymat.</p></div>
+<div class="sect4">
+<h5 id="_zerocoin_zerocash">Zerocoin/Zerocash</h5>
+<div class="paragraph"><p>Zerocoin constitue une approche théorique de l&#8217;anonymat en matière de monnaies numériques, introduit en 2013 par des chercheurs à l&#8217;Université Johns Hopkins. Zerocash en est une implémentation de type altcoin, qui est en développement et n&#8217;est pas encore sortie.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_cryptonote">CryptoNote</h5>
+<div class="paragraph"><p>CryptoNote est un altcoin, implémentation de référence apportant les bases d&#8217;un cash numérique anonyme. Il a été présenté en Octobre 2013. Il est conçu pour être forké vers différentes implémentations, et a un mécanisme de remise à zéro périodique intégré le rendant lui-même inutilisable comme monnaie. Plusieurs altcoins sont nées de CryptoNote, comme Bytecoin (BCN), Aeon (AEON), Boolberry (BBR), duckNote (DUCK), Fantomcoin (FCN), Monero (XMR), MonetaVerde (MCN), Quazarcoin (QCN). CryptoNote est aussi notable pour être une implémentation depuis zéro d&#8217;une monnaie numérique, et pas un fork de bitcoin.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_bytecoin">Bytecoin</h5>
+<div class="paragraph"><p>Bytecoin a été la première implémentation partant de CryptoNote, offrant une monnaie anonyme viable basée sur la technologie CryptoNote. Bytecoin a été lancée en Juillet 2012. Notez qu&#8217;il existait auparavant un altcoin nommé Bytecoin avec le symbole monétaire BTE, alors que le Bytecoin dérivé de CryptoNote possède le symbole BCN. Bytecoin utilise l&#8217;algorithme de preuve de travail Cryptonight, qui requiert un accès à un minimum 2MB de RAM par instance, ce qui exclut le mining GPU ou ASIC. Via CryptoNote, Bytecoin hérite des signatures circulaires, des transactions intraçables et d&#8217;un anonymat résistant à l&#8217;analyse de blockchain.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de blloc : 2 minutes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : 184 milliards de BCN
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail Cryptonight
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 3 millions de dollards à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_monero">Monero</h5>
+<div class="paragraph"><p>Monero est une autre implémentation de CryptoNote. Sa courbe d'émission est légèrement plus plate que celle de Bytecoin, 80% de la monnaie étant générée dans les quatre premières années. Il offre les mêmes propriétés d&#8217;anonymat héritées de CryptoNote.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 1 minute
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : 18.4 millions de XMR
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail Cryptonight
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 5 millions de dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect4">
+<h5 id="_darkcoin">Darkcoin</h5>
+<div class="paragraph"><p>Darkcoin a été lancé en Janvier 2014. Darkcoin implémente une monnaie anonyme via un protocole de re-mélange pour toutes les transactions, apppelé DarkSend. Darkcoin est également notable pour utiliser 11 passes de fonctions de hash différentes (blake, bmw, groestl, jh, keccak, skein, luffa, cubehash, shavite, simd, echo) pour l&#8217;algorithme de preuve de travail.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 2.5 minutes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : Maximum 22 million de DRK
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail multi-algorithme à plusieurs passes
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 19 millions de dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_altchains_à_vocation_non_monétaires">Altchains  à vocation non monétaires</h3>
+<div class="paragraph"><p>Les altchains sont des implémentations alternatives du design pattern de la blockchain, qui ne sont pas utilisées principalement comme monnaie. Beaucoup incluent une monnaie, mais cette dernière est utilisée comme un jeton pour allouer quelque chose d&#8217;autre, comme une ressource ou un contrat. La monnaie, en d&#8217;autres termes, n&#8217;est pas l&#8217;objet principal de la plateforme ; elle en est une propriété secondaire.</p></div>
+<div class="sect3">
+<h4 id="_namecoin">Namecoin</h4>
+<div class="paragraph"><p>Namecoin a été le premier fork du noeud bitcoin. Namecoin est une plateforme décentralisée clé-valeur d&#8217;enregistrement et de transfert qui utilise la blockchain. Elle propose un registre global de nom de domaine similaire au systèmes des noms de domaine sur Internet. Namecoin est actuellement utilisé comme un service de nom de domaine (DNS) alternatif pour le nom de domaine racine <tt>.bit</tt>. Namecoin peut aussi être utilisé pour enregistrer des noms et des paires clé-valeur dans d&#8217;autres espaces de noms, comme des adresses emails, des clés de cryptage, des certificats SSL, des signatures de fichiers, des systèmes de vote, des certificats d&#8217;action, et une multitude d&#8217;autres applications.</p></div>
+<div class="paragraph"><p>Le système Namecoin inclue la monnaie Namecoin (symbole NMC), utilisée pour payer les commissions de transactions associées à l&#8217;enregistrement et au transfert des noms. Au prix actuel, la commission pour enregistrer un nom est de 0.01 NMC, soit approximativement 1 cent US. Comme dans bitcoin, les commissions sont prélevées par les mineurs namecoin.</p></div>
+<div class="paragraph"><p>Les paramètres de base de Namecoin sont les mêmes que ceux de bitcoin.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Temps de génération de bloc : 10 minutes
+</p>
+</li>
+<li>
+<p>
+Masse monétaire totale : 21 millions de NMC d&#8217;ici 2140
+</p>
+</li>
+<li>
+<p>
+Algorithme de consensus : Preuve de travail SHA256
+</p>
+</li>
+<li>
+<p>
+Capitalisation totale : 10 millions de dollars à la mi-2014
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Les espaces de nom de Namecoin ne sont pas limités, et n&#8217;importe qui peut utiliser le namespace qu&#8217;il souhaite, de la façon où il l&#8217;entend. Toutefois, certains namespaces ont une spécification bien définie, de telle sorte que quand ils les lisent depuis la blockchain, les logiciels savent comment les lire et les interpréter S&#8217;ils sont malformés, alors le logiciel que vous utilisez vous renverra une erreur. Les namespaces les plus populaires sont :</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<tt>d/</tt> est l&#8217;espace de nom pour les domaines <tt>.bit</tt>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<tt>id/</tt> est le namespace pour stocker des identifiants de personne, tels que des adresses email, des clés PGP, etc.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+<tt>u/</tt> est une spécification supplémentaire plus structurée pour stocker des identités (basée sur openspecs)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Le client Namecoin est très semblable à Bitcoin Core, car il dérive du même code source. Après installation, le client va télécharger la copie complète de la blockchain Namecoin et sera alors prêt à effectuer des requêtes ou enregistrer des noms. Il y a trois commandes principales :</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<tt>name_new</tt>
+</dt>
+<dd>
+<p>
+Teste l&#8217;existence ou pré-enregistre un nom
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>name_firstupdate</tt>
+</dt>
+<dd>
+<p>
+Enregistre un nom et publie l&#8217;enregistrement
+</p>
+</dd>
+<dt class="hdlist1">
+<tt>name_update</tt>
+</dt>
+<dd>
+<p>
+Modifie ou met à jour un enregistrement de nom.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Par exemple, pour enregistrer un domaine <tt>mastering-bitcoin.bit</tt>, nous utilisons la commande <tt>name_new</tt> comme suit :</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>La commande <tt>name_new</tt> permet de réserver le nom en créant un hash du nom avec un clé aléatoire. Les deux chaînes retournées par <tt>name_new</tt> sont le hash et la clé aléatoire (<tt>a05555e0fc56c023</tt> dans l&#8217;exemple qui précède), et sont utilisées pour publier l&#8217;enregistrement. Une fois que la demande de réservation a été enregistrée dans la blockchain Namecoin elle peut être convertie en enregistrement public avec la commande <tt>name_firstupdate</tt>, en fournissant la clé aléatoire :</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ namecoind name_firstupdate d/mastering-bitcoin a05555e0fc56c023 "{"map": {"www": {"ip":"1.2.3.4"}}}}"
+b7a2e59c0a26e5e2664948946ebeca1260985c2f616ba579e6bc7f35ec234b01</tt></pre>
+</div></div>
+<div class="paragraph"><p>Cet exemple va associer le nom de domaine <tt>www.mastering-bitcoin.bit</tt> à l&#8217;adresse IP 1.2.3.4. Le hash retourné est l&#8217;ID de transaction qui peut être utilisé pour suivre l&#8217;enregistrement. Vous pouvez voir quels noms vous sont attribués en exécutant la commande <tt>name_list</tt> :</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ namecoind name_list</tt></pre>
+</div></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>Les enregistrements Namecoin doivent être mis à jour tous les 36 000 blocs (approximativement 200 à 250 jours). La commande <tt>name_update</tt> n&#8217;a pas de commission, d&#8217;où il résulte que renouveler un domaine Namecoin est gratuit. Des tierces parties peuvent prendre en charge l&#8217;enregistrement, le renouvellement automatique, la mise à jour par interface web, en échange d&#8217;une faible commission. Avec un fournisseur tiers, vous éviter de devoir faire tourner un client Namecoin, mais vous perdez l&#8217;indépendance qu&#8217;offre ce système d&#8217;enregistrement de nom décentralisé .</p></div>
+</div>
+<div class="sect3">
+<h4 id="_ethereum">Ethereum</h4>
+<div class="paragraph"><p>Ethereum est un processeur de contrat Turing-complet, et une plateforme d&#8217;exécution basée sur un registre de type blockchain. Ce n&#8217;est pas un clone de Bitcoin, mais une conception et une implémentation complètement indépendante. Ehtereum possède une monnaie intégrée, appelée <em>ether</em>, qu&#8217;il est nécessaire de payer exécuter un contrat. La blockchain Ethereum enregistre des <em>contrats</em>, qui sont exprimés dans un langage Turing-complet bas niveau, ressemblant à du byte code.  Globalement, un contrat est un programme qui tourne sur tous les noeuds du système Ethereum. Les contrats Ethereum peuvent stocker des données, envoyer et recevoir des paiements en ether, stocker de l&#8217;ether, et exécuter un éventail infini d&#8217;opérations (d&#8217;où le caractère Turing-complet), tels des agents logiciels autonomes et décentralisés.</p></div>
+<div class="paragraph"><p>Ethereum peut implémenter des systèmes relativement complexes, qui sont ailleurs implémentés par des altchains dédiées. Par exemple, ce qui suit est un contrat d&#8217;enregistrement de nom similaire à Namecoin, écrit en Ethereum (ou plus précisément, écrit dans un langage de haut-niveau compilable en code Ethereum) :</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_futur_des_monnaies">Futur des Monnaies</h3>
+<div class="paragraph"><p>Le futur des monnaies cryptographiques, de façon générale, est encore plus prometteur que celui de bitcoin. Bitcoin a introduit une nouvelle forme d&#8217;organisation décentralisée et de consensus qui a engendré des centaines d&#8217;innovations incroyables. Ces inventions vont probablement affecter des pans entiers de l'économie, depuis la science des systèmes distribués jusqu'à la finance, les monnaies, les banques centrales, et la gestion des entreprises. Beaucoup d&#8217;activités humaines, qui jusqu&#8217;alors nécessitaient des organisations ou institutions centralisées servant de point de contrôle ou de confiance, peuvent maintenant être décentralisées. L&#8217;invention de la blockchain et du système de consensus va réduire significativement le coût de l&#8217;organisation et de la coordination des systèmes fonctionnant à grande échelle, tout en supprimant les possibilités de concentration de pouvoir, corruption, et capture règlementaire.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 17:00:05 UTC
+</div>
+</div>
+</body>
+</html>

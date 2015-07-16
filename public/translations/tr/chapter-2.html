@@ -1,0 +1,1006 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="paragraph" id="ch02_bitcoin_overview"><p>Bitcoin Nasıl Çalışır?</p></div>
+<div class="paragraph"><p>İşlemler, Bloklar, Madencilik ve Blok Zinciri</p></div>
+<div class="paragraph"><p> Bitcoin sistemi, geleneksel bankacılık ve ödeme yöntemlerinin aksine, merkezi olmayan güvene dayalıdır. Bitcoinde güven, merkezi güvenilir bir yetkili yerine, bitcoin sistemindeki farklı katılımcıların etkileşimlerinden ortaya çıkan bir özellik olarak elde edilir. Bu bölümde, bitcoin sistemindeki tek bir işlemi izleyerek daha yüksek bir seviyede bitcoini inceleyeceğiz ve o işlemin bitcoinin dağıtık uzlaşma mekanizması tarafından kabul edilmesini ve "güvenilir" olmasını, son olarak da  tüm işlemlerin kaydedildiği dağıtık defter olan blok zincirine kaydedilmesini izleyeceğiz.</p></div>
+<div class="paragraph"><p>Her örnek bitcoin ağında yapılan, bir cüzdandan diğerine para göndererek kullanıcılar arasındaki etkileşimi simüle eden gerçek bir işleme dayalıdır. Bitcoin ağındaki ve blok zincirindeki bir işlemi izlemek ve  her adımı takip edebilmek için  <em>block zinciri kaşifi</em> sitesini kullanacağız. Blok zinciri kaşifi, bitcoin arama motoru gibi çalışan  bir ağ uygulamasıdır. Bu şekilde adresleri, işlemleri ve blokları aramanıza, bağlantıları görmenize arasında gezinmenize olanak sağlar.</p></div>
+<div class="paragraph"><p>Popüler blok zinciri kaşifleri: </p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://blockchain.info">Blockchain info</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://blockexplorer.com">Bitcoin Block Explorer</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://insight.bitpay.com">insight</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://blockr.io">blockr Block Reader</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Bunların her biri; adresleri, işlem özetlerini ve blok numaralarını alabileceğiniz ve bitcoin ağı ile blok zincirindeki birbirine eşdeğer verileri bulabileceğiniz bir arama işlevine sahiptir. Her bir örnek ile, sizi doğruca ilgili kaynağa götürecek bir URL paylaşacağız böylece ayrıntılı olarak inceleyebilirsiniz.</p></div>
+<div class="sect3">
+<h4 id="_bitcoin_8217_e_genel_bakış">Bitcoin&#8217;e Genel Bakış</h4>
+<div class="paragraph"><p>Şurada <a href="#bitcoin-overview">[bitcoin-overview]</a> gösterilen grafiğe genel olarak bakarsak; bitcoin sisteminin anahtarları içeren kullanıcı cüzdanlarından, ağa yayılmış işlemlerden ve tüm işlemlerin kaydedildiği yetkili defter olan blok zincirindeki uzlaşmayı sağlayan madencilerden oluştuğunu görürüz. Bu bölümde, tek bir işlemin ağ içerisindeki seyahatini izleyeceğiz ve bitcoin sisteminin her bir parçasının arasındaki etkileşimi yüksek seviyede inceleyeceğiz. Sonraki bölümlerde tüccar sistemi, madencilik ve cüzdanların arkasındaki teknolojiyi daha derinlemesine inceleyeceğiz.</p></div>
+<div class="imageblock" id="bitcoin-overview">
+<div class="content">
+<img src="images/msbt_0201.png" alt="Bitcoin Overview" />
+</div>
+<div class="title">Figure 1. Bitcoin&#8217;e Genel Bakış</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cup_of_coffee">Bir Fincan Kahve Almak</h4>
+<div class="paragraph"><p> Alice, önceki bölümde tanıştırdığımız kız, ilk bitcoinlerini henüz elde etmiş yeni bir kullanıcıdır. <a href="#getting_first_bitcoin">[getting_first_bitcoin]</a>, Alice biraz nakit karşılığında bitcoin almak için arkadaşı Joe ile buluştu. Joe tarafından oluşturulan işlem Alice&#8217;in cüzdanına 0.10 BTC gönderdi. Şimdi Alice, Bob&#8217;un Palo Alto/California&#8217;da bulunan kahve dükkanından bir bardak kahve satın alarak ilk perakende işlemini yapacak. Bob&#8217;un kahve dükkanı yakın zamanda satış noktası sistemine bitcoin seçeneğini ekleyerek bitcoin ödeme sistemini kabul etmeye başladı. Bob&#8217;un kahve dükkanındaki fiyatlar yerel para birimi(dolar) cinsinden listelenmiş fakat kasada tüketiciler hem dolar hem de bitcoin ile ödeme seçeneğine sahip. Alice bir bardak kahve siparişi verir ve Bob işlemi kasaya girer. Satış noktası sistemi toplam tutarı geçerli bitcoin piyasa oranından dolardan bitcoine çevirecektir ve fiyatı iki para birimi cinsinden de gösterecektir. Bu işlemi içeren bir ödeme isteğini QR kod olarakta gösterecektir. (bakınız <a href="#payment-request-QR">[payment-request-QR]</a>):</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>Toplam:
+$1.50 USD
+0.015 BTC</tt></pre>
+</div></div>
+<div class="paragraph" id="payment-request-QR"><p>QR kodu ile ödeme isteği (İpucu: Bunu taramayı deneyin!)
+<span class="image">
+<img src=":images/msbt_0202.png" alt="payment-request" />
+</span></p></div>
+<div class="paragraph" id="payment-request-URL"><p>Ödeme istekli QR kodu, aşağıdaki URL&#8217;lerin BIP0021  ile kodlanmış halidir.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>bitcoin:1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA?
+amount=0.015&amp;
+label=Bob%27s%20Cafe&amp;
+message=Purchase%20at%20Bob%27s%20Cafe
+
+URL Bileşenleri:
+
+Bir Bitcoin Adresi: "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
+Ödeme Tutarı: "0.015"
+Alıcı adres etiketi: "Bob's Cafe"
+Ödeme açıklaması: "Bob's Cafe'de Alışveriş"</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p> Basitçe gönderilecek bitcoin adresini içeren bir QR kodun aksine bir ödeme isteği; gönderilecek adresi, ödenecek miktarı ve Bob&#8217;un kahve dükkanı gibi genel bir açıklama içeren içine URL kodlanmış bir QR koddur. Bu kod, kullanıcıya insanların okuyabileceği bir açıklama gösterirken bitcoin cüzdan uygulamasının da ödeme göndermek için kullandığı bilgileri doldurmasına olanak verir. Alice&#8217;in gördüğünü görebilmek için bitcoin cüzdan uygulamasıyla QR kod tarayabilirsiniz.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Bob , "1,5 dolar ya da 15 millibit" der.</p></div>
+<div class="paragraph"><p>Alice görüntüdeki barkodu taramak için akıllı telefonunu kullanıyor. Akıllı telefonu <tt>Bob&#8217;s Cafe</tt>'ye <tt>0.0150 BTC</tt>'lik ödemeyi gösteriyor ve Alice ödemeye izin vermek için <tt>Send</tt> seçeneğini seçiyor. Birkaç saniye içinde(yaklaşık olarak kredi kartı ile yapılan işlemlerdeki aynı süre) Bob transferin tamamlandığına dair işlemi kasada görebilir.</p></div>
+<div class="paragraph"><p>Aşağıdaki kısımlarda bu işlemi daha detaylı inceleyeceğiz. Alice&#8217;in cüzdanının bu işlemi nasıl oluşturduğunu, ağ boyunca nasıl yayıldığını, nasıl onaylandığını ve son olarak Bob&#8217;un bu parayı sonraki işlemlerinde nasıl harcayabileceğini göreceğiz.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Bitcoin ağı, milli bitcoinden(bitcoinin 1000&#8217;de 1&#8217;i) satoshi olarak bilinen bitcoinin 100,000,000 'da 1&#8217;ine kadar kesirli değerlerde işlem yapabilir. Bu kitap içerisinde "bitcoin" terimini bitcoin para biriminin herhangi bir miktarını[en küçük birimden(1 satoshi) kazılacak toplam bitcoin miktarına kadar (21,000,000)] belirtmek için kullanacağız.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bitcoin_işlemleri">Bitcoin İşlemleri</h3>
+<div class="paragraph"><p> Basitçe bir işlem bitcoin ağına, elinde bir miktar bitcoin bulunan kişinin bu bitcoinlerden bir kısmını başka bir kişiye göndermeye izin verdiğini söylemektir. Bu bitcoinlerin yeni sahibi başka birine bunları göndermeye izin vermek için başka bir işlem oluşturarak bitcoinlerini harcayabilir. Bu böyle bir sahiplik zinciri içerisinde devam eder.</p></div>
+<div class="paragraph"><p>İşlemler, çift girişli bir muhasebe defterindeki satırlar gibidir.  Basitçe her bir işlem, bitcoin hesabının karşısına borç olarak eklenen bir ya da daha fazla girdiyi içerir.  İşlemin diğer tarafında bitcoin hesabına alacak olarak eklenen bir ya da daha fazla çıktı vardır. Girdiler ve çıktıların (borçlar ve alacaklar) aynı miktarda eklenmesi şart değildir. Bunun yerine çıktılar girdilerden bir miktar daha az olurlar. Aradaki fark, işlemi deftere(blok zinciri) dahil eden madenciler tarafından toplanan küçük bir ödemedir ve "işlem ücreti" olarak gösterilir. Bir bitcoin işlemi muhasebe defterindeki bir kayıt gibi görülür <a href="#transaction-double-entry">[transaction-double-entry]</a>.</p></div>
+<div class="paragraph"><p>İşlem aynı zamanda, herhangi biri tarafından bağımsız bir şekilde geçerli kılınabilinen ve sahibi tarafından dijital bir imza şeklinde transfer edilen her bitcoin miktarının(girdiler) sahiplik ispatını da içerir. Bitcoin terimlerinde "harcama", bir önceki işlemden gelen değeri bir bitcoin adresi ile tanımlanmış yeni bir kişiye  transfer eden bir işlemi imzalamaktır.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><em>İşlemler</em>, bir değeri <em>işlem girdileri</em>'nden <em>işlem çıktıları</em>'na dönüştürür. Bir girdi, genellikle bir önceki işlemin çıktısından gelen paranın değeridir. Bir işlem çıktısı, transfer edilen değeri bir anahtar ile ilişkilendirerek ona yeni bir sahip atar. Hedef anahtar <em>taahhüt</em> olarak adlandırılır. Bu anahtar, paranın sonraki işlemlerde kullanılabilmesi için bir imzayı zorunlu kılar. Bir işlemin çıktıları, yeni bir işlemde girdi olarak kullanılabilir. Bu, adresten adrese iletilen bir değer gibi sahiplik zincirini oluşturur. (bakınız <a href="#blockchain-mnemonic">[blockchain-mnemonic]</a> )</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph" id="transaction-double-entry"><p>Çift girişli muhasebe defterine benzeyen işlem
+<span class="image">
+<img src=":images/msbt_0203.png" alt="Transaction Double-Entry" />
+</span></p></div>
+<div class="paragraph" id="blockchain-mnemonic"><p>Bir işlemin çıktısının sonraki işlemin girdisi olduğu işlemler zinciri.
+<span class="image">
+<img src=":images/msbt_0204.png" alt="Transaction chain" />
+</span></p></div>
+<div class="paragraph"><p>Alice&#8217;in Bob&#8217;un kahve dükkanına yaptığı ödeme bir önceki işlemi girdi olarak kullanır. Önceki bölümde Alice, nakit para karşılığında arkadaşı Joe&#8217;dan bitcoin aldı. Bu işlem bir miktar bitcoini Alice&#8217;in anahtarı ile kilit altına aldı(taahhüt edildi). Alice&#8217;in Bob&#8217;un kahve dükkanına yapacağı yeni işlem önceki işlemi girdi olarak referans gösterir ve bir bardak kahve fiyatını ödemek için yeni bir çıktı oluşturur. İşlemler, önceki işlemlerin çıktılarına karşılık gelen en son işlemlerin girdilerinin olduğu bir çeşit zincirdir. Alice&#8217;in anahtarı önceki işlem çıktılarının kilidini açmak için bir imza sağlar. Böylece onun kendi parası olduğunu bitcoin ağına kanıtlar. Alice içtiği kahvenin ödemesini Bob&#8217;un adresine ekler. Böylece Bob bu miktarı harcamak için gerekli olan bir imza üretir. Bu Alice ve Bob arasındaki bir değer transferinin temsilidir. Bu işlemler zinciri, Joe&#8217;dan Alice&#8217;e ve Alice&#8217;ten Bob&#8217;a, şuradan <a href="#blockchain-mnemonic">[blockchain-mnemonic]</a> görülebilir.</p></div>
+<div class="sect3">
+<h4 id="_yaygın_işlem_çeşitleri">Yaygın İşlem Çeşitleri</h4>
+<div class="paragraph"><p> İşlemin en yaygın kullanım şekli bir adresten diğerine yapılan, genellikle biraz "değişim" ile ilk sahibine geri dönen basit bir ödemedir. Bu çeşit bir işlemde bir girdi ve iki çıktı vardır ve şu şekildedir <a href="#transaction-common">[transaction-common]</a>.</p></div>
+<div class="paragraph" id="transaction-common"><p>En yaygın işlem
+<span class="image">
+<img src=":images/msbt_0205.png" alt="Common Transaction" />
+</span></p></div>
+<div class="paragraph"><p>Yaygın olan diğer bir işlem şekli ise birçok girdiyi tek çıktı içerisinde toplamadır (<a href="#transaction-aggregating">[transaction-aggregating]</a>). Bu bir yığın bozuk parayı ve banknotu tümletmek ile eşdeğerdir. Bunun gibi işlemler bazen cüzdan uygulamaları tarafından yapılan ödemelerin para üstü olarak alınan çok sayıda ufak işlemi temizlemek üzere kullanılır</p></div>
+<div class="paragraph" id="transaction-aggregating"><p>Toplanan para işlemleri
+<span class="image">
+<img src=":images/msbt_0206.png" alt="Aggregating Transaction" />
+</span></p></div>
+<div class="paragraph"><p>Son olarak, bitcoin defteri üzerinde sıklıkla görülen bir başka işlem de tek girdiyi, birçok alıcıyı temsil eden birçok çıktıya dağıtan işlemdir (<a href="#transaction-distributing">[transaction-distributing]</a>). Bu işlem bazen ticari işletmeler tarafından, birçok çalışana maaş ödemesi yapmak gibi, para dağıtmak amacıyla kullanılır.</p></div>
+<div class="paragraph" id="transaction-distributing"><p>Dağıtılan para işlemleri
+<span class="image">
+<img src=":images/msbt_0207.png" alt="Distributing Transaction" />
+</span></p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_işlem_oluşturmak">İşlem Oluşturmak</h3>
+<div class="paragraph"><p>Alice&#8217;in cüzdan uygulaması, Alice&#8217;in tarifine göre bir işlem gerçekleştirmek için gerekli girdileri ve çıktıları seçebilecek bütün mantığı içerir. Alice sadece hedef ve miktar belirler ve geri kalan herşey o ayrıntıları görmeden cüzdan uygulamasında gerçekleşir.   Mühim bir nokta, cüzdan uygulaması tamamen çevrimdışı olsa da işlemi oluşturabilir. Evde bir çek yazıp, postayla bankaya göndermek gibi, işlem bitcoin ağına bağlıyken oluşturulup, imzalanmak zorunda değildir. Sadece eninde sonunda işleme koyulmak için ağa gönderilmelidir.</p></div>
+<div class="sect3">
+<h4 id="_doğru_girdileri_almak">Doğru Girdileri Almak</h4>
+<div class="paragraph"><p>Ayşe&#8217;nin cüzdan uygulaması önce Bob&#8217;a göndermek istediği miktarı karşılayabilecek girdileri bulması gerekir. Çoğu cüzdan uygulaması cüzdan anahtarıyla kilitlenmiş (ipotekli) "harcanmamış işlem çıktıları" şeklinde küçük bir veritabanı tutar. Böylece, Ayşe&#8217;nin cüzdanı Joe&#8217;nun işleminin bir işlem çıktı kopyasını barındırır, ki bu nakit para karşılığı oluşturulmuştu (bkz. <a href="#getting_first_bitcoin">[getting_first_bitcoin]</a>). Tam-listeli bir istemci (full-index client) olarak çalışan bir Bitcoin cüzdan uygulaması aslında defter üzerinde bulunan harcanmamış çıktıların hepsinin bir kopyasını içerir. Bu, cüzdanın işlem girdisi oluşturmasını ve gelen işlemlerin girdilerini hızlıca doğrulamasını sağlar. Ancak tam-listeli istemci çok disk yeri kapladığı için çoğu kullanıcı sadece kendi harcanmamış çıktılarını takip eden "tüysiklet" (lightweight) istemci kullanır.</p></div>
+<div class="paragraph"><p>Eğer cüzdan uygulaması harcanmamış işlem çıktılarının bir kopyasını tutmazsa, cüzdan, bitcoin ağını bu bilgiyi almak için sorgulayabilir. Bu sorgu çeşitli sağlayıcılar tarafından sunulan APIlara veya JSON RPC API kullanarak tam-listeli bir düğüme yapılabilir. <a href="#example_2-1">[example_2-1]</a> belirli bir URL&#8217;ye gönderilen HTTP GET komutu şeklinde bir RESTful bir API isteği örneği göstermektedir. Bu URL bir adres için harcanmamış bütün işlem çıktılarını döndürecektir, böylece  uygulama, harcama yapmak için gerekli işlem girdilerini oluşturmak için ihtiyacı olan bilgiye sahip olacaktır. Sonucu almak için basit bir komut satırı HTTP istemcisi olan  <em>cURL</em> kullanıyoruz.</p></div>
+<div class="exampleblock" id="example_2-1">
+<div class="title">Example 1. Ayşe&#8217;nin bitcoin adresi için harcanmamış bütün çıktıları sorgula</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="exampleblock" id="example_2-2">
+<div class="title">Example 2. Sorgunun cevabı</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p><a href="#example_2-2">[example_2-2]</a> deki cevap Ayşe&#8217;nin adresinde bir harcanmamış çıktı (henüz işlenmemiş) gösteriyor <tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>. Cevap, bu harcanmamış çıktıyı içeren işleme (Joe&#8217;nun yaptığı ödeme) ait bir referans ve satoshi olarak değerini içeriyor. 10 milyon, yani 0.10 bitcoine eşdeğer. Bu bilgi ile beraber, Ayşe&#8217;nin cüzdan uygulaması bu değeri yeni adrese yönlendirecek bir işlem oluşturabilir.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Şunu görüntüleyin <a href="http://bit.ly/1tAeeGr">transaction from Joe to Alice</a></p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Gördüğünüz gibi, Ayşe&#8217;nin cüzdanı tek bir harcanmamış çıktı içerisinde bir bardak kahve almaya yetecek kadar bitcoin içeriyor. Eğer böyle olmasaydı, Ayşe&#8217;nin cüzdan uygulaması birçok, henüz harcanmamış küçük çıktı içerisine bakıp, çanta dibinden bozuk para bulur gibi, kahvenin parasını tamamlayana kadar didik didik arama yapmak zorunda kalabilirdi. İki şekilde de, cüzdan uygulaması işlem çıktılarını (ödeme) oluşturdukça para üstü alma durumu olabilir, bunu bir sonraki bölümde göreceğiz.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_çıktıları_oluşturmak">Çıktıları Oluşturmak</h4>
+<div class="paragraph"><p> Bir işlem çıktısı, değer üzerinde ipotek oluşturan bir script olarak oluşturulur ve sadece bu scriptin çözümü halinde harcanabilir. Daha basitçe, Ayşe&#8217;nin işlem çıktısı şöyle bir script içerir "Bu çıktı Bob&#8217;un halka açık adresine denk gelen imzayı kim sunarsa ona ödenecektir". Sadece Bob bu adrese denk gelen imzayı sunabilecek olan cüzdana sahip olduğu için, bu cüzdan bu çıktıyı alabilir. Ayşe böylece çıktıyı Bob&#8217;un imzasına ipoteklemiştir.</p></div>
+<div class="paragraph"><p>Bu işlem ayrıca ikinci bir çıktı da içerir, çünkü Ayşe&#8217;nin 0.10 BTC olan parası, 0.015 BTC lik kahvenin değerinden fazladır. Ayşe&#8217;nin 0.085 BTC para üstü alması gerekir. Ayşe&#8217;nin para üstü ödemesi de yine <em>Ayşe&#8217;nin cüzdanı tarafından</em> Bob&#8217;a ödeme ile aynı işlem içerisinde yaratılır. Ayşe&#8217;nin cüzdanı parayı iki ödemeye böler: bir tanesi Bob&#8217;a, diğeri de kendisine. Ayşe para üstünü bir sonraki işleminde kullanıp, harcayabilir.</p></div>
+<div class="paragraph"><p>Son olarak, işlemin ağ tarafından zamanınca devreye sokulabilmesi için, Ayşe&#8217;nin cüzdanı cüzi bir ücret ekler. Bu işlemin içerisinde açıkça gösterilmez, girdi ve çıktı arasındaki farkta görülür. Eğer para üstü olan 0.085 BTC&#8217;yi almayıp, Ayşe ikinci çıktı olarak sadece 0.0845 BTC yaratırsa, 0.0005 BTC (yarım milibitcoin) fazladan kalacaktır. Girdinin 0.10 BTC&#8217;si iki çıktı içerisinde hala tamamen harcanmamıştır çünkü toplamları 0.10&#8217;dan daha azdır. Aradaki fark <em>işlem ücreti</em> bu işlemi kütüğe koyup, deftere yazmak için madenciler tarafından toplanan ücrettir.</p></div>
+<div class="paragraph"><p>İşlem sonucu bir blockchain tarayıcı web uygulaması ile görülebilir, örnek: <a href="#transaction-alice">[transaction-alice]</a>.</p></div>
+<div class="paragraph" id="transaction-alice"><p>Alice&#8217;in, Bob&#8217;un kafesindeki işlemi
+<span class="image">
+<img src=":images/msbt_0208.png" alt="Alice Coffee Transaction" />
+</span></p></div>
+<div class="admonitionblock" id="transaction-alice-url">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Şunu görüntüleyin <a href="http://bit.ly/1u0FIGs">transaction from Alice to Bob&#8217;s Cafe</a>.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bir_işlemi_muhasebe_defterine_ekleme">Bir işlemi muhasebe defterine ekleme</h4>
+<div class="paragraph"><p>Ayşe&#8217;nin cüzdan uygulaması tarafından yaratılan işlem 258 byte uzunluğunda ve paranın kime ait olduğu kanıtlayıp, yeni sahibine atanması için gerekli olan herşeyi içerir. Artık işlem bitcoin ağına göndermeli ve orada ortak defterin (the blockchain) bir parçası olmalıdır. Bir sonraki bölümde işlemin nasıl bir kütüğün (block) parçası olacağını ve bu kütüğün nasıl deftere "kazıldığını" göreceğiz. Son olarak, bir kere deftere eklenen kütüğe, daha fazla kütük eklendikçe, ağ tarafından gittikçe daha çok güvenildiğini göreceğiz.</p></div>
+<div class="sect4">
+<h5 id="_işlem_aktarımı">İşlem aktarımı</h5>
+<div class="paragraph"><p>İşlem gerekli bütün bilgiyi içerdiğinden ötürü bu bilginin bitcoin ağına nasıl veya nereden geldiğinin bir önemi yoktur. Bitcoin ağı kişiden-kişiye bir ağdır, her bitcoin istemcisi diğer birçok bitcoin istemcisine bağlanarak ağa katılır. Bitcoin ağının amacı işlemleri ve kütükleri diğer tüm katılımcılara yaymaktır.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_nasıl_yayılıyor">Nasıl yayılıyor</h5>
+<div class="paragraph"><p>Ayşe&#8217;nin cüzdan uygulaması yeni işlemi, herhangi bir internet bağlantısı üzerinden (kablolu, kablosuz, mobil) diğer bitcoin istemcilerine gönderebilir.  Ayşe&#8217;nin bitcoin cüzdanı direk olarak Bob&#8217;un cüzdanına bağlı olmak zorunda değildir ve cafenin internet bağlantısına da bağlı olmak zorunda değildir, ki isterse bu olabilir. Herhangi bir bitcoin ağ düğümü (diğer istemci) eğer önceden bilmediği geçerli bir işlem alırsa bunu hemen kendisine bağlı olan diğer istemcilere yönlendirir. Böylece, işlem hızlıca kişiden-kişiye ağ üzerinde yayılır, birkaç saniye içerisinde ağın yüzde olarak çoğunluğuna yayılmış olur.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_bob_8217_un_tarafı">Bob&#8217;un tarafı</h5>
+<div class="paragraph"><p>Eğer Bob&#8217;un bitcoin cüzdan uygulaması direk olarak Ayşe&#8217;nin cüzdan uygulamasına bağlıysa, Bob&#8217;un cüzdan uygulaması işlemi alan ilk düğüm olabilir. Fakat, Ayşe&#8217;nin cüzdanı işlemi diğer düğümler üzerinden bile alsa, Bob&#8217;un cüzdanına birkaç saniye içerisinde ulaşacaktır. Bob&#8217;un cüzdanı anında Ayşe&#8217;nin işlemini gelen ödeme olarak anlayacaktır çünkü Bob&#8217;un anahtarları tarafından çözülebilecek işlem içerir. Bob&#8217;un cüzdan uygulaması ayrıca bağımsız olarak işlemin düzgün oluşturulduğunu, önceden harcanmamış girdi kullandığını ve bir sonraki kütüke girebilecek kadar işlem ücreti içerdiğini doğrular. Bu noktada Bob, çok ufak bir şüphe ile, işlemin kısa zaman içerisinde kütüğe geçeceğini ve doğrulanacağını kabul edebilir.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p> Bitcoin işlemleri ile ilgili yanlış bir kanı ise, bu işlemlerin yeni kütük için 10 dakika bekleyerek "onaylanmak" zorunda olduğu veya 60 dakikaya kadar bekleyerek 6 onay almak gerektiğidir. Onaylar bütün ağın işlemi kabul ettiğini gösterse de, böyle bir bekleyiş bir bardak kahve gibi küçük işlemler için gereksizdir. Satıcı düşük değerli işlemleri hiçbir onay olmadan kabul edebilir, bunun riski şu an satıcıların hep yaptığı gibi kimliksiz veya imzasız bir kredi kartı işleminden daha fazla değildir.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bitcoin_madenciliği">Bitcoin Madenciliği</h3>
+<div class="paragraph"><p>İşlem artık bitcoin ağına yayıldı. Doğrulanana ve <em>kazı</em> denilen bir işlemden geçip bir kütüğün parçası olana kadar ortak deftere girmez. Ayrıntılı bilgi için <a href="#ch8">[ch8]</a>'e bakınız.</p></div>
+<div class="paragraph"><p>Bitcoin güven sistemi hesaplamaya dayalıdır. İşlemler _kütük_ler içerisine toplanılır, bunların doğrulaması aşırı büyük bir hesaplama gerektirir, fakat doğrulanmış olarak onaylamak küçük bir hesaplama gerektirir. Kazı işleminin bitcoin&#8217;de iki amacı vardır:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Madencilik her kütük içerisinde yeni bitcoinler yaratır, adeta merkez bankasının yeni para basması gibi. Kütük başına yaratılan bitcoin sayısı sabittir ve zamanla azalır.
+</p>
+</li>
+<li>
+<p>
+Madencilik işlemlerin kendini içeren kütüğe yeterince hesaplama gücü adandığını doğrulayarak güveni sağlar. Daha fazla kütük, daha fazla hesaplama demektir, bu da daha fazla güven.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Madenciliği açıklamanın iyi bir yolu da çözdükçe baştan başlayan, çözümü 10 dakika sürecek şekilde zorluğu otomatik ayarlanan kocaman bir sudoku yarışmasına benzetmektir. Kocaman bir sudoku bulmacası düşünün, binlerce satır ve kolon büyüklüğünde. Size tamamen çözülmüş bir bulmaca göstersem, hemen doğruluğunu anlayabilirsiniz. Fakat, birkaç karesi doldurulmuş ama gerisi boşsa, çözmesi çok çaba ister! Sudokunun zorluğu boyutunu değiştirerek ayarlanabilir (daha fazla veya az satır ve kolon), fakat çok büyük olsa da hemen doğrulanabilir. Bitcoin için kullanılan "bulmaca" ise kriptografik özet bazlıdır ve benzer karakteristikler gösterir: Asimetrik olarak çözmesi zordur ama onaylaması kolaydır, ve zorluğu ayarlanabilir.</p></div>
+<div class="paragraph"><p><a href="#user-stories">[user-stories]</a> içerisinde, Jing&#8217;i tanıttık, Şangay&#8217;da bir bilgisayar mühendisliği öğrencisi. Jing bitcoin ağına madenci olarak katılıyor. Her 10 dakikada bir, Jing binlerce diğer madenciyle beraber bir kütük dolusu işleme çözüm bulmak için dünya çapında bir yarışa katılıyor. Bu çözümü bulmak, işin kanıtı da denilir, tüm bitcoin ağı boyunca saniyede katrilyonlarca özet hesaplaması gerektirir. İş kanıtının algoritması, önceden belirlenmiş şablonu andıran bir çözüm çıkana kadar tekrar tekrar kütük başlığı ve SHA256 kriptografik algoritmalı rasgele bir sayıyla özet hesaplamayı içerir. Böyle bir çözümü bulan ilk madenci bu turu kazanır ve kütüğünü deftere yayınlar.</p></div>
+<div class="paragraph"><p>Jing madencilik yaparak yeni kütükler için uygun bir iş kanıtı bulmaya 2010 yılında çok hızlı bir masaüstü bilgisayar ile başladı. Daha fazla madenci bitcoin ağına katıldıkça, problemin zorluğu hızlı bir şekilde arttı. Yakın zamanda, Jing ve diğer madenciler oyun bilgisayarlarında ve konsollarda kullanılan ileri seviye grafik işlemciler (GPU) gibi özelleştirilmiş donanımlara geçmeye başladılar. Bu yazı yazılırken zorluk o kadar yüksek ki sadece sadece uygulamaya özel tümleşik develer (ASIC) kullanılarak karlılık elde edilebiliyor, bu bir anlamda yüzlerce madencilik algoritmasının donanıma yazılması ve paralel olarak tek bir silikon devre üzerinde koşması demek. Jing buna ek olarak bir "madencilik havuzuna" katıldı, bu bir nevi piyango havuzu gibi birçok katılımcının çabalarını ve ödüllerini paylaşmasını sağlar. Jing şimdi iki tane USB bağlantılı ASIC makineyi günde 24 saat çalıştırıyor. Elektrik masraflarını madencilik yaparak çıkardığı bitcoinleri satıp, karından gelir sağlayarak karşılıyor. Bilgisayarı özelleştirilmiş madencilik yazılımına arka uç olarak bitcoind&#8217;nin, referans bitcoin istemcisinin, bir kopyasını koşturuyor.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_bloklardaki_madencilik_işlemleri">Bloklardaki madencilik işlemleri</h3>
+<div class="paragraph"><p>Ağ üzerinden iletilen bir işlem halka açık dağıtık defterin, kütükzincirinin, bir parçası olana kadar doğrulanmış değildir.  Ortalama her 10 dakikada bir, madenciler geçen kütükten itibaren olan bütün işlemleri içeren yeni bir kütük üretir. Yeni işlemler kullanıcı cüzdanlarından ve diğer uygulamalardan devamlı ağa akış halindedir. Bunlar bitcoin ağ düğümleri tarafından görüldükçe, henüz onaylanmamış işlemler olarak geçici bir havuza eklenir. Madenciler yeni bir kütük oluşturunca, bu havuzdaki onaylanmamış işlemleri yeni bir kütüğe eklerler ve  yeni kütüğün geçerli olduğunu kanıtlayan çok zor bir problemi (iş kanıtı olarak bilinen) çözmeye çabalarlar. Madencilik süreci detaylı olarak <a href="#mining">[mining]</a> de açıklanmaktadır.</p></div>
+<div class="paragraph"><p>İşlemler en yüksek ücretli ödeme ilk olacak şekilde ve bir kaç diğer kritere görel sıralanır ve yeni kütüğe eklenir. Her madenci yeni bir kütük kazma sürecine bir önceki kütüğü ağdan alır almaz başlar, böylece bir önceki turu kaybettiğini öğrenir. Hemen yeni bir kütük oluşturur, bunu işlemler ve bir önceki kütüğün parmak iziyle doldurur ve iş kanıtını hesaplamaya başlar. Her madenci kendi kütüğünde kendi bitcoin adresine yeni yaratılan bitcoinleri (şu anda kütük başına 25 BTC) ödeyen özel bir işlem bulundurur. Eğer kütüğü geçerli kılan bir çözüm bulursa kazanır çünkü başarılı olan kütüğü evrensel kütükzincirine eklenir ve içerdiği ödül işlemi harcanabilir hale gelir. Madencilik havuzuna katılımda bulunan Jing kendi yazılımını ödülü havuzun hesabına atayan yeni kütükler yaratacak şekilde hazırlamıştır. Ödül buradan Jing ve madencilik havuzuna katkıda bulunan diğer madencilere geçen tur yaptıkları iş oranında  paylaştırılır.</p></div>
+<div class="paragraph"><p>Alice&#8217;in işlemi ağ tarafından teyit edilmemiş işlemler havuzuna alındı. Yeterince ücret içerdiği için Jing&#8217;in madenci havuzu tarafından yaratılan yeni kütük içerisine konuldu. Alice&#8217;in cüzdanı tarafından ilk olarak iletilmesinden yaklaşık olarak beş dakika sonra Jing&#8217;in ASIC madencisi kütük için bir çözüm buldu ve bunu 419 başka işlem daha içeren kütük no 277316 olarak yayınladı. Jing&#8217;in ASIC madencisi yeni kütüğü bitcoin ağına yayınladı, burada diğer madenciler bunu doğruladı ve bir sonraki kütüğü üretmek için yarış tekrar başladı.</p></div>
+<div class="paragraph"><p>Bloğun içeriğini şuradan görebilirsiniz <a href="https://blockchain.info/block-height/277316">Alice&#8217;s transaction</a>.</p></div>
+<div class="paragraph"><p>Bir kaç dakika sonra 277317 numaralı yeni kütük, başka bir madenci tarafından bulundu. Alice&#8217;in işlemini içeren bir önceki kütüğe(no 277316) dayandığı için bu kütüğün üzerine daha fazla hesaplama eklendi ve böylece bu işlemlere güven güçlendi. Alice&#8217;in işlemini içeren kütük o işlemin bir "onay"ı sayıldı. İşlemi içeren kütüğün üzerine bulunan her kütük bu işlem için ek bir onay olarak sayılır. Kütükler üst üste bindikçe işlemi geri çevirmek üstel olarak zorlaşır bu da işlemi ağ tarafından gittikçe daha fazla güvenilir yapar.</p></div>
+<div class="paragraph"><p><a href="#block-alice1">[block-alice1]</a> şeklinde Alice&#8217;in işlemini içeren 277316 numaralı kütüğü görebiliyoruz. Onun altında <em>yaratılış kütüğü</em> olarak da bilinen 0 numaralı kütüğe kadar giden zincir şeklinde birbirine bağlı (kütükzinciri) 277316 tane kütük var (0 nolu kütük dahil). Zaman geçtikçe, kütüklerin boyu yükseldikçe, herbir kütüğün ve bütün zincirin hesaplama zorluğu da artıyor. Alice&#8217;in işlemini içeren kütükten sonra bulunan kütükler daha uzun bir zincire daha fazla hesaplama yükleyerek ek teminat oluyor. Adet olarak, altıdan daha fazla onayı olan herhangi bir kütük değiştirilemez kabul edilir çünkü altı kütüğü geçersiz kılıp tekrar hesaplamak için muazzam bir hesaplama miktarı gerekir. Madencilik yönteminin nasıl güven oluşturduğunu ayrıntılı olarak <a href="#ch8">[ch8]</a> de inceleyeceğiz.</p></div>
+<div class="paragraph" id="block-alice1"><p>Alice&#8217;in işlemi #277316  numaralı bloğa dahil edilmiş.
+<span class="image">
+<img src=":images/msbt_0209.png" alt="Alice&#8217;s transaction included in a block" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_işlemin_harcanması">İşlemin Harcanması</h3>
+<div class="paragraph"><p>Artık Alice&#8217;in işlemi bir kütüğün parçası olarak kütükzincirine gömüldüğüne göre, bu işlem ortak bitcoin defterinin bir parçası ve bütün bitcoin uygulamalarına görünür durumda. Her bitcoin istemcisi bağımsız olarak bu işlemi doğru ve harcanabilir olarak teyit edebilir. Tam-liste istemciler bu paranın kaynağını ilk kez bir kütüğün içinde yaratılmasından itibaren işlemden işleme adım adım Bob&#8217;un adresine ulaşana kadar takip edebilir. Tüysiklet işlemciler basitleştirilmiş ödeme doğrulaması (bkz <a href="#spv_nodes">[spv_nodes]</a>) denilen yöntemle işlemin kütükzincirinde olduğunu ve kendisinden sonra birçok kütük bulunduğunu kontrol eder, böylece ağın bu işlemi doğru kabul ettiğinden emin olur.</p></div>
+<div class="paragraph"><p>Bob, bu çıktıları girdileri olarak referanslayan kendine ait işlemler yaratarak ve bunlara yeni sahip atayarak, artık bu ve diğer işlemlerin çıktısını harcayabilir. Örnek olarak, Bob  Alice&#8217;in kahve ödemesinden gelen değeri aktararak bir taşerona veya tedarikçiye ödeme yapabilir. Büyük ihtimalle, Bob&#8217;un bitcoin yazılımı belki günlük cirosunu tek bir işleme aktararak, birçok küçük ödemeyi büyük bir ödeme içerisinde birleştirecektir. Bu birçok farklı ödemeyi dükkanın "kontrol" hesabı olarak kullanılan tek bir adrese taşıyacaktır. İşlemlerin birleştirilmesi ile ilgili bir diyagram için, <a href="#transaction-aggregating">[transaction-aggregating]</a> 'a bakınız.</p></div>
+<div class="paragraph"><p>Bob, Alice ve diğer müşterilerden aldığı ödemeleri harcadıkça işlem zincirini büyütmekte, bunlar da herkesin gördüğü ve güvendiği halka açık kütükzinciri defterine eklenmektedir. Şimdi Bob&#8217;un web tasarımcısı Bangalore&#8217;lu Gopesh&#8217;e yeni bir websitesi için ödeme yaptığını varsayalım. İşlem zinciri böyle görünecektir <a href="#block-alice2">[block-alice2]</a>.</p></div>
+<div class="paragraph" id="block-alice2"><p>Gopesh&#8217;ten Joe&#8217;ya kadar bir işlem zincirinin parçası olarak Alice&#8217;in işlemi
+<span class="image">
+<img src=":images/msbt_0210.png" alt="Alice&#8217;s transaction as part of a transaction chain" />
+</span></p></div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:55:51 UTC
+</div>
+</div>
+</body>
+</html>

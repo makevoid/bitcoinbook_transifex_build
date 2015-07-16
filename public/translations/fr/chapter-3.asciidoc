@@ -1,0 +1,1286 @@
+[[ch03_bitcoin_client]]
+== Le client bitcoin
+
+=== Bitcoin Core: l'implémentation de référence
+
+((("bitcoin client", id="ix_ch03-asciidoc0", range="startofrange")))((("bitcoin client","Bitcoin Core", id="ix_ch03-asciidoc1", range="startofrange")))((("Bitcoin Core client", id="ix_ch03-asciidoc2", range="startofrange")))((("Satoshi client", see="Bitcoin Core client")))Vous pouvez télécharger le client de référence  _Bitcoin Core_, aussi connu sous le nom de  "Satoshi client," sur bitcoin.org. Le client de référence implémente tous les aspects du système bitcoin, ce qui comprend le porte-monnaie, un moteur de vérification des transactions avec une copie complète de tout le registre de transactions (blockchain), ainsi qu'une noeud réseau complet du réseau peer-to-peer bitcoin.
+
+Sur la page((("bitcoin.org","Bitcoin Core, downloading"))) http://bitcoin.org/en/choose-your-wallet[Choisir votre portefeuille Bitcoin], choisissez Bitcoin core afin de télécharger le client de référence. Vous téléchargerez un installateur exécutable en fonction de votre système d'exploitation. Pour Window il s'agit soit d'une archive au format ZIP soit d'un .exe exécutable. Pour Mac OS il s'agit d'une image disque .dmg. Pour linux il s'agit soit d'une package PPA pour Ubuntu soit d'une archive tar.gz. La page bitcoin.org listant les clients bitcoin recommandés est présentée dans <<bitcoin-choose-client>>.
+
+[[bitcoin-choose-client]]
+.Choisir un client sur bitcoin.org
+image::images/msbt_0301.png["bitcoin choose client"]
+
+==== Lancement de Bitcoin Core pour la première fois
+
+((("Bitcoin Core client","running")))Si vous téléchargez un installateur tel qu'un .exe, .dmg ou PPA, vous pouvez l'installer de la même façon que n'importe quelle application sur votre système d'exploitation. Pour Windows, lancez le .exe et suivez les instructions pas-à-pas. Pour Mac OS, lancez le .dmg et placez l'icône Bitcoin-Qt dans votre répertoire _Applications_. Pour Ubuntu, double-cliquez sur le PPA dans votre explorateur de fichiers et il ouvrira le gestionnaire d'applications afin d'installer le package. Une fois l'installation terminée vous devriez avoir une nouvelle application nommée Bitcoin-Qt dans votre liste d'applications. Double-cliquez sur l'icône afin de démarrer le client bitcoin. 
+
+La première fois que vous lancez Bitcoin Core il commencera par télécharger la blockchain, un processus qui peut prendre plusieurs jours (voir <<bitcoin-qt-firstload>>).  Laissez le tourner en tâche de fond jusqu'à ce qu'il affiche "Synchronisé" au lieu de "Désynchronisé" à coté du solde.
+
+[[bitcoin-qt-firstload]]
+.Ecran de Bitcoin Core durant la synchronisation de la blockchain
+image::images/msbt_0302.png["bitcoin-qt first run"]
+
+[TIP]
+====
+((("Bitcoin Core client","disk space requirement for")))((("blockchains","synchronizing for Bitcoin Core")))((("disk space requirement for Bitcoin Core")))Bitcoin Core conserve une copie complète du registre de transactions (blockchain), contenant toutes les transactions ayant eu lieu sur le réseau bitcoin depuis son lancement en 2009. Cette masse de donnée s'élève à quelques giga-octets (approximativement 16 Go fin 2013) et est téléchargée progressivement sur plusieurs jours. Le client ne sera pas capable d'opérer des transactions ou de mettre à jour son solde tant que que la blockchain complète n'est pas téléchargée. Durant tout ce temps, le client affichera l'état "désynchronisé" en face du solde et affichera "En cours de synchronisation" en bas de la fenêtre. Assurez-vous que vous disposez d'assez d'espace disque et de bande passante pour compléter la synchronisation initiale. 
+====
+ 
+
+
+
+==== Compiler Bitcoin Core depuis le Code Source
+
+((("Bitcoin Core client","compiling from source code", id="ix_ch03-asciidoc3", range="startofrange")))((("bitcoind client", see="Bitcoin Core client")))Pour les développeurs, il existe également la possibilité de télécharger le code source complet en archive ZIP ou celle de cloner le dépôt GitHub de référence. ((("Bitcoin Core client","source code, downloading")))((("GitHub, downloading Bitcoin Core from"))) Sur la https://github.com/bitcoin/bitcoin[page Bitcoin de GitHub], sélectionnez "Download ZIP" sur la droite ou utilisez la commande git pour créer une copie locale du code source sur votre système. Dans l'exemple suivant, nous clonons le code source à partir d'une commande Unix, sous Linux ou Mac OS:
+
+----
+$ git clone https://github.com/bitcoin/bitcoin.git
+Cloning into 'bitcoin'...
+remote: Counting objects: 31864, done.
+remote: Compressing objects: 100% (12007/12007), done.
+remote: Total 31864 (delta 24480), reused 26530 (delta 19621)
+Receiving objects: 100% (31864/31864), 18.47 MiB | 119 KiB/s, done.
+Resolving deltas: 100% (24480/24480), done.
+$
+----
+
+[TIP]
+====
+Les instructions et résultats peuvent varier d'une version à l'autre. Suivez la documentation jointe au code même si elle diffère des instructions ci-présentes, et attendez-vous à ce que les résultats sur votre écran soient légèrement différents des exemples contenus ici. 
+====
+
+Quand la copie est terminée, vous disposerez d'une copie complète du code source dans le répertoire _bitcoin_. Allez dans ce répertoire en tapant +cd bitcoin+ en ligne de commande:
+
+
+----
+$ cd bitcoin
+----
+ 
+Par défaut, la copie locale sera synchronisée avec le code le plus récent, qui peut potentiellement correspondre à une version non-stable ou bêta de bitcoin. Avant de compiler le code, sélectionnez une version spécifique en effectuant un checkout d'un((("release tags"))) release _tag_. Les tags sont utilisés par les développeurs pour marquer des version spécifiques du code source. Afin de découvrir les tags disponible, nous utilisons la commande   +git tag+:
+
+----
+$ git tag
+v0.1.5
+v0.1.6test1
+v0.2.0
+v0.2.10
+v0.2.11
+v0.2.12
+
+[... beaucoup d'autres tags ...]
+
+v0.8.4rc2
+v0.8.5
+v0.8.6
+v0.8.6rc1
+v0.9.0rc1
+----
+
+La liste de tags montre toutes les numéros de version de bitcoin. Par convention,((("release candidates"))) les _release candidates_, qui sont destinées au test, ont le suffixe "rc". Les releases stables pouvant être utilisée en production ne possèdent pas de suffixe. Dans la liste précédente, sélectionnez la version la plus récente, qui à l'heure ou j'écris est la  v0.9.0rc1. Pour synchroniser le code local avec cette version, utilisez la commande +git checkout+:
+
+----
+$ git checkout v0.9.0rc1
+Note: checking out 'v0.9.0rc1'.
+
+HEAD is now at 15ec451... Merge pull request #3605
+$
+----
+
+
+((("Bitcoin Core client","documentation")))Le code source inclut la documentation qui se trouve dans plusieurs fichiers. Lisez la documentation principale qui se trouve dans le fichier _README.md_ du répertoire bitcoin en tapant +more README.md+ en ligne de commandes et en appyant sur la barre d'espace pour passer à la page suivante. Dans ce chapitre nous compilerons le client bitcoin en ligne de commandes, également connu sous le nom de +bitcoind+ sur Linux. Lisez les instructions pour la compilation de bitcoind sur votre plateforme en tapant +more doc/build-unix.md+. D'autres instructions pour Mac OS et Windows peuvent être trouvées dans le répertoire _doc_, respectivement  _build-osx.md_ ou _build-msw.md_. 
+
+Passez en revue attentivement les pré-requis de la compilation qui constituent la première partie de la documentation. Ils correspondent à des librairies qui doivent être présentes sur votre système avant que vous puissiez débuter la compilation de bitcoin. Si ces pré-requis sont manquants, le processus échouera avec une erreur. Si cela arrive parce que vous avez omis un pré-requis, vous pouvez l'installez puis reprendre le processus là où vous l'aviez laissé. Une fois les pré-requis installés, vous démarrez la compilation en générant un ensemble de scripts de compilation en utilisant le script -autogen.sh_.
+
+[TIP]
+====
+Le processus de compilation de Bitcoin Core a été changé depuis la version 0.9 pour utiliser les système autogen/configure/make. Les versions antérieures utilisent un simple makefile et fonctionnent d'une manière légèrement différente de l'exemple montré ici. Suivez les instructions relatives à la version que vous souhaitez compiler. Le système autogen/configure/make introduit dans la 0.9 est probablement le système qui sera utilisé dans toutes les versions futures et est également le système utilisés dans les exemples qui suivent.
+====
+
+----
+$ ./autogen.sh 
+configure.ac:12: installing `src/build-aux/config.guess'
+configure.ac:12: installing `src/build-aux/config.sub'
+configure.ac:37: installing `src/build-aux/install-sh'
+configure.ac:37: installing `src/build-aux/missing'
+src/Makefile.am: installing `src/build-aux/depcomp'
+$ 
+----
+
+((("autogen.sh script")))Le script _autogen.sh_ crée un ensemble de scripts de configuration qui iront interroger votre sytème  pour découvrir les paramètres à appliquer et s'assurer que vous disposez de toutes les librairies nécessaires pour compiler le code. Le plus important d'entre eux est le((("configure script"))) +configure+ script qui offre de multiple options pour configurer le processus de compilation. Tapez +./configure --help+ pour voir les différentes options:
+
+----
+$ ./configure --help
+
+`configure' configures Bitcoin Core 0.9.0 to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version affiche les informations sur la version et quitte
+
+[... many more options and variables are displayed below ...]
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+
+[... plus d'options ...]
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to <info@bitcoin.org>.
+
+$
+----
+
+Le script +configure+ vous permet d'activer ou de désactiver certaines fonctionnalités de bitcoind en utilisant les flags  +--enable-FONCTIONNALITE+ et +--disable-FONCTIONNALITE+ ou FONCTIONNALITE est remplacé par le nom de la fonctionnalité comme listé dans l'aide. Dans ce chapitre nous compilerons un client bitcoind avec toutes les fonctionnalités par défaut. Nous n'utiliserons pas les flags de configuration, mais vous pouvez les étudier afin de comprendre quelles fonctionnalités sont optionnelles sur le client. Lancez le script +configure + pour découvrir automatiquement toutes les librairies nécessaires et créer un script de build adapté pour votre système :
+
+----
+$ ./configure 
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+
+[... many more system features are tested ...]
+
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/test/Makefile
+config.status: creating src/qt/Makefile
+config.status: creating src/qt/test/Makefile
+config.status: creating share/setup.nsi
+config.status: creating share/qt/Info.plist
+config.status: creating qa/pull-tester/run-bitcoind-for-test.sh
+config.status: creating qa/pull-tester/build-tests.sh
+config.status: creating src/bitcoin-config.h
+config.status: executing depfiles commands
+$
+----
+
+Si tout se passe bien, la commande configure+ créera des scripts de build adaptés qui nous permettrons de compiler bitcoind. Si il subsiste des librairies manquantes ou des erreurs, la commande +configure+ échouera avec une erreur au lieu de créer les scripts de build. Si une erreur apparait, il s'agit probablement d'une librairie manquante ou non compatible. Relisez encore la documentation  afin de vous assurer que vous installez les bon pré-requis. Ensuite, relancez la commande +configure+ et voyez si cela corrige l'erreur. La prochaine étape consiste en la compilation du code, étape qui peut prendre jusqu'a une heure pour s'exécuter. Pendant la compilation vous devriez voir des information apparaitre toutes les secondes ou toutes les minutes, ou une erreur si quelque chose se passe mal. Le processus de compilation peut être repris a n'importe quel moment si il est interrompu. Tapez +make+ pour commencer à compiler:
+
+----
+$ make
+Making all in src
+make[1]: Entering directory `/home/ubuntu/bitcoin/src'
+make  all-recursive
+make[2]: Entering directory `/home/ubuntu/bitcoin/src'
+Making all in .
+make[3]: Entering directory `/home/ubuntu/bitcoin/src'
+  CXX    addrman.o
+  CXX    alert.o
+  CXX    rpcserver.o
+  CXX    bloom.o
+  CXX    chainparams.o
+
+[... beaucoup d'autres messages de compilation ...]
+
+  CXX    test_bitcoin-wallet_tests.o
+  CXX    test_bitcoin-rpc_wallet_tests.o
+  CXXLD  test_bitcoin
+make[4]: Leaving directory `/home/ubuntu/bitcoin/src/test'
+make[3]: Leaving directory `/home/ubuntu/bitcoin/src/test'
+make[2]: Leaving directory `/home/ubuntu/bitcoin/src'
+make[1]: Leaving directory `/home/ubuntu/bitcoin/src'
+make[1]: Entering directory `/home/ubuntu/bitcoin'
+make[1]: Nothing to be done for `all-am'.
+make[1]: Leaving directory `/home/ubuntu/bitcoin'
+$ 
+----
+
+Si tout se passe bien, bitcoind est désormais compilé. La dernière étape est l'installation de l'exécutable bitcoind en utilisant la commande +make+ :
+
+----
+$ sudo make install
+Making install in src
+Making install in .
+ /bin/mkdir -p '/usr/local/bin'
+  /usr/bin/install -c bitcoind bitcoin-cli '/usr/local/bin'
+Making install in test
+make  install-am
+ /bin/mkdir -p '/usr/local/bin'
+  /usr/bin/install -c test_bitcoin '/usr/local/bin'
+$
+----
+
+Vous pouvez vous assurer que bitcoin est correctement installé en demandant au système le chemin des deux exécutable comme suit:
+
+[source,bash]
+----
+$ which bitcoind
+/usr/local/bin/bitcoind
+
+$ which bitcoin-cli
+/usr/local/bin/bitcoin-cli
+----
+
+L'installation par défaut de bitcoind se fait dans le répertoire _/usr/local/bin_. Quand vous lancez bitcoind pour la première fois, il vous demandera de créer un fichier de configuration contenant un mot de passe sécurisé pour l'interface JSON-RPC. Lancez bitcoind en tapant +bitcoind+ depuis le terminal:
+
+----
+$ bitcoind
+Error: To use the "-server" option, you must set a rpcpassword in the configuration file:
+/home/ubuntu/.bitcoin/bitcoin.conf
+Il est recommandé d'utiliser le mot de passe aléatoire suivant:
+rpcuser=bitcoinrpc
+rpcpassword=2XA4DuKNCbtZXsBQRRNDEwEY2nM6M4H9Tx5dFjoAVVbK
+(vous n'avez pas besoin de retenir ce mot de passe)
+Le nom d'utilisateur et le mot de passe NE DOIVENT PAS être les mêmes.
+Si ce fichier n'existe pas, créez-en un avec des permissions de lecture seulement.
+Il est aussi recommandé de configurer une alerte pour être notifié des éventuels problèmes à l'aide de l'option +alertnotify+;
+par exemple: alertnotify=echo %s | mail -s "Bitcoin Alert" admin@foo.com
+----
+
+Editez le fichier de configuration à l'aide de votre éditeur préféré et mettez à jour les paramètres en remplaçant le mot de passe par un mot de passe complexe comme recommandé par bitcoind. _N'utilisez pas_ le mot de passe utilisé ici. Créez un fichier dans le répertoire _.bitcoin_ nommé _.bitcoin/bitcoin.conf_ et rentrez un nom d'utilisateur et un mot de passe:
+
+[source,ini]
+----
+rpcuser=bitcoinrpc
+rpcpassword=2XA4DuKNCbtZXsBQRRNDEwEY2nM6M4H9Tx5dFjoAVVbK
+----
+
+Durant l'édition du fichier de configuration, vous souhaiterez peut-être ajouter quelques options, telles que +txindex+ (voir <<txindex>>). Pour un listing complet des options disponibles, tapez +bitcoind -- help+.
+
+Lancez maintenant le client Bitcoin Core. La première fois que vous le lancez, il reconstruira la blockchain bitcoin en téléchargeant les blocs. Il s'agit d'un fichier de plusieurs giga-octets et il prendra 2 jours en moyenne pour être totalement téléchargé. Vous pouvez raccourcir le ((("blockchains","downloading with bittorrent clients")))temps d'initialisation en téléchargeant une copie partielle de la blockchain en utilisant un client BitTorrent depuis http://bit.ly/1qkLNyh[SourceForge]. 
+
+Lancez bitcoind en tâche de fond avec l'option +-daemon+:(((range="endofrange", startref="ix_ch03-asciidoc3")))
+
+----
+$ bitcoind -daemon
+
+Bitcoin version v0.9.0rc1-beta (2014-01-31 09:30:15 +0100)
+Using OpenSSL version OpenSSL 1.0.1c 10 May 2012
+Default data directory /home/bitcoin/.bitcoin
+Using data directory /bitcoin/
+Using at most 4 connections (1024 file descriptors available)
+init message: Verifying wallet...
+dbenv.open LogDir=/bitcoin/database ErrorFile=/bitcoin/db.log
+Bound to [::]:8333
+Bound to 0.0.0.0:8333
+init message: Loading block index...
+Opening LevelDB in /bitcoin/blocks/index
+Opened LevelDB successfully
+Opening LevelDB in /bitcoin/chainstate
+Opened LevelDB successfully
+
+[... d'autres messages de démarrage ...]
+
+----
+
+=== Utilisation de l'API JSON-RPC de BitcoinCore depuis la ligne de commande
+
+((("Bitcoin Core client","JSON-RPC API for", id="ix_ch03-asciidoc5", range="startofrange")))((("Bitcoin Core client","using from command line", id="ix_ch03-asciidoc6", range="startofrange")))((("bitcoin-cli command line helper", id="ix_ch03-asciidoc7", range="startofrange")))Le client Bitcoin Core implémente une interface JSON-RPC qui peut également être interrogée avec l'outil en ligne de commande +bitcoin-cli+. La ligne de commande nous permet d'expérimenter de façon interactive les fonctionnalités qui sont également disponibles au travers de l'API. Pour commencer, utilisez la commande +help+ pour consulter la liste des commande RPC bitcoin disponibles:
+
+[[bitcoind_commands]]
+
+----
+$ bitcoin-cli help
+addmultisigaddress nrequired ["key",...] ( "account" )
+addnode "node" "add|remove|onetry"
+backupwallet "destination"
+createmultisig nrequired ["key",...]
+createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,...}
+decoderawtransaction "hexstring"
+decodescript "hex"
+dumpprivkey "bitcoinaddress"
+dumpwallet "filename"
+getaccount "bitcoinaddress"
+getaccountaddress "account"
+getaddednodeinfo dns ( "node" )
+getaddressesbyaccount "account"
+getbalance ( "account" minconf )
+getbestblockhash
+getblock "hash" ( verbose )
+getblockchaininfo
+getblockcount
+getblockhash index
+getblocktemplate ( "jsonrequestobject" )
+getconnectioncount
+getdifficulty
+getgenerate
+gethashespersec
+getinfo
+getmininginfo
+getnettotals
+getnetworkhashps ( blocks height )
+getnetworkinfo
+getnewaddress ( "account" )
+getpeerinfo
+getrawchangeaddress
+getrawmempool ( verbose )
+getrawtransaction "txid" ( verbose )
+getreceivedbyaccount "account" ( minconf )
+getreceivedbyaddress "bitcoinaddress" ( minconf )
+gettransaction "txid"
+gettxout "txid" n ( includemempool )
+gettxoutsetinfo
+getunconfirmedbalance
+getwalletinfo
+getwork ( "data" )
+help ( "command" )
+importprivkey "bitcoinprivkey" ( "label" rescan )
+importwallet "filename"
+keypoolrefill ( newsize )
+listaccounts ( minconf )
+listaddressgroupings
+listlockunspent
+listreceivedbyaccount ( minconf includeempty )
+listreceivedbyaddress ( minconf includeempty )
+listsinceblock ( "blockhash" target-confirmations )
+listtransactions ( "account" count from )
+listunspent ( minconf maxconf  ["address",...] )
+lockunspent unlock [{"txid":"txid","vout":n},...]
+move "fromaccount" "toaccount" amount ( minconf "comment" )
+ping
+sendfrom "fromaccount" "tobitcoinaddress" amount ( minconf "comment" "comment-to" )
+sendmany "fromaccount" {"address":amount,...} ( minconf "comment" )
+sendrawtransaction "hexstring" ( allowhighfees )
+sendtoaddress "bitcoinaddress" amount ( "comment" "comment-to" )
+setaccount "bitcoinaddress" "account"
+setgenerate generate ( genproclimit )
+settxfee amount
+signmessage "bitcoinaddress" "message"
+signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )
+stop
+submitblock "hexdata" ( "jsonparametersobject" )
+validateaddress "bitcoinaddress"
+verifychain ( checklevel numblocks )
+verifymessage "bitcoinaddress" "signature" "message"
+walletlock
+walletpassphrase "passphrase" timeout
+walletpassphrasechange "oldpassphrase" "newpassphrase"
+----
+
+
+==== Obtenir des information sur le statut du client Bitcoin Core
+
+Cmmande: +getinfo+
+
+((("Bitcoin Core client","client status, getting")))((("bitcoin-cli command line helper","getinfo command")))((("client status, getting")))((("getinfo command (bitcoin-cli)")))La commande RPC bitcoin +getingo+ affiche des informations à propos du statut du noeud bitcoin, le portefeuille, et la base de données de la blockchain. Utilisez +bitcoin-cli+ pour la lancer:
+
+[source,bash]
+----
+$ bitcoin-cli getinfo
+----
+[source,json]
+----
+{
+    "version" : 90000,
+    "protocolversion" : 70002,
+    "walletversion" : 60000,
+    "balance" : 0.00000000,
+    "blocks" : 286216,
+    "timeoffset" : -72,
+    "connections" : 4,
+    "proxy" : "",
+    "difficulty" : 2621404453.06461525,
+    "testnet" : false,
+    "keypoololdest" : 1374553827,
+    "keypoolsize" : 101,
+    "paytxfee" : 0.00000000,
+    "errors" : ""
+}
+----
+
+Les données sont retournées au format((("JavaScript Object Notation (JSON)"))) JavaScript Object Notation (JSON), un format facilement "consommable" par tous les langages de programmations mais également très lisible. Parmi ces données nous voyons les numéros de version du client bitcoin(90000), du protocole (70002), et du portefeuille(60000). Nous voyons le solde actuel contenu dans le portefeuille, qui est égal à zéro. Nous voyons l'actuelle hauteur de bloc, qui nous montre combien de blocs sont connus par ce client (286216). Nous voyons également des statistiques variées concernant le réseau bitcoin et les paramètres du client. Nous explorerons ces paramètres en détail dans le reste de ce chapitre. 
+
+[TIP]
+====
+Cela prendra du temps, peut-être plus d'une journée, pour que le client bitcoind "rattrape" la hauteur actuelle de la blockchain le temps qu'il télécharge les blocs provenant d'autres clients bitcoin. Vous pouvez consulter l'état d'avancement en utilisant +getinfo+ pour connaitre exactement le nombre de blocs du client.
+====
+
+==== Configuration et cryptage du portefeuile
+
+Commandes: +encryptwallet+, +walletpassphrase+
+
+((("bitcoin-cli command line helper","wallet setup with")))((("bitcoin-cli command line helper","walletpassphrase command")))((("encryptwallet command (bitcoin-cli)")))((("walletpassphrase command (bitcoin-cli)")))((("wallets","setup from command line")))Avant de procéder à la création de clés et à d'autres commandes, vous utiliserez la commande +encryptwallet+ avec le mot de passe "foo". N'oubliez pas bien sûr de remplacer "foo" par un mot de passe complexe !
+
+----
+$ bitcoin-cli encryptwallet foo
+wallet encrypted; Bitcoin server stopping, restart to run with encrypted wallet. The keypool has been flushed, you need to make a new backup.
+$
+----
+
+Vous pouvez vérifier que le portefeuille a bien été crypté en utilisant encore la commande +getinfo+. Cette fois-ci vous remarquerez une nouvelle entrée nommée +unlocked_until+. Il s'agit d'un compteur montrant combien de temps le mot de passe permettant le décryptage est enregistré en mémoire, et combien de temps le portefeuille est déverrouillé.  La première fois il sera à zero, cela veut dire que le portefeuille est verrouillé:
+
+[source,bash]
+----
+$ bitcoin-cli getinfo
+----
+[source,json]
+----
+{
+    "version" : 90000,
+
+#[... autres informations...]
+
+    "unlocked_until" : 0,
+    "errors" : ""
+}
+$
+----
+
+Pour déverrouiller le portefeuille, utilisez la commande +walletpassphrase+ qui prend deux paramètres—le mot de passe et un nombre de secondes au bout desquelles le portefeuille sera verrouillé à nouveau (une minuterie):
+
+----
+$ bitcoin-cli walletpassphrase foo 360
+$
+----
+
+Vous pouvez vous assurer que le portefeuille est déverrouillé et voir l'état de la minuterie en tapant +getinfo+ à nouveau:
+
+[source,bash]
+----
+$ bitcoin-cli getinfo
+----
+[source,json]
+----
+{
+    "version" : 90000,
+
+#[... autres informations ...]
+
+    "unlocked_until" : 1392580909,
+    "errors" : ""
+}
+----
+
+==== Sauvegarde du portefeuille, export au format texte et restauration
+
+Commandes: +backupwallet+, +importwallet+, +dumpwallet+
+
+((("backups","of wallets")))((("backupwallet command (bitcoin-cli)")))((("bitcoin-cli command line helper","backupwallet command")))((("bitcoin-cli command line helper","dumpwallet command")))((("bitcoin-cli command line helper","importwallet command")))((("dumpwallet command (bitcoin-cli)")))((("importwallet command (bitcoin-cli)")))((("wallets","backing up")))((("wallets","dumping into plain text")))((("wallets","restoring")))La prochaine étape consiste à nous entrainer à créer un fichier de sauvegarde du portefeuille pour ensuite le restaurer à partir de ce même fichier. Utilisez la commande +backupwallet+ pour la sauvegarde en spécifiant le nom du fichier de destination en paramètre. Ici nous sauvegardons le portefeuille dans un fichier nommé _wallet.backup_:
+
+
+----
+$ bitcoin-cli backupwallet wallet.backup
+$
+----
+
+Maintenant, pour restaurer le fichier de sauvegarde, utilisez la commande +importwallet+. Si votre portefeuille est verrouillé, vous devrez d'abord le déverrouiller (voir +walletpassphrase+ dans la section précédente) pour importer le fichier de sauvegarde:
+
+
+----
+$ bitcoin-cli importwallet wallet.backup
+$
+----
+
+La commande +dumpwallet+ peut être utilisée pour exporter le portefeuille dans un fichier texte lisible par un humain:
+
+----
+$ bitcoin-cli dumpwallet wallet.txt
+$ more wallet.txt
+# Wallet dump created by Bitcoin v0.9.0rc1-beta (2014-01-31 09:30:15 +0100)
+# * Created on 2014-02- 8dT20:34:55Z
+# * Best block at time of backup was 286234 (0000000000000000f74f0bc9d3c186267bc45c7b91c49a0386538ac24c0d3a44),
+#   mined on 2014-02- 8dT20:24:01Z
+
+KzTg2wn6Z8s7ai5NA9MVX4vstHRsqP26QKJCzLg4JvFrp6mMaGB9 2013-07- 4dT04:30:27Z change=1 # addr=16pJ6XkwSQv5ma5FSXMRPaXEYrENCEg47F
+Kz3dVz7R6mUpXzdZy4gJEVZxXJwA15f198eVui4CUivXotzLBDKY 2013-07- 4dT04:30:27Z change=1 # addr=17oJds8kaN8LP8kuAkWTco6ZM7BGXFC3gk
+[... beaucoup d'autres clés ...]
+
+$
+----
+
+==== Adresses du portefeuille et reception des transactions
+
+Commandes: getnewaddress, getreceivedbyaddress, listtransactions, getaddressesbyaccount, getbalance
+
+((("addresses", id="ix_ch03-asciidoc9", range="startofrange")))((("bitcoin-cli command line helper","getaddressesbyaccount command", id="ix_ch03-asciidoc10", range="startofrange")))((("bitcoin-cli command line helper","getbalance command", id="ix_ch03-asciidoc11", range="startofrange")))((("bitcoin-cli command line helper","getnewaddress command", id="ix_ch03-asciidoc12", range="startofrange")))((("bitcoin-cli command line helper","getreceivedbyaddress command", id="ix_ch03-asciidoc13", range="startofrange")))((("bitcoin-cli command line helper","listtransactions command", id="ix_ch03-asciidoc14", range="startofrange")))((("getaddressesbyaccount command (bitcoin-cli)", id="ix_ch03-asciidoc15", range="startofrange")))((("getbalance command (bitcoin-cli)", id="ix_ch03-asciidoc16", range="startofrange")))((("getnewaddress command (bitcoin-cli)", id="ix_ch03-asciidoc17", range="startofrange")))((("getreceivedbyaddress command (bitcoin-cli)", id="ix_ch03-asciidoc18", range="startofrange")))((("listtransactions command (bitcoin-cli)", id="ix_ch03-asciidoc19", range="startofrange")))((("transactions","wallets, receiving", id="ix_ch03-asciidoc20", range="startofrange")))((("wallets","addresses of", id="ix_ch03-asciidoc21", range="startofrange")))((("wallets","receiving transactions", id="ix_ch03-asciidoc22", range="startofrange")))Le client bitcoin de référence maintient un pool d'adresses dont la taille est spécifiée par +keypoolsize+ quand vous utilisez la commande +getinfo+. Ces adresses sont générées automatiquement et peuvent être utilisées comme des adresses publique de réception ou des adresse utilisées pour la monnaie d'une transaction. Pour récupérer une de ces adresses, utilisez la commande +getnewaddress+:
+
+
+----
+$ bitcoin-cli getnewaddress 
+1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL
+----
+
+Maintenant nous pouvons utiliser cette adresse pour envoyer de petits montants en bitcoin vers notre portefeuille depuis un portefeuille externe (en supposant que vous disposiez d'un peu de bitcoin sur un échange, un portefeuille web ou un autre client bitcoind). Pour cet exemple nous envoyons 50 millibits (0.050 bitcoin) vers l'adresse que nous avons récupérée.  
+
+Nous pouvons maintenant interroger le client bitcoind sur le montant reçu par cette adresse, et spécifier combien de confirmations sont requises avant que le montant puisse être effectivement pris en compte dans le solde. Pour cet exemple, nous spécifions zéro confirmations. Quelque secondes après avoir envoyé les bitcoins depuis l'autre portefeuille, nous pourront les voir dans notre portefeuille. Nous utilisons +getreceivedbyaddress+ avec l'adresse et le nombre de confirmations à zéro (0):
+
+
+----
+$ bitcoin-cli getreceivedbyaddress 1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL 0
+0.05000000
+----
+
+Si nous omettons le zero à la fin de cette commande, nous ne pourrons voir que les montant ayant au moins  +minconf+ confirmations, +minconf+ étant le paramètre correspondant au minimum de confirmations avant que la transaction soit listée dans notre solde. Le paramètre +minconf+ est spécifié dans le fichier de configuration de bitcoind. Parce que la transaction envoyant ces bitcoins vient tout juste d'être effectuée, elle n'a pas encore été confirmée et donc nous verrons un solde à zéro:
+
+
+----
+$ bitcoin-cli getreceivedbyaddress 1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL 
+0.00000000
+----
+
+Les transactions reçues par le portefeuille entier peuvent également être affichées en utilisant la commande +listtransactions+:
+
+
+----
+$ bitcoin-cli listtransactions 
+----
+[source,json]
+----
+[
+    {
+        "account" : "",
+        "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+        "category" : "receive",
+        "amount" : 0.05000000,
+        "confirmations" : 0,
+        "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+        "time" : 1392660908,
+        "timereceived" : 1392660908
+    }
+]
+
+----
+
+Nous pouvons lister toutes les adresses du portefeuille en utilisant la commande +getaddressesbyaccount+:
+
+
+----
+$ bitcoin-cli getaddressesbyaccount ""
+----
+[source,json]
+----
+[
+    "1LQoTPYy1TyERbNV4zZbhEmgyfAipC6eqL",
+    "17vrg8uwMQUibkvS2ECRX4zpcVJ78iFaZS",
+    "1FvRHWhHBBZA8cGRRsGiAeqEzUmjJkJQWR",
+    "1NVJK3JsL41BF1KyxrUyJW5XHjunjfp2jz",
+    "14MZqqzCxjc99M5ipsQSRfieT7qPZcM7Df",
+    "1BhrGvtKFjTAhGdPGbrEwP3xvFjkJBuFCa",
+    "15nem8CX91XtQE8B1Hdv97jE8X44H3DQMT",
+    "1Q3q6taTsUiv3mMemEuQQJ9sGLEGaSjo81",
+    "1HoSiTg8sb16oE6SrmazQEwcGEv8obv9ns",
+    "13fE8BGhBvnoy68yZKuWJ2hheYKovSDjqM",
+    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+    "1KHUmVfCJteJ21LmRXHSpPoe23rXKifAb2",
+    "1LqJZz1D9yHxG4cLkdujnqG5jNNGmPeAMD"
+]
+----
+
+Au final, la commande +getbalance+ montrera le solde total du portefeuille en ajoutant toutes les transactions confirmées avec au moins +minconf+ confirmations:
+
+
+----
+$ bitcoin-cli getbalance
+0.05000000
+----
+
+[TIP]
+====
+((("getbalance command (bitcoin-cli)","unconfirmed transactions and")))((("unconfirmed transactions","getbalance command and")))Si la transaction n'est pas encore confirmée, le solde retourné par +getbalance+ sera égal a zéro. La configuration de l'option "minconf" détermine le nombre minimum de confirmations requises avant qu'une transaction soit prise en compte dans le solde.(((range="endofrange", startref="ix_ch03-asciidoc22")))(((range="endofrange", startref="ix_ch03-asciidoc21")))(((range="endofrange", startref="ix_ch03-asciidoc20")))(((range="endofrange", startref="ix_ch03-asciidoc19")))(((range="endofrange", startref="ix_ch03-asciidoc18")))(((range="endofrange", startref="ix_ch03-asciidoc17")))(((range="endofrange", startref="ix_ch03-asciidoc16")))(((range="endofrange", startref="ix_ch03-asciidoc15")))(((range="endofrange", startref="ix_ch03-asciidoc14")))(((range="endofrange", startref="ix_ch03-asciidoc13")))(((range="endofrange", startref="ix_ch03-asciidoc12")))(((range="endofrange", startref="ix_ch03-asciidoc11")))(((range="endofrange", startref="ix_ch03-asciidoc10")))(((range="endofrange", startref="ix_ch03-asciidoc9")))
+====
+
+
+==== Décodage et exploration des transactions
+
+Commandes: +gettransaction+, +getrawtransaction+, +decoderawtransaction+
+
+((("bitcoin-cli command line helper","decoderawtransaction command", id="ix_ch03-asciidoc23", range="startofrange")))((("bitcoin-cli command line helper","getrawtransaction command", id="ix_ch03-asciidoc24", range="startofrange")))((("bitcoin-cli command line helper","gettransaction command", id="ix_ch03-asciidoc25", range="startofrange")))((("decoderawtransaction command (bitcoin-cli)", id="ix_ch03-asciidoc26", range="startofrange")))((("getrawtransaction command (bitcoin-cli)", id="ix_ch03-asciidoc27", range="startofrange")))((("gettransaction command (bitcoin-cli)", id="ix_ch03-asciidoc28", range="startofrange")))((("transactions","decoding", id="ix_ch03-asciidoc29", range="startofrange")))((("transactions","exploring", id="ix_ch03-asciidoc30", range="startofrange")))Nous explorerons maintenant la transaction entrante litée précedemment en utilisant la commande +gettransaction+. Nous pouvons récupérer une transaction à l'aide de son hash, l'attribut +txid+ montré précédemment, à l'aide de la commande +gettransaction+:
+
+
+++++
+<programlisting>
+$ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66<?pdf-cr?>c309acbae2c14ae3
+
+</programlisting>
+++++
+[source,json]
+----
+{
+    "amount" : 0.05000000,
+    "confirmations" : 0,
+    "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+    "time" : 1392660908,
+    "timereceived" : 1392660908,
+    "details" : [
+        {
+            "account" : "",
+            "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+            "category" : "receive",
+            "amount" : 0.05000000
+        }
+    ]
+}
+----
+
+[TIP]
+====
+Les identifiants de transactions (txid) ne font pas autorité tant qu'une transaction n'a pas été confirmée. L'absence de hash de transaction dans la blockchain ne veut pas dire que la transaction n'a pas été traitée. Cet aspect est connu sous le nom de(("transaction malleability"))) "malléabilité de transaction", car les hash de transaction peuvent être modifié avant leur confirmation dans un bloc. Apres la confirmation, les txids sont immuables et font autorité.
+====
+
+Le format de transaction obtenu à l'aide de la commande +gettransaction+ est un format simplifié. Pour récupérer le code complet d'une transaction et le décoder, nous utiliserons deux commandes: +getrawtransaction+ et +decoderawtransaction+. La première, +getrawtransaction+, prend le _hash de transaction (txid)_ comme paramètre et retourne la transaction complète en chaine de caractère hexadécimaux "bruts" (raw), exactement comme elle apparait sur le réseau bitcoin:
+
+++++
+<programlisting>
+$ bitcoin-cli getrawtransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1f<?pdf-cr?>c66c309acbae2c14ae3
+
+0100000001d717279515f88e2f56ce4e8a31e2ae3e9f00ba1d0add648e80c480ea22e0c7d3000<?pdf-cr?>000008b483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e61a2df0dd0758e22<?pdf-cr?>7383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2ac1bd193dfba2014<?pdf-cr?>104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b884ac5b5b6dede<?pdf-cr?>05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5ceaffffffff02404b4c0000000<?pdf-cr?>0001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac1f312906000000001976a9<?pdf-cr?>14107b7086b31518935c8d28703d66d09b3623134388ac00000000
+</programlisting>
+++++
+
+Pour décoder cette chaîne de caractères, utilisez la commande +decoderawtransaction+. Copiez et collez les caractère hexadécimaux en tant que premier paramètre de +decoderawtransaction+ afin d'obtenir le contenu complet interprété au format de données JSON (pour des raisons de mise en forme la chaine hexadécimale est raccourcie dans l'exemple suivant):
+
+
+++++
+<programlisting>
+$ bitcoin-cli decoderawtransaction 0100000001d717279515f88e2f56ce4e8a31e2ae3e<?pdf-cr?>9f00ba1d0add648e80c480ea22e0c7d3000000008b483045022100a4ebbeec83225dedead659b<?pdf-cr?>bde7da3d026c8b8e12e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1<?pdf-cr?>f2c975b192d34c5b9b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44<?pdf-cr?>fa59248be58ede65e4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc7<?pdf-cr?>9e05dbfe5ceaffffffff02404b4c00000000001976a91407bdb518fa2e6089fd810235cf1100c<?pdf-cr?>9c13d1fd288ac1f312906000000001976a914107b7086b31518935c8d28703d66d09b36231343<?pdf-cr?>88ac00000000
+</programlisting>
+++++
+
+++++
+<screen>
+{
+    "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "d3c7e022ea80c4808e64dd0a1dba009f3eaee2318a4ece562f8ef815<?pdf-cr?>952717d7",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "3045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e<?pdf-cr?>61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2<?pdf-cr?>ac1bd193dfba20104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b<?pdf-cr?>884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5cea",
+                "hex": "483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e1<?pdf-cr?>2e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9<?pdf-cr?>b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e<?pdf-cr?>4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5cea"
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.05000000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c<?pdf-cr?>13d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        },
+        {
+            "value" : 1.03362847,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 107b7086b31518935c8d28703d66d09b36<?pdf-cr?>231343 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914107b7086b31518935c8d28703d66d09b3623134388ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "12W9goQ3P7Waw5JH8fRVs1e2rVAKoGnvoy"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+++++
+
+Le décodage de la transaction montre tous les composants de la transaction, y compris les entrée et les sorties (les inputs et les outputs). Dans cet exemple nous voyons que la transaction qui a crédité notre nouvelle adresse avec 50 millibits a utilisé une entrée et a généré deux sorties. L'entrée de cette transaction était la sortie d'une transaction précédente confirmée (comme le montre le vin txid commençant par +d3c7+). Les deux sorties correspondent au crédit de 50 millibits et une sortie contenant la monnaie retournée à l'expéditeur. 
+
+Nous pouvons aller plus loin dans l'exploration de la blockchain en examinant la transaction précédentes référencée par son txid dans cette transaction en utilisant les même commandes (à savoir, +gettransaction+). En naviguant de transaction en transaction, nous pouvons suivre la chaîne des transaction et voir les coins transmis entre les propriétaire des adresses.  
+
+Une fois que la transaction que nous avons reçue est confirmée par son inclusion dans un bloc, la commande +gettransaction+ nous retournera des information supplémentaires et montrera le  _block hash (identifiant)_ dans lequel la transaction  a été incluse.
+
+
+++++
+<screen>
+$ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66<?pdf-cr?>c309acbae2c14ae3
+</screen>
+++++
+
+
+++++
+<screen>
+{
+    "amount" : 0.05000000,
+    "confirmations" : 1,
+    "blockhash" : "000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31c<?pdf-cr?>2a717b",
+    "blockindex" : 18,
+    "blocktime" : 1392660808,
+    "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+    "time" : 1392660908,
+    "timereceived" : 1392660908,
+    "details" : [
+        {
+            "account" : "",
+            "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+            "category" : "receive",
+            "amount" : 0.05000000
+        }
+    ]
+}
+</screen>
+++++
+
+Nous voyons ici les nouvelles informations dans les entrées +blockhash+ (le hash du bloc dans lequel la transaction est incluse) and dans +blockindex+ qui possède la valeur 18 (indiquant que notre transaction était la 18ème transaction de ce bloc). 
+
+[[txindex]]
+.L'index de base de données de transactions et l'option txindex
+****
+((("transaction database index")))Par défaut, Bitcoin Core construit une base de données contenant _uniquement_ les transactions relatives au portefeuille de l'utilisateur. Si vous souhaitez accéder à _n'importe quelle_ transaction avec des commandes telles que  +gettransaction+, vous devez configurer Bitcoin Core pour qu'il construise un index complet des transactions à l'aide de l'option((("txindex option (Bitcoin Core)"))) +txindex+. Positionnez l'option +txindex=1+ dans le fichier de configuration de Bitcoin Core (que vous trouverez généralement dans le répertoire _.bitcoin/bitcoin.conf_). Une fois que vous avez changé cette option, vous devrez redémarrer bitcoind et attendre qu'il reconstruise l'index.(((range="endofrange", startref="ix_ch03-asciidoc30")))(((range="endofrange", startref="ix_ch03-asciidoc29")))(((range="endofrange", startref="ix_ch03-asciidoc28")))(((range="endofrange", startref="ix_ch03-asciidoc27")))(((range="endofrange", startref="ix_ch03-asciidoc26")))(((range="endofrange", startref="ix_ch03-asciidoc25")))(((range="endofrange", startref="ix_ch03-asciidoc24")))(((range="endofrange", startref="ix_ch03-asciidoc23"))) 
+****
+
+==== Exploration des blocs
+
+Commandes: +getblock+, +getblockhash+
+
+((("bitcoin-cli command line helper","getblock command")))((("bitcoin-cli command line helper","getblockhash command")))((("blocks","exploring")))((("getblock command (bitcoin-cli)")))((("getblockhash command (bitcoin-cli)")))Maintenant que nous connaissons le bloc dans lequel a été inclu notre transaction, nous pouvons effectuer des requêtes sur ce bloc. Nous utilisons la commande +getblock+ avec le hash du bloc en paramètre:
+
+
+++++
+<screen>
+$ bitcoin-cli getblock 000000000000000051d2e759c63a26e247f185ecb7926ed7a6624b<?pdf-cr?>c31c2a717b true
+</screen>
+++++
+
+
+++++
+<screen>
+{
+    "hash" : "000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31c2a717<?pdf-cr?>b",
+    "confirmations" : 2,
+    "size" : 248758,
+    "height" : 286384,
+    "version" : 2,
+    "merkleroot" : "9891747e37903016c3b77c7a0ef10acf467c530de52d84735bd555387<?pdf-cr?>19f9916",
+    "tx" : [
+        "46e130ab3c67d31d2b2c7f8fbc1ca71604a72e6bc504c8a35f777286c6d89bf0",
+        "2d5625725b66d6c1da88b80b41e8c07dc5179ae2553361c96b14bcf1ce2c3868",
+        "923392fc41904894f32d7c127059bed27dbb3cfd550d87b9a2dc03824f249c80",
+        "f983739510a0f75837a82bfd9c96cd72090b15fa3928efb9cce95f6884203214",
+        "190e1b010d5a53161aa0733b953eb29ef1074070658aaa656f933ded1a177952",
+        "ee791ec8161440262f6e9144d5702f0057cef7e5767bc043879b7c2ff3ff5277",
+        "4c45449ff56582664abfadeb1907756d9bc90601d32387d9cfd4f1ef813b46be",
+        "3b031ed886c6d5220b3e3a28e3261727f3b4f0b29de5f93bc2de3e97938a8a53",
+        "14b533283751e34a8065952fd1cd2c954e3d37aaa69d4b183ac6483481e5497d",
+        "57b28365adaff61aaf60462e917a7cc9931904258127685c18f136eeaebd5d35",
+        "8c0cc19fff6b66980f90af39bee20294bc745baf32cd83199aa83a1f0cd6ca51",
+        "1b408640d54a1409d66ddaf3915a9dc2e8a6227439e8d91d2f74e704ba1cdae2",
+        "0568f4fad1fdeff4dc70b106b0f0ec7827642c05fe5d2295b9deba4f5c5f5168",
+        "9194bfe5756c7ec04743341a3605da285752685b9c7eebb594c6ed9ec9145f86",
+        "765038fc1d444c5d5db9163ba1cc74bba2b4f87dd87985342813bd24021b6faf",
+        "bff1caa9c20fa4eef33877765ee0a7d599fd1962417871ca63a2486476637136",
+        "d76aa89083f56fcce4d5bf7fcf20c0406abdac0375a2d3c62007f64aa80bed74",
+        "e57a4c70f91c8d9ba0ff0a55987ea578affb92daaa59c76820125f31a9584dfc",
+        "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3",
+
+#[... beaucoup d'autres transactions ...]
+
+    ],
+    "time" : 1392660808,
+    "nonce" : 3888130470,
+    "bits" : "19015f53",
+    "difficulty" : 3129573174.52228737,
+    "chainwork" : "000000000000000000000000000000000000000000001931d1658fc048<?pdf-cr?>79e466",
+    "previousblockhash" : "0000000000000000177e61d5f6ba6b9450e0dade9f39c257b4<?pdf-cr?>d48b4941ac77e7",
+    "nextblockhash" : "0000000000000001239d2c3bf7f4c68a4ca673e434702a57da8fe0<?pdf-cr?>d829a92eb6"
+
+</screen>
+++++
+
+Le bloc contient 367 transactions et comme vous pouvez le voir, la 18ème transaction (+9ca8f9...+)  correspond au txid de celle créditant 50 millibits sur notre adresse. La donnée +height+ nous indique qu'il s'agit du bloc numéro 286384 dans la blockchain. 
+
+Nous pouvons également récupérer un bloc avec la hauteur de bloc en utilisant la commande +getblockhash+ qui prend la hauteur de bloc en paramètre et retourne le hash du bloc:
+
+
+++++
+<screen>
+$ bitcoin-cli getblockhash 0
+
+000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+</screen>
+++++
+
+Ici nous récupérons le hash su "genesis block", le premier bloc miné par Satoshi Nakamoto à la hauteur zero. La récupération de ce bloc donne: 
+
+
+++++
+<screen>
+$ bitcoin-cli getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1<?pdf-cr?>b60a8ce26f
+</screen>
+++++
+
+
+++++
+<screen>
+{
+    "hash" : "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26<?pdf-cr?>f",
+    "confirmations" : 286388,
+    "size" : 285,
+    "height" : 0,
+    "version" : 1,
+    "merkleroot" : "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7af<?pdf-cr?>deda33b",
+    "tx" : [
+        "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+    ],
+    "time" : 1231006505,
+    "nonce" : 2083236893,
+    "bits" : "1d00ffff",
+    "difficulty" : 1.00000000,
+    "chainwork" : "0000000000000000000000000000000000000000000000000000000100<?pdf-cr?>010001",
+    "nextblockhash" : "00000000839a8e6886ab5951d76f411475428afc90947ee320161b<?pdf-cr?>bf18eb6048"
+}
+</screen>
+++++
+
+Les commandes +getblock+, +getblockhash+, et +gettransaction+ peuvent être utilisées pour explorer la base de donnée de la blockchain: 
+
+
+==== Créer, Signer, et Soumettre des Transactions basées sur des pass:[<phrase role="keep-together">sorties non dépensées (Unspent Outputs)</phrase>]
+
+Commandes: +listunspent+, +gettxout+, +createrawtransaction+, +decoderawtransaction+, +signrawtransaction+, +sendrawtransaction+
+
+((("bitcoin-cli command line helper","createrawtransaction command", id="ix_ch03-asciidoc31", range="startofrange")))((("bitcoin-cli command line helper","decoderawtransaction command", id="ix_ch03-asciidoc32", range="startofrange")))((("bitcoin-cli command line helper","gettxout command", id="ix_ch03-asciidoc33", range="startofrange")))((("bitcoin-cli command line helper","listunspent command", id="ix_ch03-asciidoc34", range="startofrange")))((("bitcoin-cli command line helper","sendrawtransaction command", id="ix_ch03-asciidoc35", range="startofrange")))((("bitcoin-cli command line helper","signrawtransaction command", id="ix_ch03-asciidoc36", range="startofrange")))((("createrawtransaction command (bitcoin-cli)", id="ix_ch03-asciidoc37", range="startofrange")))((("decoderawtransaction command (bitcoin-cli)", id="ix_ch03-asciidoc38", range="startofrange")))((("gettxout command (bitcoin-cli)", id="ix_ch03-asciidoc39", range="startofrange")))((("listunspent command (bitcoin-cli)", id="ix_ch03-asciidoc40", range="startofrange")))((("sendrawtransaction command (bitcoin-cli)", id="ix_ch03-asciidoc41", range="startofrange")))((("signrawtransaction command (bitcoin-cli)", id="ix_ch03-asciidoc42", range="startofrange")))((("transactions","creating from the command line", id="ix_ch03-asciidoc43", range="startofrange")))((("transactions","signing from the command line", id="ix_ch03-asciidoc44", range="startofrange")))((("transactions","submitting from the command line", id="ix_ch03-asciidoc45", range="startofrange")))((("unspent transaction output (UTXO)", id="ix_ch03-asciidoc46", range="startofrange")))Les transaction Bitcoin sont basée sur le concept de dépense de sorties ("outputs"), qui résultent de transactions précédentes, afin de créer une chaine de transactions qui transfère la propriété d'une adresse vers une autre adresse. Notre portefeuille a maintenant reçu une transaction qui a assigné une sortie à notre adresse. Une fois que cette transaction est confirmée, nous pouvons dépenser cette sortie. 
+
+Premièrement, nous utilisons la commande +listunspent+ pour afficher toutes les sorties non dépensées et _confirmées_ de notre portefeuille.
+
+
+----
+$ bitcoin-cli listunspent 
+----
+
+
+++++
+<screen>
+[
+    {
+        "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c<?pdf-cr?>14ae3",
+        "vout" : 0,
+        "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+        "account" : "",
+        "scriptPubKey" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+        "amount" : 0.05000000,
+        "confirmations" : 7
+    }
+]
+</screen>
+++++
+
+Nous voyons que la transaction +9ca8f9...+ a créé une sortie (avec l'index vout 0) assignée à l'adresse +1hvzSo...+ pour le montant de 50 millibits. A cet instant la transaction a reçu sept confirmations. Les transactions utilisent des sorties précédemment créées comme entrées en y faisant référence via leur précédent txid (identifiant de transaction) et l'index vout. Nous allons donc maintenant créer une transaction qui dépensera le vout numéro 0 de la transaction +9ca8f9...+ en tant q'entrée afin de lui assigner une nouvelle sortie qui enverra le montant vers une nouvelle adresse. 
+
+Analysons maintenant en détail cette sortie. Nous utilisons la commande +gettxout+ pour voir les détails de cette sortie non dépensée (unspent output). Les sorties de transaction sont toujours référencées par le txid et le vout, qui sont les paramètres que nous passerons à la commande +gettxout+ :
+
+
+++++
+<screen>
+$ bitcoin-cli gettxout 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309ac<?pdf-cr?>bae2c14ae3 0
+</screen>
+++++
+
+
+++++
+<screen>
+{
+    "bestblock" : "0000000000000001405ce69bd4ceebcdfdb537749cebe89d371eb37e13<?pdf-cr?>899fd9",
+    "confirmations" : 7,
+    "value" : 0.05000000,
+    "scriptPubKey" : {
+        "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c13d1fd2
+         OP_EQUALVERIFY OP_CHECKSIG",
+        "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+        "reqSigs" : 1,
+        "type" : "pubkeyhash",
+        "addresses" : [
+            "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+        ]
+    },
+    "version" : 1,
+    "coinbase" : false
+}
+</screen>
+++++
+
+Ce que nous voyons ici est la sortie qui a assigné 50 millibits à notre adresse +1hvz...+. Pour dépenser cette sortie nous créerons une nouvelle transaction. Commençons par créer une adresse vers laquelle nous enverrons l'argent : 
+
+
+----
+$ bitcoin-cli getnewaddress 
+1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb
+----
+
+Nous enverrons 25 millibits vers la nouvelle adresse +1LnfTn...+ que nous venons de créer dans notre portefeuille. Dans notre nouvelle transaction, nous dépenserons la sortie de 50 millibits et enverrons 25 millibits vers cette nouvelles adresse. Parce que nous nous devons de dépenser la sortie _entière_ de la précédente transaction, nous devons également générer de la monnaie. Nous enverrons la monnaie vers l'adresse +1hvz...+ d'où les fonds proviennent initialement. Enfin, nous aurons aussi à payer des frais pour cette transaction. Pour payer les frais, nous réduisons la monnaie de 0,5 millibits, et nous retournons 24,5 millibits de monnaie. La différence entre la somme des nouvelles sorties (25 mBTC + 24,5 mBTC = 49,5 mBTC) et l'entrée (50 mBTC) sera récupérée par les mineurs comme frais de transaction.  
+
+Nous utilisons la commande +createrawtransaction+ pour créer cette transaction. Les paramètres que nous fournissons à la commande +createrawtransaction+ sont l'entrée de transaction (les 50 millibits non dépensés de notre transaction confirmée) et les deux sorties de transaction (l'argent envoyé à la nouvelle adresse et la monnaie renvoyée vers l'adresse précédente) : 
+
+++++
+<screen>
+$ bitcoin-cli createrawtransaction '[{"txid" : "9ca8f969bd3ef5ec2a8685660fdbf<?pdf-cr?>7a8bd365524c2e1fc66c309acbae2c14ae3", "vout" : 0}]' '{"1LnfTndy3qzXGN19Jwscj1<?pdf-cr?>T8LR3MVe3JDb": 0.025, "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL": 0.0245}'
+
+0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000<?pdf-cr?>0000000ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a<?pdf-cr?>9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac0<?pdf-cr?>0000000
+</screen>
+++++
+
+La commande +createrawtransaction+ produit une chaine de caractère hexadécimale brute qui encode les détails de la transaction que nous avons fournis. Vérifions que tout est correct en décodant cette chain brute en utilisant la commande +decoderawtransaction+ : 
+
+++++
+<screen>
+$ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bd<?pdf-cr?>a8f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d<?pdf-cr?>90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa<?pdf-cr?>2e6089fd810235cf1100c9c13d1fd288ac00000000
+</screen>
+++++
+
+
+++++
+<screen>
+{
+    "txid" : "0793299cb26246a8d24e468ec285a9520a1c30fcb5b6125a102e3fc05d4f3cb<?pdf-cr?>a",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acb<?pdf-cr?>ae2c14ae3",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "",
+                "hex" : ""
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.02500000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 d90d36e98f62968d2bc9bbd68107564a15<?pdf-cr?>6a9bcf OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb"
+                ]
+            }
+        },
+        {
+            "value" : 0.02450000,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c1<?pdf-cr?>3d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+++++
+
+Cela semble OK ! Notre nouvelle transaction "consomme" les sorties non dépensée de notre transaction confirmée pour ensuite les dépenser dans deux sorties, une de 25 millibits vers notre nouvelle adresse et un de 24,5 millibits comme monnaie renvoyée vers l'adresse initiale. La différence de 0,5 millibits représente les frais de transactions et sera créditée au mineur qui trouvera le bloc dans lequel cette transaction sera incluse. 
+
+Comme vous pouvez le remarquer, la transaction contient un champ +scriptSig+ vide car nous ne l'avons pas encore signée. Sans signature, cette transaction n'est pas utilisable; nous n'avons pas encore prouvé que nous _possédons_ l'adresse d'où proviennent les sorties non dépensées. En la signant, nous déverrouillons la sortie et prouvons qu'elle nous appartient afin de pouvoir la dépenser. Nous utilisons la commande +signrawtransaction+ pour signer la transaction. Elle prend la transaction en tant que chaine de caractères hexadécimale brute comme paramètre : 
+
+[TIP]
+====
+((("wallets","signing transactions with")))Un portefeuille crypté doit être déverrouillé de pouvoir signer une transaction car le fait de signer une transaction nécessite l'accès aux clés secretes du portefeuille.
+====
+
+++++
+<screen>
+$ bitcoin-cli walletpassphrase foo 360
+$ bitcoin-cli signrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8<?pdf-cr?>f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d90<?pdf-cr?>d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e<?pdf-cr?>6089fd810235cf1100c9c13d1fd288ac00000000
+</screen>
+++++
+
+
+++++
+<screen>
+{
+    "hex" : "0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53e<?pdf-cr?>bd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54<?pdf-cr?>e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af<?pdf-cr?>52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc512<?pdf-cr?>7ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88<?pdf-cr?>ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000",
+    "complete" : true
+}
+</screen>
+++++
+
+La commande +signrawtransaction+ retourne une autre transaction au format texte hexadecimal brut. Nous la décodons pour découvrir ce qui a changé, à l'aide de la commande +decoderawtransaction+ :
+
+
+++++
+<screen>
+$ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda<?pdf-cr?>8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c<?pdf-cr?>800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87<?pdf-cr?>e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac<?pdf-cr?>1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9b<?pdf-cr?>bd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100<?pdf-cr?>c9c13d1fd288ac00000000
+</screen>
+++++
+
+
+++++
+<screen>
+{
+    "txid" : "ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b34<?pdf-cr?>6",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acb<?pdf-cr?>ae2c14ae3",
+            "vout" : 0,
+            "scriptSig" : {
+                "asm" : "304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86<?pdf-cr?>a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e<?pdf-cr?>4af52051a0601 03c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5<?pdf-cr?>127",
+                "hex" : "47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d<?pdf-cr?>86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b27<?pdf-cr?>7e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71<?pdf-cr?>dc5127"
+            },
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 0.02500000,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 d90d36e98f62968d2bc9bbd68107564a15<?pdf-cr?>6a9bcf OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb"
+                ]
+            }
+        },
+        {
+            "value" : 0.02450000,
+            "n" : 1,
+            "scriptPubKey" : {
+                "asm" : "OP_DUP OP_HASH160 07bdb518fa2e6089fd810235cf1100c9c1<?pdf-cr?>3d1fd2 OP_EQUALVERIFY OP_CHECKSIG",
+                "hex" : "76a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac",
+                "reqSigs" : 1,
+                "type" : "pubkeyhash",
+                "addresses" : [
+                    "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL"
+                ]
+            }
+        }
+    ]
+}
+</screen>
+++++
+
+Maintenant les entrée utilisées par la transaction contiennent un valeur +scriptSig+, qui correspond à la signature numérique prouvant qu'elles appartiennent à l'adresse +1hvz...+ et déverrouillant la sortie afin qu'elle soit dépensée.La signature rend la transaction vérifiable par n'importe quel noeud du réseau bitcoin. 
+
+Nous pouvons maintenant soumettre soumettre cette transaction nouvellement crée au réseau. Nous réalisons cela à l'aide de la commande +sendrawtransaction+, qui prend la chaine hexadécimale brute produite par +signrawtransaction+ en paramètre : 
+
+++++
+<screen>
+$ bitcoin-cli sendrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8<?pdf-cr?>f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c8<?pdf-cr?>00c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e<?pdf-cr?>3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1<?pdf-cr?>d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bb<?pdf-cr?>d68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c<?pdf-cr?>9c13d1fd288ac00000000ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584<?pdf-cr?>ac17b346
+</screen>
+++++
+
+La commande +sendrawtransaction+ renvoie un _hash de transaction (txid)_ tout en soumettant la transaction au réseau. Nous pouvons désormais effectuer une requête sur cet identifiant de transaction avec la commande +gettransaction+ :
+
+++++
+<screen>
+$ bitcoin-cli gettransaction ae74538baa914f3799081ba78429d5d84f36a0127438e9f7<?pdf-cr?>21dff584ac17b346
+</screen>
+++++
+
+[source,json]
+----
+{
+    "amount" : 0.00000000,
+    "fee" : -0.00050000,
+    "confirmations" : 0,
+    "txid" : "ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346",
+    "time" : 1392666702,
+    "timereceived" : 1392666702,
+    "details" : [
+        {
+            "account" : "",
+            "address" : "1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb",
+            "category" : "send",
+            "amount" : -0.02500000,
+            "fee" : -0.00050000
+        },
+        {
+            "account" : "",
+            "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+            "category" : "send",
+            "amount" : -0.02450000,
+            "fee" : -0.00050000
+        },
+        {
+            "account" : "",
+            "address" : "1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb",
+            "category" : "receive",
+            "amount" : 0.02500000
+        },
+        {
+            "account" : "",
+            "address" : "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL",
+            "category" : "receive",
+            "amount" : 0.02450000
+        }
+    ]
+}
+----
+
+Comme nous l'avons fait précédemment, nous pouvons examiner le détail de cette transaction avec les commandes  +getrawtransaction+ et +decodetransaction+. Ce commandes nous retourneront exactement la meme chaine hexadécimale que nous avons produite et décodée auparavant, juste avant de l'envoyer sur le réseau.(((range="endofrange", startref="ix_ch03-asciidoc46")))(((range="endofrange", startref="ix_ch03-asciidoc45")))(((range="endofrange", startref="ix_ch03-asciidoc44")))(((range="endofrange", startref="ix_ch03-asciidoc43")))(((range="endofrange", startref="ix_ch03-asciidoc42")))(((range="endofrange", startref="ix_ch03-asciidoc41")))(((range="endofrange", startref="ix_ch03-asciidoc40")))(((range="endofrange", startref="ix_ch03-asciidoc39")))(((range="endofrange", startref="ix_ch03-asciidoc38")))(((range="endofrange", startref="ix_ch03-asciidoc37")))(((range="endofrange", startref="ix_ch03-asciidoc36")))(((range="endofrange", startref="ix_ch03-asciidoc35")))(((range="endofrange", startref="ix_ch03-asciidoc34")))(((range="endofrange", startref="ix_ch03-asciidoc33")))(((range="endofrange", startref="ix_ch03-asciidoc32")))(((range="endofrange", startref="ix_ch03-asciidoc31")))(((range="endofrange", startref="ix_ch03-asciidoc7")))(((range="endofrange", startref="ix_ch03-asciidoc6")))(((range="endofrange", startref="ix_ch03-asciidoc5")))(((range="endofrange", startref="ix_ch03-asciidoc2")))(((range="endofrange", startref="ix_ch03-asciidoc1"))) 
+
+[[alt_libraries]]
+=== Clients alternatifs, Libraries, et Toolkits
+
+((("clients, alternative", id="ix_ch03-asciidoc47", range="startofrange")))((("libraries, alternative", id="ix_ch03-asciidoc48", range="startofrange")))((("toolkits, alternative", id="ix_ch03-asciidoc49", range="startofrange")))en plus du client de référence (bitcoind),d'autres clients et librairies peuvent être utilisés pour interagir avec le réseau bitcoin et ses structures de données. Ils sont implémentés dans différents languages de programmation et offrent aux développeur des interfaces natives dans leurs languages de prédilection.. 
+
+Voici une liste d'implémentations alternatives:
+
+https://github.com/libbitcoin/libbitcoin[libbitcoin]:: ((("libbitcoin library")))Kit de développement multiplateforme en C++
+https://github.com/libbitcoin/libbitcoin-explorer[bitcoin explorer]:: ((("Bitcoin Explorer")))Outil Bitcoin en ligne de commande
+https://github.com/libbitcoin/libbitcoin-server[bitcoin server]:: ((("Bitcoin Server")))Client Bitcoin complet et serveur de requêtes
+https://code.google.com/p/bitcoinj/[bitcoinj]:: ((("BitcoinJ library")))Une libraire Java complète
+https://opensource.conformal.com/wiki/btcd[btcd]:: ((("btcd","client")))Un client bitcoin complet dans le language Go
+https://bitsofproof.com[Bits of Proof (BOP)]:: ((("Bits of Proof (BOP)")))Un implémentation de bitcoin en Java pour l'entreprise
+https://github.com/jgarzik/picocoin[picocoin]:: ((("picocoin")))Une implémentation de librairie pour client léger en C
+https://github.com/vbuterin/pybitcointools[pybitcointools]:: ((("pybitcointools library")))Une librairie bitcoin en Python
+https://github.com/richardkiss/pycoin[pycoin]:: ((("pycoin library")))Une autre librairie bitcoin en Python
+
+Beaucoup d'autres librairies existent dans une multitude de languages de programmation et de nouvelles sont crées au fil du temps. 
+
+[[libbitcoin]]
+==== Libbitcoin et le Bitcoin Explorer
+
+La librairie ((("libbitcoin library")))((("libraries, alternative","libbitcoin library")))libbitcoin est un kit de développement multiplateforme en C++ qui supporte la client lourd ((("Bitcoin Server")))((("libraries, alternative","Bitcoin Server")))libbitcoin-server et l'outil en ligne de commande ((("Bitcoin Explorer")))((("libraries, alternative","Bitcoin Explorer")))Bitcoin Explorer (bx).
+
+Les commande de bx offrent les mêmes fonctionnalités que celles du client bitcoind que nous avons utilisées dans ce chapitre. Les commandes bx offrent également des outils de gestion de clés qui ne sont pas présents dans bitcoind, tels que les clés déterministes de type-2, l'encodage mnémonique de clé, ainsi que les adresses furtives (sltealth address), le paiement et un moteur de requêtes.
+
+===== Installation de Bitcoin Explorer
+
+((("Bitcoin Explorer","installing")))Pour utiliser le Bitcoin Explorer, vous n'avez qu'a https://github.com/libbitcoin/libbitcoin-explorer/wiki/Download[télécharger l'exécutable signé correspondant à votre système]. des distributions sont disponibles pour le mainnet et le testnet pour Linux, OS X, et Windows.
+
+Tapez +bx+ sans aucun paramètre pour afficher la liste de commandes disponibles (voir <<appdx_bx>>).
+
+Bitcoin Explorer fournit également un installateur pour https://github.com/libbitcoin/libbitcoin-explorer/wiki/Build[compiler à partir du code source sous Linux et OS X, ainsi qu'un projet Visual Studio pour Windows].
+
+[TIP]
+====
+Bitcoin Explorer offre tout un tas de commandes très utiles pour encoder et décoder des adresses et convertir différents formats et représentations. Utilisez les pour explorer les différents formats tels que Base16 (hexadécimal), Base58, Base58Check, Base64, etc.
+====
+
+===== Installation de Libbitcoin
+
+((("libbitcoin library","installing")))La librairie libbitcoin fournit un installateur pour https://github.com/libbitcoin/libbitcoin/wiki/Build[compiler à partir du code source sous Linux et OS X, ainsi qu'un projet Visual Studio pour Windows]. Il est également possible de compiler à l'aide de l'outil Autotools.
+
+[TIP]
+====
+Le programme d'installation de Bitcoin explorer installe à la fois bx et la librairie libbitcoin, si vous avez compilé bx depuis les sources vous pouvez donc ignorer cette étape.
+====
+
+==== pycoin
+
+((("libraries, alternative","pycoin library")))((("pycoin library")))((("Python","pycoin library")))La librairie Python http://github.com/richardkiss/pycoin[_pycoin_], écrite et maintenue au départ par((("Kiss, Richard"))) Richard Kiss, est une librairie Python qui supporte la manipulation de clés et de transactions bitcoin. Son niveau de support du langage de script permet même de traiter les transactions non standard. 
+
+La librairie pycoin supporte à la fois Python 2 (2.7.x) et Python 3 (après la version 3.3), elle est fournie avec des utilitaires en ligne de commande très pratiques, ku et tx. Pour installer pycoin 0.42 avec Python 3 in dans un environnement virtuel (venv), utilisez la commande suivante :
+
+====
+----
+$ python3 -m venv /tmp/pycoin
+$ . /tmp/pycoin/bin/activate
+$ pip install pycoin==0.42
+Downloading/unpacking pycoin==0.42
+  Downloading pycoin-0.42.tar.gz (66kB): 66kB downloaded
+  Running setup.py (path:/tmp/pycoin/build/pycoin/setup.py) egg_info for package pycoin
+    
+Installing collected packages: pycoin
+  Running setup.py install for pycoin
+    
+    Installing tx script to /tmp/pycoin/bin
+    Installing cache_tx script to /tmp/pycoin/bin
+    Installing bu script to /tmp/pycoin/bin
+    Installing fetch_unspent script to /tmp/pycoin/bin
+    Installing block script to /tmp/pycoin/bin
+    Installing spend script to /tmp/pycoin/bin
+    Installing ku script to /tmp/pycoin/bin
+    Installing genwallet script to /tmp/pycoin/bin
+Successfully installed pycoin
+Cleaning up...
+$
+----
+====
+
+Voici un exemple de script Python qui sélectionne et dépense quelques bitcoin en utilisant la librairie pycoin : 
+
+====
+[source,python]
+----
+include::code/pycoin_example.py[]
+----
+====
+
+Pour obtenir des exemples utilisant les utilitaires ku et tx, reportez-vous à  <<appdxbitcoinimpproposals>>.
+
+==== btcd
+((("btcd")))((("clients, alternative","btcd")))btcd est un client bitcoin complet (ful-node) écrit en((("Go programming language"))) Go. Il télécharge, valide  et alimente la blockchain en utilisant exactement les mêmes règles (y compris les bugs) concernant l'acceptation des blocs que l'implémentation de référence, bitcoind. Il relaie également les nouveaux blocs minés, maintient un pool de transactions, et relaie les transaction qui ne sont pas encore incluses dans un bloc. Il s'assure que toutes les transactions admises dans son pool suivent les règles requises et inclut également une grand majorité des vérification strictes en se basant sur les exigences des mineurs (transactions "standard").
+
+Une différence majeure entre btcd et bitcoind est qu'il n'inclut pas la fonctionnalité de portefeuille, et cela de façon intentionnelle. Cela veut dire que vous ne pouvez pas effectuer de paiement ou recevoir des fonds directement via btcd. Cette fonctionnalité est fournie par les projets btcwallet et btcgui, qui sont en cours de développement. On peut citer d'autres différences notables entre btcd et bitcoind comme le support par btcd des requête HTTP POST (comme bitcoind) et les Websockets, et le fait que les connexions RPC de btcd soient en TLS par défaut.
+
+===== Installation de btcd
+
+((("btcd","installing")))Pour installer btcd sous Windows, téléchargez et lancez le msi disponible sur https://github.com/conformal/btcd/releases[GitHub], ou lancez la commande suivante sous Linux, en supposant bien sûr que vous avez installé le langage Go :
+
+
+----
+$ go get github.com/conformal/btcd/...
+----
+
+Pour mettre à jour la dernière version de btcd, utilisez la commande : 
+
+
+----
+$ go get -u -v github.com/conformal/btcd/...
+----
+
+===== Configuration de btcd
+
+((("btcd","controlling")))btcd possède plusieurs options de configuration que vous pouvez lister en utilisant la commande : 
+
+[source,bash]
+----
+$ btcd --help
+----
+
+btcd est fourni avec quelques outils tels que btcctl, qui est un utilitaire en ligne de commande qui peut être utilisé à la fois pour contrôler et interroger btcd via RPC. Btcd n'active pas le serveur RPC par défaut; vous devez configurer au minimum à la fois un nom d'utilisateur et un mot de passe dans les fichiers de configuration suivants : 
+
+* _btcd.conf_:
+[source,ini]
+----
+[Application Options]
+rpcuser=myuser
+rpcpass=SomeDecentp4ssw0rd
+----
+* _btcctl.conf_:
+[source,ini]
+----
+[Application Options]
+rpcuser=myuser
+rpcpass=SomeDecentp4ssw0rd
+----
+
+Ou alors si vous voulez surcharger les fichiers de configuration depuis la ligne de commande : 
+
+[source,bash]
+----
+$ btcd -u myuser -P SomeDecentp4ssw0rd
+$ btcctl -u myuser -P SomeDecentp4ssw0rd
+----
+
+Pour une liste des options disponibles, utilisez la commande suivante : (((range="endofrange", startref="ix_ch03-asciidoc49")))(((range="endofrange", startref="ix_ch03-asciidoc48")))(((range="endofrange", startref="ix_ch03-asciidoc47")))(((range="endofrange", startref="ix_ch03-asciidoc0"))) 
+
+
+----
+$ btcctl --help
+----

@@ -1,0 +1,61 @@
+[preface]
+== Chú giải nhanh thuật ngữ
+
+Mục chú giải nhanh thuật ngữ này bao gồm nhiều thuật ngữ được sử dụng trong bối cảnh bitcoin. Các thuật ngữ này được sử dụng trên toàn bộ cuốn sách. Do vậy đánh dấu mục này để có thể tham khảo nhanh.
+
+địa chỉ::
+    Một địa chỉ bitcoin có dạng +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. Nó bao gồm một chuỗi các con số và chữ cái bắt đầu bằng 1 số "1" (số một). Cũng giống như việc bạn yêu cầu người khác gửi một email đến địa chỉ email của bạn, bạn sẽ yêu cầu người khác gửi bitcoin cho bạn đến địa chỉ bitcoin của bạn.((("bitcoin address")))((("address", see="bitcoin address")))((("public key", see="bitcoin address")))
+
+bip::
+    Các đề xuất cải tiến Bitcoin. Một tập hợp các đề xuất mà các thành viên của cộng đồng bitcoin đã gửi lên để cải tiến Bitcoin. Ví dụ, BIP0021 là đề xuất cải tiến cơ chế hình thành chuỗi định danh tài nguyên đồng dạng cho bitcoin (URI).((("bip"))) 
+
+bitcoin::
+    Tên của đơn vị đồng tiền (đồng xu), mạng và phần mềm.((("bitcoin"))) 
+
+khối::
+    Sự gom nhóm các giao dịch, đánh dấu bằng một nhãn thời gian, và chuỗi nhận dạng của khối trước đó. Phần đầu của khối được băm để tạo ra một chứng cứ xử lý, dùng cách này để đánh giá tính hợp lệ của các giao dịch. Các khối hợp lệ được bỏ vào chuỗi khối chính dựa trên sự đồng thuận của mạng.((("block")))
+
+blockchain hay chuỗi khối::
+	Một danh sách các khối đã được kiểm tra tính hợp lệ, mỗi một khối liên kết với khối trước đó dẫn thẳng đến khối khải huyền.((("blockchain")))
+	
+lần xác nhận::
+	Một khi một giao dịch được đưa vào trong một block, nó nhận được một lần xác nhận. Ngay khi một khối _khác_ được đào trên cùng một chuỗi khối, giao dịch đó nhận được hai lần xác nhận và cứ như vậy. Số lần xác nhận từ 6 trở lên được xem là đủ an toàn để giao dịch đó không thể hủy bỏ được.((("confirmations")))
+
+độ khó::
+	Một cài đặt trên toàn mạng dùng để kiểm soát bao nhiêu tính toán cần được thử hiện để tạo ra một chứng cứ xử lý.((("difficulty")))
+
+mức độ khó::
+ 	Một độ khó mà ở đó tất cả các tính toán trên mạng phục vụ cho mục đích tìm ra các block sau mỗi 10 phút.((("target difficulty")))
+
+điều chỉnh độ khó::
+	Sự tính toán lại về độ khó xảy ra trên toàn mạng, xuất hiện một lần sau mỗi 2106 khối và dựa trên năng lực tính băm của 2106 khối trước đó.((("difficulty retargeting")))
+	
+phí::
+	Người gửi một giao dịch thường gửi kèm một khoản phí cho mạng nhằm xử lý giao dịch được yêu cầu. Phần lớn các giao dịch yêu cầu một khoản phí giao dịch tối thiểu là 0.5 mBTC.((("fees")))
+
+băm::
+	Một chuỗi nhận dạng dạng số cho một số dữ liệu đầu vào dạng nhị phân.((("hash")))
+
+khối khải huyền::
+	Khối đầu tiên trong chuỗi khối, được dùng để khởi động đồng tiền số.((("genesis block")))
+	
+máy đào::
+Nút mạng có nhiệm vụ tìm ra chứng cứ xử lý hợp lệ cho các khối mới bằng cách liên tục tạo ra các băm.((("miner")))
+
+mạng::
+Một mạng ngang hàng phát tán các giao dịch và khối đến tất cả các nút bitcoin trên mạng.((("network")))
+	
+Chứng-Cứ-Xử-Lý::
+	Một đoạn dữ liệu cần nhiều xử lý mới tìm ra được. Trong bitcoin, các máy đào phải tìm ra giải pháp số cho giải thuật SHA256, giải pháp phải đáp ứng mục tiêu toàn mạng tức là mức độ khó. ((("proof-of-work")))
+
+thưởng::
+Một lượng bitcoin được đưa vào mỗi khối mới như là phần thưởng mà mạng trao cho máy đào đã tìm được giải pháp Chứng-Cứ-Xử-Lý. Hiện nay (2015) mỗi block đi kèm một khoản thưởng 25BTC.((("reward")))
+
+khóa bí mật::
+	Một con số bí mật nhằm giải phóng lượng bitcoin được gửi đến địa chỉ tương ứng. Một số bí mật có dạng như sau +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("secret key")))((("private key", see="secret key")))
+	
+giao dịch::
+Giải thích một cách đơn giản thì đó là việc chuyển nhượng một số lượng bitcoin từ một địa chỉ này đến một địa chỉ khác. Chính xác hơn, một giao dịch là một cấu trúc dữ liệu được ghi chữ kí số lên dùng để thể hiện việc chuyển nhượng giá trị. Các giao dịch được truyền đi qua mạng bitcoin, các máy đào sẽ thu thập lại và đưa chúng vào block, lưu giữ chúng một cách bền vững trên chuỗi khối.((("transaction")))
+
+ví::
+Phần mềm giữ toàn bộ các địa chỉ bitcoin và khoá bí mật của bạn. Sử dụng nó để gửi, nhận và lưu trữ bitcoin của bạn.((("wallet"))) 

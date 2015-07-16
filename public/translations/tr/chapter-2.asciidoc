@@ -1,0 +1,260 @@
+[[ch02_bitcoin_overview]]
+Bitcoin Nasıl Çalışır?
+
+İşlemler, Bloklar, Madencilik ve Blok Zinciri
+
+((("bitcoin","implementation of", id="ix_ch02-asciidoc0", range="startofrange"))) Bitcoin sistemi, geleneksel bankacılık ve ödeme yöntemlerinin aksine, merkezi olmayan güvene dayalıdır. Bitcoinde güven, merkezi güvenilir bir yetkili yerine, bitcoin sistemindeki farklı katılımcıların etkileşimlerinden ortaya çıkan bir özellik olarak elde edilir. Bu bölümde, bitcoin sistemindeki tek bir işlemi izleyerek daha yüksek bir seviyede bitcoini inceleyeceğiz ve o işlemin bitcoinin dağıtık uzlaşma mekanizması tarafından kabul edilmesini ve "güvenilir" olmasını, son olarak da  tüm işlemlerin kaydedildiği dağıtık defter olan blok zincirine kaydedilmesini izleyeceğiz.
+
+Her örnek bitcoin ağında yapılan, bir cüzdandan diğerine para göndererek kullanıcılar arasındaki etkileşimi simüle eden gerçek bir işleme dayalıdır. Bitcoin ağındaki ve blok zincirindeki bir işlemi izlemek ve  her adımı takip edebilmek için ((("blockchain explorer websites"))) _block zinciri kaşifi_ sitesini kullanacağız. Blok zinciri kaşifi, bitcoin arama motoru gibi çalışan  bir ağ uygulamasıdır. Bu şekilde adresleri, işlemleri ve blokları aramanıza, bağlantıları görmenize arasında gezinmenize olanak sağlar.
+
+Popüler blok zinciri kaşifleri: ((("blockchain.info website")))((("blockexplorer.com")))((("blockr.io website")))((("insight.bitpay.com")))
+
+* http://blockchain.info[Blockchain info]
+* http://blockexplorer.com[Bitcoin Block Explorer]
+* http://insight.bitpay.com[insight]
+* http://blockr.io[blockr Block Reader]
+
+Bunların her biri; adresleri, işlem özetlerini ve blok numaralarını alabileceğiniz ve bitcoin ağı ile blok zincirindeki birbirine eşdeğer verileri bulabileceğiniz bir arama işlevine sahiptir. Her bir örnek ile, sizi doğruca ilgili kaynağa götürecek bir URL paylaşacağız böylece ayrıntılı olarak inceleyebilirsiniz.
+
+
+==== Bitcoin'e Genel Bakış
+
+Şurada <<bitcoin-overview>> gösterilen grafiğe genel olarak bakarsak; bitcoin sisteminin anahtarları içeren kullanıcı cüzdanlarından, ağa yayılmış işlemlerden ve tüm işlemlerin kaydedildiği yetkili defter olan blok zincirindeki uzlaşmayı sağlayan madencilerden oluştuğunu görürüz. Bu bölümde, tek bir işlemin ağ içerisindeki seyahatini izleyeceğiz ve bitcoin sisteminin her bir parçasının arasındaki etkileşimi yüksek seviyede inceleyeceğiz. Sonraki bölümlerde tüccar sistemi, madencilik ve cüzdanların arkasındaki teknolojiyi daha derinlemesine inceleyeceğiz. 
+
+[[bitcoin-overview]]
+.Bitcoin'e Genel Bakış
+image::images/msbt_0201.png["Bitcoin Overview"]
+
+[[cup_of_coffee]]
+==== Bir Fincan Kahve Almak
+
+((("transactions", id="ix_ch02-asciidoc1", range="startofrange")))((("transactions","simple example of", id="ix_ch02-asciidoc2", range="startofrange"))) Alice, önceki bölümde tanıştırdığımız kız, ilk bitcoinlerini henüz elde etmiş yeni bir kullanıcıdır. <<getting_first_bitcoin>>, Alice biraz nakit karşılığında bitcoin almak için arkadaşı Joe ile buluştu. Joe tarafından oluşturulan işlem Alice'in cüzdanına 0.10 BTC gönderdi. Şimdi Alice, Bob'un Palo Alto/California'da bulunan kahve dükkanından bir bardak kahve satın alarak ilk perakende işlemini yapacak. Bob'un kahve dükkanı yakın zamanda satış noktası sistemine bitcoin seçeneğini ekleyerek bitcoin ödeme sistemini kabul etmeye başladı. Bob'un kahve dükkanındaki fiyatlar yerel para birimi(dolar) cinsinden listelenmiş fakat kasada tüketiciler hem dolar hem de bitcoin ile ödeme seçeneğine sahip. Alice bir bardak kahve siparişi verir ve Bob işlemi kasaya girer. Satış noktası sistemi toplam tutarı geçerli bitcoin piyasa oranından dolardan bitcoine çevirecektir ve fiyatı iki para birimi cinsinden de gösterecektir. Bu işlemi içeren bir ödeme isteğini QR kod olarakta gösterecektir. (bakınız <<payment-request-QR>>):
+
+----
+Toplam:
+$1.50 USD
+0.015 BTC
+----
+
+[[payment-request-QR]]
+QR kodu ile ödeme isteği (İpucu: Bunu taramayı deneyin!)
+image::images/msbt_0202.png["payment-request"]
+
+[[payment-request-URL]]
+Ödeme istekli QR kodu, aşağıdaki URL'lerin BIP0021  ile kodlanmış halidir.
+----
+bitcoin:1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA?
+amount=0.015&
+label=Bob%27s%20Cafe&
+message=Purchase%20at%20Bob%27s%20Cafe
+
+URL Bileşenleri: 
+
+Bir Bitcoin Adresi: "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
+Ödeme Tutarı: "0.015"
+Alıcı adres etiketi: "Bob's Cafe"
+Ödeme açıklaması: "Bob's Cafe'de Alışveriş"
+----
+
+
+[TIP]
+====
+((("QR codes","payment requests as"))) Basitçe gönderilecek bitcoin adresini içeren bir QR kodun aksine bir ödeme isteği; gönderilecek adresi, ödenecek miktarı ve Bob'un kahve dükkanı gibi genel bir açıklama içeren içine URL kodlanmış bir QR koddur. Bu kod, kullanıcıya insanların okuyabileceği bir açıklama gösterirken bitcoin cüzdan uygulamasının da ödeme göndermek için kullandığı bilgileri doldurmasına olanak verir. Alice'in gördüğünü görebilmek için bitcoin cüzdan uygulamasıyla QR kod tarayabilirsiniz. 
+====
+
+Bob , "1,5 dolar ya da 15 millibit" der.
+
+Alice görüntüdeki barkodu taramak için akıllı telefonunu kullanıyor. Akıllı telefonu +Bob's Cafe+'ye +0.0150 BTC+'lik ödemeyi gösteriyor ve Alice ödemeye izin vermek için +Send+ seçeneğini seçiyor. Birkaç saniye içinde(yaklaşık olarak kredi kartı ile yapılan işlemlerdeki aynı süre) Bob transferin tamamlandığına dair işlemi kasada görebilir.
+
+Aşağıdaki kısımlarda bu işlemi daha detaylı inceleyeceğiz. Alice'in cüzdanının bu işlemi nasıl oluşturduğunu, ağ boyunca nasıl yayıldığını, nasıl onaylandığını ve son olarak Bob'un bu parayı sonraki işlemlerinde nasıl harcayabileceğini göreceğiz.
+
+[NOTE]
+====
+Bitcoin ağı, milli bitcoinden(bitcoinin 1000'de 1'i) satoshi((("satoshis","defined"))) olarak bilinen bitcoinin 100,000,000 'da 1'ine kadar kesirli değerlerde işlem yapabilir. Bu kitap içerisinde "bitcoin" terimini bitcoin para biriminin herhangi bir miktarını[en küçük birimden(1 satoshi) kazılacak toplam bitcoin miktarına kadar (21,000,000)] belirtmek için kullanacağız.(((range="endofrange", startref="ix_ch02-asciidoc2"))) 
+====
+
+
+=== Bitcoin İşlemleri
+
+((("transactions","defined"))) Basitçe bir işlem bitcoin ağına, elinde bir miktar bitcoin bulunan kişinin bu bitcoinlerden bir kısmını başka bir kişiye göndermeye izin verdiğini söylemektir. Bu bitcoinlerin yeni sahibi başka birine bunları göndermeye izin vermek için başka bir işlem oluşturarak bitcoinlerini harcayabilir. Bu böyle bir sahiplik zinciri içerisinde devam eder. 
+
+İşlemler, çift girişli bir muhasebe defterindeki satırlar gibidir. ((("inputs, defined"))) Basitçe her bir işlem, bitcoin hesabının karşısına borç olarak eklenen bir ya da daha fazla girdiyi içerir. ((("outputs, defined"))) İşlemin diğer tarafında bitcoin hesabına alacak olarak eklenen bir ya da daha fazla çıktı vardır. Girdiler ve çıktıların (borçlar ve alacaklar) aynı miktarda eklenmesi şart değildir. Bunun yerine çıktılar girdilerden bir miktar daha az olurlar. Aradaki fark, işlemi deftere(blok zinciri) dahil eden madenciler tarafından toplanan küçük bir ödemedir ve "işlem ücreti" olarak gösterilir. Bir bitcoin işlemi muhasebe defterindeki bir kayıt gibi görülür <<transaction-double-entry>>. 
+
+İşlem aynı zamanda, herhangi biri tarafından bağımsız bir şekilde geçerli kılınabilinen ve sahibi tarafından dijital bir imza şeklinde transfer edilen her bitcoin miktarının(girdiler) sahiplik ispatını da içerir. Bitcoin terimlerinde "harcama", bir önceki işlemden gelen değeri bir bitcoin adresi ile tanımlanmış yeni bir kişiye  transfer eden bir işlemi imzalamaktır. 
+
+
+[TIP]
+====
+_İşlemler_, bir değeri _işlem girdileri_'nden _işlem çıktıları_'na dönüştürür. Bir girdi, genellikle bir önceki işlemin çıktısından gelen paranın değeridir. Bir işlem çıktısı, transfer edilen değeri bir anahtar ile ilişkilendirerek ona yeni bir sahip atar. Hedef anahtar _taahhüt_ olarak adlandırılır. Bu anahtar, paranın sonraki işlemlerde kullanılabilmesi için bir imzayı zorunlu kılar. Bir işlemin çıktıları, yeni bir işlemde girdi olarak kullanılabilir. Bu, adresten adrese iletilen bir değer gibi sahiplik zincirini oluşturur. (bakınız <<blockchain-mnemonic>> ) 
+====
+
+[[transaction-double-entry]]
+Çift girişli muhasebe defterine benzeyen işlem 
+image::images/msbt_0203.png["Transaction Double-Entry"]
+
+[[blockchain-mnemonic]]
+Bir işlemin çıktısının sonraki işlemin girdisi olduğu işlemler zinciri.
+image::images/msbt_0204.png["Transaction chain"]
+
+Alice'in Bob'un kahve dükkanına yaptığı ödeme bir önceki işlemi girdi olarak kullanır. Önceki bölümde Alice, nakit para karşılığında arkadaşı Joe'dan bitcoin aldı. Bu işlem bir miktar bitcoini Alice'in anahtarı ile kilit altına aldı(taahhüt edildi). Alice'in Bob'un kahve dükkanına yapacağı yeni işlem önceki işlemi girdi olarak referans gösterir ve bir bardak kahve fiyatını ödemek için yeni bir çıktı oluşturur. İşlemler, önceki işlemlerin çıktılarına karşılık gelen en son işlemlerin girdilerinin olduğu bir çeşit zincirdir. Alice'in anahtarı önceki işlem çıktılarının kilidini açmak için bir imza sağlar. Böylece onun kendi parası olduğunu bitcoin ağına kanıtlar. Alice içtiği kahvenin ödemesini Bob'un adresine ekler. Böylece Bob bu miktarı harcamak için gerekli olan bir imza üretir. Bu Alice ve Bob arasındaki bir değer transferinin temsilidir. Bu işlemler zinciri, Joe'dan Alice'e ve Alice'ten Bob'a, şuradan <<blockchain-mnemonic>> görülebilir.
+
+==== Yaygın İşlem Çeşitleri
+
+((("transactions","common forms of", id="ix_ch02-asciidoc3", range="startofrange"))) İşlemin en yaygın kullanım şekli bir adresten diğerine yapılan, genellikle biraz "değişim" ile ilk sahibine geri dönen basit bir ödemedir. Bu çeşit bir işlemde bir girdi ve iki çıktı vardır ve şu şekildedir <<transaction-common>>.
+
+[[transaction-common]]
+En yaygın işlem
+image::images/msbt_0205.png["Common Transaction"]
+
+Yaygın olan diğer bir işlem şekli ise birçok girdiyi tek çıktı içerisinde toplamadır (<<transaction-aggregating>>). Bu bir yığın bozuk parayı ve banknotu tümletmek ile eşdeğerdir. Bunun gibi işlemler bazen cüzdan uygulamaları tarafından yapılan ödemelerin para üstü olarak alınan çok sayıda ufak işlemi temizlemek üzere kullanılır
+
+[[transaction-aggregating]]
+Toplanan para işlemleri
+image::images/msbt_0206.png["Aggregating Transaction"]
+
+Son olarak, bitcoin defteri üzerinde sıklıkla görülen bir başka işlem de tek girdiyi, birçok alıcıyı temsil eden birçok çıktıya dağıtan işlemdir (<<transaction-distributing>>). Bu işlem bazen ticari işletmeler tarafından, birçok çalışana maaş ödemesi yapmak gibi, para dağıtmak amacıyla kullanılır.(((range="endofrange", startref="ix_ch02-asciidoc3")))
+
+[[transaction-distributing]]
+Dağıtılan para işlemleri
+image::images/msbt_0207.png["Distributing Transaction"]
+
+=== İşlem Oluşturmak
+
+((("transactions","constructing", id="ix_ch02-asciidoc4", range="startofrange")))Alice'in cüzdan uygulaması, Alice'in tarifine göre bir işlem gerçekleştirmek için gerekli girdileri ve çıktıları seçebilecek bütün mantığı içerir. Alice sadece hedef ve miktar belirler ve geri kalan herşey o ayrıntıları görmeden cüzdan uygulamasında gerçekleşir.  ((("offline transactions"))) Mühim bir nokta, cüzdan uygulaması tamamen çevrimdışı olsa da işlemi oluşturabilir. Evde bir çek yazıp, postayla bankaya göndermek gibi, işlem bitcoin ağına bağlıyken oluşturulup, imzalanmak zorunda değildir. Sadece eninde sonunda işleme koyulmak için ağa gönderilmelidir.
+
+==== Doğru Girdileri Almak
+
+((("transactions","inputs, getting", id="ix_ch02-asciidoc5", range="startofrange")))Ayşe'nin cüzdan uygulaması önce Bob'a göndermek istediği miktarı karşılayabilecek girdileri bulması gerekir. Çoğu cüzdan uygulaması cüzdan anahtarıyla kilitlenmiş (ipotekli) "harcanmamış işlem çıktıları" şeklinde küçük bir veritabanı tutar. Böylece, Ayşe'nin cüzdanı Joe'nun işleminin bir işlem çıktı kopyasını barındırır, ki bu nakit para karşılığı oluşturulmuştu (bkz. <<getting_first_bitcoin>>). Tam-listeli bir istemci (full-index client) olarak çalışan bir Bitcoin cüzdan uygulaması aslında defter üzerinde bulunan harcanmamış çıktıların hepsinin bir kopyasını içerir. Bu, cüzdanın işlem girdisi oluşturmasını ve gelen işlemlerin girdilerini hızlıca doğrulamasını sağlar. Ancak tam-listeli istemci çok disk yeri kapladığı için çoğu kullanıcı sadece kendi harcanmamış çıktılarını takip eden "tüysiklet" (lightweight) istemci kullanır.  
+	
+((("wallets","blockchain storage in")))Eğer cüzdan uygulaması harcanmamış işlem çıktılarının bir kopyasını tutmazsa, cüzdan, bitcoin ağını bu bilgiyi almak için sorgulayabilir. Bu sorgu çeşitli sağlayıcılar tarafından sunulan APIlara veya JSON RPC API kullanarak tam-listeli bir düğüme yapılabilir. <<example_2-1>> belirli bir URL'ye gönderilen HTTP GET komutu şeklinde bir RESTful bir API isteği örneği göstermektedir. Bu URL bir adres için harcanmamış bütün işlem çıktılarını döndürecektir, böylece  uygulama, harcama yapmak için gerekli işlem girdilerini oluşturmak için ihtiyacı olan bilgiye sahip olacaktır. Sonucu almak için basit bir komut satırı HTTP istemcisi olan ((("cURL HTTP client"))) _cURL_ kullanıyoruz.
+
+[[example_2-1]]
+.Ayşe'nin bitcoin adresi için harcanmamış bütün çıktıları sorgula
+====
+[source,bash]
+----
+$ curl https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK
+----
+====
+
+[[example_2-2]]
+.Sorgunun cevabı
+====
+[source,json]
+----
+{
+ 
+	"unspent_outputs":[
+
+		{
+			"tx_hash":"186f9f998a5...2836dd734d2804fe65fa35779",
+			"tx_index":104810202,
+			"tx_output_n": 0,	
+			"script":"76a9147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a888ac",
+			"value": 10000000,
+			"value_hex": "00989680",
+			"confirmations":0
+		}
+  
+	]
+}
+----
+====
+
+<<example_2-2>> deki cevap Ayşe'nin adresinde bir harcanmamış çıktı (henüz işlenmemiş) gösteriyor +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+. Cevap, bu harcanmamış çıktıyı içeren işleme (Joe'nun yaptığı ödeme) ait bir referans ve satoshi olarak değerini içeriyor. 10 milyon, yani 0.10 bitcoine eşdeğer. Bu bilgi ile beraber, Ayşe'nin cüzdan uygulaması bu değeri yeni adrese yönlendirecek bir işlem oluşturabilir.
+
+[TIP]
+====
+Şunu görüntüleyin http://bit.ly/1tAeeGr[transaction from Joe to Alice]
+====
+
+Gördüğünüz gibi, Ayşe'nin cüzdanı tek bir harcanmamış çıktı içerisinde bir bardak kahve almaya yetecek kadar bitcoin içeriyor. Eğer böyle olmasaydı, Ayşe'nin cüzdan uygulaması birçok, henüz harcanmamış küçük çıktı içerisine bakıp, çanta dibinden bozuk para bulur gibi, kahvenin parasını tamamlayana kadar didik didik arama yapmak zorunda kalabilirdi. İki şekilde de, cüzdan uygulaması işlem çıktılarını (ödeme) oluşturdukça para üstü alma durumu olabilir, bunu bir sonraki bölümde göreceğiz.(((range="endofrange", startref="ix_ch02-asciidoc5")))
+
+
+==== Çıktıları Oluşturmak
+
+((("transactions","outputs, creating"))) Bir işlem çıktısı, değer üzerinde ipotek oluşturan bir script olarak oluşturulur ve sadece bu scriptin çözümü halinde harcanabilir. Daha basitçe, Ayşe'nin işlem çıktısı şöyle bir script içerir "Bu çıktı Bob'un halka açık adresine denk gelen imzayı kim sunarsa ona ödenecektir". Sadece Bob bu adrese denk gelen imzayı sunabilecek olan cüzdana sahip olduğu için, bu cüzdan bu çıktıyı alabilir. Ayşe böylece çıktıyı Bob'un imzasına ipoteklemiştir. 
+
+Bu işlem ayrıca ikinci bir çıktı da içerir, çünkü Ayşe'nin 0.10 BTC olan parası, 0.015 BTC lik kahvenin değerinden fazladır. Ayşe'nin 0.085 BTC para üstü alması gerekir. Ayşe'nin para üstü ödemesi de yine _Ayşe'nin cüzdanı tarafından_ Bob'a ödeme ile aynı işlem içerisinde yaratılır. Ayşe'nin cüzdanı parayı iki ödemeye böler: bir tanesi Bob'a, diğeri de kendisine. Ayşe para üstünü bir sonraki işleminde kullanıp, harcayabilir. 
+
+Son olarak, işlemin ağ tarafından zamanınca devreye sokulabilmesi için, Ayşe'nin cüzdanı cüzi bir ücret ekler. Bu işlemin içerisinde açıkça gösterilmez, girdi ve çıktı arasındaki farkta görülür. Eğer para üstü olan 0.085 BTC'yi almayıp, Ayşe ikinci çıktı olarak sadece 0.0845 BTC yaratırsa, 0.0005 BTC (yarım milibitcoin) fazladan kalacaktır. Girdinin 0.10 BTC'si iki çıktı içerisinde hala tamamen harcanmamıştır çünkü toplamları 0.10'dan daha azdır. Aradaki fark _işlem ücreti_ bu işlemi kütüğe koyup, deftere yazmak için madenciler tarafından toplanan ücrettir.
+
+İşlem sonucu bir blockchain tarayıcı web uygulaması ile görülebilir, örnek: <<transaction-alice>>.
+
+[[transaction-alice]]
+Alice'in, Bob'un kafesindeki işlemi
+image::images/msbt_0208.png["Alice Coffee Transaction"]
+
+[[transaction-alice-url]]
+[TIP]
+====
+Şunu görüntüleyin http://bit.ly/1u0FIGs[transaction from Alice to Bob's Cafe].
+====
+
+==== Bir işlemi muhasebe defterine ekleme
+
+((("transactions","adding to ledger")))Ayşe'nin cüzdan uygulaması tarafından yaratılan işlem 258 byte uzunluğunda ve paranın kime ait olduğu kanıtlayıp, yeni sahibine atanması için gerekli olan herşeyi içerir. Artık işlem bitcoin ağına göndermeli ve orada ortak defterin (the blockchain) bir parçası olmalıdır. Bir sonraki bölümde işlemin nasıl bir kütüğün (block) parçası olacağını ve bu kütüğün nasıl deftere "kazıldığını" göreceğiz. Son olarak, bir kere deftere eklenen kütüğe, daha fazla kütük eklendikçe, ağ tarafından gittikçe daha çok güvenildiğini göreceğiz.
+
+
+
+===== İşlem aktarımı
+
+((("transactions","transmitting")))((("transmitting transactions")))İşlem gerekli bütün bilgiyi içerdiğinden ötürü bu bilginin bitcoin ağına nasıl veya nereden geldiğinin bir önemi yoktur. Bitcoin ağı kişiden-kişiye bir ağdır, her bitcoin istemcisi diğer birçok bitcoin istemcisine bağlanarak ağa katılır. Bitcoin ağının amacı işlemleri ve kütükleri diğer tüm katılımcılara yaymaktır. 
+
+===== Nasıl yayılıyor
+
+((("transactions","propagating")))Ayşe'nin cüzdan uygulaması yeni işlemi, herhangi bir internet bağlantısı üzerinden (kablolu, kablosuz, mobil) diğer bitcoin istemcilerine gönderebilir.  Ayşe'nin bitcoin cüzdanı direk olarak Bob'un cüzdanına bağlı olmak zorunda değildir ve cafenin internet bağlantısına da bağlı olmak zorunda değildir, ki isterse bu olabilir. Herhangi bir bitcoin ağ düğümü (diğer istemci) eğer önceden bilmediği geçerli bir işlem alırsa bunu hemen kendisine bağlı olan diğer istemcilere yönlendirir. Böylece, işlem hızlıca kişiden-kişiye ağ üzerinde yayılır, birkaç saniye içerisinde ağın yüzde olarak çoğunluğuna yayılmış olur. 
+
+===== Bob'un tarafı
+
+Eğer Bob'un bitcoin cüzdan uygulaması direk olarak Ayşe'nin cüzdan uygulamasına bağlıysa, Bob'un cüzdan uygulaması işlemi alan ilk düğüm olabilir. Fakat, Ayşe'nin cüzdanı işlemi diğer düğümler üzerinden bile alsa, Bob'un cüzdanına birkaç saniye içerisinde ulaşacaktır. Bob'un cüzdanı anında Ayşe'nin işlemini gelen ödeme olarak anlayacaktır çünkü Bob'un anahtarları tarafından çözülebilecek işlem içerir. Bob'un cüzdan uygulaması ayrıca bağımsız olarak işlemin düzgün oluşturulduğunu, önceden harcanmamış girdi kullandığını ve bir sonraki kütüke girebilecek kadar işlem ücreti içerdiğini doğrular. Bu noktada Bob, çok ufak bir şüphe ile, işlemin kısa zaman içerisinde kütüğe geçeceğini ve doğrulanacağını kabul edebilir. 
+
+[TIP]
+====
+((("transactions","accepting without confirmations"))) Bitcoin işlemleri ile ilgili yanlış bir kanı ise, bu işlemlerin yeni kütük için 10 dakika bekleyerek "onaylanmak" zorunda olduğu veya 60 dakikaya kadar bekleyerek 6 onay almak gerektiğidir. Onaylar bütün ağın işlemi kabul ettiğini gösterse de, böyle bir bekleyiş bir bardak kahve gibi küçük işlemler için gereksizdir. Satıcı düşük değerli işlemleri hiçbir onay olmadan kabul edebilir, bunun riski şu an satıcıların hep yaptığı gibi kimliksiz veya imzasız bir kredi kartı işleminden daha fazla değildir.(((range="endofrange", startref="ix_ch02-asciidoc4")))(((range="endofrange", startref="ix_ch02-asciidoc1")))
+====
+
+=== Bitcoin Madenciliği
+
+((("mining","blockchains")))İşlem artık bitcoin ağına yayıldı. Doğrulanana ve _kazı_ denilen bir işlemden geçip bir kütüğün parçası olana kadar ortak deftere girmez. Ayrıntılı bilgi için <<ch8>>'e bakınız. 
+
+Bitcoin güven sistemi hesaplamaya dayalıdır. İşlemler _kütük_ler içerisine toplanılır, bunların doğrulaması aşırı büyük bir hesaplama gerektirir, fakat doğrulanmış olarak onaylamak küçük bir hesaplama gerektirir. Kazı işleminin bitcoin'de iki amacı vardır:
+
+* Madencilik her kütük içerisinde yeni bitcoinler yaratır, adeta merkez bankasının yeni para basması gibi. Kütük başına yaratılan bitcoin sayısı sabittir ve zamanla azalır.
+* Madencilik işlemlerin kendini içeren kütüğe yeterince hesaplama gücü adandığını doğrulayarak güveni sağlar. Daha fazla kütük, daha fazla hesaplama demektir, bu da daha fazla güven. 
+
+Madenciliği açıklamanın iyi bir yolu da çözdükçe baştan başlayan, çözümü 10 dakika sürecek şekilde zorluğu otomatik ayarlanan kocaman bir sudoku yarışmasına benzetmektir. Kocaman bir sudoku bulmacası düşünün, binlerce satır ve kolon büyüklüğünde. Size tamamen çözülmüş bir bulmaca göstersem, hemen doğruluğunu anlayabilirsiniz. Fakat, birkaç karesi doldurulmuş ama gerisi boşsa, çözmesi çok çaba ister! Sudokunun zorluğu boyutunu değiştirerek ayarlanabilir (daha fazla veya az satır ve kolon), fakat çok büyük olsa da hemen doğrulanabilir. Bitcoin için kullanılan "bulmaca" ise kriptografik özet bazlıdır ve benzer karakteristikler gösterir: Asimetrik olarak çözmesi zordur ama onaylaması kolaydır, ve zorluğu ayarlanabilir.
+
+<<user-stories>> içerisinde, Jing'i tanıttık, Şangay'da bir bilgisayar mühendisliği öğrencisi. Jing bitcoin ağına madenci olarak katılıyor. Her 10 dakikada bir, Jing binlerce diğer madenciyle beraber bir kütük dolusu işleme çözüm bulmak için dünya çapında bir yarışa katılıyor. Bu çözümü bulmak, işin kanıtı da denilir, tüm bitcoin ağı boyunca saniyede katrilyonlarca özet hesaplaması gerektirir. İş kanıtının algoritması, önceden belirlenmiş şablonu andıran bir çözüm çıkana kadar tekrar tekrar kütük başlığı ve SHA256 kriptografik algoritmalı rasgele bir sayıyla özet hesaplamayı içerir. Böyle bir çözümü bulan ilk madenci bu turu kazanır ve kütüğünü deftere yayınlar. 
+
+((("mining","profitability of")))Jing madencilik yaparak yeni kütükler için uygun bir iş kanıtı bulmaya 2010 yılında çok hızlı bir masaüstü bilgisayar ile başladı. Daha fazla madenci bitcoin ağına katıldıkça, problemin zorluğu hızlı bir şekilde arttı. Yakın zamanda, Jing ve diğer madenciler oyun bilgisayarlarında ve konsollarda kullanılan ileri seviye grafik işlemciler (GPU) gibi özelleştirilmiş donanımlara geçmeye başladılar. Bu yazı yazılırken zorluk o kadar yüksek ki sadece sadece uygulamaya özel tümleşik develer (ASIC) kullanılarak karlılık elde edilebiliyor, bu bir anlamda yüzlerce madencilik algoritmasının donanıma yazılması ve paralel olarak tek bir silikon devre üzerinde koşması demek. Jing buna ek olarak bir "madencilik havuzuna" katıldı, bu bir nevi piyango havuzu gibi birçok katılımcının çabalarını ve ödüllerini paylaşmasını sağlar. Jing şimdi iki tane USB bağlantılı ASIC makineyi günde 24 saat çalıştırıyor. Elektrik masraflarını madencilik yaparak çıkardığı bitcoinleri satıp, karından gelir sağlayarak karşılıyor. Bilgisayarı özelleştirilmiş madencilik yazılımına arka uç olarak bitcoind'nin, referans bitcoin istemcisinin, bir kopyasını koşturuyor.
+
+=== Bloklardaki madencilik işlemleri
+
+((("mining","transactions in blocks")))((("transactions","mining in blocks")))Ağ üzerinden iletilen bir işlem halka açık dağıtık defterin, kütükzincirinin, bir parçası olana kadar doğrulanmış değildir.  Ortalama her 10 dakikada bir, madenciler geçen kütükten itibaren olan bütün işlemleri içeren yeni bir kütük üretir. Yeni işlemler kullanıcı cüzdanlarından ve diğer uygulamalardan devamlı ağa akış halindedir. Bunlar bitcoin ağ düğümleri tarafından görüldükçe, henüz onaylanmamış işlemler olarak geçici bir havuza eklenir. Madenciler yeni bir kütük oluşturunca, bu havuzdaki onaylanmamış işlemleri yeni bir kütüğe eklerler ve  yeni kütüğün geçerli olduğunu kanıtlayan çok zor bir problemi (iş kanıtı olarak bilinen) çözmeye çabalarlar. Madencilik süreci detaylı olarak <<mining>> de açıklanmaktadır.
+
+İşlemler en yüksek ücretli ödeme ilk olacak şekilde ve bir kaç diğer kritere görel sıralanır ve yeni kütüğe eklenir. Her madenci yeni bir kütük kazma sürecine bir önceki kütüğü ağdan alır almaz başlar, böylece bir önceki turu kaybettiğini öğrenir. Hemen yeni bir kütük oluşturur, bunu işlemler ve bir önceki kütüğün parmak iziyle doldurur ve iş kanıtını hesaplamaya başlar. Her madenci kendi kütüğünde kendi bitcoin adresine yeni yaratılan bitcoinleri (şu anda kütük başına 25 BTC) ödeyen özel bir işlem bulundurur. Eğer kütüğü geçerli kılan bir çözüm bulursa kazanır çünkü başarılı olan kütüğü evrensel kütükzincirine eklenir ve içerdiği ödül işlemi harcanabilir hale gelir. Madencilik havuzuna katılımda bulunan Jing kendi yazılımını ödülü havuzun hesabına atayan yeni kütükler yaratacak şekilde hazırlamıştır. Ödül buradan Jing ve madencilik havuzuna katkıda bulunan diğer madencilere geçen tur yaptıkları iş oranında  paylaştırılır. 
+
+Alice'in işlemi ağ tarafından teyit edilmemiş işlemler havuzuna alındı. Yeterince ücret içerdiği için Jing'in madenci havuzu tarafından yaratılan yeni kütük içerisine konuldu. Alice'in cüzdanı tarafından ilk olarak iletilmesinden yaklaşık olarak beş dakika sonra Jing'in ASIC madencisi kütük için bir çözüm buldu ve bunu 419 başka işlem daha içeren kütük no 277316 olarak yayınladı. Jing'in ASIC madencisi yeni kütüğü bitcoin ağına yayınladı, burada diğer madenciler bunu doğruladı ve bir sonraki kütüğü üretmek için yarış tekrar başladı. 
+
+Bloğun içeriğini şuradan görebilirsiniz https://blockchain.info/block-height/277316[Alice's transaction].
+
+Bir kaç dakika sonra 277317 numaralı yeni kütük, başka bir madenci tarafından bulundu. Alice'in işlemini içeren bir önceki kütüğe(no 277316) dayandığı için bu kütüğün üzerine daha fazla hesaplama eklendi ve böylece bu işlemlere güven güçlendi. Alice'in işlemini içeren kütük o işlemin bir "onay"ı sayıldı. İşlemi içeren kütüğün üzerine bulunan her kütük bu işlem için ek bir onay olarak sayılır. Kütükler üst üste bindikçe işlemi geri çevirmek üstel olarak zorlaşır bu da işlemi ağ tarafından gittikçe daha fazla güvenilir yapar. 
+
+<<block-alice1>> şeklinde Alice'in işlemini içeren 277316 numaralı kütüğü görebiliyoruz. Onun altında _yaratılış kütüğü_ olarak da bilinen 0 numaralı kütüğe kadar giden zincir şeklinde birbirine bağlı (kütükzinciri) 277316 tane kütük var (0 nolu kütük dahil). Zaman geçtikçe, kütüklerin boyu yükseldikçe, herbir kütüğün ve bütün zincirin hesaplama zorluğu da artıyor. Alice'in işlemini içeren kütükten sonra bulunan kütükler daha uzun bir zincire daha fazla hesaplama yükleyerek ek teminat oluyor. Adet olarak, altıdan daha fazla onayı olan herhangi bir kütük değiştirilemez kabul edilir çünkü altı kütüğü geçersiz kılıp tekrar hesaplamak için muazzam bir hesaplama miktarı gerekir. Madencilik yönteminin nasıl güven oluşturduğunu ayrıntılı olarak <<ch8>> de inceleyeceğiz.
+
+[[block-alice1]]
+Alice'in işlemi #277316  numaralı bloğa dahil edilmiş.
+image::images/msbt_0209.png["Alice's transaction included in a block"]
+
+=== İşlemin Harcanması
+
+((("transactions","spending")))Artık Alice'in işlemi bir kütüğün parçası olarak kütükzincirine gömüldüğüne göre, bu işlem ortak bitcoin defterinin bir parçası ve bütün bitcoin uygulamalarına görünür durumda. Her bitcoin istemcisi bağımsız olarak bu işlemi doğru ve harcanabilir olarak teyit edebilir. Tam-liste istemciler bu paranın kaynağını ilk kez bir kütüğün içinde yaratılmasından itibaren işlemden işleme adım adım Bob'un adresine ulaşana kadar takip edebilir. Tüysiklet işlemciler basitleştirilmiş ödeme doğrulaması (bkz <<spv_nodes>>) denilen yöntemle işlemin kütükzincirinde olduğunu ve kendisinden sonra birçok kütük bulunduğunu kontrol eder, böylece ağın bu işlemi doğru kabul ettiğinden emin olur. 
+	
+Bob, bu çıktıları girdileri olarak referanslayan kendine ait işlemler yaratarak ve bunlara yeni sahip atayarak, artık bu ve diğer işlemlerin çıktısını harcayabilir. Örnek olarak, Bob  Alice'in kahve ödemesinden gelen değeri aktararak bir taşerona veya tedarikçiye ödeme yapabilir. Büyük ihtimalle, Bob'un bitcoin yazılımı belki günlük cirosunu tek bir işleme aktararak, birçok küçük ödemeyi büyük bir ödeme içerisinde birleştirecektir. Bu birçok farklı ödemeyi dükkanın "kontrol" hesabı olarak kullanılan tek bir adrese taşıyacaktır. İşlemlerin birleştirilmesi ile ilgili bir diyagram için, <<transaction-aggregating>> 'a bakınız. 
+	
+Bob, Alice ve diğer müşterilerden aldığı ödemeleri harcadıkça işlem zincirini büyütmekte, bunlar da herkesin gördüğü ve güvendiği halka açık kütükzinciri defterine eklenmektedir. Şimdi Bob'un web tasarımcısı Bangalore'lu Gopesh'e yeni bir websitesi için ödeme yaptığını varsayalım. İşlem zinciri böyle görünecektir <<block-alice2>>.(((range="endofrange", startref="ix_ch02-asciidoc0")))
+
+[[block-alice2]]
+Gopesh'ten Joe'ya kadar bir işlem zincirinin parçası olarak Alice'in işlemi
+image::images/msbt_0210.png["Alice's transaction as part of a transaction chain"]

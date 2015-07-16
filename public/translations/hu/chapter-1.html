@@ -1,0 +1,1079 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="ch01_intro_what_is_bitcoin">Bevezetés</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_mi_a_bitcoin">Mi a bitcoin?</h3>
+<div class="paragraph"><p>A bitcoin olyan alapelvek és technológiák összessége, melyek egy digitális pénzrendszer alapját képezik. A bitcoinnak nevezett pénzegység érték tárolásra és továbbításra szolgál a bitcoin hálózat résztvevői között. A bitcoin felhasználók a bitcoin protokoll segítségével kommunikálnak egymással, főleg az Interneten, de egyéb átviteli hálózatok is használhatók. A bitcoin protokoll, amely nyílt forráskódú szoftverként érhető el, széles eszközválasztékon futtatható, többek között notebookokon és okostelefonokon, ami könnyen elérhetővé teszi ezt a technológiát.</p></div>
+<div class="paragraph"><p>A hálózaton át továbbított bitcoinokkal nagyjából ugyanaz megtehető, mint a hagyományos pénzzel, pl. áruvásárlás vagy eladás, pénz küldése magánembereknek vagy szervezeteknek, vagy hitelnyújtás. Bitcoinok az erre specializált pénzváltókban vehetők, adhatók el, vagy válthatók át egyéb pénznemekre. A bitcoin bizonyos értelemben az Internetes pénz tökéletes formája, mivel gyors, biztonságos és határokat átívelő.</p></div>
+<div class="paragraph"><p>A hagyományos pénzekkel ellentétben a bitcoin teljesen virtuális. Nincsenek fizikai érmék, de még digitális érmék sem. Az érméket implicit módon azok a tranzakciók tartalmazzák, melyek a feladótól a címzetthez továbbítják az értéket. A bitcoin felhasználóknak csupán kulcsai vannak, amelyekkel a bitcoin hálózaton belül bizonyítani tudják a tranzakcióik tulajdonjogát, fel tudják szabadítani az elköltendő összeget, és továbbítani tudják azt egy új címzettnek. A kulcsok gyakran az egyes felhasználók számítógépén, egy digitális pénztárcában vannak tárolva. A bitcoinok elköltésének az egyetlen előfeltétele az, hogy a felhasználó rendelkezzen a tranzakciók zárolásának feloldásához szükséges kulccsal. Ez azt jelenti, hogy minden egyes felhasználó teljes mértékben maga rendelkezik a pénzével.</p></div>
+<div class="paragraph"><p>A bitcoin egy egyenrangú csomópontokból állló peer-to-peer rendszer. Nincs benne semmilyen „központi” szerver vagy irányítás. A bitcoinok az ún. „bányászat” során jönnek létre. A bányászat egy olyan verseny, melyben a bitcoin tranzakciók feldolgozása során egy matematikai feladat  megoldásának a keresése folyik. A bitcoin hálózat bármelyik tagja (vagyis bárki, aki a teljes bitcoin protokollt futtató eszközt használ) bányászként is képes működni, vagyis a számítógépe segítségével képes a tranzakciók ellenőrzésére és tárolására. Átalgosan 10 percenként sikerül valakinek az utolsó tíz percben született tranzakciók érvényesítése, és ezért vadonatúj bitcoinokat kap jutalmul. A bitcoin bányászat lényegében decentralizálja egy központi bank pénzkibocsátási és elszámolási feladatait, és a fenti globális versennyel váltja ki a központi bankok iránti igényt.</p></div>
+<div class="paragraph"><p>A bitcoin protokoll olyan beépített algoritmusokat tartalmaz, melyek a hálózat egészében szabályozzák a bányászatot. A bányászok feladata az, hogy sikeresen eltárolják a tranzakciókból blokkat a bitcoin hálózaton belül. E feladat nehézségét a hálózat dinamikusan úgy állítja be, hogy átalgosan minden 10 percben sikerrel járjon valaki, függetlenül attól, hogy egy adott pillanatban hány bányász (és CPU) dolgozik a probléma megoldásán.  A protokoll egyúttal minden 4 évben a felére csökkenti a 10 perceként kibocsájtott új bitcoinok számát, és ezáltal az összes létrejövő bitcoinok számát 21 millióra korlátozza. Emiatt a forgalomba kerülő bitcoinok száma egy könnyen megjósolható görbe, amely 2140-re éri el a 21 milliót. Az egyre csökkenő mértékű kibocsájtás miatt a bitcoin hosszabb távon deflációs pénz. A bitcoint nem lehet a tervezett kibocsájtási ütemet meghaladó mértékű új pénz ”kinyomtatásával” elinflálni.</p></div>
+<div class="paragraph"><p>A színfalak mögött a protokollt, a hálózatot és az osztott feldolgozás együttesét is bitcoinnak hívják. A bitcoin mint pénz ennek az innovációnak csupán az első alkalmazása. Fejlesztőként számomra a bitcoin a pénzvilág Internet-e: egy hálózat, mellyel érték továbbítható, és ami osztott feldolgozás révén biztosítja a digitális vagyontárgyak tulajdonjogát. A bitcoin sokkal több annál, mint első ránézésre hinnénk.</p></div>
+<div class="paragraph"><p>Ebben a fejezetben először a legfontosabb fogalmakat és kifejezéseket ismertetjük, letöltjük a szükséges szoftvert és egyszerű tranzakciókra használjuk a bitcoint. A további fejezetekben hozzálátunk azoknak a technológiai rétegeknek a feltárásához, melyek lehetővé teszik a bitcoin működését, és megvizsgáljuk a bitcoin hálózat és protokoll belső működését.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">A bitcoin előtti digitális pénzek</div>
+<div class="paragraph"><p>Az életképes digitális pénz megjelenése szorosan kötődik a kriptográfia fejlődéséhez. Ez nem meglepő, ha szemügyre vesszük azokat az alapvető feladatokat, melyek akkor lépnek föl, ha árukra és szolgáltatásokra elcserélhető értéket szeretnénk bitekkel ábrázolni. Bárki, aki digitális pénzt fogad el, az alábbi két alapvető kérdéseket teszi fel magának:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Bízhatok-e abban, hogy a pénz valódi és nem hamisítvány?
+</p>
+</li>
+<li>
+<p>
+Biztos lehetek-e abban, ez a pénz csak az enyém, és senki másé? (ez az ún. „kettős költés” problémája).
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>A papírpénz kibocsájtás során egyre kifonomultabb papírokkal és nyomtatási módszerekkel veszik fel a harcot a hamisítás ellen. A fizikai pénz esetében a kettős költés kérdésének kezelése egyszerű, hiszen ugyanaz a bankjegy nem lehet egyszerre két helyen. Természetesen a hagyományos pénz tárolása és továbbítása is gyakran digitálisan történik. Ebben az esetben a hamisítás és kettős költés problémájának kezelése úgy történik, hogy az összes elektronikus tranzakciót központi szervezeteken keresztül bonyolítják le. A központi szervezeteknek globális rálátásuk van a forgalomban levő pénzre. A digitális pénznél, amely nem támaszkodhat különleges tintákra vagy holografikus csíkokra, a kriptográfia biztosítja a felhasználók értékekre vonatkozó állításainak a valódiságát. Nevezetesen, a digitális aláírások teszik lehetővé egy digitális eszköz vagy tranzakció aláírását, a felhasználó pedig ennek révén képes bizonyítani egy adott eszköz tulajdonjogát. A megfelelő architektúra segítségével a digitális aláírások a kettős költés problémájának a kezelésére is alkalmasak.</p></div>
+<div class="paragraph"><p>Amikor a kriptográfia az 1980-as évek végén kezdett sokkal szélesebb körben elterjedni, sok kutató próbált a kriptográfia segítségével digitális pénzeket létrehozni. Ezek a korai projektek olyan digitális pénzeket hoztak létre, amelyeket egy nemzeti valutára vagy valamilyen nemesfémre, pl. az aranyra épültek.</p></div>
+<div class="paragraph"><p>Ezek a korai digitális pénzek működtek ugyan, de centralizáltak voltak, emiatt pedig a kormányok vagy a hackerek támadásainak könnyű célpontjai voltak. A korai digitális pénzek a hagyományos bankrendszerhez hasonlóan egy központi elszámolóházat használtak, amely a tranzakciókat rendszeres időközönként elszámolta. Sajnos a legtöbb esetben ezek a születőfélben lévő digitális pénzek az aggódó kormányok céltáblái lettek, és végül jogi úton felszámolták őket. Voltak közülük olyanok, melyek látványosan összeomlottak, mikor az anyacég hirtelen felszámolásra került. Ahhoz, hogy egy digitális pénz robusztusan ellen tudjon állni az ellenfelek támadásainak, legyenek ezek törvényes kormányok vagy bünőző elemek, olyan új decentralizált digitális pénzre volt szükség, amelyben nem volt egy pontos támadási felület. A bitcoin egy ilyen rendszer: teljesen decentralizált, és nincs benne semmilyen központi szervezet vagy irányítás, amely megtámadható vagy korrumpálható.</p></div>
+<div class="paragraph"><p>A bitcoin a kriptográfia és az oszott rendszerek évtizedes kutatásának a végeredménye. Négy alapvető újítást tartalmaz, melyek egyedi és hatékony módon vannak kombinálva egymással. A bitcoin alkotó elemei:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+egy decentralizált peer-to-peer hálózat (a bitcoin protokoll),
+</p>
+</li>
+<li>
+<p>
+egy nyilvános tranzakciós főkönyv (a blokklánc),
+</p>
+</li>
+<li>
+<p>
+decentralizált, determinisztikus matematikai pénzkibocsájtás (osztott bányászat),
+</p>
+</li>
+<li>
+<p>
+egy decentralizált tranzakció ellenőrző rendszer (tranzakciós scriptek).
+</p>
+</li>
+</ul></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_a_bitcoin_története">A bitcoin története</h3>
+<div class="paragraph"><p>A bitcoint 2008-ban találta fel Satoshi Nakamoto, amikor megjelentette a  „Bitcoin: egy peer-to-peer elektronikus pénzrendszer” című dolgozatát. Satoshi Nakamoto számos előző felfedezés, pl.  a b-pénz és a HashCash kombinálásával egy teljesen decentralizált elektronikus pénzrendszert hozott létre, amelyben a pénzkibocsájtás, valamint a tranzakciók elszámolása és ellenőrzése nem egy központi szervezetre támaszkodik. A legfontosabb újítása a  munkabizonyíték algoritmuson alapuló, 10 percenkénti globális „szavazás”. Ennek révén a decentralizált hálózatban a tranzakciók állapotáról <em>konszenzus</em> alakulhat ki. Ez elegáns megoldást jelent. a kettős költés kérdésére – vagyis arra, hogy egy pénzegység ne legyen kétszer is elkölthető. Korábban a digitális pénz egyik gyengeségét éppen a kettős költés jelentette, melyet úgy kezeltek, hogy az összes tranzakciót egy központ elszámolóházon keresztül rendezték.</p></div>
+<div class="paragraph"><p> A bitcoin hálózat a Nakamoto által publikált referencia implementáció alapján, 2009-ben kezdte meg a működését. A referencia implementációt azóta számos programozó felülvizsgálta. A bitcoin biztonságát és ellenállóképességét biztosító osztott feldolgozási kapacitás exponenciálisan nőtt, és manapság meghaladja a világ leggyorsabb szuper-számítógépeinek a feldolgozási kapacitását. A bitcoin teljes piaci értéke a bitcoin-dollár árfolyamtól függően becslések szerint 5 és 10 milliárd US dollár között van. A hálózat által feldolgozott eddigi legnagyobb tranzakció 150 millió US dollár volt. A tranzakció azonnal továbbításra került, és a feldolgozása díjtalan volt.</p></div>
+<div class="paragraph"><p>Satoshi Nakamoto 2011 áprilisában visszavonult a nyilvánosságtól.  A programkódot és a hálózat fejlesztését az egyre gyarapodó önkéntesek csoportjára hagyta. Még ma sem tudjuk, hogy ki vagy kik állhatnak a bitcoin mögött. De a bitcoint se Satoshi Nakamoto, se mások nem tudják befolyásolni, mert a rendszer teljesen átlátható matematikai alapelvek szerint működik. Maga a felfedezés korszakalkotó, és máris egy új tudományágat hozott létre az osztott feldolgozás, a közgazdaságtan és az ökonometria területén.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Megoldás egy osztott feldolgozási problámára</div>
+<div class="paragraph"><p>Satoshi Nakamoto felfedezése egyúttal az oszott feldolgozás egy korábban megoldatlan problémájának, az ún.  "bizánci generálisok problémájának" a gyakorlati megoldását jelenti. Röviden, a probléma abból áll, hogy hogyan lehet megegyezni a tennivalókról egy megbízhatatlan és potenciálisan kompromittált hálózatban végzett információcsere révén. Satoshi Nakamoto megoldása, amely a munkabizonyíték fogalmának használatával, központi szervezet nélkül éri el a konszenzust, áttörést jelent az elosztott feldolgozás terén, és a pénzügyeken kívül egyéb területeken is széles körben alkalmazható. Bizonyíthatóan igazságos választások, lottójáték, tulajdoni nyilvántartások, digitális közjegyzői szolgáltatások és sok minden más esetén is konszenzust lehet vele elérni a decentralizált hálózatokban.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="user-stories">A bitcoin használata a felhasználók szemszögéből</h3>
+<div class="paragraph"><p>A bitcoin pénz kezelésre szolgáló technológia, vagyis alapjában véve emberek közötti értékcsere. Nézzük meg néhány bitcoin felhasználót és a segítségükkel vizsgáljuk meg, hogy melyek a bitcoin leggyakoribb felhasználási módjai. Az egész könyvben ezekkel a történetekkel fogjuk szemlélteni, hogy hogyan használható a digitális pénz a valós életben, és a bitcoin részét képező különféle technológiák hogyan teszik mindezt lehetővé.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Észak-Amerikai kiskereskedelem
+</dt>
+<dd>
+<p>
+Alice Észak-Kaliforniában, a Bay Areán él. A bitcoinról műszaki érdeklődésű barátaitól hallott, és szeretné elkezdeni a használatát. Őt követjük majd, amint megismeri a bitcoint, vesz egy keveset belőle, majd elkölt belőle valamennyit, hogy vegyen egy csésze kávét Bob Palo Alto-i kávézójában. Ennek a történetnek a révén fogunk megismerkedni meg egy vevő szemszögéből a szoftverrel, a pénzváltókkal és a legegyszerűbb tranzakciókkal.
+</p>
+</dd>
+<dt class="hdlist1">
+Észak-Amerikai nagykereskedelem
+</dt>
+<dd>
+<p>
+Carol egy galéria tulajdonosa San Francisco-ban. Drága képeket árul bitcoinért. Az ő történetével fogjuk bemutatni a konszenzus elleni 51%-os támadás által jelentett veszélyt, mely a nagy értékű tételek eladásánál jelentkezik.
+</p>
+</dd>
+<dt class="hdlist1">
+Offshore szerződéses szolgáltatások
+</dt>
+<dd>
+<p>
+Bob, a Palo Alto-i kávéház tulajdonosa egy új webhelyet szeretne. Egy indiai web fejlesztővel, Gopesh-sel kötött szerződést, aki Banglore-ban él. Gopesh beleegyezett abba, hogy bitcoinban kapja a fizetését. Ebben a történetben azt fogjuk megvizsgálni, hogyan használható a bitcoin kiszervezésre, szerződéses szolgáltatásokra és nemzetközi banki átutalásra.
+</p>
+</dd>
+<dt class="hdlist1">
+Jótékonysági adományok
+</dt>
+<dd>
+<p>
+Eugénia egy Fülöp-szigeti gyermek jótékonysági alap igazgatója. Nemrég bukkant rá a bitcoinra, és szeretné külföldi és hazai adományozók új csoportját elérni vele, hogy adományokat gyűjtsön. Eugénia a bitcoin használatával szeretne a szükséget szenvedő területekre pénzt küldeni. Az ő története fogja bemutatni, hogyan lehet a bitcoinnal határokon és pénznemeken átívelő módon globális adománygyűjtést szervezni, és hogyan használható a nyílt főkönyv a jótékonysági szervezetek átláthatósága érdekében.
+</p>
+</dd>
+<dt class="hdlist1">
+Import/export
+</dt>
+<dd>
+<p>
+Mohammed elektronikai cikkeket importál Dubaiba. Arra akarja használni a bitcoint, hogy az USÁ-ból és Kínából elektronikai termékeket importáljon az Egyesült Arab Emirátusokba, és hogy felgyorsítsa az import termékek fizetési folyamatát. Ez a történet fogja bemutatni, hogyan használható a bitcoin a fizikai termékekkel kapcsolatos nemzetközi nagykereskedelmi tranzakciókban.
+</p>
+</dd>
+<dt class="hdlist1">
+Bitcoin bányászat
+</dt>
+<dd>
+<p>
+Jing számítástechnikát tanul Shanghaiban. Jövedelmkiegészítés céljából épített egy bitcoin „bányász” platformot. Ez a történet a bitcoin „ipari” oldalát fogja bemutatni: milyen speciális berendezések biztosítják a bitcoint hálózatot és az új pénz létrejöttét.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Mindegyik fenti történet valós szereplőkön és valós iparágakon alapul. Ezek a szereplők jelenleg arra használják a bitcoint, hogy új piacokat, új iparágakat teremtsenek, és a globális közgazdasági kérdésekre újító megoldásokat adjanak.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_elindulás">Elindulás</h3>
+<div class="paragraph"><p>A bitcoin hálózathoz történő csatlakozáshoz, és a bitcoin használatának megkezdéséhez csupán le kell tölteni egy alkalmazást vagy el kell kezdeni használni egy web alkalmazást. Mivel a bitcoin szabványos, a bitcoin kliensnek számos különféle megvalósítása van. Van egy „referencia implementáció” is, az ún. Satoshi kliens. Ez egy nyílt forráskódú projekt, amelyet egy fejlesztő csoport kezel, és a Satoshi Nakamoto által írt eredeti implementációból származik.</p></div>
+<div class="paragraph"><p>A bitcoin kliensek három fő típusa:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Teljes kliens
+</dt>
+<dd>
+<p>
+A teljes kliens vagy „teljes csomópont” egy olyan kliens, amely a bitcoin tranzakciók teljes történetét tárolja, kezeli a felhasználó pénztárcáját és a bitcoin hálózatban közvetlenül képes tranzakaciók indítására. Hasonló ez egy önálló email szerverhez, mert önállóan kezeli a protokoll összes vonatkozását, de nem függ semmilyen más szervertől vagy harmadik fél által nyújtott szolgáltatástól.
+</p>
+</dd>
+<dt class="hdlist1">
+Pehelysúlyú kliens
+</dt>
+<dd>
+<p>
+A pehelysúlyú kliens tárolja ugyan a felhasználó pénztárcáját, de egy harmadik fél szolgáltatásaira támaszkodva éri el a bitcoin tranzakciókat valamint a bitcoin hálózatot. A pehelysúlyú kliensben nincs meg az összes tranzakció teljes másolata, emiatt a tranzakciók ellenzőrzésekor egy harmadik félben kell megbíznia. Hasonló ez egy önálló email klienshez, amely egy postaláda elérésekor egy mail szerverhez kapcsolódik, vagyis a hálózati kapcsolatot egy harmadik fél segítségével teremti meg.
+</p>
+</dd>
+<dt class="hdlist1">
+Web kliens
+</dt>
+<dd>
+<p>
+A web kliensek web böngészőkön keresztül hasznáhatók, és a felhasználó pénztárcáját egy harmadik fél tulajdonában lévő web szerveren tárolják. Hasonló ez a webmailhez, mert teljes egészében egy harmadik fél szerverére támaszkodik.
+</p>
+</dd>
+</dl></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Mobil bitcoin</div>
+<div class="paragraph"><p>Az okostelefonokhoz írt mobil kliensek, például azok, melyek az Adroid rendszeren alapulnak, lehetnek teljes kliensek, pehelysúlyú kliensek, vagy akár web kliensek is. Némelyik mobil klienst egy web vagy asztali klienssel szinkronizálnak, ezáltal több platformos pénztárca valósul meg, amely több eszközön is használható, de közös pénzforrással rendelkezik.</p></div>
+</div></div>
+<div class="paragraph"><p>A bitcoin kliens kiválasztása attól függ, hogy milyen mértékben szeretnénk ellenőrzést gyakorolni a pénzünk fölött. A legnagyobb fokú kontroll és függetlenség egy teljes klienssel valósítható meg, viszont a mentések és a biztonsági kérdések terhét a felhasználónak kell viselnie. A másik végletet a web kliens jelenti, mert könnyen üzembe állítható és használható, de a web kliens esetében megjelenik az a kockázat, hogy biztonságot és a felügyeletet a felhasználó és web szolgáltatás tulajdonosa együtt gyakorolja. Ha egy web-es pénztárca szolgáltatója kompromittálódik, mint ahogy a múltban ez már sokszor megtörtént, akkor a felhasználó az összes pénzét elveszítheti. Ha viszont a felhasználónak teljes kliense van, de nem rendelkezik megfelelő mentésekkel, akkor egy számítógépes baleset miatt veszítheti el a pénzét.</p></div>
+<div class="paragraph"><p>Ebben a könyvben sokféle bitcoin kliens használatát fogjuk szemléltetni, a referencia implementációtól (a Satoshi klienstől) kezdve a web-es pénztárcákig. Némelyik példához a referencia klienst kell majd használni, mert ez nyújt API-kat a pénztárcához, a hálózathoz és a tranzakciós szolgáltatásokhoz. Ha önök a bitcoin rendszer programozható interfész felületeit szeretnék használni, akkor a referencia kliensre lesz szükségük.</p></div>
+<div class="sect3">
+<h4 id="_gyors_elindulás">Gyors elindulás</h4>
+<div class="paragraph"><p>Alice, akit a <a href="#user-stories">[user-stories]</a> részben ismerhettünk meg, nem műszaki felhasználó, és csak nemrég hallott a bitcoinról egy barátjától. Úgy kezdi meg az ismerkedést a bitcoinnal, hogy meglátogatja a  <a href="http://www.bitcoin.org">bitcoin.org</a> webhelyet. Itt a bitcoin kliensek széles választéka található meg. A bitcoin.org webhelyen lévő tanácsnak megfelelően a ((("Multibit kliens")) Multibit pehelysúlyú klienst választja.</p></div>
+<div class="paragraph"><p>Alice a bitcoin.org webhelyen lévő hivatkozáson keresztül letölti a Multibitet az asztali gépére. A Multibit Windows, Mac és Linux számítógépen használható.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A bitcoin pénztárca létrehozásakor meg kell adni egy jelszót vagy jelmondatot, amely a pénztárca védelmére szolgál. Sok csibész próbálkozik a gyenge jelszavak feltörésével, ezért vigyázzon, hogy olyat válasszon, amelyet nem lehet könnyen feltörni. Használjon kis- és nagybetűkből, számokból és szimbólumokból álló kombinációt. Ne használjon személyes adatokat, pl. születési dátumokat, vagy focicsapatok nevét. Ne használjon szótárban előforduló szavakat. Ha teheti, használjon jelszó generátort, amely teljesen véletlenszerű jelszavakat állít elő. A jelszó hossza legalább 12 karakter legyen. Vésse az eszébe: a bitcoin pénz, és azonnal átutalható bárhová a világon. Kellő védelem hiányában a bitcoin könnyen ellopható.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Miután Alice letöltötte és installálta a Multibit alkalmazást, elindítja azt. Egy "Üdvözlő" képernyő fogadja, amint az a <a href="#multibit-welcome">[multibit-welcome]</a> ábrán látható:</p></div>
+<div class="imageblock" id="multibit-welcome">
+<div class="content">
+<img src="images/msbt_0101.png" alt="MultibitWelcome" />
+</div>
+<div class="title">Figure 1. A Multibit bitcoin kliens üdvözlő képernyője</div>
+</div>
+<div class="paragraph"><p>A Multibit automatikusan egy új pénztárcát és egy új bitcoin címet hoz létre Alice számára. Az új cím "Request" fülre történő kattintással tekinthető meg, amint azt a  <a href="#multibit-request">[multibit-request]</a> ábra mutatja,</p></div>
+<div class="imageblock" id="multibit-request">
+<div class="content">
+<img src="images/msbt_0102.png" alt="MultibitReceive" />
+</div>
+<div class="title">Figure 2. Alice új bitcoin címe, a Multibit kliens "Request" fülén</div>
+</div>
+<div class="paragraph"><p>Ennek a képernyőnek a legfontosabb része Alice <em>bitcoin címe</em>. A bitcoin cím egy email címhez hasonlóan megosztható. Segítségével bárki pénzt küldhet Alice új pénztárcájába. A képernyőn a bitcoin cím egy betűkből és számokból álló hosszú karakterláncként jelenik meg: <tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>. A pénztárca bitcoin címe mellett van egy QR kód, amely egyfajta vonalkód, és ugyanezt az információt tartalmazza, de olyan formátumban, amely egy okostelefon fényképezőgépével könnyen bepásztázható. A QR kód az ablak jobb oldalán lévő, fekete és fehér kockákból álló kép. Alice a a bitcoin címet vagy QR kódot úgy tudja a "vágólapra" másolni, hogy rákattint a mellettük lévő gombra. Magára a QR kódra katttintva a kód kinagyítható, és egy okostelefonnal könnyen bepásztázható.</p></div>
+<div class="paragraph"><p>Alice a QR kód kinyomtatásával könnyen meg tudja adni másoknak a címét, vagyis nincs szükség a betűk és számok hosszú sorozatának a begépelésére.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A bitcoin címek az ’1’ vagy a ’3’ számjeggyel kezdődnek. Egy email címhez hasonlóan, bármelyik másik bitcoin felhasználónak megadhatók. A bitcoin cím ismeretében a többi felhasználó bitcoinokat tud küldeni erre címre. Az email címektől eltérően új címek olyan gyakran hozhatók létre, amilyen gyakran csak akarjuk, és mindegyik közvetlenül a pénztárcához fog tartozni. A pénztárca egyszerűen címek és kulcsok gyűjteménye. A kulcsokkal lehet a pénztárcában lévő pénz pénz zárolását megszüntetni. A felhasználó által létrehozható bitcoin címek száma gyakorlatilag nincs korlátozva.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Alice új bitcoin pénztárcája ezzel készen áll a használatra.</p></div>
+</div>
+<div class="sect3">
+<h4 id="getting_first_bitcoin">Az első bitcoinok beszerzése</h4>
+<div class="paragraph"><p>Bankokban vagy pénzváltó helyeken jelenleg nem lehet bitcoint venni. 2014-ben a legtöbb országban még mindig nehéz bitcoinhoz jutni. Számos speciális pénzváltó van, ahol a helyi valutáért bitcoin adásvétel végezhető. Ezek a pénzváltók web-es pénzváltók. Ilyen többek között:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="http://bitstamp.net">Bitstamp</a>
+</dt>
+<dd>
+<p>
+egy európai pénzváltó, amely banki átutalással különböző pénznemeket támogat, többek között az Eurót (EUR) és az US dollárt (UDS)
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.coinbase.com">Coinbase</a>
+</dt>
+<dd>
+<p>
+egy amerikai székhelyű tárca szolgáltató, amely a kereskedők és a vevők közötti bitcoin tranzakciókat támogatja. A Coinbase megkönnyíti a bitcoin adás-vételt, mert a felhasználók az ACH (Automated Clearing House) rendszeren keresztül az amerikai folyószámlájukhoz tudnak kapcsolódni.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Az ilyen digitális pénzváltó helyek a helyi pénznemek és a digitális pénzek metszéspontjában üzemelnek. Mint ilyenek, az adott terület helyi pénznemét használják, a nemzeti és nemzetközi szabályok hatásköre alá tartoznak, és gyakran egyetlen egy ország vagy egyetlen gazdasági övezet specialitásihoz alkalmazkodnak. Egy pénzváltó használata függ az általunk használt pénznemtől, és hogy országunk jogrendszere szerint legális-e a váltó. A fenti szolgáltatóknál több napba vagy hétbe telhet egy számla létesítése, hasonlóan egy bankszámla megnyitásához, mert különféle azonosító nyomtatványok kitöltésére van szükség a KYC (Know Your Customer, ismerd ügyfeledet) és AML (Anti-Money Laundering, pénzmosás elleni) banki szabályozásnak történő megfelelés miatt. Ha már rendelkezünk számlával egy bitcoin váltóban, akkor épp úgy kereskedhetünk a bitcoinokkal, mint ahogy azt egy külföldi devizával tennénk egy bróker számlán.</p></div>
+<div class="paragraph"><p>Részletesebb lista található a <a href="http://bitcoincharts.com/markets/">http://bitcoincharts.com/markets/</a> helyen, amely több tucat pénzváltó árait és más piaci adatait tartalmazza.</p></div>
+<div class="paragraph"><p>Egy új felhasználó négy másik módszerret tud még bitcoint szerezni:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Keres egy barátot, akinek van bitcoinja, és közvetlenül tőle vesz. Sok bitcoin felhasználó kezdte így.
+</p>
+</li>
+<li>
+<p>
+A localbitcoins.com-hoz hasonló szolgáltatással keres egy területileg közeli eladót, akitől személyes tranzakció során, pénzért veszi meg a bitcoint.
+</p>
+</li>
+<li>
+<p>
+Valamilyen árut vagy szolgáltatást ad el bitcoinért. Egy programozó a programozói tudását tudja így értékesíteni.
+</p>
+</li>
+<li>
+<p>
+Keres egy  bitcoin ATM-et. A bitcoin ATM-ek térképe a <a href="http://www.coindesk.com/bitcoin-atm-map/">CoinDesk</a>. helyen található.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Alice-t a barátja ismertette meg a bitcoinnal, ezért Alice könnyen hozzájutott az első bitcoinjához, miközben arra várt, hogy a californiai pénzváltóban ellenőrizzék és aktíválják a számláját.</p></div>
+</div>
+<div class="sect3">
+<h4 id="sending_receiving">Bitcoin küldés és fogadás</h4>
+<div class="paragraph"><p>Alice létrehozott egy bitcoin pénztárcát, és most készen áll a pénz fogadására. A pénztárca alkalmazás generált neki egy véletlenszerű bitcoin címet és a hozzá tartozó kulcsot (ami egy elliptikus görbe privát kulcsa, és részletesebben a <a href="#private_keys">[private_keys]</a> rész ismerteti). Ebben a fázisban Alice bitcoin címét a bitcoin hálózat még nem ismeri, a cím a bitcoin rendszer semelyik részében sincs „regisztrálva”. Alice bitcoin címe egyszerűen csak egy szám, amely megfelel annak a kulcsnak, amellyel hozzá tud férni a pénzéhez. Alice-nak nincs semmilyen számlaszáma, és nincs semmilyen kapcsolat Alice ezen címe és egy számla között. Mindaddig, amíg a bitcoin főkönyv (blokklánc) a benne tárolt tranzakción keresztül nem hivatkozik erre a címre, és a címre még nem küldtek pénzt, addig a cím egyszerűen csak egy a hatalmas számú lehetséges „érvényes” bitcoin cím közül. Ha a cím már kapcsolatba került egy tranzakcióval, akkor a hálózatban ismert címek egyike lesz, és bárki lekérdezheti a címhez tartozó egyenleget a publikus főkönyvből.</p></div>
+<div class="paragraph"><p>Alice-szel barátja, Joe ismertette meg a bitcoint. Alice egy helyi étteremben találkozik vele, hogy pár dollárért bitcoint vegyen tőle. Alice kinyomtva elhozta a bitcoin pénztárcája által megjelenített bitcoin címet és a QR kódot. Biztonsági szempontból a bitcoin cím nem érzékeny adat. Bárhová feltehető anélkül, hogy biztonsági kockázatot jelentene.</p></div>
+<div class="paragraph"><p>Alice csupán 10 dollárt szeretne bitcoinra váltani, mert nem szeretne túl sok pénzt kockáztatni ezzel az új technológiával. Átad Joe-nak egy 10 dolláros bankjegyet és a kinyomtatott címét, hogy Joe elküldhesse neki az ennek megfelelő összeget bitcoinban.</p></div>
+<div class="paragraph"><p>Joe-nak meg kell állapítania a váltási árfolyamot, hogy a helyes bitcoin összeget utalhassa át Alice-nak. Alkalmazások és web helyek százai foglalkoznak az aktuális piaci árral. Íme, a legnépszerűbbek:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="http://bitcoincharts.com">Bitcoin Charts</a>
+</dt>
+<dd>
+<p>
+ a bitcoincharts.com szolgáltatás  a földgolyó számos pénzváltó helyének piaci adatait tartalmazza, a helyi pénznembe átszámítva
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://bitcoinaverage.com/">Bitcoin Average</a>
+</dt>
+<dd>
+<p>
+ a bitcoinaverage.com, amely mindegyik pénznemre vonatkozóan tartalmaz egy forgalommal átlagolt árat
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.zeroblock.com/">ZeroBlock</a>
+</dt>
+<dd>
+<p>
+ egy ingyenes Android és iOS alkalmazás, amellyel a különféle pénzváltó helyek bitcoin árai jeleníthetők meg (lásd <a href="#zeroblock-android">[zeroblock-android]</a>)
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="http://www.bitcoinwisdom.com/">Bitcoin Wisdom</a>
+</dt>
+<dd>
+<p>
+ egy másik, piaci adatokat megjelenítő alkalmazás.
+</p>
+</dd>
+</dl></div>
+<div class="imageblock" id="zeroblock-android">
+<div class="content">
+<img src="images/msbt_0103.png" alt="zeroblock screenshot" />
+</div>
+<div class="title">Figure 3. A ZeroBlock - a bitcoin piaci árát mutató alkalmazás Androidra és iOS-re</div>
+</div>
+<div class="paragraph"><p>A fenti alkalmazások vagy webhelyek valamelyikével Joe meghatározza a bitcoin árát, amely történetesen kb. 100 US dollár / bitcoin. Ilyen árfolyamon 0.10 bitcoint (100 milliBitet) kell Alice-nak elküldenie azért a 10 dollárért, amit tőle kapott.</p></div>
+<div class="paragraph"><p>Miután Joe megállapította a helyes átváltási árat, megnyitja a mobil pénztárca programját, és a bitcoin „küldés”-t választja. Például, ha a Blockchain mobil pénztárcát használja egy Android telefonon, akkor egy olyan képernyő jelenik meg, melynek két bemenő mezője van, amint azt  <a href="#blockchain-mobile-send">[blockchain-mobile-send]</a> mutatja:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+a tranzakció címzettjének bitcoin címe
+</p>
+</li>
+<li>
+<p>
+a küldendő bitcoin-ok mennyisége
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>A bítcoin cím beviteli mezőben van egy kis ikon, amely úgy néz ki, mint egy QR kód. Ezzel Joe az okostelefonja fényképezőgépén be tudja pásztázni Alice QR kódját, vagyis nem kell Alice bitcoin címét begépelnie (<tt>1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</tt>), ami hosszú, és nehézkes folyamat. Joe megérinti a QR kód ikont, majd aktivizálja az okostelefon fényképezőgépét, és bepásztázza a QR kódot. A mobil pénztárca alkalmazás kitölti a bitcoin címet, Joe pedig ellenőrzi, hogy helyes volt-e a pásztázás: összehasonlítja a bepásztázott cím néhány karakterét az Alice által kinyomtatott címmel.</p></div>
+<div class="imageblock" id="blockchain-mobile-send">
+<div class="content">
+<img src="images/msbt_0104.png" alt="blockchain mobile send screen" />
+</div>
+<div class="title">Figure 4. Mobil bitcoin pénztárca – a bitcoin küldési képernyő</div>
+</div>
+<div class="paragraph"><p>Ezután Joe beadja a tranzakcióhoz tartozó bitcoin értéket, 0.10 bitcoint. Gondosan ellenőrzi az értéket, hogy helyes-e, mivel pénzről van szó, és egy hiba sokba kerülhet. Végül megnyomja a „Küldés” gombot, ekkor továbbításra kerül a tranzakció. Joe mobil bitcoin pénztárcája létrehoz egy tranzakciót, amely Joe pénzéből 0.10 bitcoint az Alice által megadott címhez rendel hozzá, majd Joe privát kulcsaival aláírja a tranzakciót. A bitcoin hálózat ebből tudja, hogy Joe a saját bitcoin címeinek valamelyikéről az adott értéket Alice új címére szeretné továbbítani, és erre meghatalmazást adott. Amint a tranzakció továbbításra kerül a peer-to-peer protokollal, gyorsan szétterjed a bitcoin hálózatban. A hálózat legjobban kapcsolódó csomópontjai egy másodpercen belül megkapják a tranzakciót, és először találkoznak Alice címével.</p></div>
+<div class="paragraph"><p>Ha Alice-nak van egy okostelefononja vagy notebookja, akkor szintén látni fogja a tranzakciót. A bitcoin főkönyve egy állandóan növekvő állomány, amelyben minden, valaha előfordult bitcoin tranzakció rögzítve van. A bitcoin főkönyve publikus, ami azt jelenti, hogy Alice-nak csupán meg kell néznie a főkönyben, hogy érkezett-e a címére valamilyen pénz. Alice ezt a blockchain.info webhelyen egészen egyszerűen megteheti, ha a kereső dobozba beadja a címét. A webhely által megjelenített lapon (<a href="https://blockchain.info/address/1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK">https://blockchain.info/address/1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK</a>) a címre vonatkozó összes bemenő és kimenő tranzakció szerepel. Ha Alice azt követően, hogy Joe a megnyomta a „Küldés” gombot, megnézi ezt a lapot, hamarosan egy új tranzakció jelenik meg rajta, amely a 0.10 bitcoint ír jóvá a számláján.</p></div>
+<?hard-pagebreak?>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Megerősítések</div>
+<div class="paragraph"><p>Alice címén a Joe-tól jövő tranzakció először „Megerősítetlen”-ként fog megjelenni. Ez azt jelenti, hogy a tranzakció már szétterjedt a hálózatban, de még nincs befoglalva a tranzakciós főkönyvbe, más néven a blokkláncba. Ahhoz, hogy a tranzakció befoglalásra kerülhessen, egy bányásznak „ki kell választania”, és bele kell foglalnia a tranzakciót egy tranzakciókból álló blokkba. Ha létrejött egy új blokk (amihez kb. 10 percre van szükség), akkor a blokkban lévő tranzakciókat a hálózat „Megerősített”-nek tekinti, és elkölthetők. A tranzakciót mindenki azonnal látja, de csak akkor „bíznak meg” benne, ha már be van foglalva egy újonnan kibányászott blokkba.</p></div>
+</div></div>
+<div class="paragraph"><p>Alice ezzel 0.10 bitcoin büszke tulajdonosa lett, melyet elkölthet. A következő fejezetben megnézzük, hogy mit fog venni Alice a bitcoinjáért, részletesebben megvizsgáljuk a vásárlás mögött álló tranzakciót és a szétterjedés mögött álló technológiákat.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:54:58 UTC
+</div>
+</div>
+</body>
+</html>

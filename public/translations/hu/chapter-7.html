@@ -1,0 +1,1030 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="blockchain">A blokklánc</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bevezetés">Bevezetés</h3>
+<div class="paragraph"><p>A blokklánc, mint adatstruktúra a tranzakciós blokkok egy rendezett láncolt listája. A blokkláncot tárolhatjuk sima fájlként, vagy egy egyszerű adatbázisban. A Bitcoin Core kliens a blokklánc metaadatait a Google LevelDB adatbázisának segítségével tárolja. Minden blokk visszafelé láncolt, azaz mindegyik visszahivatkozik a blokklánc előző blokkjára. A blokkláncot gyakran egy függőleges halomként ábrázolják, ahol az első blokk mindig a halom alán szerepel. A blokkok ilyen  megjelenítése miatt használunk olyan kifejezéseket, mint például a első blokktól számított távolság megjelölésére a "magasság", vagy a legutóbbi hozzáadott blokk esetén a "csúcs".</p></div>
+<div class="paragraph"><p>A blokklánc minden blokkját egy hash azonosítja, amely a blokk fejlécére alkalmazott SHA256 kriptográfiai hash algoritmussal áll elő. A blokkfejlécben lévő "előző blokk hash-e" mező segítségével minden blokk hivatkozik a megelőző blokkra is, amelyet <em>szülő blokknak</em> szokás nevezni. Más szóval: a saját fejlécén belül minden blokk tartalmazza a szülő blokkjának a hash-ét is. Ekképp a hash-ek sorozatából, melyek minden blokkot összekapcsolnak a szülőjével, egy lánc jön létre, amely minden esetben visszavezet a legeslegelsőként legenerált blokkhoz, az úgynevezett <em>genezis blokkhoz</em>.</p></div>
+<div class="paragraph"><p>Bár egy blokknak csak egy szülője van, átmenetileg akár több gyereke is lehet. Minden gyerek ugyanarra a szülő blokkra hivatkozik, illetve minden gyerek azonos szülő hash-t tartalmaz az "előző blokk hash-e" mezőjében. Egy blokklánc elágazásnál egyszerre több gyerek is létrejöhet. Az elágazás egy átmeneti állapot, amely akkor jelentkezik, amikor két  bányász szinte egy időben fedez fel két különböző blokkot (lásd: <a href="#forks">[forks]</a>). Végül csak az egyik gyerek-blokk fog a blokklánc részévé válni, az „elágazás” pedig megoldódik. Egy blokknak tehát akár több gyereke is lehet, azonban minden blokknak csak egy szülője van. Ez azért van így, mert egy blokknak csak egyetlen olyan "előző blokk hash-e" mezője van, amely az egyedüli szülőjére hivatkozik.</p></div>
+<div class="paragraph"><p>Az "előző blokk hash-e" mező a blokkfejlécben van, és emiatt befolyásolja az <em>aktuális</em> blokk hash-ét is. Ha a szülő identitása megváltozik, akkor a gyermek identitása is megváltozik. Ha a szülő bármilyen módon megváltozik, akkor a hash-e is megváltozik. A megváltozott szülő hash-ének változása pedig elkerülhetetlenné teszi a gyerekben lévő "előző blokk hash-ének" a változását is. Emiatt a gyerek hash-e is változni fog, ez pedig változást eredményez az unokában lévő hivatkozásban is, tehát megváltozik az unoka is, és így tovább. Ez a kaszkád hatás biztosítja, hogy ha egy blokkot több generáció követ, akkor a blokkot csak úgy lehet megváltoztatni, ha az összes rákövetkező blokkot is újraszámításra kötelezzük. Mivel egy ilyen újraszámítás hatalmas számítási kapacitást igényelne, a blokkok hosszú láncolatának a megléte megváltoztathatatlanná teszi a blokklánc mélyének történelemét, ez pedig a bitcoin biztonságának a kulcsfontosságú eleme.</p></div>
+<div class="paragraph"><p>A blokkláncot valahogy úgy lehet elképzelni, mint a geológiai képződmények rétegeit, vagy mint egy gleccser-mag mintát. A felületi rétegek az évszakoknak megfelelően változhatnak, vagy akár el is tűnhetnek még azelőtt, hogy idejük lett volna sorba rendeződni. Ha viszont pár centivel mélyebbre ásunk, akkor azt tapasztaljuk, hogy a geológiai rétegek egyre stabilabbak. Amikor néhány száz méter mélyen vizsgálódunk, akkor tulajdonképpen a múlt pillanatfelvételét szemléljük, mely évezredeken, vagy évmilliókon át zavartalan maradt. A blokklánc néhány legutóbbi blokkja módosulhat, ha egy elágazás miatt újra kell számolni a láncot. A legfelső hat blokk olyan, mint a termőtalaj néhány centimétere. De ha egyre mélyebbre ásunk a blokkláncban, pl. 6 blokkon túl, akkor egyre valószínűtlenebb lesz, hogy egy blokkok megváltozik. 100 blokk után már olyan szintű a stabilitás, hogy az úgynevezett „coinbase” tranzakció (az a tranzakció, amely az újonnan kibányászott érméket tartalmazza) el is költhető. Néhány ezer egymásra rétegződött blokk (kb. egy hónap), és a blokklánc már a történelem része, azaz gyakorlatilag soha nem  változik meg. Noha a protokoll lehetővé teszi, hogy a láncot bármikor egy hosszabb lánc váltsa fel, és bármelyik blokk esetén van rá esély, hogy a blokk visszafordításra kerül, az ilyen események valószínűsége az idő múlásával egyre kisebbé válik, amíg infinitézimálissá nem lesz.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_egy_blokk_szerkezete">Egy blokk szerkezete</h3>
+<div class="paragraph"><p>A blokk egy olyan adattároló adatszerkezet, amely összegyűjti a tranzakciókat, hogy azokat a nyilvános főkönyvbe, azaz a blokkláncba foglalja. A blokk egy meta-adatokat tartalmazó fejlécből, és az azt követő, a tranzakciók hosszú sorát tartalmazó listából áll, ez utóbbi határozza meg a blokk méretét. A blokkfejléc mérete 80 bájt, míg egy átlagos tranzakcióé minimum 250 bájt. Egy átlagos blokk több mint 500 tranzakciót tartalmaz, így egy teljes blokk, az összes tranzakcióval együtt 1000-szer nagyobb, mint a blokkfejléc. A  <a href="#block_structure1">[block_structure1]</a> egy blokk szerkezetét írja le.</p></div>
+<div class="tableblock" id="block_structure1">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. Egy blokk szerkezete</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Méret </th>
+<th align="left" valign="top"> Mező </th>
+<th align="left" valign="top"> Leírás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Blokkméret</p></td>
+<td align="left" valign="top"><p class="table">A blokk mérete bájtokban, ezt a mezőt követően</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">80 bájt</p></td>
+<td align="left" valign="top"><p class="table">Blokkfejléc</p></td>
+<td align="left" valign="top"><p class="table">A blokkfejléc mezői (lásd alább)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 bájt (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Tranzakció számláló</p></td>
+<td align="left" valign="top"><p class="table">Hány tranzakció jön ezután</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">változó</p></td>
+<td align="left" valign="top"><p class="table">Tranzakciók</p></td>
+<td align="left" valign="top"><p class="table">A blokkban rögzített tranzakciók</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="block_header">A blokkfejléc</h3>
+<div class="paragraph"><p>A blokkfejléc háromféle blokk meta-adatból áll. Először is, van egy hivatkozás az előző blokk hash-ére, amely a blokklánc aktuális blokkját köti össze a megelőző blokkal. A második meta-adat halmaz az úgynevezett „difficulty” (nehézség), illetve az időbélyegző és számláló, ezek a bányászattal függnek össze, amint azt a <a href="#ch8">[ch8]</a> részletezte. A meta-adatok harmadik része a Merkle-fa gyökér, ami egy olyan adatstruktúra, amely hatékonyan összefoglalja a blokk tranzakcióit. A <a href="#block_header_structure_ch07">[block_header_structure_ch07]</a>  a blokkfejléc felépítését írja le.</p></div>
+<div class="tableblock" id="block_header_structure_ch07">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. A blokkfej szerkezete</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Méret </th>
+<th align="left" valign="top"> Mező </th>
+<th align="left" valign="top"> Leírás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Version</p></td>
+<td align="left" valign="top"><p class="table">A szoftver/protokoll változásokat nyomon követő verziószám</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">32 bájt</p></td>
+<td align="left" valign="top"><p class="table">Previous Block Hash</p></td>
+<td align="left" valign="top"><p class="table">Hivatkozás a blokklánc előző (szülő) blokkjának a hash-ére</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">32 bájt</p></td>
+<td align="left" valign="top"><p class="table">Merkle Root</p></td>
+<td align="left" valign="top"><p class="table">A blokk tranzakcióihoz tartozó Merkle-fa gyökerének a hash-e</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Timestamp</p></td>
+<td align="left" valign="top"><p class="table">Időbélyeg: hozzávetőleg mikor jött létre a blokk (a Unix kezdőidő óta eltelt másodpercek)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Difficulty Target</p></td>
+<td align="left" valign="top"><p class="table">A munkabizonyíték algoritmus által megkövetelt cél nehézségi szint</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bájt</p></td>
+<td align="left" valign="top"><p class="table">Nonce</p></td>
+<td align="left" valign="top"><p class="table">A munkabizonyíték algoritmus által használt számláló</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>A Nonce, a nehézségi szint ás az időbélyeg a bányászat során használatos, ezekről részletesebben a  <a href="#ch8">[ch8]</a> részben írunk.</p></div>
+</div>
+<div class="sect2">
+<h3 id="block_hash">Blokk azonosítók: Blokkfejléc, Hash, és Blokk magasság</h3>
+<div class="paragraph"><p>Egy blokk elsődleges azonosítója a blokk kriptográfiai hash-e, azaz a az digitális ujjlenyomata, amely oly módon jön létre, hogy a blokkfejléc az SHA256 algoritmussal kétszer hashelésre kerül. Az így kapott 32 bájtos hash az úgynevezett <em>blokk hash</em>, vagy pontosabban a <em>blokkfejléc hash</em>, mivel a kiszámításához csak a blokkfejlécre van szükség. Például a legelső legenerált bitcoin blokk blokk hash-e a <tt>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt> érték. A blokk hash egyértelmű módon azonosítja a blokkot. Bármely csomópont képes arra, hogy a többitől függetlenül előállítsa. Ehhez csupán a blokkfejlécet kell hashelnie.</p></div>
+<div class="paragraph"><p>Meg kell jegyezni, hogy a blokk belső adatstruktúrája ténylegesen nem tartalmazza a blokk hash-t, sem akkor, amikor a blokk átvitelre kerül a hálózaton, sem akkor, amikor a blokklánc részeként, egy csomóponton tárolásra kerül. Valójában az történik, hogy mikor a blokk a hálózatból megérkezik, minden egyes csomópont újraszámítja a blokk hash-t. A blokk hash a blokk meta-adatainak a részeként egy külön adatbázis táblázatban is tárolható. Ez megkönnyíti a blokkok indexelését és meggyorsítja a blokkok merevlemezről történő visszakeresését.</p></div>
+<div class="paragraph"><p>Egy blokk azonosítására egy másik módszer az, hogy megadjuk a blokkláncon belüli pozícióját, az úgynevezett <em>blokk magasságot</em>. A legelőször legenerált blokknak a blokk magassága 0 (nulla), ez ugyanaz a blokk, amire az imént a <tt>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt> blokk hash-el hivatkoztunk. A blokk tehát kétféleképpen azonosítható: vagy a blokk hash-sel, vagy a blokk magassággal. Minden következő blokk az előző "tetejéhez" adódik hozzá, vagyis ahhoz, amelyik éppen a blokklánc „legmagasabb” blokkja volt, valahogy úgy, ahogy dobozokat rakunk egymás tetejére. A blokk magasság 2014. január 1-én körülbelül 278&#8217;000 volt, ami azt jelenti, hogy a megjelölt időpontig 278&#8217;000 blokk halmozódott fel a 2009 januárjában létrehozott első blokkon.</p></div>
+<div class="paragraph"><p>A blokk hash-sel ellentétben, a blokk magasság nem egy egyedi azonosító. Míg egy blokknak mindig van egy adott és állandó blokk magassága, addig ennek a fordítottja nem igaz - a blokk magassághoz nem csak egy blokkot tartozhat. Két vagy akár több blokknak is azonos lehet a blokk magassága. Ezek a blokkok a blokklánc ugyanazon pozíciójáért versenyeznek. Ennek a menetéről az <a href="#forks">[forks]</a> részben írunk részletesebben. A blokk magasság szintén nem része a blokk adatstruktúrájának; tehát nem kerül a blokkon belül tárolásra. Minden csomópont dinamikusan azonosítja az adott blokk blokkláncon belüli helyzetét (magasságát), amikor azt a bitcoin hálózattól megkapja. A gyorsabb visszakeresés érdekében a blokk magasság is tárolható meta-adatként egy indexelt adatbázis táblázatban.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Egy blokk <em>blokk hash</em>-e minden esetben egyedi módon, egyetlen egy blokkot azonosít. A blokknak mindig van egy adott blokk magassága is. De egy adott blokk magasság nem minden esetben azonosít csak egyetlen blokkot. Gyakran előfordul, hogy két vagy akár több blokk is ugyanazért az blokkláncbeli pozícióért versenyez.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_genezis_blokk">A „Genezis” Blokk</h3>
+<div class="paragraph"><p>A blokklánc első blokkját, amely 2009-ben jött létre, „Genezis blokk”-nak nevezzük. Ez minden blokklánc blokkjának a "közös őse", ami azt jelenti, hogy ha a blokklánc mentén, bármelyik blokktól, elkezdünk időben visszafelé haladni, akkor végül a „Genezsis blokk”-hoz fogunk elérkezni.</p></div>
+<div class="paragraph"><p>Minden csomópont mindig egy minimum egy blokkból álló blokklánccal indul, mivel a Genezis blokk megváltoztathatatlan módon, statikusan be van kódolva a bitcoin kliens szoftverbe. Minden csomópont mindig "tudja", hogy mi a Genezis blokk hash-e és milyen a szerkezete, mikor joött létre, és milyen tranzakciókat tartalmaz. Így minden csomópont rendelkezik a blokklánc kiindulópontjával, azaz van olyan biztonságos "gyökere", amelyből kiépíthető egy megbízható blokklánc.</p></div>
+<div class="paragraph"><p>A a Bitcoin Core kliensben a statikusan kódolt Genezis blokk a chainparams.cpp állományban van: <a href="http://bit.ly/1x6rcwP">chainparams.cpp</a>.</p></div>
+<div class="paragraph"><p>A Genezis blokk azonosító hash-e:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ezt a blokk hash-t tetszőleges blokklánc vizsgáló web lapon megkereshetjük, például a blockchain.info-n is, az eredményként kapott oldal ennek a blokknak a tartalmát írja le, és mellesleg az URL-ben a hash-t is tartalmazza:</p></div>
+<div class="paragraph"><p><a href="https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f">https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</a></p></div>
+<div class="paragraph"><p><a href="https://blockexplorer.com/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f">https://blockexplorer.com/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</a></p></div>
+<div class="paragraph"><p>A Bitcoin Core referencia kliensét használva a parancssorban:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>A Genezis blokk tartalmaz egy rejtett üzenetet is. A coinbase tranzakció bemenete az alábbi szöveget is tartalmazza: „The Times 03/Jan/2009 Chancellor on brink of second bailout for banks” („The Times, 2009. jan. 3., A pénzügyminiszter hajlik a bankok második kimentésére”). Ez az üzenet bizonyítja, hogy mikor jött létre a legelső blokk, mivel a <em>The Times</em> brit újság akkori főcímére utal. A konkrét szöveget ironikus tréfaként is felfoghatjuk, hiszen felhívja figyelmünket egy önálló/független monetáris rendszer fontosságára, illetve arra is, hogy a Bitcoin a példátlan világméretű pénzügyi válsággal egy időben indult útjára. Az üzenetet a Bitcoin megalkotója, Satoshi Nakamoto rejtette el az első blokkban.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_a_blokkok_a_blokklánccá_történő_összkapcsolása">A blokkok a blokklánccá történő összkapcsolása</h3>
+<div class="paragraph"><p>A Bitcoin csomópontoknak a blokkláncból egy helyi példányuk van, amely a Genezis blokk-kal indul. A blokklánc helyi másolata folyamatosan frissül, mivel új blokkok képződnek, melyek bővítik a láncot. Ha a csomópontra a hálózatból egy blokk érkezik, akkor a csomópont először ellenőrzi a blokkot, majd hozzákapcsolja a blokkot a meglévő blokklánchoz. Az összekapcsoláshoz a csomópont megvizsgálja a beérkező blokk blokkfejlécét, és megkeresi benne az „előző blokk hash”-ét.</p></div>
+<div class="paragraph"><p>Tegyük fel például, hogy egy csomópontnak 277&#8217;314 blokkja van a helyi blokklánc másolatában. A csomópont által ismert utolsó blokk a 277&#8217;314, melyben a blokkfejléc hash-e: <tt>00000000000000027e7ba6fe7bad39faf3b5a83daed765f05f7d1b71a1632249</tt>.</p></div>
+<div class="paragraph"><p>A bitcoin csomópont ezután kap egy új blokkot a hálózattól, amelyet az alábbiak szerint értelmez:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Az új blokk vizsgálatakor a csomópont megtalálja az "előző blokk hash-e" mezőt, amely a szülő blokk hash-ét tartalmazza. Ezt a hash-t a csomópont ismeri, hiszen ez a lánc utolsó, 277&#8217;314-ik blokkjáé. Következésképpen, az új blokk a lánc utolsó blokkjának a gyereke, és kiterjeszthető vele a már meglévő blokklánc. A csomópont az új blokkot a lánc végéhez adja hozzá, 277&#8217;315-re növelve a blokklánc magasságát. A <a href="#chain_of_blocks">[chain_of_blocks]</a> ábrán egy három blokkból álló lánc látható, a blokkokat a <tt>previousblockhash</tt> mezőben lévő hivatkozások kapcsolják össze.</p></div>
+</div>
+<div class="sect2">
+<h3 id="merkle_trees">Merkle fák</h3>
+<div class="paragraph"><p>((("Merkle fák", id="ix_ch07-asciidoc2", range="startofrange"))A bitcoin blokklánc minden egyes blokkjában van egy mező, amely egy <em>Merkle fa</em> segítségével a blokkhoz tartozó összes tranzakciót összefoglalja.</p></div>
+<div class="paragraph"><p>A <em>Merkle fa</em>, vagy más néven <em>bináris hash fa</em> egy olyan adatstruktúra, amelyet nagy adathalmazok hatékony összefoglalására, illetve sértetlenségének az ellenőrzésére használható. A Merkle fák kriptográfiai hash-eket tartalmazó bináris fák. A "fa" kifejezés a számítástechnikában egy elágazó adatszerkezet leírására használatos, ám ezek a fák általában fejjel lefelé vabnnak ábrázolva, azaz "gyökerük" van az ábra tetején, míg "leveleik" a diagram alján, amint azt a következő példákban is láthatjuk.</p></div>
+<div class="imageblock" id="chain_of_blocks">
+<div class="content">
+<img src="images/msbt_0701.png" alt="images/msbt_0701.png" />
+</div>
+<div class="title">Figure 1. Az előző blokkfejléc hash-ére hivatkozó, blokkláncba kapcsolt blokkok,</div>
+</div>
+<div class="paragraph"><p>A bitcoinnál a Merkle fák arra a célra szolgálnak, hogy összefoglalják egy blokk összes tranzakcióját, vagyis a blokkban szereplő tranzakciókból egy átfogó digitális ujjlenyomatot hozzanak létre, s ily módon egy nagyon hatékony eljárást biztosítsanak annak az ellenőrzésére, hogy egy adott tranzakció valóban szerepel-e a blokkban. A Merkle fa csomópont párok rekurzív hash-elésével épül fel, egészen addig, amíg már csak egy hash, az úgynevezett <em>gyökér</em> vagy <em>Merkle gyökér</em> marad. A bitcoin esetében a Merkle fáknál használt kriptográfiai hash algoritmus a kétszer egymás után alkalmazott SHA256, vagyis a dupla SHA256 néven is ismert algoritmus.</p></div>
+<div class="paragraph"><p>Ha N db adatelem egy Merkle fában van összefoglalva, akkor legfeljebb <tt>2*log<sub>2</sub>(N)</tt> számítással ellenőrizhetjük, hogy egy adott adatelem valóban megtalálható-e a fában, emiatt ez az adatstruktúra rendkívül hatékony.</p></div>
+<div class="paragraph"><p>A Merkle fa alulról felfelé épül. Az alábbi példában négy tranzakcióval kezdjük a munkát, A, B, C és D-vel, amelyek a Merkle fa leveleit alkotják, ahogy ez a <a href="#simple_merkle">[simple_merkle]</a> ábra is mutatja. A Merkle fa nem tárolja a tranzakciókat, inkább hasheli azok adatait, és az így kapott hash-t tárolja minden egyes levél-csomópontban, H<sub>A</sub>, H<sub>B</sub>, H<sub>C</sub> és H<sub>D</sub>-ként:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>H~A~ = SHA256(SHA256(Transaction A))</tt></pre>
+</div></div>
+<div class="paragraph"><p>Az egymás utáni levél-csomópontokat ezután a szülő-csomópont foglalja össze úgy, hogy összekapcsolja a két hash-t, majd hasheli őket. Például a H<sub>AB</sub> szülő-csomópont úgy áll elő, hogy a két 32 bájtos hash gyerek összefűzésével egy 64 bájtos string áll elő. Ennek a stringnek a duplán hashelésével áll elő a szülő-csomópont hash-e:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>H~AB~ = SHA256(SHA256(H~A~ + H~B~))</tt></pre>
+</div></div>
+<div class="paragraph"><p>A folyamat mindaddig folytatódik, amíg már csak egyetlen csomópont lesz legfelül, az ú.n. Merkle gyökér. A blokkfejlécben ez a 32 bájtos hash kerül tárolásra, amely mind a négy tranzakció adatait összefoglalja.</p></div>
+<div class="imageblock" id="simple_merkle">
+<div class="content">
+<img src="images/msbt_0702.png" alt="merkle_tree" />
+</div>
+<div class="title">Figure 2. Egy Merkle fa csomópontjainak a kiszámítása</div>
+</div>
+<div class="paragraph"><p>Mivel a Merkle fa egy bináris fa, így páros számú levél csomópontra van szüksége. Ha páratlan számú tranzakció összefoglalására van szükség, akkor az utolsó tranzakció hash-e duplikálódik, így páros számú levél csomópont lesz. Ez az ún. <em>kiegyensúlyozott fa</em>. Ezt szemlélteti az alábbi <a href="#merkle_tree_odd">[merkle_tree_odd]</a>, ahol a C tranzakció lett megkettőzve:</p></div>
+<div class="imageblock" id="merkle_tree_odd">
+<div class="content">
+<img src="images/msbt_0703.png" alt="merkle_tree_odd" />
+</div>
+<div class="title">Figure 3. Egy adatelem megkettőzésével páros számú adat elem áll elő</div>
+</div>
+<div class="paragraph"><p>A négy tranzakcióból fát építő módszer általánosítható bármilyen méretű fa felépítésére. A bitcoinnál gyakori, hogy egy blokk több száz, vagy akár több ezer tranzakciót is tartalmaz. Ezek pontosan ugyanilyen módon kerülnek összefoglalásra, és egyetlen 32 bájtos adatelem, a Merkle gyökér áll elő belőlük. Az alábbi <a href="#merkle_tree_large">[merkle_tree_large]</a> ábrán egy 16 tranzakcióból felépülő fa látható. Meg kell jegyezni, hogy az ábrán a gyökér ugyan nagyobbnak látszik, mint levél csomópontjai, méretük azonban pontosan ugyanaz, mindössze 32 bájt. Legyen szó egy blokk egyetlen egy, vagy akár több százezer tranzakciójáról, a Merkle gyökér mindig 32 bájtban foglalja össze őket:</p></div>
+<div class="paragraph"><p>Ha bizonyítani szeretnénk, hogy egy adott tranzakció szerepel egy blokkban, akkor csupán arra van szükség, hogy a csomópont egy <tt>log<sub>2</sub>(N)</tt> 32 bájtos hash-t hozzon létre, amely  <em>hitelesítési útvonalat</em> vagy úgynevezett <em>Merkle útvonalat</em> alkot, és összeköti az adott tranzakciót a fa gyökérével. Ez különösen akkor fontos, amikor a tranzakciók száma nagy, mivel a tranzakciók számának 2-es alapú logaritmusa sokkal lassabban növekszik. Íly módon a Bitcoin csomópontok képesek arra, hogy tíz vagy tizenkét hashből (320-384 bájtból) álló hatékony útvonalat hozzanak létre, amellyel bizonyítható egy tranzakció blokkon belüli jelenléte, akár egy megabájt méretű blokk többezer tranzakciója között is.</p></div>
+<div class="imageblock" id="merkle_tree_large">
+<div class="content">
+<img src="images/msbt_0704.png" alt="merkle_tree_large" />
+</div>
+<div class="title">Figure 4. Nagyszámú adatelemet összefoglaló Merkle fa</div>
+</div>
+<div class="paragraph"><p>Az alábbi <a href="#merkle_tree_path">[merkle_tree_path]</a> példában a csomópont úgy tudja bizonyítani, hogy a blokk tartalmazza a K tranzakció-t, hogy csupán négy 32 bájt hash hosszúságú (összesen 128 bájtos) Merkle útvonalat hoz létre. Az útvonal a következő négy hash-ből áll: H<sub>L</sub>, H<sub>IJ</sub>, H<sub>MNOP</sub> és H<sub>ABCDEFGH</sub>. A hitelesítési útvonalat alkotó négy hash érték ismeretében bármelyik csomópont bizonyítani tudja, hogy H<sub>K</sub> (ami az ábrán zölddel szerepel) benne van a Merkle fában. Ehhez további három hash-párt  kell kiszámítania : H<sub>KL</sub>, H<sub>IJKL</sub> és H<sub>IJKLMNOP</sub>, melyek elvezetik a Merkle gyökérhez (az ábrán ezt pontozott vonal szemlélteti).</p></div>
+<div class="imageblock" id="merkle_tree_path">
+<div class="content">
+<img src="images/msbt_0705.png" alt="merkle_tree_path" />
+</div>
+<div class="title">Figure 5. Merkle útvonal egy adatelem jelenlétének a bizonyítására</div>
+</div>
+<div class="paragraph"><p>A <a href="#merkle_example">[merkle_example]</a> példában szereplő program egy Merkle fa létrehozásának folyamatát szemlélteti, a levél csomópontokból a gyökér irányába haladva. A példa a libbitcoin könyvtárat és néhány segédfüggvényt használ.</p></div>
+<?hard-pagebreak?>
+<div class="exampleblock" id="merkle_example">
+<div class="title">Example 1. Egy Merkle fa felépítése</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>A <a href="#merkle_example_run">[merkle_example_run]</a> a példa lefordítását és futtatásának az eredményét mutatja.</p></div>
+<div class="exampleblock" id="merkle_example_run">
+<div class="title">Example 2. A Merkle példaprogram lefordítása és futtatása</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>A Merkle fák hatékonysága a méret növekedésével válik nyilvánvalóvá. A  <a href="#block_structure2">[block_structure2]</a> mutatja, hogy mennyi adatcserére van szükség egy Merke útvonalon, ha bizonyítani szeretnénk, hogy az adott tranzakció része egy blokknak.</p></div>
+<div class="tableblock" id="block_structure2">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 3. A Merkle-fák hatékonysága</caption>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<thead>
+<tr>
+<th align="left" valign="top">Tranzakciók száma</th>
+<th align="left" valign="top"> Blokk kb. mérete </th>
+<th align="left" valign="top">Útvonal mérete (hash db) </th>
+<th align="left" valign="top"> Útvonal mérete (bájtokban)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">16 tranzakció</p></td>
+<td align="left" valign="top"><p class="table">4 kilobájt</p></td>
+<td align="left" valign="top"><p class="table">4 hash</p></td>
+<td align="left" valign="top"><p class="table">128 bájt</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">512 tranzakció</p></td>
+<td align="left" valign="top"><p class="table">128 kilobájt</p></td>
+<td align="left" valign="top"><p class="table">9 hash</p></td>
+<td align="left" valign="top"><p class="table">288 bájt</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">2048 tranzakció</p></td>
+<td align="left" valign="top"><p class="table">512 kilobájt</p></td>
+<td align="left" valign="top"><p class="table">11 hash</p></td>
+<td align="left" valign="top"><p class="table">352 bájt</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">65&#8217;535 tranzakció</p></td>
+<td align="left" valign="top"><p class="table">16 megabájt</p></td>
+<td align="left" valign="top"><p class="table">16 hash</p></td>
+<td align="left" valign="top"><p class="table">512 bájt</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Ahogy a táblázatban látható: míg egy blokk mérete gyorsan növekszik, a 16 tranzakciót tartalmazó blokk 4 kilobájtjáról a 65,535 tranzakciónak megfelelő 16 megabájtra, addig a tranzakció jelenlétének az igazolásához szükséges Merkle útvonal sokkal lassabban, 128 bájtról csak 512 bájtra növekszik. A Merkle fákkal megoldható, hogy egy csomópont csak a blokkfejlécet (80 bájt/blokk) töltse le, és mégis képes legyen azonosítani egy tranzakció blokkon belüli jelenlétét úgy, hogy a Merkle útvonalnak mindössze csak egy kis részét keresi vissza a teljes csomópontból. Ehhez csupán a teljes blokkláncnak, ami több gigabájt méretű, csupán egy elenyésző részét kell tárolnia vagy letöltenie. Az úgynevezett Simplified Payment Verification (Egyszerűsített Fizetési Ellenőrzés) vagy SPV csomópontok olyan csomópontok, amelyek a teljes blokklánc letöltése nélkül, Merkle útvonalak segítségével  ellenőrzik a tranzakciók jelenlétét.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_a_merkle_fák_és_az_egyszerűsített_fizetés_ellenőrzés_simplified_payment_verification_spv">A Merkle fák és az egyszerűsített fizetés ellenőrzés (Simplified Payment Verification (SPV))</h3>
+<div class="paragraph"><p>Az úgynevezett Simplified Payment Verification csomópontok széles körben használják a Merkle fákat. A SPV csomópontokban nincs meg az összes tranzakció, és teljes blokkokat sem töltenek le, csupán blokkfejléceket. Ahhoz, hogy a hitelesítési útvonal, vagy Merkle útvonal használatával ellenőrizni tudják egy tranzakció blokkon belüli jelenlétét, nem szükséges a blokkon belüli összes tranzakció letöltése.</p></div>
+<div class="paragraph"><p>Vegyünk például egy SPV csomópontot, amely a bejövő fizetéseknél egy adott, a pénztárcájában megtalálható cím után érdeklődik. Ekkor, a SPV csomópont létrehoz egy szűrőt a peer-jeiben. A szűrő a tranzakciók küldését csak a szóban forgó címre korlátozza. Amikor megjelenik egy, a szűrőnek megfelelő tranzakció, akkor a peer csomópont egy <tt>merkleblock</tt> üzenet segítségével elküldi az adott blokkot. A <tt>merkleblock</tt> üzenet egyrészt a blokkfejlécet, másrészt a keresett tranzakciót a blokk Merkle gyökerével összekötő Merkle útvonalat tartalmazza. Az SPV csomópont ezt a Merkle útvonalat használja arra is, hogy összekösse a tranzakciót a blokk-kal, illetve, hogy ellenőrizze a tranzakció jelenlétét a blokkban. Az SPV csomópont a blokkfejlécet is használja, hogy a blokkot összekapcsolja a lánc további részével. Ez a tranzakció és a blokk, illetve a blokk és a blokklánc közötti két kapcsolat bizonyítja azt, hogy a tranzakció rögzítésre került a blokkláncban. Mindent összevetve, az SPV csomópont kevesebb, mint egy kilobájt adat formájában megkapja a blokkfejlécet, illetve a Merkle útvonalat. Ez az adatmennyiség több mint ezerszer kisebb egy teljes blokknál (ami jelenleg körülbelül 1 megabájt).</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:58:50 UTC
+</div>
+</div>
+</body>
+</html>

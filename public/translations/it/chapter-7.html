@@ -1,0 +1,1030 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title></title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="blockchain">La Blockchain</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduzione">Introduzione</h3>
+<div class="paragraph"><p>I dati della struttura dati blockchain sono un&#8217;ordinata, back-linked list di blocchi di transazioni. La blockchain può essere salvata come un file piatto, o in un semplice database. Il client Bitcoin Core salva i metadati della blockchain usando il database LevelDB (libreria C scritta dai programmatori che lavorano a Google). I blocchi sono collegati "indietro", ognuno si riferisce al blocco precedente presente nella catena. La blockchain è spesso visualizzata come una pila verticale, con blocchi stratificati l&#8217;uno sopra l&#8217;altro e il primo blocco serve da fondamenta della pila. La visualizzazione dei blocchi impilati uno sopra l&#8217;altro provoca l&#8217;uso di terminologie come "altezza" (height) per riferirsi alla distanza dal primo blocco, e "top" o "tip" (cima o punta) per riferirsi al blocco aggiunto più recentemente.</p></div>
+<div class="paragraph"><p>Ogni blocco contenuto nella blockchain è identificato da un hash, generato usando l&#8217;algoritmo crittografico di hashing SHA256 sull&#8217;header del blocco. Ogni blocco inoltre referenzia il blocco precedente, conosciuto anche come  <em>parent</em> block, attraverso il campo "previous block hash" nel block header. La sequenza di hash che collegano ogni blocco al proprio parent crea una catena che si collega, blocco per blocco fino al primo blocco creato, conosciuto con il nome di, ovvero blocco di genesi.</p></div>
+<div class="paragraph"><p>Anche se un blocco ha solo un genitore, può temporaneamente avere multipli figli. Ognuno dei figli si riferisce allo stesso blocco del padre e contiene lo stesso hash (padre) nel campo "previous block hash" (hash del blocco precedente). Multipli figli emergono durante un "fork" (biforcazione) della blockchain, una situazione temporanea che occorre quando differenti blocchi sono scoperti quasi simultaneamente da miner differenti (vedi <a href="#forks">[forks]</a>). Eventualmente, solo un blocco figlio diventa parte della blockchain e la "biforcazione" viene risolta. Anche se un blocco può avere più di un figlo, ogni blocco può avere solo un genitore. Questo perchè un blocco ha un singolo campo "hash del blocco precedente" (previous block hash) che si riferisce al suo singolo genitore.</p></div>
+<div class="paragraph"><p>Il campo "previous block hash" è dentro l&#8217;header del blocco e per questo influenza l&#8217;hash del blocco <em>attuale</em>. L&#8217;identità stessa del figlio cambia nel caso in cui cambi l&#8217;identità del genitore. Quando il genitore viene modificato in qualsiasi modo, l&#8217;hash del genitore cambia. L&#8217;hash modificato del genitore necessita un cambio nel puntatore "previous block hash" del figlio. Questo a sua volta causa il cambio dell&#8217;hash del figlio, che richiede il cambio nel puntatore dell&#8217;hash nipote, che a sua volta cambia il puntamento al nipote, e così via&#8230;Questo effetto a cascata assicura che fino a quando un blocco ha tante generazioni di blocchi che lo seguono, non può essere modificato senza forzare un ricalcolo su tutti i blocchi seguenti. Visto che per questo ricalcolo servirebbe un&#8217;enorme potenza computazionale, l&#8217;esistenza di una lunga catena di blocchi fa si che la storia più profonda della blockchain sia immutabile, che è una degli elementi chiave della sicurezza di bitcoin.</p></div>
+<div class="paragraph"><p>Un modo di pensare alla blockchain è come ai livelli di una stratificazione geologica, o a una carota di ghiaccio. Gli strati superficiali possono cambiare con le stagioni o anche essere eliminati prima che abbiano il tempo di depositarsi, ma se si scende di pochi centimetri gli strati geologici diventano sempre più stabili. Al punto che arrivi a guardare poche centinaia di metri sotto stai vedendo una foto del passato che è stata lasciata intatta da milioni di anni. Nella blockchain i blocchi più recenti potrebbero cambiare se c'è un fork. Gli ultimi sei blocchi sono come alcuni centimentri del suolo. Ma se vai più in profondità nella blockchain, oltre sei blocchi, i blocchi hanno sempre meno probabilità di essere modifcati. Dopo 100 blocchi c'è così tanta solidita che la transazione di coinbase - una transazione contenente i nuovi bitcoin minati - può essere spesa. Alcune migliaia di blocchi indietro (un mese), e la blockchain è saldata nella storia, per qualunque tipo di dato. Mentre il protocollo permette sempre che una  catena possa essere sostituita da una catena più lunga ed esiste sempre la possibilità che una catena diventi reversibile, la possibilità che questo accada diminuisce coi blocchi fino a diventare infinitesima.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_struttura_del_blocco">Struttura del Blocco</h3>
+<div class="paragraph"><p>A block is a container data structure that aggregates transactions for inclusion in the public ledger, the blockchain. The block is made of a header, containing metadata, followed by a long list of transactions that make up the bulk of its size. The block header is 80 bytes, whereas the average transaction is at least 250 bytes and the average block contains more than 500 transactions. A complete block, with all transactions, is therefore 1,000 times larger than the block header. <a href="#block_structure1">[block_structure1]</a> describes the structure of a block.</p></div>
+<div class="tableblock" id="block_structure1">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 1. La struttura di un blocco</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Dimensione</th>
+<th align="left" valign="top"> Campo </th>
+<th align="left" valign="top"> Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">4 byte</p></td>
+<td align="left" valign="top"><p class="table">Dimensione del Blocco (Block Size)</p></td>
+<td align="left" valign="top"><p class="table">La dimensione del blocco, in byte</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">80 bytes</p></td>
+<td align="left" valign="top"><p class="table">Header del Blocco (Block Header)</p></td>
+<td align="left" valign="top"><p class="table">Multipli campi dall&#8217;header del blocco</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">1-9 byte (VarInt)</p></td>
+<td align="left" valign="top"><p class="table">Contatore di transazione (Transaction Counter)</p></td>
+<td align="left" valign="top"><p class="table">Quante transazioni seguono</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Variabile</p></td>
+<td align="left" valign="top"><p class="table">Transazioni</p></td>
+<td align="left" valign="top"><p class="table">Le transazioni registrate nel blocco</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="block_header">Header del Blocco</h3>
+<div class="paragraph"><p>The block header consists of three sets of block metadata. First, there is a reference to a previous block hash, which connects this block to the previous block in the blockchain. The second set of metadata, namely the <em>difficulty</em>, <em>timestamp</em>, and <em>nonce</em>, relate to the mining competition, as detailed in <a href="#ch8">[ch8]</a>. The third piece of metadata is the merkle tree root, a data structure used to efficiently summarize all the transactions in the block. <a href="#block_header_structure_ch07">[block_header_structure_ch07]</a> describes the structure of a block header.</p></div>
+<div class="tableblock" id="block_header_structure_ch07">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 2. La struttura di un block header</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Dimensione</th>
+<th align="left" valign="top"> Campo </th>
+<th align="left" valign="top"> Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">4 byte</p></td>
+<td align="left" valign="top"><p class="table">Versione</p></td>
+<td align="left" valign="top"><p class="table">Un numero di versione per tracciare upgrade al software e/o al protocollo</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">32 byte</p></td>
+<td align="left" valign="top"><p class="table">Hash del Blocco Precedente</p></td>
+<td align="left" valign="top"><p class="table">Un riferimento all&#8217;hash del blocco precedente (genitore) nella chain</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">32 byte</p></td>
+<td align="left" valign="top"><p class="table">Merkle Root</p></td>
+<td align="left" valign="top"><p class="table">Un&#8217;hash della radice del merkle tree delle transazioni di questo blocco</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 byte</p></td>
+<td align="left" valign="top"><p class="table">Timestamp</p></td>
+<td align="left" valign="top"><p class="table">Il tempo approssimato della creazione del blocco corrente (secondi dalla Unix Epoch)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 bytes</p></td>
+<td align="left" valign="top"><p class="table">Target di Difficoltà (Difficulty Target)</p></td>
+<td align="left" valign="top"><p class="table">Il target di difficoltà dell&#8217;algoritmo di proof-of-work per questo blocco</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">4 byte</p></td>
+<td align="left" valign="top"><p class="table">Nonce</p></td>
+<td align="left" valign="top"><p class="table">Un contatore utilizzato per l&#8217;algoritmo di proof-of-work</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Il nonce, il target di difficoltà, e il timestamp sono usati nel processo di mining e saranno discussi in maggiore dettaglio nel <a href="#ch8">[ch8]</a>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="block_hash">Identificatori di blocco: Hash del Block Header e Altezza del Blocco (Block Height)</h3>
+<div class="paragraph"><p>The primary identifier of a block is its cryptographic hash, a digital fingerprint, made by hashing the block header twice through the SHA256 algorithm. The resulting 32-byte hash is called the <em>block hash</em> but is more accurately the <em>block header hash</em>, <phrase role="keep-together">because only the block header is used to compute it. For example,</phrase> <tt>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt> is the block hash of the first bitcoin block ever created. The block hash identifies a block uniquely and unambiguously and can be independently derived by any node by simply hashing the block header.</p></div>
+<div class="paragraph"><p>Note that the block hash is not actually included inside the block&#8217;s data structure, neither when the block is transmitted on the network, nor when it is stored on a node&#8217;s persistence storage as part of the blockchain. Instead, the block&#8217;s hash is computed by each node as the block is received from the network. The block hash might be stored in a separate database table as part of the block&#8217;s metadata, to facilitate indexing and faster retrieval of blocks from disk.</p></div>
+<div class="paragraph"><p>A second way to identify a block is by its position in the blockchain, called the <phrase role="keep-together"><emphasis>block height</emphasis>. The first block ever created is at block height 0 (zero) and is the</phrase> <phrase role="keep-together">same block that was previously referenced by the following block hash</phrase> <tt>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt>. A block can thus be identified two ways: by referencing the block hash or by referencing the block height. Each subsequent block added "on top" of that first block is one position "higher" in the blockchain, like boxes stacked one on top of the other. The block height on January 1, 2014, was approximately 278,000, meaning there were 278,000 blocks stacked on top of the first block created in January 2009.</p></div>
+<div class="paragraph"><p>Unlike the block hash, the block height is not a unique identifier. Although a single block will always have a specific and invariant block height, the reverse is not true—the block height does not always identify a single block. Two or more blocks might have the same block height, competing for the same position in the blockchain. This scenario is discussed in detail in the section <a href="#forks">[forks]</a>. The block height is also not a part of the block&#8217;s data structure; it is not stored within the block. Each node dynamically identifies a block&#8217;s position (height) in the blockchain when it is received from the bitcoin network. The block height might also be stored as metadata in an indexed database table for faster retrieval.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A block&#8217;s <em>block hash</em> always identifies a single block uniquely. A block also always has a specific <em>block height</em>. However, it is not always the case that a specific block height can identify a single block. Rather, two or more blocks might compete for a single position in the blockchain.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_il_genesis_block">Il Genesis Block</h3>
+<div class="paragraph"><p>The first block in the blockchain is called the genesis block and was created in 2009. It is the common ancestor of all the blocks in the blockchain, meaning that if you start at any block and follow the chain backward in time, you will eventually arrive at the genesis block.</p></div>
+<div class="paragraph"><p>Every node always starts with a blockchain of at least one block because the genesis block is statically encoded within the bitcoin client software, such that it cannot be altered. Every node always "knows" the genesis block&#8217;s hash and structure, the fixed time it was created, and even the single transaction within. Thus, every node has the starting point for the blockchain, a secure "root" from which to build a trusted blockchain.</p></div>
+<div class="paragraph"><p>Visualizza il genesis block staticamente encoded nel client Bitcoin Core, in <a href="http://bit.ly/1x6rcwP">chainparams.cpp</a>.</p></div>
+<div class="paragraph"><p>Il seguente hash identificativo appartiene al genesis block:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt></pre>
+</div></div>
+<div class="paragraph"><p>Puoi cercare quel block hash in un qualsiasi sito block explorer, come blockchain.info, e troverai una pagina che descrive il contenuto di questo blocco, con un&#8217;URL contenente quell&#8217;hash:</p></div>
+<div class="paragraph"><p><a href="https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f">https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</a></p></div>
+<div class="paragraph"><p><a href="https://blockexplorer.com/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f">https://blockexplorer.com/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</a></p></div>
+<div class="paragraph"><p>Usando il client di riferimento Bitcoin Core da riga di comando:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ bitcoind getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>The genesis block contains a hidden message within it. The coinbase transaction input contains the text "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks." This message was intended to offer proof of the earliest date this block was created, by referencing the headline of the British newspaper <em>The Times</em>. It also serves as a tongue-in-cheek reminder of the importance of an independent monetary system, with bitcoin&#8217;s launch occurring at the same time as an unprecedented worldwide monetary crisis. The message was embedded in the first block by Satoshi Nakamoto, bitcoin&#8217;s creator.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_collegando_i_blocchi_nella_blockchain">Collegando i Blocchi nella Blockchain</h3>
+<div class="paragraph"><p>Bitcoin full nodes maintain a local copy of the blockchain, starting at the genesis block. The local copy of the blockchain is constantly updated as new blocks are found and used to extend the chain. As a node receives incoming blocks from the network, it will validate these blocks and then link them to the existing blockchain. To establish a link, a node will examine the incoming block header and look for the "previous block hash."</p></div>
+<div class="paragraph"><p>Assumiamo, per esempio, che il nodo abbia 277,314 blocchi nella copia locale della blockchain. L&#8217;ultimo blocco del quale il nodo sa qualcosa è il blocco 277,314, con un hash dell&#8217;header del blocco di <tt>00000000000000027e7ba6fe7bad39faf3b5a83daed765f05f7d1b71a1632249</tt></p></div>
+<div class="paragraph"><p>Il nodo bitcoin in seguito riceve un nuovo blocco dalla rete, che lo analizza come riportato qui:</p></div>
+<div class="listingblock">
+<div class="content"></div></div>
+<div class="paragraph"><p>Osservando questo nuovo blocco, possiamo notare che il nodo trova il campo <tt>previousblockhash</tt>, che contiene l&#8217;hash del blocco genitore. E' un hash conosciuto al nodo, come l&#8217;ultimo blocco della chain all&#8217;altezza (block height) 277,314. Quindi questo nuovo blocco è un figlio dell&#8217;ultimo blocco della chain e estende la blockchain esistente. Il nodo aggiunge questo nuovo blocco alla fine della catena (chain), rendendo la blockchain più lunga con una nuova height di 277,315. <a href="#chain_of_blocks">[chain_of_blocks]</a> mostra la chain di tre blocchi, collegati da referenze nel campo <tt>previousblockhash</tt>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="merkle_trees">I Merkle Tree</h3>
+<div class="paragraph"><p>Each block in the bitcoin blockchain contains a summary of all the transactions in the block, using a <em>merkle tree</em>.</p></div>
+<div class="paragraph"><p>A <em>merkle tree</em>, also known as a <em>binary hash tree</em>, is a data structure used for efficiently summarizing and verifying the integrity of large sets of data. Merkle trees are binary trees containing cryptographic hashes. The term "tree" is used in computer science to describe a branching data structure, but these trees are usually displayed upside down with the "root" at the top and the "leaves" at the bottom of a diagram, as you will see in the examples that follow.</p></div>
+<div class="imageblock" id="chain_of_blocks">
+<div class="content">
+<img src="images/msbt_0701.png" alt="images/msbt_0701.png" />
+</div>
+<div class="title">Figure 1. Blocchi collegati in una catena, per referenza al precedente hash dell&#8217;header del blocco</div>
+</div>
+<div class="paragraph"><p>Merkle trees are used in bitcoin to summarize all the transactions in a block, producing an overall digital fingerprint of the entire set of transactions, providing a very efficient process to verify whether a transaction is included in a block. A Merkle tree is constructed by recursively hashing pairs of nodes until there is only one hash, called the <em>root</em>, or <em>merkle root</em>. The cryptographic hash algorithm used in bitcoin&#8217;s merkle trees is SHA256 applied twice, also known as double-SHA256.</p></div>
+<div class="paragraph"><p>When N data elements are hashed and summarized in a merkle tree, you can check to see if any one data element is included in the tree with at most <tt>2*log<sub>2</sub>(N)</tt> calculations, making this a very efficient data structure.</p></div>
+<div class="paragraph"><p>Il merkle tree è costruito dal basso verso l&#8217;alto. Nel seguente esempio, partiamo con quattro transazioni, A, B, C e D, che formano le <em>foglie</em> del Merkle tree, come mostrato in  <a href="#simple_merkle">[simple_merkle]</a>. Le transazioni non sono salvate nel merkle tree; invece, i loro dati sono hash-ati e l&#8217;hash risultante è salvato in ogni nodo figlia come H<sub>A</sub>, H<sub>B</sub>, H<sub>C</sub>, e H<sub>D</sub>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>H~A~ = SHA256(SHA256(Transaction A))</tt></pre>
+</div></div>
+<div class="paragraph"><p>Consecutive pairs of leaf nodes are then summarized in a parent node, by concatenating the two hashes and hashing them together. For example, to construct the parent node H<sub>AB</sub>, the two 32-byte hashes of the children are concatenated to create a 64-byte string. That string is then double-hashed to produce the parent node&#8217;s hash:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>H~AB~ = SHA256(SHA256(H~A~ + H~B~))</tt></pre>
+</div></div>
+<div class="paragraph"><p>The process continues until there is only one node at the top, the node known as the Merkle root. That 32-byte hash is stored in the block header and summarizes all the data in all four transactions.</p></div>
+<div class="imageblock" id="simple_merkle">
+<div class="content">
+<img src="images/msbt_0702.png" alt="merkle_tree" />
+</div>
+<div class="title">Figure 2. Calcolando i nodi in un merkle tree</div>
+</div>
+<div class="paragraph"><p>Visto che il merkle tree è un albero binario, necessita di un numero pari di nodi foglia. Se il numero di transazioni da sintetizzare è un numero pari, l&#8217;ultimo hash di transazione sarà duplicato per creare un numero pari di nodi foglia, questo tipo di alberi sono conosciuti come  <em>alberi bilanciati</em>. Il tutto è mostrato in <a href="#merkle_tree_odd">[merkle_tree_odd]</a>, dove la transazione C è duplicata.</p></div>
+<div class="imageblock" id="merkle_tree_odd">
+<div class="content">
+<img src="images/msbt_0703.png" alt="merkle_tree_odd" />
+</div>
+<div class="title">Figure 3. Duplicando un elemento (data element) ottiene un numero di elementi pari</div>
+</div>
+<div class="paragraph"><p>The same method for constructing a tree from four transactions can be generalized to construct trees of any size. In bitcoin it is common to have several hundred to more than a thousand transactions in a single block, which are summarized in exactly the same way, producing just 32 bytes of data as the single merkle root. In <a href="#merkle_tree_large">[merkle_tree_large]</a>, you will see a tree built from 16 transactions. Note that although the root looks bigger than the leaf nodes in the diagram, it is the exact same size, just 32 bytes. Whether there is one transaction or a hundred thousand transactions in the block, the merkle root always summarizes them into 32 bytes.</p></div>
+<div class="paragraph"><p>To prove that a specific transaction is included in a block, a node only needs to produce <tt>log<sub>2</sub>(N)</tt> 32-byte hashes, constituting an <em>authentication path</em> or <em>merkle path</em> connecting the specific transaction to the root of the tree. This is especially important as the number of transactions increases, because the base-2 logarithm of the number of transactions increases much more slowly. This allows bitcoin nodes to efficiently produce paths of 10 or 12 hashes (320–384 bytes), which can provide proof of a single transaction out of more than a thousand transactions in a megabyte-size block.</p></div>
+<div class="imageblock" id="merkle_tree_large">
+<div class="content">
+<img src="images/msbt_0704.png" alt="merkle_tree_large" />
+</div>
+<div class="title">Figure 4. Un merkle tree che riassume tanti data element</div>
+</div>
+<div class="paragraph"><p>In <a href="#merkle_tree_path">[merkle_tree_path]</a>, a node can prove that a transaction K is included in the block by producing a merkle path that is only four 32-byte hashes long (128 bytes total). The path consists of the four hashes (noted in blue in <a href="#merkle_tree_path">[merkle_tree_path]</a>) H<sub>L</sub>, H<sub>IJ</sub>, H<sub>MNOP</sub> and H<sub>ABCDEFGH</sub>. With those four hashes provided as an authentication path, any node can prove that H<sub>K</sub> (noted in green in the diagram) is included in the merkle root by computing four additional pair-wise hashes H<sub>KL</sub>, H<sub>IJKL</sub>, H<sub>IJKLMNOP</sub>, and the merkle tree root (outlined in a dotted line in the diagram).</p></div>
+<div class="imageblock" id="merkle_tree_path">
+<div class="content">
+<img src="images/msbt_0705.png" alt="merkle_tree_path" />
+</div>
+<div class="title">Figure 5. Un merkle path usato per provare l&#8217;inclusione di un data element</div>
+</div>
+<div class="paragraph"><p>Il codice nel <a href="#merkle_example">[merkle_example]</a> dimostra il processo di creazione di un merkle tree dagli hash del nodo-foglia fino alla radice, usando la libreria libbitcoin per qualche funzione helper.</p></div>
+<?hard-pagebreak?>
+<div class="exampleblock" id="merkle_example">
+<div class="title">Example 1. Costruendo un merkle tree</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p><a href="#merkle_example_run">[merkle_example_run]</a> mostra il risultato della compilazione e esecuzione del codice merkle.</p></div>
+<div class="exampleblock" id="merkle_example_run">
+<div class="title">Example 2. Compilando e eseguendo il codice di esempio dell&#8217;esempio merkle</div>
+<div class="content">
+<div class="listingblock">
+<div class="content"></div></div>
+</div></div>
+<div class="paragraph"><p>The efficiency of merkle trees becomes obvious as the scale increases. <a href="#block_structure2">[block_structure2]</a> shows the amount of data that needs to be exchanged as a merkle path to prove that a transaction is part of a block.</p></div>
+<div class="tableblock" id="block_structure2">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 3. Efficenza del merkle tree</caption>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<thead>
+<tr>
+<th align="left" valign="top">Numero di transazioni</th>
+<th align="left" valign="top"> Dimensione approssimativa del blocco </th>
+<th align="left" valign="top"> Dimensione del path (hash) </th>
+<th align="left" valign="top"> Dimensione del path (byte)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">16 transazioni</p></td>
+<td align="left" valign="top"><p class="table">4 kilobyte</p></td>
+<td align="left" valign="top"><p class="table">4 hash</p></td>
+<td align="left" valign="top"><p class="table">128 byte</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">512 transazioni</p></td>
+<td align="left" valign="top"><p class="table">128 kilobyte</p></td>
+<td align="left" valign="top"><p class="table">9 hash</p></td>
+<td align="left" valign="top"><p class="table">288 byte</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">2048 transazioni</p></td>
+<td align="left" valign="top"><p class="table">512 kilobyte</p></td>
+<td align="left" valign="top"><p class="table">11 hash</p></td>
+<td align="left" valign="top"><p class="table">352 byte</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">65,535 transazioni</p></td>
+<td align="left" valign="top"><p class="table">16 megabyte</p></td>
+<td align="left" valign="top"><p class="table">16 hash</p></td>
+<td align="left" valign="top"><p class="table">512 byte</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>As you can see from the table, while the block size increases rapidly, from 4 KB with 16 transactions to a block size of 16 MB to fit 65,535 transactions, the merkle path required to prove the inclusion of a transaction increases much more slowly, from 128 bytes to only 512 bytes. With merkle trees, a node can download just the block headers (80 bytes per block) and still be able to identify a transaction&#8217;s inclusion in a block by retrieving a small merkle path from a full node, without storing or transmitting the vast majority of the blockchain, which might be several gigabytes in size. Nodes that do not maintain a full blockchain, called simplified payment verification (SPV nodes), use merkle paths to verify transactions without downloading full blocks.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_merkle_tree_e_simplified_payment_verification_spv">Merkle Tree e Simplified Payment Verification (SPV)</h3>
+<div class="paragraph"><p>I merkle trees sono usati estensivamente dai nodi SPV (o VSP in italiano - Verifica Semplificata del Pagamento, ndt). I nodi SPV non hanno tutte le transazioni e non scaricano blocchi completi, ma solo header dei blocchi. Per verificare che una transazione sia inclusa in un blocco, senza dover scaricare tutte le transazioni nel blocco, essi utilizzano un percorso di autenticazione, chiamato anche merkle path.</p></div>
+<div class="paragraph"><p>Consider, for example, an SPV node that is interested in incoming payments to an address contained in its wallet. The SPV node will establish a bloom filter on its connections to peers to limit the transactions received to only those containing addresses of interest. When a peer sees a transaction that matches the bloom filter, it will send that block using a <tt>merkleblock</tt> message. The <tt>merkleblock</tt> message contains the block header as well as a merkle path that links the transaction of interest to the merkle root in the block. The SPV node can use this merkle path to connect the transaction to the block and verify that the transaction is included in the block. The SPV node also uses the block header to link the block to the rest of the blockchain. The combination of these two links, between the transaction and block, and between the block and blockchain, proves that the transaction is recorded in the blockchain. All in all, the SPV node will have received less than a kilobyte of data for the block header and merkle path, an amount of data that is more than a thousand times less than a full block (about 1 megabyte currently).</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-15 16:58:55 UTC
+</div>
+</div>
+</body>
+</html>

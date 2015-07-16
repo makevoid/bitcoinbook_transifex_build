@@ -1,0 +1,181 @@
+[[appdx_bx]]
+[appendix]
+
+== Comandos do Bitcoin Explorer (bx)
+
+((("Bitcoin Explorer commands","commands in", id="ix_appdx-bx-asciidoc0", range="startofrange")))
+
+----
+Uso: bx COMANDO [--help]
+
+Info: Os comandos bx são:
+
+address-decode
+address-embed
+address-encode
+address-validate
+base16-decode
+base16-encode
+base58-decode
+base58-encode
+base58check-decode
+base58check-encode
+base64-decode
+base64-encode
+bitcoin160
+bitcoin256
+btc-to-satoshi
+ec-add
+ec-add-secrets
+ec-multiply
+ec-multiply-secrets
+ec-new
+ec-to-address
+ec-to-public
+ec-to-wif
+fetch-balance
+fetch-header
+fetch-height
+fetch-history
+fetch-stealth
+fetch-tx
+fetch-tx-index
+hd-new
+hd-private
+hd-public
+hd-to-address
+hd-to-ec
+hd-to-public
+hd-to-wif
+help
+input-set
+input-sign
+input-validate
+message-sign
+message-validate
+mnemonic-decode
+mnemonic-encode
+ripemd160
+satoshi-to-btc
+script-decode
+script-encode
+script-to-address
+seed
+send-tx
+send-tx-node
+send-tx-p2p
+settings
+sha160
+sha256
+sha512
+stealth-decode
+stealth-encode
+stealth-public
+stealth-secret
+stealth-shared
+tx-decode
+tx-encode
+uri-decode
+uri-encode
+validate-tx
+watch-address
+wif-to-ec
+wif-to-public
+wrap-decode
+wrap-encode
+----
+
+Para maiores informações, veja a https://github.com/libbitcoin/libbitcoin-explorer[página do Bitcoin Explorer] e a https://github.com/libbitcoin/libbitcoin-explorer/wiki[documentação do usuário do Bitcoin Explorer].
+
+=== Examplos de uso de comandos bx
+
+Vamos dar uma olhada em alguns exemplos usando comandos do Bitcoin Explorer para trabalharmos com chaves e endereços:
+
+Gere um valor "semente" aleatório usando o((("Bitcoin Explorer","seed command")))((("seed command (bx)"))) comando +seed+, que usa o gerador de números aleatórios do sistema operacional. Passe a semente para o((("Bitcoin Explorer","ec-new command")))((("ec-new command (bx)")))  comando +ec-new+ para gerar uma nova chave privada. Nós salvaremos o output padrão no arquivo _private_key_:
+
+----
+$ bx seed | bx ec-new > private_key
+$ cat private_key 
+73096ed11ab9f1db6135857958ece7d73ea7c30862145bcc4bbc7649075de474
+----
+
+Agora, gere a chave pública a partir da chave privada usando o((("Bitcoin Explorer","ec-to-public command")))((("ec-to-public command (bx)"))) comando +ec-to-public+. Nós passaremos o arquivo _private_key_ no input padrão e salvaremos o output padrão do comando em um novo arquivo _public_key_:
+
+----
+$ bx ec-to-public < private_key > public_key
+$ cat public_key 
+02fca46a6006a62dfdd2dbb2149359d0d97a04f430f12a7626dd409256c12be500
+----
+
+Nós podemos reformatar a +public_key+ como um endereço usando o((("Bitcoin Explorer","ec-to-address command")))((("ec-to-address command (bx)")))  comando +ec-to-address+. Nós passamos a _public_key_ no input padrão:
+
+----
+$ bx ec-to-address < public_key 
+17re1S4Q8ZHyCP8Kw7xQad1Lr6XUzWUnkG
+----
+
+Chaves geradas dessa maneira produzem uma carteira não-determinística tipo-0. Isso significa que cada chave é gerada a partir de uma semente independente. Os comandos do Bitcoin Explorer também podem gerar chaves deterministicamente, de acordo com o BIP0032. Nesse caso, uma chave "mestre" é criada a partir da semente e então é estendida deterministicamente para produzir uma árvore de subchaves, resultando em uma carteira determinística tipo-2.
+
+Primeiro, usaremos os((("Bitcoin Explorer","seed command")))((("seed command (bx)"))) +seed+ and((("Bitcoin Explorer","hd-new command")))((("hd-new command (bx)"))) comandos +seed+ e +hd-new+ para gerar uma chave mestre que será usada como a base para derivar uma hierarquia de chaves.
+
+----
+$ bx seed > seed
+$ cat seed
+eb68ee9f3df6bd4441a9feadec179ff1
+
+$ bx hd-new < seed > master
+$ cat master
+xprv9s21ZrQH143K2BEhMYpNQoUvAgiEjArAVaZaCTgsaGe6LsAnwubeiTcDzd23mAoyizm9cApe51gNfLMkBqkYoWWMCRwzfuJk8RwF1SVEpAQ
+----
+
+Nós agora iremos usar o((("Bitcoin Explorer","hd-private command")))((("hd-private command (bx)"))) comando +hd-private+ para gerar uma chave de "conta" dificultada e uma sequência de duas chaves privadas no interior da conta.
+
+----
+$ bx hd-private --hard < master > account
+$ cat account
+xprv9vkDLt81dTKjwHB8fsVB5QK8cGnzveChzSrtCfvu3aMWvQaThp59ueufuyQ8Qi3qpjk4aKsbmbfxwcgS8PYbgoR2NWHeLyvg4DhoEE68A1n
+
+$ bx hd-private --index 0 < account
+xprv9xHfb6w1vX9xgZyPNXVgAhPxSsEkeRcPHEUV5iJcVEsuUEACvR3NRY3fpGhcnBiDbvG4LgndirDsia1e9F3DWPkX7Tp1V1u97HKG1FJwUpU
+
+$ bx hd-private --index 1 < account
+xprv9xHfb6w1vX9xjc8XbN4GN86jzNAZ6xHEqYxzbLB4fzHFd6VqCLPGRZFsdjsuMVERadbgDbziCRJru9n6tzEWrASVpEdrZrFidt1RDfn4yA3
+----
+
+A seguir usaremos o((("Bitcoin Explorer","hd-public command")))((("hd-public command (bx)"))) comando +hd-public+ para gerar a sequência correspondente de duas chaves públicas.
+
+----
+$ bx hd-public --index 0 < account
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+$ bx hd-public --index 1 < account
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+----
+
+As chaves públicas também podem ser derivadas a paritr de suas chaves privadas correspondentes ao utilizar-se o((("Bitcoin Explorer","hd-to-public command")))((("hd-to-public command (bx)"))) comando +hd-to-public+.
+
+----
+$ bx hd-private --index 0 < account | bx hd-to-public
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+$ bx hd-private --index 1 < account | bx hd-to-public
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+----
+
+Nós podemos gerar um número praticamente ilimitado de chaves em uma cadeia determinística, todas derivadas de uma única semente. Essa técnica é usada em muitas aplicações de carteira para gerar chaves que podem ser usadas em back ups e restauradas com um valor único de semente. Isso é mais fácil do que ter que fazer back up de toda a carteira com todas suas chaves geradas aleatoriamente cada vez que uma nova chave for criada.
+
+A semente pode ser codificada usando o((("Bitcoin Explorer","mnemonic-encode command")))((("mnemonic-encode command (bx)"))) comando +mnemonic-encode+.
+
+----
+$ bx hd-mnemonic < seed > words
+adore repeat vision worst especially veil inch woman cast recall dwell appreciate
+----
+
+A semente pode então ser decodificada usando o((("Bitcoin Explorer","mnemonic-decode command")))((("mnemonic-decode command (bx)"))) comando +mnemonic-decode+.
+
+----
+$ bx mnemonic-decode < words
+eb68ee9f3df6bd4441a9feadec179ff1
+----
+
+A codificação do mnemônico pode facilitar a gravação da semente e até mesmo a recordação dela.(((range="endofrange", startref="ix_appdx-bx-asciidoc0")))
