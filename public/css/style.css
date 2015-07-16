@@ -5644,6 +5644,12 @@ button.close {
   display: block;
   float: none; }
 
+.right {
+  float: right; }
+
+.clear {
+  clear: both; }
+
 .vmargin {
   margin-top: 20px; }
 
@@ -5662,8 +5668,14 @@ button.close {
 .fsize3 {
   font-size: 50%; }
 
+.mini {
+  font-size: 65%; }
+
 .fize_big1 {
-  font-size: 130%; }
+  font-size: 150%; }
+
+.bold {
+  font-weight: bold; }
 
 .margin30 {
   height: 30px; }
@@ -5680,6 +5692,9 @@ button.close {
 .margin230, .head_margin {
   height: 210px; }
 
+.margin-right40 {
+  margin-right: 40px; }
+
 .color_white {
   color: #EEE; }
 
@@ -5691,6 +5706,9 @@ button.close {
 
 .color_black {
   color: black; }
+
+.navbar-inverse .navbar-collapse {
+  background: #333; }
 
 .test {
   background-color: #BBB; }

@@ -12,28 +12,93 @@
         %h1.navbar-header
           .center.vmargin.color_white
             .fsize1 aantonop/bitcoinbook
-            .fsize3 Mastering Bitcoin / Translations build system
+            .fsize3 Mastering Bitcoin - Translations build system
         %ul.nav.navbar-nav
-          %li.active
-            %a{ href: "#" } Home
           %li
-            %a{ href: "#" }
-              Languages:
-          - LANGUAGES.each do |lang|
+            %a &nbsp
+          /
+            %li.active
+              %a{ href: "#" } Home
+          /
             %li
-              %a{ href: "#{lang}" }= lang
+              %a{ href: "#" }
+                Languages:
+            - LANGUAGES.each do |lang|
+              %li
+                %a{ href: "#{lang}" }= lang
 
     %section.container
       .head_margin
-      %h1 makevoid/bitcoinbook_transifex_build (system)
-
-      %ul
+      %h3 makevoid/bitcoinbook_transifex_build
+      %ul.bold
         %li.fize_big1 Gets the translations from Transifex translation platform
-        %li.fize_big1 Creates the HTML/PDF ( tnx to docker and asciifex: container dockerhub:makevoid/asciidoc )
-        %li.fize_big1 No step 3 (like it was antani!)
+        %li.fize_big1
+          Creates the HTML/PDF
+          %span.fsize3
+            \( tnx to docker and asciidoc: container
+            %a{ href: "https://hub.docker.com/u/makevoid/asciidoc" }
+              dockerhub:makevoid/asciidoc
+            \)
+        %li.fize_big1
+          There's no step 3!
 
       .margin30
-      %p source code:
+
+      %p
+        You can
+        %a{ href: "https://github.com/makevoid/bitcoinbook_transifex_build#setup" }
+          host your own build system
+        ,
+        %a{ href: "https://github.com/makevoid/bitcoinbook_transifex_build#fork-destination-box" }
+          contribute to this repo
+        \, or
+        %a{ href: "https://github.com/makevoid/bitcoinbook_transifex_build/issues/new" }
+          open an issue
+        \, you're welcome to do it
+
+      .right
+        %a{ href: "https://www.transifex.com/projects/p/mastering-bitcoin/" }
+          %img.margin-right40{ src: "http://marketersmedia.com/wp-content/uploads/2013/02/Transifex-logo.png", width: 50 }
+        %a{ href: "https://github.com/aantonop/bitcoinbook" }
+          %img{ src: "https://ds0k0en9abmn1.cloudfront.net/mugshots/bbc4bb5b3e.jpg" }
+      .clear
+
+      .margin30
+      %hr
+      .margin30
+
+      %h2 Translations - ordered by compleition
+
+      // todo - download icons and put local link
+
+      %ul
+        - LANGUAGES.each do |lang|
+          %li
+            %h1
+              %span.mini #{lang} -
+              #{lang_full(lang).capitalize}
+
+            %ul
+              - sections.map do |section|
+                :ruby
+                  url    = "/translations/#{lang}/#{section}"
+                  gh_url = "https://github.com/makevoid/bitcoinbook_transifex_build/blob/with_translation/public/#{lang}/#{section}.asciidoc"
+
+                %li
+                  %section
+                    %a{ href: "#{gh_url}" } GH
+                    \-
+                    %a{ href: "/asciidoc/#{lang}/#{section}" } source
+                    \-
+                    %span.fsize1
+                      %a{ href: "#{url}.asciidoc" } source DL
+                    \-
+                    %span.fize_big1
+                      %a{ href: "#{url}.html" } #{section.capitalize.gsub("-", " ")}
+
+
+      .margin50
+      %p source code for this site + asciidoc translations build system:
       %a{ href: "https://github.com/makevoid/bitcoinbook_transifex_build"} makevoid/bitcoinbook_transifex_build @ github
 
       .margin100
