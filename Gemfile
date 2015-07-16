@@ -6,4 +6,8 @@ gem 'transifex-ruby', git: 'git@github.com:tmaesaka/transifex-ruby.git', require
 group :ui do
   gem 'sinatra'
   gem "haml"
+
+  group :development do
+    gem "guard-sass"
+  end
 end
