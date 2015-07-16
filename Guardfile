@@ -1,1 +1,1 @@
-guard 'sass', input: 'sass', output: 'css'
+guard 'sass', input: 'public/sass', output: 'public/css'

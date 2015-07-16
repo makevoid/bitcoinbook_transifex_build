@@ -5,16 +5,31 @@
     %title aantonop/bitcoinbook translation builds
     %meta{ content: "IE=edge", "http-equiv" => "X-UA-Compatible" }
     %meta{ content: "width=device-width, initial-scale=1", name: "viewport" }
-    %link{ href: "/css/main.css", rel: "stylesheet" }
+    %link{ href: "/css/style.css", rel: "stylesheet" }
   %body
-    %h1 aantonop/bitcoinbook
-    %h3 Mastering Bitcoin
-    %h3 Translation Builds
+    %nav.navbar.navbar-inverse.navbar-fixed-top
+      #navbar.collapse.navbar-collapse
+        %h1.navbar-header
+          .center.vmargin.color_white
+            .fsize1 aantonop/bitcoinbook
+            .fsize3 Mastering Bitcoin / Translations build system
+        %ul.nav.navbar-nav
+          %li.active
+            %a{ href: "#" } Home
+          %li
+            %a{ href: "#" }
+              Languages:
+          - LANGUAGES.each do |lang|
+            %li
+              %a{ href: "#{lang}" }= lang
 
-    %p Gets the translations from transifex
+    .container
+      .margin230
+      .fize2 De
+      %p Gets the translations from transifex, creates the builds, for
 
-    %p Languages:
-    %p= LANGUAGES.join(", ")
+      %p Languages:
+      %p= LANGUAGES.join(", ")
 
-    %p source code:
-    %a{ href: "https://github.com/makevoid/bitcoinbook_transifex_build"} makevoid/bitcoinbook_transifex_build @ github
+      %p source code:
+      %a{ href: "https://github.com/makevoid/bitcoinbook_transifex_build"} makevoid/bitcoinbook_transifex_build @ github
