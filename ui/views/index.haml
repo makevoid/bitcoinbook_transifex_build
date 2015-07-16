@@ -31,15 +31,15 @@
       .head_margin
       %h3 makevoid/bitcoinbook_transifex_build
       %ul.bold
-        %li.fize_big1 Gets the translations from Transifex translation platform
-        %li.fize_big1
+        %li.fsize_big1 Gets the translations from Transifex translation platform
+        %li.fsize_big1
           Creates the HTML/PDF
           %span.fsize3
             \( tnx to docker and asciidoc: container
             %a{ href: "https://hub.docker.com/u/makevoid/asciidoc" }
               dockerhub:makevoid/asciidoc
             \)
-        %li.fize_big1
+        %li.fsize_big1
           There's no step 3!
 
       .margin30
@@ -86,15 +86,18 @@
 
                 %li
                   %section
-                    %a{ href: "#{gh_url}" } GH
+                    %a.btn.btn-primary{ href: "#{gh_url}" } GH
+                    %a.btn.btn-default.btn-sm{ href: "/asciidoc/#{lang}/#{section}" } source
+                    %a.btn.btn-default.btn-xs{ href: "#{url}.asciidoc" } src DL
+                    -# %a.btn.btn-default.btn-xs{ href: "#{url}.asciidoc" } html DL
                     \-
-                    %a{ href: "/asciidoc/#{lang}/#{section}" } source
-                    \-
-                    %span.fsize1
-                      %a{ href: "#{url}.asciidoc" } source DL
-                    \-
-                    %span.fize_big1
+                    html:
+                    %span.fsize_big2
                       %a{ href: "#{url}.html" } #{section.capitalize.gsub("-", " ")}
+                    /
+                      \-
+                      pdf: TODO use a2x
+                      docker_run asciidoc a2x --help
 
 
       .margin50

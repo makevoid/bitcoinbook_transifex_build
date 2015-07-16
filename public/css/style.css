@@ -5671,8 +5671,11 @@ button.close {
 .mini {
   font-size: 65%; }
 
-.fize_big1 {
+.fsize_big1 {
   font-size: 150%; }
+
+.fsize_big2 {
+  font-size: 180%; }
 
 .bold {
   font-weight: bold; }
@@ -5706,6 +5709,9 @@ button.close {
 
 .color_black {
   color: black; }
+
+ul ul {
+  list-style-type: none; }
 
 .navbar-inverse .navbar-collapse {
   background: #333; }
