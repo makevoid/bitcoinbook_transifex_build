@@ -72,10 +72,9 @@ def asciifex
   end
   workers.map &:join
 
-  puts
+  puts "build finished"
 end
 
-puts "build finished"
 
 # DEBUG:
 
