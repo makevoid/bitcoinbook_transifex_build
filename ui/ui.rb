@@ -40,5 +40,15 @@ module AsciiFex
       # send_file path, type: "text/plain", filename: "#{lang}-#{name}.txt"
       File.read path
     end
+
+    get "/translations/:lang/images/:file" do |_, file|
+      path = "#{PATH}/public/images/#{file}"
+      send_file path, type: "image/png"
+    end
+
+    get "/translations/:lang/code/:file" do |_, file|
+      path = "#{PATH}/public/code/#{file}"
+      send_file path, type: "text/plain"
+    end
   end
 end

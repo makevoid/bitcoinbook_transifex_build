@@ -16,7 +16,9 @@ def convert(resource:, lang:, content:)
 
   docker_path = "/home/makevoid/apps/asciidoc"
   cmd = "asciidoc #{docker_path}/#{filename}"
-  puts `docker run -ti -v #{public_path lang}:#{docker_path} --rm  makevoid/asciidoc #{cmd}`
+  docker = "docker run -ti -v #{public_path lang}:#{docker_path} --rm  makevoid/asciidoc #{cmd}"
+  puts "executing: #{docker}"
+  puts `#{docker}`
 end
 
 def project
@@ -29,9 +31,7 @@ end
 def asciifex
   puts "Fetching translations"
 
-  # languages = get_languages project
   languages = LANGUAGES
-
   languages.each do |lang|
     `mkdir -p #{public_path(lang)}`
   end
@@ -53,7 +53,6 @@ def asciifex
 
     end
 
-    # exit
   end
 
   puts
@@ -61,33 +60,8 @@ end
 
 puts "build finished"
 
+# DEBUG:
 
-# -------
-#
+# docker run -ti -v /home/makevoid/apps/bitcoinbook_transifex_build/public/translations/en:/home/makevoid/apps/asciidoc --rm  makevoid/asciidoc asciidoc /home/makevoid/apps/asciidoc/appendix-bips.asciidoc
 
-
-# Run:
-#
-#   asciifex
-#
-
-
-
-
-##
-# transifex infos
-
-# project.resource(resource.slug) # => Transifex::Resource object
-# res = project.resource(resource.slug)
-#
-
-
-### unused methods
-
-
-# def get_languages(project)
-#   # Transifex::Languages.fetch
-#   # []
-#
-#   project.languages # not enough permissions
-# end
+# docker run -ti -v /home/makevoid/apps/bitcoinbook_transifex_build/public/translations/en:/home/makevoid/apps/asciidoc --rm  makevoid/asciidoc a2x --fop /home/makevoid/apps/asciidoc/appendix-bips.asciidoc
