@@ -5677,6 +5677,9 @@ button.close {
 .fsize_big2 {
   font-size: 180%; }
 
+.fsize_big3 {
+  font-size: 130%; }
+
 .bold {
   font-weight: bold; }
 
@@ -5727,3 +5730,9 @@ pre {
 
 .space50 {
   height: 50px; }
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -200px;
+  visibility: hidden; }

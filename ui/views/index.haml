@@ -33,7 +33,8 @@
       %ul.bold
         %li.fsize_big1 Gets the translations from Transifex translation platform
         %li.fsize_big1
-          Creates the HTML/PDF
+          Creates the HTML
+          / /PDF
           %span.fsize3
             \( tnx to docker and asciidoc: container
             %a{ href: "https://hub.docker.com/u/makevoid/asciidoc" }
@@ -67,7 +68,14 @@
       %hr
       .margin30
 
-      %h2 Translations - ordered by compleition
+      %h2
+        Translations
+        /- ordered by compleition
+
+      .langs.fsize_big3
+        - LANGUAGES.each_with_index do |lang, idx|
+          %a{ href: "/##{lang}" } #{lang_full(lang).capitalize}
+          #{"-" unless idx+1 == LANGUAGES.size}
 
       // todo - download icons and put local link
 
@@ -76,9 +84,10 @@
           %li
             %h1
               %span.mini
-                %a{ name: lang, href: "/##{lang}" }= lang
+                %a{ href: "/##{lang}" }= lang
                 \-
               #{lang_full(lang).capitalize}
+              %a.anchor{ name: lang }
 
             %ul
               - sections.map do |section|
@@ -88,12 +97,12 @@
 
                 %li
                   %section
-                    %a.btn.btn-primary{ href: "#{gh_url}" } GH
+                    -# %a.btn.btn-primary{ href: "#{gh_url}" } GH
                     %a.btn.btn-default.btn-sm{ href: "/asciidoc/#{lang}/#{section}" } source
                     %a.btn.btn-default.btn-xs{ href: "#{url}.asciidoc" } src DL
                     -# %a.btn.btn-default.btn-xs{ href: "#{url}.asciidoc" } html DL
                     \-
-                    html:
+                    HTML:
                     %span.fsize_big2
                       %a{ href: "#{url}.html" } #{section.capitalize.gsub("-", " ")}
 
