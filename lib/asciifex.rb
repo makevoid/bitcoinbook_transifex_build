@@ -28,32 +28,49 @@ def project
   @project  = transifex.project PROJECT_SLUG
 end
 
+def execute_one(resource: resource)
+  LANGUAGES.each do |lang|
+    content = resource.translation lang
+    content = content.content # ...
+
+    # puts content # for debug
+    puts "Content: - lang: #{lang}"
+    slug  = resource.slug
+    convert resource: slug, lang: lang, content: content
+  end
+end
+
+def execute_worker_on(queue: queue)
+  begin
+    while job = queue.pop(true)
+      resource = job
+      puts "Translation: #{resource.slug}"
+      execute_one resource: resource
+    end
+  rescue ThreadError => e
+    "Error in thread: #{e}"
+  end
+end
+
 def asciifex
   puts "Fetching translations"
 
-  languages = LANGUAGES
-  languages.each do |lang|
+  LANGUAGES.each do |lang|
     `mkdir -p #{public_path(lang)}`
   end
 
-  project.resources.each do |resource|
-    puts "Translation: #{resource.slug}"
+  jobs = project.resources
 
-    languages.each do |lang|
+  require 'thread'
+  queue = Queue.new
+  jobs.each{ |job| queue.push job }
 
-      ## TODO: ######
-      # wrap in a celluloid object/method - call async on it - run 10 in parallel
-      content = resource.translation lang
-      content = content.content
-      puts "Content: - lang: #{lang}"
-      # puts content
-      slug  = resource.slug
-      convert resource: slug, lang: lang, content: content
-      ###############
-
+  workers = (0...8).map do
+    Thread.new do
+      execute_worker_on queue: queue
     end
-
   end
+  workers.map &:join
 
   puts
 end
@@ -62,6 +79,12 @@ puts "build finished"
 
 # DEBUG:
 
-# docker run -ti -v /home/makevoid/apps/bitcoinbook_transifex_build/public/translations/en:/home/makevoid/apps/asciidoc --rm  makevoid/asciidoc asciidoc /home/makevoid/apps/asciidoc/appendix-bips.asciidoc
+# generic
+#
+# docker run -ti -v /home/YOUR_USER/apps/bitcoinbook_transifex_build/public/translations/en:/home/YOUR_USER/apps/asciidoc --rm  makevoid/asciidoc asciidoc /home/YOUR_USER/apps/asciidoc/appendix-bips.asciidoc
 
+# w/ my user
+#
+# docker run -ti -v /home/makevoid/apps/bitcoinbook_transifex_build/public/translations/en:/home/makevoid/apps/asciidoc --rm  makevoid/asciidoc asciidoc /home/makevoid/apps/asciidoc/appendix-bips.asciidoc
+#
 # docker run -ti -v /home/makevoid/apps/bitcoinbook_transifex_build/public/translations/en:/home/makevoid/apps/asciidoc --rm  makevoid/asciidoc a2x --fop /home/makevoid/apps/asciidoc/appendix-bips.asciidoc
