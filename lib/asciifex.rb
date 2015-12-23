@@ -19,7 +19,7 @@ def convert(resource:, lang:, content:)
   cmd = "asciidoc #{docker_path}/#{filename}"
   docker = "docker run -ti -v #{public_path lang}:#{docker_path} --rm  makevoid/asciidoc #{cmd}"
   puts "executing: #{docker}"
-  # puts `#{docker}`
+  puts `#{docker}`
 
 
   # asciidoctor for PDF
