@@ -101,6 +101,8 @@
                     %a.btn.btn-default.btn-sm{ href: "/asciidoc/#{lang}/#{section}" } source
                     %a.btn.btn-default.btn-xs{ href: "#{url}.asciidoc" } src DL
                     -# %a.btn.btn-default.btn-xs{ href: "#{url}.asciidoc" } html DL
+                    - if params[:andreas_pdf]
+                      %a.btn.btn-default.btn-md{ href: "#{url}.pdf" } PDF
                     \-
                     HTML:
                     %span.fsize_big2

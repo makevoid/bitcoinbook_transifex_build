@@ -14,11 +14,23 @@ def convert(resource:, lang:, content:)
 
   write "#{public_path lang}/#{filename}", content
 
+  # asciidoc for HTML
   docker_path = "/home/makevoid/apps/asciidoc"
   cmd = "asciidoc #{docker_path}/#{filename}"
   docker = "docker run -ti -v #{public_path lang}:#{docker_path} --rm  makevoid/asciidoc #{cmd}"
   puts "executing: #{docker}"
-  puts `#{docker}`
+  # puts `#{docker}`
+
+
+  # asciidoctor for PDF
+  #
+  # symlink included files
+  puts `cd #{public_path lang} && ln -sf #{PATH}/public/images`
+  puts `cd #{public_path lang} && ln -sf #{PATH}/public/code`
+  #
+  asciidoctor = "asciidoctor -r asciidoctor-pdf -b pdf #{public_path lang}/#{filename}"
+  puts "executing: #{asciidoctor}"
+  puts `#{asciidoctor}`
 end
 
 def project
