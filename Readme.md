@@ -49,6 +49,13 @@ Direct translation download urls (you need to be logged in):
 
 for available LANGs see lib/languages.
 
+
+### PDF
+
+for single pdfs you need pdfunite part of poppler-utils
+
+    apt-get install poppler-utils
+
 ---
 
 enjoy

@@ -84,6 +84,15 @@ def asciifex
   end
   workers.map &:join
 
+  # TODO extract in function
+  # join pdfs
+  LANGUAGES.each do |lang|
+    resources = ["praise", "index", "preface", "glossary-1", "chapter-1", "chapter-2", "chapter-3", "chapter-4", "chapter-5", "chapter-6", "chapter-7", "chapter-8", "chapter-9",  "chapter-10", "appendix-bx", "appendix-bips",  "appendix-pycoin", "appendix-script-ops" ]
+    # raise project.resources.map(&:slug).inspect
+    resources = resources.join ".pdf "
+    puts `cd #{public_path(lang)} && pdfunite #{resources}.pdf book.pdf`
+  end
+
   puts "build finished"
 end
 
