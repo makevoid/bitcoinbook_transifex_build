@@ -89,8 +89,8 @@
               #{lang_full(lang).capitalize}
               %a.anchor{ name: lang }
 
-
-            %a.btn.btn-default.btn-md{ href: "/translations/#{lang}/book.pdf" } PDF (entire book)
+            - if params[:andreas_pdf]
+              %a.btn.btn-default.btn-md{ href: "/translations/#{lang}/book.pdf" } PDF (entire book)
 
             %ul
               - sections.map do |section|
